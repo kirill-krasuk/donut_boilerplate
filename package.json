@@ -1,0 +1,45 @@
+{
+  "name": "new_boilerplate_v2",
+  "version": "1.0.0",
+  "description": "a new look for react boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "start": "webpack --config webpack.config.js --mode=development --inline --progress --watch",
+    "build": "webpack --config webpack.config.js --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirill-krasuk/new_boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "boilerplate"
+  ],
+  "author": "Kirill Krasuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirill-krasuk/new_boilerplate/issues"
+  },
+  "homepage": "https://github.com/kirill-krasuk/new_boilerplate#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-arca": "^0.8.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "eslint-plugin-varspacing": "^1.2.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}
