@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/kirill-krasuk/new_boilerplate#readme",
   "dependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "compression": "^1.7.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

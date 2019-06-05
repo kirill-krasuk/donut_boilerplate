@@ -6,10 +6,6 @@ module.exports = configureBundler({
         bundle: [
             require.resolve('react-app-polyfill/ie11'),
             `${ paths.entry }`,
-        ],
-        vendor: [
-            'react',
-            'react-dom'
         ]
     },
     plugins: []

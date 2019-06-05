@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path    = require('path');
 
 const HtmlPlugin         = require('html-webpack-plugin');
@@ -28,8 +29,8 @@ module.exports = {
             mode  : options.mode,
             entry : options.entry,
             output: {
-                path      : paths.dist,
-                filename  : addHash('js/[name].js', 'hash:8'),
+                path      : `${ paths.dist  }/js`,
+                filename  : addHash('[name].js', 'hash:8'),
                 publicPath: '/dist/'
             },
             devtool      : options.devtool || false,
@@ -40,6 +41,18 @@ module.exports = {
                 extensions: [ '.js', '.jsx', '.css', '.sass', '.scss', '.json' ],
                 alias     : {
                     'react-dom': '@hot-loader/react-dom'
+                }
+            },
+            optimization: {
+                runtimeChunk: 'single',
+                splitChunks : {
+                    cacheGroups: {
+                        vendor: {
+                            test  : /[\\/]node_modules[\\/]/,
+                            name  : 'vendors',
+                            chunks: 'all'
+                        }
+                    }
                 }
             },
             module: {
@@ -68,6 +81,10 @@ module.exports = {
                     cache: true,
                     test : /\.js(\?.*)?$/i
                 }),
+                new webpack.DefinePlugin({
+                    NODE_ENV: JSON.stringify(options.mode)
+                }),
+                new webpack.HashedModuleIdsPlugin()
             ])
         };
     }
