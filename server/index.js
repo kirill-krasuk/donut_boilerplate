@@ -3,10 +3,14 @@ const webpack       = require('webpack');
 const DevMiddleware = require('webpack-dev-middleware');
 const HotMiddleware = require('webpack-hot-middleware');
 const path          = require('path');
+const dotenv        = require('dotenv');
+
+dotenv.config();
 
 const nodeEnv = process.env.NODE_ENV;
+const debug   = process.env.DEBUG;
 
-const webpackConfig = require('../webpack.config')(nodeEnv);
+const webpackConfig = require('../webpack.config')({ env: nodeEnv, debug });
 
 const app = express();
 

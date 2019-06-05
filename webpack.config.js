@@ -2,17 +2,24 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const HtmlWebpackPlugin    = require('html-webpack-plugin');
-const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+const HtmlWebpackPlugin         = require('html-webpack-plugin');
+const HtmlWebpackPugPlugin      = require('html-webpack-pug-plugin');
+const HtmlWebpackHardDiskPlugin = require('html-webpack-harddisk-plugin');
 
 const PATHS = {
-    src : path.resolve(__dirname, 'src'),
-    dist: path.resolve(__dirname, 'dist')
+    src     : path.resolve(__dirname, 'src'),
+    dist    : path.resolve(__dirname, 'dist'),
+    entry   : path.resolve(__dirname, 'src', 'core', 'index.jsx'),
+    template: path.resolve(__dirname, 'src', 'core', 'templates', 'index.pug'),
+    view    : path.resolve(__dirname, 'views', 'index.pug')
 };
 
-module.exports = function (env) {
+
+module.exports = function ({ env, debug }) {
     const isProd = env === 'production';
     const isDev  = env === 'development';
+
+    const isDebug = JSON.parse(debug);
 
     function addHash(template, hash) {
         return isProd
@@ -23,14 +30,21 @@ module.exports = function (env) {
     return {
         mode : env,
         entry: {
-            bundle: [ `${ PATHS.src }/index.jsx`, 'webpack-hot-middleware/client' ],
+            bundle: [
+                `${ PATHS.entry }`,
+                'webpack-hot-middleware/client'
+            ],
+            vendor: [
+                'react',
+                'react-dom'
+            ]
         },
         output: {
             path      : PATHS.dist,
             filename  : addHash('js/[name].js', 'hash:8'),
             publicPath: '/dist/'
         },
-        devtool      : isDev && 'eval',
+        devtool      : isDev && isDebug && 'eval-source-map',
         resolveLoader: {
             moduleExtensions: [ '-loader' ]
         },
@@ -42,7 +56,7 @@ module.exports = function (env) {
         },
         module: {
             rules: [ {
-                test   : /\.jsx$/,
+                test   : /\.jsx?$/,
                 exclude: /node_modules/,
                 loader : 'babel'
             }, {
@@ -56,9 +70,11 @@ module.exports = function (env) {
         watch  : isDev,
         plugins: [
             new HtmlWebpackPlugin({
-                template: path.join(PATHS.src, 'index.pug'),
-                filename: path.resolve(__dirname, 'views', 'index.pug')
+                template         : PATHS.template,
+                filename         : PATHS.view,
+                alwaysWriteToDisk: true
             }),
+            new HtmlWebpackHardDiskPlugin(),
             new HtmlWebpackPugPlugin(),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NoEmitOnErrorsPlugin()
