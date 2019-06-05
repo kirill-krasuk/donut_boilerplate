@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "NODE_ENV=development node ./server/index.js",
-    "build": "NODE_ENV=production node ./server/index.js"
+    "start": "rimraf ./dist && NODE_ENV=development node ./server/index.js",
+    "start:prod": "NODE_ENV=production node ./server/index.js",
+    "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/kirill-krasuk/new_boilerplate#readme",
   "dependencies": {
+    "compression": "^1.7.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -34,6 +36,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^3.0.0",
     "css-loader": "^2.1.1",
     "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
@@ -49,6 +52,7 @@
     "html-webpack-pug-plugin": "^1.0.1",
     "node-sass": "^4.12.0",
     "pug": "^2.0.3",
+    "react-app-polyfill": "^1.0.1",
     "react-hot-loader": "^4.9.0",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "^7.1.0",
