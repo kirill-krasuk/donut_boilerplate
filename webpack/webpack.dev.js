@@ -9,10 +9,6 @@ module.exports = configureBundler({
             require.resolve('react-app-polyfill/ie11'),
             `${ paths.entry }`,
             'webpack-hot-middleware/client'
-        ],
-        vendor: [
-            'react',
-            'react-dom'
         ]
     },
     devtool: 'source-map',

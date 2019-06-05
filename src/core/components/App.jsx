@@ -3,6 +3,8 @@ import { hot }    from 'react-hot-loader/root';
 
 import './style';
 
+import('./greeting');
+
 const App = () => (
     <div className="test">Hello, React!</div>
 );
