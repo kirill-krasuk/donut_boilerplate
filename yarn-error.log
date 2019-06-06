@@ -1,0 +1,99 @@
+Arguments: 
+  /usr/local/Cellar/node/11.3.0_1/bin/node /usr/local/Cellar/yarn/1.12.3/libexec/bin/yarn.js start
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/Kikiron/Library/Android/sdk/emulator:/Users/Kikiron/Library/Android/sdk/tools:/Users/Kikiron/Library/Android/sdk/tools/bin:/Users/Kikiron/Library/Android/sdk/platform-tools:/Users/Kikiron/Library/Android/sdk/tools/emulator:/Users/Kikiron/Library/Android/sdk/emulator:/Users/Kikiron/Library/Android/sdk/tools:/Users/Kikiron/Library/Android/sdk/tools/bin:/Users/Kikiron/Library/Android/sdk/platform-tools:/Users/Kikiron/Library/Android/sdk/tools/emulator
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  11.3.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/Kikiron/Projects/new_boilerplate_v2/package.json: Unexpected token / in JSON at position 174
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:1631:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "new_boilerplate_v2",
+    "version": "1.0.0",
+    "description": "a new look for react boilerplate",
+    "main": "index.js",
+    "scripts": {
+      "lint": "eslint .",
+      // "prestart": "rimraf ./libs && webpack --config ./webpack/webpack.lib.js",
+      "start": "rimraf ./dist && NODE_ENV=development node ./server/index.js",
+      "start:prod": "NODE_ENV=production node ./server/index.js",
+      "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/kirill-krasuk/new_boilerplate.git"
+    },
+    "keywords": [
+      "react",
+      "boilerplate"
+    ],
+    "author": "Kirill Krasuk",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/kirill-krasuk/new_boilerplate/issues"
+    },
+    "homepage": "https://github.com/kirill-krasuk/new_boilerplate#readme",
+    "dependencies": {
+      "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+      "compression": "^1.7.4",
+      "react": "^16.8.6",
+      "react-dom": "^16.8.6",
+      "redux": "^4.0.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.4.5",
+      "@babel/preset-env": "^7.4.5",
+      "@babel/preset-react": "^7.0.0",
+      "@hot-loader/react-dom": "^16.8.6",
+      "babel-eslint": "^10.0.1",
+      "babel-loader": "^8.0.6",
+      "clean-webpack-plugin": "^3.0.0",
+      "compression-webpack-plugin": "^3.0.0",
+      "css-loader": "^2.1.1",
+      "dotenv": "^8.0.0",
+      "eslint": "^5.16.0",
+      "eslint-config-airbnb-base": "^13.1.0",
+      "eslint-plugin-arca": "^0.8.1",
+      "eslint-plugin-import": "^2.17.3",
+      "eslint-plugin-react": "^7.13.0",
+      "eslint-plugin-react-hooks": "^1.6.0",
+      "eslint-plugin-varspacing": "^1.2.1",
+      "express": "^4.17.1",
+      "html-webpack-harddisk-plugin": "^1.0.1",
+      "html-webpack-plugin": "^3.2.0",
+      "html-webpack-pug-plugin": "^1.0.1",
+      "node-sass": "^4.12.0",
+      "pug": "^2.0.3",
+      "react-app-polyfill": "^1.0.1",
+      "react-hot-loader": "^4.9.0",
+      "resolve-url-loader": "^3.1.0",
+      "sass-loader": "^7.1.0",
+      "style-loader": "^0.23.1",
+      "webpack": "^4.32.2",
+      "webpack-cli": "^3.3.2",
+      "webpack-dev-middleware": "^3.7.0",
+      "webpack-hot-middleware": "^2.25.0",
+      "workbox-webpack-plugin": "^4.3.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
