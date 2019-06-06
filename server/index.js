@@ -4,13 +4,12 @@ const DevMiddleware = require('webpack-dev-middleware');
 const HotMiddleware = require('webpack-hot-middleware');
 const compression   = require('compression');
 const path          = require('path');
-const dotenv        = require('dotenv');
 
-dotenv.config();
+const config = require('./config');
 
 const app = express();
 
-const nodeEnv = process.env.NODE_ENV;
+const { env, host, port } = config;
 
 app.use(compression());
 
@@ -18,7 +17,7 @@ app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist')));
 
 app.set('view engine', 'pug');
 
-if (nodeEnv === 'development') {
+if (env === 'development') {
     const webpackConfig = require('../webpack/webpack.dev');
     const bundler       = webpack(webpackConfig);
 
@@ -45,6 +44,14 @@ app.get('*.js', (req, res, next) => {
 
 app.use('*', (req, res) => res.render('index'));
 
-app.listen(3000, () => {
-    console.log('Server started'); // eslint-disable-line
+app.listen(port, host, () => {
+    // eslint-disable-next-line no-console
+    console.log(`
+        =====================================================
+        ${ new Date().toString() }
+                        Server started at 
+                        Address: ${ host }                   
+                        Port:    ${ port }                       
+        =====================================================
+    `);
 });
