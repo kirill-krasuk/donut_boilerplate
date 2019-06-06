@@ -89,13 +89,13 @@ module.exports = {
                 }),
                 new CircularDependencyPlugin({
                     onStart() {
-                        console.log('! start detecting circular dependency !');
+                        console.log('! start detecting circular dependency !'); // eslint-disable-line
                     },
                     onDetected({ paths, compilation }) {
                         compilation.errors.push(new Error(paths.join(' -> ')));
                     },
                     onEnd() {
-                        console.log('! end detecting circular dependency   !');
+                        console.log('! end detecting circular dependency   !'); // eslint-disable-line
                     },
                     failOnError: true
                 }),
