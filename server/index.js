@@ -24,13 +24,21 @@ if (nodeEnv === 'development') {
 
     app.use(DevMiddleware(bundler, {
         publicPath: webpackConfig.output.publicPath,
-        stats     : { colors: true },
+        stats     : {
+            all         : false,
+            modules     : true,
+            maxModules  : 0,
+            errors      : true,
+            warnings    : true,
+            moduleTrace : true,
+            errorDetails: true
+        }
     }));
     app.use(HotMiddleware(bundler));
 }
 
 app.get('*.js', (req, res, next) => {
-    req.url = req.url + '.gz'; // eslint-disable-line
+    req.url += '.gz';
     res.set('Content-Encoding', 'gzip');
     next();
 });
@@ -38,5 +46,5 @@ app.get('*.js', (req, res, next) => {
 app.use('*', (req, res) => res.render('index'));
 
 app.listen(3000, () => {
-    console.log('Server started');
+    console.log('Server started'); // eslint-disable-line
 });

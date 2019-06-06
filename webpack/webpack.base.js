@@ -1,17 +1,19 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const HtmlPlugin         = require('html-webpack-plugin');
-const HtmlPugPlugin      = require('html-webpack-pug-plugin');
-const HtmlHardDiskPlugin = require('html-webpack-harddisk-plugin');
-const CompressionPlugin  = require('compression-webpack-plugin');
+const HtmlPlugin               = require('html-webpack-plugin');
+const HtmlPugPlugin            = require('html-webpack-pug-plugin');
+const HtmlHardDiskPlugin       = require('html-webpack-harddisk-plugin');
+const CompressionPlugin        = require('compression-webpack-plugin');
+const WorkboxPlugin            = require('workbox-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const paths = {
-    src     : path.resolve(__dirname, '..', 'src'),
-    dist    : path.resolve(__dirname, '..', 'dist'),
-    entry   : path.resolve(__dirname, '..', 'src', 'core', 'index.jsx'),
-    template: path.resolve(__dirname, '..', 'src', 'core', 'templates', 'index.pug'),
-    view    : path.resolve(__dirname, '..', 'views', 'index.pug')
+    src     : path.resolve('src'),
+    dist    : path.resolve('dist'),
+    entry   : path.resolve('src', 'core', 'index.jsx'),
+    template: path.resolve('src', 'core', 'templates', 'index.pug'),
+    view    : path.resolve('views', 'index.pug')
 };
 
 module.exports = {
@@ -26,12 +28,13 @@ module.exports = {
         }
 
         return {
-            mode  : options.mode,
-            entry : options.entry,
-            output: {
+            context: path.resolve(__dirname, '..'),
+            mode   : options.mode,
+            entry  : options.entry,
+            output : {
                 path      : `${ paths.dist  }/js`,
                 filename  : addHash('[name].js', 'hash:8'),
-                publicPath: '/dist/'
+                publicPath: '/dist/',
             },
             devtool      : options.devtool || false,
             resolveLoader: {
@@ -84,7 +87,22 @@ module.exports = {
                 new webpack.DefinePlugin({
                     NODE_ENV: JSON.stringify(options.mode)
                 }),
-                new webpack.HashedModuleIdsPlugin()
+                new CircularDependencyPlugin({
+                    onStart() {
+                        console.log('! start detecting circular dependency !');
+                    },
+                    onDetected({ paths, compilation }) {
+                        compilation.errors.push(new Error(paths.join(' -> ')));
+                    },
+                    onEnd() {
+                        console.log('! end detecting circular dependency   !');
+                    },
+                    failOnError: true
+                }),
+                new WorkboxPlugin.GenerateSW({
+                    clientsClaim: true,
+                    skipWaiting : true
+                })
             ])
         };
     }
