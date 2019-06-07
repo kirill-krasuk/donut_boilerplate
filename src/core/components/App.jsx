@@ -6,7 +6,7 @@ import './style';
 import('./greeting');
 
 const App = () => (
-    <div className="test">Го жрать?!</div>
+    <div className="test">Hello world</div>
 );
 
 export default hot(App);

@@ -15,6 +15,8 @@ app.use(compression());
 
 app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist')));
 
+// app.use('/internals', express.static(path.resolve(__dirname, '..', 'internals')));
+
 app.set('view engine', 'pug');
 
 if (env === 'development') {
@@ -22,8 +24,9 @@ if (env === 'development') {
     const bundler       = webpack(webpackConfig);
 
     app.use(DevMiddleware(bundler, {
-        publicPath: webpackConfig.output.publicPath,
-        stats     : {
+        publicPath : webpackConfig.output.publicPath,
+        writeToDisk: true,
+        stats      : {
             all         : false,
             modules     : true,
             maxModules  : 0,
@@ -37,8 +40,9 @@ if (env === 'development') {
 }
 
 app.get('*.js', (req, res, next) => {
-    req.url += '.gz';
+    req.url = req.url + '.gz'; // eslint-disable-line
     res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'text/javascript');
     next();
 });
 

@@ -1,4 +1,4 @@
-const { paths, configureBundler } = require('./webpack.base');
+const { paths, configureBundler } = require('./webpack.common');
 
 module.exports = configureBundler({
     mode : 'production',

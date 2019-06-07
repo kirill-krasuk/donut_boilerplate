@@ -1,12 +1,11 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const HtmlPlugin               = require('html-webpack-plugin');
-const HtmlPugPlugin            = require('html-webpack-pug-plugin');
-const HtmlHardDiskPlugin       = require('html-webpack-harddisk-plugin');
-const CompressionPlugin        = require('compression-webpack-plugin');
-const WorkboxPlugin            = require('workbox-webpack-plugin');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
+const HtmlPlugin         = require('html-webpack-plugin');
+const HtmlPugPlugin      = require('html-webpack-pug-plugin');
+const HtmlHardDiskPlugin = require('html-webpack-harddisk-plugin');
+const CompressionPlugin  = require('compression-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 const paths = {
     src     : path.resolve('src'),
@@ -32,7 +31,7 @@ module.exports = {
             mode   : options.mode,
             entry  : options.entry,
             output : {
-                path      : `${ paths.dist  }/js`,
+                path      : `${ paths.dist }`,
                 filename  : addHash('[name].js', 'hash:8'),
                 publicPath: '/dist/',
             },
@@ -43,7 +42,7 @@ module.exports = {
             resolve: {
                 extensions: [ '.js', '.jsx', '.css', '.sass', '.scss', '.json' ],
                 alias     : {
-                    'react-dom': '@hot-loader/react-dom'
+                    'react-dom': isProd ? 'react-dom' : '@hot-loader/react-dom'
                 }
             },
             optimization: {
@@ -82,27 +81,18 @@ module.exports = {
                 new HtmlPugPlugin(),
                 new CompressionPlugin({
                     cache: true,
-                    test : /\.js(\?.*)?$/i
+                    test : /\.js(\?.*)?$/i,
+                }),
+                new InjectManifest({
+                    swDest           : './sw.js',
+                    importWorkboxFrom: 'cdn',
+                    include          : /\.js(.gz)?$/,
+                    exclude          : /\.hot-update.js/,
+                    swSrc            : './internals/sw-manifest.js'
                 }),
                 new webpack.DefinePlugin({
                     NODE_ENV: JSON.stringify(options.mode)
                 }),
-                new CircularDependencyPlugin({
-                    onStart() {
-                        console.log('! start detecting circular dependency !'); // eslint-disable-line
-                    },
-                    onDetected({ paths, compilation }) {
-                        compilation.errors.push(new Error(paths.join(' -> ')));
-                    },
-                    onEnd() {
-                        console.log('! end detecting circular dependency   !'); // eslint-disable-line
-                    },
-                    failOnError: true
-                }),
-                new WorkboxPlugin.GenerateSW({
-                    clientsClaim: true,
-                    skipWaiting : true
-                })
             ])
         };
     }
