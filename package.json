@@ -6,8 +6,9 @@
   "scripts": {
     "lint": "eslint .",
     "start": "rimraf ./dist && NODE_ENV=development node ./server/index.js",
-    "start:prod": "NODE_ENV=production node ./server/index.js",
-    "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js"
+    "start:server": "NODE_ENV=production node ./server/index.js",
+    "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js",
+    "workbox": "workbox"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,8 @@
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "workbox-cli": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
