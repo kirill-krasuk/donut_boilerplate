@@ -5,6 +5,7 @@ const webpack       = require('webpack');
 const DevMiddleware = require('webpack-dev-middleware');
 const HotMiddleware = require('webpack-hot-middleware');
 const compression   = require('compression');
+const favicon       = require('serve-favicon');
 const path          = require('path');
 
 const serverSideRendering = require('./middlewares/serverSideRendering');
@@ -21,8 +22,10 @@ app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist'), { maxAge:
 app.use('/sw.js', express.static(path.resolve(__dirname, '..', 'dist/sw.js'), { maxAge: '30d' }));
 app.use('/public', express.static(path.resolve(__dirname, '..', 'public'), { maxAge: '30d' }));
 
+app.use(favicon(path.join(__dirname, '..', 'public', 'images', 'favicon.ico')));
+
 app.set('view engine', 'pug');
-app.set('view options', { pretty: true });
+app.locals.pretty = true;
 
 if (env === 'development') {
     const webpackConfig = require('../webpack/webpack.dev');

@@ -1,0 +1,10 @@
+{
+    "javascript.validate.enable": false,
+    "flow.useNPMPackagedFlow": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "explorer.confirmDelete": false,
+    "eslint.autoFixOnSave": true,
+    "typescript.validate.enable": false,
+    "git.confirmSync": false,
+}

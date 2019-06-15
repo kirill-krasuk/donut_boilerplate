@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const { paths, configureBundler } = require('./webpack.common');
 
 module.exports = configureBundler({
@@ -8,5 +10,7 @@ module.exports = configureBundler({
             `${ paths.entry }`,
         ]
     },
-    plugins: []
+    plugins: [
+        new webpack.HashedModuleIdsPlugin()
+    ]
 });

@@ -11,6 +11,7 @@
                     "./src"
                 ],
                 "alias": {
+                    "app": "./src/app",
                     "core": "./src/core",
                     "server": "./server",
                     "public": "./public"
