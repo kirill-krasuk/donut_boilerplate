@@ -32,4 +32,6 @@ self.addEventListener('push', (event) => {
     event.waitUntil(self.registration.showNotification(title, options));
 });
 
+self.__precacheManifest = ['/', 'index.html'].concat(self.__precacheManifest || []);
+
 workbox.precaching.precacheAndRoute(self.__precacheManifest);

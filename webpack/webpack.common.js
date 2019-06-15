@@ -86,8 +86,8 @@ module.exports = {
                 new InjectManifest({
                     swDest           : './sw.js',
                     importWorkboxFrom: 'cdn',
-                    include          : /\.js(.gz)?$/,
-                    exclude          : /\.hot-update.js/,
+                    include          : /\.js(\.gz)?$/,
+                    exclude          : /\.hot-update\.js/,
                     swSrc            : './internals/sw-manifest.js'
                 }),
                 new webpack.DefinePlugin({
