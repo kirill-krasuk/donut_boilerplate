@@ -36,19 +36,5 @@ self.addEventListener('activate', () => {
 });
 
 self.addEventListener('fetch', (event) => {
-    console.log(event.request.url);
-
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request)
-                .then(response => caches.open(CURRENT_CACHES.prefetch)
-                    .then((cache) => {
-                        // cache response after making a request
-                        cache.put(event.request, response.clone());
-
-                        // return original response
-                        return response;
-                    })
-                ))
-    );
+    event.respondWith(caches.match(event.request));
 });

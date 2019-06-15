@@ -1,7 +1,7 @@
-import React      from 'react';
-import { render } from 'react-dom';
+import React       from 'react';
+import { hydrate } from 'react-dom';
 
-import { App }    from './components';
+import { App }     from './components';
 
 const ROOT_NODE = document.getElementById('root');
 
@@ -10,13 +10,15 @@ if (!window.isSecureContext) {
 }
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('../../dist/sw.js').then(() => {
+    window.addEventListener('load', async () => {
+        try {
+            await navigator.serviceWorker.register('/sw.js');
+
             window.console.log('SW registered');
-        }).catch((registrationError) => {
-            window.console.log('SW registration failed: ', registrationError);
-        });
+        } catch (err) {
+            window.console.log('SW registration failed: ', err);
+        }
     });
 }
 
-render(<App />, ROOT_NODE);
+hydrate(<App />, ROOT_NODE);

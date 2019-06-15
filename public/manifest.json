@@ -1,0 +1,16 @@
+{
+    "short_name": "NRB",
+    "name": "New React Boilerplate",
+    "description": "new react boilerplate",
+    "icons": [
+      {
+        "src": "/public/images/logo512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF"
+  }

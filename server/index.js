@@ -1,9 +1,13 @@
+require('@babel/register');
+require('@babel/polyfill');
 const express       = require('express');
 const webpack       = require('webpack');
 const DevMiddleware = require('webpack-dev-middleware');
 const HotMiddleware = require('webpack-hot-middleware');
 const compression   = require('compression');
 const path          = require('path');
+
+const serverSideRendering = require('./middlewares/serverSideRendering');
 
 const config = require('./config');
 
@@ -13,11 +17,12 @@ const { env, host, port } = config;
 
 app.use(compression());
 
-app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist')));
-
-// app.use('/internals', express.static(path.resolve(__dirname, '..', 'internals')));
+app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist'), { maxAge: '30d' }));
+app.use('/sw.js', express.static(path.resolve(__dirname, '..', 'dist/sw.js'), { maxAge: '30d' }));
+app.use('/public', express.static(path.resolve(__dirname, '..', 'public'), { maxAge: '30d' }));
 
 app.set('view engine', 'pug');
+app.set('view options', { pretty: true });
 
 if (env === 'development') {
     const webpackConfig = require('../webpack/webpack.dev');
@@ -46,7 +51,7 @@ app.get('*.js', (req, res, next) => {
     next();
 });
 
-app.use('*', (req, res) => res.render('index'));
+app.use('/', serverSideRendering);
 
 app.listen(port, host, () => {
     // eslint-disable-next-line no-console
