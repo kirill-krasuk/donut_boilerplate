@@ -4,6 +4,7 @@ const path    = require('path');
 const CompressionPlugin  = require('compression-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const LoadablePlugin     = require('@loadable/webpack-plugin');
+const Dotenv             = require('dotenv-webpack');
 
 const paths = {
     src     : path.resolve('src'),
@@ -87,6 +88,7 @@ module.exports = {
                     exclude          : /\.hot-update\.js/,
                     swSrc            : './internals/sw-manifest.js'
                 }),
+                new Dotenv(),
                 new LoadablePlugin(),
                 new webpack.DefinePlugin({
                     'process.env': {
