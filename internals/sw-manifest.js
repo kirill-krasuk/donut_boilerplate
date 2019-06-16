@@ -1,5 +1,4 @@
 /* eslint-disable */
-// importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
 workbox.core.setCacheNameDetails({
     prefix  : 'new_boilerplate_cache',
@@ -32,6 +31,6 @@ self.addEventListener('push', (event) => {
     event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.__precacheManifest = ['/', 'index.html'].concat(self.__precacheManifest || []);
+self.__precacheManifest = ['/'].concat(self.__precacheManifest || []);
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest);

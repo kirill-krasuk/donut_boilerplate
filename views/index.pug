@@ -9,21 +9,5 @@ html(lang="en")
         link(rel="manifest" href="public/manifest.json")
     body
         #root
-            | !{markup}
-        //- script.
-        //-     if (!window.isSecureContext) {
-        //-         console.log('SW need a secure context');
-        //-     }
-
-        //-     if ('serviceWorker' in navigator) {
-        //-         addEventListener('load', function () {
-        //-             navigator.serviceWorker.register('/sw.js').then(function () {
-        //-                 console.log('SW registered');
-        //-             }).catch(function (registrationError) {
-        //-                 console.log('SW registration failed: ', registrationError);
-        //-             });
-        //-         });
-        //-     }
-        script(type="text/javascript" src="/dist/runtime.js")
-        script(type="text/javascript" src="/dist/vendors.js")
-        script(type="text/javascript" src="/dist/bundle.js")
+            | !{html}
+        | !{scriptTags}

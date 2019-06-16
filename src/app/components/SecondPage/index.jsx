@@ -5,7 +5,7 @@ import { hot }   from 'react-hot-loader/root';
 
 const SecondPage = () => (
     <>
-        <div>Second Page</div>
+        <div>Second Page2</div>
         <Link to={ '/' }>go to main page</Link>
     </>
 );

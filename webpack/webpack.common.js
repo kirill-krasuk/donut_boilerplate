@@ -1,11 +1,9 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const HtmlPlugin         = require('html-webpack-plugin');
-const HtmlPugPlugin      = require('html-webpack-pug-plugin');
-const HtmlHardDiskPlugin = require('html-webpack-harddisk-plugin');
 const CompressionPlugin  = require('compression-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const LoadablePlugin     = require('@loadable/webpack-plugin');
 
 const paths = {
     src     : path.resolve('src'),
@@ -31,9 +29,10 @@ module.exports = {
             mode   : options.mode,
             entry  : options.entry,
             output : {
-                path      : `${ paths.dist }`,
-                filename  : addHash('[name].js', 'hash:8'),
-                publicPath: '/dist/',
+                chunkFilename: addHash('[name].js', 'hash:8'),
+                path         : `${ paths.dist }`,
+                filename     : addHash('[name].js', 'hash:8'),
+                publicPath   : '/dist/',
             },
             devtool      : options.devtool || false,
             resolveLoader: {
@@ -53,6 +52,11 @@ module.exports = {
                             test  : /[\\/]node_modules[\\/]/,
                             name  : 'vendors',
                             chunks: 'all'
+                        },
+                        commons: {
+                            name     : 'commons',
+                            chunks   : 'initial',
+                            minChunks: 2
                         }
                     }
                 }
@@ -72,13 +76,6 @@ module.exports = {
             },
             watch  : options.watch || false,
             plugins: options.plugins.concat([
-                new HtmlPlugin({
-                    template         : paths.template,
-                    filename         : paths.view,
-                    alwaysWriteToDisk: true
-                }),
-                new HtmlHardDiskPlugin(),
-                new HtmlPugPlugin(),
                 new CompressionPlugin({
                     cache: true,
                     test : /\.js(\?.*)?$/i,
@@ -90,6 +87,7 @@ module.exports = {
                     exclude          : /\.hot-update\.js/,
                     swSrc            : './internals/sw-manifest.js'
                 }),
+                new LoadablePlugin(),
                 new webpack.DefinePlugin({
                     NODE_ENV: JSON.stringify(options.mode)
                 }),

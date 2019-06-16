@@ -33,8 +33,16 @@ if (env === 'development') {
 
     app.use(DevMiddleware(bundler, {
         publicPath : webpackConfig.output.publicPath,
-        writeToDisk: true,
-        stats      : {
+        writeToDisk: (name) => {
+            const regExp = new RegExp(/(\.json|sw|manifest)/, 'gi');
+
+            if (regExp.test(name)) {
+                return true;
+            }
+
+            return false;
+        },
+        stats: {
             all         : false,
             modules     : true,
             maxModules  : 0,
