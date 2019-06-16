@@ -41,5 +41,5 @@ export function configureStore(preloadedState: Object = {}, history?: Object = {
         });
     }
 
-    return store;
+    return { store, history };
 }
