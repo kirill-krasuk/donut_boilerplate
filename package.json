@@ -8,6 +8,7 @@
     "start": "rimraf ./dist && NODE_ENV=development node ./server/index.js",
     "start:server": "NODE_ENV=production node ./server/index.js",
     "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js",
+    "build:server": "webpack --config ./webpack/webpack.server.js",
     "workbox": "workbox"
   },
   "repository": {
@@ -26,6 +27,8 @@
   "homepage": "https://github.com/kirill-krasuk/new_boilerplate#readme",
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@loadable/component": "^5.10.1",
+    "@loadable/server": "^5.9.0",
     "compression": "^1.7.4",
     "connected-react-router": "^6.4.0",
     "core-util-is": "^1.0.2",
@@ -51,6 +54,8 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
     "@hot-loader/react-dom": "^16.8.6",
+    "@loadable/babel-plugin": "^5.10.0",
+    "@loadable/webpack-plugin": "^5.7.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-dynamic-import-node": "^2.2.0",
@@ -84,6 +89,7 @@
     "webpack-cli": "^3.3.2",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^1.7.2",
     "workbox-webpack-plugin": "^4.3.1"
   }
 }
