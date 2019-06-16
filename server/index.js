@@ -6,6 +6,7 @@ const DevMiddleware = require('webpack-dev-middleware');
 const HotMiddleware = require('webpack-hot-middleware');
 const compression   = require('compression');
 const favicon       = require('serve-favicon');
+const cookieParser  = require('cookie-parser');
 const path          = require('path');
 
 const serverSideRendering = require('./middlewares/serverSideRendering');
@@ -17,6 +18,7 @@ const app = express();
 const { env, host, port } = config;
 
 app.use(compression());
+app.use(cookieParser());
 
 app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist'), { maxAge: '30d' }));
 app.use('/sw.js', express.static(path.resolve(__dirname, '..', 'dist/sw.js'), { maxAge: '30d' }));

@@ -37,6 +37,7 @@
     "@loadable/server": "^5.9.0",
     "compression": "^1.7.4",
     "connected-react-router": "^6.4.0",
+    "cookie-parser": "^1.4.4",
     "core-util-is": "^1.0.2",
     "history": "^4.9.0",
     "ramda": "^0.26.1",
