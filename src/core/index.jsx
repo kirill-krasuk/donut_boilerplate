@@ -13,7 +13,7 @@ loadableReady(() => {
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
-            Notification.requestPermission(res => console.log(res));
+            Notification.requestPermission();
 
             try {
                 // flow-disable-next-line
