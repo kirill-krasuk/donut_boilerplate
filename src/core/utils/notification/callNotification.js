@@ -3,7 +3,7 @@ const options = {
     icon: '/public/images/logo512x512.png'
 };
 
-export function callNotification(overrideOptions?: Object) {
+export function callNotification(overrideOptions?: Object): void {
     const notifyTitle   = (overrideOptions && overrideOptions.title) || 'Donut notify';
     const notifyOptions = {
         ...options,
@@ -12,7 +12,7 @@ export function callNotification(overrideOptions?: Object) {
 
     if (!('Notification' in window)) {
         // eslint-disable-next-line
-        window.alert('This browser does not support desktop notification');
+        alert('This browser does not support desktop notification');
 
         return;
     }
@@ -23,6 +23,11 @@ export function callNotification(overrideOptions?: Object) {
         new Notification(notifyTitle, notifyOptions);
 
         return;
+    }
+
+    if (Notification.permission === 'denied') {
+        // eslint-disable-next-line
+        alert('Notifications blocked. Please enable them in your browser.');
     }
 
     if (Notification.permission !== 'denied') {
