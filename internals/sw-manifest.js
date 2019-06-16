@@ -1,5 +1,11 @@
 /* eslint-disable */
 
+const precacheItems = [
+    '/',
+    '/second',
+    '/favicon.ico'
+]
+
 workbox.core.setCacheNameDetails({
     prefix  : 'new_boilerplate_cache',
     precache: 'precache',
@@ -21,16 +27,15 @@ workbox.routing.registerRoute(
 );
 
 self.addEventListener('push', (event) => {
-    const title   = 'New Boilerplate Notification';
+    const title   = 'Donut Notify';
     const options = {
-        body: event.data.text()
+        body: event.data.text(),
+        icon: '/public/images/logo512x512.png'
     };
-
-    console.log(event);
     
     event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.__precacheManifest = ['/', '/favicon.ico'].concat(self.__precacheManifest || []);
+self.__precacheManifest = precacheItems.concat(self.__precacheManifest || []);
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
