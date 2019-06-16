@@ -14,6 +14,7 @@ loadableReady(() => {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
             try {
+                // flow-disable-next-line
                 await navigator.serviceWorker.register('/sw.js');
 
                 window.console.log('SW registered');
@@ -23,5 +24,5 @@ loadableReady(() => {
         });
     }
 
-    hydrate(<App />, ROOT_NODE);
+    hydrate(<App />, (ROOT_NODE: any));
 });
