@@ -12,7 +12,7 @@ const HomePage: ComponentType<{}> = (): Node => (
         <Helmet
             title="Home page"
         />
-        <div>Home Page</div>
+        <div>Home Pag22</div>
         <Link to={ '/second' }>go to second page</Link>
         <button onClick={ () => callNotification({ body: 'Hello from Home Page' }) }>notify me</button>
     </>

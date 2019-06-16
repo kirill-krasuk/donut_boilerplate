@@ -84,8 +84,7 @@ module.exports = {
                 new InjectManifest({
                     swDest           : './sw.js',
                     importWorkboxFrom: 'cdn',
-                    include          : /\.js(\.gz)?$/,
-                    exclude          : /\.hot-update\.js/,
+                    include          : /(hot-update)|(\.js(\.gz)?$)/,
                     swSrc            : './internals/sw-manifest.js'
                 }),
                 new Dotenv(),
