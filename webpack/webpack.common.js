@@ -89,7 +89,9 @@ module.exports = {
                 }),
                 new LoadablePlugin(),
                 new webpack.DefinePlugin({
-                    NODE_ENV: JSON.stringify(options.mode)
+                    'process.env': {
+                        NODE_ENV: JSON.stringify(options.mode)
+                    }
                 }),
             ])
         };
