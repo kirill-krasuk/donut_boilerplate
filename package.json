@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "workbox": "workbox"
   },
-  "precommit": [
+  "pre-commit": [
     "lint",
     "flow"
   ],
@@ -39,7 +39,6 @@
     "connected-react-router": "^6.4.0",
     "core-util-is": "^1.0.2",
     "history": "^4.9.0",
-    "precommit": "^1.2.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -89,6 +88,7 @@
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-pug-plugin": "^1.0.1",
     "node-sass": "^4.12.0",
+    "pre-commit": "^1.2.2",
     "pug": "^2.0.3",
     "pug-html-loader": "^1.1.5",
     "react-app-polyfill": "^1.0.1",
