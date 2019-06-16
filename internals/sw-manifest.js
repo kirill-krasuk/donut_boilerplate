@@ -31,6 +31,6 @@ self.addEventListener('push', (event) => {
     event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.__precacheManifest = ['/'].concat(self.__precacheManifest || []);
+self.__precacheManifest = ['/', '/favicon.ico'].concat(self.__precacheManifest || []);
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
