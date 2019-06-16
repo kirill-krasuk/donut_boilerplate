@@ -2,6 +2,7 @@ const React                                     = require('react');
 const { renderToString }                        = require('react-dom/server');
 const { renderRoutes }                          = require('react-router-config');
 const { StaticRouter }                          = require('react-router');
+const { Helmet }                                = require('react-helmet');
 const { ChunkExtractor, ChunkExtractorManager } = require('@loadable/server');
 const path                                      = require('path');
 
@@ -26,9 +27,12 @@ function serverSideRendering(req, res) {
 
     const scriptTags = extractor.getScriptTags();
 
+    const { title } = Helmet.renderStatic();
+
     res.render('index', {
         html,
-        scriptTags
+        scriptTags,
+        title: title.toString()
     });
 }
 
