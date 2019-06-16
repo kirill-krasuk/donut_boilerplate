@@ -1,3 +1,5 @@
+// @flow
+
 const options = {
     body: 'Notification body',
     icon: '/public/images/logo512x512.png'

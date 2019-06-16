@@ -1,15 +1,20 @@
+// @flow
 import React                        from 'react';
 import type { ComponentType, Node } from 'react';
-import { Router }                   from 'react-router-dom';
+import { ConnectedRouter }          from 'connected-react-router';
 import { renderRoutes }             from 'react-router-config';
 
-import history                      from 'core/utils/history';
+import type { PropsType }           from './types';
 import routes                       from './routes';
 
-const RouterContainer: ComponentType<{}> = (): Node => (
-    <Router history={ history }>
-        { renderRoutes(routes) }
-    </Router>
-);
+const Router: ComponentType<PropsType> = (props): Node => {
+    const { history } = props;
 
-export default RouterContainer;
+    return (
+        <ConnectedRouter history={ history }>
+            { renderRoutes(routes) }
+        </ConnectedRouter>
+    );
+};
+
+export default Router;

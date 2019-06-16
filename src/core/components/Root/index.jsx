@@ -1,3 +1,4 @@
+// @flow
 import React                        from 'react';
 import type { ComponentType, Node } from 'react';
 import { renderRoutes }             from 'react-router-config';

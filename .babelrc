@@ -20,9 +20,11 @@
             }
         ],
         "@loadable/babel-plugin",
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose" : true }],
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime",
         "transform-react-jsx",
-        "react-hot-loader/babel"
+        "react-hot-loader/babel",
     ]
 }

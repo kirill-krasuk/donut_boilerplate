@@ -124,6 +124,7 @@
         "arca",
         "varspacing",
         "react",
-        "react-hooks"
+        "react-hooks",
+        "flowtype"
     ]
 }
