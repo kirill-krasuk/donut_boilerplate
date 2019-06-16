@@ -21,6 +21,5 @@ module.name_mapper='^app' -> '<PROJECT_ROOT>/src/app'
 module.name_mapper='^server' -> '<PROJECT_ROOT>/server'
 module.name_mapper='^public' -> '<PROJECT_ROOT>/public'
 esproposal.decorators=ignore
-all=true
 
 [strict]

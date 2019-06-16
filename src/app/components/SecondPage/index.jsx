@@ -1,18 +1,35 @@
+// @flow
 import React                        from 'react';
 import type { ComponentType, Node } from 'react';
-import { Link }                     from 'react-router-dom';
+import { connect }                  from 'react-redux';
+import { compose }                  from 'redux';
+import { push }                     from 'connected-react-router';
 import { Helmet }                   from 'react-helmet';
-
 import { hot }                      from 'react-hot-loader/root';
 
-const SecondPage: ComponentType<{}> = (): Node => (
-    <>
-        <Helmet
-            title="Second page"
-        />
-        <div>Second Page2</div>
-        <Link to={ '/' }>go to main page</Link>
-    </>
-);
+import type { PropsType }           from './types';
 
-export default hot(SecondPage);
+const SecondPage: ComponentType<PropsType> = (props): Node => {
+    const { push } = props;
+
+    return (
+        <>
+            <Helmet
+                title="Second page"
+            />
+            <div>Second Page4</div>
+            <button onClick={ () => push('/') }>go to main page</button>
+        </>
+    );
+};
+
+const mapDispatchToProps = ({
+    push
+});
+
+const withConnect = connect(null, mapDispatchToProps);
+
+export default compose(
+    hot,
+    withConnect
+)(SecondPage);
