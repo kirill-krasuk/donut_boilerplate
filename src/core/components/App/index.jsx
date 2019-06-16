@@ -5,13 +5,7 @@ import { Provider }                 from 'react-redux';
 import { hot }                      from 'react-hot-loader/root';
 
 import Router                       from 'core/components/Router';
-import { configureStore }           from 'core/utils/store/configureStore';
-import history                      from 'core/utils/history/index';
-
-const preloadedState = window.__PRELOADED_STATE__;
-delete window.__PRELOADED_STATE__;
-
-const store = configureStore(preloadedState, history);
+import { store, history }           from 'core/utils/store';
 
 const App: ComponentType<{}> = (): Node => {
     useEffect(() => {

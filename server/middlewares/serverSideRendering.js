@@ -17,7 +17,7 @@ const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 function serverSideRendering(req, res) {
     res.set('Service-Worker-Allowed', '/');
 
-    const store     = configureStore({}, createMemoryHistory({
+    const { store } = configureStore({}, createMemoryHistory({
         initialEntries: [ req.url ]
     }));
     const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
