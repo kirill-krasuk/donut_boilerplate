@@ -1,14 +1,15 @@
-import React                       from 'react';
-import { Router as BrowserRouter } from 'react-router-dom';
-import { renderRoutes }            from 'react-router-config';
+import React                        from 'react';
+import type { ComponentType, Node } from 'react';
+import { Router }                   from 'react-router-dom';
+import { renderRoutes }             from 'react-router-config';
 
-import history                     from 'core/utils/history';
-import routes                      from './routes';
+import history                      from 'core/utils/history';
+import routes                       from './routes';
 
-const Router = () => (
-    <BrowserRouter history={ history }>
+const RouterContainer: ComponentType<{}> = (): Node => (
+    <Router history={ history }>
         { renderRoutes(routes) }
-    </BrowserRouter>
+    </Router>
 );
 
-export default Router;
+export default RouterContainer;

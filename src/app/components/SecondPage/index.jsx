@@ -1,10 +1,11 @@
-import React      from 'react';
-import { Link }   from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import React                        from 'react';
+import type { ComponentType, Node } from 'react';
+import { Link }                     from 'react-router-dom';
+import { Helmet }                   from 'react-helmet';
 
-import { hot }    from 'react-hot-loader/root';
+import { hot }                      from 'react-hot-loader/root';
 
-const SecondPage = () => (
+const SecondPage: ComponentType<{}> = (): Node => (
     <>
         <Helmet
             title="Second page"

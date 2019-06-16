@@ -4,13 +4,19 @@
   "description": "a new look for react boilerplate",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
     "start": "rimraf ./dist && NODE_ENV=development node ./server/index.js",
     "start:server": "NODE_ENV=production node ./server/index.js",
     "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js",
     "build:server": "webpack --config ./webpack/webpack.server.js",
+    "install:types": "flow-typed install",
+    "flow": "flow",
+    "lint": "eslint .",
     "workbox": "workbox"
   },
+  "precommit": [
+    "lint",
+    "flow"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirill-krasuk/new_boilerplate.git"
@@ -33,6 +39,7 @@
     "connected-react-router": "^6.4.0",
     "core-util-is": "^1.0.2",
     "history": "^4.9.0",
+    "precommit": "^1.2.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -52,6 +59,7 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
+    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
     "@hot-loader/react-dom": "^16.8.6",
@@ -74,6 +82,8 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "eslint-plugin-varspacing": "^1.2.1",
     "express": "^4.17.1",
+    "flow-bin": "^0.101.0",
+    "flow-typed": "^2.5.2",
     "html-loader": "^0.5.5",
     "html-webpack-harddisk-plugin": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",

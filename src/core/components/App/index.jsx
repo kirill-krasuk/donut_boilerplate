@@ -1,9 +1,10 @@
-import React     from 'react';
-import { hot }   from 'react-hot-loader/root';
+import React                        from 'react';
+import type { ComponentType, Node } from 'react';
+import { hot }                      from 'react-hot-loader/root';
 
-import Router    from 'core/components/Router';
+import Router                       from 'core/components/Router';
 
-const App = () => (
+const App: ComponentType<{}> = (): Node => (
     <Router />
 );
 
