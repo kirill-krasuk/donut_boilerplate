@@ -20,6 +20,9 @@ module.name_mapper='^core' -> '<PROJECT_ROOT>/src/core'
 module.name_mapper='^app' -> '<PROJECT_ROOT>/src/app'
 module.name_mapper='^server' -> '<PROJECT_ROOT>/server'
 module.name_mapper='^public' -> '<PROJECT_ROOT>/public'
+module.file_ext=.css
+module.file_ext=.scss
+module.file_ext=.sass
 esproposal.decorators=ignore
 
 [strict]
