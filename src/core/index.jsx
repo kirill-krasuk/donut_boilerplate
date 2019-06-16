@@ -13,6 +13,8 @@ loadableReady(() => {
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
+            Notification.requestPermission(res => console.log(res));
+
             try {
                 // flow-disable-next-line
                 await navigator.serviceWorker.register('/sw.js');
