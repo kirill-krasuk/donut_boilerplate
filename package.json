@@ -35,7 +35,6 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@loadable/component": "^5.10.1",
     "@loadable/server": "^5.9.0",
-    "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "compression": "^1.7.4",
     "connected-react-router": "^6.4.0",
     "cookie-parser": "^1.4.4",

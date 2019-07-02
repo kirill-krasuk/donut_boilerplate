@@ -1,5 +1,4 @@
 require('@babel/register')({
-    presets: [ '@babel/preset-env' ],
     plugins: [ 'dynamic-import-node' ]
 });
 require('@babel/polyfill');

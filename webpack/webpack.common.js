@@ -6,6 +6,10 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 const LoadablePlugin     = require('@loadable/webpack-plugin');
 const Dotenv             = require('dotenv-webpack');
 
+const jsLoader   = require('./loaders/js-loader');
+const cssLoader  = require('./loaders/css-loader');
+const sassLoader = require('./loaders/sass-loader');
+
 const paths = {
     src     : path.resolve('src'),
     dist    : path.resolve('dist'),
@@ -63,17 +67,11 @@ module.exports = {
                 }
             },
             module: {
-                rules: [ {
-                    test   : /\.jsx?$/,
-                    exclude: /node_modules/,
-                    loader : 'babel'
-                }, {
-                    test  : /\.css$/,
-                    loader: 'style!css',
-                }, {
-                    test  : /\.s(c|a)ss$/,
-                    loader: 'style!css!resolve-url!sass?sourceMap'
-                } ]
+                rules: [
+                    jsLoader,
+                    cssLoader,
+                    sassLoader
+                ]
             },
             watch  : options.watch || false,
             plugins: options.plugins.concat([
