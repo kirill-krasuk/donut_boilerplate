@@ -17,7 +17,7 @@ const SecondPage: ComponentType<PropsType> = (props): Node => {
             <Helmet
                 title="Second page"
             />
-            <div>Second Page4</div>
+            <div>Second Page</div>
             <button onClick={ () => push('/') }>go to main page</button>
         </>
     );
