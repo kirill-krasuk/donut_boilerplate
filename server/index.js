@@ -1,4 +1,7 @@
-require('@babel/register');
+require('@babel/register')({
+    presets: [ '@babel/preset-env' ],
+    plugins: [ 'dynamic-import-node' ]
+});
 require('@babel/polyfill');
 const express       = require('express');
 const webpack       = require('webpack');
