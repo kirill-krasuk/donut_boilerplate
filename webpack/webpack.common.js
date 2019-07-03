@@ -24,7 +24,9 @@ module.exports = {
         const isProd = options.mode === 'production';
 
         function addHash(template, hash) {
-            return template.replace(/\.[^.]+$/, `.[${ hash }]$&`);
+            return isProd
+                ? template.replace(/\.[^.]+$/, `.[${ hash }]$&`)
+                : template;
         }
 
         return {
@@ -81,7 +83,7 @@ module.exports = {
                     swDest           : './sw.js',
                     importWorkboxFrom: 'cdn',
                     include          : /(hot-update)|(\.js(\.gz)?$)/,
-                    swSrc            : './internals/sw-manifest.js'
+                    swSrc            : './internals/sw-manifest.js',
                 }),
                 new Dotenv(),
                 new LoadablePlugin(),
