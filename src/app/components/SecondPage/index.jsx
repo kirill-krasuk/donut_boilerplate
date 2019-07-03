@@ -11,7 +11,6 @@ import type { PropsType }           from './types';
 
 const SecondPage: ComponentType<PropsType> = (props): Node => {
     const { push } = props;
-
     return (
         <>
             <Helmet
