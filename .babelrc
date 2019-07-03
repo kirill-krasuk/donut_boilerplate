@@ -19,12 +19,16 @@
                 }
             }
         ],
-        "@loadable/babel-plugin",
+        "@loadable/babel-plugin", // for loadable chunks
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose" : true }],
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime",
         "transform-react-jsx",
-        "react-hot-loader/babel"
+        "react-hot-loader/babel", // hot module reloading
+        "@babel/plugin-proposal-function-bind", // bind as :: operator
+        "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
+        "@babel/plugin-proposal-private-methods", // private methods in class # operator
+        "@babel/plugin-transform-modules-commonjs" // for smallest bundle size
     ]
 }

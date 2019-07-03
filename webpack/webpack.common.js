@@ -24,9 +24,7 @@ module.exports = {
         const isProd = options.mode === 'production';
 
         function addHash(template, hash) {
-            return isProd
-                ? template.replace(/\.[^.]+$/, `.[${ hash }]$&`)
-                : template;
+            return template.replace(/\.[^.]+$/, `.[${ hash }]$&`);
         }
 
         return {
