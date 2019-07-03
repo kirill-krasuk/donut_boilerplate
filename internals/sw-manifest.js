@@ -13,7 +13,7 @@ workbox.core.setCacheNameDetails({
 });
 
 workbox.routing.registerRoute(
-    new RegExp('\.css$'),
+    /\.css$/,
     new workbox.strategies.CacheFirst({
         cacheName: 'stylesheets_cachhe',
         plugins  : [
@@ -25,6 +25,13 @@ workbox.routing.registerRoute(
         ]
     })
 );
+
+workbox.routing.registerRoute(
+    /\.(?:png|jpg|jpeg|svg|gif)$/,
+    new workbox.strategies.CacheFirst({
+      cacheName: 'images-cache',
+    })
+  );
 
 self.addEventListener('push', (event) => {
     const title   = 'Donut Notify';
