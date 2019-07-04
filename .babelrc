@@ -9,6 +9,14 @@
             "plugins": [
                 "react-hot-loader/babel", // hot module reloading
             ]
+        },
+        "production": {
+            "plugins": [
+                [ "transform-remove-console", {
+                    "exclude": [ "error", "warn" ]
+                } ],
+                "transform-remove-debugger"
+            ]
         }
     },
     "plugins": [

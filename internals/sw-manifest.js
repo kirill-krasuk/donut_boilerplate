@@ -2,8 +2,7 @@
 
 const precacheItems = [
     '/',
-    '/second',
-    '/favicon.ico'
+    '/second'
 ]
 
 workbox.core.setCacheNameDetails({
@@ -27,7 +26,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|svg|gif)$/,
+    /\.(?:png|jpg|jpeg|svg|gif|ico)$/,
     new workbox.strategies.CacheFirst({
       cacheName: 'images-cache',
     })
