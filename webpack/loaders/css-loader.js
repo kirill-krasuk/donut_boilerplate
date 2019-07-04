@@ -1,4 +1,4 @@
 module.exports = {
     test  : /\.css$/,
-    loader: 'style!css',
+    loader: 'cache!style!css',
 };

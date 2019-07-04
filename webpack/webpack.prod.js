@@ -11,6 +11,10 @@ module.exports = configureBundler({
         ]
     },
     plugins: [
-        new webpack.HashedModuleIdsPlugin()
+        new webpack.HashedModuleIdsPlugin({
+            hashFunction    : 'md4',
+            hashDigest      : 'base64',
+            hashDigestLength: 4,
+        })
     ]
 });
