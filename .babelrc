@@ -4,6 +4,13 @@
         "@babel/preset-react",
         "@babel/preset-flow"
     ],
+    "env": {
+        "development": {
+            "plugins": [
+                "react-hot-loader/babel", // hot module reloading
+            ]
+        }
+    },
     "plugins": [
         [
             "module-resolver",
@@ -25,10 +32,10 @@
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime",
         "transform-react-jsx",
-        "react-hot-loader/babel", // hot module reloading
         "@babel/plugin-proposal-function-bind", // bind as :: operator
         "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
         "@babel/plugin-proposal-private-methods", // private methods in class # operator
-        "@babel/plugin-transform-modules-commonjs" // for smallest bundle size
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-proposal-optional-chaining" // for nested object checking
     ]
 }
