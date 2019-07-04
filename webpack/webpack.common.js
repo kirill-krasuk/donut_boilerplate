@@ -53,8 +53,11 @@ module.exports = {
             },
             optimization: {
                 runtimeChunk: 'single',
-                minimizer   : [ new UglifyJsPlugin() ],
-                splitChunks : {
+                minimizer   : [ new UglifyJsPlugin({
+                    parallel: true, // paralleling bundling process for speedup
+                    cache   : true
+                }) ],
+                splitChunks: {
                     cacheGroups: {
                         vendor: {
                             test  : /[\\/]node_modules[\\/]/,
