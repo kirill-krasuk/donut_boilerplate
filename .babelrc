@@ -26,12 +26,13 @@
                 }
             }
         ],
+        "ramda",
+        "transform-react-jsx",
         "@loadable/babel-plugin", // for loadable chunks
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose" : true }],
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime",
-        "transform-react-jsx",
         "@babel/plugin-proposal-function-bind", // bind as :: operator
         "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
         "@babel/plugin-proposal-private-methods", // private methods in class # operator
