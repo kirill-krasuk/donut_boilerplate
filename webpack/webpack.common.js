@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const CompressionPlugin  = require('compression-webpack-plugin');
-const { InjectManifest } = require('workbox-webpack-plugin');
-const LoadablePlugin     = require('@loadable/webpack-plugin');
-const Dotenv             = require('dotenv-webpack');
+const CompressionPlugin        = require('compression-webpack-plugin');
+const { InjectManifest }       = require('workbox-webpack-plugin');
+const LoadablePlugin           = require('@loadable/webpack-plugin');
+const Dotenv                   = require('dotenv-webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const UglifyJsPlugin           = require('uglifyjs-webpack-plugin');
 
 const jsLoader   = require('./loaders/js-loader');
 const cssLoader  = require('./loaders/css-loader');
@@ -51,6 +53,7 @@ module.exports = {
             },
             optimization: {
                 runtimeChunk: 'single',
+                minimizer   : [ new UglifyJsPlugin() ],
                 splitChunks : {
                     cacheGroups: {
                         vendor: {
@@ -79,6 +82,11 @@ module.exports = {
                     cache: true,
                     test : /\.js(\?.*)?$/i,
                 }),
+                new BundleAnalyzerPlugin({
+                    openAnalyzer: false,
+                    analyzerPort: 8181,
+                    analyzerHost: '127.0.0.1'
+                }),
                 new InjectManifest({
                     swDest           : './sw.js',
                     importWorkboxFrom: 'cdn',
@@ -92,6 +100,10 @@ module.exports = {
                         NODE_ENV: JSON.stringify(options.mode)
                     }
                 }),
+                new webpack.ContextReplacementPlugin(
+                    /moment[/\\]locale$/,
+                    /ru/
+                )
             ])
         };
     }
