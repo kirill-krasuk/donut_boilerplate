@@ -6,7 +6,7 @@
   "scripts": {
     "start": "rimraf ./dist && BABEL_ENV=development NODE_ENV=development node ./server/index.js",
     "start:server": "NODE_ENV=production node ./server/index.js",
-    "build": "rimraf ./dist && webpack --config ./webpack/webpack.prod.js",
+    "build": "rimraf ./dist && BABEL_ENV=production webpack --config ./webpack/webpack.prod.js",
     "build:server": "webpack --config ./webpack/webpack.server.js",
     "install:types": "flow-typed install",
     "flow": "flow",
@@ -82,6 +82,8 @@
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "babel-plugin-transform-remove-debugger": "^6.9.4",
     "cache-loader": "^4.0.1",
     "circular-dependency-plugin": "^5.0.2",
     "compression-webpack-plugin": "^3.0.0",
