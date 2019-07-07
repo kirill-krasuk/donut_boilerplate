@@ -1,12 +1,12 @@
 /* eslint-disable */
 
-const staticPagesMatchCB = ({ url, event }) => {
-    if (url.hostname === 'localhost') {
-        return !(new RegExp('(public|dist)', 'gi').test(url.pathname))
-    }
+// const staticPagesMatchCB = ({ url, event }) => {
+//     if (url.hostname === 'localhost') {
+//         return !(new RegExp('(public|dist)', 'gi').test(url.pathname))
+//     }
 
-    return false;
-}
+//     return false;
+// }
 
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
@@ -16,18 +16,6 @@ workbox.core.setCacheNameDetails({
     precache: 'precache',
     runtime : 'runtime',
 });
-
-workbox.routing.registerRoute(
-    staticPagesMatchCB,
-    new workbox.strategies.NetworkFirst({
-        cacheName: 'pages_cache',
-        plugins: [
-            new workbox.expiration.Plugin({
-                maxAgeSeconds: 60 * 60 * 24 * 7
-            })
-        ]
-    })
-);
 
 workbox.routing.registerRoute(
     /\.css$/,
@@ -57,6 +45,24 @@ workbox.routing.registerRoute(
         plugins: [
             new workbox.expiration.Plugin({
                 maxAgeSeconds: 60 * 60 * 24 * 7
+            })
+        ]
+    })
+);
+
+
+workbox.routing.registerRoute(
+    /\/*/,
+    new workbox.strategies.NetworkFirst({
+        cacheName: 'pages_cache',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxAgeSeconds: 60 * 60 * 24 * 7
+            }),
+            new workbox.cacheableResponse.Plugin({
+                headers: {
+                    "X-Is-Cacheable": "true"  // set this header on server side for caching static pages
+                }
             })
         ]
     })
