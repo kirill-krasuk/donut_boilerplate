@@ -13,7 +13,7 @@ const HomePage: ComponentType<{}> = (): Node => (
             title="Home page"
         />
         <h1>Heading</h1>
-        <div>Home Pag22</div>
+        <div>Home Page</div>
         <Link to={ '/second' }>go to second page</Link>
         <button onClick={ () => callNotification({ body: 'Hello from Home Page' }) }>notify me</button>
     </>
