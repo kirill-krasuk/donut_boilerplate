@@ -16,6 +16,7 @@ const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 
 function serverSideRendering(req, res) {
     res.set('Service-Worker-Allowed', '/');
+    res.set('X-Is-Cacheable', 'true');
 
     const { store } = configureStore({}, createMemoryHistory({
         initialEntries: [ req.url ]
