@@ -1,18 +1,17 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    test   : /\.s(c|a)ss$/,
-    exclude: /\.module\.(s(a|c)ss)$/,
-    loader : [
+    test  : /\.module\.s(c|a)ss$/,
+    loader: [
         {
             loader : MiniCssExtractPlugin.loader,
             options: {
                 hmr      : process.env.NODE_ENV === 'development',
-                reloadAll: true
+                reloadAll: true,
             },
         },
         'cache',
-        'css',
+        'css?modules&localIdentName=[name]__[local]___[hash:base64:5]',
         'resolve-url',
         {
             loader : 'sass',

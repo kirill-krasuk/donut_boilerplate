@@ -1,6 +1,7 @@
 require('@babel/register')({
     plugins: [ 'dynamic-import-node' ]
 });
+require('ignore-styles').default([ '.sass', '.scss' ]);
 require('@babel/polyfill');
 const express       = require('express');
 const webpack       = require('webpack');

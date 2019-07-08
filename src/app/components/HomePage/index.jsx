@@ -6,6 +6,7 @@ import { Helmet }                    from 'react-helmet';
 import { hot }                       from 'react-hot-loader/root';
 
 import { callNotification }          from 'core/utils/notification/callNotification';
+import './style';
 
 const HomePage: ComponentType<{}> = (): Node => (
     <>
@@ -13,7 +14,7 @@ const HomePage: ComponentType<{}> = (): Node => (
             title="Home page"
         />
         <h1>Heading</h1>
-        <div>Home Page</div>
+        <div className="test">Home Page</div>
         <Link to={ '/second' }>go to second page</Link>
         <button onClick={ () => callNotification({ body: 'Hello from Home Page' }) }>notify me</button>
     </>
