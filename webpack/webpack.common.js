@@ -6,6 +6,7 @@ const { InjectManifest }             = require('workbox-webpack-plugin');
 const LoadablePlugin                 = require('@loadable/webpack-plugin');
 const Dotenv                         = require('dotenv-webpack');
 const { BundleAnalyzerPlugin }       = require('webpack-bundle-analyzer');
+const TerserPlugin                   = require('terser-webpack-plugin');
 const MiniCssExtractPlugin           = require('mini-css-extract-plugin');
 const HtmlPlugin                     = require('html-webpack-plugin');
 const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
@@ -58,8 +59,13 @@ module.exports = {
             },
             optimization: {
                 runtimeChunk: 'single',
-                minimizer   : options.minimizer,
-                splitChunks : {
+                minimizer   : options.minimizer.concat([
+                    new TerserPlugin({
+                        cache   : true,
+                        parallel: true,
+                    }),
+                ]),
+                splitChunks: {
                     cacheGroups: {
                         vendor: {
                             test  : /[\\/]node_modules[\\/]/,

@@ -1,5 +1,5 @@
 module.exports = {
     test   : /\.jsx?$/,
     exclude: /node_modules/,
-    loader : 'cache!babel'
+    loader : 'cache!babel?cacheDirectory'
 };
