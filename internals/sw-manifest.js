@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-// workbox.core.skipWaiting();
-// workbox.core.clientsClaim();
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 workbox.core.setCacheNameDetails({
     prefix  : 'new_boilerplate_cache',
@@ -11,7 +11,7 @@ workbox.core.setCacheNameDetails({
 
 workbox.routing.registerRoute(
     /\.css$/,
-    new workbox.strategies.CacheFirst({
+    new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'stylesheets_cache',
         plugins  : [
             new workbox.expiration.Plugin({
