@@ -12,20 +12,15 @@ module.exports = configureBundler({
             'webpack-hot-middleware/client'
         ]
     },
-    devtool: 'source-map',
-    watch  : true,
-    plugins: [
+    devtool  : 'source-map',
+    minimizer: [],
+    watch    : true,
+    plugins  : [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CircularDependencyPlugin({
-            onStart() {
-                console.log('! start detecting circular dependency !'); // eslint-disable-line
-            },
             onDetected({ paths, compilation }) {
                 compilation.errors.push(new Error(paths.join(' -> ')));
-            },
-            onEnd() {
-                console.log('! end detecting circular dependency   !'); // eslint-disable-line
             },
             failOnError: true
         }),

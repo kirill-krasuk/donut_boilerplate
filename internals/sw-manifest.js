@@ -1,15 +1,7 @@
 /* eslint-disable */
 
-// const staticPagesMatchCB = ({ url, event }) => {
-//     if (url.hostname === 'localhost') {
-//         return !(new RegExp('(public|dist)', 'gi').test(url.pathname))
-//     }
-
-//     return false;
-// }
-
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
+// workbox.core.skipWaiting();
+// workbox.core.clientsClaim();
 
 workbox.core.setCacheNameDetails({
     prefix  : 'new_boilerplate_cache',
@@ -24,7 +16,6 @@ workbox.routing.registerRoute(
         plugins  : [
             new workbox.expiration.Plugin({
                 maxAgeSeconds    : 60 * 60 * 24 * 7,
-                maxEntries       : 20,
                 purgeOnQuotaError: true
             })
         ]
@@ -49,7 +40,6 @@ workbox.routing.registerRoute(
         ]
     })
 );
-
 
 workbox.routing.registerRoute(
     /\/*/,

@@ -35,12 +35,14 @@ function serverSideRendering(req, res) {
 
     const html       = renderToString(<App />);
     const scriptTags = extractor.getScriptTags();
+    const styleTags  = extractor.getStyleTags();
     const storage    = `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\u003c') }`;
     const { title }  = Helmet.renderStatic();
 
     res.render('index', {
         html,
         scriptTags,
+        styleTags,
         storage,
         title: title.toString(),
     });

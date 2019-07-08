@@ -1,22 +1,27 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const CompressionPlugin        = require('compression-webpack-plugin');
-const { InjectManifest }       = require('workbox-webpack-plugin');
-const LoadablePlugin           = require('@loadable/webpack-plugin');
-const Dotenv                   = require('dotenv-webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const UglifyJsPlugin           = require('uglifyjs-webpack-plugin');
+const CompressionPlugin              = require('compression-webpack-plugin');
+const { InjectManifest }             = require('workbox-webpack-plugin');
+const LoadablePlugin                 = require('@loadable/webpack-plugin');
+const Dotenv                         = require('dotenv-webpack');
+const { BundleAnalyzerPlugin }       = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin           = require('mini-css-extract-plugin');
+const HtmlPlugin                     = require('html-webpack-plugin');
+const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
+const HtmlPugPlugin                  = require('html-webpack-pug-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
-const jsLoader   = require('./loaders/js-loader');
-const cssLoader  = require('./loaders/css-loader');
-const sassLoader = require('./loaders/sass-loader');
+const jsLoader         = require('./loaders/js-loader');
+const cssLoader        = require('./loaders/css-loader');
+const sassLoader       = require('./loaders/sass-loader');
+const sassModuleLoader = require('./loaders/sass-module-loader');
 
 const paths = {
     src     : path.resolve('src'),
     dist    : path.resolve('dist'),
     entry   : path.resolve('src', 'core', 'index.jsx'),
-    template: path.resolve('src', 'core', 'templates', 'index.pug'),
+    template: path.resolve('src', 'core', 'template', 'index.pug'),
     view    : path.resolve('views', 'index.pug')
 };
 
@@ -53,11 +58,8 @@ module.exports = {
             },
             optimization: {
                 runtimeChunk: 'single',
-                minimizer   : [ new UglifyJsPlugin({
-                    parallel: true, // paralleling bundling process for speedup
-                    cache   : true
-                }) ],
-                splitChunks: {
+                minimizer   : options.minimizer,
+                splitChunks : {
                     cacheGroups: {
                         vendor: {
                             test  : /[\\/]node_modules[\\/]/,
@@ -68,7 +70,7 @@ module.exports = {
                             name     : 'commons',
                             chunks   : 'initial',
                             minChunks: 2
-                        }
+                        },
                     }
                 }
             },
@@ -76,7 +78,8 @@ module.exports = {
                 rules: [
                     jsLoader,
                     cssLoader,
-                    sassLoader
+                    sassLoader,
+                    sassModuleLoader
                 ]
             },
             watch  : options.watch || false,
@@ -96,6 +99,19 @@ module.exports = {
                     include          : /(\.js(\.gz)?$)/,
                     swSrc            : './internals/sw-manifest.js',
                 }),
+                new HtmlPlugin({
+                    template         : paths.template,
+                    filename         : paths.view,
+                    alwaysWriteToDisk: true,
+                    excludeAssets    : [ /\.js/ ]
+                }),
+                new HtmlWebpackExcludeAssetsPlugin(), // for exludeAssets
+                new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
+                new HtmlPugPlugin(),
+                new MiniCssExtractPlugin({
+                    filename     : addHash('[name].css', 'contenthash:8'),
+                    chunkFilename: addHash('[id].css', 'contenthash:8'),
+                }),
                 new Dotenv(),
                 new LoadablePlugin(),
                 new webpack.DefinePlugin({
@@ -106,7 +122,7 @@ module.exports = {
                 new webpack.ContextReplacementPlugin(
                     /moment[/\\]locale$/,
                     /ru/
-                )
+                ),
             ])
         };
     }

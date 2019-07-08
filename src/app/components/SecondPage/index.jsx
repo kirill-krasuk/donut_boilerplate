@@ -8,6 +8,7 @@ import { Helmet }                   from 'react-helmet';
 import { hot }                      from 'react-hot-loader/root';
 
 import type { PropsType }           from './types';
+import './style';
 
 const SecondPage: ComponentType<PropsType> = (props): Node => {
     const { push } = props;
@@ -17,7 +18,7 @@ const SecondPage: ComponentType<PropsType> = (props): Node => {
             <Helmet
                 title="Second page"
             />
-            <div>Second Page</div>
+            <div className="test">Second Page</div>
             <button onClick={ () => push('/') }>go to main page</button>
         </>
     );
