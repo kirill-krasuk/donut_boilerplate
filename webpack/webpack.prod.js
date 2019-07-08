@@ -1,5 +1,4 @@
 const webpack                 = require('webpack');
-const TerserPlugin            = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const { paths, configureBundler } = require('./webpack.common');
@@ -13,10 +12,6 @@ module.exports = configureBundler({
         ]
     },
     minimizer: [
-        new TerserPlugin({
-            cache   : true,
-            parallel: true,
-        }),
         new OptimizeCssAssetsPlugin()
     ],
     plugins: [
