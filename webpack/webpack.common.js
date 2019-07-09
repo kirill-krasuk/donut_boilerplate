@@ -98,7 +98,7 @@ module.exports = {
                     swDest           : './sw.js',
                     importWorkboxFrom: 'cdn',
                     include          : /(\.js(\.gz)?$)/,
-                    swSrc            : './internals/sw-manifest.js',
+                    swSrc            : `./internals/sw-manifest.${ options.mode }.js`,
                 }),
                 new HtmlPlugin({
                     template         : paths.template,

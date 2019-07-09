@@ -11,7 +11,7 @@ workbox.core.setCacheNameDetails({
 
 workbox.routing.registerRoute(
     /\.css$/,
-    new workbox.strategies.StaleWhileRevalidate({
+    new workbox.strategies.NetworkFirst({
         cacheName: 'stylesheets_cache',
         plugins  : [
             new workbox.expiration.Plugin({
@@ -31,7 +31,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     /\.(?:png|jpg|jpeg|svg|gif|ico)$/,
-    new workbox.strategies.CacheFirst({
+    new workbox.strategies.NetworkFirst({
         cacheName: 'images_cache',
         plugins: [
             new workbox.expiration.Plugin({
