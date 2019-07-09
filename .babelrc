@@ -44,7 +44,6 @@
         "@babel/plugin-proposal-function-bind", // bind as :: operator
         "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
         "@babel/plugin-proposal-private-methods", // private methods in class # operator
-        "@babel/plugin-transform-modules-commonjs",
         "@babel/plugin-proposal-optional-chaining", // for nested object checking
         "inline-react-svg"
     ]

@@ -42,9 +42,9 @@ module.exports = {
             mode   : options.mode,
             entry  : options.entry,
             output : {
-                chunkFilename: addHash('[name].js', 'hash:8'),
+                chunkFilename: addHash('[name].js', 'contenthash:8'),
                 path         : `${ paths.dist }`,
-                filename     : addHash('[name].js', 'hash:8'),
+                filename     : addHash('[name].js', 'contenthash:8'),
                 publicPath   : '/dist/',
             },
             devtool      : options.devtool || false,
@@ -71,11 +71,6 @@ module.exports = {
                             test  : /[\\/]node_modules[\\/]/,
                             name  : 'vendors',
                             chunks: 'all'
-                        },
-                        commons: {
-                            name     : 'commons',
-                            chunks   : 'initial',
-                            minChunks: 2
                         },
                     }
                 }

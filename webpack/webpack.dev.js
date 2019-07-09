@@ -7,7 +7,7 @@ module.exports = configureBundler({
     mode : 'development',
     entry: {
         bundle: [
-            require.resolve('react-app-polyfill/ie11'),
+            // require.resolve('react-app-polyfill/ie11'),
             `${ paths.entry }`,
             'webpack-hot-middleware/client'
         ]
