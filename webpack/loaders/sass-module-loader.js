@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+const sassModuleLoader = {
     test  : /\.module\.s(c|a)ss$/,
     loader: [
         {
@@ -21,3 +21,5 @@ module.exports = {
         }
     ]
 };
+
+module.exports = sassModuleLoader;
