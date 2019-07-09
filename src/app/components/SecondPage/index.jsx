@@ -7,6 +7,7 @@ import { push }                     from 'connected-react-router';
 import { Helmet }                   from 'react-helmet';
 import { hot }                      from 'react-hot-loader/root';
 
+import { callNotification }         from 'core/utils/notification/callNotification';
 import type { PropsType }           from './types';
 import './style';
 
@@ -20,6 +21,7 @@ const SecondPage: ComponentType<PropsType> = (props): Node => {
             />
             <div className="test">Second Page</div>
             <button onClick={ () => push('/') }>go to main page</button>
+            <button onClick={ () => callNotification({ body: 'Hello from Home Page' }) }>notify me</button>
         </>
     );
 };
