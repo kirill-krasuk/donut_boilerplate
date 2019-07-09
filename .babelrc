@@ -8,6 +8,7 @@
         "development": {
             "plugins": [
                 "react-hot-loader/babel", // hot module reloading
+                "@babel/plugin-transform-modules-commonjs",
             ]
         },
         "production": {
