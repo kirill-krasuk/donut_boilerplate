@@ -26,8 +26,6 @@ const paths = {
     view    : path.resolve('views', 'index.pug')
 };
 
-console.log(process.env.BABEL_ENV);
-
 module.exports = {
     paths,
     configureBundler(options) {
