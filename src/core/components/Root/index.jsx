@@ -5,6 +5,7 @@ import { renderRoutes }             from 'react-router-config';
 import { ThemeProvider }            from 'styled-components';
 
 import theme                        from 'core/config/theme';
+import { GlobalStyles }             from 'core/utils/styles';
 import type { PropsType }           from './types';
 
 const Root: ComponentType<PropsType> = (props): Node => {
@@ -12,7 +13,10 @@ const Root: ComponentType<PropsType> = (props): Node => {
 
     return (
         <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
-            { renderRoutes(route.routes) }
+            <>
+                <GlobalStyles />
+                { renderRoutes(route.routes) }
+            </>
         </ThemeProvider>
     );
 };
