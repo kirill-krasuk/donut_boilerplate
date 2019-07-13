@@ -9,7 +9,6 @@ import { hot }                      from 'react-hot-loader/root';
 
 import { callNotification }         from 'core/utils/notification/callNotification';
 import type { PropsType }           from './types';
-import './style';
 
 const SecondPage: ComponentType<PropsType> = (props): Node => {
     const { push } = props;

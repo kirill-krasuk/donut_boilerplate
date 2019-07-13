@@ -104,7 +104,7 @@ module.exports = {
                     template         : paths.template,
                     filename         : paths.view,
                     alwaysWriteToDisk: true,
-                    excludeAssets    : [ /\.js/ ]
+                    excludeAssets    : [ /\.(js|css)/ ]
                 }),
                 new HtmlWebpackExcludeAssetsPlugin(), // for exludeAssets
                 new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
