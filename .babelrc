@@ -35,6 +35,7 @@
                 }
             }
         ],
+        "macros",
         "ramda",
         "transform-react-jsx",
         "@loadable/babel-plugin", // for loadable chunks
