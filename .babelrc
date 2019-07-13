@@ -35,7 +35,7 @@
                 }
             }
         ],
-        "macros",
+        "macros", // babel-plugin-macros for libraries, who's use runtime
         "ramda",
         "transform-react-jsx",
         "@loadable/babel-plugin", // for loadable chunks
