@@ -1,5 +1,8 @@
 require('@babel/register')({
-    plugins: [ 'dynamic-import-node' ]
+    plugins: [
+        'dynamic-import-node',
+        'macros'
+    ]
 });
 require('ignore-styles').default([ '.sass', '.scss' ]);
 require('@babel/polyfill');
