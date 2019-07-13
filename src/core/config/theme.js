@@ -4,6 +4,7 @@ export default {
         secondary: '#e84393'
     },
     light: {
-
+        primary  : '#dfe6e9',
+        secondary: 'red'
     }
 };
