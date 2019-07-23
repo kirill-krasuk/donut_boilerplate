@@ -14,6 +14,7 @@ const HtmlPugPlugin                  = require('html-webpack-pug-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
 const jsLoader         = require('./loaders/js-loader');
+const imageLoader      = require('./loaders/image-loader');
 const cssLoader        = require('./loaders/css-loader');
 const sassLoader       = require('./loaders/sass-loader');
 const sassModuleLoader = require('./loaders/sass-module-loader');
@@ -80,7 +81,8 @@ module.exports = {
                     jsLoader,
                     cssLoader,
                     sassLoader,
-                    sassModuleLoader
+                    sassModuleLoader,
+                    imageLoader
                 ]
             },
             watch  : options.watch || false,

@@ -103,6 +103,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "eslint-plugin-varspacing": "^1.2.1",
     "express": "^4.17.1",
+    "file-loader": "^4.0.0",
     "flow-bin": "^0.101.0",
     "flow-typed": "^2.5.2",
     "hard-source-webpack-plugin": "^0.13.1",
