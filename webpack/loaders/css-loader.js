@@ -1,18 +1,27 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const cssLoader = {
-    test  : /\.css$/,
-    loader: [
-        {
-            loader : MiniCssExtractPlugin.loader,
-            options: {
-                hmr      : process.env.NODE_ENV === 'development',
-                reloadAll: true
-            },
-        },
-        'cache',
-        'css',
-    ]
-};
+function getCssLoader(isClient = true) {
+    const cssLoader = {
+        test: /\.css$/,
+    };
 
-module.exports = cssLoader;
+    if (isClient) {
+        cssLoader.loader = [
+            {
+                loader : MiniCssExtractPlugin.loader,
+                options: {
+                    hmr      : process.env.NODE_ENV === 'development',
+                    reloadAll: true
+                },
+            },
+            'cache',
+            'css',
+        ];
+    } else {
+        cssLoader.loader = 'css';
+    }
+
+    return cssLoader;
+}
+
+module.exports = { getCssLoader };

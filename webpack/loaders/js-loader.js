@@ -1,11 +1,14 @@
-const jsLoader = {
-    test   : /\.jsx?$/,
-    exclude: /node_modules/,
-    loader : 'babel?cacheDirectory'
-};
+function getJsLoader(isClient = true) {
+    const jsLoader = {
+        test  : /\.jsx?$/,
+        loader: 'babel?cacheDirectory'
+    };
 
-if (process.env.BABEL_ENV === 'development') {
-    jsLoader.loader = `cache!${  jsLoader.loader }`;
+    if (isClient && process.env.BABEL_ENV === 'development') {
+        jsLoader.loader = `cache!${  jsLoader.loader }`;
+    }
+
+    return jsLoader;
 }
 
-module.exports = jsLoader;
+module.exports = { getJsLoader };
