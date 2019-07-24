@@ -26,6 +26,7 @@ function getSassModuleLoader(isClient = true) {
         ];
     } else {
         sassModuleLoader.loader = [
+            'cache',
             'css?modules&exportOnlyLocals&localIdentName=[name]__[local]___[hash:base64:5]',
             'resolve-url',
             {

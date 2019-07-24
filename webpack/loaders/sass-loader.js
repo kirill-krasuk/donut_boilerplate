@@ -27,6 +27,7 @@ function getSassLoader(isClient = true) {
         ];
     } else {
         sassLoader.loader = [
+            'cache',
             'css',
             'resolve-url',
             {

@@ -18,7 +18,7 @@ function getCssLoader(isClient = true) {
             'css',
         ];
     } else {
-        cssLoader.loader = 'css';
+        cssLoader.loader = 'cache!css';
     }
 
     return cssLoader;

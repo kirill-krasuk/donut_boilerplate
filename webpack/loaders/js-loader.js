@@ -1,10 +1,10 @@
-function getJsLoader(isClient = true) {
+function getJsLoader() {
     const jsLoader = {
         test  : /\.jsx?$/,
         loader: 'babel?cacheDirectory'
     };
 
-    if (isClient && process.env.BABEL_ENV === 'development') {
+    if (process.env.BABEL_ENV === 'development') {
         jsLoader.loader = `cache!${  jsLoader.loader }`;
     }
 
