@@ -3,6 +3,7 @@ const path    = require('path');
 
 const CompressionPlugin              = require('compression-webpack-plugin');
 const { InjectManifest }             = require('workbox-webpack-plugin');
+const { CleanWebpackPlugin }         = require('clean-webpack-plugin');
 const LoadablePlugin                 = require('@loadable/webpack-plugin');
 const Dotenv                         = require('dotenv-webpack');
 const { BundleAnalyzerPlugin }       = require('webpack-bundle-analyzer');
@@ -125,6 +126,18 @@ module.exports = {
                     /moment[/\\]locale$/,
                     /ru/
                 ),
+                new CleanWebpackPlugin({
+                    cleanOnceBeforeBuildPatterns: [
+                        '**/*',
+                        '!server.js',
+                        '!*.server.js'
+                    ],
+                    cleanAfterEveryBuildPatterns: [
+                        '!*.server.js',
+                        '*.hot-update.json',
+                        'precache-manifest.*.js'
+                    ],
+                })
             ])
         };
     }
