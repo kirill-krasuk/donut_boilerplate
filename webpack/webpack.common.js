@@ -13,18 +13,18 @@ const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
 const HtmlPugPlugin                  = require('html-webpack-pug-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
-const jsLoader         = require('./loaders/js-loader');
-const imageLoader      = require('./loaders/image-loader');
-const cssLoader        = require('./loaders/css-loader');
-const sassLoader       = require('./loaders/sass-loader');
-const sassModuleLoader = require('./loaders/sass-module-loader');
+const { getJsLoader }         = require('./loaders/js-loader');
+const { getImageLoader }      = require('./loaders/image-loader');
+const { getCssLoader }        = require('./loaders/css-loader');
+const { getSassLoader }       = require('./loaders/sass-loader');
+const { getSassModuleLoader } = require('./loaders/sass-module-loader');
 
 const paths = {
-    src     : path.resolve('src'),
-    dist    : path.resolve('dist'),
-    entry   : path.resolve('src', 'core', 'index.jsx'),
-    template: path.resolve('src', 'core', 'template', 'index.pug'),
-    view    : path.resolve('views', 'index.pug')
+    src     : path.resolve(__dirname, '..', 'src'),
+    dist    : path.resolve(__dirname, '..', 'dist'),
+    entry   : path.resolve(__dirname, '..', 'src/core/index.jsx'),
+    template: path.resolve(__dirname, '..', 'src/core/template/index.pug'),
+    view    : path.resolve(__dirname, '..', 'views/index.pug')
 };
 
 module.exports = {
@@ -39,10 +39,9 @@ module.exports = {
         }
 
         return {
-            context: path.resolve(__dirname, '..'),
-            mode   : options.mode,
-            entry  : options.entry,
-            output : {
+            mode  : options.mode,
+            entry : options.entry,
+            output: {
                 chunkFilename: addHash('[name].js', 'contenthash:8'),
                 path         : `${ paths.dist }`,
                 filename     : addHash('[name].js', 'contenthash:8'),
@@ -78,11 +77,11 @@ module.exports = {
             },
             module: {
                 rules: [
-                    jsLoader,
-                    cssLoader,
-                    sassLoader,
-                    sassModuleLoader,
-                    imageLoader
+                    getJsLoader(),
+                    getCssLoader(),
+                    getSassLoader(),
+                    getSassModuleLoader(),
+                    getImageLoader()
                 ]
             },
             watch  : options.watch || false,

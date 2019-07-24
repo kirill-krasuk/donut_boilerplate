@@ -1,10 +1,15 @@
-const imageLoader = {
-    test  : /\.(gif|png|jpe?g)$/i,
-    loader: 'file'
-};
+function getImageLoader(isClient = true) {
+    const imageLoader = {
+        test   : /\.(gif|png|jpe?g)$/i,
+        loader : 'file',
+        options: {
+            name      : '../public/images/[name].[ext]',
+            publicPath: url => url.replace(/\.\.\/public/, ''),
+            emit      : !isClient
+        }
+    };
 
-if (process.env.BABEL_ENV === 'development') {
-    imageLoader.loader = `cache!${  imageLoader.loader }`;
+    return imageLoader;
 }
 
-module.exports = imageLoader;
+module.exports = { getImageLoader };

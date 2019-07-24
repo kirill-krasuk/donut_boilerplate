@@ -31,7 +31,8 @@
                     "app": "./src/app",
                     "core": "./src/core",
                     "server": "./server",
-                    "public": "./public"
+                    "public": "./public",
+                    "images": "./src/images"
                 }
             }
         ],
@@ -47,6 +48,6 @@
         "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
         "@babel/plugin-proposal-private-methods", // private methods in class # operator
         "@babel/plugin-proposal-optional-chaining", // for nested object checking
-        "inline-react-svg"
+        "inline-react-svg",
     ]
 }
