@@ -14,11 +14,11 @@ function getCssLoader(isClient = true) {
                     reloadAll: true
                 },
             },
-            'cache',
+            'cache?cacheDirectory=.cache/css-cache',
             'css',
         ];
     } else {
-        cssLoader.loader = 'cache!css';
+        cssLoader.loader = 'css';
     }
 
     return cssLoader;
