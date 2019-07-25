@@ -19,6 +19,7 @@ const { getImageLoader }      = require('./loaders/image-loader');
 const { getCssLoader }        = require('./loaders/css-loader');
 const { getSassLoader }       = require('./loaders/sass-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
+const { getSVGLoader }        = require('./loaders/svg-loader');
 
 const paths = {
     src     : path.resolve('src'),
@@ -85,7 +86,8 @@ module.exports = {
                     getCssLoader(),
                     getSassLoader(),
                     getSassModuleLoader(),
-                    getImageLoader()
+                    getImageLoader(),
+                    getSVGLoader()
                 ]
             },
             watch  : options.watch || false,

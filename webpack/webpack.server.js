@@ -5,6 +5,7 @@ const { getJsLoader }         = require('./loaders/js-loader');
 const { getImageLoader }      = require('./loaders/image-loader');
 const { getCssLoader }        = require('./loaders/css-loader');
 const { getSassLoader }       = require('./loaders/sass-loader');
+const { getSVGLoader }        = require('./loaders/svg-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
 
 const PATHS = {
@@ -39,7 +40,8 @@ module.exports = (env, argv) => ({
             getCssLoader(false),
             getSassLoader(false),
             getSassModuleLoader(false),
-            getImageLoader(false)
+            getImageLoader(false),
+            getSVGLoader(false)
         ]
     },
     externals: [ nodeExternals({
