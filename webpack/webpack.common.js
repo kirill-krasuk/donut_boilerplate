@@ -21,12 +21,14 @@ const { getSassLoader }       = require('./loaders/sass-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
 
 const paths = {
-    src     : path.resolve(__dirname, '..', 'src'),
-    dist    : path.resolve(__dirname, '..', 'dist'),
-    entry   : path.resolve(__dirname, '..', 'src/core/index.jsx'),
-    template: path.resolve(__dirname, '..', 'src/core/template/index.pug'),
-    view    : path.resolve(__dirname, '..', 'views/index.pug')
+    src     : path.resolve('src'),
+    dist    : path.resolve('dist'),
+    entry   : path.resolve('src/core/index.jsx'),
+    template: path.resolve('src/core/template/index.pug'),
+    view    : path.resolve('views/index.pug')
 };
+
+const context = path.resolve(__dirname, '..',);
 
 module.exports = {
     paths,
@@ -40,6 +42,7 @@ module.exports = {
         }
 
         return {
+            context,
             mode  : options.mode,
             entry : options.entry,
             output: {

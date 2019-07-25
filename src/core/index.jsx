@@ -16,7 +16,7 @@ loadableReady(() => {
         window.addEventListener('load', async () => {
             try {
                 // flow-disable-next-line
-                await navigator.serviceWorker.register('/sw.js');
+                await navigator.serviceWorker.register('/sw.js', { scope: '/' });
 
                 window.console.log('SW registered');
             } catch (err) {
