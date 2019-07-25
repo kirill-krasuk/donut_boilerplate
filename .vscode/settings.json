@@ -1,6 +1,5 @@
 {
     "javascript.validate.enable": false,
-    "flow.useNPMPackagedFlow": true,
     "git.enableSmartCommit": true,
     "git.autofetch": true,
     "explorer.confirmDelete": false,
