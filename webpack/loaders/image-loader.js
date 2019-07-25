@@ -3,8 +3,9 @@ function getImageLoader(isClient = true) {
         test   : /\.(gif|png|jpe?g)$/i,
         loader : 'file',
         options: {
-            name      : '../public/images/[name].[ext]',
-            publicPath: url => url.replace(/\.\.\/public/, ''),
+            name      : '[name].[ext]',
+            outputPath: '../public/images',
+            publicPath: '/public/images',
             emit      : !isClient
         }
     };
