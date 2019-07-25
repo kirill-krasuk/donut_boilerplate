@@ -43,15 +43,17 @@ app.locals.pretty = true;
 
 app.use(DevMiddleware(bundler, {
     publicPath : webpackConfig.output.publicPath,
-    writeToDisk: (name) => {
-        const regExp = new RegExp(/(\.json|sw|manifest)/, 'gi');
+    writeToDisk: true,
 
-        if (regExp.test(name)) {
-            return true;
-        }
+    // writeToDisk: (name) => {
+    //     const regExp = new RegExp(/(\.json|sw|manifest)/, 'gi');
 
-        return false;
-    },
+    //     if (regExp.test(name)) {
+    //         return true;
+    //     }
+
+    //     return false;
+    // },
     stats: {
         all         : false,
         modules     : true,
