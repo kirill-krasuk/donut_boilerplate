@@ -9,9 +9,10 @@
     "build": "webpack --config ./webpack/webpack.server.js --mode=production",
     "build:server": "webpack --config ./webpack/webpack.server.js --mode=development",
     "install:types": "flow-typed install",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "flow": "flow",
-    "lint": "eslint .",
-    "workbox": "workbox"
+    "lint": "eslint ."
   },
   "pre-commit": [
     "lint",
@@ -123,6 +124,7 @@
     "pug": "^2.0.3",
     "react-app-polyfill": "^1.0.1",
     "react-hot-loader": "^4.9.0",
+    "react-styleguidist": "^9.1.12",
     "react-svg-loader": "^3.0.3",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
