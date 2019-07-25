@@ -7,7 +7,7 @@ import { hot }                       from 'react-hot-loader/root';
 
 import { callNotification }          from 'core/utils/notification';
 import TestImg                       from 'images/test.png';
-import Logo                          from 'svgs/donut.svg';
+import Logo                          from 'svgs/logo.svg';
 import * as Styled                   from './styled';
 import style                         from './style.module';
 
