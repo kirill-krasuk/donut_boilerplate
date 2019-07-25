@@ -15,7 +15,7 @@ function getSassLoader(isClient = true) {
                     reloadAll: true
                 },
             },
-            'cache',
+            'cache?cacheDirectory=.cache/sass-cache',
             'css',
             'resolve-url',
             {
@@ -27,7 +27,6 @@ function getSassLoader(isClient = true) {
         ];
     } else {
         sassLoader.loader = [
-            'cache',
             'css',
             'resolve-url',
             {
