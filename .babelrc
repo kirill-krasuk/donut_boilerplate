@@ -32,7 +32,8 @@
                     "core": "./src/core",
                     "server": "./server",
                     "public": "./public",
-                    "images": "./src/images"
+                    "images": "./src/assets/images",
+                    "svgs": "./src/assets/svgs",
                 }
             }
         ],
