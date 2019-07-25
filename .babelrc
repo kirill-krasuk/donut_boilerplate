@@ -30,6 +30,7 @@
                 "alias": {
                     "app": "./src/app",
                     "core": "./src/core",
+                    "ui": "./src/ui",
                     "server": "./server",
                     "public": "./public",
                     "images": "./src/assets/images",

@@ -1,14 +1,17 @@
 {
-    "compilerOptions": {
-      "target": "es2017",
-      "allowSyntheticDefaultImports": false,
-      "baseUrl": "./",
-      "paths": {
-        "core/*": ["src/core/*"],
-        "app/*": ["src/app/*"],
-        "server/*": ["server/*"],
-        "public/*": ["public/*"]
-      }
-    },
-    "exclude": ["node_modules", "dist"],
-  }
+	"compilerOptions": {
+		"target": "es2017",
+		"allowSyntheticDefaultImports": false,
+		"baseUrl": "./",
+		"paths": {
+			"core/*": ["src/core/*"],
+			"app/*": ["src/app/*"],
+			"ui/*": ["src/ui/*"],
+			"images/*": ["src/assets/images/*"],
+            "svgs/*": ["src/assets/svgs/*"],
+			"server/*": ["server/*"],
+			"public/*": ["public/*"]
+		}
+	},
+	"exclude": ["node_modules", "dist"],
+}
