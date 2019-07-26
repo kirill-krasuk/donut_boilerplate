@@ -42,6 +42,18 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
+    /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+    new workbox.strategies.NetworkFirst({
+        cacheName: 'fonts_cache',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxAgeSeconds: 60 * 60 * 24 * 7
+            })
+        ]
+    })
+);
+
+workbox.routing.registerRoute(
     /\/*/,
     new workbox.strategies.NetworkFirst({
         cacheName: 'pages_cache',
