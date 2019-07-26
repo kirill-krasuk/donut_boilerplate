@@ -23,7 +23,8 @@ type PropsType = {
 
 /**
  * basic UI elemnet of Donut Boilerplate
- * @visibleName Donut Button
+ * @visibleName Button
+ * @version 1.0
  * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
  */
 
