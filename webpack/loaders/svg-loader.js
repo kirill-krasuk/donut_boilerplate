@@ -4,7 +4,7 @@ function getSVGLoader(isClient = true) {
         loader: [
             'babel',
             {
-                loader : 'react-svg-loader',
+                loader : 'react-svg',
                 options: {
                     jsx : true,
                     svgo: {

@@ -22,6 +22,7 @@ module.name_mapper='^server' -> '<PROJECT_ROOT>/server'
 module.name_mapper='^public' -> '<PROJECT_ROOT>/public'
 module.name_mapper='^images' -> '<PROJECT_ROOT>/src/assets/images'
 module.name_mapper='^svgs' -> '<PROJECT_ROOT>/src/assets/svgs'
+module.name_mapper='^fonts' -> '<PROJECT_ROOT>/src/assets/fonts'
 module.name_mapper='^ui' -> '<PROJECT_ROOT>/src/ui'
 module.file_ext=.css
 module.file_ext=.scss

@@ -4,6 +4,7 @@ const { getJsLoader }         = require('./webpack/loaders/js-loader');
 const { getCssLoader }        = require('./webpack/loaders/css-loader');
 const { getSassLoader }       = require('./webpack/loaders/sass-loader');
 const { getSassModuleLoader } = require('./webpack/loaders/sass-module-loader');
+const { getSVGLoader }        = require('./webpack/loaders/svg-loader');
 
 module.exports = {
     webpackConfig: {
@@ -16,6 +17,7 @@ module.exports = {
                 getCssLoader(false),
                 getSassLoader(false),
                 getSassModuleLoader(false),
+                getSVGLoader(false)
             ]
         }
     },

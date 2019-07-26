@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 const { getJsLoader }         = require('./loaders/js-loader');
 const { getImageLoader }      = require('./loaders/image-loader');
+const { getFontsLoader }      = require('./loaders/font-loader');
 const { getCssLoader }        = require('./loaders/css-loader');
 const { getSassLoader }       = require('./loaders/sass-loader');
 const { getSVGLoader }        = require('./loaders/svg-loader');
@@ -41,7 +42,8 @@ module.exports = (env, argv) => ({
             getSassLoader(false),
             getSassModuleLoader(false),
             getImageLoader(false),
-            getSVGLoader(false)
+            getSVGLoader(false),
+            getFontsLoader(false)
         ]
     },
     externals: [ nodeExternals({
