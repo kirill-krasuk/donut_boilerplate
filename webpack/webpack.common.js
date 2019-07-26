@@ -16,6 +16,7 @@ const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plug
 
 const { getJsLoader }         = require('./loaders/js-loader');
 const { getImageLoader }      = require('./loaders/image-loader');
+const { getFontsLoader }      = require('./loaders/font-loader');
 const { getCssLoader }        = require('./loaders/css-loader');
 const { getSassLoader }       = require('./loaders/sass-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
@@ -87,6 +88,7 @@ module.exports = {
                     getSassLoader(),
                     getSassModuleLoader(),
                     getImageLoader(),
+                    getFontsLoader(),
                     getSVGLoader()
                 ]
             },

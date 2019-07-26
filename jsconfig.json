@@ -10,7 +10,8 @@
 			"images/*": ["src/assets/images/*"],
             "svgs/*": ["src/assets/svgs/*"],
 			"server/*": ["server/*"],
-			"public/*": ["public/*"]
+			"public/*": ["public/*"], 
+			"fonts/*": ["src/assets/fonts/*"],
 		}
 	},
 	"exclude": ["node_modules", "dist"],

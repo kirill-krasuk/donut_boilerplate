@@ -34,6 +34,7 @@
                     "server": "./server",
                     "public": "./public",
                     "images": "./src/assets/images",
+                    "fonts": "./src/assets/fonts",
                     "svgs": "./src/assets/svgs",
                 }
             }
