@@ -8,7 +8,7 @@ export default styled.header`
 
     &:before {
         content: '';
-        background: ${ ({ theme }) => `linear-gradient(90deg, ${ theme[theme.mode]['ui-ch-header--lg-from'] } , ${ theme[theme.mode]['ui-ch-header--lg-to'] })` };
+        background: ${ ({ theme }) => `linear-gradient(90deg, ${ theme[theme.mode]['ui_ch_header--lg-from'] } , ${ theme[theme.mode]['ui_ch_header--lg-to'] })` };
         height: inherit;
         width: 100%;
         border-radius: 0 0 50% 50%;
