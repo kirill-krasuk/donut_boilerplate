@@ -96,7 +96,7 @@ module.exports = {
             watch  : options.watch || false,
             plugins: options.plugins.concat([
                 new CompressionPlugin({
-                    cache: true,
+                    cache: '.cache/compression_plugin_cache',
                     test : /\.js(\?.*)?$/i,
                 }),
                 new BundleAnalyzerPlugin({
