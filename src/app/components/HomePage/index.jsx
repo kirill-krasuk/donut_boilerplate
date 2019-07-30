@@ -9,6 +9,7 @@ import { callNotification }          from 'core/utils/notification';
 import TestImg                       from 'images/test.png';
 import { Button, CurvedHeader }      from 'ui/components';
 import * as Styled                   from './styled';
+import style                         from './style.module';
 
 const HomePage: ComponentType<{}> = (): Node => (
     <>
@@ -16,7 +17,8 @@ const HomePage: ComponentType<{}> = (): Node => (
             title="Home page"
         />
         <CurvedHeader />
-        <Styled.Text>Home Page</Styled.Text>
+        <Styled.Text>Home Page!!</Styled.Text>
+        <div className={ style.test }>DIV</div>
         <Link to={ '/second' }>go to second page!  sss</Link>
         <img src={ TestImg } />
         <Button type="secondary">OK</Button>
