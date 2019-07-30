@@ -15,7 +15,7 @@ function getFontsLoader(isClient = true) {
     };
 
     if (isClient) {
-        fontsLoader.loader.unshift('cache?cacheDirectory=.cache/fonts-cache');
+        fontsLoader.loader.unshift('cache?cacheDirectory=.cache/fonts-cache!thread');
     }
 
     return fontsLoader;
