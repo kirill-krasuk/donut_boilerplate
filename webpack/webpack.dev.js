@@ -12,7 +12,7 @@ module.exports = configureBundler({
             'webpack-hot-middleware/client'
         ]
     },
-    devtool  : 'source-map',
+    devtool  : 'cheap-module-eval-source-map',
     minimizer: [],
     watch    : true,
     plugins  : [
