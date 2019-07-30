@@ -24,7 +24,7 @@ function getSVGLoader(isClient = true) {
     };
 
     if (isClient) {
-        SVGLoader.loader.unshift('cache?cacheDirectory=.cache/svg-cache');
+        SVGLoader.loader.unshift('cache?cacheDirectory=.cache/svg-cache!thread');
     }
 
     return SVGLoader;
