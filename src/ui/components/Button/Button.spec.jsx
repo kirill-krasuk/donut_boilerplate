@@ -1,3 +1,4 @@
+import React  from 'react';
 import Button from '.';
 
 it('should render a button', () => {
