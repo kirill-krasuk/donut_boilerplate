@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a button 1`] = `
+<styled.button
+  size="md"
+  type="primary"
+>
+  Click me
+</styled.button>
+`;

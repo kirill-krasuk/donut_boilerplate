@@ -2,7 +2,7 @@ function getJsLoader(isClient = true) {
     const jsLoader = {
         test   : /\.jsx?$/,
         loader : 'babel',
-        exclude: /node_modules/
+        exclude: [ /node_modules/, /\.(spec|test)\.js$/ ]
     };
 
     if (isClient && process.env.BABEL_ENV === 'development') {
