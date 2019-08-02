@@ -15,7 +15,8 @@
     "styleguide:build": "styleguidist build",
     "flow": "flow",
     "lint": "eslint .",
-    "lint:css": "stylelint './src/**/*.js'"
+    "lint:css": "stylelint './src/**/*.js'",
+    "test": "jest"
   },
   "pre-commit": [
     "lint",
