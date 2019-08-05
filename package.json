@@ -16,7 +16,8 @@
     "flow": "flow",
     "lint": "eslint .",
     "lint:css": "stylelint './src/**/*.js'",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "pre-commit": [
     "lint",
