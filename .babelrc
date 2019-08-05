@@ -1,8 +1,8 @@
 {
     "presets": [
-        "@babel/preset-env",
         "@babel/preset-react",
-        "@babel/preset-flow"
+        "@babel/preset-flow",
+        "@babel/preset-env",
     ],
     "env": {
         "development": {
@@ -44,12 +44,12 @@
         "transform-react-jsx",
         "@loadable/babel-plugin", // for loadable chunks
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        ["@babel/plugin-proposal-private-methods", { "loose": true }], // private methods in class # operator
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime",
         "@babel/plugin-proposal-function-bind", // bind as :: operator
         "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
-        "@babel/plugin-proposal-private-methods", // private methods in class # operator
-        "@babel/plugin-proposal-optional-chaining", // for nested object checking
+        "@babel/plugin-proposal-optional-chaining", // for nested object checking   
     ]
 }
