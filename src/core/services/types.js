@@ -3,5 +3,6 @@ export const TYPES = {
     ConfigManager: Symbol.for('ConfigManager'),
     config       : Symbol.for('config'),
     QueryParams  : Symbol.for('QueryParams'),
-    Headers      : Symbol.for('Headers')
+    Headers      : Symbol.for('Headers'),
+    Store        : Symbol.for('Store')
 };

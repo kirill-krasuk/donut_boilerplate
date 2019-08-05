@@ -7,6 +7,8 @@ export interface iHTTP {
     _requestTo: string;
     _path: string;
 
+    _store: Object;
+
     _headers: Headers;
     _query: URLSearchParams;
 
