@@ -15,6 +15,8 @@ export class HTTP implements iHTTP {
     _path: string;
     _body: { [key: string]: mixed } = {};
 
+    @inject(TYPES.Store) _store: Object;
+
     @inject(TYPES.Headers) _headers: Headers;
     @inject(TYPES.QueryParams) _query: URLSearchParams;
 
@@ -40,6 +42,8 @@ export class HTTP implements iHTTP {
     }
 
     async _callRequest(method: HTTPMethod): Promise<HTTPResponse> {
+        const { dispatch } = this._store;
+
         const options: { [key: string]: any } = {
             method,
             headers: this._headers
@@ -57,6 +61,8 @@ export class HTTP implements iHTTP {
         const body = await response
             .json()
             .catch(() => {});
+
+        dispatch({ type: 'TEST_DISPATCH' });
 
         if (!response.ok) {
             throw new Error(response);
