@@ -19,6 +19,7 @@ module.exports = configureBundler({
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CircularDependencyPlugin({
+            exclude: /node_modules/,
             onDetected({ paths, compilation }) {
                 compilation.errors.push(new Error(paths.join(' -> ')));
             },
