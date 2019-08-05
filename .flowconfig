@@ -1,16 +1,11 @@
 [ignore]
-<PROJECT_ROOT>/flow-typed/.*
 <PROJECT_ROOT>/node_modules/config-chain/test/.*
-<PROJECT_ROOT>/node_modules/.*
 <PROJECT_ROOT>/webpack/.*
 <PROJECT_ROOT>/internals/.*
 <PROJECT_ROOT>/dist/.*
 <PROJECT_ROOT>/server/.*
 
-[include]
-
 [libs]
-./lib-defs/
 
 [lints]
 
@@ -24,9 +19,19 @@ module.name_mapper='^images' -> '<PROJECT_ROOT>/src/assets/images'
 module.name_mapper='^svgs' -> '<PROJECT_ROOT>/src/assets/svgs'
 module.name_mapper='^fonts' -> '<PROJECT_ROOT>/src/assets/fonts'
 module.name_mapper='^ui' -> '<PROJECT_ROOT>/src/ui'
-module.file_ext=.css
-module.file_ext=.scss
-module.file_ext=.sass
+module.system.node.resolve_dirname=node_modules
+
 esproposal.decorators=ignore
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+munge_underscores=true
+
+
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.sass
+module.name_mapper.extension='sass' -> 'empty/object'
+module.file_ext=.cjs
+module.name_mapper.extension='cjs' -> 'empty/object'
 
 [strict]
