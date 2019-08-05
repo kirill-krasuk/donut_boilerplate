@@ -17,7 +17,13 @@ export class ConfigManager {
     }
 
     get(key: string): * {
-        return this._config[key];
+        const option = this._config[key];
+
+        if (/(true|false)/.test(option)) {
+            return JSON.parse(option);
+        }
+
+        return option;
     }
 
     set(key: string, value: *): void {
