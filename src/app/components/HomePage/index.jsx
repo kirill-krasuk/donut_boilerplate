@@ -17,7 +17,7 @@ const HomePage: ComponentType<{}> = (): Node => (
             title="Home page"
         />
         <CurvedHeader />
-        <Styled.Text>Home Page!!</Styled.Text>
+        <Styled.Text>Home Page</Styled.Text>
         <div className={ style.test }>DIV</div>
         <Link to={ '/second' }>go to second page!  sss</Link>
         <img src={ TestImg } />
