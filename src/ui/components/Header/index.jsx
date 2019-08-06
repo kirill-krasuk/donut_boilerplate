@@ -1,10 +1,13 @@
 // @flow
-import React         from 'react';
-import type { Node } from 'react';
-import { Sun }       from 'styled-icons/fa-solid/Sun';
-import { Moon }      from 'styled-icons/fa-solid/Moon';
+import React                        from 'react';
+import type { Node }                from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Sun }                      from 'styled-icons/fa-solid/Sun';
+import { Moon }                     from 'styled-icons/fa-solid/Moon';
 
-import * as Styled   from './styled';
+import { changeThemeAction }        from 'core/actions/theme';
+import { getMode }                  from 'core/selectors/theme';
+import * as Styled                  from './styled';
 
 /**
  * @visibleName Header
@@ -13,16 +16,33 @@ import * as Styled   from './styled';
  */
 
 const Header = (): Node => {
+    const dispatch = useDispatch();
+
+    /**
+     * theme mode variable
+     * @enum {string}
+    */
+
+    const mode = useSelector(getMode);
+
     const ThemeIcon = {
         light: Sun,
         dark : Moon
-    }.light;
+    }[mode];
+
+    const handleChangeTheme = () => {
+        const reverseMode = mode === 'light'
+            ? 'dark'
+            : 'light';
+
+        dispatch(changeThemeAction(reverseMode));
+    };
 
     return (
         <Styled.Header>
             <Styled.Nav>
                 <Styled.ThemeIcon>
-                    <ThemeIcon />
+                    <ThemeIcon onClick={ handleChangeTheme } />
                 </Styled.ThemeIcon>
             </Styled.Nav>
             <Styled.Content>
