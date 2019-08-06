@@ -30,6 +30,11 @@ const Header = (): Node => {
         dark : Moon
     }[mode];
 
+    const ThemeLogo = {
+        dark: Styled.Logo,
+        light : Styled.DarkLogo
+    }[mode];
+
     const handleChangeTheme = () => {
         const reverseMode = mode === 'light'
             ? 'dark'
@@ -46,7 +51,7 @@ const Header = (): Node => {
                 </Styled.ThemeIcon>
             </Styled.Nav>
             <Styled.Content>
-                <Styled.Logo />
+                <ThemeLogo />
                 <Styled.Title>Welcome to Donut Boilerplate v2</Styled.Title>
             </Styled.Content>
         </Styled.Header>
