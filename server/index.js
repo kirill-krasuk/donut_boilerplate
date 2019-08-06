@@ -12,11 +12,13 @@ const HotMiddleware = require('webpack-hot-middleware');
 const compression   = require('compression');
 const favicon       = require('serve-favicon');
 const cookieParser  = require('cookie-parser');
+const bodyParser    = require('body-parser');
 const path          = require('path');
 
 const webpackConfigDev    = require('../webpack/webpack.dev');
 const webpackConfigProd   = require('../webpack/webpack.prod');
 const serverSideRendering = require('./middlewares/serverSideRendering');
+const errorLogging        = require('./middlewares/errorLogging');
 
 const config              = require('./config');
 
@@ -28,6 +30,8 @@ const bundler = webpack(webpackConfig);
 const app     = express();
 
 app.use(compression());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist'), { maxAge: '30d' }));
@@ -44,17 +48,7 @@ app.locals.pretty = true;
 app.use(DevMiddleware(bundler, {
     publicPath : webpackConfig.output.publicPath,
     writeToDisk: true,
-
-    // writeToDisk: (name) => {
-    //     const regExp = new RegExp(/(\.json|sw|manifest)/, 'gi');
-
-    //     if (regExp.test(name)) {
-    //         return true;
-    //     }
-
-    //     return false;
-    // },
-    stats: {
+    stats      : {
         all         : false,
         modules     : true,
         maxModules  : 0,
@@ -68,6 +62,8 @@ app.use(DevMiddleware(bundler, {
 if (env === 'development') {
     app.use(HotMiddleware(bundler));
 }
+
+app.use('/handle_error', errorLogging);
 
 app.get('*.js', (req, res, next) => {
     req.url = req.url + '.gz'; // eslint-disable-line

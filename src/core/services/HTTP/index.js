@@ -99,6 +99,10 @@ export class HTTP implements iHTTP {
             version = `/${ apiVersion }`;
         }
 
+        if (url === 'root') {
+            return `${ preffix }${ version }${ urn }${ query }`;
+        }
+
         const uri = `${ url }${ port }${ preffix }${ version }${ urn }${ query }`;
 
         return uri;
