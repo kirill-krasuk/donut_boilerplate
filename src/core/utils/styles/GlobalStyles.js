@@ -11,6 +11,12 @@ export const GlobalStyles = createGlobalStyle`
 
     html, body {
         overflow-x: hidden;
+        background-color: ${ ({ theme }) => theme[theme.mode].background };
+        min-height: 100vh;
+    }
+
+    #root {
+        min-height: inherit;
     }
 
     @font-face {

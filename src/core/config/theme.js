@@ -1,15 +1,20 @@
 export default {
     dark: {
-        primary  : '#2d3436',
+        primary  : '#191D3A',
         secondary: '#e84393',
 
-        'ui_ch_title--shadow'  : '#F8DCC9',
-        'ui_ch_header--lg-from': '#FBD3E9',
-        'ui_ch_header--lg-to'  : '#BB377D',
-        'ui_ch_theme-icon'     : '#F8DCC9',
+        background: '#191D3A',
+        header_bg : '#191D3A',
+
+        'ui_ch_theme-icon': '#e84393',
     },
     light: {
-        primary  : '#dfe6e9',
-        secondary: 'red'
+        primary  : '#e84393',
+        secondary: '#191D3A',
+
+        background: '#FFF',
+        header_bg : '#DA7191',
+
+        'ui_ch_theme-icon': '#191D3A',
     }
 };

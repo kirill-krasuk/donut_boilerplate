@@ -5,5 +5,5 @@ export default styled.div`
     position: absolute;
     top: left;
     z-index: 20;
-    padding: 15px 20px;
+    margin: 20px;
 `;
