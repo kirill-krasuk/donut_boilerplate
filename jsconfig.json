@@ -12,6 +12,7 @@
 			"server/*": ["server/*"],
 			"public/*": ["public/*"], 
 			"fonts/*": ["src/assets/fonts/*"],
+			"test/*": ["src/test/*"],
 		}
 	},
 	"exclude": ["node_modules", "dist"],

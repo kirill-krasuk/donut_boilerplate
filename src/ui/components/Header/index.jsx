@@ -18,11 +18,6 @@ import * as Styled                  from './styled';
 const Header = (): Node => {
     const dispatch = useDispatch();
 
-    /**
-     * theme mode variable
-     * @enum {string}
-    */
-
     const mode = useSelector(getMode);
 
     const ThemeIcon = {
@@ -31,8 +26,8 @@ const Header = (): Node => {
     }[mode];
 
     const ThemeLogo = {
-        dark: Styled.Logo,
-        light : Styled.DarkLogo
+        dark : Styled.Logo,
+        light: Styled.DarkLogo
     }[mode];
 
     const handleChangeTheme = () => {
