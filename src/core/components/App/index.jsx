@@ -22,6 +22,24 @@ configManager.defaultValues({
 
 const App: ComponentType<{}> = (): Node => {
     useEffect(() => {
+        const http = container.get(TYPES.HTTP);
+
+        console.log(http.query);
+
+        http.query = {
+            number : 1,
+            string : 'str',
+            boolean: false,
+            array  : [ 1, 2, 3 ]
+        };
+
+        http.query = {
+            ...http.query,
+            array2: [ 3, 2, 1 ]
+        };
+
+        console.log(http.query);
+
         window.onload = function () {
             const storage = document.getElementById('ssr-store');
 
