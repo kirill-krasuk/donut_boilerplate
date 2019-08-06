@@ -12,7 +12,7 @@ const Root: ComponentType<PropsType> = (props): Node => {
     const { route } = props;
 
     return (
-        <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
+        <ThemeProvider theme={ { ...theme, mode: 'light' } }>
             <>
                 <GlobalStyles />
                 { renderRoutes(route.routes) }

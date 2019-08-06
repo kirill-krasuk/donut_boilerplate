@@ -1,2 +1,2 @@
 export { default as Button } from './Button';
-export { default as CurvedHeader } from './CurvedHeader/loadable';
+export { default as Header } from './Header/loadable';

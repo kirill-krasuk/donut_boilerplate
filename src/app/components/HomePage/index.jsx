@@ -5,24 +5,19 @@ import { Link }                      from 'react-router-dom';
 import { Helmet }                    from 'react-helmet';
 import { hot }                       from 'react-hot-loader/root';
 
-import { callNotification }          from 'core/utils/notification';
-import TestImg                       from 'images/test.png';
-import { Button, CurvedHeader }      from 'ui/components';
+import { Header }                    from 'ui/components';
 import * as Styled                   from './styled';
-import style                         from './style.module';
 
 const HomePage: ComponentType<{}> = (): Node => (
     <>
         <Helmet
             title="Home page"
         />
-        <CurvedHeader />
-        <Styled.Text>Home Page</Styled.Text>
-        <div className={ style.test }>DIV</div>
-        <Link to={ '/second' }>go to second page!  sss</Link>
-        <img src={ TestImg } />
-        <Button type="secondary">OK</Button>
-        <button onClick={ () => callNotification({ body: 'Hello from Home Page' }) }>notify me</button>
+        <Header />
+        <Styled.Container>
+            <Styled.Text>Edit src/app/components/HomePage save and reload</Styled.Text>
+            <Link to="/second">go to see the second page</Link>
+        </Styled.Container>
     </>
 );
 
