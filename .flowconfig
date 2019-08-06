@@ -19,6 +19,7 @@ module.name_mapper='^images' -> '<PROJECT_ROOT>/src/assets/images'
 module.name_mapper='^svgs' -> '<PROJECT_ROOT>/src/assets/svgs'
 module.name_mapper='^fonts' -> '<PROJECT_ROOT>/src/assets/fonts'
 module.name_mapper='^ui' -> '<PROJECT_ROOT>/src/ui'
+module.name_mapper='^test' -> '<PROJECT_ROOT>/src/test'
 module.system.node.resolve_dirname=node_modules
 
 esproposal.decorators=ignore
