@@ -13,7 +13,7 @@ export default {
         secondary: '#191D3A',
 
         background: '#FFF',
-        header_bg : '#DA7191',
+        header_bg : '#FF3F84',
 
         'ui_ch_theme-icon': '#191D3A',
     }

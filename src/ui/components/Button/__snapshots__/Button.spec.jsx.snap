@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`UI Button component Button init renders properly 1`] = `
+<styled.button
+  onClick={[Function]}
+  size="sm"
+  type="secondary"
+>
+  Test
+</styled.button>
+`;
+
 exports[`UI Button component Button init renders propery 1`] = `
 <styled.button
   onClick={[Function]}

@@ -10,7 +10,7 @@ describe('UI Button component', () => {
     };
 
     describe('Button init', () => {
-        it('renders propery', () => {
+        it('renders properly', () => {
             const button = shallow(<Button { ...props } />);
 
             expect(button).toMatchSnapshot();
