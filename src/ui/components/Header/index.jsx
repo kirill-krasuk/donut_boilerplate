@@ -2,6 +2,7 @@
 import React                        from 'react';
 import type { Node }                from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { FormattedMessage as T }    from 'react-intl';
 import { Sun }                      from 'styled-icons/fa-solid/Sun';
 import { Moon }                     from 'styled-icons/fa-solid/Moon';
 
@@ -10,6 +11,7 @@ import { getMode }                  from 'core/selectors/theme';
 import { getLocale }                from 'core/selectors/locale';
 import { changeLocaleAction }       from 'core/actions/locale/index';
 import * as Styled                  from './styled';
+import messages                     from './messages';
 
 /**
  * @visibleName Header
@@ -61,7 +63,9 @@ const Header = (): Node => {
             </Styled.Nav>
             <Styled.Content>
                 <ThemeLogo />
-                <Styled.Title>Welcome to Donut Boilerplate v2</Styled.Title>
+                <Styled.Title>
+                    <T { ...messages.title } />
+                </Styled.Title>
             </Styled.Content>
         </Styled.Header>
     );
