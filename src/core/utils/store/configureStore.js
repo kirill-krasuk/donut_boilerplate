@@ -5,6 +5,7 @@ import { composeWithDevTools }                   from 'redux-devtools-extension'
 import { createLogger }                          from 'redux-logger';
 import * as R                                    from 'ramda';
 
+import { themeMiddleware }                       from 'core/middlewares/theme';
 import rootSaga                                  from 'core/saga';
 import createRootReducer                         from 'core/reducers';
 
@@ -20,7 +21,10 @@ export function configureStore(preloadedState: Object = {}, history?: Object = {
             : compose;
 
     if (!R.isEmpty(history)) {
-        middlewares.push(routerMiddleware(history));
+        middlewares.push(
+            themeMiddleware,
+            routerMiddleware(history)
+        );
     }
 
     if (isLoggerEnabled && env === 'production') {

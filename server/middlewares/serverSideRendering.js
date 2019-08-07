@@ -9,8 +9,9 @@ const { ChunkExtractor, ChunkExtractorManager } = require('@loadable/server');
 const { createMemoryHistory }                   = require('history');
 const path                                      = require('path');
 
-const routes             = require('core/components/Router/routes').default;
-const { configureStore } = require('core/utils/store/configureStore');
+const routes                = require('core/components/Router/routes').default;
+const { configureStore }    = require('core/utils/store/configureStore');
+const { changeThemeAction } = require('core/actions/theme');
 
 const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 
@@ -18,11 +19,15 @@ function serverSideRendering(req, res) {
     res.set('Service-Worker-Allowed', '/');
     res.set('X-Is-Cacheable', 'true');
 
+    const mode = req.cookies.theme || 'dark';
+
     const { store } = configureStore({}, createMemoryHistory({
         initialEntries: [ req.url ]
     }));
     const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
     const sheet     = new ServerStyleSheet();
+
+    store.dispatch(changeThemeAction(mode));
 
     const App = () => (
         <Provider store={ store }>
