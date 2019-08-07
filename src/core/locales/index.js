@@ -1,5 +1,17 @@
-import en from 'app/locales/en';
-import ru from 'app/locales/ru';
+import appEn from 'app/locales/en';
+import appRu from 'app/locales/ru';
+import uiEn  from 'ui/locales/en';
+import uiRu  from 'ui/locales/ru';
+
+const en = {
+    ...appEn,
+    ...uiEn
+};
+
+const ru = {
+    ...appRu,
+    ...uiRu
+};
 
 export default {
     en,
