@@ -1,4 +1,6 @@
-import styled               from 'styled-components/macro';
+/* eslint-disable indent */
+
+import styled, { css }      from 'styled-components/macro';
 
 import { THEME_ICON_SIZE }  from 'ui/constants/header';
 
@@ -11,7 +13,14 @@ export default styled.div`
 
         &:hover {
             cursor: pointer;
-            filter: brightness(1.14);
+            ${ ({ theme }) => (theme.mode === 'light'
+                ? css`
+                    filter: brightness(0.85)
+                `
+                : css`
+                    filter: brightness(1.14)
+                `)
+            };
         }
     }
 `;

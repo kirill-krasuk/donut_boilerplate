@@ -15,6 +15,6 @@ export default {
         background: '#FFF',
         header_bg : '#FF3F84',
 
-        'ui_ch_theme-icon': '#191D3A',
+        'ui_ch_theme-icon': '#FFF',
     }
 };
