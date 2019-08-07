@@ -10,6 +10,7 @@ export default styled.div`
         width: ${ THEME_ICON_SIZE };
         color: ${ ({ theme }) => theme[theme.mode]['ui_ch_theme-icon'] };
         filter: brightness(1);
+        margin-left: 20px;
 
         &:hover {
             cursor: pointer;

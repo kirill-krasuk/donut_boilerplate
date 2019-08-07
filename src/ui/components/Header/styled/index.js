@@ -5,3 +5,4 @@ export { default as DarkLogo } from './DarkLogo';
 export { default as Title } from './Title';
 export { default as Nav } from './Nav';
 export { default as ThemeIcon } from './ThemeIcon';
+export { default as LocaleToggler } from './LocaleToggler';
