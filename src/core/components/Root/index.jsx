@@ -18,12 +18,12 @@ const Root: ComponentType<PropsType> = (props): Node => {
 
     return (
         <ThemeProvider theme={ { ...theme, mode } }>
-            <LanguageProvider>
-                <>
-                    <GlobalStyles />
+            <>
+                <GlobalStyles />
+                <LanguageProvider>
                     { renderRoutes(route.routes) }
-                </>
-            </LanguageProvider>
+                </LanguageProvider>
+            </>
         </ThemeProvider>
     );
 };

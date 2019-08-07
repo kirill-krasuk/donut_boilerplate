@@ -5,5 +5,7 @@ export default styled.div`
     position: absolute;
     top: left;
     z-index: 20;
-    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 `;

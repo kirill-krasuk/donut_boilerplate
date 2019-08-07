@@ -7,6 +7,8 @@ import { Moon }                     from 'styled-icons/fa-solid/Moon';
 
 import { changeThemeAction }        from 'core/actions/theme';
 import { getMode }                  from 'core/selectors/theme';
+import { getLocale }                from 'core/selectors/locale';
+import { changeLocaleAction }       from 'core/actions/locale/index';
 import * as Styled                  from './styled';
 
 /**
@@ -18,7 +20,8 @@ import * as Styled                  from './styled';
 const Header = (): Node => {
     const dispatch = useDispatch();
 
-    const mode = useSelector(getMode);
+    const mode   = useSelector(getMode);
+    const locale = useSelector(getLocale);
 
     const ThemeIcon = {
         light: Sun,
@@ -30,6 +33,10 @@ const Header = (): Node => {
         light: Styled.DarkLogo
     }[mode];
 
+    const nextLocale = locale === 'en'
+        ? 'ru'
+        : 'en';
+
     const handleChangeTheme = () => {
         const reverseMode = mode === 'light'
             ? 'dark'
@@ -38,12 +45,19 @@ const Header = (): Node => {
         dispatch(changeThemeAction(reverseMode));
     };
 
+    const handleChangeLocale = () => {
+        dispatch(changeLocaleAction(nextLocale));
+    };
+
     return (
         <Styled.Header>
             <Styled.Nav>
                 <Styled.ThemeIcon>
                     <ThemeIcon onClick={ handleChangeTheme } />
                 </Styled.ThemeIcon>
+                <Styled.LocaleToggler onClick={ handleChangeLocale }>
+                    { nextLocale }
+                </Styled.LocaleToggler>
             </Styled.Nav>
             <Styled.Content>
                 <ThemeLogo />
