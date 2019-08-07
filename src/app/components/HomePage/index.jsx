@@ -1,11 +1,13 @@
 // @flow
 import React                         from 'react';
 import type { ComponentType, Node }  from 'react';
+import { FormattedMessage as T }     from 'react-intl';
 import { Helmet }                    from 'react-helmet';
 import { hot }                       from 'react-hot-loader/root';
 
 import { Header }                    from 'ui/components';
 import * as Styled                   from './styled';
+import messages                      from './messages';
 
 const HomePage: ComponentType<{}> = (): Node => (
     <>
@@ -14,8 +16,12 @@ const HomePage: ComponentType<{}> = (): Node => (
         />
         <Header />
         <Styled.Container>
-            <Styled.Text>Edit src/app/components/HomePage save and reload</Styled.Text>
-            <Styled.Link to="/second">go to see the second page</Styled.Link>
+            <Styled.Text>
+                <T { ...messages.title } />
+            </Styled.Text>
+            <Styled.Link to="/second">
+                <T { ...messages.link } />
+            </Styled.Link>
         </Styled.Container>
     </>
 );

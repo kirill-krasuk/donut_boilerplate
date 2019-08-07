@@ -8,6 +8,7 @@ import { ThemeProvider }            from 'styled-components';
 import theme                        from 'core/config/theme';
 import { GlobalStyles }             from 'core/utils/styles';
 import { getMode }                  from 'core/selectors/theme';
+import LanguageProvider             from '../LanguageProvider';
 import type { PropsType }           from './types';
 
 const Root: ComponentType<PropsType> = (props): Node => {
@@ -17,10 +18,12 @@ const Root: ComponentType<PropsType> = (props): Node => {
 
     return (
         <ThemeProvider theme={ { ...theme, mode } }>
-            <>
-                <GlobalStyles />
-                { renderRoutes(route.routes) }
-            </>
+            <LanguageProvider>
+                <>
+                    <GlobalStyles />
+                    { renderRoutes(route.routes) }
+                </>
+            </LanguageProvider>
         </ThemeProvider>
     );
 };
