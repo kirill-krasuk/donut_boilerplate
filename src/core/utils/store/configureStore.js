@@ -6,8 +6,10 @@ import { createLogger }                          from 'redux-logger';
 import * as R                                    from 'ramda';
 
 import { themeMiddleware }                       from 'core/middlewares/theme';
+import { localeMiddleware }                      from 'core/middlewares/locale';
 import rootSaga                                  from 'core/saga';
 import createRootReducer                         from 'core/reducers';
+
 
 export function configureStore(preloadedState: Object = {}, history?: Object = {}): Object {
     const env             = process.env.NODE_ENV;
@@ -23,6 +25,7 @@ export function configureStore(preloadedState: Object = {}, history?: Object = {
     if (!R.isEmpty(history)) {
         middlewares.push(
             themeMiddleware,
+            localeMiddleware,
             routerMiddleware(history)
         );
     }
