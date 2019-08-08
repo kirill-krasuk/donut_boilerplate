@@ -1,19 +1,12 @@
-import React        from 'react';
-import { Provider } from 'react-redux';
-
-import { store }    from 'test/__mocks__/store';
-import Header       from '.';
+import { setupShallowWrapper } from 'test/utils';
+import Header                  from '.';
 
 describe('UI Header component', () => {
     describe('Header init', () => {
-        const header = shallow(
-            <Provider store={ store }>
-                <Header />
-            </Provider>
-        );
+        const { wrapper } = setupShallowWrapper(Header);
 
         it('renders properly', () => {
-            expect(header).toMatchSnapshot();
+            expect(wrapper).toMatchSnapshot();
         });
     });
 });

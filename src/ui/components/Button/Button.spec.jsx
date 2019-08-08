@@ -1,6 +1,5 @@
-import React  from 'react';
-
-import Button from '.';
+import { setupShallowWrapper } from 'test/utils';
+import Button                  from '.';
 
 describe('UI Button component', () => {
     const props = {
@@ -12,14 +11,16 @@ describe('UI Button component', () => {
 
     describe('Button init', () => {
         it('renders properly', () => {
-            const button = shallow(<Button { ...props } />);
+            const { wrapper } = setupShallowWrapper(Button, props);
 
-            expect(button).toMatchSnapshot();
+            expect(wrapper).toMatchSnapshot();
         });
     });
 
     describe('Button default props', () => {
-        const button = shallow(<Button>Test</Button>);
+        const { wrapper } = setupShallowWrapper(Button, { children: 'Test' });
+
+        const button = wrapper.find('Button');
 
         it('should render button with default TYPE prop', () => {
             expect(button.prop('type')).toEqual('primary');
@@ -31,14 +32,14 @@ describe('UI Button component', () => {
     });
 
     describe('Button provided props', () => {
+        const { wrapper, props: nextProps } = setupShallowWrapper(Button, {
+            ...props,
+            children: 'Click me'
+        });
+
+        const button = wrapper.find('Button');
+
         it('should render button with children prop equal to "Click me"', () => {
-            const nextProps = {
-                ...props,
-                children: 'Click me'
-            };
-
-            const button = shallow(<Button { ...nextProps } />);
-
             expect(button.prop('children')).toEqual(nextProps.children);
         });
     });

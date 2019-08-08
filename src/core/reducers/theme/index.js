@@ -4,7 +4,7 @@ import { handleActions }              from 'redux-actions';
 import * as actions                   from 'core/actions/theme';
 import type { StateType, ActionType } from './types';
 
-const initState: StateType = {
+export const initState: StateType = {
     mode: 'light'
 };
 
