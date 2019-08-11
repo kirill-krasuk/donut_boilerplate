@@ -1,12 +1,13 @@
 // @flow
 import { injectable, inject } from 'inversify';
+import type { GenericObject } from 'core/types/object';
 import { TYPES }              from '../types';
 
 @injectable()
 export class ConfigManager {
     @inject(TYPES.config) _config: Object;
 
-    defaultValues(options: { [key: string]: * }): void {
+    defaultValues(options: GenericObject<mixed>): void {
         Object
             .keys(options)
             .forEach((key) => {

@@ -26,6 +26,7 @@
         "plugin:react/recommended"
     ],
     "rules": {
+        "no-restricted-syntax": 0,
         "lines-between-class-members": 0,
         "max-len": 0,
         "no-new": 0,

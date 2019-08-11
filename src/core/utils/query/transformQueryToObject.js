@@ -1,7 +1,7 @@
 // @flow
 
-export const transformQueryToObject = (qpInstance: URLSearchParams) => {
-    const qpToArray = qpInstance.toString().split('&');
+export const transformQueryToObject = (query: string): Object => {
+    const qpToArray = query.split('&');
 
     const obj = qpToArray.reduce((acc, curr) => {
         const [ key, value ] = curr.split('=');

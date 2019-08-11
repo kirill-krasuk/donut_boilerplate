@@ -10,6 +10,7 @@ import { container }                from 'core/services/inversify';
 import { TYPES }                    from 'core/services/types';
 import type { iConfigManager }      from 'core/interfaces/ConfigManager';
 import ErrorBoundary                from '../ErrorBoundary';
+import ReadyWrapper                 from '../ReadyWrapper';
 
 const configManager: iConfigManager = container.get(TYPES.ConfigManager);
 
@@ -29,12 +30,14 @@ const App: ComponentType<{}> = (): Node => {
                 storage.parentNode.removeChild(storage);
             }
         };
-    });
+    }, []);
 
     return (
         <ErrorBoundary>
             <Provider store={ store }>
-                <Router history={ history } />
+                <ReadyWrapper>
+                    <Router history={ history } />
+                </ReadyWrapper>
             </Provider>
         </ErrorBoundary>
     );
