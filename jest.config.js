@@ -1,5 +1,6 @@
 module.exports = {
     setupFiles: [
+        'reflect-metadata',
         './src/test/setup.js'
     ],
     snapshotSerializers: [

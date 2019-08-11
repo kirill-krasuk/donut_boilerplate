@@ -1,10 +1,9 @@
-import { takeEvery } from 'redux-saga/effects';
+// @flow
+import { takeEvery }     from 'redux-saga/effects';
+import type { Saga }     from 'redux-saga';
 
-// eslint-disable-next-line
-function* test() {
-    console.log('hello app saga');
-}
+import { fetchForTest }  from './fetchForTest';
 
-export default function* () {
-    yield takeEvery('core/READY', test);
+export default function* (): Saga<void> {
+    yield takeEvery('core/READY', fetchForTest);
 }

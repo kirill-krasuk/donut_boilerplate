@@ -1,16 +1,18 @@
 // @flow
 import type { FetchOptions, HTTPMethod, HTTPResponse }    from 'core/types/HTTP';
+import type { GenericObject }                             from 'core/types/object';
+import type { iHeaders }                                  from 'core/interfaces/Headers';
 import type { iConfigManager }                            from './ConfigManager';
+import type { iQuery }                                    from './Query';
 
 export interface iHTTP {
     _auth: boolean;
     _requestTo: string;
     _path: string;
+    _body: GenericObject<mixed>;
 
-    _store: Object;
-
-    _headers: Headers;
-    _query: URLSearchParams;
+    _headers: iHeaders;
+    _query: iQuery;
 
     _configManager: iConfigManager;
 
@@ -20,18 +22,18 @@ export interface iHTTP {
     _prepareHeaders(): void;
     _getUri(): string;
 
-    get headers(): { [key: string]: string };
-    set headers(newHeaders: { [key: string]: string }): void;
-    set header(newHeader: { key: string, value: string }): void;
-    _setHeaders(newHeaders: { [key: string]: string }): void;
+    get headers(): GenericObject<string>;
+    set headers(newHeaders: GenericObject<string>): void;
+    set header(newHeader: GenericObject<string>): void;
+    _setHeaders(newHeaders: GenericObject<string>): void;
     hasHeader(key: string): boolean;
 
-    get query(): { [key: string]: mixed };
-    set query(newQuery: { [key: string]: mixed }): void;
+    get query(): GenericObject<mixed>;
+    set query(newQuery: GenericObject<mixed>): void;
     get queryAsString(): string;
     hasQueryParam(key: string): boolean;
     hasQueryParams(): boolean;
 
-    set body(newBody: { [key: string]: mixed }): void;
-    get body(): { [key: string]: mixed };
+    set body(newBody: GenericObject<mixed>): void;
+    get body(): GenericObject<mixed>;
 }

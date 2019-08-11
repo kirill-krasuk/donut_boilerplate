@@ -4,7 +4,9 @@ import { injectable, inject }                             from 'inversify';
 import type { iHTTP }                                     from 'core/interfaces/HTTP';
 import type { iConfigManager }                            from 'core/interfaces/ConfigManager';
 import type { FetchOptions, HTTPMethod, HTTPResponse }    from 'core/types/HTTP';
-import { transformObjectToQuery, transformQueryToObject } from 'core/utils/query';
+import type { GenericObject }                             from 'core/types/object';
+import type { iQuery }                                    from 'core/interfaces/Query';
+import type { iHeaders }                                  from 'core/interfaces/Headers';
 
 import { TYPES }                                          from '../types';
 
@@ -13,12 +15,11 @@ export class HTTP implements iHTTP {
     _auth: boolean;
     _requestTo: string;
     _path: string;
-    _body: { [key: string]: mixed } = {};
+    _body: GenericObject<mixed>;
 
-    @inject(TYPES.Store) _store: Object;
-
-    @inject(TYPES.Headers) _headers: Headers;
-    @inject(TYPES.QueryParams) _query: URLSearchParams;
+    @inject(TYPES.Headers) _overridedHeaders: iHeaders;
+    @inject(TYPES.Headers) _headers: iHeaders;
+    @inject(TYPES.Query) _query: iQuery;
 
     @inject(TYPES.ConfigManager) _configManager: iConfigManager;
 
@@ -42,11 +43,9 @@ export class HTTP implements iHTTP {
     }
 
     async _callRequest(method: HTTPMethod): Promise<HTTPResponse> {
-        const { dispatch } = this._store;
-
-        const options: { [key: string]: any } = {
+        const options: Object = {
             method,
-            headers: this._headers
+            headers: this._headers.toObject()
         };
 
         if (method !== 'GET' && method !== 'get') {
@@ -61,8 +60,6 @@ export class HTTP implements iHTTP {
         const body = await response
             .json()
             .catch(() => {});
-
-        dispatch({ type: 'TEST_DISPATCH' });
 
         if (!response.ok) {
             throw new Error(response);
@@ -111,22 +108,27 @@ export class HTTP implements iHTTP {
     _prepareHeaders(): void {
         const headers = {
             'Content-Type': 'application/json',
-            Accept        : 'application/json'
+            Accept        : 'application/json',
+            ...this._overridedHeaders.toObject()
         };
 
         this._setHeaders(headers);
     }
 
-    _setHeaders(newHeaders: { [key: string]: string }): void {
+    _setHeaders(newHeaders: GenericObject<string>): void {
         Object
             .keys(newHeaders)
             .forEach((key) => {
-                this._headers.append(key, newHeaders[key]);
+                this._headers.set(key, newHeaders[key]);
             });
     }
 
-    set headers(newHeaders: { [key: string]: string }): void {
-        this._setHeaders(newHeaders);
+    set headers(newHeaders: GenericObject<string>): void {
+        Object
+            .keys(newHeaders)
+            .forEach((key) => {
+                this._overridedHeaders.set(key, newHeaders[key]);
+            });
     }
 
     set header(newHeader: { key: string, value: string }): void {
@@ -135,7 +137,7 @@ export class HTTP implements iHTTP {
         this._headers.set(key, value);
     }
 
-    get headers(): { [key: string]: string } {
+    get headers(): GenericObject<string> {
         const headers = {};
 
         // eslint-disable-next-line
@@ -152,19 +154,18 @@ export class HTTP implements iHTTP {
         return this._headers.has(key);
     }
 
-    set query(newQuery: { [key: string]: mixed }): void {
-        transformObjectToQuery(newQuery, this._query);
+    set query(newQuery: GenericObject<mixed>): void {
+        Object
+            .keys(newQuery)
+            .forEach(key => this._query.set(key, newQuery[key]));
     }
 
-    get query(): { [key: string]: mixed } {
-        return transformQueryToObject(this._query);
+    get query(): GenericObject<mixed> {
+        return this._query.toObject();
     }
 
     get queryAsString(): string {
-        return this._query
-            .toString()
-            .replace(/%5B/g, '[')
-            .replace(/%5D/g, ']');
+        return this._query.toString();
     }
 
     hasQueryParam(key: string): boolean {
@@ -172,10 +173,12 @@ export class HTTP implements iHTTP {
     }
 
     hasQueryParams(): boolean {
-        return !!this._query.toString().length;
+        return !!this._query
+            .toString()
+            .length;
     }
 
-    set body(newBody: { [key: string]: mixed }): void {
+    set body(newBody: GenericObject<mixed>): void {
         Object
             .keys(newBody)
             .forEach((key) => {
@@ -183,7 +186,7 @@ export class HTTP implements iHTTP {
             });
     }
 
-    get body(): { [key: string]: mixed } {
+    get body(): GenericObject<mixed> {
         return this._body;
     }
 }

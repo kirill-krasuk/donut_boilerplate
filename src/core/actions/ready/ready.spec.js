@@ -1,17 +1,17 @@
 import * as actions from '.';
 
-describe('locale change action', () => {
+describe('Ready app action', () => {
+    const type   = actions.READY;
     const regExp = /^core/;
-    const type   = actions.CHANGE_LOCALE;
 
     it('type must start from the "core" and match the name of the variable', () => {
         expect(regExp.test(type)).toBeTruthy();
     });
 
-    it('action must return correctly value', () => {
-        const payload = 'en';
+    it('action must return correctly payload', () => {
+        const payload = undefined;
 
-        const actual   = actions.changeLocaleAction(payload);
+        const actual   = actions.readyAction(payload);
         const expected = {
             payload,
             type

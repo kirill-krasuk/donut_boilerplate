@@ -1,5 +1,6 @@
 const webpack                  = require('webpack');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
+
+// const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { paths, configureBundler } = require('./webpack.common');
 
@@ -18,12 +19,13 @@ module.exports = configureBundler({
     plugins  : [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new CircularDependencyPlugin({
-            exclude: /node_modules/,
-            onDetected({ paths, compilation }) {
-                compilation.errors.push(new Error(paths.join(' -> ')));
-            },
-            failOnError: true
-        }),
+
+        // new CircularDependencyPlugin({
+        //     exclude: /node_modules|saga|inversify/,
+        //     onDetected({ paths, compilation }) {
+        //         compilation.errors.push(new Error(paths.join(' -> ')));
+        //     },
+        //     failOnError: true
+        // }),
     ]
 });
