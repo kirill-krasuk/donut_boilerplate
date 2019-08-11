@@ -3,7 +3,7 @@ export default {
         getPosts: {
             method: 'GET',
             auth  : false,
-            path  : '/posts'
+            path  : '/posts/ppp'
         }
     }
 };

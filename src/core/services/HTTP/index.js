@@ -9,6 +9,7 @@ import type { iQuery }                                    from 'core/interfaces/
 import type { iHeaders }                                  from 'core/interfaces/Headers';
 
 import { TYPES }                                          from '../types';
+import { HTTPError }                                      from '../HTTPError';
 
 @injectable()
 export class HTTP implements iHTTP {
@@ -62,7 +63,7 @@ export class HTTP implements iHTTP {
             .catch(() => {});
 
         if (!response.ok) {
-            throw new Error(response);
+            throw new HTTPError(response, request, body);
         }
 
         return {
