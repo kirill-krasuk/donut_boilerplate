@@ -5,5 +5,8 @@ export default {
             auth  : false,
             path  : '/posts/ppp'
         }
+    },
+    socket: {
+        path: '/api/v2/socket.io'
     }
 };

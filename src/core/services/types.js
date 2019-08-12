@@ -4,5 +4,6 @@ export const TYPES = {
     config         : Symbol.for('config'),
     Query          : Symbol.for('Query'),
     Headers        : Symbol.for('Headers'),
-    IteratorCreator: Symbol.for('IteratorCreator')
+    IteratorCreator: Symbol.for('IteratorCreator'),
+    SocketConnector: Symbol.for('SocketConnector')
 };
