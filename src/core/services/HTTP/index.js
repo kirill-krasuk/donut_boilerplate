@@ -16,7 +16,7 @@ export class HTTP implements iHTTP {
     _auth: boolean;
     _requestTo: string;
     _path: string;
-    _body: GenericObject<mixed>;
+    _body: GenericObject<mixed> = {};
 
     @inject(TYPES.Headers) _overridedHeaders: iHeaders;
     @inject(TYPES.Headers) _headers: iHeaders;
