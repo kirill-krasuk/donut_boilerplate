@@ -20,6 +20,10 @@ export const GlobalStyles = createGlobalStyle`
         min-height: inherit;
     }
 
+    #root.blured {
+        filter: blur(3px);
+    }
+
     @font-face {
         font-family: Adigiana;
         src: url(${ Adigiana });
