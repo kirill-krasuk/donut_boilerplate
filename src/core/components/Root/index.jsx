@@ -9,19 +9,23 @@ import theme                        from 'core/config/theme';
 import { GlobalStyles }             from 'core/utils/styles';
 import { getMode }                  from 'core/selectors/theme';
 import LanguageProvider             from '../LanguageProvider';
+import ModalManager                 from '../ModalManager';
 import type { PropsType }           from './types';
 
 const Root: ComponentType<PropsType> = (props): Node => {
     const { route } = props;
 
-    const mode = useSelector(getMode);
+    const mode     = useSelector(getMode);
 
     return (
         <ThemeProvider theme={ { ...theme, mode } }>
             <>
                 <GlobalStyles />
                 <LanguageProvider>
-                    { renderRoutes(route.routes) }
+                    <>
+                        { renderRoutes(route.routes) }
+                        <ModalManager />
+                    </>
                 </LanguageProvider>
             </>
         </ThemeProvider>

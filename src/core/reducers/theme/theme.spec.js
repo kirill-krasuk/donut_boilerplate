@@ -1,4 +1,4 @@
-import { changeThemeAction }       from 'core/actions/theme/index';
+import { changeThemeAction }       from 'core/actions/theme';
 import themeReducer, { initState } from '.';
 
 describe('test theme reducer', () => {
