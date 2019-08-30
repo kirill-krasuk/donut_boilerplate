@@ -51,7 +51,6 @@
         "@babel/plugin-transform-runtime",
         "@babel/plugin-proposal-function-bind", // bind as :: operator
         "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
-        "@babel/plugin-proposal-optional-chaining", // for nested object checking   
-        // "tcomb",
+        "@babel/plugin-proposal-optional-chaining", // for nested object checking
     ]
 }
