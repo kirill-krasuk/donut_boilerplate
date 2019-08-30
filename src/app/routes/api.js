@@ -3,7 +3,7 @@ export default {
         getPosts: {
             method: 'GET',
             auth  : false,
-            path  : '/posts/ppp'
+            path  : '/posts'
         }
     },
     socket: {
