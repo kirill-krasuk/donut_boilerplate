@@ -16,7 +16,7 @@ const component = {};
 
 const questions = {
     type: {
-        message : `\nA component of an application or ui? ${ emoji.get('thinking_face') } (app/ui): `,
+        message : `\n ${ emoji.get('thinking_face') } A component of an application or ui? (app/ui): `,
         callback: (answer, reject) => {
             if (answer !== 'app' && answer !== 'ui') {
                 reject(new Error(`${ emoji.get('rotating_light') } Error! given data was invalid`));
@@ -24,18 +24,18 @@ const questions = {
         }
     },
     hasProps: {
-        message : '\nDeclare props? (y/n): ',
+        message : `\n${ emoji.get('pushpin') } Declare props? (y/n): `,
         callback: yesNoCallback
     },
     isLoadable: {
-        message : '\nDo you want the component to load dynamically? (y/n): ',
+        message : `\n${ emoji.get('arrows_counterclockwise') } Do you want the component to load dynamically? (y/n): `,
         callback: yesNoCallback
     },
     needIntl: {
-        message : '\nDo you want to create a file with translations? (y/n): ',
+        message : `\n${ emoji.get('speech_balloon') } Do you want to create a file with translations? (y/n): `,
         callback: yesNoCallback
     },
-    name: '\nWhat component name do you want to give? '
+    name: `\n${ emoji.get('memo') } What component name do you want to give? `
 };
 
 const main = async () => {
