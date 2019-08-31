@@ -1,16 +1,16 @@
 const fs    = require('fs');
 const emoji = require('node-emoji');
 
-const COLORS         = require('../constants/color');
-const createTemplate = require('../utils/creators/createComponentTemplate');
-const createPath     = require('../utils/creators/createComponentPath');
-const createProps    = require('../utils/creators/createPropsTemplate');
-const createLoadable = require('../utils/creators/createLodableTemplate');
-const createIntl     = require('../utils/creators/createIntlTemplate');
-const updateRootFile = require('../utils/updates/updateComponentExporFile');
-const makeQuestions  = require('../utils/makeQuestions');
-const getRootPath    = require('../utils/getRootPath');
-const yesNoCallback  = require('../utils/callbacks/yesNoCallback');
+const createTemplate  = require('../utils/creators/component/createComponentTemplate');
+const createPath      = require('../utils/creators/component/createComponentPath');
+const createProps     = require('../utils/creators/component/createPropsTemplate');
+const createLoadable  = require('../utils/creators/component/createLodableTemplate');
+const createIntl      = require('../utils/creators/component/createIntlTemplate');
+const updateRootFile  = require('../utils/updates/updateComponentExporFile');
+const makeQuestions   = require('../utils/makeQuestions');
+const getRootPath     = require('../utils/getRootPath');
+const yesNoCallback   = require('../utils/callbacks/yesNoCallback');
+const successCreating = require('../utils/succcessCreating');
 
 const component = {};
 
@@ -73,8 +73,7 @@ const main = async () => {
         if (err) throw err;
     });
 
-    console.log(COLORS.FgGreen, `\n${ emoji.get('tada') } ${ emoji.get('tada') }   The component was successfully created!   ${ emoji.get('tada') } ${ emoji.get('tada') }`);
-    console.log(COLORS.FgWhite);
+    successCreating();
 };
 
 main();
