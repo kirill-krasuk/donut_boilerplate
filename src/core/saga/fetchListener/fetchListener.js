@@ -14,12 +14,18 @@ export function* fetchListener({ payload }: FetchType): Saga<void> {
         body: httpBody,
         query,
         route,
-        successHandler,
-        errorHandler
+        onSuccess: successHandler,
+        onError: errorHandler,
+        startHandler,
+        finallyHandler
     } = payload;
 
     http.body  = { ...httpBody };
     http.query = { ...query };
+
+    if (startHandler) {
+        startHandler();
+    }
 
     try {
         const { body } = yield call(http.fetch, route);
@@ -32,6 +38,10 @@ export function* fetchListener({ payload }: FetchType): Saga<void> {
 
         if (errorHandler) {
             yield put(errorHandler(err));
+        }
+    } finally {
+        if (finallyHandler) {
+            finallyHandler();
         }
     }
 }

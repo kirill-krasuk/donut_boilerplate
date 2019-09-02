@@ -2,10 +2,10 @@
 
 export type CallModalType = {
     type: 'core/CALL_MODAL',
-    payload: string | {
+    payload: string | {|
         history: boolean,
         id: string
-    }
+    |}
 }
 
 export type SetModalType = {

@@ -1,12 +1,14 @@
 // @flow
 
-export type FetchType = {|
+export type FetchType = {
     type: 'core/FETCH',
-    payload: {
+    payload: $Exact<{
         body?: Object,
         query?: Object,
-        errorHandler?: Function,
-        successHandler?: Function,
+        onError?: Function,
+        onSuccess?: Function,
+        startHandler?: Function,
+        finallyHandler?: Function,
         route: Object
-    },
-|}
+    }>,
+}
