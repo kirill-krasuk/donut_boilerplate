@@ -1,21 +1,19 @@
 // @flow
 
-import { injectable, inject }    from 'inversify';
-import io                        from 'socket.io-client';
-
 import type { iSocketConnector } from 'core/interfaces/SocketConnector';
 import type { iConfigManager }   from 'core/interfaces/ConfigManager';
 import api                       from 'app/routes/api';
-import { TYPES }                 from '../types';
+import { ConfigManager }         from '../ConfigManager';
 
-@injectable()
 export class SocketConnector implements iSocketConnector {
     _socket: Object;
     _isConnect: boolean = false;
 
-    @inject(TYPES.ConfigManager) _configManager: iConfigManager;
+    _configManager: iConfigManager = new ConfigManager();
 
-    connect = (ownOptions?: Object): Promise<Object> => {
+    connect = async (ownOptions?: Object): Promise<Object> => {
+        const io = await import('socket.io-client');
+
         if (this._isConnect) {
             this.disconnect();
         }

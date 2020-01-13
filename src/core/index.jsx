@@ -1,20 +1,24 @@
 // @flow
 
 import React                   from 'react';
-import { hydrate }             from 'react-dom';
+import { hydrate, render }     from 'react-dom';
 import { loadableReady }       from '@loadable/component';
 
 import type { iConfigManager } from 'core/interfaces/ConfigManager';
+import { ConfigManager }       from 'core/services';
 import { App }                 from './components';
-import { container }           from './services/inversify';
-import { TYPES }               from './services/types';
+
+const ROOT_NODE = document.getElementById('root');
+
+const configManager: iConfigManager = new ConfigManager();
+const isSWNeeded                    = configManager.get('swEnable');
+const needHydrate                   = configManager.get('needHydrate');
+
+const renderOrHydrate = needHydrate
+    ? hydrate
+    : render;
 
 loadableReady(() => {
-    const ROOT_NODE = document.getElementById('root');
-
-    const configManager: iConfigManager = container.get(TYPES.ConfigManager);
-    const isSWNeeded                    = configManager.get('swEnable');
-
     if (isSWNeeded) {
         if (!window.isSecureContext) {
             window.console.log('SW need a secure context');
@@ -34,5 +38,5 @@ loadableReady(() => {
         }
     }
 
-    hydrate(<App />, (ROOT_NODE: any));
+    renderOrHydrate(<App />, (ROOT_NODE: any));
 });

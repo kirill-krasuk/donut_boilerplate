@@ -1,13 +1,10 @@
-import { container } from 'core/services/inversify';
-
 import { Query }     from '.';
-import { TYPES }     from '../types';
 
 describe('Query service', () => {
     let query;
 
     beforeEach(() => {
-        query = container.get(TYPES.Query);
+        query = new Query();
 
         query.set('name', 'Kirill');
     });

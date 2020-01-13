@@ -1,6 +1,6 @@
 // @flow
 
-import { injectable, inject }                             from 'inversify';
+import fetch                                              from 'isomorphic-fetch';
 
 import type { iHTTP }                                     from 'core/interfaces/HTTP';
 import type { iConfigManager }                            from 'core/interfaces/ConfigManager';
@@ -8,22 +8,23 @@ import type { FetchOptions, HTTPMethod, HTTPResponse }    from 'core/types/HTTP'
 import type { GenericObject }                             from 'core/types/object';
 import type { iQuery }                                    from 'core/interfaces/Query';
 import type { iHeaders }                                  from 'core/interfaces/Headers';
-
-import { TYPES }                                          from '../types';
+import { Headers }                                        from '../Headers';
+import { Query }                                          from '../Query';
+import { ConfigManager }                                  from '../ConfigManager';
 import { HTTPError }                                      from '../HTTPError';
 
-@injectable()
 export class HTTP implements iHTTP {
     _auth: boolean;
     _requestTo: string;
     _path: string;
     _body: GenericObject<mixed> = {};
+    _bodyIsFormData: boolean = false;
 
-    @inject(TYPES.Headers) _overridedHeaders: iHeaders;
-    @inject(TYPES.Headers) _headers: iHeaders;
-    @inject(TYPES.Query) _query: iQuery;
+    _overridedHeaders: iHeaders = new Headers();
+    _headers: iHeaders = new Headers();
+    _query: iQuery = new Query();
 
-    @inject(TYPES.ConfigManager) _configManager: iConfigManager;
+    _configManager: iConfigManager = new ConfigManager();
 
     fetch = async (options: FetchOptions): Promise<HTTPResponse> => {
         const {
@@ -51,13 +52,13 @@ export class HTTP implements iHTTP {
         };
 
         if (method !== 'GET' && method !== 'get') {
-            options.body = JSON.stringify(this._body);
+            options.body = this._bodyIsFormData ? this._body : JSON.stringify(this._body);
         }
 
         const uri = this._getUri();
 
         const request: Request   = new Request(uri, options);
-        const response: Response = await fetch(request);
+        const response: Response = await fetch(uri, options);
 
         const body = await response
             .json()
@@ -109,12 +110,15 @@ export class HTTP implements iHTTP {
 
     _prepareHeaders(): void {
         const headers = {
-            'Content-Type': 'application/json',
-            Accept        : 'application/json',
+            Accept: 'application/json',
 
             // flow-disable-next-line
             ...this._overridedHeaders.toObject()
         };
+
+        if (!this._bodyIsFormData) {
+            headers['Content-Type'] = 'application/json';
+        }
 
         this._setHeaders(headers);
     }
@@ -182,12 +186,17 @@ export class HTTP implements iHTTP {
             .length;
     }
 
-    set body(newBody: GenericObject<mixed>): void {
-        Object
-            .keys(newBody)
-            .forEach((key) => {
-                this._body[key] = newBody[key];
-            });
+    set body(newBody: GenericObject<mixed> | FormData): void {
+        if (newBody instanceof FormData) {
+            this._bodyIsFormData = true;
+            this._body           = newBody;
+        } else {
+            Object
+                .keys(newBody)
+                .forEach((key) => {
+                    this._body[key] = newBody[key];
+                });
+        }
     }
 
     get body(): GenericObject<mixed> {

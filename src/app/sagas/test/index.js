@@ -7,5 +7,5 @@ import { READY }         from 'core/actions/ready';
 import { fetchForTest }  from './fetchForTest';
 
 export default function* (): Saga<void> {
-    yield takeEvery(READY, fetchForTest);
+    // yield takeEvery(READY, fetchForTest);
 }

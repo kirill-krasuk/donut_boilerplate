@@ -18,6 +18,13 @@ const { changeLocaleAction } = require('core/actions/locale');
 const { checkAuth }          = require('server/utils/checkAuth');
 const { getLocation }        = require('server/utils/getLocation');
 const { prefetch }           = require('server/utils/prefetch');
+const { ConfigManager }      = require('core/services');
+
+const configManager: iConfigManager = new ConfigManager();
+
+configManager.defaultValues({
+    apiHost: 'https://jsonplaceholder.typicode.com',
+});
 
 const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 

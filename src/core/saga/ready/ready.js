@@ -4,12 +4,11 @@ import { put, call }             from 'redux-saga/effects';
 import type { Saga }             from 'redux-saga';
 
 import type { iSocketConnector } from 'core/interfaces/SocketConnector';
-import { container }             from 'core/services/inversify';
-import { TYPES }                 from 'core/services/types';
 import { socketInitAction }      from 'core/actions/socket';
+import { SocketConnector }       from 'core/services';
 
 export function* ready(): Saga<void> {
-    const socketConnector: iSocketConnector  = container.get(TYPES.SocketConnector);
+    const socketConnector: iSocketConnector  = new SocketConnector();
 
     const socket = yield call(socketConnector.connect);
 

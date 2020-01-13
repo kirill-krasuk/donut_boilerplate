@@ -1,19 +1,16 @@
 // @flow
 
-import { injectable, inject }                             from 'inversify';
-
 import type { iQuery }                                    from 'core/interfaces/Query';
 import type { iIteratorCreator }                          from 'core/interfaces/IteratorCreator';
 import type { GenericObject }                             from 'core/types/object';
 import { transformQueryToObject, transformObjectToQuery } from 'core/utils/query';
-import { TYPES }                                          from '../types';
+import { IteratorCreator }                                from '../IteratorCreator';
 
-@injectable()
 export class Query implements iQuery {
     _string: string = '';
     _qObject: GenericObject<*> = {};
 
-    @inject(TYPES.IteratorCreator) _iteratorCreator: iIteratorCreator;
+    _iteratorCreator: iIteratorCreator = new IteratorCreator();
 
     set(key: string, value: *): iQuery {
         this._qObject[key] = value;
