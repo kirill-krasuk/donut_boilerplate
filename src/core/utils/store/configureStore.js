@@ -11,8 +11,11 @@ import { localeMiddleware }                      from 'core/middlewares/locale';
 import { locationMiddleware }                    from 'core/middlewares/location';
 import rootSaga                                  from 'core/saga';
 import createRootReducer                         from 'core/reducers';
+import { shakeReducers }                         from './shakeReducers';
 
-export function configureStore(preloadedState: Object = {}, history?: Object = {}): Object {
+export function configureStore(preloadedState: Object = {}, history?: Object = {}, ssrReducers?: Object = {}): Object {
+    const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
+
     const env            = process.env.NODE_ENV;
     const sagaMiddleware = createSagaMiddleware();
     const middlewares    = [ sagaMiddleware ];
@@ -32,10 +35,21 @@ export function configureStore(preloadedState: Object = {}, history?: Object = {
     }
 
     const store = createStore(
-        createRootReducer(history),
-        preloadedState,
+        createRootReducer(history, {}, ssrReducers),
+        staticPreloadedState,
         composeEnhancers(applyMiddleware(...middlewares))
     );
+
+    // flow-disable-next-line
+    store.asyncReducers = {};
+
+    // flow-disable-next-line
+    store.injectReducer = (key, asyncReducer) => { // flow-disable-next-line
+        store.asyncReducers[key] = (state = asyncPreloadedState[key], action) => asyncReducer(state, action);
+
+        // flow-disable-next-line
+        store.replaceReducer(createRootReducer(history, store.asyncReducers));
+    };
 
     sagaMiddleware.run(rootSaga);
 

@@ -19,6 +19,7 @@ const { checkAuth }          = require('server/utils/checkAuth');
 const { getLocation }        = require('server/utils/getLocation');
 const { prefetch }           = require('server/utils/prefetch');
 const { ConfigManager }      = require('core/services');
+const ssrReducers            = require('app/reducers/serverReducer').default;
 
 const configManager: iConfigManager = new ConfigManager();
 
@@ -40,7 +41,7 @@ export async function serverSideRendering(req, res) {
         initialEntries: [ req.url ]
     });
 
-    const { store } = configureStore({}, history);
+    const { store } = configureStore({}, history, ssrReducers);
     const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
     const sheet     = new ServerStyleSheet();
 
