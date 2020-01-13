@@ -1,3 +1,5 @@
+// @flow
+
 export default {
     test: {
         getPosts: {
@@ -7,6 +9,6 @@ export default {
         }
     },
     socket: {
-        path: '/api/v2/socket.io'
+        path: '/socket.io'
     }
 };

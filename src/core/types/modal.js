@@ -4,7 +4,7 @@ export type CallModalType = {
     type: 'core/CALL_MODAL',
     payload: string | {|
         history: boolean,
-        id: string
+        id: string | null
     |}
 }
 

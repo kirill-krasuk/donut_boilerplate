@@ -1,11 +1,10 @@
-import { container } from 'core/services/inversify';
-import { TYPES }     from '../types';
+import { Headers }   from './index';
 
 describe('Headers service', () => {
     let headers;
 
     beforeEach(() => {
-        headers = container.get(TYPES.Headers);
+        headers = new Headers();
     });
 
     describe('Headers methods', () => {

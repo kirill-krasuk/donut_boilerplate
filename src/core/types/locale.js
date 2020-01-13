@@ -2,5 +2,5 @@
 
 export type ChangeLocaleType = {
     type: 'core/CHANGE_LOCALE',
-    payload: string
+    payload: 'en' | 'ru'
 }

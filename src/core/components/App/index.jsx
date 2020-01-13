@@ -7,19 +7,15 @@ import { hot }                      from 'react-hot-loader/root';
 
 import Router                       from 'core/components/Router';
 import { store, history }           from 'core/utils/store';
-import { container }                from 'core/services/inversify';
-import { TYPES }                    from 'core/services/types';
 import type { iConfigManager }      from 'core/interfaces/ConfigManager';
+import { ConfigManager }            from 'core/services';
 import ErrorBoundary                from '../ErrorBoundary';
 import ReadyWrapper                 from '../ReadyWrapper';
 
-const configManager: iConfigManager = container.get(TYPES.ConfigManager);
+const configManager: iConfigManager = new ConfigManager();
 
 configManager.defaultValues({
-    apiHost   : 'https://jsonplaceholder.typicode.com',
-    apiPort   : '',
-    apiPreffix: '',
-    apiVersion: ''
+    apiHost: 'https://jsonplaceholder.typicode.com',
 });
 
 const App: ComponentType<{}> = (): Node => {

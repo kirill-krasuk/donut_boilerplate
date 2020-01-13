@@ -1,12 +1,12 @@
 // @flow
 
-import React, { useEffect } from 'react';
-import type { Node }        from 'react';
-import { useDispatch }      from 'react-redux';
-import onClickOutside       from 'react-onclickoutside';
+import React, { useEffect, useRef } from 'react';
+import type { Node }                from 'react';
+import { useDispatch }              from 'react-redux';
 
-import { closeModalAction } from 'core/actions/modal';
-import * as Styled          from './styled';
+import { useClickOutside }          from 'core/hooks/useClickOutside';
+import { closeModalAction }         from 'core/actions/modal';
+import * as Styled                  from './styled';
 
 type PropsType = {
 
@@ -46,6 +46,7 @@ const Modal = (props: PropsType): Node => {
     const { children, onClose, title } = props;
 
     const dispatch = useDispatch();
+    const ref      = useRef();
 
     const handleKeyPress = (e: KeyboardEvent): void => {
         const { keyCode } = e;
@@ -69,16 +70,16 @@ const Modal = (props: PropsType): Node => {
         };
     }, []);
 
-    Modal.handleClickOutside = () => {
+    useClickOutside(ref, () => {
         if (onClose) {
             onClose();
         }
 
         dispatch(closeModalAction());
-    };
+    });
 
     return (
-        <Styled.Wrapper>
+        <Styled.Wrapper ref={ ref }>
             {
                 title &&
                 <Styled.Head>
@@ -92,11 +93,4 @@ const Modal = (props: PropsType): Node => {
     );
 };
 
-const clickOutsideConfig = {
-    handleClickOutside: () => Modal.handleClickOutside
-};
-
-// for visible in styleguide
-export { Modal };
-
-export default onClickOutside(Modal, clickOutsideConfig);
+export default Modal;

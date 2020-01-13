@@ -1,12 +1,11 @@
-import { container } from 'core/services/inversify';
-import { TYPES }     from 'core/services/types';
+import { SocketConnector } from './index';
 
 
 describe('SocketConnector service', () => {
     let socketConnector;
 
     beforeEach(() => {
-        socketConnector = container.get(TYPES.SocketConnector);
+        socketConnector = new SocketConnector();
     });
 
     it('sockets must be disconnected if before they were connected ', () => {

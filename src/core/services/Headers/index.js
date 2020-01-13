@@ -1,17 +1,14 @@
 // @flow
 
-import { injectable, inject }    from 'inversify';
-
 import type { iHeaders }         from 'core/interfaces/Headers';
 import type { iIteratorCreator } from 'core/interfaces/IteratorCreator';
 import type { GenericObject }    from 'core/types/object';
-import { TYPES }                 from '../types';
+import { IteratorCreator }       from '../IteratorCreator';
 
-@injectable()
 export class Headers implements iHeaders {
     _innerObject: GenericObject<*> = {};
 
-    @inject(TYPES.IteratorCreator) _iteratorCreator: iIteratorCreator;
+    _iteratorCreator: iIteratorCreator = new IteratorCreator();
 
 
     set(key: string, value: *): iHeaders {

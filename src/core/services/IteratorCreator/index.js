@@ -1,10 +1,7 @@
 // @flow
 
-import { injectable }            from 'inversify';
-
 import type { iIteratorCreator } from 'core/interfaces/IteratorCreator';
 
-@injectable()
 export class IteratorCreator implements iIteratorCreator {
     _iterableObject: Object;
 

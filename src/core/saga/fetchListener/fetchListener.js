@@ -5,11 +5,11 @@ import type { Saga }        from 'redux-saga';
 
 import type { FetchType }   from 'core/types/fetch';
 import type { iHTTP }       from 'core/interfaces/HTTP';
-import { container }        from 'core/services/inversify';
-import { TYPES }            from 'core/services/types';
+import { HTTP }             from 'core/services';
+
 
 export function* fetchListener({ payload }: FetchType): Saga<void> {
-    const http: iHTTP = container.get(TYPES.HTTP);
+    const http: iHTTP = new HTTP();
 
     const {
         body: httpBody,

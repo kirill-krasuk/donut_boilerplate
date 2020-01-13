@@ -1,21 +1,21 @@
+// @flow
+
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware                      from 'redux-saga';
 import { routerMiddleware }                      from 'connected-react-router';
 import { composeWithDevTools }                   from 'redux-devtools-extension';
-import { createLogger }                          from 'redux-logger';
 import * as R                                    from 'ramda';
 
 import { themeMiddleware }                       from 'core/middlewares/theme';
 import { localeMiddleware }                      from 'core/middlewares/locale';
+import { locationMiddleware }                    from 'core/middlewares/location';
 import rootSaga                                  from 'core/saga';
 import createRootReducer                         from 'core/reducers';
 
-
 export function configureStore(preloadedState: Object = {}, history?: Object = {}): Object {
-    const env             = process.env.NODE_ENV;
-    const isLoggerEnabled = JSON.parse(process.env.REDUX_LOGGER);
-    const sagaMiddleware  = createSagaMiddleware();
-    const middlewares     = [ sagaMiddleware ];
+    const env            = process.env.NODE_ENV;
+    const sagaMiddleware = createSagaMiddleware();
+    const middlewares    = [ sagaMiddleware ];
 
     const composeEnhancers: Function =
         env === 'development'
@@ -24,14 +24,11 @@ export function configureStore(preloadedState: Object = {}, history?: Object = {
 
     if (!R.isEmpty(history)) {
         middlewares.push(
+            locationMiddleware,
             themeMiddleware,
             localeMiddleware,
             routerMiddleware(history)
         );
-    }
-
-    if (isLoggerEnabled && env === 'production') {
-        middlewares.push(createLogger());
     }
 
     const store = createStore(
@@ -42,6 +39,7 @@ export function configureStore(preloadedState: Object = {}, history?: Object = {
 
     sagaMiddleware.run(rootSaga);
 
+    // flow-disable-next-line
     if (module.hot) {
         module.hot.accept('../../reducers', () => {
             store.replaceReducer(createRootReducer(history));

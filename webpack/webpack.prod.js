@@ -2,7 +2,7 @@
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin            = require('terser-webpack-plugin');
 
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const { paths, configureBundler } = require('./webpack.common');
 
@@ -42,10 +42,10 @@ module.exports = configureBundler({
         //     hashDigestLength: 4,
         // }),
 
-        // new BundleAnalyzerPlugin({
-        //     openAnalyzer: false,
-        //     analyzerPort: 8181,
-        //     analyzerHost: '127.0.0.1'
-        // }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerPort: 8181,
+            analyzerHost: '127.0.0.1'
+        }),
     ]
 });
