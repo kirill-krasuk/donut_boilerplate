@@ -2,11 +2,10 @@
 
 import { createAction }    from 'redux-actions';
 
-import type { ActionType } from 'core/types/action';
 import type { ReadyType }  from 'core/types/ready';
 
-export const READY: $PropertyType<ReadyType, 'type'> = 'core/READY';
-export const readyAction: ActionType<
-        $PropertyType<ReadyType, 'type'>,
-        $PropertyType<ReadyType, 'payload'>
-    > = createAction(READY);
+type Type = $PropertyType<ReadyType, 'type'>;
+type Payload = $PropertyType<ReadyType, 'payload'>;
+
+export const READY: Type = 'core/READY';
+export const readyAction = createAction<Type, Payload>(READY);

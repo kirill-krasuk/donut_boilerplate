@@ -1,11 +1,10 @@
 // @flow
 import { createAction }              from 'redux-actions';
 
-import type { ActionType }           from 'core/types/action';
 import type { IsFirstRenderingType } from 'core/types/location';
 
-export const IS_FIRST_RENDERING: $PropertyType<IsFirstRenderingType, 'type'> = 'core/IS_FIRST_RENDERING';
-export const isFirstRenderingAction: ActionType<
-        $PropertyType<IsFirstRenderingType, 'type'>,
-        $PropertyType<IsFirstRenderingType, 'payload'>
-    > = createAction(IS_FIRST_RENDERING);
+type Type = $PropertyType<IsFirstRenderingType, 'type'>;
+type Payload = $PropertyType<IsFirstRenderingType, 'payload'>;
+
+export const IS_FIRST_RENDERING: Type = 'core/IS_FIRST_RENDERING';
+export const isFirstRenderingAction = createAction<Type, Payload>(IS_FIRST_RENDERING);

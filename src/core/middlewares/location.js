@@ -7,8 +7,6 @@ const locationMiddleware = ({ dispatch, getState }: Object) => (next: Function) 
     const isFirstRendering = getIsFirstRendering(getState());
 
     if (type === '@@router/LOCATION_CHANGE' && payload.isFirstRendering !== isFirstRendering) {
-        console.log(payload, type);
-
         dispatch(isFirstRenderingAction(payload.isFirstRendering));
     }
 

@@ -2,11 +2,10 @@
 
 import { createAction }             from 'redux-actions';
 
-import type { ActionType }          from 'core/types/action';
 import type { SocketReconnectType } from 'core/types/socket';
 
-export const SOCKET_RECONNECT: $PropertyType<SocketReconnectType, 'type'> = 'core/SOCKET_RECONNECT';
-export const socketReconnectAction: ActionType<
-        $PropertyType<SocketReconnectType, 'type'>,
-        $PropertyType<SocketReconnectType, 'payload'>
-    > = createAction(SOCKET_RECONNECT);
+type Type = $PropertyType<SocketReconnectType, 'type'>;
+type Payload = $PropertyType<SocketReconnectType, 'type'>;
+
+export const SOCKET_RECONNECT: Type = 'core/SOCKET_RECONNECT';
+export const socketReconnectAction = createAction<Type, Payload>(SOCKET_RECONNECT);
