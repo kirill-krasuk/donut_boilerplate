@@ -1,4 +1,5 @@
 // @flow
+
 import React, { useEffect }         from 'react';
 import type { ComponentType, Node } from 'react';
 import { Provider }                 from 'react-redux';

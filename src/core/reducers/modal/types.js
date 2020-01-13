@@ -1,4 +1,5 @@
 // @flow
+
 import type { SetModalType, SetModalHistoryFlagType } from 'core/types/modal';
 
 export type StateType = {

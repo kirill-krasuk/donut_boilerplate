@@ -7,8 +7,7 @@ log4js.configure({
     categories: { default: { appenders: [ 'cheese' ], level: 'error' } }
 });
 
-
-function errorLogging(req, res) {
+export function errorLogging(req, res) {
     const { stack } = req.body;
 
     const err = stack.join('\n');
@@ -17,5 +16,3 @@ function errorLogging(req, res) {
 
     res.sendStatus(200);
 }
-
-module.exports = errorLogging;

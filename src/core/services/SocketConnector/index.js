@@ -1,4 +1,5 @@
 // @flow
+
 import { injectable, inject }    from 'inversify';
 import io                        from 'socket.io-client';
 

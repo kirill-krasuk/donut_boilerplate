@@ -1,4 +1,5 @@
 // @flow
+
 import Cookie           from 'js-cookie';
 
 import { CHANGE_THEME } from 'core/actions/theme';

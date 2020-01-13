@@ -1,6 +1,6 @@
 import styled    from 'styled-components/macro';
 
-import { SIZES } from 'ui/constants/button';
+import { SIZES } from 'ui-kit/constants/button';
 
 export default styled.button`
     height: ${ ({ size }) => SIZES[size] };

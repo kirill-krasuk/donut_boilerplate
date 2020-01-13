@@ -6,7 +6,7 @@
 		"paths": {
 			"core/*": ["src/core/*"],
 			"app/*": ["src/app/*"],
-			"ui/*": ["src/ui/*"],
+			"ui-kit/*": ["src/ui-kit/*"],
 			"images/*": ["src/assets/images/*"],
             "svgs/*": ["src/assets/svgs/*"],
 			"server/*": ["server/*"],

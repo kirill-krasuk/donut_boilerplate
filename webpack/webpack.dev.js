@@ -1,4 +1,5 @@
 const webpack                  = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 // const CircularDependencyPlugin = require('circular-dependency-plugin');
 
@@ -19,6 +20,11 @@ module.exports = configureBundler({
     plugins  : [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerPort: 8181,
+            analyzerHost: '127.0.0.1'
+        }),
 
         // new CircularDependencyPlugin({
         //     exclude: /node_modules|saga|inversify/,

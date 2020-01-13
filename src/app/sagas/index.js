@@ -1,4 +1,5 @@
 // @flow
+
 import { fork } from 'redux-saga/effects';
 
 import test     from './test';

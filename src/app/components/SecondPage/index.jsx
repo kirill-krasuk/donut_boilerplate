@@ -1,11 +1,12 @@
 // @flow
+
 import React                        from 'react';
 import type { ComponentType, Node } from 'react';
 import { FormattedMessage as T }    from 'react-intl';
 import { Helmet }                   from 'react-helmet';
 import { hot }                      from 'react-hot-loader/root';
 
-import { Header }                   from 'ui/components';
+import { Header }                   from 'ui-kit/components';
 import * as Styled                  from './styled';
 import messages                     from './messages';
 

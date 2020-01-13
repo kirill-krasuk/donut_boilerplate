@@ -3,7 +3,9 @@
     "git.enableSmartCommit": true,
     "git.autofetch": true,
     "explorer.confirmDelete": false,
-    "eslint.autoFixOnSave": true,
     "typescript.validate.enable": false,
     "git.confirmSync": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
 }

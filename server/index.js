@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 require('@babel/register')({
     plugins: [
         'dynamic-import-node',
@@ -5,63 +6,40 @@ require('@babel/register')({
     ]
 });
 require('@babel/polyfill');
-const express       = require('express');
-const webpack       = require('webpack');
-const DevMiddleware = require('webpack-dev-middleware');
-const HotMiddleware = require('webpack-hot-middleware');
-const compression   = require('compression');
-const favicon       = require('serve-favicon');
-const cookieParser  = require('cookie-parser');
-const bodyParser    = require('body-parser');
-const path          = require('path');
+const express      = require('express');
+const compression  = require('compression');
+const favicon      = require('serve-favicon');
+const cookieParser = require('cookie-parser');
+const bodyParser   = require('body-parser');
+const path         = require('path');
 
-const webpackConfigDev    = require('../webpack/webpack.dev');
-const webpackConfigProd   = require('../webpack/webpack.prod');
-const serverSideRendering = require('./middlewares/serverSideRendering');
-const errorLogging        = require('./middlewares/errorLogging');
+const { serverSideRendering } = require('./middlewares/serverSideRendering');
+const { errorLogging }        = require('./middlewares/errorLogging');
+const { useDevMiddlewares }   = require('./middlewares/useDevMiddlewares');
 
-const config              = require('./config');
+const config              = require('./config').default;
 
-const { env, host, port } = config;
+const { host, port } = config;
 
-const webpackConfig = env === 'development' ? webpackConfigDev : webpackConfigProd;
-
-const bundler = webpack(webpackConfig);
-const app     = express();
+const app = express();
 
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist'), { maxAge: '30d' }));
-app.use('/sw.js', express.static(path.resolve(__dirname, '..', 'dist/sw.js'), { maxAge: '30d' }));
-app.use('/public', express.static(path.resolve(__dirname, '..', 'public'), { maxAge: '30d' }));
-app.use('/images', express.static(path.resolve(__dirname, '..', 'public/images'), { maxAge: '30d' }));
-app.use('/', express.static(path.resolve(__dirname, '..', 'public/root'), { maxAge: '30d' }));
+const oneDayCache = 60 * 1000 * 60 * 24;
+app.use('/dist', express.static(path.resolve(__dirname, '..', 'dist'), { maxAge: oneDayCache }));
+app.use('/sw.js', express.static(path.resolve(__dirname, '..', 'dist/sw.js')));
+app.use('/public', express.static(path.resolve(__dirname, '..', 'public'), { maxAge: oneDayCache }));
+app.use('/images', express.static(path.resolve(__dirname, '..', 'public/images'), { maxAge: oneDayCache }));
+app.use('/', express.static(path.resolve(__dirname, '..', 'public/root')));
 
 app.use(favicon(path.join(__dirname, '..', '/public/images/favicon.ico')));
 
 app.set('view engine', 'pug');
-app.locals.pretty = true;
 
-app.use(DevMiddleware(bundler, {
-    publicPath : webpackConfig.output.publicPath,
-    writeToDisk: true,
-    stats      : {
-        all         : false,
-        modules     : true,
-        maxModules  : 0,
-        errors      : true,
-        warnings    : env === 'development',
-        moduleTrace : true,
-        errorDetails: true
-    }
-}));
-
-if (env === 'development') {
-    app.use(HotMiddleware(bundler));
-}
+useDevMiddlewares(app);
 
 app.use('/handle_error', errorLogging);
 

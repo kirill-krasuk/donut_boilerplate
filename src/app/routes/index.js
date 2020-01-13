@@ -1,11 +1,14 @@
+// @flow
+
 import * as Components from '../components';
+import routes          from './routes';
 
 export default [ {
-    path     : '/',
+    ...routes.home,
     exact    : true,
     component: Components.HomePage
 }, {
-    path     : '/second',
+    ...routes.second,
     exact    : true,
     component: Components.SecondPage
 } ];
