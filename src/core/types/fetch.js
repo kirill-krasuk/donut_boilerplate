@@ -2,7 +2,7 @@
 
 export type FetchType = {
     type: 'core/FETCH',
-    payload: $Exact<{
+    payload: {|
         body?: Object,
         query?: Object,
         onError?: Function,
@@ -10,5 +10,5 @@ export type FetchType = {
         startHandler?: Function,
         finallyHandler?: Function,
         route: Object
-    }>,
+    |},
 }

@@ -2,11 +2,10 @@
 
 import { createAction }        from 'redux-actions';
 
-import type { ActionType }     from 'core/types/action';
 import type { CloseModalType } from 'core/types/modal';
 
-export const CLOSE_MODAL: $PropertyType<CloseModalType, 'type'> = 'core/CLOSE_MODAL';
-export const closeModalAction: ActionType<
-        $PropertyType<CloseModalType, 'type'>,
-        $PropertyType<CloseModalType, 'payload'>
-    > = createAction(CLOSE_MODAL);
+type Type = $PropertyType<CloseModalType, 'type'>;
+type Payload = $PropertyType<CloseModalType, 'payload'>;
+
+export const CLOSE_MODAL: Type = 'core/CLOSE_MODAL';
+export const closeModalAction = createAction<Type, Payload>(CLOSE_MODAL);
