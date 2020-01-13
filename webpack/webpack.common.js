@@ -6,8 +6,6 @@ const { InjectManifest }             = require('workbox-webpack-plugin');
 const { CleanWebpackPlugin }         = require('clean-webpack-plugin');
 const LoadablePlugin                 = require('@loadable/webpack-plugin');
 const Dotenv                         = require('dotenv-webpack');
-const { BundleAnalyzerPlugin }       = require('webpack-bundle-analyzer');
-const TerserPlugin                   = require('terser-webpack-plugin');
 const MiniCssExtractPlugin           = require('mini-css-extract-plugin');
 const HtmlPlugin                     = require('html-webpack-plugin');
 const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
@@ -53,6 +51,7 @@ module.exports = {
                 path         : `${ paths.dist }`,
                 filename     : addHash('[name].js', 'contenthash:8'),
                 publicPath   : '/dist/',
+                pathinfo     : false,
             },
             devtool      : options.devtool || false,
             resolveLoader: {
@@ -66,19 +65,38 @@ module.exports = {
             },
             optimization: {
                 runtimeChunk: 'single',
-                minimizer   : options.minimizer.concat([
-                    new TerserPlugin({
-                        cache   : true,
-                        parallel: true,
-                    }),
-                ]),
-                splitChunks: {
+                minimize    : options.minimize || false,
+                minimizer   : options.minimizer,
+                splitChunks : {
                     cacheGroups: {
-                        vendor: {
-                            test  : /[\\/]node_modules[\\/]/,
-                            name  : 'vendors',
-                            chunks: 'all'
+                        reactVendor: {
+                            test              : /(react|redux)/g,
+                            name              : 'react-vendors',
+                            chunks            : 'initial',
+                            reuseExistingChunk: true,
+                            priority          : 40
                         },
+                        uiVendor: {
+                            test              : /src\/ui\/components/g,
+                            name              : 'ui-vendors',
+                            chunks            : 'initial',
+                            reuseExistingChunk: true,
+                            priority          : 20
+                        },
+                        coreVendor: {
+                            test              : /src\/core/g,
+                            name              : 'core-vendors',
+                            chunks            : 'initial',
+                            reuseExistingChunk: true,
+                            priority          : 30
+                        },
+                        vendors: {
+                            test              : /[\\/]node_modules[\\/]/,
+                            name              : 'vendors',
+                            chunks            : 'initial',
+                            reuseExistingChunk: true,
+                            priority          : 30
+                        }
                     }
                 }
             },
@@ -98,11 +116,6 @@ module.exports = {
                 new CompressionPlugin({
                     cache: '.cache/compression_plugin_cache',
                     test : /\.js(\?.*)?$/i,
-                }),
-                new BundleAnalyzerPlugin({
-                    openAnalyzer: false,
-                    analyzerPort: 8181,
-                    analyzerHost: '127.0.0.1'
                 }),
                 new InjectManifest({
                     swDest           : './sw.js',
@@ -158,6 +171,9 @@ module.exports = {
                     },
                     {
                         test: /loadable\.js/
+                    },
+                    {
+                        test: /src\/vendors/
                     }
                 ]),
             ])

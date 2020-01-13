@@ -1,3 +1,5 @@
+require('../polyfills/promise');
+require('../polyfills/array');
 const React                                     = require('react');
 const { renderToString }                        = require('react-dom/server');
 const { Provider }                              = require('react-redux');
@@ -13,28 +15,38 @@ const routes                 = require('core/components/Router/routes').default;
 const { configureStore }     = require('core/utils/store/configureStore');
 const { changeThemeAction }  = require('core/actions/theme');
 const { changeLocaleAction } = require('core/actions/locale');
+const { checkAuth }          = require('server/utils/checkAuth');
+const { getLocation }        = require('server/utils/getLocation');
+const { prefetch }           = require('server/utils/prefetch');
 
 const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 
-function serverSideRendering(req, res) {
+export async function serverSideRendering(req, res) {
     res.set('Service-Worker-Allowed', '/');
     res.set('X-Is-Cacheable', 'true');
 
     const mode   = req.cookies.theme || 'dark';
     const locale = req.cookies.locale || 'en';
+    const token  = req.cookies.auth_token || undefined;
 
-    const { store } = configureStore({}, createMemoryHistory({
+    const history = createMemoryHistory({
         initialEntries: [ req.url ]
-    }));
+    });
+
+    const { store } = configureStore({}, history);
     const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
     const sheet     = new ServerStyleSheet();
+
+    const isLogged = checkAuth(req.cookies, res, store);
+
+    await prefetch(store, req.url, { isLogged, token });
 
     store.dispatch(changeThemeAction(mode));
     store.dispatch(changeLocaleAction(locale));
 
     const App = () => (
         <Provider store={ store }>
-            <StaticRouter context={ {} } location={ req.url }>
+            <StaticRouter context={ {} } location={ getLocation(isLogged, req.url) }>
                 <ChunkExtractorManager extractor={ extractor }>
                     { renderRoutes(routes) }
                 </ChunkExtractorManager>
@@ -47,7 +59,7 @@ function serverSideRendering(req, res) {
     const styleChunksTags     = extractor.getStyleTags(); // loadable components extract styles in chunk files
     const styleComponentsTags = sheet.getStyleTags(); // styled components generate style tag
     const storage             = `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\u003c') }`;
-    const { title }           = Helmet.renderStatic();
+    const { title, meta }     = Helmet.renderStatic();
 
     res.render('index', {
         html,
@@ -56,7 +68,6 @@ function serverSideRendering(req, res) {
         styleChunksTags,
         styleComponentsTags,
         title: title.toString(),
+        meta : meta.toString()
     });
 }
-
-module.exports = serverSideRendering;

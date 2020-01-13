@@ -1,4 +1,5 @@
 // @flow
+
 import type { GenericObject } from 'core/types/object';
 
 export interface iConfigManager {

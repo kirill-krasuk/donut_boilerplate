@@ -2,7 +2,7 @@
 
 import styled, { css }      from 'styled-components/macro';
 
-import { THEME_ICON_SIZE }  from 'ui/constants/header';
+import { THEME_ICON_SIZE }  from 'ui-kit/constants/header';
 
 export default styled.div`
     & svg {

@@ -1,4 +1,5 @@
 // @flow
+
 import { handleActions }              from 'redux-actions';
 
 import * as actions                   from 'core/actions/theme';

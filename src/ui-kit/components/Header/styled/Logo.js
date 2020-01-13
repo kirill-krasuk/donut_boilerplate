@@ -1,7 +1,7 @@
 import styled        from 'styled-components/macro';
 
-import Logo          from 'svgs/new_dark_logo.svg';
-import { LOGO_SIZE } from 'ui/constants/header';
+import Logo          from 'svgs/new_logo.svg';
+import { LOGO_SIZE } from 'ui-kit/constants/header';
 
 export default styled(Logo)`
     height: ${ LOGO_SIZE };

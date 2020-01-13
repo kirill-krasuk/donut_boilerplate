@@ -1,4 +1,5 @@
 // @flow
+
 import type { FetchOptions, HTTPMethod, HTTPResponse }    from 'core/types/HTTP';
 import type { GenericObject }                             from 'core/types/object';
 import type { iHeaders }                                  from 'core/interfaces/Headers';

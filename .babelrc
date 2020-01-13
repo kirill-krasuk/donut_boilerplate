@@ -2,13 +2,19 @@
     "presets": [
         "@babel/preset-react",
         "@babel/preset-flow",
-        "@babel/preset-env",
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "esmodules": true
+                }
+            }
+        ]
     ],
     "env": {
         "development": {
             "plugins": [
-                "react-hot-loader/babel", // hot module reloading
-                "@babel/plugin-transform-modules-commonjs",
+                "react-hot-loader/babel" // hot module reloading
             ]
         },
         "production": {
@@ -16,7 +22,10 @@
                 [ "transform-remove-console", {
                     "exclude": [ "error", "warn" ]
                 } ],
-                "transform-remove-debugger"
+                "transform-remove-debugger",
+                "@babel/plugin-transform-react-inline-elements",
+                "@babel/plugin-transform-react-constant-elements",
+                "transform-react-remove-prop-types"
             ]
         }
     },
@@ -30,7 +39,8 @@
                 "alias": {
                     "app": "./src/app",
                     "core": "./src/core",
-                    "ui": "./src/ui",
+                    "ui-kit": "./src/ui-kit",
+                    "vendors": "./src/vendors",
                     "server": "./server",
                     "public": "./public",
                     "images": "./src/assets/images",
@@ -46,11 +56,7 @@
         "@loadable/babel-plugin", // for loadable chunks
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }],
-        ["@babel/plugin-proposal-private-methods", { "loose": true }], // private methods in class # operator
         "@babel/plugin-syntax-dynamic-import",
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-function-bind", // bind as :: operator
-        "@babel/plugin-proposal-nullish-coalescing-operator", // check variable as null ?? operator
-        "@babel/plugin-proposal-optional-chaining", // for nested object checking
+        "@babel/plugin-transform-runtime"
     ]
 }

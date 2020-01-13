@@ -1,4 +1,5 @@
 // @flow
+
 import { eventChannel, END }   from 'redux-saga';
 import type { EventChannel }   from 'redux-saga';
 

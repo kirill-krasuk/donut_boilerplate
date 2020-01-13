@@ -1,17 +1,19 @@
 /* eslint-disable */
 
+workbox.setConfig({ debug: true });
+
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
 
 workbox.core.setCacheNameDetails({
     prefix  : 'new_boilerplate_cache',
     precache: 'precache',
-    runtime : 'runtime',
+    runtime : 'runtime'
 });
 
 workbox.routing.registerRoute(
     /\.css$/,
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'stylesheets_cache',
         plugins  : [
             new workbox.expiration.Plugin({
@@ -31,7 +33,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     /\.(?:png|jpg|jpeg|svg|gif|ico)$/,
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: 'images_cache',
         plugins: [
             new workbox.expiration.Plugin({
@@ -43,7 +45,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.CacheFirst({
         cacheName: 'fonts_cache',
         plugins: [
             new workbox.expiration.Plugin({

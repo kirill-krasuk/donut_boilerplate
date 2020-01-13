@@ -1,14 +1,14 @@
 doctype html
 html(lang="ru")
     head
-        meta(charset="UTF-8")
         meta(name="viewport" content="width=device-width")
-        meta(name="description" content="new boilerplate for react")
-        meta(name="theme-color")
+        meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+        meta(name="theme-color" content="#131313")
         | !{title}
+        | !{meta}
         link(rel="manifest" href="/manifest.json")
         link(rel="apple-touch-icon" sizes="128x128" href="public/images/logo128x128.png")
-        link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap" rel="preload" as="style" onload="this.rel = 'stylesheet'")
         | !{styleChunksTags}
         | !{styleComponentsTags}
     body
