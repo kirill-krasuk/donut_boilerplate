@@ -5,7 +5,7 @@ import type { Node } from 'react';
 
 import * as Styled   from './styled';
 
-type PropsType = {
+export type PropsType = {
 
     /** custom onClick handler */
 
