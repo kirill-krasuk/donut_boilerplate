@@ -1,22 +1,41 @@
 // @flow
 
-import React                        from 'react';
-import type { ComponentType, Node } from 'react';
-import { useSelector }              from 'react-redux';
-import { renderRoutes }             from 'react-router-config';
-import { ThemeProvider }            from 'styled-components';
+import React, { useEffect }          from 'react';
+import type { ComponentType, Node }  from 'react';
+import { useSelector, useDispatch }  from 'react-redux';
+import { renderRoutes, matchRoutes } from 'react-router-config';
+import { ThemeProvider }             from 'styled-components';
+import { push as pushAction }        from 'connected-react-router';
+import * as R                        from 'ramda';
 
-import theme                        from 'core/config/theme';
-import { GlobalStyles }             from 'core/utils/styles';
-import { getMode }                  from 'core/selectors/theme';
-import LanguageProvider             from '../LanguageProvider';
-import ModalManager                 from '../ModalManager';
-import type { PropsType }           from './types';
+import theme                         from 'core/config/theme';
+import { GlobalStyles }              from 'core/utils/styles';
+import { getMode }                   from 'core/selectors/theme';
+import { protectRedirect }           from 'app/routes/routes';
+import LanguageProvider              from '../LanguageProvider';
+import ModalManager                  from '../ModalManager';
+import type { PropsType }            from './types';
 
 const Root: ComponentType<PropsType> = (props): Node => {
-    const { route } = props;
+    const { route, location } = props;
 
-    const mode     = useSelector(getMode);
+    const dispatch = useDispatch();
+
+    const mode = useSelector(getMode);
+
+    const composeWithDispatch: Function = R.partial(R.compose, [ dispatch ]);
+
+    const push: typeof pushAction = composeWithDispatch(pushAction);
+
+    useEffect(() => {
+        const [ routes ]              = matchRoutes(route.routes, location.pathname);
+        const { route: matchedRoute } = routes;
+
+        // isLogged status inject here
+        if (matchedRoute.protect) {
+            push(protectRedirect);
+        }
+    }, [ route ]);
 
     return (
         <ThemeProvider theme={ { ...theme, mode } }>

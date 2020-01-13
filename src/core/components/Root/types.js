@@ -1,5 +1,6 @@
 // @flow
 
 export type PropsType = {
-    route: Object
+    route: Object,
+    location: Object
 }
