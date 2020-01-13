@@ -8,7 +8,7 @@ import { useClickOutside }          from 'core/hooks/useClickOutside';
 import { closeModalAction }         from 'core/actions/modal';
 import * as Styled                  from './styled';
 
-type PropsType = {
+export type PropsType = {
 
     /**
      * The modal body

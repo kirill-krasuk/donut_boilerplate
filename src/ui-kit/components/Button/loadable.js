@@ -7,9 +7,9 @@ import loadable               from '@loadable/component';
 import type { PropsType }     from '.';
 
 const component: ComponentType<PropsType> = loadable(
-    () => import(/* webpackChunkName: "Modal" */'.'),
+    () => import(/* webpackChunkName: "Button" */'.'),
     {
-        fallback: <div>Loading...</div>
+        fallback: <div>Loading..</div>
     }
 );
 
