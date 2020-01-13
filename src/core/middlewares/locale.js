@@ -1,4 +1,5 @@
 // @flow
+
 import Cookie            from 'js-cookie';
 
 import { CHANGE_LOCALE } from 'core/actions/locale';

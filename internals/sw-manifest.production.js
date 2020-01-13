@@ -8,7 +8,7 @@ workbox.core.clientsClaim();
 workbox.core.setCacheNameDetails({
     prefix  : 'new_boilerplate_cache',
     precache: 'precache',
-    runtime : 'runtime',
+    runtime : 'runtime'
 });
 
 workbox.routing.registerRoute(

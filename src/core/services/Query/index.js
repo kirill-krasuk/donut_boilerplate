@@ -1,4 +1,5 @@
 // @flow
+
 import { injectable, inject }                             from 'inversify';
 
 import type { iQuery }                                    from 'core/interfaces/Query';

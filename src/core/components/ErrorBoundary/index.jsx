@@ -1,4 +1,5 @@
 // @flow
+
 import React, { Component }          from 'react';
 
 import type { iHTTP }                from 'core/interfaces/HTTP';

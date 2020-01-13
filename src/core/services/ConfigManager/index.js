@@ -1,4 +1,5 @@
 // @flow
+
 import { injectable, inject } from 'inversify';
 import type { GenericObject } from 'core/types/object';
 import { TYPES }              from '../types';

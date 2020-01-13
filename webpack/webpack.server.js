@@ -1,5 +1,6 @@
 const path          = require('path');
 const nodeExternals = require('webpack-node-externals');
+const Dotenv        = require('dotenv-webpack');
 
 const { getJsLoader }         = require('./loaders/js-loader');
 const { getImageLoader }      = require('./loaders/image-loader');
@@ -53,5 +54,8 @@ module.exports = (env, argv) => ({
             /\.(mp4|mp3|ogg|swf|webp)$/,
             /\.(css|scss|sass|sss|less)$/
         ].filter(x => x)
-    }) ]
+    }) ],
+    plugins: [
+        new Dotenv()
+    ]
 });

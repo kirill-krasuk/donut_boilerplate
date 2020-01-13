@@ -1,4 +1,5 @@
 // @flow
+
 import { createAction }        from 'redux-actions';
 
 import type { ActionType }     from 'core/types/action';

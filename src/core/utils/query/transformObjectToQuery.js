@@ -1,4 +1,5 @@
 // @flow
+
 import type { GenericObject } from 'core/types/object';
 
 export const transformObjectToQuery = (object: GenericObject<string>): string => { // eslint-disable-line
