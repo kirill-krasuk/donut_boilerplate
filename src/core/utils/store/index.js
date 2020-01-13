@@ -7,3 +7,5 @@ delete window.__PRELOADED_STATE__;
 const { store, history } = configureStore(preloadedState, browserHistory);
 
 export { store, history };
+
+export { shakeReducers } from './shakeReducers';

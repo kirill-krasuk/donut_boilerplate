@@ -1,15 +1,38 @@
 import { combineReducers } from 'redux';
 import { connectRouter }   from 'connected-react-router';
 
+import appReducers         from 'app/reducers';
 import theme               from './theme';
 import locale              from './locale';
 import modal               from './modal';
 import location            from './location';
 
-export default history => combineReducers({
-    router: connectRouter(history),
+export const staticReducers = {
+    router: connectRouter({}),
     theme,
     locale,
     modal,
-    location
+    location,
+    ...appReducers
+};
+
+const appReducer = (history, asyncReducers = {}, ssrReducers = {}) => combineReducers({
+    ...staticReducers,
+    router: connectRouter(history),
+    ...asyncReducers,
+    ...ssrReducers
 });
+
+export default (history, asyncReducers, ssrReducers) => (state, action) => {
+    // this place need for unset state on logout
+    if (action.type === 'LOGOUT') {
+        // eslint-disable-next-line
+        state = {
+            ...state,
+
+            // user: undefined
+        };
+    }
+
+    return appReducer(history, asyncReducers, ssrReducers)(state, action);
+};
