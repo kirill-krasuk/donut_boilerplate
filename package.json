@@ -24,8 +24,6 @@
     "create:component": "node ./cli/scripts/create-component.js"
   },
   "pre-commit": [
-    "lint",
-    "flow"
   ],
   "repository": {
     "type": "git",
