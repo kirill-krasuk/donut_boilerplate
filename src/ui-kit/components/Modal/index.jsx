@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import type { Node }                from 'react';
 import { useDispatch }              from 'react-redux';
+import * as R                       from 'ramda';
 
 import { useClickOutside }          from 'core/hooks/useClickOutside';
 import { closeModalAction }         from 'core/actions/modal';
@@ -48,11 +49,13 @@ const Modal = (props: PropsType): Node => {
     const dispatch = useDispatch();
     const ref      = useRef();
 
+    const closeModal: typeof closeModalAction = R.compose(dispatch, closeModalAction);
+
     const handleKeyPress = (e: KeyboardEvent): void => {
         const { keyCode } = e;
 
         if (keyCode === 27) {
-            dispatch(closeModalAction());
+            closeModal();
 
             if (onClose) {
                 onClose();
