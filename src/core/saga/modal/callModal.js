@@ -1,4 +1,5 @@
 // @flow
+
 import { put }                                           from 'redux-saga/effects';
 import type { Saga }                                     from 'redux-saga';
 import { push }                                          from 'connected-react-router';

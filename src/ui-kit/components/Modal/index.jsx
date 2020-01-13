@@ -1,4 +1,5 @@
 // @flow
+
 import React, { useEffect } from 'react';
 import type { Node }        from 'react';
 import { useDispatch }      from 'react-redux';

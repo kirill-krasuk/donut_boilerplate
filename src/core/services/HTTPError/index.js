@@ -1,4 +1,5 @@
 // @flow
+
 import { STATUS_CODES }    from 'core/constants/http/statusCodes';
 import type { iHTTPError } from 'core/interfaces/HTTPError';
 

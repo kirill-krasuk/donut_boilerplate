@@ -6,12 +6,4 @@ const envs = {
     NODE_ENV: process.env.NODE_ENV
 };
 
-function getEnv(prop, defaultProp) {
-    if (R.path([ prop ], envs)) {
-        return R.path([ prop ], envs);
-    }
-
-    return defaultProp;
-}
-
-module.exports = getEnv;
+export const getEnv = (prop, defaultProp) => R.pathOr(defaultProp, [ prop ], envs);

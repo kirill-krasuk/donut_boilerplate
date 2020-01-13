@@ -1,4 +1,5 @@
 // @flow
+
 import type { iConfigManager } from './ConfigManager';
 
 export interface iSocketConnector {

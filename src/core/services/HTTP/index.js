@@ -1,4 +1,5 @@
 // @flow
+
 import { injectable, inject }                             from 'inversify';
 
 import type { iHTTP }                                     from 'core/interfaces/HTTP';
@@ -110,6 +111,8 @@ export class HTTP implements iHTTP {
         const headers = {
             'Content-Type': 'application/json',
             Accept        : 'application/json',
+
+            // flow-disable-next-line
             ...this._overridedHeaders.toObject()
         };
 

@@ -1,4 +1,5 @@
 // @flow
+
 import type { GenericObject }    from 'core/types/object';
 import type { iIterable }        from 'core/interfaces/Iterable';
 import type { iIteratorCreator } from './IteratorCreator';

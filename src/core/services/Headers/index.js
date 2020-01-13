@@ -1,4 +1,5 @@
 // @flow
+
 import { injectable, inject }    from 'inversify';
 
 import type { iHeaders }         from 'core/interfaces/Headers';
