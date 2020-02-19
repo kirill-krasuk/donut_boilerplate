@@ -1,11 +1,9 @@
 import React    from 'react';
 import loadable from '@loadable/component';
 
-const component = loadable(
-    () => import(/* webpackChunkName: "Second" */'.'),
+export default loadable(
+    () => import(/* webpackChunkName: "Home" */'.'),
     {
         fallback: <div>Loading...</div>
     }
 );
-
-export default component;

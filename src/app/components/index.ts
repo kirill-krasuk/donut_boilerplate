@@ -1,2 +1,2 @@
-export { default as HomePage } from './HomePage/loadable';
-export { default as SecondPage } from './SecondPage/loadable';
+export { default as Home } from './Home/loadable';
+export { default as Second } from './Second/loadable';

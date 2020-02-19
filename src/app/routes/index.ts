@@ -1,14 +1,19 @@
-// @flow
-
-import * as Components from '../components';
-import routes          from './routes';
+import * as Pages from '../pages';
+import routes     from './routes';
 
 export default [ {
     ...routes.home,
     exact    : true,
-    component: Components.HomePage
+    component: Pages.Home
 }, {
     ...routes.second,
     exact    : true,
-    component: Components.SecondPage
+    component: Pages.Second
+}, {
+    ...routes.protect,
+    exact    : true,
+    component: Pages.Protect
+}, {
+    ...routes[404],
+    component: Pages.Page404
 } ];

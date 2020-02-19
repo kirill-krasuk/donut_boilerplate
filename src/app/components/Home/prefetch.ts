@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { StoreType }      from '@core/types/store';
-import { fetchOne }       from '@core/utils/fetch';
-import api                from '@app/routes/api';
+import { StoreType } from '@core/types/store';
+import { fetchOne }  from '@core/utils/fetch';
+import api           from '@app/routes/api';
 
 type MatchType = {
     query: string;
