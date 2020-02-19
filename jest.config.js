@@ -1,5 +1,7 @@
 module.exports = {
-    setupFiles: [
+    preset         : 'ts-jest',
+    testEnvironment: 'node',
+    setupFiles     : [
         'reflect-metadata',
         './src/test/setup.js'
     ],

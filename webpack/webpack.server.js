@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path          = require('path');
 const nodeExternals = require('webpack-node-externals');
 const Dotenv        = require('dotenv-webpack');
@@ -11,7 +12,7 @@ const { getSVGLoader }        = require('./loaders/svg-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
 
 const PATHS = {
-    enrty : path.resolve(__dirname, '..', 'server/index.js'),
+    enrty : path.resolve(__dirname, '..', 'server/index.ts'),
     output: path.resolve(__dirname, '..', 'dist')
 };
 
@@ -34,7 +35,16 @@ module.exports = (env, argv) => ({
         moduleExtensions: [ '-loader' ]
     },
     resolve: {
-        extensions: [ '.js', '.jsx', '.css', '.sass', '.scss', '.json' ],
+        extensions: [
+            '.ts',
+            '.tsx',
+            '.js',
+            '.jsx',
+            '.css',
+            '.sass',
+            '.scss',
+            '.json'
+        ],
     },
     module: {
         rules: [

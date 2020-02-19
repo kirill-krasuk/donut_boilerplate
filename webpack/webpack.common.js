@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const webpack = require('webpack');
 const path    = require('path');
 
@@ -24,7 +25,7 @@ const { getSVGLoader }        = require('./loaders/svg-loader');
 const paths = {
     src     : path.resolve('src'),
     dist    : path.resolve('dist'),
-    entry   : path.resolve('src/core/index.jsx'),
+    entry   : path.resolve('src/core/index.tsx'),
     template: path.resolve('src/core/template/index.pug'),
     view    : path.resolve('views/index.pug')
 };
@@ -58,8 +59,17 @@ module.exports = {
                 moduleExtensions: [ '-loader' ]
             },
             resolve: {
-                extensions: [ '.js', '.jsx', '.css', '.sass', '.scss', '.json' ],
-                alias     : {
+                extensions: [
+                    '.ts',
+                    '.tsx',
+                    '.js',
+                    '.jsx',
+                    '.css',
+                    '.sass',
+                    '.scss',
+                    '.json'
+                ],
+                alias: {
                     'react-dom': isProd ? 'react-dom' : '@hot-loader/react-dom'
                 }
             },
