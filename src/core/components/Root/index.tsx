@@ -14,25 +14,36 @@ import ModalManager                  from '../ModalManager';
 import { PropsType }                 from './types';
 
 const Root: React.FC<PropsType> = (props): JSX.Element => {
-    const { route, location } = props;
+    const { route, location, staticContext } = props;
+
+    const [ routes ]              = matchRoutes(route.routes, location.pathname);
+    const { route: matchedRoute } = routes;
 
     const dispatch = useDispatch();
-
-    const mode = useSelector(getMode);
+    const mode     = useSelector(getMode);
 
     const composeWithDispatch: Function = R.partial(R.compose, [ dispatch ]);
 
     const push: typeof pushAction = composeWithDispatch(pushAction);
 
-    useEffect(() => {
-        const [ routes ]              = matchRoutes(route.routes, location.pathname);
-        const { route: matchedRoute } = routes;
+    // server side redirect
+    if (staticContext && matchedRoute.protect) {
+        staticContext.status = 301;
+        staticContext.url    = protectRedirect;
+    }
 
-        // isLogged status inject here
+    // server side 404
+    if (staticContext && matchedRoute.path === '*') {
+        staticContext.status = 404;
+        staticContext.url    = '/404';
+    }
+
+    useEffect(() => {
+        // isLogged logic here
         if (matchedRoute.protect) {
             push(protectRedirect);
         }
-    }, [ route ]);
+    }, [ matchedRoute ]);
 
     return (
         <ThemeProvider theme={ { ...theme, mode } }>

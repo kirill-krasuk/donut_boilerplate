@@ -8,5 +8,9 @@ export default defineMessages({
     link: {
         id            : 'app.components.SecondPage.link',
         defaultMessage: 'go to see the main page'
+    },
+    protect: {
+        id            : 'app.components.SecondPage.protect',
+        defaultMessage: 'Go To Redirected Route'
     }
 });

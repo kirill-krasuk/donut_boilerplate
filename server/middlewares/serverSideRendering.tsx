@@ -15,7 +15,6 @@ import { configureStore }                        from '@core/utils/store/configu
 import { changeThemeAction }                     from '@core/actions/theme';
 import { changeLocaleAction }                    from '@core/actions/locale';
 import { checkAuth }                             from '@server/utils/checkAuth';
-import { getLocation }                           from '@server/utils/getLocation';
 import { prefetch }                              from '@server/utils/prefetch';
 import { ConfigManager }                         from '@core/services';
 import ssrReducers                               from '@app/reducers/serverReducer';
@@ -34,6 +33,8 @@ const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 export async function serverSideRendering(req: Request, res: Response): Promise<void> {
     res.set('Service-Worker-Allowed', '/');
     res.set('X-Is-Cacheable', 'true');
+
+    const context: any = {};
 
     const mode   = req.cookies.theme || 'dark';
     const locale = req.cookies.locale || 'en';
@@ -56,7 +57,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
 
     const App = (): JSX.Element => (
         <Provider store={ store }>
-            <StaticRouter context={ {} } location={ getLocation(isLogged, req.url) }>
+            <StaticRouter context={ context } location={ req.url }>
                 <ChunkExtractorManager extractor={ extractor }>
                     { renderRoutes(routes) }
                 </ChunkExtractorManager>
@@ -64,20 +65,27 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
         </Provider>
     );
 
-    const html                = renderToString(sheet.collectStyles(<App />));
-    const scriptTags          = extractor.getScriptTags();
-    const styleChunksTags     = extractor.getStyleTags(); // loadable components extract styles in chunk files
-    const styleComponentsTags = sheet.getStyleTags(); // styled components generate style tag
-    const storage             = `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\u003c') }`;
-    const { title, meta }     = Helmet.renderStatic();
+    const { title, meta } = Helmet.renderStatic();
 
-    res.render('index', {
-        html,
-        storage,
-        scriptTags,
-        styleChunksTags,
-        styleComponentsTags,
-        title: title.toString(),
-        meta : meta.toString()
-    });
+    const template = {
+        html               : renderToString(sheet.collectStyles(<App />)),
+        scriptTags         : extractor.getScriptTags(),
+        styleChunksTags    : extractor.getStyleTags(), // loadable components extract styles in chunk files
+        styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
+        storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\u003c') }`,
+        title,
+        meta
+    };
+
+    if (context.url) {
+        if (context.status === 404) {
+            res.status(404).render('index', template);
+
+            return;
+        }
+
+        res.redirect(context.status, context.url);
+    } else {
+        res.render('index', template);
+    }
 }

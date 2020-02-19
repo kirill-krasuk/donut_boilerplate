@@ -1,4 +1,4 @@
-import { LoadableComponent } from '@loadable/component';
+import React from 'react';
 
-export type PrefetchedComponent<TProps> = LoadableComponent<TProps> & { prefetch: Function }
+export type PrefetchedComponent<TProps> = React.FC<TProps> & { prefetch: Function }
 export type PComponent = PrefetchedComponent<any>;
