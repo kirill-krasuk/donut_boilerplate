@@ -1,10 +1,10 @@
-import { changeLocaleAction }       from 'core/actions/locale';
+import { changeLocaleAction }       from '@core/actions/locale';
 import localeReducer, { initState } from '.';
 
 describe('test locale reducer', () => {
     describe('init state', () => {
         it('should return the initial state', () => {
-            const state = localeReducer(undefined, {});
+            const state = localeReducer(undefined, ({} as any));
 
             expect(state).toEqual(initState);
         });

@@ -1,8 +1,8 @@
-import React                        from 'react';
+import React     from 'react';
 
-import { Modal }                    from 'ui-kit/components';
+import { Modal } from '@ui-kit/components';
 
-const ModalTest = () => (
+const ModalTest: React.FC<{}> = (): JSX.Element => (
     <Modal title="Test">
         It is a test modal
     </Modal>

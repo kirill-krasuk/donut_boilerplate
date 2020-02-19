@@ -121,10 +121,13 @@
                 "align": "colon"
             }
         ],
-        "arca/import-align": [2, {
-            "collapseExtraSpace": true,
-            "minColumnWidth": 20
-        }],
+        "arca/import-align": [
+            2,
+            {
+                "collapseExtraSpaces": true
+            }
+        ],
+        "arca/melted-constructs": 2,
         "no-underscore-dangle": 0,
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": 0,
@@ -134,7 +137,6 @@
         "arca",
         "varspacing",
         "react",
-        "react-hooks",
-        "flowtype"
+        "react-hooks"
     ]
 }

@@ -1,8 +1,8 @@
-import React                        from 'react';
+import React     from 'react';
 
-import { Modal }                    from 'ui-kit/components';
+import { Modal } from '@ui-kit/components';
 
-const Greeting = () => (
+const Greeting: React.FC<{}> = (): JSX.Element => (
     <Modal title="Welcome">
         Welcome to New Donut Boilerplate!
     </Modal>

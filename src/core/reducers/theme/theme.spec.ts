@@ -1,10 +1,10 @@
-import { changeThemeAction }       from 'core/actions/theme';
+import { changeThemeAction }       from '@core/actions/theme';
 import themeReducer, { initState } from '.';
 
 describe('test theme reducer', () => {
     describe('init state', () => {
         it('should return the initial state', () => {
-            const state = themeReducer(undefined, {});
+            const state = themeReducer(undefined, ({} as any));
 
             expect(state).toEqual(initState);
         });

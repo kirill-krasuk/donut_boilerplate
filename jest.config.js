@@ -1,10 +1,10 @@
 module.exports = {
     preset         : 'ts-jest',
     testEnvironment: 'node',
-    setupFiles     : [
-        'reflect-metadata',
-        './src/test/setup.js'
-    ],
+
+    // setupFiles     : [
+    //     './src/test/setup.js'
+    // ],
     snapshotSerializers: [
         '<rootDir>/node_modules/enzyme-to-json/serializer'
     ],

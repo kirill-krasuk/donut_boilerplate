@@ -1,21 +1,18 @@
-// @flow
+import { Iterable }        from '@core/interfaces/Iterable';
+import { IteratorCreator } from '@core/interfaces/IteratorCreator';
 
-import { GenericObject }    from 'core/types/object';
-import { iIterable }        from 'core/interfaces/Iterable';
-import { iIteratorCreator } from './IteratorCreator';
-
-export interface iQuery extends iIterable {
+export interface Query extends Iterable {
     _string: string;
-    _qObject: GenericObject<any>;
+    _qObject: Record<string, any>;
 
-    _iteratorCreator: iIteratorCreator;
+    _iteratorCreator: IteratorCreator;
 
-    set(key: string, value: mixed): iQuery;
+    set(key: string, value: any): Query;
     get(key: string): any;
     has(key: string): boolean;
-    delete(key: string): iQuery;
+    delete(key: string): Query;
 
-    toObject(): GenericObject<any>;
+    toObject(): Record<string, any>;
     toString(): string;
 
     _transformQuery(initQuery: string): void;

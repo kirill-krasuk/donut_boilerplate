@@ -10,7 +10,7 @@ describe('Modal actions', () => {
         });
 
         it('the action should return correct object', () => {
-            let payload = 'TestModal';
+            let payload: any = 'TestModal';
 
             let actual   = actions.callModalAction(payload);
             let expected = {
