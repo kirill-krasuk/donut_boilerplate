@@ -7,5 +7,7 @@ module.exports = {
     styleguideComponents: {
         Wrapper: path.resolve(__dirname, 'src/core/styleguide/Wrapper')
     },
-    components: 'src/ui/components/**/*.jsx'
+    components : 'src/ui-kit/components/**/*.tsx',
+    ignore     : [ '**/loadable.tx', '**/*.spec.tsx', '**/*.spec.ts' ],
+    propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse
 };
