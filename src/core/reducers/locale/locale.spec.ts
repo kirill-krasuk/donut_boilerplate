@@ -15,9 +15,11 @@ describe('test locale reducer', () => {
             let state;
             const action = changeLocaleAction;
 
+            // @ts-ignore
             state = localeReducer(initState, action('ru'));
             expect(state).toEqual('ru');
 
+            // @ts-ignore
             state = localeReducer(state, action('en'));
             expect(state).toEqual('en');
         });

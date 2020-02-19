@@ -3,23 +3,23 @@ import { FormattedMessage as T } from 'react-intl';
 import { hot }                   from 'react-hot-loader/root';
 
 import { Header }                from '@ui-kit/components';
-import * as Styled               from './styled';
+import * as S                    from './styled';
 import messages                  from './messages';
 
 const Second: React.FC<{}> = (): JSX.Element => (
     <>
         <Header />
-        <Styled.Container>
-            <Styled.Text>
+        <S.Container>
+            <S.Text>
                 <T { ...messages.title } />
-            </Styled.Text>
-            <Styled.Link to="/">
+            </S.Text>
+            <S.Link to="/">
                 <T { ...messages.link } />
-            </Styled.Link>
-            <Styled.Link to="/protect">
+            </S.Link>
+            <S.Link to="/protect">
                 <T { ...messages.protect } />
-            </Styled.Link>
-        </Styled.Container>
+            </S.Link>
+        </S.Container>
     </>
 );
 

@@ -1,4 +1,4 @@
-import * as actions                from 'core/actions/modal';
+import * as actions                from '@core/actions/modal';
 import modalReducer, { initState } from '.';
 
 describe('test theme reducer', () => {

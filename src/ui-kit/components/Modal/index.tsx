@@ -1,20 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch }              from 'react-redux';
+import { hot }                      from 'react-hot-loader/root';
 import R                            from 'ramda';
 
 import { useClickOutside }          from '@core/hooks/useClickOutside';
 import { closeModalAction }         from '@core/actions/modal';
-import * as Styled                  from './styled';
-import Button                       from '../Button';
+import * as S                       from './styled';
 
 /**
  * basic UI elemnet of Donut Boilerplate
  * @visibleName Modal
  * @version 1.0
  * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
- */
-
-const Modal = (props) => {
+*/
+const Modal = (props): JSX.Element => {
     const { children, onClose, title } = props;
 
     const dispatch = useDispatch();
@@ -22,7 +21,7 @@ const Modal = (props) => {
 
     const closeModal = R.compose(dispatch, closeModalAction);
 
-    const handleKeyPress = (e) => {
+    const handleKeyPress = (e): void => {
         const { keyCode } = e;
 
         if (keyCode === 27) {
@@ -39,7 +38,7 @@ const Modal = (props) => {
             document.addEventListener('keyup', handleKeyPress);
         }
 
-        return () => {
+        return (): void => {
             document.removeEventListener('keyup', handleKeyPress);
         };
     }, []);
@@ -49,22 +48,22 @@ const Modal = (props) => {
             onClose();
         }
 
-        dispatch(closeModalAction());
+        closeModal();
     });
 
     return (
-        <Styled.Wrapper ref={ ref }>
+        <S.Wrapper ref={ ref }>
             {
                 title &&
-                <Styled.Head>
+                <S.Head>
                     { title }
-                </Styled.Head>
+                </S.Head>
             }
-            <Styled.Body>
+            <S.Body>
                 { children }
-            </Styled.Body>
-        </Styled.Wrapper>
+            </S.Body>
+        </S.Wrapper>
     );
 };
 
-export default Modal;
+export default hot(Modal);
