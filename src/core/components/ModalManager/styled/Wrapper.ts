@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export default styled.div`
+export const Wrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -12,6 +12,7 @@ export default styled.div`
     justify-content: center;
     align-items: flex-start;
     padding-top: 300px;
+    backdrop-filter: blur(5px);
 
     &:before {
         content: '';

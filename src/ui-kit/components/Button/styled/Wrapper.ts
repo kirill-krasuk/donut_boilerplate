@@ -10,7 +10,7 @@ type FCPropsType = {
     onClick?: Function;
 };
 
-type StyledPropsType = FCPropsType & { theme: number };
+type StyledPropsType = FCPropsType & { theme: any };
 
 export const Wrapper: FC<FCPropsType> = styled.button<StyledPropsType>`
 

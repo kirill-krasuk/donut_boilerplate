@@ -1,5 +1,3 @@
-// @flow
-
 import React                        from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage as T }    from 'react-intl';
@@ -10,13 +8,13 @@ import { changeThemeAction }        from '@core/actions/theme';
 import { getMode }                  from '@core/selectors/theme';
 import { getLocale }                from '@core/selectors/locale';
 import { changeLocaleAction }       from '@core/actions/locale/index';
-import * as Styled                  from './styled';
+import * as S                       from './styled';
 import messages                     from './messages';
 
-const Header = () => {
+const Header = (): JSX.Element => {
     const dispatch = useDispatch();
 
-    const mode   = useSelector(getMode);
+    const mode   = useSelector<string, string>(getMode);
     const locale = useSelector(getLocale);
 
     const ThemeIcon = {
@@ -25,15 +23,15 @@ const Header = () => {
     }[mode];
 
     const ThemeLogo = {
-        dark : Styled.Logo,
-        light: Styled.DarkLogo
+        dark : S.Logo,
+        light: S.DarkLogo
     }[mode];
 
     const nextLocale = locale === 'en'
         ? 'ru'
         : 'en';
 
-    const handleChangeTheme = () => {
+    const handleChangeTheme = (): void => {
         const reverseMode = mode === 'light'
             ? 'dark'
             : 'light';
@@ -41,27 +39,27 @@ const Header = () => {
         dispatch(changeThemeAction(reverseMode));
     };
 
-    const handleChangeLocale = () => {
+    const handleChangeLocale = (): void => {
         dispatch(changeLocaleAction(nextLocale));
     };
 
     return (
-        <Styled.Header>
-            <Styled.Nav>
-                <Styled.ThemeIcon>
+        <S.Header>
+            <S.Nav>
+                <S.ThemeIcon>
                     <ThemeIcon onClick={ handleChangeTheme } />
-                </Styled.ThemeIcon>
-                <Styled.LocaleToggler onClick={ handleChangeLocale }>
+                </S.ThemeIcon>
+                <S.LocaleToggler onClick={ handleChangeLocale }>
                     { nextLocale }
-                </Styled.LocaleToggler>
-            </Styled.Nav>
-            <Styled.Content>
+                </S.LocaleToggler>
+            </S.Nav>
+            <S.Content>
                 <ThemeLogo />
-                <Styled.Title>
+                <S.Title>
                     <T { ...messages.title } />
-                </Styled.Title>
-            </Styled.Content>
-        </Styled.Header>
+                </S.Title>
+            </S.Content>
+        </S.Header>
     );
 };
 

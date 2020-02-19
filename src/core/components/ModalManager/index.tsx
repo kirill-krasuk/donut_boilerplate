@@ -1,34 +1,23 @@
-import React, { useEffect } from 'react';
-import { createPortal }     from 'react-dom';
-import { useSelector }      from 'react-redux';
+import React            from 'react';
+import { createPortal } from 'react-dom';
+import { useSelector }  from 'react-redux';
+import { hot }          from 'react-hot-loader/root';
 
-import { getModalId }       from '@core/selectors/modal';
-import { canUseDOM }        from '@core/utils/dom';
-import * as Styled          from './styled';
-import modals               from './modals';
+import { getModalId }   from '@core/selectors/modal';
+import { canUseDOM }    from '@core/utils/dom';
+import * as S           from './styled';
+import modals           from './modals';
 
-const ModalManager = () => {
-    const modalId  = useSelector(getModalId);
+const ModalManager: React.FC<{}> = (): JSX.Element => {
+    const modalId: string = useSelector(getModalId);
 
     const CalledModal = modals[modalId];
 
-    useEffect(() => {
-        if (document) {
-            const root: any = document.getElementById('root');
-
-            if (CalledModal) {
-                root.classList.add('blured');
-            } else {
-                root.classList.remove('blured');
-            }
-        }
-    });
-
-    function renderModal() {
+    function renderModal(): JSX.Element {
         return (
-            <Styled.Wrapper>
+            <S.Wrapper>
                 <CalledModal />
-            </Styled.Wrapper>
+            </S.Wrapper>
         );
     }
 
@@ -41,4 +30,4 @@ const ModalManager = () => {
     return null;
 };
 
-export default ModalManager;
+export default hot(ModalManager);

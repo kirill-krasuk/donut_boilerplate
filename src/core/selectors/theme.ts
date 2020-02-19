@@ -1,5 +1,5 @@
-import { createSelector } from 'reselect';
-import R             from 'ramda';
+import { createSelector, Selector } from 'reselect';
+import R                            from 'ramda';
 
 const selectTheme = R.prop('theme');
 
