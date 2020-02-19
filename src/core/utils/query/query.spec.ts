@@ -1,5 +1,5 @@
-import { mockQueryObject }        from 'test/__mocks__/queryObject';
-import { mockQueryString }        from 'test/__mocks__/queryString';
+import { mockQueryObject }        from '@test/__mocks__/queryObject';
+import { mockQueryString }        from '@test/__mocks__/queryString';
 import { transformQueryToObject } from './transformQueryToObject';
 import { transformObjectToQuery } from './transformObjectToQuery';
 

@@ -1,8 +1,6 @@
-// @flow
+import { handleActions }         from 'redux-actions';
 
-import { handleActions }              from 'redux-actions';
-
-import * as actions                   from '@core/actions/locale';
+import * as actions              from '@core/actions/locale';
 import { ActionType, StateType } from './types';
 
 export const initState: StateType = 'en';

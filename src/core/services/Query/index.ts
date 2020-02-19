@@ -1,18 +1,15 @@
-// @flow
-
-import { iQuery }                                         from 'core/interfaces/Query';
-import { iIteratorCreator }                               from 'core/interfaces/IteratorCreator';
-import { GenericObject }                                  from 'core/types/object';
-import { transformQueryToObject, transformObjectToQuery } from 'core/utils/query';
+import { Query as IQuery }                                from '@core/interfaces/Query';
+import { GenericObject }                                  from '@core/types/object';
+import { transformQueryToObject, transformObjectToQuery } from '@core/utils/query';
 import { IteratorCreator }                                from '../IteratorCreator';
 
-export class Query implements iQuery {
+export class Query implements IQuery {
     _string = '';
     _qObject: GenericObject<any> = {};
 
-    _iteratorCreator: iIteratorCreator = new IteratorCreator();
+    _iteratorCreator = new IteratorCreator();
 
-    set(key: string, value: any): iQuery {
+    set(key: string, value: any): IQuery {
         this._qObject[key] = value;
 
         this._string = transformObjectToQuery(this._qObject);
@@ -36,7 +33,7 @@ export class Query implements iQuery {
         return this._string;
     }
 
-    delete(key: string): iQuery {
+    delete(key: string): IQuery {
         delete this._qObject[key];
 
         this._string = transformObjectToQuery(this._qObject);

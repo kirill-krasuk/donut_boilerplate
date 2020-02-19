@@ -13,7 +13,7 @@ export function* locationObserve({ payload }: Record<string, any>): SagaIterator
         .replace('?', '')
         .split('&');
 
-    const calledModalQuery = patterns.find(regExp.test);
+    const calledModalQuery = patterns.find(item => regExp.test(item));
 
     if (calledModalQuery) {
         const [ , modalId ] = calledModalQuery.split('=');

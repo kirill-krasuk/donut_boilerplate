@@ -1,4 +1,4 @@
-import { Query }     from '.';
+import { Query } from '.';
 
 describe('Query service', () => {
     let query;
@@ -51,7 +51,7 @@ describe('Query service', () => {
 
         describe('method toObject', () => {
             it('method must return correctly value with empty string argument', () => {
-                const query = new Query('');
+                const query = new Query();
 
                 query.set('name', 'Kirill');
 

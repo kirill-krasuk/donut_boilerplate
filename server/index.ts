@@ -14,19 +14,19 @@ import express, {
     NextFunction,
     Application
 } from 'express';
-import compression                                  from 'compression';
-import favicon                                      from 'serve-favicon';
-import cookieParser                                 from 'cookie-parser';
-import bodyParser                                   from 'body-parser';
-import path                                         from 'path';
+import compression  from 'compression';
+import favicon      from 'serve-favicon';
+import cookieParser from 'cookie-parser';
+import bodyParser   from 'body-parser';
+import path         from 'path';
 import '@babel/polyfill';
 
-import { ONE_MONTH_CACHE }                          from './constants/cache';
-import config                                       from './config';
-import { serverSideRendering }                      from './middlewares/serverSideRendering';
-import { errorLogging }                             from './middlewares/errorLogging';
-import { useDevMiddlewares }                        from './middlewares/useDevMiddlewares';
-import { useStatic }                                from './utils/useStatic';
+import { ONE_MONTH_CACHE }     from './constants/cache';
+import config                  from './config';
+import { serverSideRendering } from './middlewares/serverSideRendering';
+import { errorLogging }        from './middlewares/errorLogging';
+import { useDevMiddlewares }   from './middlewares/useDevMiddlewares';
+import { useStatic }           from './utils/useStatic';
 
 const { host, port } = config;
 
