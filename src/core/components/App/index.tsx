@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
-import { Provider }         from 'react-redux';
-import { hot }              from 'react-hot-loader/root';
+import React, { useEffect }               from 'react';
+import { Provider }                       from 'react-redux';
+import { hot }                            from 'react-hot-loader/root';
 
-import Router               from '@core/components/Router';
-import { store, history }   from '@core/utils/store';
-import { ConfigManager }    from '@core/services';
-import ErrorBoundary        from '../ErrorBoundary';
-import ReadyWrapper         from '../ReadyWrapper';
+import Router                             from '@core/components/Router';
+import { store, history }                 from '@core/utils/store';
+import { ConfigManager, IteratorCreator } from '@core/services';
+import ErrorBoundary                      from '../ErrorBoundary';
+import ReadyWrapper                       from '../ReadyWrapper';
+import './main.css';
 
 const configManager = new ConfigManager();
 
 configManager.defaultValues({
     apiHost: 'https://jsonplaceholder.typicode.com',
 });
+
+const iterator = new IteratorCreator().createFrom({ a: '1', b: '2', c: '3' });
+
+iterator.entries();
+iterator.keys();
+iterator.values();
 
 const App: React.FC = (): JSX.Element => {
     useEffect(() => {

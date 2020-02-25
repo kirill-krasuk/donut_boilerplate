@@ -17,15 +17,15 @@ export function* fetchListener({ payload }: Fetch): SagaIterator {
         finallyHandler
     } = payload;
 
-    http.body  = { ...httpBody };
-    http.query = { ...query };
+    http.setBody({ ...httpBody });
+    http.setQuery({ ...query });
 
     if (startHandler) {
         startHandler();
     }
 
     try {
-        const { body } = yield call(http.fetch, route);
+        const { body }: any = yield call(http.fetch as any, route);
 
         if (body && successHandler) {
             yield put(successHandler(body));

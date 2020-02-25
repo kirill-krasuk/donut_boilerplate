@@ -1,10 +1,10 @@
-import { fork, all }        from 'redux-saga/effects';
-import { SagaIterator }     from 'redux-saga';
+import { fork, all }    from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
 
-import { appSaga }          from '@app/sagas';
-import modal                from './modal';
-import location             from './location';
-import fetchListener        from './fetchListener';
+import { appSaga }      from '@app/sagas';
+import modal            from './modal';
+import location         from './location';
+import fetchListener    from './fetchListener';
 
 // import ready                           from './ready';
 

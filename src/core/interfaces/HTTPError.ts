@@ -1,5 +1,3 @@
-// @flow
-
 export interface HTTPError {
     _name: string;
     _message: string;

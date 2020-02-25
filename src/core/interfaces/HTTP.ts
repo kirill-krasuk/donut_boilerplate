@@ -1,7 +1,8 @@
-import { FetchOptions, HTTPMethod, HTTPResponse } from '@core/types/HTTP';
-import { Headers }                                from '@core/interfaces/Headers';
-import { ConfigManager }                          from './ConfigManager';
-import { iQuery }                                 from './Query';
+import { FetchOptions, HTTPResponse } from '@core/types/HTTP';
+import { Headers }                    from '@core/interfaces/Headers';
+import { EHTTPMethod }                from '@core/enums/http';
+import { ConfigManager }              from './ConfigManager';
+import { Query }                      from './Query';
 
 export interface HTTP {
     _auth: boolean;
@@ -10,28 +11,28 @@ export interface HTTP {
     _body: Record<string, any>;
 
     _headers: Headers;
-    _query: iQuery;
+    _query: Query;
 
     _configManager: ConfigManager;
 
     fetch(options: FetchOptions): Promise<HTTPResponse>;
 
-    _callRequest(method: HTTPMethod): Promise<HTTPResponse>;
+    _callRequest(method: EHTTPMethod): Promise<HTTPResponse>;
     _prepareHeaders(): void;
     _getUri(): string;
 
-    get headers(): GenericObject<string>;
-    set headers(newHeaders: GenericObject<string>);
-    set header(newHeader: GenericObject<string>);
-    _setHeaders(newHeaders: GenericObject<string>): void;
+    getHeaders(): object;
+    setHeaders(newHeaders: object): void;
+    setHeader(newHeader: object): void;
+    _setHeaders(newHeaders: object): void;
     hasHeader(key: string): boolean;
 
-    get query(): Record<string, any>;
-    set query(newQuery: Record<string, any>): void;
-    get queryAsString(): string;
+    getQuery(): Record<string, any>;
+    setQuery(newQuery: Record<string, any>): void;
+    getQueryAsString(): string;
     hasQueryParam(key: string): boolean;
     hasQueryParams(): boolean;
 
-    set body(newBody: Record<string, any>): void;
-    get body(): Record<string, any>;
+    setBody(newBody: Record<string, any>): void;
+    getBody(): Record<string, any>;
 }
