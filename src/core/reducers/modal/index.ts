@@ -1,20 +1,20 @@
-import { handleActions }   from 'redux-actions';
+import { createReducer }  from 'typesafe-actions';
 
-import * as actions        from '@core/actions/modal';
-import { State, Payloads } from './types';
+import * as actions       from '@core/actions/modal';
+import { State, Actions } from './types';
 
 export const initState: State = {
-    id        : '',
+    id        : null,
     hasHistory: false
 };
 
-export default handleActions<State, Payloads>({
-    [actions.SET_MODAL]: (state, action) => ({
+export default createReducer<State, Actions>(initState, {
+    [ actions.SET_MODAL ]: (state, { payload }) => ({
         ...state,
-        id: action.payload
+        id: payload
     }),
-    [actions.SET_MODAL_HISTORY_FLAG]: (state, action) => ({
+    [actions.SET_MODAL_HISTORY_FLAG]: (state, { payload }) => ({
         ...state,
-        hasHistory: action.payload
+        hasHistory: payload
     })
-}, initState);
+});

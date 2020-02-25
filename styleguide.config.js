@@ -8,6 +8,6 @@ module.exports = {
         Wrapper: path.resolve(__dirname, 'src/core/styleguide/Wrapper')
     },
     components : 'src/ui-kit/components/**/*.tsx',
-    ignore     : [ '**/loadable.tx', '**/*.spec.tsx', '**/*.spec.ts' ],
+    ignore     : [ '**/loadable.tsx', '**/loadable.tsx', '**/*.spec.tsx', '**/*.spec.ts' ],
     propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json').parse
 };
