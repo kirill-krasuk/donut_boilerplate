@@ -6,5 +6,5 @@ export enum ESizes {
 
 export enum EStyles {
     Primary = 'primary',
-    Secondary = 'secondart'
+    Secondary = 'secondary'
 }

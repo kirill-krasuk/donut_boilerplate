@@ -1,5 +1,5 @@
 import * as Pages from '../pages';
-import routes     from './routes';
+import { routes } from './routes';
 
 export default [ {
     ...routes.home,

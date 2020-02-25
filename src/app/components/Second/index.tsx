@@ -3,7 +3,7 @@ import { FormattedMessage as T } from 'react-intl';
 import { hot }                   from 'react-hot-loader/root';
 
 import { Header }                from '@ui-kit/components';
-import routes                    from '@app/routes/routes';
+import { routes }                from '@app/routes/routes';
 import * as S                    from './styled';
 import messages                  from './messages';
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export default styled.div`
+export const Content = styled.div`
     height: inherit;
     position: relative;
     z-index: 2;

@@ -1,6 +1,4 @@
-import { returnTypedObject } from '@core/utils/object';
-
-const routes = returnTypedObject({
+export const routes = {
     home: {
         path: '/',
     },
@@ -14,8 +12,6 @@ const routes = returnTypedObject({
     404: {
         path: '*',
     }
-});
+};
 
 export const protectRedirect = routes.home.path;
-
-export default routes;

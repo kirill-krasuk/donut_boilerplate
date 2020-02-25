@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export default styled.div`
+export const Nav = styled.div`
     width: 100%;
     position: absolute;
     top: left;

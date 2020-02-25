@@ -1,9 +1,9 @@
 import styled        from 'styled-components/macro';
 
-import Logo          from '@svgs/new_logo.svg';
+import LogoSVG       from '@svgs/new_logo.svg';
 import { LOGO_SIZE } from '@ui-kit/constants/header';
 
-export default styled(Logo)`
+export const Logo = styled(LogoSVG)`
     height: ${ LOGO_SIZE };
     width: ${ LOGO_SIZE };
     margin: 20px 0;
