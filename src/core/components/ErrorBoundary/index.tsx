@@ -1,19 +1,19 @@
-import React, { Component }     from 'react';
+import React, { Component } from 'react';
 
-import { HTTP, HTTPError }      from '@core/services';
-import { PropsType, StateType } from './types.js';
+import { HTTP, HTTPError }  from '@core/services';
+import { Props, State }     from './types.js';
 
-class ErrorBoundary extends Component<PropsType, StateType> {
+class ErrorBoundary extends Component<Props, State> {
     state = {
         hasError: false
     }
 
-    componentDidCatch(err: HTTPError) {
+    componentDidCatch(err: HTTPError): void {
         const http = new HTTP();
 
         this.setState({ hasError: true });
 
-        const stack = err.stack.split(/\n/);
+        const stack = err.stack!.split(/\n/);
 
         http.body = {
             stack,
@@ -26,7 +26,7 @@ class ErrorBoundary extends Component<PropsType, StateType> {
         });
     }
 
-    render() {
+    render(): JSX.Element {
         if (this.state.hasError) {
             return <div>Oops, something goes wrong</div>;
         }

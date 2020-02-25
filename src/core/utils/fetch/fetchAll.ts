@@ -1,20 +1,20 @@
-import R                 from 'ramda';
+import R            from 'ramda';
 
-import { HTTP }          from '@core/services/HTTP';
-import TokenStorage      from '@core/services/TokenStorage';
+import { HTTP }     from '@core/services/HTTP';
+import TokenStorage from '@core/services/TokenStorage';
 
-type ReqsType = Array<{
+type Reqs = Array<{
     path: string;
     method: 'GET' | 'POST' | 'PUT' | 'DELETE';
     auth?: boolean;
     query?: Record<string, any>;
 }>;
 
-type AuthType = {
+type Auth = {
     token: string;
 }
 
-export async function fetchAll(requests: ReqsType, auth?: AuthType): Promise<any[]> {
+export async function fetchAll(requests: Reqs, auth?: Auth): Promise<any[]> {
     const tokenStorage: typeof TokenStorage = TokenStorage;
 
     tokenStorage.setToken(R.path([ 'token' ], auth) || '');

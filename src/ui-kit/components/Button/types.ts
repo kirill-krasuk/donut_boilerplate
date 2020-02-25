@@ -1,6 +1,6 @@
 import { Sizes, Styles } from '@ui-kit/enums/button';
 
-export type PropsType = {
+export type Props = {
 
     /**
      * onClick handler - not required

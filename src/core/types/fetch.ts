@@ -1,4 +1,4 @@
-export type FetchType = {
+export type Fetch = {
     type: 'core/FETCH';
     payload: {
         body?: Record<string, any>;

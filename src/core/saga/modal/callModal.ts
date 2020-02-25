@@ -1,12 +1,12 @@
-import { put }                                           from 'redux-saga/effects';
-import { SagaIterator }                                  from 'redux-saga';
-import { push }                                          from 'connected-react-router';
+import { put }                                       from 'redux-saga/effects';
+import { SagaIterator }                              from 'redux-saga';
+import { push }                                      from 'connected-react-router';
 
-import { CallModalType }                                 from '@core/types/modal';
-import { setModalAction, setModalHistoryFlagAction }     from '@core/actions/modal';
-import { camelToSnake }                                  from '@core/utils/string';
+import { CallModal }                                 from '@core/types/modal';
+import { setModalAction, setModalHistoryFlagAction } from '@core/actions/modal';
+import { camelToSnake }                              from '@core/utils/string';
 
-export function* callModal({ payload }: CallModalType): SagaIterator {
+export function* callModal({ payload }: CallModal): SagaIterator {
     if (typeof payload === 'string') {
         yield put(setModalAction(payload));
 
@@ -18,15 +18,17 @@ export function* callModal({ payload }: CallModalType): SagaIterator {
 
         yield put(setModalHistoryFlagAction(history));
 
-        if (history) {
-            yield put(push({
-                search: `?action=${ camelToSnake(id) }`
-            }));
+        if (id) {
+            if (history) {
+                yield put(push({
+                    search: `?action=${ camelToSnake(id) }`
+                }));
 
-            return;
+                return;
+            }
+
+            yield put(setModalAction(id));
         }
-
-        yield put(setModalAction(id));
     } catch (err) {
         window.console.log(err);
     }

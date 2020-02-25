@@ -4,16 +4,19 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import { ThemeProvider }             from 'styled-components';
 import { push as pushAction }        from 'connected-react-router';
 import R                             from 'ramda';
+import { Transition }                from 'react-transition-group';
+import { hot }                       from 'react-hot-loader/root';
 
 import theme                         from '@core/config/theme';
 import { GlobalStyles }              from '@core/utils/styles';
 import { getMode }                   from '@core/selectors/theme';
 import { protectRedirect }           from '@app/routes/routes';
+import * as S                        from './styled';
 import LanguageProvider              from '../LanguageProvider';
 import ModalManager                  from '../ModalManager';
-import { PropsType }                 from './types';
+import { Props }                     from './types';
 
-const Root: React.FC<PropsType> = (props): JSX.Element => {
+const Root: React.FC<Props> = (props): JSX.Element => {
     const { route, location, staticContext } = props;
 
     const [ routes ]              = matchRoutes(route.routes, location.pathname);
@@ -51,7 +54,19 @@ const Root: React.FC<PropsType> = (props): JSX.Element => {
                 <GlobalStyles />
                 <LanguageProvider>
                     <>
-                        { renderRoutes(route.routes) }
+                        { /* <Transition
+                            in={ location.path }
+                            timeout={ 1000 }
+                            mountOnEnter
+                            unmountOnExit
+                            exit
+                        > */ }
+                        { /* { (state): JSX.Element => ( */ }
+                        <S.AnimationContainer state={ null }>
+                            { renderRoutes(route.routes) }
+                        </S.AnimationContainer>
+                        { /* ) } */ }
+                        { /* </Transition> */ }
                         <ModalManager />
                     </>
                 </LanguageProvider>
@@ -60,4 +75,4 @@ const Root: React.FC<PropsType> = (props): JSX.Element => {
     );
 };
 
-export default Root;
+export default hot(Root);

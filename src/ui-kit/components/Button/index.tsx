@@ -2,7 +2,7 @@ import React             from 'react';
 
 import { Sizes, Styles } from '@ui-kit/enums/button';
 import * as S            from './styled';
-import { PropsType }     from './types';
+import { Props }         from './types';
 
 /**
  * basic UI element of Donut Boilerplate
@@ -11,7 +11,7 @@ import { PropsType }     from './types';
  * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
  */
 
-const Button: React.FC<PropsType> = (props): JSX.Element => {
+const Button: React.FC<Props> = (props): JSX.Element => {
     const {
         onClick,
         size,

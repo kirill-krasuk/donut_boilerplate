@@ -7,7 +7,7 @@
     "start:app": "cross-env BABEL_ENV=development NODE_ENV=development node ./dist/server.js",
     "build:server": "webpack --config ./webpack/webpack.server.js --mode=development",
     "start": "npm run build:server && npm run start:app",
-    "run:prod": "./node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production node ./dist/server.js",
+    "run:prod": "cross-env NODE_ENV=production node ./dist/server.js",
     "build:prod:server": "webpack --config ./webpack/webpack.server.js --mode=production",
     "build:prod:client": "BABEL_ENV=production webpack --config ./webpack/webpack.prod.js --mode=production",
     "build": "webpack --config ./webpack/webpack.server.js --mode=production",

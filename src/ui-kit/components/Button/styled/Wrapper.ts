@@ -4,15 +4,15 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components/macro
 import { Sizes, Styles }                           from '@ui-kit/enums/button';
 import { SIZES, STYLES }                           from '@ui-kit/constants/button';
 
-type FCPropsType = {
+type FCProps = {
     size: Sizes;
     cStyle: Styles;
     onClick?: Function;
 };
 
-type StyledPropsType = FCPropsType & { theme: any };
+type StyledProps = FCProps & { theme: any };
 
-export const Wrapper: FC<FCPropsType> = styled.button<StyledPropsType>`
+export const Wrapper: FC<FCProps> = styled.button<StyledProps>`
 
     ${ ({ size, theme, cStyle }): FlattenSimpleInterpolation => css`
         height: ${ SIZES[size] };

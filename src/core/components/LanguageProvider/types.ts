@@ -1,5 +1,3 @@
-// @flow
-
-export type PropsType = {
-    children: any
+export type Props = {
+    children: JSX.Element;
 }

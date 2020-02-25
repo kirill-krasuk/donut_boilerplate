@@ -1,6 +1,6 @@
-import { createAction }    from 'redux-actions';
+import { createAction } from 'redux-actions';
 
-import { ChangeThemeType } from '@core/types/theme';
+import { ChangeTheme }  from '@core/types/theme';
 
-export const CHANGE_THEME: ChangeThemeType['type'] = 'core/CHANGE_THEME';
-export const changeThemeAction = createAction<ChangeThemeType['payload']>(CHANGE_THEME);
+export const CHANGE_THEME: ChangeTheme['type'] = 'core/CHANGE_THEME';
+export const changeThemeAction = createAction<ChangeTheme['payload']>(CHANGE_THEME);

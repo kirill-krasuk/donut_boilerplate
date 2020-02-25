@@ -1,10 +1,21 @@
 {
     "compilerOptions": {
-        "allowJs": true,
         "allowSyntheticDefaultImports": true,
-        "target": "ES2020",
+        "target": "es6",
 		"baseUrl": "./",
         "rootDir": "./",
+        "allowJs": false,
+        "checkJs": false,
+
+        // TODO: test options
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+
         "jsx": "preserve",
         "module": "esnext",
         "moduleResolution": "node",
@@ -25,6 +36,7 @@
 			"@fonts/*": ["src/assets/fonts/*"],
 			"@test/*": ["src/test/*"],
         },
+        "types": ["jest", "node"],
         "typeRoots": [ "./types", "./node_modules/@types"]
     },
     "exclude": ["node_modules", "**/node_modules/*"]

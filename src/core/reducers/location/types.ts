@@ -1,7 +1,7 @@
-import { IsFirstRenderingType } from '@core/types/location';
+import { IsFirstRendering } from '@core/types/location';
 
-export type StateType = {
+export type State = {
     isFirstRendering: boolean;
 }
 
-export type ActionType = IsFirstRenderingType['payload']
+export type Action = IsFirstRendering['payload']

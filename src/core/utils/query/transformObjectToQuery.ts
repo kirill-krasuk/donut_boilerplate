@@ -1,7 +1,7 @@
-export const transformObjectToQuery = (object: Object): string => { // eslint-disable-line
+export const transformObjectToQuery = <T extends object>(object: T): string => { // eslint-disable-line
     let query = '';
 
-    function append(key: string, value: any): void {
+    function append(key: keyof T, value: any): void {
         query += !query
             ? `${ key }=${ value }`
             : `&${ key }=${ value }`;

@@ -1,10 +1,21 @@
 module.exports = {
+    cacheDirectory : './.cache/jest',
     preset         : 'ts-jest',
-    testEnvironment: 'node',
-
-    // setupFiles     : [
-    //     './src/test/setup.js'
-    // ],
+    testEnvironment: 'jsdom',
+    transform      : {
+        '.tsx?$': 'ts-jest'
+    },
+    setupFiles: [
+        './src/test/setup.js',
+        './src/test/shim.js'
+    ],
+    moduleFileExtensions: [
+        'ts',
+        'tsx',
+        'js',
+        'jsx',
+        'json',
+    ],
     snapshotSerializers: [
         '<rootDir>/node_modules/enzyme-to-json/serializer'
     ],

@@ -1,6 +1,6 @@
-import { createAction }        from 'redux-actions';
+import { createAction }    from 'redux-actions';
 
-import { SocketReconnectType } from '@core/types/socket';
+import { SocketReconnect } from '@core/types/socket';
 
-export const SOCKET_RECONNECT: SocketReconnectType['type'] = 'core/SOCKET_RECONNECT';
-export const socketReconnectAction = createAction<SocketReconnectType['payload']>(SOCKET_RECONNECT);
+export const SOCKET_RECONNECT: SocketReconnect['type'] = 'core/SOCKET_RECONNECT';
+export const socketReconnectAction = createAction<SocketReconnect['payload']>(SOCKET_RECONNECT);

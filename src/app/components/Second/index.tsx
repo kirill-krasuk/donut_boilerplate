@@ -6,7 +6,7 @@ import { Header }                from '@ui-kit/components';
 import * as S                    from './styled';
 import messages                  from './messages';
 
-const Second: React.FC<{}> = (): JSX.Element => (
+const Second: React.FC = (): JSX.Element => (
     <>
         <Header />
         <S.Container>

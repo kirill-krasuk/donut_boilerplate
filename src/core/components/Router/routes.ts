@@ -1,5 +1,5 @@
-import Root     from '@core/components/Root';
-import routes   from '@app/routes';
+import Root   from '@core/components/Root';
+import routes from '@app/routes';
 
 export default [ {
     component: Root,

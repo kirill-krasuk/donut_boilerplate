@@ -1,13 +1,13 @@
-import { handleActions }         from 'redux-actions';
+import { handleActions } from 'redux-actions';
 
-import * as actions              from '@core/actions/location';
-import { StateType, ActionType } from './types';
+import * as actions      from '@core/actions/location';
+import { State, Action } from './types';
 
-const initState: StateType = {
+const initState: State = {
     isFirstRendering: true
 };
 
-export default handleActions<StateType, ActionType>({
+export default handleActions<State, Action>({
     [actions.IS_FIRST_RENDERING]: (state, action) => ({
         ...state,
         isFirstRendering: action.payload

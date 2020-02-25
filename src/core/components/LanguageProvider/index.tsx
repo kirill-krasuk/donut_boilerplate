@@ -4,12 +4,12 @@ import { IntlProvider } from 'react-intl';
 
 import messages         from '@core/locales';
 import { getLocale }    from '@core/selectors/locale';
-import { PropsType }    from './types';
+import { Props }        from './types';
 
-const LanguageProvider: React.FC<PropsType> = (props): JSX.Element => {
+const LanguageProvider: React.FC<Props> = (props): JSX.Element => {
     const { children } = props;
 
-    const locale = (useSelector(getLocale) as string);
+    const locale = useSelector(getLocale);
 
     return (
         <IntlProvider

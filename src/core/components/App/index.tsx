@@ -1,12 +1,12 @@
-import React, { useEffect }         from 'react';
-import { Provider }                 from 'react-redux';
-import { hot }                      from 'react-hot-loader/root';
+import React, { useEffect } from 'react';
+import { Provider }         from 'react-redux';
+import { hot }              from 'react-hot-loader/root';
 
-import Router                       from '@core/components/Router';
-import { store, history }           from '@core/utils/store';
-import { ConfigManager }            from '@core/services';
-import ErrorBoundary                from '../ErrorBoundary';
-import ReadyWrapper                 from '../ReadyWrapper';
+import Router               from '@core/components/Router';
+import { store, history }   from '@core/utils/store';
+import { ConfigManager }    from '@core/services';
+import ErrorBoundary        from '../ErrorBoundary';
+import ReadyWrapper         from '../ReadyWrapper';
 
 const configManager = new ConfigManager();
 
@@ -14,7 +14,7 @@ configManager.defaultValues({
     apiHost: 'https://jsonplaceholder.typicode.com',
 });
 
-const App: React.FC<{}> = (): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
     useEffect(() => {
         window.onload = function (): void {
             const storage = document.getElementById('ssr-store');
