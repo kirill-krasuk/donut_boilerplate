@@ -1,9 +1,9 @@
-import React                   from 'react';
-import { hydrate, render }     from 'react-dom';
-import { loadableReady }       from '@loadable/component';
+import React               from 'react';
+import { hydrate, render } from 'react-dom';
+import { loadableReady }   from '@loadable/component';
 
-import { ConfigManager }       from '@core/services';
-import { App }                 from './components';
+import { ConfigManager }   from '@core/services';
+import { App }             from './components';
 
 const ROOT_NODE = document.getElementById('root');
 
