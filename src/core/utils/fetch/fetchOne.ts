@@ -1,11 +1,12 @@
-import R            from 'ramda';
+import R               from 'ramda';
 
-import { HTTP }     from '@core/services/HTTP';
-import TokenStorage from '@core/services/TokenStorage';
+import { EHTTPMethod } from '@core/enums/http';
+import { HTTP }        from '@core/services/HTTP';
+import TokenStorage    from '@core/services/TokenStorage';
 
 type Req = {
     path: string;
-    method: string;
+    method: EHTTPMethod;
     query?: Record<string, any>;
     auth?: boolean;
 };
@@ -26,7 +27,7 @@ export async function fetchOne(request: Req, auth?: Auth): Promise<void | Record
     const http: HTTP = new HTTP();
 
     if (query) {
-        http.query = query;
+        http.setQuery(query);
     }
 
     try {

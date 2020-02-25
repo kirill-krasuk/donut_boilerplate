@@ -1,7 +1,8 @@
-import { FetchOptions, HTTPMethod, HTTPResponse } from '@core/types/HTTP';
-import { Headers }                                from '@core/interfaces/Headers';
-import { ConfigManager }                          from './ConfigManager';
-import { Query }                                  from './Query';
+import { FetchOptions, HTTPResponse } from '@core/types/HTTP';
+import { Headers }                    from '@core/interfaces/Headers';
+import { EHTTPMethod }                from '@core/enums/http';
+import { ConfigManager }              from './ConfigManager';
+import { Query }                      from './Query';
 
 export interface HTTP {
     _auth: boolean;
@@ -16,7 +17,7 @@ export interface HTTP {
 
     fetch(options: FetchOptions): Promise<HTTPResponse>;
 
-    _callRequest(method: HTTPMethod): Promise<HTTPResponse>;
+    _callRequest(method: EHTTPMethod): Promise<HTTPResponse>;
     _prepareHeaders(): void;
     _getUri(): string;
 

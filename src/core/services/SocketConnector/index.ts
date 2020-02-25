@@ -1,9 +1,9 @@
 import { SocketConnector as ISocketConnector } from '@core/interfaces/SocketConnector';
-import api                                     from '@app/routes/api';
+import { api }                                 from '@app/routes/api';
 import { ConfigManager }                       from '../ConfigManager';
 
 export class SocketConnector implements ISocketConnector {
-    _socket: Record<string, any>;
+    _socket: any = null;
     _isConnect = false;
 
     _configManager: ConfigManager = new ConfigManager();
