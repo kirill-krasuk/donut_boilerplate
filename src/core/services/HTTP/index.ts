@@ -1,16 +1,22 @@
-import fetch                                        from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch';
 
-import { HTTP as IHTTP }                            from '@core/interfaces/HTTP';
-import { FetchOptions, HTTPMethod, HTTPResponse }   from '@core/types/HTTP';
-import { Headers }                                  from '../Headers';
-import { Query }                                    from '../Query';
-import { ConfigManager }                            from '../ConfigManager';
-import { HTTPError }                                from '../HTTPError';
+import {
+    FetchOptions,
+    HTTPMethod,
+    HTTPResponse,
+    ResponseWithStatusCodes
+} from '@core/types/HTTP';
+import { HTTP as IHTTP } from '@core/interfaces/HTTP';
+import { Headers }       from '../Headers';
+import { Query }         from '../Query';
+import { ConfigManager } from '../ConfigManager';
+import { HTTPError }     from '../HTTPError';
 
+// TODO: refactoring to FP style
 export class HTTP implements IHTTP {
-    _auth: boolean;
-    _requestTo: string;
-    _path: string;
+    _auth = false;
+    _requestTo = '';
+    _path = '';
     _body: Record<string, any> = {};
     _bodyIsFormData = false;
 
@@ -51,8 +57,8 @@ export class HTTP implements IHTTP {
 
         const uri = this._getUri();
 
-        const request: Request   = new Request(uri, options);
-        const response: Response = await fetch(uri, options);
+        const request  = new Request(uri, options);
+        const response = await fetch(uri, options) as ResponseWithStatusCodes;
 
         const body = await response
             .json()
@@ -103,7 +109,7 @@ export class HTTP implements IHTTP {
     }
 
     _prepareHeaders(): void {
-        const headers = {
+        const headers: Record<string, any> = {
             Accept: 'application/json',
 
             // flow-disable-next-line
@@ -127,7 +133,7 @@ export class HTTP implements IHTTP {
             });
     }
 
-    set headers(newHeaders: Record<string, any>) {
+    setHeaders(newHeaders: Record<string, any>): void {
         Object
             .keys(newHeaders)
             .forEach((key) => {
@@ -137,7 +143,7 @@ export class HTTP implements IHTTP {
             });
     }
 
-    set header(newHeader: { key: string; value: string }) {
+    setHeader(newHeader: { key: string; value: string }): void {
         const { key, value } = newHeader;
 
         if (key && value) {
@@ -145,11 +151,11 @@ export class HTTP implements IHTTP {
         }
     }
 
-    get headers(): Record<string, any> {
-        const headers = {};
+    getHeaders(): Record<string, any> {
+        const headers: Record<string, any> = {};
 
-        // eslint-disable-next-line
-        for (const pair of this._headers.entries()) {
+        // hardcode type
+        for (const pair of this._headers.entries() as any) {
             const [ key, value ] = pair;
 
             headers[key] = value;
@@ -162,17 +168,17 @@ export class HTTP implements IHTTP {
         return this._headers.has(key);
     }
 
-    set query(newQuery: Record<string, any>): void {
+    setQuery(newQuery: Record<string, any>): void {
         Object
             .keys(newQuery)
             .forEach(key => this._query.set(key, newQuery[key]));
     }
 
-    get query(): Record<string, any> {
+    getQuery(): Record<string, any> {
         return this._query.toObject();
     }
 
-    get queryAsString(): string {
+    getQueryAsString(): string {
         return this._query.toString();
     }
 
@@ -186,7 +192,7 @@ export class HTTP implements IHTTP {
             .length;
     }
 
-    set body(newBody: Record<string, any> | FormData) {
+    setBody(newBody: Record<string, any> | FormData): void {
         if (newBody instanceof FormData) {
             this._bodyIsFormData = true;
             this._body           = newBody;
@@ -199,7 +205,7 @@ export class HTTP implements IHTTP {
         }
     }
 
-    get body(): Record<string, any> | FormData {
+    getBody(): Record<string, any> | FormData {
         return this._body;
     }
 }

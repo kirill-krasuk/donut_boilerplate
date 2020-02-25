@@ -1,3 +1,5 @@
+import { STATUS_CODES } from '@core/constants/http/statusCodes';
+
 export type GetType = 'GET' | 'get';
 export type PostType = 'POST' | 'post';
 export type PutType = 'PUT' | 'put';
@@ -16,3 +18,5 @@ export type HTTPResponse = {
     body: Record<string, any>;
     response: Record<string, any>;
 }
+
+export type ResponseWithStatusCodes = Response & { status: keyof typeof STATUS_CODES }

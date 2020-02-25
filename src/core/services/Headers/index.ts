@@ -1,6 +1,7 @@
-import { Headers as IHeaders }   from '@core/interfaces/Headers';
-import { GenericObject }         from '@core/types/object';
-import { IteratorCreator }       from '../IteratorCreator';
+import { Headers as IHeaders } from '@core/interfaces/Headers';
+import { GenericObject }       from '@core/types/object';
+import { CreatedIterator }     from '@core/types/iterator';
+import { IteratorCreator }     from '../IteratorCreator';
 
 export class Headers implements IHeaders {
     _innerObject: Record<string, any> = {};
@@ -30,7 +31,7 @@ export class Headers implements IHeaders {
         return this._innerObject;
     }
 
-    keys(): Iterator<any> {
+    keys(): Iterator<CreatedIterator> {
         const iterator = this._iteratorCreator
             .createFrom(this._innerObject)
             .keys();
@@ -38,7 +39,7 @@ export class Headers implements IHeaders {
         return iterator;
     }
 
-    values(): Iterator<any> {
+    values(): Iterator<CreatedIterator> {
         const iterator = this._iteratorCreator
             .createFrom(this._innerObject)
             .values();
@@ -46,7 +47,7 @@ export class Headers implements IHeaders {
         return iterator;
     }
 
-    entries(): Iterator<any> {
+    entries(): Iterator<CreatedIterator> {
         const iterator = this._iteratorCreator
             .createFrom(this._innerObject)
             .entries();

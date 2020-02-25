@@ -1,15 +1,16 @@
-import { iIteratorCreator } from 'core/interfaces/IteratorCreator';
+import { IteratorCreator as IIteratorCreator } from '@core/interfaces/IteratorCreator';
+import { CreatedIterator }                     from '@core/types/iterator';
 
-export class IteratorCreator implements iIteratorCreator {
-    _iterableObject: Record<string, any>;
+export class IteratorCreator implements IIteratorCreator {
+    _iterableObject: Record<string, any> = {};
 
-    createFrom(object: any): iIteratorCreator {
+    createFrom(object: any): IIteratorCreator {
         this._iterableObject = object;
 
         return this;
     }
 
-    keys(): Iterator<any> {
+    keys(): Iterator<CreatedIterator> {
         const keys = Object.keys(this._iterableObject);
 
         const iterator = this._makeSimpleIterator(keys);
@@ -17,7 +18,7 @@ export class IteratorCreator implements iIteratorCreator {
         return iterator[Symbol.iterator]();
     }
 
-    values(): Iterator<any> {
+    values(): Iterator<CreatedIterator> {
         const values = Object.values(this._iterableObject);
 
         const iterator = this._makeSimpleIterator(values);
@@ -25,7 +26,7 @@ export class IteratorCreator implements iIteratorCreator {
         return iterator[Symbol.iterator]();
     }
 
-    entries(): Iterator<any> {
+    entries(): Iterator<CreatedIterator> {
         const entries = Object.entries(this._iterableObject);
 
         const iterator = this._makeSimpleIterator(entries);
@@ -33,23 +34,23 @@ export class IteratorCreator implements iIteratorCreator {
         return iterator[Symbol.iterator]();
     }
 
-    _makeSimpleIterator(iterableObject: Record<string, any>): Record<string, any> {
+    _makeSimpleIterator(iterableObject: any[]): CreatedIterator {
         return {
-            [iterableObject]: iterableObject,
-            * [Symbol.iterator]() {
-                for (let i = 0; i < this[iterableObject].length; i++) {
-                    yield this[iterableObject][i];
+            iterable: iterableObject,
+            * [Symbol.iterator](): Generator {
+                for (let i = 0; i < this.iterable.length; i++) {
+                    yield this.iterable[i];
                 }
             }
         };
     }
 
-    _makeEntriesIterator(iterableObject: Record<string, any>): Record<string, any> {
+    _makeEntriesIterator(iterableObject: Record<string, any>): CreatedIterator {
         return {
-            [iterableObject]: iterableObject,
-            * [Symbol.iterator]() {
-                for (let i = 0; i < this[iterableObject].length; i++) {
-                    const [ key, value ] = this[iterableObject][i];
+            iterable: iterableObject,
+            * [Symbol.iterator](): Generator {
+                for (let i = 0; i < this.iterable.length; i++) {
+                    const [ key, value ] = this.iterable[i];
 
                     yield [ key, value ];
                 }
