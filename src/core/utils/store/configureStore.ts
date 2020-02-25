@@ -1,17 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware             from 'redux-saga';
-import { routerMiddleware }             from 'connected-react-router';
-import { composeWithDevTools }          from 'redux-devtools-extension';
-import { History }                      from 'history';
-import { compose }                      from 'ramda';
+import {
+    createStore, applyMiddleware, Reducer, Store
+} from 'redux';
+import createSagaMiddleware    from 'redux-saga';
+import { routerMiddleware }    from 'connected-react-router';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { History }             from 'history';
+import { compose }             from 'ramda';
 
-import { themeMiddleware }              from '@core/middlewares/theme';
-import { localeMiddleware }             from '@core/middlewares/locale';
-import { locationMiddleware }           from '@core/middlewares/location';
-import rootSaga                         from '@core/saga';
-import createRootReducer                from '@core/reducers';
-import { Middleware }                   from '@core/types/store';
-import { shakeReducers }                from './shakeReducers';
+import { themeMiddleware }     from '@core/middlewares/theme';
+import { localeMiddleware }    from '@core/middlewares/locale';
+import { locationMiddleware }  from '@core/middlewares/location';
+import rootSaga                from '@core/saga';
+import createRootReducer       from '@core/reducers';
+import { shakeReducers }       from './shakeReducers';
 
 export function configureStore(
     preloadedState: Record<string, any> = {},
@@ -20,9 +21,9 @@ export function configureStore(
 ): Record<string, any> {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
-    const env                       = process.env.NODE_ENV;
-    const sagaMiddleware            = createSagaMiddleware();
-    const middlewares: Middleware[] = [
+    const env              = process.env.NODE_ENV;
+    const sagaMiddleware   = createSagaMiddleware();
+    const middlewares: any = [
         sagaMiddleware,
         locationMiddleware,
         themeMiddleware,
@@ -35,8 +36,9 @@ export function configureStore(
             ? composeWithDevTools
             : compose;
 
-    const store = createStore(
-        createRootReducer(history, {}, ssrReducers),
+    // TODO: fix type
+    const store: Store<any, any> & { asyncReducers: Record<string, any>; injectReducer: Function } = createStore(
+        createRootReducer(history, {}, ssrReducers) as Reducer<any, any>,
         staticPreloadedState,
         composeEnhancers(applyMiddleware(...middlewares))
     );
@@ -49,15 +51,16 @@ export function configureStore(
             action: Record<string, any>
         ): Function => asyncReducer(state, action);
 
-
-        store.replaceReducer(createRootReducer(history, store.asyncReducers));
+        // TODO: fix type
+        store.replaceReducer(createRootReducer(history, store.asyncReducers) as Reducer<any, any>);
     };
 
     sagaMiddleware.run(rootSaga);
 
     if ((module as any).hot) {
         (module as any).hot.accept('../../reducers', () => {
-            store.replaceReducer(createRootReducer(history));
+            // TODO: fix type
+            store.replaceReducer(createRootReducer(history) as Reducer<any, any>);
         });
     }
 

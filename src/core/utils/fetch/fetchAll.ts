@@ -1,11 +1,12 @@
-import R            from 'ramda';
+import R               from 'ramda';
 
-import { HTTP }     from '@core/services/HTTP';
-import TokenStorage from '@core/services/TokenStorage';
+import { HTTP }        from '@core/services/HTTP';
+import TokenStorage    from '@core/services/TokenStorage';
+import { EHTTPMethod } from '@core/enums/http';
 
 type Reqs = Array<{
     path: string;
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    method: EHTTPMethod;
     auth?: boolean;
     query?: Record<string, any>;
 }>;
@@ -23,7 +24,7 @@ export async function fetchAll(requests: Reqs, auth?: Auth): Promise<any[]> {
         const http: HTTP = new HTTP();
 
         if (req.query) {
-            http.query = req.query;
+            http.setQuery(req.query);
         }
 
         return http.fetch({

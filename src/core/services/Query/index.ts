@@ -1,7 +1,8 @@
-import { Query as IQuery }                                from '@core/interfaces/Query';
-import { GenericObject }                                  from '@core/types/object';
-import { transformQueryToObject, transformObjectToQuery } from '@core/utils/query';
-import { IteratorCreator }                                from '../IteratorCreator';
+import qs                  from 'query-string';
+
+import { Query as IQuery } from '@core/interfaces/Query';
+import { GenericObject }   from '@core/types/object';
+import { IteratorCreator } from '../IteratorCreator';
 
 export class Query implements IQuery {
     _string = '';
@@ -12,7 +13,7 @@ export class Query implements IQuery {
     set(key: string, value: any): IQuery {
         this._qObject[key] = value;
 
-        this._string = transformObjectToQuery(this._qObject);
+        this._string = qs.stringify(this._qObject);
 
         return this;
     }
@@ -36,7 +37,7 @@ export class Query implements IQuery {
     delete(key: string): IQuery {
         delete this._qObject[key];
 
-        this._string = transformObjectToQuery(this._qObject);
+        this._string = qs.stringify(this._qObject);
 
         return this;
     }
@@ -67,7 +68,7 @@ export class Query implements IQuery {
 
     _transformQuery(query: string): void {
         if (query) {
-            this._qObject = transformQueryToObject(query);
+            this._qObject = qs.parse(query);
         }
     }
 }

@@ -9,5 +9,5 @@ export function* ready(): SagaIterator {
 
     const socket = yield call(socketConnector.connect);
 
-    yield put(socketInitAction(socket));
+    yield put(socketInitAction(socket!));
 }

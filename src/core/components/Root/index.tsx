@@ -61,7 +61,7 @@ const Root: React.FC<Props> = (props): JSX.Element => {
                             exit
                         > */ }
                         { /* { (state): JSX.Element => ( */ }
-                        <S.AnimationContainer state={ null }>
+                        <S.AnimationContainer>
                             { renderRoutes(route.routes) }
                         </S.AnimationContainer>
                         { /* ) } */ }

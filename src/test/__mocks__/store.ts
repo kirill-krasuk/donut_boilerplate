@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 
-const middlewares = [];
-const mockStore   = configureStore(middlewares);
+const middlewares: Array<any> = [];
+const mockStore: Function     = configureStore(middlewares);
 
 const initState = {};
 const store     = mockStore(initState);

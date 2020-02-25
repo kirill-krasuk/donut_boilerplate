@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { HTTP, HTTPError }  from '@core/services';
+import { EHTTPMethod }      from '@core/enums/http';
 import { Props, State }     from './types.js';
 
 class ErrorBoundary extends Component<Props, State> {
@@ -15,12 +16,12 @@ class ErrorBoundary extends Component<Props, State> {
 
         const stack = err.stack!.split(/\n/);
 
-        http.body = {
+        http.setBody({
             stack,
-        };
+        });
 
         http.fetch({
-            method   : 'POST',
+            method   : EHTTPMethod.Post,
             path     : '/handle_error',
             requestTo: 'root'
         });

@@ -2,11 +2,11 @@ import fetch from 'isomorphic-fetch';
 
 import {
     FetchOptions,
-    HTTPMethod,
     HTTPResponse,
     ResponseWithStatusCodes
 } from '@core/types/HTTP';
 import { HTTP as IHTTP } from '@core/interfaces/HTTP';
+import { EHTTPMethod }   from '@core/enums/http';
 import { Headers }       from '../Headers';
 import { Query }         from '../Query';
 import { ConfigManager } from '../ConfigManager';
@@ -45,13 +45,13 @@ export class HTTP implements IHTTP {
         return res;
     }
 
-    async _callRequest(method: HTTPMethod): Promise<HTTPResponse> {
+    async _callRequest(method: EHTTPMethod): Promise<HTTPResponse> {
         const options: Record<string, any> = {
             method,
             headers: this._headers.toObject()
         };
 
-        if (method !== 'GET' && method !== 'get') {
+        if (method !== EHTTPMethod.Get) {
             options.body = this._bodyIsFormData ? this._body : JSON.stringify(this._body);
         }
 

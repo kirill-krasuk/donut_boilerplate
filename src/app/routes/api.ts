@@ -1,7 +1,9 @@
-export default {
+import { EHTTPMethod } from '@core/enums/http';
+
+export const api = {
     test: {
         getPosts: {
-            method: 'GET',
+            method: EHTTPMethod.Get,
             auth  : false,
             path  : '/posts'
         }
