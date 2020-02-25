@@ -1,7 +1,7 @@
 import React                                     from 'react';
 import { renderToString }                        from 'react-dom/server';
 import { Provider }                              from 'react-redux';
-import { renderRoutes }                          from 'react-router-config';
+import { renderRoutes, RouteConfig }             from 'react-router-config';
 import { StaticRouter }                          from 'react-router';
 import { Request, Response }                     from 'express';
 import { ServerStyleSheet }                      from 'styled-components';
@@ -59,7 +59,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
         <Provider store={ store }>
             <StaticRouter context={ context } location={ req.url }>
                 <ChunkExtractorManager extractor={ extractor }>
-                    { renderRoutes(routes) }
+                    { renderRoutes(routes as RouteConfig[]) }
                 </ChunkExtractorManager>
             </StaticRouter>
         </Provider>

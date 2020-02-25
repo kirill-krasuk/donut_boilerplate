@@ -1,10 +1,10 @@
-export enum Sizes {
-    Small = 1,
-    Medium,
-    Large
+export enum ESizes {
+    Small = '24px',
+    Medium = '32px',
+    Large = '48px'
 }
 
-export enum Styles {
-    Primary = 1,
-    Secondary
+export enum EStyles {
+    Primary = 'primary',
+    Secondary = 'secondart'
 }

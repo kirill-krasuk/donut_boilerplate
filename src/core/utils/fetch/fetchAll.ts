@@ -33,8 +33,7 @@ export async function fetchAll(requests: Reqs, auth?: Auth): Promise<any[]> {
         });
     });
 
-    // flow-disable-next-line
-    const responses = await Promise.allSettled(promises);
+    const responses: { status: string; value: any }[] = await Promise.allSettled(promises);
 
     return responses.map((res) => {
         if (res.status === 'rejected') {

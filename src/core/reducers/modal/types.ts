@@ -1,8 +1,5 @@
-import { SetModal, SetModalHistoryFlag } from '@core/types/modal';
+import { SetModal, SetModalHistoryFlag, ModalState } from '@core/types/modal';
 
-export type State = {
-    id: string | null;
-    hasHistory: boolean;
-}
+export type State = ModalState;
 
-export type Action = SetModal | SetModalHistoryFlag;
+export type Actions = SetModal | SetModalHistoryFlag;

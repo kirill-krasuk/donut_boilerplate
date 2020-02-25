@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
 
-export default styled.div`
+export const Body = styled.div`
     padding: 5px;
 `;

@@ -11,7 +11,6 @@ const { env } = config;
 
 const webpackConfig = env === 'development' ? webpackConfigDev : webpackConfigProd;
 
-// @ts-ignore
 const bundler = webpack(webpackConfig);
 
 export function useDevMiddlewares(app: Application): void {

@@ -1,8 +1,8 @@
-import React             from 'react';
+import React               from 'react';
 
-import { Sizes, Styles } from '@ui-kit/enums/button';
-import * as S            from './styled';
-import { Props }         from './types';
+import { ESizes, EStyles } from '@ui-kit/enums/button';
+import * as S              from './styled';
+import { Props }           from './types';
 
 /**
  * basic UI element of Donut Boilerplate
@@ -31,8 +31,8 @@ const Button: React.FC<Props> = (props): JSX.Element => {
 };
 
 Button.defaultProps = {
-    size : Sizes.Medium,
-    style: Styles.Primary
+    size : ESizes.Medium,
+    style: EStyles.Primary
 };
 
 export default Button;

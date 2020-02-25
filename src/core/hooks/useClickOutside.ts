@@ -1,10 +1,8 @@
-// @flow
-
 import { useEffect } from 'react';
 
-export function useClickOutside(ref: any, handler: Function) {
+export function useClickOutside(ref: any, handler: Function): void {
     useEffect(() => {
-        const listener = (event: Event) => {
+        const listener = (event: Event): void => {
             if (!ref.current || ref.current.contains(event.target)) {
                 return;
             }
@@ -15,7 +13,7 @@ export function useClickOutside(ref: any, handler: Function) {
         document.addEventListener('mousedown', listener);
         document.addEventListener('touchstart', listener);
 
-        return () => {
+        return (): void => {
             document.removeEventListener('mousedown', listener);
             document.removeEventListener('touchstart', listener);
         };

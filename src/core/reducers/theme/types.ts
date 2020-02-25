@@ -1,7 +1,5 @@
-import { ChangeTheme } from '@core/types/theme';
+import { ChangeTheme, ThemeState } from '@core/types/theme';
 
-export type State = {
-    mode: 'light' | 'dark';
-}
+export type State = ThemeState;
 
-export type Action = ChangeTheme;
+export type Action = ChangeTheme['payload'];

@@ -1,17 +1,17 @@
-import { matchRoutes } from 'react-router-config';
+import { matchRoutes, RouteConfig } from 'react-router-config';
 
-import { PComponent }  from '@core/types/components';
-import routes          from '@core/components/Router/routes';
+import { PComponent }               from '@core/types/components';
+import routes                       from '@core/components/Router/routes';
 
 export async function prefetch(store: Record<string, any>, url: string, auth: any = null): Promise<void> {
     const [ pathname, query ] = url.split('?');
-    const [ , appRoute ]      = matchRoutes(routes, pathname);
+    const [ , appRoute ]      = matchRoutes(routes as RouteConfig[], pathname);
 
     if (appRoute && appRoute.route) {
         const { route, match } = appRoute;
         const { component }    = route;
 
-        const pComponent = (component as PComponent);
+        const pComponent = component as PComponent;
 
         if (pComponent.prefetch) {
             try {

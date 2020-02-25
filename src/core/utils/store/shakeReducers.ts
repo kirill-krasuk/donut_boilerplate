@@ -8,7 +8,7 @@ export function shakeReducers(preloadedState: Record<string, any>): Array<Record
     const staticReducersIds = Object.keys(staticReducers);
     const preloadedStateIds = Object.keys(preloadedStateCopy);
 
-    const asyncPreloadedState = {};
+    const asyncPreloadedState: Record<string, any> = {};
 
     R.symmetricDifference(staticReducersIds, preloadedStateIds)
         .forEach((id) => {

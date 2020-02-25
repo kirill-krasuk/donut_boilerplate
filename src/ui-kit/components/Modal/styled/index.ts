@@ -1,3 +1,3 @@
 export { Wrapper } from './Wrapper';
-export { default as Body } from './Body';
-export { default as Head } from './Head';
+export { Body } from './Body';
+export { Head } from './Head';

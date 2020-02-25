@@ -1,7 +1,10 @@
 import { createSelector } from 'reselect';
 import R                  from 'ramda';
 
-const selectModal: (state: Record<string, any>) => string = R.prop('modal');
+import { Selector }       from '@core/types/selector';
+import { ModalState }     from '@core/types/modal';
+
+const selectModal: Selector<ModalState> = R.prop('modal');
 
 export const getModalId = createSelector<object, ReturnType<typeof selectModal>, string>(
     selectModal,

@@ -3,44 +3,54 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage as T }    from 'react-intl';
 import { Sun }                      from 'styled-icons/fa-solid/Sun';
 import { Moon }                     from 'styled-icons/fa-solid/Moon';
+import R                            from 'ramda';
 
 import { changeThemeAction }        from '@core/actions/theme';
 import { getMode }                  from '@core/selectors/theme';
 import { getLocale }                from '@core/selectors/locale';
 import { changeLocaleAction }       from '@core/actions/locale/index';
+import { ETheme }                   from '@core/enums/theme';
+import { ELocale }                  from '@core/enums/locale';
 import * as S                       from './styled';
 import messages                     from './messages';
 
 const Header = (): JSX.Element => {
     const dispatch = useDispatch();
 
-    const mode   = useSelector<string, string>(getMode);
+    const mode   = useSelector(getMode);
     const locale = useSelector(getLocale);
 
+    const composeWithDispatch: Function = R.partial(R.compose, [ dispatch ]);
+
+    const changeTheme: typeof changeThemeAction   = composeWithDispatch(changeThemeAction);
+    const changeLocale: typeof changeLocaleAction = composeWithDispatch(changeLocaleAction);
+
     const ThemeIcon = {
-        light: Sun,
-        dark : Moon
+        [ETheme.Light]: Sun,
+        [ETheme.Dark] : Moon
     }[mode];
 
     const ThemeLogo = {
-        dark : S.Logo,
-        light: S.DarkLogo
+        [ETheme.Dark] : S.Logo,
+        [ETheme.Light]: S.DarkLogo
     }[mode];
 
-    const nextLocale = locale === 'en'
-        ? 'ru'
-        : 'en';
+    const reverseLocale = {
+        [ELocale.Ru]: ELocale.En,
+        [ELocale.En]: ELocale.Ru
+    };
+
+    const reverseThemeMode = {
+        [ETheme.Dark] : ETheme.Light,
+        [ETheme.Light]: ETheme.Dark,
+    };
 
     const handleChangeTheme = (): void => {
-        const reverseMode = mode === 'light'
-            ? 'dark'
-            : 'light';
-
-        dispatch(changeThemeAction(reverseMode));
+        changeTheme(reverseThemeMode[mode]);
     };
 
     const handleChangeLocale = (): void => {
-        dispatch(changeLocaleAction(nextLocale));
+        changeLocale(reverseLocale[locale]);
     };
 
     return (
@@ -50,7 +60,7 @@ const Header = (): JSX.Element => {
                     <ThemeIcon onClick={ handleChangeTheme } />
                 </S.ThemeIcon>
                 <S.LocaleToggler onClick={ handleChangeLocale }>
-                    { nextLocale }
+                    { reverseLocale[locale] }
                 </S.LocaleToggler>
             </S.Nav>
             <S.Content>
