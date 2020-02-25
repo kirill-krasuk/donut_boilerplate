@@ -1,7 +1,5 @@
 {
     "presets": [
-        "@babel/preset-react",
-        "@babel/preset-flow",
         [
             "@babel/preset-env",
             {
@@ -9,7 +7,9 @@
                     "esmodules": true
                 }
             }
-        ]
+        ],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
     ],
     "env": {
         "development": {
@@ -37,16 +37,16 @@
                     "./src"
                 ],
                 "alias": {
-                    "app": "./src/app",
-                    "core": "./src/core",
-                    "ui-kit": "./src/ui-kit",
-                    "vendors": "./src/vendors",
-                    "server": "./server",
-                    "public": "./public",
-                    "images": "./src/assets/images",
-                    "fonts": "./src/assets/fonts",
-                    "svgs": "./src/assets/svgs",
-                    "test": "./src/test"
+                    "@app": "./src/app",
+                    "@core": "./src/core",
+                    "@ui-kit": "./src/ui-kit",
+                    "@vendors": "./src/vendors",
+                    "@server": "./server",
+                    "@public": "./public",
+                    "@images": "./src/assets/images",
+                    "@fonts": "./src/assets/fonts",
+                    "@svgs": "./src/assets/svgs",
+                    "@test": "./src/test"
                 }
             }
         ],

@@ -1,11 +1,11 @@
 ```jsx 
-<Button size="sm" onClick={ () => console.log('heelllooooo') }>Hello</Button>
+<Button size={ '24px' }>Hello</Button>
+```
+
+```jsx 
+<Button style={ 'secondary' }>Hello</Button>
 ```
 
 ```jsx
-<Button size="md" type="secondary">Hello</Button>
-```
-
-```jsx
-<Button size="lg">Hello</Button>
+<Button size={ '48px' }>Hello</Button>
 ```
