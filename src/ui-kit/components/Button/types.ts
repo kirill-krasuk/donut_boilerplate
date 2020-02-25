@@ -1,3 +1,5 @@
+import { ReactNode }       from 'react';
+
 import { ESizes, EStyles } from '@ui-kit/enums/button';
 
 export type Props = {
@@ -23,5 +25,5 @@ export type Props = {
     /**
      * @ignore
     */
-    children: JSX.Element;
+    children: ReactNode;
 }

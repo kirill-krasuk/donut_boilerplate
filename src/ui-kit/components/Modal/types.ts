@@ -1,10 +1,12 @@
+import { ReactNode } from 'react';
+
 export type Props = {
-    children: JSX.Element;
+    children: ReactNode;
 
     /**
      * close handler
     */
-    onClose: () => void;
+    onClose?: () => void;
 
     /**
      * Modal title
