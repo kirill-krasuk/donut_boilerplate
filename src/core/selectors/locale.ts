@@ -1,11 +1,8 @@
 import { createSelector } from 'reselect';
 import R                  from 'ramda';
 
-enum Locale {
-    En = 'en',
-    Ru = 'ru'
-}
+import { ELocale }        from '@core/enums/locale';
 
-const selectProp: (state: Record<string, any>) => Locale = R.prop('locale');
+const selectProp: (state: Record<string, any>) => ELocale = R.prop('locale');
 
-export const getLocale = createSelector<object, ReturnType<typeof selectProp>, Locale>(selectProp, R.identity);
+export const getLocale = createSelector<object, ReturnType<typeof selectProp>, ELocale>(selectProp, R.identity);

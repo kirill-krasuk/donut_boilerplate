@@ -1,5 +1,5 @@
-import { ChangeLocale } from '@core/types/locale';
+import { ChangeLocale, LocaleState } from '@core/types/locale';
 
-export type State = string;
+export type State = LocaleState;
 
-export type Action = ChangeLocale['type'];
+export type Action = ChangeLocale['payload'];

@@ -3,8 +3,8 @@ interface PromiseConstructor {
 }
 
 if (!Promise.allSettled) {
-    Promise.allSettled = (promises): Promise<any> => Promise.all(
-        promises.map(promise => promise
+    Promise.allSettled = (promises: any): Promise<any> => Promise.all(
+        promises.map((promise: Promise<{ status: string; value: any }>) => promise
             .then(value => ({
                 status: 'fulfilled',
                 value,

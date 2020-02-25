@@ -4,7 +4,6 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import { ThemeProvider }             from 'styled-components';
 import { push as pushAction }        from 'connected-react-router';
 import R                             from 'ramda';
-import { Transition }                from 'react-transition-group';
 import { hot }                       from 'react-hot-loader/root';
 
 import theme                         from '@core/config/theme';

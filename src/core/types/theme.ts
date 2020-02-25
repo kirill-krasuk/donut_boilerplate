@@ -1,4 +1,10 @@
+import { ETheme } from '@core/enums/theme';
+
 export type ChangeTheme = {
     type: 'core/CHANGE_THEME';
-    payload: 'light' | 'dark';
+    payload: ETheme;
+}
+
+export type ThemeState = {
+    mode: ETheme;
 }

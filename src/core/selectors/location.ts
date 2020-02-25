@@ -1,9 +1,12 @@
 import { createSelector } from 'reselect';
 import R                  from 'ramda';
 
-const selectLocation = R.prop('location');
+import { Selector }       from '@core/types/selector';
+import { LocationState }  from '@core/types/location';
 
-export const getIsFirstRendering = createSelector(
-    selectLocation,
+const selectLocation: Selector<LocationState> = R.prop('location');
+
+export const getIsFirstRendering = createSelector<object, ReturnType<typeof selectLocation>, boolean>(
+    [ selectLocation ],
     R.prop('isFirstRendering')
 );

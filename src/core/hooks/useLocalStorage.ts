@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-// @flow
-
 import { useState } from 'react';
 
 export function useLocalStorage(key: string, initialValue: any): Array<any> {
@@ -14,9 +11,9 @@ export function useLocalStorage(key: string, initialValue: any): Array<any> {
         }
     });
 
-    const setValue = (value) => {
+    const setValue = <T>(value: T): void => {
         try {
-            const valueToStore =  value instanceof Function ? value(storedValue) : value;
+            const valueToStore = value instanceof Function ? value(storedValue) : value;
 
             setStoredValue(valueToStore);
 

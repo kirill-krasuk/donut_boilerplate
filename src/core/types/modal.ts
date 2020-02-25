@@ -20,3 +20,8 @@ export type CloseModal = {
     type: 'core/CLOSE_MODAL';
     payload: void;
 }
+
+export type ModalState = {
+    id: string;
+    hasHistory: boolean;
+}

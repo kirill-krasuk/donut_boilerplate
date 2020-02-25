@@ -1,6 +1,5 @@
 /* eslint-disable import/first */
 /* eslint-disable react-hooks/rules-of-hooks */
-// eslint-disable-next-line
 require('@babel/register')({
     plugins: [
         'dynamic-import-node',
@@ -19,6 +18,7 @@ import favicon      from 'serve-favicon';
 import cookieParser from 'cookie-parser';
 import bodyParser   from 'body-parser';
 import path         from 'path';
+import dayjs        from 'dayjs';
 import '@babel/polyfill';
 
 import { ONE_MONTH_CACHE }     from './constants/cache';
@@ -62,11 +62,11 @@ app.get('*.js', (req: Request, res: Response, next: NextFunction) => {
 
 app.use('/', serverSideRendering);
 
-app.listen((port as number), (host as string), () => {
+app.listen(+port, (host as string), () => {
     // eslint-disable-next-line no-console
     console.log(`
         =====================================================
-        ${ new Date().toString() }
+        \t\t${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }
                         Server started at 
                         Address: ${ host }                   
                         Port:    ${ port }                       

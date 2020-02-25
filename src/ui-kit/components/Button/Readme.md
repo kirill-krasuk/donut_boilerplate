@@ -1,11 +1,11 @@
 ```jsx 
-<Button size={ 1 }>Hello</Button>
+<Button size={ '24px' }>Hello</Button>
 ```
 
 ```jsx 
-<Button style={ 2 }>Hello</Button>
+<Button style={ 'secondary' }>Hello</Button>
 ```
 
 ```jsx
-<Button size={ 3 }>Hello</Button>
+<Button size={ '48px' }>Hello</Button>
 ```
