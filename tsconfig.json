@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "target": "es6",
+		"baseUrl": "./",
+        "rootDir": "./",
+        "allowJs": false,
+        "checkJs": false,
+
+        // TODO: test options
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+
+        "jsx": "preserve",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "pretty": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "paths": {
+			"@core/*": ["src/core/*"],
+			"@app/*": ["src/app/*"],
+			"@ui-kit/*": ["src/ui-kit/*"],
+			"@images/*": ["src/assets/images/*"],
+            "@svgs/*": ["src/assets/svgs/*"],
+			"@server/*": ["server/*"],
+			"@public/*": ["public/*"], 
+			"@fonts/*": ["src/assets/fonts/*"],
+			"@test/*": ["src/test/*"],
+        },
+        "types": ["jest", "node"],
+        "typeRoots": [ "./types", "./node_modules/@types"]
+    },
+    "exclude": ["node_modules", "**/node_modules/*"]
+  }

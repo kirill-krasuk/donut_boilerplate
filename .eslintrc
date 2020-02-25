@@ -4,15 +4,12 @@
         "es6": true,
         "node": true
     },
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "legacyDecorators": true,
-            "jsx": true,
-            "classes": true,
-            "defaultParams": true
+        "ecmaVersion":  2018, 
+        "sourceType":  "module",
+        "ecmaFeatures":  {
+            "jsx":  true
         }
     },
     "settings": {
@@ -21,11 +18,18 @@
         }
     },
     "extends": [
+        "plugin:@typescript-eslint/recommended",
         "airbnb-base",
         "plugin:varspacing/recommended",
         "plugin:react/recommended"
     ],
     "rules": {
+        "@typescript-eslint/no-non-null-assertion": 0,
+        "@typescript-eslint/consistent-type-assertions": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/camelcase": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/ban-ts-ignore": 0,
         "arrow-parens": 0,
         "no-restricted-syntax": 0,
         "lines-between-class-members": 0,
@@ -101,7 +105,7 @@
             2,
             {
                 "beforeBlockComment": true,
-                "afterBlockComment": true,
+                "afterBlockComment": false,
                 "beforeLineComment": true,
                 "afterLineComment": false,
                 "allowBlockStart": true,
@@ -118,7 +122,13 @@
                 "align": "colon"
             }
         ],
-        "arca/import-align": 2,
+        "arca/import-align": [
+            2,
+            {
+                "collapseExtraSpaces": true
+            }
+        ],
+        "arca/melted-constructs": 2,
         "no-underscore-dangle": 0,
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": 0,
@@ -128,7 +138,6 @@
         "arca",
         "varspacing",
         "react",
-        "react-hooks",
-        "flowtype"
+        "react-hooks"
     ]
 }
