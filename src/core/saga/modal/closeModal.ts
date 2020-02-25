@@ -13,6 +13,6 @@ export function* closeModal(): SagaIterator {
         yield put(push(pathname));
     }
 
-    yield put(setModalAction(''));
+    yield put(setModalAction(null));
     yield put(setModalHistoryFlagAction(false));
 }

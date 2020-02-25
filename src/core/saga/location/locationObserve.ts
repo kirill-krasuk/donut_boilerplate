@@ -1,3 +1,4 @@
+import { EModals }          from '@app/enums/modal';
 import { put }              from 'redux-saga/effects';
 import { SagaIterator }     from 'redux-saga';
 
@@ -17,7 +18,7 @@ export function* locationObserve({ payload }: Record<string, any>): SagaIterator
     const calledModalQuery = patterns.find((item: string) => regExp.test(item));
 
     if (calledModalQuery) {
-        const [ , modalId ] = calledModalQuery.split('=');
+        const [ , modalId ]: [void, EModals] = calledModalQuery.split('=');
 
         yield put(callModalAction(snakeToCamel(modalId, EStringFormatter.Upper)));
     }

@@ -25,7 +25,7 @@ export function* fetchListener({ payload }: Fetch): SagaIterator {
     }
 
     try {
-        const { body } = yield call(http.fetch, route);
+        const { body }: any = yield call(http.fetch as any, route);
 
         if (body && successHandler) {
             yield put(successHandler(body));

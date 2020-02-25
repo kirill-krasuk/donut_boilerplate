@@ -2,15 +2,15 @@ import { EModals } from '@app/enums/modal';
 
 export type CallModal = {
     type: 'core/CALL_MODAL';
-    payload: string | {
+    payload: EModals | {
         history: boolean;
-        id: string | null;
+        id: EModals | null;
     };
 }
 
 export type SetModal = {
     type: 'core/SET_MODAL';
-    payload: string;
+    payload: EModals | null;
 }
 
 export type SetModalHistoryFlag = {
@@ -24,6 +24,6 @@ export type CloseModal = {
 }
 
 export type ModalState = {
-    id: EModals | '';
+    id: EModals | null;
     hasHistory: boolean;
 }

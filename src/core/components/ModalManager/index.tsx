@@ -11,7 +11,7 @@ import modals           from './modals';
 const ModalManager: React.FC = (): JSX.Element | null => {
     const modalId = useSelector(getModalId);
 
-    const CalledModal = modals[modalId];
+    const CalledModal = modals[modalId || ''];
 
     function renderModal(): JSX.Element {
         return (
