@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { FetchType }    from '@core/types/fetch';
+import { Fetch }        from '@core/types/fetch';
 
-export const FETCH: FetchType['type'] = 'core/FETCH';
-export const fetchAction = createAction<FetchType['payload']>(FETCH);
+export const FETCH: Fetch['type'] = 'core/FETCH';
+export const fetchAction = createAction<Fetch['payload']>(FETCH);

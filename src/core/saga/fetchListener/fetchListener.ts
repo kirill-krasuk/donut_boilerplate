@@ -1,10 +1,10 @@
 import { call, put }    from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
 
-import { FetchType }    from '@core/types/fetch';
+import { Fetch }        from '@core/types/fetch';
 import { HTTP }         from '@core/services';
 
-export function* fetchListener({ payload }: FetchType): SagaIterator {
+export function* fetchListener({ payload }: Fetch): SagaIterator {
     const http = new HTTP();
 
     const {

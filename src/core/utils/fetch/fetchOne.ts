@@ -1,20 +1,20 @@
-import R                 from 'ramda';
+import R            from 'ramda';
 
-import { HTTP }          from '@core/services/HTTP';
-import TokenStorage      from '@core/services/TokenStorage';
+import { HTTP }     from '@core/services/HTTP';
+import TokenStorage from '@core/services/TokenStorage';
 
-type ReqType = {
+type Req = {
     path: string;
     method: string;
     query?: Record<string, any>;
     auth?: boolean;
 };
 
-type AuthType = {
+type Auth = {
     token: string;
 }
 
-export async function fetchOne(request: ReqType, auth?: AuthType): Promise<void | Record<string, any>> {
+export async function fetchOne(request: Req, auth?: Auth): Promise<void | Record<string, any>> {
     const {
         path, query, method, auth: reqAuth
     } = request;

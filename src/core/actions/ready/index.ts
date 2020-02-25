@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { ReadyType }    from '@core/types/ready';
+import { Ready }        from '@core/types/ready';
 
-export const READY: ReadyType['type'] = 'core/READY';
-export const readyAction = createAction<ReadyType['payload']>(READY);
+export const READY: Ready['type'] = 'core/READY';
+export const readyAction = createAction<Ready['payload']>(READY);

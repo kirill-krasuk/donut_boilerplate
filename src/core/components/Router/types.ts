@@ -1,5 +1,5 @@
-import { History } from "history";
+import { History } from 'history';
 
-export type PropsType = {
-    history: History<any>
+export type Props = {
+    history: History<any>;
 }

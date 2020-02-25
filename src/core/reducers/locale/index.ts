@@ -1,10 +1,10 @@
-import { handleActions }         from 'redux-actions';
+import { handleActions } from 'redux-actions';
 
-import * as actions              from '@core/actions/locale';
-import { ActionType, StateType } from './types';
+import * as actions      from '@core/actions/locale';
+import { Action, State } from './types';
 
-export const initState: StateType = 'en';
+export const initState: State = 'en';
 
-export default handleActions<StateType, ActionType>({
+export default handleActions<State, Action>({
     [actions.CHANGE_LOCALE]: (_state, action) => action.payload
 }, initState);

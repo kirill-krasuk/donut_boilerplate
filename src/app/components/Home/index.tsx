@@ -5,9 +5,8 @@ import { hot }                   from 'react-hot-loader/root';
 import { Header }                from '@ui-kit/components';
 import * as S                    from './styled';
 import messages                  from './messages';
-import { PropsType }             from './types';
 
-const Home: React.FC<PropsType> = (): JSX.Element => (
+const Home: React.FC = (): JSX.Element => (
     <>
         <Header />
         <S.Container>

@@ -1,6 +1,6 @@
-import { createAction }     from 'redux-actions';
+import { createAction } from 'redux-actions';
 
-import { ChangeLocaleType } from '@core/types/locale';
+import { ChangeLocale } from '@core/types/locale';
 
-export const CHANGE_LOCALE: ChangeLocaleType['type'] = 'core/CHANGE_LOCALE';
-export const changeLocaleAction = createAction<ChangeLocaleType['payload']>(CHANGE_LOCALE);
+export const CHANGE_LOCALE: ChangeLocale['type'] = 'core/CHANGE_LOCALE';
+export const changeLocaleAction = createAction<ChangeLocale['payload']>(CHANGE_LOCALE);

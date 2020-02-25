@@ -1,6 +1,6 @@
-import { RoutesType } from '@core/types/routes';
+import { Routes } from '@core/types/routes';
 
-const routes: RoutesType = {
+const routes: Routes = {
     home: {
         path: '/',
     },

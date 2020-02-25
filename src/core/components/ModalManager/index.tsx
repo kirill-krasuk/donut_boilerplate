@@ -8,8 +8,8 @@ import { canUseDOM }    from '@core/utils/dom';
 import * as S           from './styled';
 import modals           from './modals';
 
-const ModalManager: React.FC<{}> = (): JSX.Element => {
-    const modalId: string = useSelector(getModalId);
+const ModalManager: React.FC = (): JSX.Element => {
+    const modalId = useSelector(getModalId);
 
     const CalledModal = modals[modalId];
 

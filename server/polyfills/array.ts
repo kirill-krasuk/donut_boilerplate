@@ -1,7 +1,7 @@
 /* eslint-disable no-extend-native */
 if (!Array.prototype.find) {
     Object.defineProperty(Array.prototype, 'find', {
-        value(predicate) {
+        value(predicate: Function) {
             if (this == null) {
                 throw new TypeError('"this" is null or not defined');
             }

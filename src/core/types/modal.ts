@@ -1,4 +1,4 @@
-export type CallModalType = {
+export type CallModal = {
     type: 'core/CALL_MODAL';
     payload: string | {
         history: boolean;
@@ -6,17 +6,17 @@ export type CallModalType = {
     };
 }
 
-export type SetModalType = {
+export type SetModal = {
     type: 'core/SET_MODAL';
     payload: string;
 }
 
-export type SetModalHistoryFlagType = {
+export type SetModalHistoryFlag = {
     type: 'core/SET_MODAL_HISTORY_FLAG';
     payload: boolean;
 }
 
-export type CloseModalType = {
+export type CloseModal = {
     type: 'core/CLOSE_MODAL';
     payload: void;
 }

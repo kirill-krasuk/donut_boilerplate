@@ -10,7 +10,7 @@ import { localeMiddleware }             from '@core/middlewares/locale';
 import { locationMiddleware }           from '@core/middlewares/location';
 import rootSaga                         from '@core/saga';
 import createRootReducer                from '@core/reducers';
-import { MiddlewareType }               from '@core/types/store';
+import { Middleware }                   from '@core/types/store';
 import { shakeReducers }                from './shakeReducers';
 
 export function configureStore(
@@ -20,9 +20,9 @@ export function configureStore(
 ): Record<string, any> {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
-    const env                           = process.env.NODE_ENV;
-    const sagaMiddleware                = createSagaMiddleware();
-    const middlewares: MiddlewareType[] = [
+    const env                       = process.env.NODE_ENV;
+    const sagaMiddleware            = createSagaMiddleware();
+    const middlewares: Middleware[] = [
         sagaMiddleware,
         locationMiddleware,
         themeMiddleware,

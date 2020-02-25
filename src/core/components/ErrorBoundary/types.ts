@@ -1,7 +1,7 @@
-export type StateType = {
-    hasError: boolean,
+export type State = {
+    hasError: boolean;
 }
 
-export type PropsType = {
-    children: any,
+export type Props = {
+    children: any;
 }

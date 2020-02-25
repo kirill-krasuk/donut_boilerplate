@@ -1,8 +1,8 @@
-import { ActionType } from '@core/types/actions';
+import { Action } from '@core/types/actions';
 
-export type StoreType = {
+export type Store = {
     dispatch: Function;
     getState: Function;
 }
 
-export type MiddlewareType = (store: StoreType) => (next: Function) => (action: ActionType) => Function;
+export type Middleware = (store: Store) => (next: Function) => (action: Action) => Function;
