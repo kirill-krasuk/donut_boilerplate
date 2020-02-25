@@ -1,5 +1,11 @@
+import { RouteConfig } from 'react-router-config';
+import { Location }    from 'history';
+
 export type Props = {
-    route: Record<string, any>;
-    location: Record<string, any>;
-    staticContext: Record<string, any> | undefined;
+    route: RouteConfig;
+    location: Location;
+    staticContext: {
+        status: number;
+        url: string;
+    };
 }

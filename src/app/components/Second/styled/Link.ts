@@ -1,6 +1,10 @@
-import styled                from 'styled-components/macro';
-import { Link as ReactLink } from 'react-router-dom';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components/macro';
+import { Link as ReactLink }                       from 'react-router-dom';
+
+import { ThemedStyled }                            from '@core/types/theme';
 
 export const Link = styled(ReactLink)`
-    color: ${ ({ theme }): string => theme[theme.mode].secondary };
+    ${ ({ theme }: ThemedStyled): FlattenSimpleInterpolation => css`
+        color: ${ theme[theme.mode].secondary };
+    ` };
 `;

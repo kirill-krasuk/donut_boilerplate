@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export default styled.h1`
+export const Title = styled.h1`
     font-size: 49px;
     color: white;
     font-family: Montseratt, sans-serif;

@@ -1,14 +1,14 @@
-import React, { ReactNode } from 'react';
-import { createPortal }     from 'react-dom';
-import { useSelector }      from 'react-redux';
-import { hot }              from 'react-hot-loader/root';
+import React            from 'react';
+import { createPortal } from 'react-dom';
+import { useSelector }  from 'react-redux';
+import { hot }          from 'react-hot-loader/root';
 
-import { getModalId }       from '@core/selectors/modal';
-import { canUseDOM }        from '@core/utils/dom';
-import * as S               from './styled';
-import modals               from './modals';
+import { getModalId }   from '@core/selectors/modal';
+import { canUseDOM }    from '@core/utils/dom';
+import * as S           from './styled';
+import modals           from './modals';
 
-const ModalManager = (): ReactNode => {
+const ModalManager: React.FC = (): JSX.Element | null => {
     const modalId = useSelector(getModalId);
 
     const CalledModal = modals[modalId];
@@ -16,7 +16,7 @@ const ModalManager = (): ReactNode => {
     function renderModal(): JSX.Element {
         return (
             <S.Wrapper>
-                <CalledModal />
+                { CalledModal && <CalledModal /> }
             </S.Wrapper>
         );
     }

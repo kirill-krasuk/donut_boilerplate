@@ -7,8 +7,8 @@ import { ModalState }     from '@core/types/modal';
 
 const selectModal: Selector<ModalState> = R.prop('modal');
 
-export const getModalId = createSelector<object, ReturnType<typeof selectModal>, EModals>(
-    selectModal,
+export const getModalId = createSelector<object, ReturnType<typeof selectModal>, EModals | ''>(
+    [ selectModal ],
     R.prop('id')
 );
 

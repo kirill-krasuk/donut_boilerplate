@@ -6,7 +6,7 @@ import { push as pushAction }        from 'connected-react-router';
 import R                             from 'ramda';
 import { hot }                       from 'react-hot-loader/root';
 
-import theme                         from '@core/config/theme';
+import { theme }                     from '@core/config/theme';
 import { GlobalStyles }              from '@core/utils/styles';
 import { getMode }                   from '@core/selectors/theme';
 import { protectRedirect }           from '@app/routes/routes';
@@ -18,7 +18,7 @@ import { Props }                     from './types';
 const Root: React.FC<Props> = (props): JSX.Element => {
     const { route, location, staticContext } = props;
 
-    const [ routes ]              = matchRoutes(route.routes, location.pathname);
+    const [ routes ]              = matchRoutes(route.routes!, location.pathname);
     const { route: matchedRoute } = routes;
 
     const dispatch = useDispatch();

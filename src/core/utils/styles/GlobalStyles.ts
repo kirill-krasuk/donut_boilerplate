@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { ThemedStyled }      from '@core/types/theme';
 import Adigiana              from '@fonts/Adigiana.ttf';
 
 export const GlobalStyles = createGlobalStyle`
@@ -12,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
 
     html, body {
         overflow-x: hidden;
-        background-color: ${ ({ theme }) => theme[(theme as any).mode].background };
+        background-color: ${ ({ theme }: ThemedStyled): string => theme[theme.mode].background };
         min-height: 100vh;
     }
 
