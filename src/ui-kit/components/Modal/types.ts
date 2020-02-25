@@ -11,5 +11,5 @@ export type Props = {
     /**
      * Modal title
     */
-    title: string;
+    title?: string;
 }
