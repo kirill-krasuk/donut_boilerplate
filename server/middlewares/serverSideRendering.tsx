@@ -34,7 +34,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     res.set('Service-Worker-Allowed', '/');
     res.set('X-Is-Cacheable', 'true');
 
-    const context: any = {};
+    const context: Record<string, any> = {};
 
     const mode   = req.cookies.theme || 'dark';
     const locale = req.cookies.locale || 'en';

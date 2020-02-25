@@ -1,4 +1,4 @@
-import config                 from '@core/config';
+import config from '@core/config';
 
 export class ConfigManager {
     _config: Record<string, any> = config;

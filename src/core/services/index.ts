@@ -1,5 +1,3 @@
-// @flow
-
 export { ConfigManager } from './ConfigManager';
 export { SocketConnector } from './SocketConnector';
 export { IteratorCreator } from './IteratorCreator';

@@ -6,7 +6,7 @@ import * as handlers       from './handlers';
 
 export function* startSocketConnection(): SagaIterator {
     while (true) {
-        const { payload: socket } = yield take([ actions.SOCKET_INIT, actions.SOCKET_RECONNECT ]);
+        const { payload: socket }: any = yield take([ actions.SOCKET_INIT, actions.SOCKET_RECONNECT ]);
 
         yield all([
             fork(handlers.orderFill, socket),
