@@ -1,5 +1,3 @@
-// @flow
-
 import { ConfigManager } from './ConfigManager';
 
 export interface SocketConnector {

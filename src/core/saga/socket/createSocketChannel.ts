@@ -1,20 +1,23 @@
-// @flow
+import {
+    eventChannel,
+    END,
+    EventChannel,
+    Subscribe,
+    Unsubscribe
+} from 'redux-saga';
 
-import { eventChannel, END }   from 'redux-saga';
-import { EventChannel }   from 'redux-saga';
-
-export function createSocketChannel(socket: Object, event: string): EventChannel<any> {
-    const subscribe = (emitter) => {
+export function createSocketChannel(socket: Record<string, any>, event: string): EventChannel<any> {
+    const subscribe: Subscribe<any> = (emitter: Function): Unsubscribe => {
         socket.on(event, emitter);
 
         socket.on('disconnect', () => {
             emitter(END);
         });
 
-        return () => {
+        return (): void => {
             socket.removeListener(event, emitter);
         };
     };
 
-    return eventChannel<any>(subscribe);
+    return eventChannel(subscribe);
 }

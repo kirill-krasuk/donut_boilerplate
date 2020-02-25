@@ -1,5 +1,3 @@
-// @flow
-
 import { iIteratorCreator } from 'core/interfaces/IteratorCreator';
 
 export class IteratorCreator implements iIteratorCreator {
