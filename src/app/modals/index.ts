@@ -1,7 +1,9 @@
-import Greeting  from './Greeting';
-import ModalTest from './ModalTest';
+import { EModals } from '@app/enums/modal';
+
+import Greeting    from './Greeting';
+import ModalTest   from './ModalTest';
 
 export default {
-    Greeting,
-    ModalTest
+    [EModals.Greeting] : Greeting,
+    [EModals.ModalTest]: ModalTest
 };

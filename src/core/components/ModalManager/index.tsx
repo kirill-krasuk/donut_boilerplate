@@ -1,14 +1,14 @@
-import React            from 'react';
-import { createPortal } from 'react-dom';
-import { useSelector }  from 'react-redux';
-import { hot }          from 'react-hot-loader/root';
+import React, { ReactNode } from 'react';
+import { createPortal }     from 'react-dom';
+import { useSelector }      from 'react-redux';
+import { hot }              from 'react-hot-loader/root';
 
-import { getModalId }   from '@core/selectors/modal';
-import { canUseDOM }    from '@core/utils/dom';
-import * as S           from './styled';
-import modals           from './modals';
+import { getModalId }       from '@core/selectors/modal';
+import { canUseDOM }        from '@core/utils/dom';
+import * as S               from './styled';
+import modals               from './modals';
 
-const ModalManager: React.FC = (): JSX.Element => {
+const ModalManager = (): ReactNode => {
     const modalId = useSelector(getModalId);
 
     const CalledModal = modals[modalId];

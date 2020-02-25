@@ -1,3 +1,5 @@
+import { EModals } from '@app/enums/modal';
+
 export type CallModal = {
     type: 'core/CALL_MODAL';
     payload: string | {
@@ -22,6 +24,6 @@ export type CloseModal = {
 }
 
 export type ModalState = {
-    id: string;
+    id: EModals;
     hasHistory: boolean;
 }
