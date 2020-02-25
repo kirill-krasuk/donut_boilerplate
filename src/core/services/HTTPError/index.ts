@@ -1,5 +1,6 @@
 import { STATUS_CODES }            from '@core/constants/http/statusCodes';
 import { HTTPError as IHTTPError } from '@core/interfaces/HTTPError';
+import { ResponseWithStatusCodes } from '@core/types/HTTP';
 
 export class HTTPError extends Error implements IHTTPError {
     _name: string;
@@ -9,7 +10,7 @@ export class HTTPError extends Error implements IHTTPError {
     _status: number;
     _body: Record<string, any> | typeof undefined;
 
-    constructor(response: Response, request: Request, body?: Record<string, any>) {
+    constructor(response: ResponseWithStatusCodes, request: Request, body?: Record<string, any>) {
         const message    = `HTTPError: ${ response.status } ${ STATUS_CODES[response.status] || response.status }`;
         super(message);
 
@@ -34,6 +35,10 @@ export class HTTPError extends Error implements IHTTPError {
     }
 
     _formatStack(): string {
-        return this.stack.replace(/.*[\n\r]*/, '');
+        if (this.stack) {
+            return this.stack.replace(/.*[\n\r]*/, '');
+        }
+
+        return 'Error getting stack';
     }
 }
