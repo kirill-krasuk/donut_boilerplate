@@ -1,7 +1,7 @@
 module.exports = {
     cacheDirectory : './.cache/jest',
     preset         : 'ts-jest',
-    testEnvironment: 'jsdom',
+    testEnvironment: 'node',
     transform      : {
         '.tsx?$': 'ts-jest'
     },
@@ -17,6 +17,7 @@ module.exports = {
         'json',
     ],
     testRegex: [
+        // for jest watch matching test files
         '(/src/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$'
     ],
     snapshotSerializers: [
@@ -25,6 +26,7 @@ module.exports = {
     moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/src/test/__mocks__/fileMock.js',
         '/\.module\.s(c|a)ss$/'                                                              : 'identity-obj-proxy',
+        '@core/(.*)'                                                                         : '<rootDir>/src/core/$1',
     },
     globals: {
         // we must specify a custom tsconfig for tests because we need the typescript transform
