@@ -7,18 +7,15 @@ require('@babel/register')({
     ]
 });
 
-import express, {
-    Request,
-    Response,
-    NextFunction,
-    Application
-} from 'express';
-import compression  from 'compression';
-import favicon      from 'serve-favicon';
-import cookieParser from 'cookie-parser';
-import bodyParser   from 'body-parser';
-import path         from 'path';
-import dayjs        from 'dayjs';
+import express           from 'express';
+import shrinkRay         from 'shrink-ray-current';
+import favicon           from 'serve-favicon';
+import cookieParser      from 'cookie-parser';
+import bodyParser        from 'body-parser';
+import path              from 'path';
+import dayjs             from 'dayjs';
+import processImage      from 'express-processimage';
+import expressStaticGzip from 'express-static-gzip';
 import '@babel/polyfill';
 
 import { ONE_MONTH_CACHE }     from './constants/cache';
@@ -30,16 +27,18 @@ import { useStatic }           from './utils/useStatic';
 
 const { host, port } = config;
 
-const app: Application = express();
+const app = express();
 
-app.use(compression());
+app.use(shrinkRay());
+
+app.use(processImage());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/dist', useStatic(`${ __dirname  }/../dist`, { maxAge: ONE_MONTH_CACHE }));
 app.use('/sw.js', useStatic(`${ __dirname  }/../dist/sw.js`));
-app.use('/public', useStatic(`${ __dirname  }/../public`, { maxAge: ONE_MONTH_CACHE }));
+app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), { enableBrotli: true }));
 app.use('/images', useStatic(`${ __dirname  }/../public/images`, { maxAge: ONE_MONTH_CACHE }));
 app.use('/', useStatic(`${ __dirname  }/../public/root`));
 
@@ -50,15 +49,6 @@ app.set('view engine', 'pug');
 useDevMiddlewares(app);
 
 app.use('/handle_error', errorLogging);
-
-app.get('*.js', (req: Request, res: Response, next: NextFunction) => {
-    req.url = req.url + '.gz'; // eslint-disable-line
-
-    res.set('Content-Encoding', 'gzip');
-    res.set('Content-Type', 'text/javascript');
-
-    next();
-});
 
 app.use('/', serverSideRendering);
 
