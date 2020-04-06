@@ -1,4 +1,6 @@
 // const webpack                 = require('webpack');
+const BrotliPlugin            = require('brotli-webpack-plugin');
+const CompressionPlugin       = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin            = require('terser-webpack-plugin');
 
@@ -36,6 +38,17 @@ module.exports = configureBundler({
         new OptimizeCssAssetsPlugin()
     ],
     plugins: [
+        new CompressionPlugin({
+            cache   : '.cache/compression_plugin_cache',
+            filename: '[path].gz[query]',
+            test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+        }),
+
+        new BrotliPlugin({
+            filename: '[path].br[query]',
+            test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+        }),
+
         // new webpack.HashedModuleIdsPlugin({
         //     hashFunction    : 'md4',
         //     hashDigest      : 'base64',

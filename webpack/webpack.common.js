@@ -2,7 +2,6 @@
 const webpack = require('webpack');
 const path    = require('path');
 
-const CompressionPlugin              = require('compression-webpack-plugin');
 const { InjectManifest }             = require('workbox-webpack-plugin');
 const { CleanWebpackPlugin }         = require('clean-webpack-plugin');
 const LoadablePlugin                 = require('@loadable/webpack-plugin');
@@ -13,6 +12,7 @@ const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
 const HtmlPugPlugin                  = require('html-webpack-pug-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const HardSourceWebpackPlugin        = require('hard-source-webpack-plugin');
+const ImageminWebpWebpackPlugin      = require('imagemin-webp-webpack-plugin');
 
 const { getJsLoader }         = require('./loaders/js-loader');
 const { getImageLoader }      = require('./loaders/image-loader');
@@ -30,7 +30,7 @@ const paths = {
     view    : path.resolve('views/index.pug')
 };
 
-const context = path.resolve(__dirname, '..',);
+const context = path.resolve(__dirname, '..');
 
 module.exports = {
     paths,
@@ -123,9 +123,17 @@ module.exports = {
             },
             watch  : options.watch || false,
             plugins: options.plugins.concat([
-                new CompressionPlugin({
-                    cache: '.cache/compression_plugin_cache',
-                    test : /\.js(\?.*)?$/i,
+                new ImageminWebpWebpackPlugin({
+                    config: [ {
+                        test   : /\.(jpe?g|png)/,
+                        options: {
+                            quality: 75
+                        }
+                    } ],
+                    overrideExtension: true,
+                    detailedLogs     : false,
+                    silent           : false,
+                    strict           : true
                 }),
                 new InjectManifest({
                     swDest           : './sw.js',
