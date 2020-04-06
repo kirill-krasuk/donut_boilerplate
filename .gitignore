@@ -4,3 +4,4 @@
 .cache
 error.log
 /public/fonts
+/views/

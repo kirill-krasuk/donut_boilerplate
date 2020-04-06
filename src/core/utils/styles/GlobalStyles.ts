@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 import { ThemedStyled }      from '@core/types/theme';
-import Adigiana              from '@fonts/Adigiana.ttf';
 
 export const GlobalStyles = createGlobalStyle`
     * {
@@ -19,10 +18,5 @@ export const GlobalStyles = createGlobalStyle`
 
     #root {
         min-height: inherit;
-    }
-
-    @font-face {
-        font-family: Adigiana;
-        src: url(${ Adigiana });
     }
 `;
