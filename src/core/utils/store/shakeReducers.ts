@@ -5,8 +5,8 @@ import { staticReducers } from '@core/reducers';
 export function shakeReducers(preloadedState: Record<string, any>): Array<Record<string, any>> {
     const preloadedStateCopy = R.clone(preloadedState);
 
-    const staticReducersIds = Object.keys(staticReducers);
-    const preloadedStateIds = Object.keys(preloadedStateCopy);
+    const staticReducersIds = R.keys(staticReducers);
+    const preloadedStateIds = R.keys(preloadedStateCopy);
 
     const asyncPreloadedState: Record<string, any> = {};
 

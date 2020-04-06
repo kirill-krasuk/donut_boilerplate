@@ -12,6 +12,7 @@ import { localeMiddleware }    from '@core/middlewares/locale';
 import { locationMiddleware }  from '@core/middlewares/location';
 import rootSaga                from '@core/saga';
 import createRootReducer       from '@core/reducers';
+import { DEV }                 from '@core/constants/environment';
 import { shakeReducers }       from './shakeReducers';
 
 export function configureStore(
@@ -32,7 +33,7 @@ export function configureStore(
     ];
 
     const composeEnhancers: Function =
-        env === 'development'
+        env === DEV
             ? composeWithDevTools
             : compose;
 

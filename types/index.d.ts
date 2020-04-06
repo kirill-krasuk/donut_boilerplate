@@ -47,21 +47,3 @@ declare module 'enzyme-adapter-react-16' {
     const content: any;
     export default content;
 }
-
-// declare module 'redux-actions' {
-//     declare type Reducer<S, A> = (state: S, action: A) => S;
-//     declare type ReduxReducer<S, A> = (state: S | void, action: A) => S;
-
-//     declare type ReducerMap<S, A> =
-//     | { next(state: S, action: A): S }
-//     | { hrow(state: S, action: A): S }
-//     | {
-//         next(state: S, action: A): S;
-//         throw(state: S, action: A): S;
-//     };
-
-//     declare function handleActions<State, Action>(
-//         reducers: { [key: string]: Reducer<State, Action> | ReducerMap<State, Action> },
-//         defaultState?: State
-//       ): ReduxReducer<State, Action>;
-// }
