@@ -3,3 +3,4 @@
 .env
 .cache
 error.log
+/public/fonts
