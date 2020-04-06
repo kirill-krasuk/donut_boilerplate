@@ -34,7 +34,7 @@
 			"@server/*": ["server/*"],
 			"@public/*": ["public/*"], 
 			"@fonts/*": ["src/assets/fonts/*"],
-			"@test/*": ["src/test/*"],
+			"@test/*": ["test/*"],
         },
         "types": ["jest", "node"],
         "typeRoots": [ "./types", "./node_modules/@types"]

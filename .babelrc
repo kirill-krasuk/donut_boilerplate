@@ -46,7 +46,7 @@
                     "@images": "./src/assets/images",
                     "@fonts": "./src/assets/fonts",
                     "@svgs": "./src/assets/svgs",
-                    "@test": "./src/test"
+                    "@test": "./test"
                 }
             }
         ],
