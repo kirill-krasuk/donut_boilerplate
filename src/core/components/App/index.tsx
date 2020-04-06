@@ -7,7 +7,9 @@ import { store, history }                 from '@core/utils/store';
 import { ConfigManager, IteratorCreator } from '@core/services';
 import ErrorBoundary                      from '../ErrorBoundary';
 import ReadyWrapper                       from '../ReadyWrapper';
-import './main.css';
+
+// manual connection of fonts
+// import './fonts.css';
 
 const configManager = new ConfigManager();
 
