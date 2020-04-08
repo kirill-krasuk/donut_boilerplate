@@ -1,0 +1,1 @@
+export { replaceExtension } from './replaceExtension';
