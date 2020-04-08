@@ -23,8 +23,10 @@ const Home: React.FC = (): JSX.Element => (
                 <source srcSet={ `${ Car }?resize=300,300` } type="image/jpeg" />
                 <img src={ `${ Car }?resize=300,300` } alt="Alt Text!" />
             </picture>
-
-            { /* <img src={ '/public/images/car.webp' } /> */ }
+            <UiKit.Image
+                webp
+                src={ Car }
+            />
         </S.Container>
     </>
 );
