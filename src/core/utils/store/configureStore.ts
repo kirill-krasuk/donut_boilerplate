@@ -1,19 +1,23 @@
 import {
-    createStore, applyMiddleware, Reducer, Store
+    createStore, applyMiddleware, Reducer, Action
 } from 'redux';
-import createSagaMiddleware    from 'redux-saga';
-import { routerMiddleware }    from 'connected-react-router';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { History }             from 'history';
-import { compose }             from 'ramda';
+import { createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
+import { routerMiddleware }                                from 'connected-react-router';
+import { composeWithDevTools }                             from 'redux-devtools-extension';
+import { BehaviorSubject, Observable }                     from 'rxjs';
+import { mergeMap, takeUntil }                             from 'rxjs/operators';
+import { History }                                         from 'history';
+import { compose }                                         from 'ramda';
 
-import { themeMiddleware }     from '@core/middlewares/theme';
-import { localeMiddleware }    from '@core/middlewares/locale';
-import { locationMiddleware }  from '@core/middlewares/location';
-import rootSaga                from '@core/saga';
-import createRootReducer       from '@core/reducers';
-import { DEV }                 from '@core/constants/environment';
-import { shakeReducers }       from './shakeReducers';
+import { themeMiddleware }                                 from '@core/middlewares/theme';
+import { localeMiddleware }                                from '@core/middlewares/locale';
+import { locationMiddleware }                              from '@core/middlewares/location';
+import rootEpic                                            from '@core/epics';
+import createRootReducer                                   from '@core/reducers';
+import { DEV }                                             from '@core/constants/environment';
+import { extendStore }                                     from './extendStore';
+import { shakeReducers }                                   from './shakeReducers';
+import { ExtendedStore }                                   from './types';
 
 export function configureStore(
     preloadedState: Record<string, any> = {},
@@ -22,10 +26,11 @@ export function configureStore(
 ): Record<string, any> {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
-    const env              = process.env.NODE_ENV;
-    const sagaMiddleware   = createSagaMiddleware();
-    const middlewares: any = [
-        sagaMiddleware,
+    const env = process.env.NODE_ENV;
+
+    const epicMiddleware = createEpicMiddleware();
+    const middlewares    = [
+        epicMiddleware,
         locationMiddleware,
         themeMiddleware,
         localeMiddleware,
@@ -38,30 +43,39 @@ export function configureStore(
             : compose;
 
     // TODO: fix type
-    const store: Store<any, any> & { asyncReducers: Record<string, any>; injectReducer: Function } = createStore(
+    const store: ExtendedStore = createStore(
         createRootReducer(history, {}, ssrReducers) as Reducer<any, any>,
         staticPreloadedState,
         composeEnhancers(applyMiddleware(...middlewares))
     );
 
-    store.asyncReducers = {};
+    extendStore(store, history, asyncPreloadedState);
 
-    store.injectReducer = (key: string, asyncReducer: Function): void => {
-        store.asyncReducers[key] = (
-            state: Record<string, any> = asyncPreloadedState[key],
-            action: Record<string, any>
-        ): Function => asyncReducer(state, action);
+    const epic$ = new BehaviorSubject(rootEpic);
 
-        // TODO: fix type
-        store.replaceReducer(createRootReducer(history, store.asyncReducers) as Reducer<any, any>);
-    };
+    const hotReloadingEpic = (action$: ActionsObservable<Action<any>>, ...rest: any[]): Observable<any> => epic$.pipe(
 
-    sagaMiddleware.run(rootSaga);
+        // @ts-ignore
+        mergeMap(epic => epic(action$, ...rest).pipe(
+            takeUntil(action$.pipe(
+                ofType('EPIC_END')
+            ))
+        ))
+    );
+
+    epicMiddleware.run(hotReloadingEpic);
 
     if ((module as any).hot) {
         (module as any).hot.accept('../../reducers', () => {
             // TODO: fix type
             store.replaceReducer(createRootReducer(history) as Reducer<any, any>);
+        });
+
+        (module as any).hot.accept('../../epics', () => {
+            const nextRootEpic = require('../../epics').default;
+
+            store.dispatch({ type: 'EPIC_END' });
+            epic$.next(nextRootEpic);
         });
     }
 
