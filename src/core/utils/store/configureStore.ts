@@ -1,5 +1,5 @@
 import {
-    createStore, applyMiddleware, Reducer, Action
+    createStore, applyMiddleware, Reducer, Action, Middleware
 } from 'redux';
 import { createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
 import { routerMiddleware }                                from 'connected-react-router';
@@ -7,7 +7,7 @@ import { composeWithDevTools }                             from 'redux-devtools-
 import { BehaviorSubject, Observable }                     from 'rxjs';
 import { mergeMap, takeUntil }                             from 'rxjs/operators';
 import { History }                                         from 'history';
-import { compose }                                         from 'ramda';
+import { compose, isEmpty }                                from 'ramda';
 
 import { themeMiddleware }                                 from '@core/middlewares/theme';
 import { localeMiddleware }                                from '@core/middlewares/locale';
@@ -15,6 +15,7 @@ import { locationMiddleware }                              from '@core/middlewar
 import rootEpic                                            from '@core/epics';
 import createRootReducer                                   from '@core/reducers';
 import { DEV }                                             from '@core/constants/environment';
+import ssrReducers                                         from '@app/reducers/serverReducer';
 import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
 import { ExtendedStore }                                   from './types';
@@ -22,20 +23,24 @@ import { ExtendedStore }                                   from './types';
 export function configureStore(
     preloadedState: Record<string, any> = {},
     history: History<any>,
-    ssrReducers: Record<string, any> = {}
 ): Record<string, any> {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
     const env = process.env.NODE_ENV;
 
-    const epicMiddleware = createEpicMiddleware();
-    const middlewares    = [
-        epicMiddleware,
+    const isClientSide = !isEmpty(preloadedState);
+
+    const epicMiddleware            = createEpicMiddleware();
+    const middlewares: Middleware[] = [
         locationMiddleware,
         themeMiddleware,
         localeMiddleware,
         routerMiddleware(history)
     ];
+
+    if (isClientSide) {
+        middlewares.push(epicMiddleware);
+    }
 
     const composeEnhancers: Function =
         env === DEV
@@ -51,33 +56,36 @@ export function configureStore(
 
     extendStore(store, history, asyncPreloadedState);
 
-    const epic$ = new BehaviorSubject(rootEpic);
+    if (isClientSide) {
+        const epic$ = new BehaviorSubject(rootEpic);
 
-    const hotReloadingEpic = (action$: ActionsObservable<Action<any>>, ...rest: any[]): Observable<any> => epic$.pipe(
+        const hotReloadingEpic = (action$: ActionsObservable<Action<any>>, ...rest: any[]): Observable<any> => epic$.pipe(
 
-        // @ts-ignore
-        mergeMap(epic => epic(action$, ...rest).pipe(
-            takeUntil(action$.pipe(
-                ofType('EPIC_END')
+            // @ts-ignore
+            mergeMap(epic => epic(action$, ...rest).pipe(
+                takeUntil(action$.pipe(
+                    ofType('EPIC_END')
+                ))
             ))
-        ))
-    );
+        );
 
-    epicMiddleware.run(hotReloadingEpic);
+        epicMiddleware.run(hotReloadingEpic);
 
-    if ((module as any).hot) {
-        (module as any).hot.accept('../../reducers', () => {
+        if ((module as any).hot) {
+            (module as any).hot.accept('../../reducers', () => {
             // TODO: fix type
-            store.replaceReducer(createRootReducer(history) as Reducer<any, any>);
-        });
+                store.replaceReducer(createRootReducer(history) as Reducer<any, any>);
+            });
 
-        (module as any).hot.accept('../../epics', () => {
-            const nextRootEpic = require('../../epics').default;
+            (module as any).hot.accept('../../epics', () => {
+                const nextRootEpic = require('../../epics').default;
 
-            store.dispatch({ type: 'EPIC_END' });
-            epic$.next(nextRootEpic);
-        });
+                store.dispatch({ type: 'EPIC_END' });
+                epic$.next(nextRootEpic);
+            });
+        }
     }
+
 
     return { store, history };
 }
