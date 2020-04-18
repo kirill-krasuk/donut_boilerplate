@@ -1,8 +1,7 @@
-import R             from 'ramda';
+import R                        from 'ramda';
 
-import { canUseDOM } from '../dom';
-
-type InjectedReducersType = { [key: string]: Record<string, any> };
+import { canUseDOM }            from '../dom';
+import { InjectedReducersType } from './types';
 
 export function injectReducers(reducers: InjectedReducersType): void {
     if (canUseDOM) {
