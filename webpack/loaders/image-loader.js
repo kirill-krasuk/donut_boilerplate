@@ -6,8 +6,8 @@ function getImageLoader(isClient = true) {
                 loader : 'file',
                 options: {
                     name      : '[name].[ext]',
-                    outputPath: '../public/images',
-                    publicPath: '/public/images',
+                    outputPath: '../public/images/build',
+                    publicPath: '/public/images/build',
                     emit      : !isClient
                 }
             }
