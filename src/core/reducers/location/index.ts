@@ -1,4 +1,5 @@
 import { createReducer } from 'typesafe-actions';
+import { Lens }          from 'monocle-ts';
 
 import * as actions      from '@core/actions/location';
 import { State, Action } from './types';
@@ -7,9 +8,11 @@ const initState: State = {
     isFirstRendering: true
 };
 
+const locationLens = Lens.fromProp<State>()('isFirstRendering');
+
 export default createReducer<State, Action>(initState, {
-    [actions.IS_FIRST_RENDERING]: (state, action) => ({
-        ...state,
-        isFirstRendering: action.payload
-    })
+    [actions.IS_FIRST_RENDERING]: (state, { payload }) => (
+        locationLens
+            .set(payload)(state)
+    )
 });
