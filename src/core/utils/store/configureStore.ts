@@ -1,5 +1,5 @@
 import {
-    createStore, applyMiddleware, Reducer, Action, Middleware
+    createStore, applyMiddleware, Reducer, Action, Middleware, Store
 } from 'redux';
 import { createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
 import { routerMiddleware }                                from 'connected-react-router';
@@ -20,10 +20,9 @@ import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
 import { ExtendedStore }                                   from './types';
 
-export function configureStore(
-    preloadedState: Record<string, any> = {},
-    history: History<any>,
-): Record<string, any> {
+type ConfiguredStore = { store: Store; history: History<any> };
+
+export function configureStore(preloadedState: object = {}, history: History<any>): ConfiguredStore {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
     const env = process.env.NODE_ENV;
