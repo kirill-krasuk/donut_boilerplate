@@ -6,8 +6,6 @@
         "rootDir": "./",
         "allowJs": false,
         "checkJs": false,
-
-        // TODO: test options
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -15,7 +13,6 @@
         "strictBindCallApply": true,
         "strictPropertyInitialization": true,
         "noImplicitThis": true,
-
         "jsx": "preserve",
         "module": "esnext",
         "moduleResolution": "node",
