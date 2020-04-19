@@ -95,6 +95,7 @@
     "log4js": "^6.1.2",
     "monocle-ts": "^2.1.0",
     "node-emoji": "^1.10.0",
+    "node-zopfli-es": "^1.0.4",
     "query-string": "^6.11.0",
     "ramda": "^0.27.0",
     "react": "^16.12.0",
