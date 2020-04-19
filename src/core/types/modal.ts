@@ -28,6 +28,6 @@ export type CloseModal = {
 }
 
 export type ModalState = {
-    id: EModals | null;
+    id: Option<EModals>;
     hasHistory: boolean;
 }

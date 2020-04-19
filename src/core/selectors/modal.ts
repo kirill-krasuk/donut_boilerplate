@@ -9,8 +9,8 @@ import { EModals }        from '@app/enums/modal';
 const selectModal: Selector<ModalState> = R.prop('modal');
 
 export const getModalIdOption = createSelector<object, ReturnType<typeof selectModal>, O.Option<EModals>>(
-    selectModal,
-    (state) => O.fromNullable(R.prop('id')(state))
+    [ selectModal ],
+    R.prop('id')
 );
 
 // TODO: check this method
