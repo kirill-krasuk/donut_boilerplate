@@ -1,19 +1,26 @@
-import appEn from '@app/locales/en.json';
-import appRu from '@app/locales/ru.json';
-import uiEn  from '@ui-kit/locales/en.json';
-import uiRu  from '@ui-kit/locales/ru.json';
+import { ILocale }   from 'eo-locale';
 
-const en = {
-    ...appEn,
-    ...uiEn
+import appEnMessages from '@app/locales/en.json';
+import appRuMessages from '@app/locales/ru.json';
+import uiEnMessages  from '@ui-kit/locales/en.json';
+import uiRuMessages  from '@ui-kit/locales/ru.json';
+
+const enMessages = {
+    ...appEnMessages,
+    ...uiEnMessages
 };
 
-const ru = {
-    ...appRu,
-    ...uiRu
+const ruMessages = {
+    ...appRuMessages,
+    ...uiRuMessages
 };
 
-export default {
-    en,
-    ru
-};
+const locales: ILocale[] = [ {
+    language: 'en',
+    messages: enMessages
+}, {
+    language: 'ru',
+    messages: ruMessages
+} ];
+
+export default locales;

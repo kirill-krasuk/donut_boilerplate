@@ -1,5 +1,4 @@
 export { ConfigManager } from './ConfigManager';
-export { SocketConnector } from './SocketConnector';
 export { IteratorCreator } from './IteratorCreator';
 export { HTTPError } from './HTTPError';
 export { Headers } from './Headers';
