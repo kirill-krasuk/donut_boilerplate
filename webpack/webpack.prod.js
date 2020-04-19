@@ -1,4 +1,3 @@
-// const webpack                 = require('webpack');
 const BrotliPlugin            = require('brotli-webpack-plugin');
 const CompressionPlugin       = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -49,11 +48,7 @@ module.exports = configureBundler({
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
 
-        // new webpack.HashedModuleIdsPlugin({
-        //     hashFunction    : 'md4',
-        //     hashDigest      : 'base64',
-        //     hashDigestLength: 4,
-        // }),
+        // uncomment this for test prod build sizing
 
         // new BundleAnalyzerPlugin({
         //     openAnalyzer: false,
