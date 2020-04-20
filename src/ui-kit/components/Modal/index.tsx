@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch }              from 'react-redux';
 import { hot }                      from 'react-hot-loader/root';
+import { fromEvent }                from 'rxjs';
 import R                            from 'ramda';
 
 import { useClickOutside }          from '@core/hooks/useClickOutside';
@@ -22,7 +23,7 @@ const Modal: React.FC<Props> = (props): JSX.Element => {
 
     const closeModal = R.compose(dispatch, closeModalAction);
 
-    function handleKeyPress(this: Document, ev: KeyboardEvent): any {
+    function handleKeyPress(ev: KeyboardEvent) {
         const { keyCode } = ev;
 
         if (keyCode === 27) {
@@ -35,12 +36,11 @@ const Modal: React.FC<Props> = (props): JSX.Element => {
     }
 
     useEffect(() => {
-        if (document) {
-            document.addEventListener('keyup', handleKeyPress);
-        }
+        const subscribtion = fromEvent<KeyboardEvent>(document, 'keyup')
+            .subscribe(handleKeyPress);
 
-        return (): void => {
-            document.removeEventListener('keyup', handleKeyPress);
+        return () => {
+            subscribtion.unsubscribe();
         };
     }, []);
 
