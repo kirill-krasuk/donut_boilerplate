@@ -6,8 +6,8 @@ function getFontsLoader(isClient = true) {
                 loader : 'file',
                 options: {
                     name      : '[name].[ext]',
-                    outputPath: '../public/fonts',
-                    publicPath: '/public/fonts',
+                    outputPath: '../public/fonts/build',
+                    publicPath: '/public/fonts/build',
                     emit      : !isClient
                 }
             }

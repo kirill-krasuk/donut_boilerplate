@@ -6,13 +6,13 @@ describe('snakeToCamel util function', () => {
         const received = 'hello_world';
         const expected = 'helloWorld';
 
-        expect(snakeToCamel(received, EStringFormatter.Lower)).toEqual(expected);
+        expect(snakeToCamel(EStringFormatter.Lower, received)).toEqual(expected);
     });
 
     it('function must transform snake to camel with upper case', () => {
         const received = 'hello_world';
         const expected = 'HelloWorld';
 
-        expect(snakeToCamel(received, EStringFormatter.Upper)).toEqual(expected);
+        expect(snakeToCamel(EStringFormatter.Upper, received)).toEqual(expected);
     });
 });

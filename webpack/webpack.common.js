@@ -70,7 +70,8 @@ module.exports = {
                     '.json'
                 ],
                 alias: {
-                    'react-dom': isProd ? 'react-dom' : '@hot-loader/react-dom'
+                    'react-dom': isProd ? 'react-dom' : '@hot-loader/react-dom',
+                    'fp-ts/lib': 'fp-ts/es6' // use import in app from lib
                 }
             },
             optimization: {

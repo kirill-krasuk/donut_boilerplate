@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Response } from 'express';
-
-import { Store }    from '@core/types/store';
+import { Store }    from 'redux';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const checkAuth = (cookie: any, res: Response, _store: Store): boolean => {
