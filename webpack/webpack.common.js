@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const webpack = require('webpack');
-const path    = require('path');
-
+const webpack                        = require('webpack');
+const path                           = require('path');
 const { InjectManifest }             = require('workbox-webpack-plugin');
 const { CleanWebpackPlugin }         = require('clean-webpack-plugin');
 const LoadablePlugin                 = require('@loadable/webpack-plugin');
@@ -21,6 +20,8 @@ const { getCssLoader }        = require('./loaders/css-loader');
 const { getSassLoader }       = require('./loaders/sass-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
 const { getSVGLoader }        = require('./loaders/svg-loader');
+const { collectEnvVars }      = require('./utils/collectEnvVars');
+const { createHashHelper }    = require('./utils/createHashHelper');
 
 const paths = {
     src     : path.resolve('src'),
@@ -37,11 +38,7 @@ module.exports = {
     configureBundler(options) {
         const isProd = options.mode === 'production';
 
-        function addHash(template, hash) {
-            return isProd
-                ? template.replace(/\.[^.]+$/, `.[${ hash }]$&`)
-                : template;
-        }
+        const addHash = createHashHelper(isProd);
 
         return {
             context,
@@ -155,13 +152,11 @@ module.exports = {
                     filename     : addHash('[name].css', 'contenthash:8'),
                     chunkFilename: addHash('[id].css', 'contenthash:8'),
                 }),
-                new Dotenv(),
                 new LoadablePlugin(),
                 new webpack.DefinePlugin({
-                    'process.env': {
-                        NODE_ENV: JSON.stringify(options.mode)
-                    }
+                    'process.env': { NODE_ENV: JSON.stringify(options.mode), ...collectEnvVars() }
                 }),
+                new Dotenv(),
                 new webpack.ContextReplacementPlugin(
                     /moment[/\\]locale$/,
                     /ru/
