@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
 
     html, body {
         overflow-x: hidden;
-        background-color: ${ ({ theme }: ThemedStyled): string => theme[theme.mode].background };
+        background-color: ${ ({ theme }: ThemedStyled) => theme[theme.mode].background };
         min-height: 100vh;
     }
 

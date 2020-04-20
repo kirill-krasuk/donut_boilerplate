@@ -1,10 +1,2 @@
-import { EModals } from '@app/enums/modal';
-
-import Greeting    from './Greeting';
-import ModalTest   from './ModalTest';
-
-export default {
-    [EModals.Greeting] : Greeting,
-    [EModals.ModalTest]: ModalTest,
-    ['']               : null
-};
+export { default as Greeting } from './Greeting';
+export { default as ModalTest } from './ModalTest';

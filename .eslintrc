@@ -24,7 +24,8 @@
         "plugin:react/recommended"
     ],
     "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off",
+        "no-bitwise": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/no-non-null-assertion": 0,
         "@typescript-eslint/consistent-type-assertions": 0,
         "@typescript-eslint/no-explicit-any": 0,
@@ -146,7 +147,7 @@
             // enable the rule specifically for TypeScript files
             "files": ["*.ts", "*.tsx"],
             "rules": {
-                "@typescript-eslint/explicit-function-return-type": ["error"]
+                "@typescript-eslint/explicit-function-return-type": 0
             }
         }
     ]

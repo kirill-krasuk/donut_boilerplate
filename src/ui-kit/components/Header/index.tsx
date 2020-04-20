@@ -1,6 +1,6 @@
 import React                        from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { FormattedMessage as T }    from 'react-intl';
+import { EOLocale as T }            from 'eo-locale';
 import { Sun }                      from 'styled-icons/fa-solid/Sun';
 import { Moon }                     from 'styled-icons/fa-solid/Moon';
 import R                            from 'ramda';
@@ -66,7 +66,7 @@ const Header = (): JSX.Element => {
             <S.Content>
                 <ThemeLogo />
                 <S.Title>
-                    <T { ...messages.title } />
+                    <T.Text id={ messages.title } />
                 </S.Title>
             </S.Content>
         </S.Header>

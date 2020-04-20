@@ -1,9 +1,10 @@
-import { Action }                 from '@core/types/actions';
-import { Store }                  from '@core/types/store';
+import { Middleware }             from 'redux';
+
 import { isFirstRenderingAction } from '@core/actions/location';
 import { getIsFirstRendering }    from '@core/selectors/location';
+import { Action }                 from '@core/types/actions';
 
-export const locationMiddleware = ({ dispatch, getState }: Store) => (next: Function) => ({ type, payload }: Action): Function => {
+export const locationMiddleware: Middleware = ({ dispatch, getState }) => (next: Function) => ({ type, payload }: Action): Function => {
     const isFirstRendering = getIsFirstRendering(getState());
 
     if (type === '@@router/LOCATION_CHANGE' && payload.isFirstRendering !== isFirstRendering) {
