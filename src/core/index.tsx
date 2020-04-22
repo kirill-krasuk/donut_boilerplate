@@ -4,14 +4,13 @@ import { loadableReady }   from '@loadable/component';
 import { IO }              from 'fp-ts/lib/IO';
 import * as O              from 'fp-ts/lib/Option';
 
-import { ConfigManager }   from '@core/services';
+import * as Env            from '@core/config/env';
 import { App }             from './components';
 
 const getRootNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('root'));
 
-const configManager: ConfigManager = new ConfigManager();
-const isSWNeeded                   = configManager.get('swEnable');
-const needHydrate                  = configManager.get('needHydrate');
+const isSWNeeded  = Env.get('swEnable');
+const needHydrate = Env.get('needHydrate');
 
 const renderOrHydrate = needHydrate
     ? hydrate

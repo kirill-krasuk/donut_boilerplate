@@ -8,18 +8,11 @@ import { pipe }             from 'fp-ts/lib/pipeable';
 
 import Router               from '@core/components/Router';
 import { store, history }   from '@core/utils/store';
-import { ConfigManager }    from '@core/services';
 import ErrorBoundary        from '../ErrorBoundary';
 import ReadyWrapper         from '../ReadyWrapper';
 
 // manual connection of fonts
 // import './fonts.css';
-
-const configManager = new ConfigManager();
-
-configManager.defaultValues({
-    apiHost: 'https://jsonplaceholder.typicode.com',
-});
 
 const reduxDOMContainer: I.IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('ssr-store'));
 
