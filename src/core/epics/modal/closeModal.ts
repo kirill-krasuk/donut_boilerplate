@@ -1,7 +1,7 @@
 import { Location }                                               from 'history';
 import { ofType, ActionsObservable, StateObservable }             from 'redux-observable';
 import { of }                                                     from 'rxjs';
-import { mergeMap, mapTo }                                        from 'rxjs/operators';
+import { map, switchMap, take }                                   from 'rxjs/operators';
 import { getLocation, push }                                      from 'connected-react-router';
 import * as O                                                     from 'fp-ts/lib/Option';
 import { pipe }                                                   from 'fp-ts/lib/pipeable';
@@ -29,9 +29,12 @@ const unsetModal = (actionOption: O.Option<object>) => pipe(
 
 export const closeModalEpic = (action$: ActionsObservable<CloseModal>, state$: StateObservable<any>) => action$.pipe(
     ofType(CLOSE_MODAL),
-    mapTo(getLocation(state$.value)),
-    mergeMap(location => pipe(
-        removeQueryOption(checkHasModalQuery)(location),
-        unsetModal
+    switchMap(() => state$.pipe(
+        take(1),
+        map(getLocation),
+        switchMap(location => pipe(
+            removeQueryOption(checkHasModalQuery)(location),
+            unsetModal
+        ))
     ))
 );

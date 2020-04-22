@@ -1,7 +1,7 @@
 import { of, Observable }                                        from 'rxjs';
 import { ActionsObservable, ofType }                             from 'redux-observable';
 import { push }                                                  from 'connected-react-router';
-import { map, mergeMap }                                         from 'rxjs/operators';
+import { map, switchMap }                                        from 'rxjs/operators';
 import * as O                                                    from 'fp-ts/lib/Option';
 import { pipe }                                                  from 'fp-ts/lib/pipeable';
 
@@ -38,10 +38,10 @@ const dispatchModalHFlag = ({ history, id: idOption }: CallModalObjectPayload) =
 export const callModalEpic = (action$: ActionsObservable<CallModal>) => action$.pipe(
     ofType(CALL_MODAL),
     map(callModalById),
-    mergeMap(action => {
+    switchMap(action => {
         if (action instanceof Observable) {
             return action.pipe(
-                mergeMap(dispatchModalHFlag)
+                switchMap(dispatchModalHFlag)
             );
         }
 
