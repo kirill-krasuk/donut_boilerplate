@@ -12,10 +12,6 @@ const config: Env = {
     apiHost    : getEnvVar('API_HOST'),
     swEnable   : getEnvVar<boolean>('SERVICE_WORKER_ENABLE'),
     needHydrate: getEnvVar<boolean>('HYDRATE'),
-
-    // @ts-ignore
-    hui  : getEnvVar('HUI'),
-    pizda: getEnvVar<number>('PIZDA')
 };
 
 const get = getOptionConfig(config);
