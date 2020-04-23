@@ -24,6 +24,7 @@
         "plugin:react/recommended"
     ],
     "rules": {
+        "no-sequences": 0,
         "no-bitwise": 0,
         "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/no-non-null-assertion": 0,
