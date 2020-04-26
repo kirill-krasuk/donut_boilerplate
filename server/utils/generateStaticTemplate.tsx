@@ -1,6 +1,6 @@
 import React                from 'react';
 import { ServerStyleSheet } from 'styled-components';
-import Helmet               from 'react-helmet';
+import { Helmet }           from 'react-helmet';
 import { renderToString }   from 'react-dom/server';
 import { Store }            from 'redux';
 import { ChunkExtractor }   from '@loadable/server';
@@ -19,10 +19,12 @@ export function generateStaticTemplate({
 }: OptionsForGenerate): StaticTemplate {
     const sheet = new ServerStyleSheet();
 
+    const html = renderToString(sheet.collectStyles(<Component />));
+
     const { title, meta } = Helmet.renderStatic();
 
     return {
-        html               : renderToString(sheet.collectStyles(<Component />)),
+        html,
         scriptTags         : extractor.getScriptTags(),
         styleChunksTags    : extractor.getStyleTags(), // loadable components extract styles in chunk files
         styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
