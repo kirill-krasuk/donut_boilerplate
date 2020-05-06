@@ -16,11 +16,11 @@ const parseOtherValues = (valueOption: O.Option<string>) => pipe(
     valueOption,
     O.map(value => pipe(
         parseJSON(value),
-        E.getOrElse(() => value)
-    ))
+        E.getOrElse(() => value),
+    )),
 );
 
-export const getEnv = (getEnv: I.IO<NodeJS.ProcessEnv>) => <T = string>(key: string) => pipe(
+export const getEnv = (getEnv: I.IO<NodeJS.ProcessEnv>) => <T = string>(key: string, defaultValue?: T) => pipe(
     E.fromNullable(new Error('Such a variable does not exist'))(getEnv()[key]),
     E.map(dropEmptyValue),
     (either) => pipe(
@@ -30,4 +30,8 @@ export const getEnv = (getEnv: I.IO<NodeJS.ProcessEnv>) => <T = string>(key: str
             (value) => parseOtherValues(value) as O.Option<T>
         ),
     ),
+    O.fold(
+        () => (defaultValue ? O.some(defaultValue) : O.none),
+        (value) => O.some(value)
+    )
 );
