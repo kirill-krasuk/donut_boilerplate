@@ -1,5 +1,10 @@
 import {
-    createStore, applyMiddleware, Reducer, Action, Middleware, Store
+    createStore,
+    applyMiddleware,
+    Reducer,
+    Action,
+    Middleware,
+    Store
 } from 'redux';
 import { createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
 import { routerMiddleware }                                from 'connected-react-router';
@@ -14,8 +19,10 @@ import { localeMiddleware }                                from '@core/middlewar
 import { locationMiddleware }                              from '@core/middlewares/location';
 import rootEpic                                            from '@core/epics';
 import createRootReducer                                   from '@core/reducers';
+import * as Env                                            from '@core/config/env';
 import { DEV }                                             from '@core/constants/environment';
 import ssrReducers                                         from '@app/reducers/serverReducer';
+import request                                             from '@core/services/HTTP';
 import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
 import { ExtendedStore }                                   from './types';
@@ -25,11 +32,14 @@ type ConfiguredStore = { store: Store; history: History<any> };
 export function configureStore(preloadedState: object = {}, history: History<any>): ConfiguredStore {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
-    const env = process.env.NODE_ENV;
+    const env = Env.get('appEnv');
 
     const isClientSide = !isEmpty(preloadedState);
 
-    const epicMiddleware            = createEpicMiddleware();
+    const epicMiddleware = createEpicMiddleware({
+        dependencies: { request }
+    });
+
     const middlewares: Middleware[] = [
         locationMiddleware,
         themeMiddleware,

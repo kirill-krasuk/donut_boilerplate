@@ -1,7 +1,7 @@
 import R               from 'ramda';
 
 import { EHTTPMethod } from '@core/enums/http';
-import { HTTP }        from '@core/services/HTTP';
+import { HTTP }        from '@core/services/oldHTTP';
 import TokenStorage    from '@core/services/TokenStorage';
 
 type Req = {

@@ -1,6 +1,6 @@
 import R               from 'ramda';
 
-import { HTTP }        from '@core/services/HTTP';
+import { HTTP }        from '@core/services/oldHTTP';
 import TokenStorage    from '@core/services/TokenStorage';
 import { EHTTPMethod } from '@core/enums/http';
 
