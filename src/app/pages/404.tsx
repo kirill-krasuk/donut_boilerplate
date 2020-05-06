@@ -16,12 +16,12 @@ const Container = styled.div`
 
 const Title = styled.h1`
     color: white;
-    font-size: 337px;
+    font-size: 24rem;
     text-shadow: 10px 10px 0px rgb(215, 154, 143);
 `;
 
 const Description = styled.h2`
-    font-size: 56px;
+    font-size: 4rem;
     color: white;
     text-shadow: 4px 4px 0px rgb(115, 67, 46);
 `;

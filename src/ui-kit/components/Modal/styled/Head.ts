@@ -5,7 +5,7 @@ import { ThemedStyled }                            from '@core/types/theme';
 export const Head =  styled.div`
     ${ ({ theme }: ThemedStyled): FlattenSimpleInterpolation => css`
         color: white;
-        font-size: 20px;
+        font-size: 1.42rem;
         text-transform: uppercase;
         width: calc(100% - 5px * 2);
         background-color: ${ theme[theme.mode].secondary };
