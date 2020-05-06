@@ -7,15 +7,16 @@ require('@babel/register')({
     ]
 });
 
-import express      from 'express';
-import shrinkRay    from 'shrink-ray-current';
-import favicon      from 'serve-favicon';
-import cookieParser from 'cookie-parser';
-import bodyParser   from 'body-parser';
-import path         from 'path';
-import dayjs        from 'dayjs';
-import processImage from 'express-processimage';
-import '@babel/polyfill';
+import './shim';
+
+import express                 from 'express';
+import shrinkRay               from 'shrink-ray-current';
+import favicon                 from 'serve-favicon';
+import cookieParser            from 'cookie-parser';
+import bodyParser              from 'body-parser';
+import path                    from 'path';
+import dayjs                   from 'dayjs';
+import processImage            from 'express-processimage';
 
 import expressStaticGzip       from 'express-static-gzip';
 import config                  from './config';
