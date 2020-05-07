@@ -34,7 +34,7 @@
 			"@test/*": ["test/*"],
         },
         "types": ["jest", "node"],
-        "typeRoots": [ "./types", "./node_modules/@types"]
+        "typeRoots": [ "./src", "./node_modules/@types"]
     },
     "exclude": ["node_modules", "**/node_modules/*"]
   }

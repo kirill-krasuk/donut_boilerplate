@@ -1,5 +1,5 @@
 import React             from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/macro';
 
 import { theme }         from '@core/config/theme';
 import { Props }         from './types';

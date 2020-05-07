@@ -1,15 +1,15 @@
 import React, { useEffect }          from 'react';
 import { useSelector, useDispatch }  from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
-import { ThemeProvider }             from 'styled-components';
+import { ThemeProvider }             from 'styled-components/macro';
 import { push as pushAction }        from 'connected-react-router';
 import R                             from 'ramda';
 import { hot }                       from 'react-hot-loader/root';
 
 import { theme }                     from '@core/config/theme';
-import { GlobalStyles }              from '@core/utils/styles';
 import { getMode }                   from '@core/selectors/theme';
 import { protectRedirect }           from '@app/routes/routes';
+import { GlobalStyles }              from '../GlobalStyles';
 import * as S                        from './styled';
 import LanguageProvider              from '../LanguageProvider';
 import ModalManager                  from '../ModalManager';
@@ -47,6 +47,7 @@ const Root: React.FC<Props> = (props): JSX.Element => {
         }
     }, [ matchedRoute ]);
 
+    // TODO: implement page transition
     return (
         <ThemeProvider theme={ { ...theme, mode } }>
             <>
