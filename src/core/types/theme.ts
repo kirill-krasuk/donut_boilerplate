@@ -1,4 +1,4 @@
-import { ThemedStyledProps } from 'styled-components';
+import { ThemedStyledProps } from 'styled-components/macro';
 
 import { theme }             from '@core/config/theme';
 import { ETheme }            from '@core/enums/theme';

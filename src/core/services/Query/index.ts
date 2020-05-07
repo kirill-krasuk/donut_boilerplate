@@ -1,12 +1,11 @@
 import qs                  from 'query-string';
 
 import { Query as IQuery } from '@core/interfaces/Query';
-import { GenericObject }   from '@core/types/object';
 import { IteratorCreator } from '../IteratorCreator';
 
 export class Query implements IQuery {
     _string = '';
-    _qObject: GenericObject<any> = {};
+    _qObject: any = {};
 
     _iteratorCreator = new IteratorCreator();
 
@@ -22,7 +21,7 @@ export class Query implements IQuery {
         return this._qObject[key];
     }
 
-    toObject(): GenericObject<any> {
+    toObject(): any {
         return this._qObject;
     }
 

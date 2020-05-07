@@ -1,5 +1,4 @@
 import { Headers as IHeaders } from '@core/interfaces/Headers';
-import { GenericObject }       from '@core/types/object';
 import { CreatedIterator }     from '@core/types/iterator';
 import { IteratorCreator }     from '../IteratorCreator';
 
@@ -13,7 +12,7 @@ export class Headers implements IHeaders {
         return this;
     }
 
-    get(key: string): GenericObject<any> {
+    get(key: string): any {
         return this._innerObject[key.toLowerCase()];
     }
 
@@ -27,7 +26,7 @@ export class Headers implements IHeaders {
         return this;
     }
 
-    toObject(): GenericObject<any> {
+    toObject(): any {
         return this._innerObject;
     }
 

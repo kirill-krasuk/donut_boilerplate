@@ -1,4 +1,6 @@
-import config from '@core/config';
+// TODO: delete class and his relations
+
+const config = {};
 
 export class ConfigManager {
     _config: Record<string, any> = config;

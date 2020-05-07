@@ -1,5 +1,5 @@
 import React                from 'react';
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet } from 'styled-components/macro';
 import { Helmet }           from 'react-helmet';
 import { renderToString }   from 'react-dom/server';
 import { Store }            from 'redux';
