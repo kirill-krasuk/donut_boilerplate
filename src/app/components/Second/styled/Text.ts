@@ -1,9 +1,9 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
-import { ThemedStyled }                            from '@core/types/theme';
+import { Theme }       from '@core/types/theme';
 
 export const Text = styled.span`
-    ${ ({ theme }: ThemedStyled): FlattenSimpleInterpolation => css`
+    ${ ({ theme }: Theme) => css`
         color: ${ theme.dark.secondary };
         font-size: 1.42rem;
         margin-bottom: 10px;

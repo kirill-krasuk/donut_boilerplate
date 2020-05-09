@@ -1,9 +1,9 @@
-import styled, { FlattenSimpleInterpolation, css } from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
-import { ThemedStyled }                            from '@core/types/theme';
+import { Theme }       from '@core/types/theme';
 
-export const Head =  styled.div`
-    ${ ({ theme }: ThemedStyled): FlattenSimpleInterpolation => css`
+export const Head = styled.div`
+    ${ ({ theme }: Theme) => css`
         color: white;
         font-size: 1.42rem;
         text-transform: uppercase;

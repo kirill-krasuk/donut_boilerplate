@@ -1,11 +1,11 @@
 /* eslint-disable indent */
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components/macro';
+import styled, { css }     from 'styled-components/macro';
 
-import { ThemedStyled }                            from '@core/types/theme';
-import { THEME_ICON_SIZE }                         from '@ui-kit/constants/header';
+import { Theme }           from '@core/types/theme';
+import { THEME_ICON_SIZE } from '@ui-kit/constants/header';
 
 export const ThemeIcon = styled.div`
-    ${ ({ theme }: ThemedStyled): FlattenSimpleInterpolation => css`
+    ${ ({ theme }: Theme) => css`
         & svg {
             height: ${ THEME_ICON_SIZE };
             width: ${ THEME_ICON_SIZE };
