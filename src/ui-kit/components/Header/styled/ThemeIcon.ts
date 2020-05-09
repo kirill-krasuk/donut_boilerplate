@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import styled, { css }     from 'styled-components/macro';
 
 import { Theme }           from '@core/types/theme';

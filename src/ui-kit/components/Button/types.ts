@@ -1,13 +1,13 @@
-import { ReactNode }       from 'react';
+import { ReactNode, MouseEvent } from 'react';
 
-import { ESizes, EStyles } from '@ui-kit/enums/button';
+import { ESizes, EStyles }       from '@ui-kit/enums/button';
 
 export type Props = {
 
     /**
      * onClick handler - not required
     */
-    onClick?: Function;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 
     /**
      * Small 24
