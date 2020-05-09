@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components/macro';
 
-import { ThemedStyled }      from '@core/types/theme';
+import { Theme }             from '@core/types/theme';
 
 export const GlobalStyles = createGlobalStyle`
     * {
@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     html, body {
         overflow-x: hidden;
         font-size: 14px;
-        background-color: ${ ({ theme }: ThemedStyled) => theme[theme.mode].background };
+        background-color: ${ ({ theme }: Theme) => theme[theme.mode].background };
         min-height: 100vh;
     }
 
