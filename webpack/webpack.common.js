@@ -84,20 +84,6 @@ module.exports = {
                             reuseExistingChunk: true,
                             priority          : 40
                         },
-                        uiVendor: {
-                            test              : /src\/ui\/components/g,
-                            name              : 'ui-vendors',
-                            chunks            : 'initial',
-                            reuseExistingChunk: true,
-                            priority          : 20
-                        },
-                        coreVendor: {
-                            test              : /src\/core/g,
-                            name              : 'core-vendors',
-                            chunks            : 'initial',
-                            reuseExistingChunk: true,
-                            priority          : 30
-                        },
                         vendors: {
                             test              : /[\\/]node_modules[\\/]/,
                             name              : 'vendors',
@@ -145,7 +131,7 @@ module.exports = {
                     alwaysWriteToDisk: true,
                     excludeAssets    : [ /\.(js|css)/ ]
                 }),
-                new HtmlWebpackExcludeAssetsPlugin(), // for exludeAssets
+                new HtmlWebpackExcludeAssetsPlugin(), // for excludeAssets
                 new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
                 new HtmlPugPlugin(),
                 new MiniCssExtractPlugin({

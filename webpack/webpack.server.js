@@ -13,14 +13,14 @@ const { getSVGLoader }        = require('./loaders/svg-loader');
 const { getSassModuleLoader } = require('./loaders/sass-module-loader');
 
 const PATHS = {
-    enrty : path.resolve(__dirname, '..', 'server/index.ts'),
+    entry : path.resolve(__dirname, '..', 'server/index.ts'),
     output: path.resolve(__dirname, '..', 'dist')
 };
 
 module.exports = (env, argv) => ({
     mode   : argv.mode,
     target : 'node',
-    entry  : PATHS.enrty,
+    entry  : PATHS.entry,
     devtool: false,
     node   : {
         __dirname : true,
