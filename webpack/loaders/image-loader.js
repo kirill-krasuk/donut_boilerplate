@@ -5,7 +5,7 @@ function getImageLoader(isClient = true) {
             {
                 loader : 'file',
                 options: {
-                    name      : '[name].[ext]',
+                    name      : '[name].[contenthash:8].[ext]',
                     outputPath: '../public/images/build',
                     publicPath: '/public/images/build',
                     emit      : !isClient

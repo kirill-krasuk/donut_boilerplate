@@ -1,9 +1,12 @@
 const webpack                  = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-
-// const CircularDependencyPlugin = require('circular-dependency-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { paths, configureBundler } = require('./webpack.common');
+
+const bundlingProgress = (percentage, message) => {
+    process.stdout.write(`\t${ (percentage * 100).toFixed(2) }% ${ message }\r`);
+};
 
 module.exports = configureBundler({
     mode : 'development',
@@ -25,13 +28,13 @@ module.exports = configureBundler({
             analyzerPort: 8181,
             analyzerHost: '127.0.0.1'
         }),
-
-        // new CircularDependencyPlugin({
-        //     exclude: /node_modules|saga|inversify/,
-        //     onDetected({ paths, compilation }) {
-        //         compilation.errors.push(new Error(paths.join(' -> ')));
-        //     },
-        //     failOnError: true
-        // }),
+        new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            onDetected({ paths, compilation }) {
+                compilation.errors.push(new Error(paths.join(' -> ')));
+            },
+            failOnError: true
+        }),
+        new webpack.ProgressPlugin(bundlingProgress)
     ]
 });

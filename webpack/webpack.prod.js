@@ -1,9 +1,8 @@
-const BrotliPlugin            = require('brotli-webpack-plugin');
-const CompressionPlugin       = require('compression-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin            = require('terser-webpack-plugin');
-
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const BrotliPlugin             = require('brotli-webpack-plugin');
+const CompressionPlugin        = require('compression-webpack-plugin');
+const OptimizeCssAssetsPlugin  = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin             = require('terser-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const { paths, configureBundler } = require('./webpack.common');
 
@@ -47,13 +46,10 @@ module.exports = configureBundler({
             filename: '[path].br[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
-
-        // uncomment this for test prod build sizing
-
-        // new BundleAnalyzerPlugin({
-        //     openAnalyzer: false,
-        //     analyzerPort: 8181,
-        //     analyzerHost: '127.0.0.1'
-        // }),
+        new BundleAnalyzerPlugin({
+            analyzerMode  : 'static',
+            openAnalyzer  : false,
+            reportFilename: '../stats/prod-report.html',
+        }),
     ]
 });
