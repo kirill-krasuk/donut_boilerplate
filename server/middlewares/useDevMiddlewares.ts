@@ -17,8 +17,16 @@ export function useDevMiddlewares(app: Application): void {
     if (env === 'development') {
         app.use(DevMiddleware(bundler, {
             publicPath : webpackConfig.output.publicPath,
-            writeToDisk: true,
-            stats      : {
+            writeToDisk: (name: string) => {
+                const regExp = new RegExp(/(\.json|sw\.js|manifest)/, 'gi');
+
+                if (regExp.test(name)) {
+                    return true;
+                }
+
+                return false;
+            },
+            stats: {
                 all         : false,
                 modules     : true,
                 maxModules  : 0,

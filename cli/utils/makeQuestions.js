@@ -24,6 +24,7 @@ const asyncQuestion = (q, callback) => new Promise((resolve, reject) => {
     );
 });
 
+// eslint-disable-next-line no-async-promise-executor
 const makeQuestions = questions => new Promise(async (resolve) => {
     const answers = {};
     let answer;

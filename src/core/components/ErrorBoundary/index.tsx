@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { HTTP, HTTPError }  from '@core/services';
+import { HTTP }             from '@core/services';
 import { EHTTPMethod }      from '@core/enums/http';
 import { Props, State }     from './types.js';
 
@@ -9,7 +9,7 @@ class ErrorBoundary extends Component<Props, State> {
         hasError: false
     }
 
-    componentDidCatch(err: HTTPError): void {
+    componentDidCatch(err: Error): void {
         const http = new HTTP();
 
         this.setState({ hasError: true });

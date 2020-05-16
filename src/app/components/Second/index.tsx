@@ -2,8 +2,8 @@ import React             from 'react';
 import { EOLocale as T } from 'eo-locale';
 import { hot }           from 'react-hot-loader/root';
 
-import { Header }        from '@ui-kit/components';
 import { routes }        from '@app/routes/routes';
+import Header            from '../Header/loadable';
 import * as S            from './styled';
 import messages          from './messages';
 

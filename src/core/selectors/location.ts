@@ -6,7 +6,7 @@ import { LocationState }  from '@core/types/location';
 
 const selectLocation: Selector<LocationState> = R.prop('location');
 
-export const getIsFirstRendering = createSelector<object, ReturnType<typeof selectLocation>, boolean>(
+export const getIsFirstRendering = createSelector(
     [ selectLocation ],
     R.prop('isFirstRendering')
 );
