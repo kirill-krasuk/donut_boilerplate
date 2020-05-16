@@ -3,13 +3,13 @@ import { EOLocale as T } from 'eo-locale';
 import { hot }           from 'react-hot-loader/root';
 
 import { routes }        from '@app/routes/routes';
-import * as UiKit        from '@ui-kit/components';
+import Header            from '../Header/loadable';
 import * as S            from './styled';
 import messages          from './messages';
 
 const Home: React.FC = (): JSX.Element => (
     <>
-        <UiKit.Header />
+        <Header />
         <S.Container>
             <S.Text>
                 <T.Text id={ messages.title } />

@@ -11,36 +11,35 @@ import { EModals }          from '@app/enums/modal';
 import * as S               from './styled';
 import modals               from './modals';
 
-const getModalNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('modal'));
-
-const createPortalOption = (Modal: JSX.Element): JSX.Element | null => pipe(
-    getModalNode(),
-    O.fold(
-        () => null,
-        (modalNode) => createPortal(Modal, modalNode)
-    )
-);
-
-const renderModal = (id: EModals): JSX.Element => {
-    const CalledModal = modals[id];
-
-    return (
-        <S.Wrapper>
-            <CalledModal />
-        </S.Wrapper>
-    );
-};
-
-const renderModalOption = (modalIdOption: O.Option<EModals>): O.Option<JSX.Element> => {
-    const id = O.toNullable(modalIdOption);
-
-    return !id
-        ? O.none
-        : O.some(renderModal(id));
-};
-
 const ModalManager: React.FC = (): JSX.Element | null => {
     const modalIdOption = useSelector(getModalIdOption);
+
+    const getModalNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('modal'));
+
+    const createPortalOption = (Modal: JSX.Element): JSX.Element | null => pipe(
+        getModalNode(),
+        O.fold(
+            () => null,
+            (modalNode) => createPortal(Modal, modalNode)
+        )
+    );
+
+    const renderModal = (id: EModals): JSX.Element => pipe(
+        modals[id],
+        (CalledModal) => (
+            <S.Wrapper>
+                <CalledModal />
+            </S.Wrapper>
+        )
+    );
+
+    const renderModalOption = (modalIdOption: O.Option<EModals>): O.Option<JSX.Element> => {
+        const id = O.toNullable(modalIdOption);
+
+        return !id
+            ? O.none
+            : O.some(renderModal(id));
+    };
 
     return pipe(
         renderModalOption(modalIdOption),

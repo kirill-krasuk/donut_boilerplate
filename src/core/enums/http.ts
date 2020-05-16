@@ -6,7 +6,7 @@ export enum EStatusCodes {
     S404 = 'Not Found',
     S405 = 'Method Not Allowed',
     S406 = 'Not Acceptable',
-    S408 = 'Request Timeot',
+    S408 = 'Request Timeout',
     S422 = 'Unprocessable Entity',
     S500 = 'Internal Server Error',
     S501 = 'Not Implemented',

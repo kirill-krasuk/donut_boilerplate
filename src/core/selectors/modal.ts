@@ -1,20 +1,18 @@
 import { createSelector } from 'reselect';
 import R                  from 'ramda';
-import * as O             from 'fp-ts/lib/Option';
 
 import { Selector }       from '@core/types/selector';
 import { ModalState }     from '@core/types/modal';
-import { EModals }        from '@app/enums/modal';
 
 const selectModal: Selector<ModalState> = R.prop('modal');
 
-export const getModalIdOption = createSelector<object, ReturnType<typeof selectModal>, O.Option<EModals>>(
+export const getModalIdOption = createSelector(
     [ selectModal ],
     R.prop('id')
 );
 
 // TODO: check this method
-export const getHasModal = createSelector<object, ReturnType<typeof getModalIdOption>, boolean>(
+export const getHasModal = createSelector(
     getModalIdOption,
     R.complement(R.isNil)
 );

@@ -29,8 +29,10 @@ const clearReduxContainer: I.IO<void> = () => {
 
 const App: React.FC = (): JSX.Element => {
     useEffect(() => {
-        fromEvent(window, 'load')
+        const subscription = fromEvent(window, 'load')
             .subscribe(clearReduxContainer);
+
+        return () => subscription.unsubscribe();
     }, []);
 
     return (
