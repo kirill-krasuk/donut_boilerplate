@@ -22,7 +22,7 @@ import createRootReducer                                   from '@core/reducers'
 import * as Env                                            from '@core/config/env';
 import { DEV }                                             from '@core/constants/environment';
 import ssrReducers                                         from '@app/reducers/serverReducer';
-import request                                             from '@core/services/HTTP';
+import request                                             from '@core/services/RxHTTP';
 import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
 import { ExtendedStore }                                   from './types';

@@ -1,8 +1,7 @@
 import { STATUS_CODES }            from '@core/constants/http/statusCodes';
-import { HTTPError as IHTTPError } from '@core/interfaces/HTTPError';
 import { ResponseWithStatusCodes } from '@core/types/HTTP';
 
-export class HTTPError extends Error implements IHTTPError {
+export class HTTPError extends Error {
     _name: string;
     _message: string;
     _response: string;
