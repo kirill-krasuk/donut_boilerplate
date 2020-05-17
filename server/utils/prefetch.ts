@@ -1,9 +1,11 @@
+import { Store }                    from 'redux';
 import { matchRoutes, RouteConfig } from 'react-router-config';
+import * as C                       from 'fp-ts/lib/Console';
 
 import { PComponent }               from '@core/types/components';
 import routes                       from '@core/components/Router/routes';
 
-export async function prefetch(store: Record<string, any>, url: string, auth: any = null): Promise<void> {
+export async function prefetch(store: Store, url: string, auth: any = null): Promise<void> {
     const [ pathname, query ] = url.split('?');
     const [ , appRoute ]      = matchRoutes(routes as RouteConfig[], pathname);
 
@@ -15,10 +17,9 @@ export async function prefetch(store: Record<string, any>, url: string, auth: an
 
         if (pComponent.prefetch) {
             try {
-                await pComponent.prefetch(store, { params: match.params, query }, auth);
+                await pComponent.prefetch(store, { params: match.params, query }, auth)();
             } catch (err) {
-                // eslint-disable-next-line
-                console.log(err);
+                C.error(err)();
             }
         }
     }
