@@ -7,7 +7,6 @@ import { configureStore }         from '@core/utils/store/configureStore';
 import { checkAuth }              from '@server/utils/checkAuth';
 import { prefetch }               from '@server/utils/prefetch';
 import { Context }                from '@server/types/context';
-import { ConfigManager }          from '@core/services';
 import { initializeState }        from '@server/utils/initializeState';
 import { generateAppComponent }   from '@server/utils/generateAppComponent';
 import { generateStaticTemplate } from '@server/utils/generateStaticTemplate';
@@ -15,12 +14,6 @@ import { renderTemplate }         from '@server/utils/renderTemplate';
 
 import '@server/polyfills/promise';
 import '@server/polyfills/array';
-
-const configManager = new ConfigManager();
-
-configManager.defaultValues({
-    apiHost: 'https://jsonplaceholder.typicode.com',
-});
 
 const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import { HTTP }             from '@core/services';
-import { EHTTPMethod }      from '@core/enums/http';
+// import { EHTTPMethod }      from '@core/enums/http';
 import { Props, State }     from './types.js';
 
 class ErrorBoundary extends Component<Props, State> {
@@ -9,22 +8,23 @@ class ErrorBoundary extends Component<Props, State> {
         hasError: false
     }
 
-    componentDidCatch(err: Error): void {
-        const http = new HTTP();
+    // TODO: fix error logging
+    componentDidCatch(): void {
+        // const http = new HTTP();
 
-        this.setState({ hasError: true });
+        // this.setState({ hasError: true });
 
-        const stack = err.stack!.split(/\n/);
+        // const stack = err.stack!.split(/\n/);
 
-        http.setBody({
-            stack,
-        });
+        // http.setBody({
+        //     stack,
+        // });
 
-        http.fetch({
-            method   : EHTTPMethod.Post,
-            path     : '/handle_error',
-            requestTo: 'root'
-        });
+        // http.fetch({
+        //     method   : EHTTPMethod.Post,
+        //     path     : '/handle_error',
+        //     requestTo: 'root'
+        // });
     }
 
     render(): JSX.Element {

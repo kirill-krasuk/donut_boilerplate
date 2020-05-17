@@ -16,10 +16,11 @@ import { emptyEpicAction }           from '@core/actions/emptyEpic';
 
 type ReturnEpicType = CallModal | EmptyEpic;
 
-const splitSearchString = (search: string): O.Option<string[]> => O.some(R.compose(
+const splitSearchString = (search: string): O.Option<string[]> => R.compose(
+    O.some,
     R.split('&'),
     R.replace('?', '')
-)(search));
+)(search);
 
 const findActionPattern = (patterns: string[]): O.Option<string> => (
     O.fromNullable(patterns.find(pattern => ~pattern.indexOf('action')))
