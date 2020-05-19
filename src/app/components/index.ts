@@ -1,3 +1,5 @@
-export { default as Home } from './Home/loadable';
-export { default as Second } from './Second/loadable';
-export { default as Header } from './Header/loadable';
+export { default as Root } from './Root';
+
+export { default as Home } from './Home';
+export { default as Second } from './Second';
+export { default as Header } from './Header';
