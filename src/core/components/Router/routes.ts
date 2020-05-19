@@ -1,4 +1,4 @@
-import Root   from '@core/components/Root';
+import Root   from '@app/components/Root';
 import routes from '@app/routes';
 
 export default [ {

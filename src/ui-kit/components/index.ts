@@ -4,6 +4,6 @@ export { Row } from './Row';
 export { Spacing } from './Spacing';
 
 // components
-export { default as Button } from './Button/loadable';
-export { default as Modal } from './Modal/loadable';
-export { default as Image } from './Image/loadable';
+export { default as Button } from './Button';
+export { default as Modal } from './Modal';
+export { default as Image } from './Image';

@@ -1,27 +1,9 @@
-import React             from 'react';
-import { EOLocale as T } from 'eo-locale';
-import { hot }           from 'react-hot-loader/root';
+import React    from 'react';
+import loadable from '@loadable/component';
 
-import { routes }        from '@app/routes/routes';
-import Header            from '../Header/loadable';
-import * as S            from './styled';
-import messages          from './messages';
-
-const Second: React.FC = (): JSX.Element => (
-    <>
-        <Header />
-        <S.Container>
-            <S.Text>
-                <T.Text id={ messages.title } />
-            </S.Text>
-            <S.Link to={ routes.home.path }>
-                <T.Text id={ messages.link } />
-            </S.Link>
-            <S.Link to={ routes.protect.path }>
-                <T.Text id={ messages.protect } />
-            </S.Link>
-        </S.Container>
-    </>
+export default loadable(
+    () => import(/* webpackChunkName: "Second" */'./component'),
+    {
+        fallback: <div>Loading...</div>
+    }
 );
-
-export default hot(Second);

@@ -9,10 +9,10 @@ import { hot }                       from 'react-hot-loader/root';
 import { theme }                     from '@core/config/theme';
 import { getMode }                   from '@core/selectors/theme';
 import { protectRedirect }           from '@app/routes/routes';
-import { GlobalStyles }              from '../GlobalStyles';
+import { GlobalStyles }              from '@core/components/GlobalStyles';
+import LanguageProvider              from '@core/components/LanguageProvider';
+import ModalManager                  from '@core/components/ModalManager';
 import * as S                        from './styled';
-import LanguageProvider              from '../LanguageProvider';
-import ModalManager                  from '../ModalManager';
 import { Props }                     from './types';
 
 const Root: React.FC<Props> = (props): JSX.Element => {
