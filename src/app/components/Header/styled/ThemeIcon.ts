@@ -8,7 +8,7 @@ export const ThemeIcon = styled.div`
         & svg {
             height: ${ THEME_ICON_SIZE };
             width: ${ THEME_ICON_SIZE };
-            color: ${ theme[theme.mode]['ui_ch_theme-icon'] };
+            color: ${ theme[theme.mode].icon.color };
             filter: brightness(1);
             margin-left: 20px;
 

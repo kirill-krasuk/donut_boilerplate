@@ -1,20 +1,42 @@
+export const palette = {
+    pink: {
+        1: '#e84393',
+        2: '#FF3F84'
+    },
+    darkBlue: {
+        1: '#191D3A'
+    },
+    white: '#FFFFFF'
+} as const;
+
 export const theme = {
     dark: {
-        primary  : '#191D3A',
-        secondary: '#e84393',
+        primary  : palette.darkBlue[1],
+        secondary: palette.pink[1],
 
-        background: '#191D3A',
-        header_bg : '#191D3A',
+        background: palette.darkBlue[1],
+        header    : {
+            background: palette.darkBlue[1],
+        },
 
-        'ui_ch_theme-icon': '#e84393',
+        icon: {
+            color: palette.pink[1],
+        },
     },
     light: {
-        primary  : '#e84393',
-        secondary: '#191D3A',
+        primary  : palette.pink[1],
+        secondary: palette.darkBlue[1],
 
-        background: '#FFF',
-        header_bg : '#FF3F84',
+        background: palette.white,
+        header    : {
+            background: palette.pink[2],
+        },
 
-        'ui_ch_theme-icon': '#FFF',
+        icon: {
+            color: palette.pink[1],
+        }
+    },
+    common: {
+        ...palette
     }
-};
+} as const;
