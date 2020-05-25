@@ -5,7 +5,7 @@ import { Theme }       from '@core/types/theme';
 export const Header = styled.header`
     ${ ({ theme }: Theme) => css`
         width: 100%;
-        background: ${ theme[theme.mode].header_bg };
+        background: ${ theme[theme.mode].header.background };
         position: relative;
         display: flex;
         justify-content: center;
