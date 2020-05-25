@@ -1,26 +1,22 @@
-import * as I        from 'fp-ts/lib/IO';
+import * as IO       from 'fp-ts/lib/IO';
 import * as E        from 'fp-ts/lib/Either';
 import * as O        from 'fp-ts/lib/Option';
 import * as C        from 'fp-ts/lib/Console';
 import { pipe }      from 'fp-ts/lib/pipeable';
+import { flow }      from 'fp-ts/lib/function';
 
 import { parseJSON } from '@core/utils/json';
 
-const dropEmptyValue = (value: string | null) => (
-    !value
-        ? O.none
-        : O.some(value)
-);
+const dropEmptyValue = O.fromPredicate<string>(Boolean);
 
-const parseOtherValues = (valueOption: O.Option<string>) => pipe(
-    valueOption,
+const parseOtherValues = flow(
     O.map(value => pipe(
-        parseJSON(value),
+        parseJSON(value as string),
         E.getOrElse(() => value),
     )),
 );
 
-export const getEnv = (getEnv: I.IO<NodeJS.ProcessEnv>) => <T = string>(key: string, defaultValue?: T) => pipe(
+export const getEnv = (getEnv: IO.IO<NodeJS.ProcessEnv>) => <T = string>(key: string, defaultValue?: T) => pipe(
     E.fromNullable(new Error('Such a variable does not exist'))(getEnv()[key]),
     E.map(dropEmptyValue),
     (either) => pipe(
@@ -31,7 +27,7 @@ export const getEnv = (getEnv: I.IO<NodeJS.ProcessEnv>) => <T = string>(key: str
         ),
     ),
     O.fold(
-        () => (defaultValue ? O.some(defaultValue) : O.none),
+        () => O.fromPredicate<T | undefined>(Boolean)(defaultValue) as O.Option<T>,
         (value) => O.some(value)
     )
 );
