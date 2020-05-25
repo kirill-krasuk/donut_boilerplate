@@ -5,6 +5,7 @@ import { map, switchMap, take }                                   from 'rxjs/ope
 import { getLocation, push }                                      from 'connected-react-router';
 import * as O                                                     from 'fp-ts/lib/Option';
 import { pipe }                                                   from 'fp-ts/lib/pipeable';
+import { flow }                                                   from 'fp-ts/lib/function';
 
 import { CloseModal }                                             from '@core/types/modal';
 import { CLOSE_MODAL, setModalHistoryFlagAction, setModalAction } from '@core/actions/modal';
@@ -19,8 +20,7 @@ const removeQueryOption = (predicateFn: Function) => ({ pathname, search }: Loca
 
 const getActionsToDispatch = () => [ setModalHistoryFlagAction(false), setModalAction(O.none) ];
 
-const unsetModal = (actionOption: O.Option<object>) => pipe(
-    actionOption,
+const unsetModal = flow(
     O.fold(
         () => of(...getActionsToDispatch()),
         (action) => of(action, ...getActionsToDispatch())

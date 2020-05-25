@@ -24,7 +24,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     const { theme: mode = 'dark', locale = 'en', token } = req.cookies;
 
     const context: Context = {
-        token: token || 'easeg#4qfaf5tegasda'
+        token
     };
 
     const history = createMemoryHistory({

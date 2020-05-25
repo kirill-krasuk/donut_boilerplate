@@ -1,3 +1,4 @@
+import { flow }                             from 'fp-ts/lib/function';
 import * as E                               from 'fp-ts/lib/Either';
 import * as O                               from 'fp-ts/lib/Option';
 import { sequenceT }                        from 'fp-ts/lib/Apply';
@@ -16,8 +17,7 @@ const provideRules = (value: string) => (rules: Rule[]) => rules.map(rule => lif
 
 export const isValid = (errors: Record<string, ValidatedValue>) => Object.keys(errors).every((key) => E.isRight(errors[key]));
 
-export const parseError = (errors: E.Left<string[]>) => pipe(
-    errors,
+export const parseError = flow(
     E.fold(
         R.identity,
         () => null

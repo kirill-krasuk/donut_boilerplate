@@ -4,6 +4,7 @@ import { map, pluck }                from 'rxjs/operators';
 import R                             from 'ramda';
 import * as O                        from 'fp-ts/lib/Option';
 import { pipe }                      from 'fp-ts/lib/pipeable';
+import { flow }                      from 'fp-ts/lib/function';
 
 import * as modals                   from '@app/modals';
 import { EModals }                   from '@app/enums/modal';
@@ -37,8 +38,7 @@ const filterModalsIDOption = ([ , id ]: string[]): O.Option<EModals> => {
         : O.none;
 };
 
-const actionOrEMPTY = (modalIdOption: O.Option<EModals>) => pipe(
-    modalIdOption,
+const actionOrEMPTY = flow(
     O.fold<EModals, ReturnEpicType>(
         () => emptyEpicAction(),
         (v) => callModalAction(v)

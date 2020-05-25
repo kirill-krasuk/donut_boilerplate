@@ -1,11 +1,12 @@
-import React, { FC }        from 'react';
+import React                from 'react';
+import { hot }              from 'react-hot-loader/root';
 
 import { replaceExtension } from '@core/utils/file';
 import { Props }            from './types';
 
 // TODO: complete
 
-const Image: FC<Props> = (props): JSX.Element => {
+const Image: React.FC<Props> = (props): JSX.Element => {
     const { src, webp } = props;
 
     return (
@@ -16,4 +17,4 @@ const Image: FC<Props> = (props): JSX.Element => {
     );
 };
 
-export default Image;
+export default hot(Image);

@@ -24,6 +24,7 @@
         "plugin:react/recommended"
     ],
     "rules": {
+        "array-callback-return": 0,
         "no-restricted-imports": [
             "error",
             {
