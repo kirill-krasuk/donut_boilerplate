@@ -36,7 +36,7 @@ const Root: React.FC<Props> = (props): JSX.Element => {
 
     const redirect = (serverContext: Context, status: number, to: string): IO.IO<void> => () => {
         serverContext.status = status;
-        serverContext.url    = to;
+        serverContext.to     = to;
     };
 
     pipe(
