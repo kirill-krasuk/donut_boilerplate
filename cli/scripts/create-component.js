@@ -1,16 +1,17 @@
-const fs    = require('fs');
-const emoji = require('node-emoji');
+const { log } = require('fp-ts/lib/Console');
+const fs      = require('fs');
+const emoji   = require('node-emoji');
 
 const createTemplate  = require('../utils/creators/component/createComponentTemplate');
 const createPath      = require('../utils/creators/component/createComponentPath');
 const createProps     = require('../utils/creators/component/createPropsTemplate');
 const createLoadable  = require('../utils/creators/component/createLodableTemplate');
 const createIntl      = require('../utils/creators/component/createIntlTemplate');
-const updateRootFile  = require('../utils/updates/updateComponentExporFile');
+const updateRootFile  = require('../utils/updates/updateComponentExportFile');
 const makeQuestions   = require('../utils/makeQuestions');
 const getRootPath     = require('../utils/getRootPath');
 const yesNoCallback   = require('../utils/callbacks/yesNoCallback');
-const successCreating = require('../utils/succcessCreating');
+const successCreating = require('../utils/successCreating');
 
 const component = {};
 
@@ -44,7 +45,7 @@ const main = async () => {
     try {
         answers = await makeQuestions(questions);
     } catch (err) {
-        console.log(err);
+        log(err)();
     }
 
     Object.keys(answers).forEach((key) => {

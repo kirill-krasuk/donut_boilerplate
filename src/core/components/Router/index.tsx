@@ -5,7 +5,7 @@ import { renderRoutes, RouteConfig } from 'react-router-config';
 import routes                        from './routes';
 import { Props }                     from './types';
 
-const Router: React.FC<Props> = (props): JSX.Element => {
+const Router: React.FC<Props> = (props) => {
     const { history } = props;
 
     return (

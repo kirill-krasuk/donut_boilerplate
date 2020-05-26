@@ -3,7 +3,7 @@ import R                                       from 'ramda';
 import { canUseDOM }                           from '../dom';
 import { InjectedReducersType, ExtendedStore } from './types';
 
-export function injectReducers(reducers: InjectedReducersType): void {
+export function injectReducers(reducers: InjectedReducersType) {
     if (canUseDOM) {
         import('@core/utils/store').then(({ store }) => R
             .keys(reducers)

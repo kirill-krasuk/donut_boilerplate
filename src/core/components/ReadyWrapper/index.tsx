@@ -5,7 +5,7 @@ import R                    from 'ramda';
 import { readyAction }      from '@core/actions/ready';
 import { Props }            from './types';
 
-const ReadyWrapper: React.FC<Props> = (props): JSX.Element => {
+const ReadyWrapper: React.FC<Props> = (props) => {
     const { children } = props;
 
     const dispatch = useDispatch();

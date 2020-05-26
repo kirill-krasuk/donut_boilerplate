@@ -7,7 +7,7 @@ const _snakeToCamel = <T extends string>(str: T, formatter: EStringFormatter): T
 
 function snakeToCamel<T extends string = string>(formatter: EStringFormatter, str: T): T;
 function snakeToCamel<T extends string = string>(formatter: EStringFormatter): (str: T) => T
-function snakeToCamel<T extends string = string>(formatter: EStringFormatter = EStringFormatter.Lower, str?: T): any {
+function snakeToCamel<T extends string = string>(formatter: EStringFormatter = EStringFormatter.Lower, str?: T) {
     return !str
         ? (str: T): T => _snakeToCamel(str, formatter)
         : _snakeToCamel(str, formatter);

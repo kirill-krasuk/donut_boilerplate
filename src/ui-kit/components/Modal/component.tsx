@@ -15,7 +15,7 @@ import { Props }                    from './types';
  * @version 1.0
  * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
 */
-const Modal: React.FC<Props> = (props): JSX.Element => {
+const Modal: React.FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
     const dispatch = useDispatch();
