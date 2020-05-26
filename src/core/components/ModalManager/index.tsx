@@ -11,12 +11,12 @@ import { EModals }          from '@app/enums/modal';
 import * as S               from './styled';
 import modals               from './modals';
 
-const ModalManager: React.FC = (): JSX.Element | null => {
+const ModalManager: React.FC = () => {
     const modalIdOption = useSelector(getModalIdOption);
 
     const getModalNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('modal'));
 
-    const createPortalOption = (Modal: JSX.Element): JSX.Element | null => pipe(
+    const createPortalOption = (Modal: JSX.Element) => pipe(
         getModalNode(),
         O.fold(
             () => null,
@@ -24,7 +24,7 @@ const ModalManager: React.FC = (): JSX.Element | null => {
         )
     );
 
-    const renderModal = (id: EModals): JSX.Element => pipe(
+    const renderModal = (id: EModals) => pipe(
         modals[id],
         (CalledModal) => (
             <S.Wrapper>
@@ -33,7 +33,7 @@ const ModalManager: React.FC = (): JSX.Element | null => {
         )
     );
 
-    const renderModalOption = (modalIdOption: O.Option<EModals>): O.Option<JSX.Element> => {
+    const renderModalOption = (modalIdOption: O.Option<EModals>) => {
         const id = O.toNullable(modalIdOption);
 
         return !id

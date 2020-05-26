@@ -6,7 +6,7 @@ import { Home }                from '@app/components';
 import prefetch                from '@app/components/Home/prefetch';
 import { PrefetchedComponent } from '@core/types/components';
 
-const HomePage: PrefetchedComponent<{}> = (): JSX.Element => (
+const HomePage: PrefetchedComponent<{}> = () => (
     <>
         <Helmet
             title="Home page"

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProtectPage: React.FC = (): JSX.Element => (
+const ProtectPage: React.FC = () => (
     <span>Protected Route</span>
 );
 

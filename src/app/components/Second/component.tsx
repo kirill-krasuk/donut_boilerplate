@@ -7,7 +7,7 @@ import Header            from '@app/components/Header';
 import * as S            from './styled';
 import messages          from './messages';
 
-const Second: React.FC = (): JSX.Element => (
+const Second: React.FC = () => (
     <>
         <Header />
         <S.Container>

@@ -31,7 +31,7 @@ const Link = styled(ReactLink)`
     margin-top: 20px;
 `;
 
-const Page404 = (): JSX.Element => (
+const Page404: React.FC = () => (
     <Container>
         <Title>
             4

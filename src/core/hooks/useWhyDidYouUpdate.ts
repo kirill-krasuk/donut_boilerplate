@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export function useWhyDidYouUpdate(name: string, props: Record<string, any>): void {
+export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
     const previousProps = useRef<Record<string, any>>();
 
     useEffect(() => {

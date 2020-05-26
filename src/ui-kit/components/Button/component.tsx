@@ -11,7 +11,7 @@ import { Props }           from './types';
  * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
  */
 
-const Button: React.FC<Props> = (props): JSX.Element => {
+const Button: React.FC<Props> = (props) => {
     const {
         onClick,
         size,

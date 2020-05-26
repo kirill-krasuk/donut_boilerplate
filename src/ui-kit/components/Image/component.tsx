@@ -6,7 +6,7 @@ import { Props }            from './types';
 
 // TODO: complete
 
-const Image: React.FC<Props> = (props): JSX.Element => {
+const Image: React.FC<Props> = (props) => {
     const { src, webp } = props;
 
     return (

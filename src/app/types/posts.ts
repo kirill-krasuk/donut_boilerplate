@@ -7,7 +7,9 @@ export type Post = {
     body: string;
 }
 
+export type PostsRD = RemoteData<Error, Post[]>;
+
 export type SetPosts = {
     type: 'app/SET_POSTS';
-    payload: RemoteData<Error, Post[]>;
+    payload: PostsRD;
 }

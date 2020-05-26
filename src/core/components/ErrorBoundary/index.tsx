@@ -9,7 +9,7 @@ class ErrorBoundary extends Component<Props, State> {
     }
 
     // TODO: fix error logging
-    componentDidCatch(): void {
+    componentDidCatch() {
         // const http = new HTTP();
 
         // this.setState({ hasError: true });
@@ -27,7 +27,7 @@ class ErrorBoundary extends Component<Props, State> {
         // });
     }
 
-    render(): JSX.Element {
+    render() {
         if (this.state.hasError) {
             return <div>Oops, something goes wrong</div>;
         }

@@ -14,7 +14,7 @@ import { ELocale }                  from '@core/enums/locale';
 import * as S                       from './styled';
 import messages                     from './messages';
 
-const Header = (): JSX.Element => {
+const Header: React.FC = () => {
     const dispatch = useDispatch();
 
     const mode   = useSelector(getMode);
@@ -45,11 +45,11 @@ const Header = (): JSX.Element => {
         [ETheme.Light]: ETheme.Dark,
     };
 
-    const handleChangeTheme = (): void => {
+    const handleChangeTheme = () => {
         changeTheme(reverseThemeMode[mode]);
     };
 
-    const handleChangeLocale = (): void => {
+    const handleChangeLocale = () => {
         changeLocale(reverseLocale[locale]);
     };
 

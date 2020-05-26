@@ -6,7 +6,7 @@ import locales         from '@core/locales';
 import { getLocale }   from '@core/selectors/locale';
 import { Props }       from './types';
 
-const LanguageProvider: React.FC<Props> = (props): JSX.Element => {
+const LanguageProvider: React.FC<Props> = (props) => {
     const { children } = props;
 
     const locale = useSelector(getLocale);

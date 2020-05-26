@@ -3,7 +3,7 @@ import { fromEvent } from 'rxjs';
 
 export function useClickOutside(ref: any, handler: Function) {
     useEffect(() => {
-        const listener = (event: Event): void => {
+        const listener = (event: Event) => {
             if (!ref.current || ref.current.contains(event.target)) {
                 return;
             }

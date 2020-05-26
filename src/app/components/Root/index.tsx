@@ -21,7 +21,7 @@ import { getAuthToken }                         from '@core/utils/auth/getToken'
 import * as S                                   from './styled';
 import { Props }                                from './types';
 
-const Root: React.FC<Props> = (props): JSX.Element => {
+const Root: React.FC<Props> = (props) => {
     const { route, location, staticContext } = props;
 
     const [ routes ]              = matchRoutes(route.routes!, location.pathname);
@@ -79,7 +79,7 @@ const Root: React.FC<Props> = (props): JSX.Element => {
                             unmountOnExit
                             exit
                         > */ }
-                        { /* { (state): JSX.Element => ( */ }
+                        { /* { (state) => ( */ }
                         <S.AnimationContainer>
                             { renderRoutes(route.routes) }
                         </S.AnimationContainer>

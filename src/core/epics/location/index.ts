@@ -17,19 +17,19 @@ import { emptyEpicAction }           from '@core/actions/emptyEpic';
 
 type ReturnEpicType = CallModal | EmptyEpic;
 
-const splitSearchString = (search: string): O.Option<string[]> => R.compose(
+const splitSearchString = (search: string) => R.compose(
     O.some,
     R.split('&'),
     R.replace('?', '')
 )(search);
 
-const findActionPattern = (patterns: string[]): O.Option<string> => (
+const findActionPattern = (patterns: string[]) => (
     O.fromNullable(patterns.find(pattern => ~pattern.indexOf('action')))
 );
 
 const splitActionQueryByID = R.split('=');
 
-const filterModalsIDOption = ([ , id ]: string[]): O.Option<EModals> => {
+const filterModalsIDOption = ([ , id ]: string[]) => {
     const modalIdOption = snakeToCamel(EStringFormatter.Upper, id as EModals);
     const modalIDs      = R.keys(modals);
 

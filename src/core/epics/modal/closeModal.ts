@@ -10,7 +10,7 @@ import { flow }                                                   from 'fp-ts/li
 import { CloseModal }                                             from '@core/types/modal';
 import { CLOSE_MODAL, setModalHistoryFlagAction, setModalAction } from '@core/actions/modal';
 
-const checkHasModalQuery = (search: string): boolean => !!~search.indexOf('action');
+const checkHasModalQuery = (search: string) => !!~search.indexOf('action');
 
 const removeQueryOption = (predicateFn: Function) => ({ pathname, search }: Location) => (
     predicateFn(search)
