@@ -16,17 +16,14 @@ const redirectIFStatusExist = (res: Response, url: string, template: StaticTempl
 };
 
 export function renderTemplate(res: Response, context: Context, template: StaticTemplate): void {
-    const contextUrlOption    = O.fromNullable(context.url);
-    const contextStatusOption = O.fromNullable(context.status);
-
     pipe(
-        contextUrlOption,
+        O.fromNullable(context.to),
         O.fold(
             () => res.render('index', template),
             (url) => pipe(
-                contextStatusOption,
+                O.fromNullable(context.status),
                 O.fold(
-                    () => null,
+                    () => res.render('index', template),
                     redirectIFStatusExist(res, url, template)
                 )
             )
