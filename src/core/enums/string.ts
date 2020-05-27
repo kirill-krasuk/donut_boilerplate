@@ -1,4 +1,4 @@
-export enum EStringFormatter {
+export enum StringFormatter {
     Upper = 'upper',
     Lower = 'lower'
 }

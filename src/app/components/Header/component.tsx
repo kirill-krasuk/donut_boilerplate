@@ -9,8 +9,8 @@ import { changeThemeAction }        from '@core/actions/theme';
 import { getMode }                  from '@core/selectors/theme';
 import { getLocale }                from '@core/selectors/locale';
 import { changeLocaleAction }       from '@core/actions/locale/index';
-import { ETheme }                   from '@core/enums/theme';
-import { ELocale }                  from '@core/enums/locale';
+import { Theme }                    from '@core/enums/theme';
+import { Locale }                   from '@core/enums/locale';
 import * as S                       from './styled';
 import messages                     from './messages';
 
@@ -26,23 +26,23 @@ const Header: React.FC = () => {
     const changeLocale: typeof changeLocaleAction = composeWithDispatch(changeLocaleAction);
 
     const ThemeIcon = {
-        [ETheme.Light]: Sun,
-        [ETheme.Dark] : Moon
+        [Theme.Light]: Sun,
+        [Theme.Dark] : Moon
     }[mode];
 
     const ThemeLogo = {
-        [ETheme.Dark] : S.Logo,
-        [ETheme.Light]: S.DarkLogo
+        [Theme.Dark] : S.Logo,
+        [Theme.Light]: S.DarkLogo
     }[mode];
 
     const reverseLocale = {
-        [ELocale.Ru]: ELocale.En,
-        [ELocale.En]: ELocale.Ru
+        [Locale.Ru]: Locale.En,
+        [Locale.En]: Locale.Ru
     };
 
     const reverseThemeMode = {
-        [ETheme.Dark] : ETheme.Light,
-        [ETheme.Light]: ETheme.Dark,
+        [Theme.Dark] : Theme.Light,
+        [Theme.Light]: Theme.Dark,
     };
 
     const handleChangeTheme = () => {

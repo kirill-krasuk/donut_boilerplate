@@ -7,7 +7,7 @@ import { IO }               from 'fp-ts/lib/IO';
 import { pipe }             from 'fp-ts/lib/pipeable';
 
 import { getModalIdOption } from '@core/selectors/modal';
-import { EModals }          from '@app/enums/modal';
+import { Modals }           from '@app/enums/modal';
 import * as S               from './styled';
 import modals               from './modals';
 
@@ -24,7 +24,7 @@ const ModalManager: React.FC = () => {
         )
     );
 
-    const renderModal = (id: EModals) => pipe(
+    const renderModal = (id: Modals) => pipe(
         modals[id],
         (CalledModal) => (
             <S.Wrapper>
@@ -33,7 +33,7 @@ const ModalManager: React.FC = () => {
         )
     );
 
-    const renderModalOption = (modalIdOption: O.Option<EModals>) => {
+    const renderModalOption = (modalIdOption: O.Option<Modals>) => {
         const id = O.toNullable(modalIdOption);
 
         return !id

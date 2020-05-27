@@ -7,11 +7,11 @@ import { pipe }                      from 'fp-ts/lib/pipeable';
 import { flow }                      from 'fp-ts/lib/function';
 
 import * as modals                   from '@app/modals';
-import { EModals }                   from '@app/enums/modal';
+import { Modals }                    from '@app/enums/modal';
 import { callModalAction }           from '@core/actions/modal';
 import { CallModal }                 from '@core/types/modal';
 import { snakeToCamel }              from '@core/utils/string';
-import { EStringFormatter }          from '@core/enums/string';
+import { StringFormatter }           from '@core/enums/string';
 import { EmptyEpic }                 from '@core/types/empty';
 import { emptyEpicAction }           from '@core/actions/emptyEpic';
 
@@ -30,7 +30,7 @@ const findActionPattern = (patterns: string[]) => (
 const splitActionQueryByID = R.split('=');
 
 const filterModalsIDOption = ([ , id ]: string[]) => {
-    const modalIdOption = snakeToCamel(EStringFormatter.Upper, id as EModals);
+    const modalIdOption = snakeToCamel(StringFormatter.Upper, id as Modals);
     const modalIDs      = R.keys(modals);
 
     return R.includes(modalIdOption)(modalIDs)
@@ -39,7 +39,7 @@ const filterModalsIDOption = ([ , id ]: string[]) => {
 };
 
 const actionOrEMPTY = flow(
-    O.fold<EModals, ReturnEpicType>(
+    O.fold<Modals, ReturnEpicType>(
         () => emptyEpicAction(),
         (v) => callModalAction(v)
     )

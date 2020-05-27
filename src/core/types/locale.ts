@@ -1,8 +1,8 @@
-import { ELocale } from '@core/enums/locale';
+import { Locale } from '@core/enums/locale';
 
 export type ChangeLocale = {
     type: 'core/CHANGE_LOCALE';
-    payload: ELocale;
+    payload: Locale;
 }
 
-export type LocaleState = ELocale;
+export type LocaleState = Locale;

@@ -1,4 +1,4 @@
-export enum EStatusCodes {
+export enum StatusCode {
     S400 = 'Bad Request',
     S401 = 'Unauthorized',
     S402 = 'Payment Required',
@@ -15,7 +15,7 @@ export enum EStatusCodes {
     S504 = 'Gateway Timeout',
 }
 
-export enum EHTTPMethod {
+export enum HTTPMethod {
     Get = 'GET',
     Post = 'POST',
     Put = 'PUT',

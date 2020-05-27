@@ -1,10 +1,7 @@
-import { STATUS_CODES } from '@core/constants/http/statusCodes';
-import { EHTTPMethod }  from '@core/enums/http';
-
-export type ResponseWithStatusCodes = Response & { status: keyof typeof STATUS_CODES }
+import { HTTPMethod } from '@core/enums/http';
 
 export interface RequestExtended extends RequestInit {
-    method: EHTTPMethod;
+    method: HTTPMethod;
     url: string;
 }
 

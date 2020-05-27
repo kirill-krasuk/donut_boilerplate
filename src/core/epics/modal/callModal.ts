@@ -8,7 +8,7 @@ import { pipe }                                                  from 'fp-ts/lib
 import { emptyEpicAction }                                       from '@core/actions/emptyEpic';
 import { CallModal, CallModalObjectPayload }                     from '@core/types/modal';
 import { CALL_MODAL, setModalAction, setModalHistoryFlagAction } from '@core/actions/modal';
-import { EModals }                                               from '@app/enums/modal';
+import { Modals }                                                from '@app/enums/modal';
 import { camelToSnake }                                          from '@core/utils/string';
 
 type ReturnTypeEpic = Observable<object>
@@ -19,11 +19,11 @@ const callModalById = ({ payload }: CallModal) => (
         : of(payload)
 );
 
-const queryStringByID = (id: EModals) => ({ search: `?action=${ camelToSnake(id) }` });
+const queryStringByID = (id: Modals) => ({ search: `?action=${ camelToSnake(id) }` });
 
-const foldAndRedirect = (history: boolean, option: O.Option<EModals>) => pipe(
+const foldAndRedirect = (history: boolean, option: O.Option<Modals>) => pipe(
     option,
-    O.fold<EModals, ReturnTypeEpic>(
+    O.fold<Modals, ReturnTypeEpic>(
         () => of(emptyEpicAction()),
         (id) => of(setModalHistoryFlagAction(history), push(queryStringByID(id)))
     )
