@@ -1,20 +1,20 @@
-import { Option }  from 'fp-ts/lib/Option';
+import { Option } from 'fp-ts/lib/Option';
 
-import { EModals } from '@app/enums/modal';
+import { Modals } from '@app/enums/modal';
 
 export type CallModalObjectPayload = {
     history: boolean;
-    id: Option<EModals>;
+    id: Option<Modals>;
 }
 
 export type CallModal = {
     type: 'core/CALL_MODAL';
-    payload: EModals | CallModalObjectPayload;
+    payload: Modals | CallModalObjectPayload;
 }
 
 export type SetModal = {
     type: 'core/SET_MODAL';
-    payload: Option<EModals>;
+    payload: Option<Modals>;
 }
 
 export type SetModalHistoryFlag = {
@@ -28,6 +28,6 @@ export type CloseModal = {
 }
 
 export type ModalState = {
-    id: Option<EModals>;
+    id: Option<Modals>;
     hasHistory: boolean;
 }

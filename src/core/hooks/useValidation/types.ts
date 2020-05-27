@@ -1,5 +1,5 @@
 import { Rule, ValidatedValue } from '@core/types/validation';
-import { EValidationMode }      from '@core/enums/validation';
+import { ValidationMode }       from '@core/enums/validation';
 
 export type ValidationScheme<T> = Record<keyof T, Rule[]>;
 
@@ -14,7 +14,7 @@ export type ProvideErrors<T> = {
 
 export type Props<T> = {
     validationScheme: ValidationScheme<T> | {};
-    modes?: EValidationMode;
+    modes?: ValidationMode;
 }
 
 export type Errors<O> = Record<keyof O, ValidatedValue>;

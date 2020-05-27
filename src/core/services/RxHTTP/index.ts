@@ -10,7 +10,7 @@ import * as O                                        from 'fp-ts/lib/Option';
 import { pipe }                                      from 'fp-ts/lib/pipeable';
 import R                                             from 'ramda';
 
-import { EHTTPMethod }                               from '@core/enums/http';
+import { HTTPMethod }                                from '@core/enums/http';
 import * as Env                                      from '@core/config/env';
 import { DefaultHeaders, UrlORRequest, RequestBody } from '@core/types/HTTP';
 
@@ -45,7 +45,7 @@ const setHeaders = (headers?: object | DefaultHeaders) => {
 const getRequestPayload = (urlOrRequest: UrlORRequest) => (
     typeof urlOrRequest === 'string'
         ? {
-            method : EHTTPMethod.Get,
+            method : HTTPMethod.Get,
             headers: setHeaders()
         }
         : {
@@ -77,27 +77,27 @@ const request$ = <T = any>(urlOrRequest: UrlORRequest): Observable<string | { re
 
 const get$ = <T = any>(path: string, headers?: object) => request$<T>({
     url    : path,
-    method : EHTTPMethod.Get,
+    method : HTTPMethod.Get,
     headers: setHeaders(headers)
 });
 
 const post$ = <T = any>(path: string, body?: RequestBody, headers?: object) => request$<T>({
     url    : path,
-    method : EHTTPMethod.Post,
+    method : HTTPMethod.Post,
     headers: setHeaders(headers),
     body
 });
 
 const put$ = <T = any>(path: string, body?: RequestBody, headers?: object) => request$<T>({
     url    : path,
-    method : EHTTPMethod.Put,
+    method : HTTPMethod.Put,
     headers: setHeaders(headers),
     body
 });
 
 const delete$ = <T = any>(path: string, body?: RequestBody, headers?: object) => request$<T>({
     url    : path,
-    method : EHTTPMethod.Delete,
+    method : HTTPMethod.Delete,
     headers: setHeaders(headers),
     body
 });

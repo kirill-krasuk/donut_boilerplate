@@ -7,7 +7,7 @@ import { pipe }                             from 'fp-ts/lib/pipeable';
 
 import { isValid, parseErrors }             from '@core/utils/validation';
 import { prevent }                          from '@core/utils/dom';
-import { EValidationMode }                  from '@core/enums/validation';
+import { ValidationMode }                   from '@core/enums/validation';
 import {
     getElementEventType,
     targetFlow,
@@ -23,7 +23,7 @@ import {
 } from './types';
 
 // TODO: extend with comparing functional
-export function useValidation<T extends object>(validationScheme: ValidationScheme<T> | {}, modes: EValidationMode = 0) {
+export function useValidation<T extends object>(validationScheme: ValidationScheme<T> | {}, modes: ValidationMode = 0) {
     // TODO: resolve type
     // @ts-ignore
     const [ values, setValues ]       = useState<T>({});
@@ -58,7 +58,7 @@ export function useValidation<T extends object>(validationScheme: ValidationSche
         provideErrors
     );
 
-    const validateStartBy = (mode: EValidationMode) => validate(isModeEnabled(mode));
+    const validateStartBy = (mode: ValidationMode) => validate(isModeEnabled(mode));
 
     const pushSubsToState = (subscription: Subscription) => setEventSubs(subs => [ ...subs, subscription ]);
 
@@ -91,7 +91,7 @@ export function useValidation<T extends object>(validationScheme: ValidationSche
     ), []);
 
     const validityAction = (submitFn: (f: T) => void) => prevent(() => (
-        validateStartBy(EValidationMode.Submit) && submitFn(values)
+        validateStartBy(ValidationMode.Submit) && submitFn(values)
     ));
 
     useEffect(() => () => (
@@ -99,12 +99,12 @@ export function useValidation<T extends object>(validationScheme: ValidationSche
     ), [ eventSubs ]);
 
     useEffect(() => {
-        !R.isEmpty(values) && validateStartBy(EValidationMode.Change);
+        !R.isEmpty(values) && validateStartBy(ValidationMode.Change);
     }, [ values ]);
 
     // TODO: refactor
     useEffect(() => {
-        if (isModeEnabled(EValidationMode.Blur) && !R.isEmpty(elements)) {
+        if (isModeEnabled(ValidationMode.Blur) && !R.isEmpty(elements)) {
             if (!R.isEmpty(blurSubs)) {
                 blurSubs.forEach(subOption => pipe(
                     subOption,

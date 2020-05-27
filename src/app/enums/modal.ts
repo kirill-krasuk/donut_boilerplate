@@ -1,4 +1,4 @@
-export enum EModals {
+export enum Modals {
     Greeting = 'Greeting',
     ModalTest = 'ModalTest'
 }

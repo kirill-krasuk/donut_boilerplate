@@ -1,6 +1,6 @@
 import R                                                  from 'ramda';
 
-import { EValidationMode }                                from '@core/enums/validation';
+import { ValidationMode }                                 from '@core/enums/validation';
 import { validateValues }                                 from '@core/utils/validation';
 import { ValidationElem, ValidationSchemeString, Errors } from './types';
 
@@ -31,7 +31,7 @@ export const targetFlow = (mergeFields: (value: string | boolean) => (name: stri
     }
 };
 
-export const checkMode = <T extends EValidationMode>(modes: T) => (mode: T) => !!(modes & mode);
+export const checkMode = <T extends ValidationMode>(modes: T) => (mode: T) => !!(modes & mode);
 
 const transformSchemeToErrors = <V extends Record<string, any>>(scheme: ValidationSchemeString, values: V) => (acc: any, curr: string) => ({
     ...acc,

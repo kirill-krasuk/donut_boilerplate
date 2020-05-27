@@ -12,6 +12,6 @@ export const routes = {
     404: {
         path: '*',
     }
-};
+} as const;
 
 export const protectRedirect = routes.home.path;

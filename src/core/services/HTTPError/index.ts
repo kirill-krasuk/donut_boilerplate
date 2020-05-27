@@ -1,6 +1,3 @@
-import { STATUS_CODES }            from '@core/constants/http/statusCodes';
-import { ResponseWithStatusCodes } from '@core/types/HTTP';
-
 export class HTTPError extends Error {
     _name: string;
     _message: string;
@@ -9,8 +6,8 @@ export class HTTPError extends Error {
     _status: number;
     _body: Record<string, any> | typeof undefined;
 
-    constructor(response: ResponseWithStatusCodes, request: Request, body?: Record<string, any>) {
-        const message    = `HTTPError: ${ response.status } ${ STATUS_CODES[response.status] || response.status }`;
+    constructor(response: Response, request: Request, body?: Record<string, any>) {
+        const message    = `HTTPError: ${ response.status } ${ response.status }`;
         super(message);
 
         const stackTrace: string = this._formatStack();

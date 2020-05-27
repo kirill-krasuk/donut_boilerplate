@@ -19,9 +19,9 @@ import { locationMiddleware }                              from '@core/middlewar
 import rootEpic                                            from '@core/epics';
 import createRootReducer                                   from '@core/reducers';
 import * as Env                                            from '@core/config/env';
-import { DEV }                                             from '@core/constants/environment';
 import ssrReducers                                         from '@app/reducers/serverReducer';
 import request                                             from '@core/services/RxHTTP';
+import { Environment }                                     from '../../enums/env';
 import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
 import { ExtendedStore }                                   from './types';
@@ -49,7 +49,7 @@ export function configureStore(preloadedState: object = {}, history: History<any
     }
 
     const composeEnhancers: Function =
-        env === DEV
+        env === Environment.Dev
             ? composeWithDevTools
             : compose;
 
