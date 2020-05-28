@@ -19,7 +19,7 @@ import rootEpic                                            from '@core/epics';
 import createRootReducer                                   from '@core/reducers';
 import * as Env                                            from '@core/config/env';
 import ssrReducers                                         from '@app/reducers/serverReducer';
-import request                                             from '@core/services/RxHTTP';
+import request$                                            from '@core/services/RequestManager';
 import { Environment }                                     from '../../enums/env';
 import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
@@ -33,7 +33,9 @@ export function configureStore(preloadedState: object = {}, history: History<any
     const isClientSide = !isEmpty(preloadedState);
 
     const epicMiddleware = createEpicMiddleware({
-        dependencies: { request }
+        dependencies: {
+            request$
+        }
     });
 
     const middlewares: Middleware[] = [
