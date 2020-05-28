@@ -33,7 +33,7 @@ export const theme = {
         },
 
         icon: {
-            color: palette.pink[1],
+            color: palette.white,
         }
     },
     common: {
