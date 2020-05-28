@@ -1,5 +1,6 @@
-import { RouteConfig } from 'react-router-config';
-import { Location }    from 'history';
+import { RouteConfig }      from 'react-router-config';
+import { Location }         from 'history';
+import { TransitionStatus } from 'react-transition-group/Transition';
 
 export type Props = {
     route: RouteConfig;
@@ -8,4 +9,8 @@ export type Props = {
         status: number;
         url: string;
     };
+}
+
+export type AnimationProps = {
+    state: TransitionStatus;
 }
