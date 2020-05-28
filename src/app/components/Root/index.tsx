@@ -74,7 +74,7 @@ const Root: React.FC<Props> = (props) => {
                     <TransitionGroup className="transition-group">
                         <Transition
                             key={ location.key }
-                            timeout={ 500 }
+                            timeout={ 650 }
                             mountOnEnter
                             exit
                         >

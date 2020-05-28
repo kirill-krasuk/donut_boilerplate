@@ -6,6 +6,7 @@ export const palette = {
     darkBlue: {
         1: '#191D3A'
     },
+    gray : '#E5E5E5',
     white: '#FFFFFF'
 } as const;
 
