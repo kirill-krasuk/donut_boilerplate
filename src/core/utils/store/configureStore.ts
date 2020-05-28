@@ -1,7 +1,6 @@
 import {
     createStore,
     applyMiddleware,
-    Reducer,
     Action,
     Middleware
 } from 'redux';
@@ -53,9 +52,8 @@ export function configureStore(preloadedState: object = {}, history: History<any
             ? composeWithDevTools
             : compose;
 
-    // TODO: fix type
     const store: ExtendedStore = createStore(
-        createRootReducer(history, {}, ssrReducers) as Reducer<any, any>,
+        createRootReducer(history, {}, ssrReducers),
         staticPreloadedState,
         composeEnhancers(applyMiddleware(...middlewares))
     );
@@ -66,8 +64,6 @@ export function configureStore(preloadedState: object = {}, history: History<any
         const epic$ = new BehaviorSubject(rootEpic);
 
         const hotReloadingEpic = (action$: ActionsObservable<Action<any>>, ...rest: any[]): Observable<any> => epic$.pipe(
-
-            // @ts-ignore
             mergeMap(epic => epic(action$, ...rest).pipe(
                 takeUntil(action$.pipe(
                     ofType('EPIC_END')
@@ -79,8 +75,7 @@ export function configureStore(preloadedState: object = {}, history: History<any
 
         if ((module as any).hot) {
             (module as any).hot.accept('../../reducers', () => {
-            // TODO: fix type
-                store.replaceReducer(createRootReducer(history) as Reducer<any, any>);
+                store.replaceReducer(createRootReducer(history));
             });
 
             (module as any).hot.accept('../../epics', () => {
