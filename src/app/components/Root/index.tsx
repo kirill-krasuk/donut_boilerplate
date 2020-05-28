@@ -1,14 +1,15 @@
 /* eslint-disable no-param-reassign */
 import React, { useEffect }                     from 'react';
+import { hot }                                  from 'react-hot-loader/root';
 import { useSelector, useDispatch }             from 'react-redux';
 import { renderRoutes, matchRoutes }            from 'react-router-config';
+import { Transition, TransitionGroup }          from 'react-transition-group';
 import { ThemeProvider }                        from 'styled-components/macro';
 import { push as pushAction }                   from 'connected-react-router';
 import * as IO                                  from 'fp-ts/lib/IO';
 import * as O                                   from 'fp-ts/lib/Option';
 import { pipe }                                 from 'fp-ts/lib/pipeable';
 import R                                        from 'ramda';
-import { hot }                                  from 'react-hot-loader/root';
 
 import { theme }                                from '@core/config/theme';
 import { getMode }                              from '@core/selectors/theme';
@@ -65,30 +66,28 @@ const Root: React.FC<Props> = (props) => {
         }
     }, [ matchedRoute ]);
 
-    // TODO: implement page transition
     return (
         <ThemeProvider theme={ { ...theme, mode } }>
-            <>
+            <S.Wrapper>
                 <GlobalStyles />
                 <LanguageProvider>
-                    <>
-                        { /* <Transition
-                            in={ location.path }
-                            timeout={ 1000 }
+                    <TransitionGroup className="transition-group">
+                        <Transition
+                            key={ location.key }
+                            timeout={ 500 }
                             mountOnEnter
-                            unmountOnExit
                             exit
-                        > */ }
-                        { /* { (state) => ( */ }
-                        <S.AnimationContainer>
-                            { renderRoutes(route.routes) }
-                        </S.AnimationContainer>
-                        { /* ) } */ }
-                        { /* </Transition> */ }
+                        >
+                            { (state) => (
+                                <S.AnimationContainer state={ state }>
+                                    { renderRoutes(route.routes) }
+                                </S.AnimationContainer>
+                            ) }
+                        </Transition>
                         <ModalManager />
-                    </>
+                    </TransitionGroup>
                 </LanguageProvider>
-            </>
+            </S.Wrapper>
         </ThemeProvider>
     );
 };
