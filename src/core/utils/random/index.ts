@@ -1,0 +1,1 @@
+export { getRandomRange } from './getRandomRange';

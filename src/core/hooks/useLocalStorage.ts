@@ -1,27 +1,37 @@
-import { useState } from 'react';
+import { useState }         from 'react';
+import * as E               from 'fp-ts/lib/Either';
+import * as O               from 'fp-ts/lib/Option';
+import * as C               from 'fp-ts/lib/Console';
+import { pipe }             from 'fp-ts/lib/pipeable';
 
-export function useLocalStorage(key: string, initialValue: string): [string, <T>(value: T) => void] {
-    const [ storedValue, setStoredValue ] = useState(() => {
-        try {
-            const item = window.localStorage.getItem(key);
+import { parseJSON }        from '@core/utils/json';
+import { setItem, getItem } from '@core/utils/localStorage';
 
-            return item ? JSON.parse(item) : initialValue;
-        } catch (error) {
-            return initialValue;
-        }
-    });
+export function useLocalStorage<T>(key: string, initialValue: T): [T, <V>(value: V) => void] {
+    const [ storedValue, setStoredValue ] = useState(() => pipe(
+        getItem(key)(),
+        O.map((value) => parseJSON<T>(value)),
+        O.fold(
+            () => initialValue,
+            (either) => pipe(
+                either,
+                E.getOrElse(() => initialValue)
+            )
+        )
+    ));
 
-    const setValue = <T>(value: T) => {
-        try {
-            const valueToStore = value instanceof Function ? value(storedValue) : value;
-
-            setStoredValue(valueToStore);
-
-            window.localStorage.setItem(key, JSON.stringify(valueToStore));
-        } catch (error) {
-            window.console.log(error);
-        }
-    };
+    const setValue = <V>(value: V) => E.tryCatch(
+        () => pipe(
+            value instanceof Function
+                ? value(storedValue)
+                : value,
+            (value) => {
+                setStoredValue(value);
+                setItem(key, JSON.stringify(value))();
+            }
+        ),
+        (err) => C.error(err)()
+    );
 
     return [ storedValue, setValue ];
 }
