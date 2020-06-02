@@ -6,6 +6,7 @@ import R                            from 'ramda';
 
 import { useClickOutside }          from '@core/hooks/useClickOutside';
 import { closeModalAction }         from '@core/actions/modal';
+import { useLockBodyScroll }        from '@core/hooks';
 import * as S                       from './styled';
 import { Props }                    from './types';
 
@@ -18,8 +19,11 @@ import { Props }                    from './types';
 const Modal: React.FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
+    useLockBodyScroll();
+
+    const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+
     const dispatch = useDispatch();
-    const ref      = useRef() as React.MutableRefObject<HTMLDivElement>;
 
     const closeModal = R.compose(dispatch, closeModalAction);
 
