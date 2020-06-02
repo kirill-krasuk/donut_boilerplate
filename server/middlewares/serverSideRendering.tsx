@@ -4,16 +4,12 @@ import { createMemoryHistory }    from 'history';
 import path                       from 'path';
 
 import { configureStore }         from '@core/utils/store/configureStore';
-import { checkAuth }              from '@server/utils/checkAuth';
 import { prefetch }               from '@server/utils/prefetch';
 import { Context }                from '@server/types/context';
 import { initializeState }        from '@server/utils/initializeState';
 import { generateAppComponent }   from '@server/utils/generateAppComponent';
 import { generateStaticTemplate } from '@server/utils/generateStaticTemplate';
 import { renderTemplate }         from '@server/utils/renderTemplate';
-
-import '@server/polyfills/promise';
-import '@server/polyfills/array';
 
 const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
 
@@ -34,9 +30,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     const { store } = configureStore({}, history);
     const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
 
-    const isLogged = checkAuth(req.cookies, res, store);
-
-    await prefetch(store, req.url, { isLogged, token });
+    await prefetch(store, req.url, { token });
 
     initializeState(store, { mode, locale });
 

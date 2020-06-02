@@ -1,12 +1,4 @@
-/* eslint-disable import/first */
 /* eslint-disable react-hooks/rules-of-hooks */
-require('@babel/register')({
-    plugins: [
-        'dynamic-import-node',
-        'macros'
-    ]
-});
-
 import './shim';
 
 import express                 from 'express';

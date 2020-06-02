@@ -46,10 +46,20 @@ const Root: React.FC<Props> = (props) => {
             // server side redirect with authentication
             pipe(
                 getAuthToken(context)(),
-                O.getOrElse<void | string>(() => (
-                    matchedRoute.protect
-                        && redirect(context, 301, protectRedirect)()
-                ))
+                O.fold(
+                    () => {
+                        if (matchedRoute.noAuthRedirect) {
+                            redirect(staticContext, 301, matchedRoute.noAuthRedirect)();
+                        } else if (matchedRoute.protect) {
+                            redirect(staticContext, 301, protectRedirect)();
+                        }
+                    },
+                    () => (
+                        matchedRoute.authRedirect
+                            ? redirect(staticContext, 301, matchedRoute.authRedirect)()
+                            : null
+                    )
+                )
             );
 
             // server side 404
