@@ -4,7 +4,11 @@ import { ButtonStyles } from '@ui-kit/enums/button';
 import { Button }       from './component';
 
 export default {
-    title: 'Button',
+    title     : 'Button',
+    component : Button,
+    parameters: {
+        componentSubtitle: 'Simple button representing'
+    }
 };
 
 export const withText = () => <Button style={ ButtonStyles.Primary }>Hello</Button>;

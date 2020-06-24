@@ -3,22 +3,18 @@ import { ReactNode, MouseEvent }     from 'react';
 import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 
 export type Props = {
-
-    /**
-     * onClick handler
-    */
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 
     /**
-     * Small 24
-     * Medium 32
-     * Large 48
+     * Small 24px
+     * Medium 32px
+     * Large 48px
     */
     size: ButtonSizes;
 
     /**
-     * Primary - "primary"
-     * Secondary - "secondary"
+     * "primary"
+     * "secondary"
     */
     style: ButtonStyles;
 
