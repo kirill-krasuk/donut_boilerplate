@@ -1,4 +1,4 @@
-import React                from 'react';
+import React, { FC }        from 'react';
 import { hot }              from 'react-hot-loader/root';
 
 import { replaceExtension } from '@core/utils/file';
@@ -6,7 +6,7 @@ import { Props }            from './types';
 
 // TODO: complete
 
-const Image: React.FC<Props> = (props) => {
+const Image: FC<Props> = (props) => {
     const { src, webp } = props;
 
     return (
