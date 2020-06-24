@@ -1,11 +1,11 @@
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent }     from 'react';
 
-import { ESizes, EStyles }       from '@ui-kit/enums/button';
+import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 
 export type Props = {
 
     /**
-     * onClick handler - not required
+     * onClick handler
     */
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 
@@ -14,16 +14,13 @@ export type Props = {
      * Medium 32
      * Large 48
     */
-    size: ESizes;
+    size: ButtonSizes;
 
     /**
-     * Primary primary
-     * Secondary secondart
+     * Primary - "primary"
+     * Secondary - "secondary"
     */
-    style: EStyles;
+    style: ButtonStyles;
 
-    /**
-     * @ignore
-    */
     children: ReactNode;
 }

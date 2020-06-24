@@ -1,22 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch }              from 'react-redux';
-import { hot }                      from 'react-hot-loader/root';
-import { fromEvent }                from 'rxjs';
-import R                            from 'ramda';
+import React, { FC, useEffect, useRef } from 'react';
+import { useDispatch }                  from 'react-redux';
+import { hot }                          from 'react-hot-loader/root';
+import { fromEvent }                    from 'rxjs';
+import R                                from 'ramda';
 
-import { useClickOutside }          from '@core/hooks/useClickOutside';
-import { closeModalAction }         from '@core/actions/modal';
-import { useLockBodyScroll }        from '@core/hooks';
-import * as S                       from './styled';
-import { Props }                    from './types';
+import { useClickOutside }              from '@core/hooks/useClickOutside';
+import { closeModalAction }             from '@core/actions/modal';
+import { useLockBodyScroll }            from '@core/hooks';
+import * as S                           from './styled';
+import { Props }                        from './types';
 
-/**
- * basic UI element of Donut Boilerplate
- * @visibleName Modal
- * @version 1.0
- * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
-*/
-const Modal: React.FC<Props> = (props) => {
+const Modal: FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
     useLockBodyScroll();

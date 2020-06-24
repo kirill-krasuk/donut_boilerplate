@@ -25,11 +25,15 @@ const apiHost = () => Env.get('apiHost');
 
 const getToken: IO.IO<O.Option<string>> = () => O.fromNullable(Cookie.get('token'));
 
-const setUrl = (route?: string) => pipe(
-    O.fromNullable(route),
+const setUri = (urlOrUrn?: string) => pipe(
+    O.fromNullable(urlOrUrn),
     O.fold(
         () => apiHost(),
-        (route) => apiHost() + route
+        (urlOrUrn) => (
+            ~urlOrUrn.search(/https?:\/\//)
+                ? urlOrUrn
+                : apiHost() + urlOrUrn
+        )
     )
 );
 
@@ -70,7 +74,7 @@ const getRequestPayload = (urlOrRequest: UrlORRequest) => (
 const getUrl = (urlOrRequest: UrlORRequest) => (typeof urlOrRequest === 'string' ? urlOrRequest : urlOrRequest.url);
 
 const request$ = <T = any>(urlOrRequest: UrlORRequest): Observable<{ response: Response; data: T }> => fromFetch(
-    setUrl(getUrl(urlOrRequest)),
+    setUri(getUrl(urlOrRequest)),
     getRequestPayload(urlOrRequest)
 ).pipe(
     switchMap((response) => from(response.json()).pipe(

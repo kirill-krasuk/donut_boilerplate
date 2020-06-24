@@ -1,17 +1,11 @@
-import React               from 'react';
+import React, { FC }                 from 'react';
+import { hot }                       from 'react-hot-loader/root';
 
-import { ESizes, EStyles } from '@ui-kit/enums/button';
-import * as S              from './styled';
-import { Props }           from './types';
+import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
+import * as S                        from './styled';
+import { Props }                     from './types';
 
-/**
- * basic UI element of Donut Boilerplate
- * @visibleName Button
- * @version 1.0
- * @author [Kirill Krasuk](https://github.com/kirill-krasuk)
- */
-
-const Button: React.FC<Props> = (props) => {
+export const Button: FC<Props> = (props) => {
     const {
         onClick,
         size,
@@ -31,8 +25,8 @@ const Button: React.FC<Props> = (props) => {
 };
 
 Button.defaultProps = {
-    size : ESizes.Medium,
-    style: EStyles.Primary
+    size : ButtonSizes.Medium,
+    style: ButtonStyles.Primary
 };
 
-export default Button;
+export default hot(Button);
