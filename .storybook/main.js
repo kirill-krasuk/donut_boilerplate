@@ -3,13 +3,16 @@ const path = require('path');
 module.exports = {
     stories: ['../src/**/*.stories.tsx'],
     addons: [
+        // 'storybook-addon-react-docgen',
+        '@storybook/addon-storysource',
+        '@storybook/addon-actions',
+        '@storybook/addon-a11y',
         {
             name: '@storybook/addon-docs',
             options: {
                 configureJSX: true,
             },
         },
-        'storybook-addon-react-docgen'
     ],
     webpackFinal: async config => {
         config.module.rules.push({

@@ -5,6 +5,9 @@ import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 import * as S                        from './styled';
 import { Props }                     from './types';
 
+/**
+* This is Button component for donut boilerplate
+*/
 export const Button: FC<Props> = (props) => {
     const {
         onClick,
