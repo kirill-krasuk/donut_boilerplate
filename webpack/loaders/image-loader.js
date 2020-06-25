@@ -10,13 +10,7 @@ function getImageLoader(isClient = true) {
                     publicPath: '/public/images/build',
                     emit      : !isClient
                 }
-            }
-        ]
-    };
-
-    if (isClient) {
-        imageLoader.loader.unshift('cache?cacheDirectory=.cache/images-cache');
-        imageLoader.loader.push(
+            },
             'thread',
             {
                 loader : 'image-webpack',
@@ -34,14 +28,11 @@ function getImageLoader(isClient = true) {
                     },
                     gifsicle: {
                         interlaced: false
-                    },
-                    webp: {
-                        quality: 75
                     }
                 }
             }
-        );
-    }
+        ]
+    };
 
     return imageLoader;
 }
