@@ -1,11 +1,11 @@
-import styled, { css }     from 'styled-components/macro';
+import styled, { css }               from 'styled-components/macro';
 
-import { Theme }           from '@core/types/theme';
-import { ESizes, EStyles } from '@ui-kit/enums/button';
+import { Theme }                     from '@core/types/theme';
+import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 
 type Props = {
-    size: ESizes;
-    cStyle: EStyles;
+    size: ButtonSizes;
+    cStyle: ButtonStyles;
     onClick?: Function;
 };
 

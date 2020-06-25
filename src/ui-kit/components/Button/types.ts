@@ -10,13 +10,13 @@ export type Props = {
      * Medium 32px
      * Large 48px
     */
-    size: ButtonSizes;
+    size?: ButtonSizes;
 
     /**
      * "primary"
      * "secondary"
     */
-    style: ButtonStyles;
+    style?: ButtonStyles;
 
     children: ReactNode;
 }
