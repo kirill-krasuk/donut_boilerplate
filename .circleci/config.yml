@@ -11,6 +11,8 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+            - run: npm lint
+            - run: npm check-types
 workflows:
     build-and-test:
       jobs:
