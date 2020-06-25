@@ -11,9 +11,9 @@ import { Props }                     from './types';
 export const Button: FC<Props> = (props) => {
     const {
         onClick,
-        size,
         children,
-        style,
+        size = ButtonSizes.Medium,
+        style = ButtonStyles.Primary,
     } = props;
 
     return (
