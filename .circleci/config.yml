@@ -17,9 +17,9 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm test
-            - run: npm lint
-            - run: npm check-types
+            - run: npm run test
+            - run: npm run lint
+            - run: npm run check-types
 workflows:
     build-and-test:
       jobs:
