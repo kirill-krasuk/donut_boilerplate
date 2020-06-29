@@ -21,7 +21,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "check-types": "tsc --noEmit -p .",
+    "check-types": "tsc --noEmit -p ."
   },
   "pre-commit": [],
   "repository": {
