@@ -8,7 +8,6 @@
     "build:server": "webpack --config ./webpack/webpack.server.js --mode=development",
     "start": "npm run build:server && npm run start:app",
     "run:prod": "cross-env NODE_ENV=production node ./dist/server.js",
-    "build:dll": "webpack --config ./webpack/webpack.dll.js",
     "build:prod:server": "webpack --config ./webpack/webpack.server.js --mode=production",
     "build:prod:client": "BABEL_ENV=production webpack --config ./webpack/webpack.prod.js --mode=production",
     "build": "webpack --config ./webpack/webpack.server.js --mode=production",
