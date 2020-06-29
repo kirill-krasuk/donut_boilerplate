@@ -1,4 +1,4 @@
 // @ts-ignore
-global.requestAnimationFrame = function (callback: any): void {
+global.requestAnimationFrame = function (callback: Function) {
     setTimeout(callback, 0);
 };
