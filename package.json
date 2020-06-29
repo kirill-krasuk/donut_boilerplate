@@ -22,7 +22,6 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "check-types": "tsc --noEmit -p .",
-    "create:component": "node ./cli/scripts/create-component.js"
   },
   "pre-commit": [],
   "repository": {
