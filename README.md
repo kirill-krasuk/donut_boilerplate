@@ -3,7 +3,6 @@
 [![CircleCI](https://circleci.com/gh/kirill-krasuk/new_boilerplate.svg?style=svg)](https://circleci.com/gh/kirill-krasuk/new_boilerplate.svg)
 
 ## How To Start
-___
 
 #### You need to install dependencies
 
@@ -19,16 +18,19 @@ ___
 
 
 ## Available Scripts
----
 
 Start developing
 ### `npm start`
+___
 
 Start production
 ### `npm run start:prod`
+___
 
 Run test
 ### `npm run test`
+___
 
 Use storybook
 ### `npm run storybook`
+___
