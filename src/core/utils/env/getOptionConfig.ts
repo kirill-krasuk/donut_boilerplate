@@ -4,13 +4,10 @@ import { pipe }           from 'fp-ts/lib/pipeable';
 
 import { Env, FoldedEnv } from '@core/types/env';
 
-export const getOptionConfig = <C extends Env>(config: C) => <K extends keyof FoldedEnv>(key: K): FoldedEnv[K] => pipe(
-
-    // TODO: resolve type
-    // @ts-ignore
+export const getOptionConfig = <C extends Env>(config: C) => <K extends keyof Env>(key: K): FoldedEnv[K] => pipe(
     config[key],
-    O.fold(
-        () => (C.warn('You are trying to get null as a value')(), null),
-        (value) => value
+    O.fold<string | boolean, FoldedEnv[K]>(
+        () => (C.warn('You are trying to get null as a value')(), null as any),
+        (value) => value as FoldedEnv[K]
     )
 );

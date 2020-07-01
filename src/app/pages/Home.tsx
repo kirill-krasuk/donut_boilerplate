@@ -15,7 +15,6 @@ const HomePage: PrefetchedComponent<{}> = () => (
     </>
 );
 
-// TODO: recreate prefetch
 HomePage.prefetch = prefetch;
 
 export default hot(HomePage);
