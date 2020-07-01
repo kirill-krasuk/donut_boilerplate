@@ -10,8 +10,8 @@ const getEnvVar = getEnv(nodeEnv);
 
 const config: Env = {
     apiHost    : getEnvVar('API_HOST', 'https://jsonplaceholder.typicode.com'),
-    swEnable   : getEnvVar<boolean>('SERVICE_WORKER_ENABLE'),
-    needHydrate: getEnvVar<boolean>('HYDRATE'),
+    swEnable   : getEnvVar('SERVICE_WORKER_ENABLE', false),
+    needHydrate: getEnvVar('HYDRATE', true),
     appEnv     : getEnvVar('NODE_ENV', Environment.Dev)
 };
 
