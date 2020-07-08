@@ -1,11 +1,10 @@
-import React     from 'react';
-import { Store } from 'redux';
-import * as TE   from 'fp-ts/lib/TaskEither';
+import React   from 'react';
+import * as TE from 'fp-ts/lib/TaskEither';
 
 type RouteObject = {
     params: Record<string, any>;
     query: string;
 }
 
-export type PrefetchedComponent<TProps> = React.FC<TProps> & { prefetch: (store: Store, routeObject: RouteObject, auth: boolean) => TE.TaskEither<void, void | null> }
+export type PrefetchedComponent<TProps> = React.FC<TProps> & { prefetch: (routeObject: RouteObject, auth: boolean) => TE.TaskEither<void, any> }
 export type PComponent = PrefetchedComponent<any>;

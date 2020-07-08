@@ -1,19 +1,11 @@
-import React                                     from 'react';
-import { Store }                                 from 'redux';
-import { Provider }                              from 'react-redux';
-import { renderRoutes, RouteConfig }             from 'react-router-config';
-import { StaticRouter }                          from 'react-router';
-import { ChunkExtractorManager, ChunkExtractor } from '@loadable/server';
+import React                     from 'react';
+import { Provider }              from 'react-redux';
+import { renderRoutes }          from 'react-router-config';
+import { StaticRouter }          from 'react-router';
+import { ChunkExtractorManager } from '@loadable/server';
 
-import routes                                    from '@core/components/Router/routes';
-import { Context }                               from '@server/types/context';
-
-type GenerateAppOptions = {
-    store: Store;
-    context: Context;
-    location: string;
-    extractor: ChunkExtractor;
-}
+import routes                    from '@core/components/Router/routes';
+import { GenerateAppOptions }    from '@server/types/appComponent';
 
 export function generateAppComponent({
     store,
@@ -25,7 +17,7 @@ export function generateAppComponent({
         <Provider store={ store }>
             <StaticRouter context={ context } location={ location }>
                 <ChunkExtractorManager extractor={ extractor }>
-                    { renderRoutes(routes as RouteConfig[]) }
+                    { renderRoutes(routes) }
                 </ChunkExtractorManager>
             </StaticRouter>
         </Provider>
