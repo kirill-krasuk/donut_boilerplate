@@ -19,6 +19,7 @@ import LanguageProvider                         from '@core/components/LanguageP
 import ModalManager                             from '@core/components/ModalManager';
 import { Context }                              from '@server/types/context';
 import { getAuthToken }                         from '@core/utils/auth/getToken';
+import { getInitialProps }                      from '@core/utils/props/getInitialProps';
 import * as S                                   from './styled';
 import { Props }                                from './types';
 
@@ -35,9 +36,9 @@ const Root: React.FC<Props> = (props) => {
 
     const push: typeof pushAction = composeWithDispatch(pushAction);
 
-    const redirect = (serverContext: Context, status: number, to: string): IO.IO<void> => () => {
-        serverContext.status = status;
-        serverContext.to     = to;
+    const redirect = (serverContext: Context | undefined, status: number, to: string): IO.IO<void> => () => {
+        serverContext!.status = status;
+        serverContext!.to     = to;
     };
 
     pipe(
@@ -90,7 +91,7 @@ const Root: React.FC<Props> = (props) => {
                         >
                             { (state) => (
                                 <S.AnimationContainer state={ state }>
-                                    { renderRoutes(route.routes) }
+                                    { renderRoutes(route.routes, getInitialProps(staticContext)) }
                                 </S.AnimationContainer>
                             ) }
                         </Transition>

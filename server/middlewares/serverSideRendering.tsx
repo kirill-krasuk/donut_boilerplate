@@ -18,19 +18,19 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     res.set('X-Is-Cacheable', 'true');
 
     const { theme: mode = 'dark', locale = 'en', token } = req.cookies;
-
-    const context: Context = {
-        token
-    };
-
-    const history = createMemoryHistory({
+    const history                                        = createMemoryHistory({
         initialEntries: [ req.url ]
     });
 
     const { store } = configureStore({}, history);
     const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
 
-    await prefetch(store, req.url, { token });
+    const props = await prefetch(req.url, { token });
+
+    const context: Context = {
+        token,
+        initialProps: props
+    };
 
     initializeState(store, { mode, locale });
 
@@ -39,9 +39,10 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
             store,
             context,
             location: req.url,
-            extractor
+            extractor,
         }),
         store,
-        extractor
+        extractor,
+        props
     }));
 }
