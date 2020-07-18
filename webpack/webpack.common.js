@@ -28,7 +28,7 @@ const paths = {
     dist    : path.resolve('dist'),
     entry   : path.resolve('src/core/index.tsx'),
     template: path.resolve('src/core/template/index.pug'),
-    view    : path.resolve('views/index.pug')
+    view    : path.resolve('dist/index.pug')
 };
 
 const context = path.resolve(__dirname, '..');

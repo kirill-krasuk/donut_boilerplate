@@ -38,6 +38,7 @@ app.use('/', useStatic(`${ __dirname  }/../public/root`));
 
 app.use(favicon(path.join(__dirname, '..', '/public/images/favicon.ico')));
 app.set('view engine', 'pug');
+app.set('views', path.join(`${ __dirname  }/../dist`));
 
 useDevMiddlewares(app);
 
