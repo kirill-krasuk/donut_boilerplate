@@ -9,6 +9,7 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: cp .env.example .env
             - run: npm install
             - run: npm run build:prod:server
             - run: npm run build:prod:client
