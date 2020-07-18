@@ -4,7 +4,7 @@ import { shallow }  from 'enzyme';
 
 import { store }    from '../__mocks__/store';
 
-const setupShallowWrapper = (Component: any, provideProps?: Record<string, any>): Record<string, any> => {
+const setupShallowWrapper = (Component: React.FC<any>, provideProps?: Record<string, any>): Record<string, any> => {
     const props = provideProps || {};
 
     const wrapper = shallow(

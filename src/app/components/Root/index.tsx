@@ -75,7 +75,7 @@ const Root: React.FC<Props> = (props) => {
         if (matchedRoute.protect) {
             push(protectRedirect);
         }
-    }, [ matchedRoute ]);
+    }, [ matchedRoute, push ]);
 
     return (
         <ThemeProvider theme={ { ...theme, mode } }>

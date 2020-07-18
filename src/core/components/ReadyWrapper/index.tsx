@@ -10,11 +10,11 @@ const ReadyWrapper: React.FC<Props> = (props) => {
 
     const dispatch = useDispatch();
 
-    const ready: typeof readyAction = R.compose(dispatch, readyAction);
-
     useEffect(() => {
+        const ready: typeof readyAction = R.compose(dispatch, readyAction);
+
         ready();
-    }, []);
+    }, [ dispatch ]);
 
     return (
         <>{ children }</>
