@@ -147,7 +147,7 @@
         "arca/melted-constructs": 2,
         "no-underscore-dangle": 0,
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": 0,
+        "react-hooks/exhaustive-deps": 2,
         "no-useless-computed-key": 0
     },
     "plugins": [

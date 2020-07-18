@@ -1,27 +1,29 @@
-import React, { FC, useEffect, useRef } from 'react';
-import { useDispatch }                  from 'react-redux';
-import { hot }                          from 'react-hot-loader/root';
-import { fromEvent }                    from 'rxjs';
-import R                                from 'ramda';
+import React, {
+    FC, useEffect, useRef, useCallback
+} from 'react';
+import { useDispatch }       from 'react-redux';
+import { hot }               from 'react-hot-loader/root';
+import { fromEvent }         from 'rxjs';
+import R                     from 'ramda';
 
-import { useClickOutside }              from '@core/hooks/useClickOutside';
-import { closeModalAction }             from '@core/actions/modal';
-import { useLockBodyScroll }            from '@core/hooks';
-import * as S                           from './styled';
-import { Props }                        from './types';
+import { useClickOutside }   from '@core/hooks/useClickOutside';
+import { closeModalAction }  from '@core/actions/modal';
+import { useLockBodyScroll } from '@core/hooks';
+import * as S                from './styled';
+import { Props }             from './types';
 
 const Modal: FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
     useLockBodyScroll();
 
-    const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+    const ref = useRef<HTMLDivElement>(null);
 
     const dispatch = useDispatch();
 
     const closeModal = R.compose(dispatch, closeModalAction);
 
-    function handleKeyPress(ev: KeyboardEvent) {
+    const handleKeyPress = useCallback((ev: KeyboardEvent) => {
         const { keyCode } = ev;
 
         if (keyCode === 27) {
@@ -31,7 +33,7 @@ const Modal: FC<Props> = (props) => {
                 onClose();
             }
         }
-    }
+    }, [ closeModal, onClose ]);
 
     useEffect(() => {
         const subscription = fromEvent<KeyboardEvent>(document, 'keyup')
@@ -40,7 +42,7 @@ const Modal: FC<Props> = (props) => {
         return () => {
             subscription.unsubscribe();
         };
-    }, []);
+    }, [ handleKeyPress ]);
 
     useClickOutside(ref, () => {
         if (onClose) {

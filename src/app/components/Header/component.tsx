@@ -1,8 +1,8 @@
 import React                        from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { EOLocale as T }            from 'eo-locale';
-import { Sun }                      from 'styled-icons/fa-solid/Sun';
-import { Moon }                     from 'styled-icons/fa-solid/Moon';
+import { Sun }                      from '@styled-icons/fa-solid/Sun';
+import { Moon }                     from '@styled-icons/fa-solid/Moon';
 import R                            from 'ramda';
 
 import { changeThemeAction }        from '@core/actions/theme';
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
     const mode   = useSelector(getMode);
     const locale = useSelector(getLocale);
 
-    const composeWithDispatch: Function = R.partial(R.compose, [ dispatch ]);
+    const composeWithDispatch: any = R.partial(R.compose, [ dispatch ]);
 
     const changeTheme: typeof changeThemeAction   = composeWithDispatch(changeThemeAction);
     const changeLocale: typeof changeLocaleAction = composeWithDispatch(changeLocaleAction);

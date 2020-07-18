@@ -8,7 +8,7 @@ describe('camelToSnake utility function', () => {
         expect(camelToSnake(received)).toEqual(expected);
     });
 
-    it('funcion must transformed string correctly with first upper letter', () => {
+    it('function must transformed string correctly with first upper letter', () => {
         const received = 'HelloWorld';
         const expected = 'hello_world';
 
