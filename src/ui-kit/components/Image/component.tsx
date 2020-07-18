@@ -1,7 +1,7 @@
 import React, { FC }        from 'react';
 import { hot }              from 'react-hot-loader/root';
 
-import { replaceExtension } from '@core/utils/file';
+import { replaceExtension } from '@utils/file';
 import { Props }            from './types';
 
 // TODO: complete

@@ -18,8 +18,8 @@ import { GlobalStyles }                         from '@core/components/GlobalSty
 import LanguageProvider                         from '@core/components/LanguageProvider';
 import ModalManager                             from '@core/components/ModalManager';
 import { Context }                              from '@server/types/context';
-import { getAuthToken }                         from '@core/utils/auth/getToken';
-import { getInitialProps }                      from '@core/utils/props/getInitialProps';
+import { getAuthToken }                         from '@utils/auth/getToken';
+import { getInitialProps }                      from '@utils/props/getInitialProps';
 import * as S                                   from './styled';
 import { Props }                                from './types';
 

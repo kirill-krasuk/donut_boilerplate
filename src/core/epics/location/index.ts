@@ -10,7 +10,7 @@ import * as modals                   from '@app/modals';
 import { Modals }                    from '@app/enums/modal';
 import { callModalAction }           from '@core/actions/modal';
 import { CallModal }                 from '@core/types/modal';
-import { snakeToCamel }              from '@core/utils/string';
+import { snakeToCamel }              from '@utils/string';
 import { StringFormatter }           from '@core/enums/string';
 import { EmptyEpic }                 from '@core/types/empty';
 import { emptyEpicAction }           from '@core/actions/emptyEpic';

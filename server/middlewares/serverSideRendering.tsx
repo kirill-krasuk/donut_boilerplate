@@ -3,7 +3,7 @@ import { ChunkExtractor }         from '@loadable/server';
 import { createMemoryHistory }    from 'history';
 import path                       from 'path';
 
-import { configureStore }         from '@core/utils/store/configureStore';
+import { configureStore }         from '@utils/store/configureStore';
 import { prefetch }               from '@server/utils/prefetch';
 import { Context }                from '@server/types/context';
 import { initializeState }        from '@server/utils/initializeState';
