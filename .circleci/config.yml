@@ -10,6 +10,8 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
+            - run: npm build:server
+            - run: npm build
   test:
     executor:
       name: node/default
