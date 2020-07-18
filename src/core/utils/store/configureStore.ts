@@ -89,6 +89,5 @@ export function configureStore(preloadedState: object = {}, history: History<any
         }
     }
 
-
     return { store, history };
 }

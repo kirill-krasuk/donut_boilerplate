@@ -46,6 +46,9 @@
         "@typescript-eslint/camelcase": 0,
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/ban-ts-ignore": 0,
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/ban-ts-comment": 0,
+        "@typescript-eslint/ban-types": 0,
         "arrow-parens": 0,
         "no-restricted-syntax": 0,
         "lines-between-class-members": 0,
@@ -161,7 +164,8 @@
             // enable the rule specifically for TypeScript files
             "files": ["*.ts", "*.tsx"],
             "rules": {
-                "@typescript-eslint/explicit-function-return-type": 0
+                "@typescript-eslint/explicit-function-return-type": 0,
+                
             }
         }
     ]

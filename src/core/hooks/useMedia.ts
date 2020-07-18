@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
-import { canUseDOM }           from '@core/utils/dom';
+import { canUseDOM }                        from '@core/utils/dom';
 
 const mediaSSRMock = {
     matches       : false,
@@ -15,7 +15,7 @@ export function useMedia(queries: string[], values: number[], defaultValue: numb
             : mediaSSRMock
     ));
 
-    const getValue = () => {
+    const getValue = useCallback(() => {
         const index = mediaQueryLists.findIndex(mql => mql.matches);
 
         return (
@@ -23,7 +23,7 @@ export function useMedia(queries: string[], values: number[], defaultValue: numb
                 ? values[index]
                 : defaultValue
         );
-    };
+    }, [ defaultValue, mediaQueryLists, values ]);
 
     const [ value, setValue ] = useState(getValue);
 
@@ -33,7 +33,7 @@ export function useMedia(queries: string[], values: number[], defaultValue: numb
         mediaQueryLists.forEach(mql => mql.addListener(handler));
 
         return () => mediaQueryLists.forEach(mql => mql.removeListener(handler));
-    }, []);
+    }, [ getValue, mediaQueryLists ]);
 
     return value;
 }
