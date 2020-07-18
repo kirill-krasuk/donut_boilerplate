@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 
-import { canUseDOM }                        from '@core/utils/dom';
+import { canUseDOM }                        from '@utils/dom';
 
 const mediaSSRMock = {
     matches       : false,

@@ -5,7 +5,7 @@ import { InjectedReducersType, ExtendedStore } from './types';
 
 export function injectReducers(reducers: InjectedReducersType) {
     if (canUseDOM) {
-        import('@core/utils/store').then(({ store }) => R
+        import('@utils/store').then(({ store }) => R
             .keys(reducers)
             .forEach((key) => (store as ExtendedStore).injectReducer(key, reducers[key]))
         );

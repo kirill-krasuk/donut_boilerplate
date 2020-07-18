@@ -5,7 +5,7 @@ import * as C        from 'fp-ts/lib/Console';
 import { pipe }      from 'fp-ts/lib/pipeable';
 import { flow }      from 'fp-ts/lib/function';
 
-import { parseJSON } from '@core/utils/json';
+import { parseJSON } from '@utils/json';
 
 const dropEmptyValue = O.fromPredicate<string>(Boolean);
 

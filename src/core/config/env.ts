@@ -1,7 +1,7 @@
 import * as IO                     from 'fp-ts/lib/IO';
 
 import { Env }                     from '@core/types/env';
-import { getEnv, getOptionConfig } from '@core/utils/env';
+import { getEnv, getOptionConfig } from '@utils/env';
 import { Environment }             from '@core/enums/env';
 
 const nodeEnv: IO.IO<NodeJS.ProcessEnv> = () => process.env;

@@ -21,6 +21,7 @@
         "paths": {
 			"@core/*": ["src/core/*"],
 			"@app/*": ["src/app/*"],
+			"@utils/*": ["src/utils/*"],
 			"@ui-kit/*": ["src/ui-kit/*"],
 			"@images/*": ["src/assets/images/*"],
             "@svgs/*": ["src/assets/svgs/*"],

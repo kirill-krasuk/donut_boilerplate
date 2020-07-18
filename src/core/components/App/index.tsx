@@ -8,7 +8,7 @@ import { pipe }             from 'fp-ts/lib/pipeable';
 import { sequenceT }        from 'fp-ts/lib/Apply';
 
 import Router               from '@core/components/Router';
-import { store, history }   from '@core/utils/store';
+import { store, history }   from '@utils/store';
 import ErrorBoundary        from '../ErrorBoundary';
 import ReadyWrapper         from '../ReadyWrapper';
 

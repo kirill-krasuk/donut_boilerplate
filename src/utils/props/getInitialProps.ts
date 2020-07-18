@@ -4,7 +4,7 @@ import { pipe }      from 'fp-ts/lib/pipeable';
 import R             from 'ramda';
 
 import { Context }   from '@server/types/context';
-import { canUseDOM } from '@core/utils/dom';
+import { canUseDOM } from '@utils/dom';
 
 let initialProps = O.none;
 

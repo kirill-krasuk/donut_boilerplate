@@ -1,5 +1,5 @@
-import { configureStore } from '@core/utils/store/configureStore';
-import browserHistory     from '@core/utils/history';
+import browserHistory     from '@utils/history';
+import { configureStore } from './configureStore';
 
 // @ts-ignore
 const preloadedState = window.__PRELOADED_STATE__;

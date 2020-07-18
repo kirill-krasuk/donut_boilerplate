@@ -9,7 +9,7 @@ import { emptyEpicAction }                                       from '@core/act
 import { CallModal, CallModalObjectPayload }                     from '@core/types/modal';
 import { CALL_MODAL, setModalAction, setModalHistoryFlagAction } from '@core/actions/modal';
 import { Modals }                                                from '@app/enums/modal';
-import { camelToSnake }                                          from '@core/utils/string';
+import { camelToSnake }                                          from '@utils/string';
 
 type ReturnTypeEpic = Observable<object>
 
