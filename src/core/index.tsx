@@ -3,6 +3,7 @@ import { hydrate, render } from 'react-dom';
 import { loadableReady }   from '@loadable/component';
 import { IO }              from 'fp-ts/lib/IO';
 import * as O              from 'fp-ts/lib/Option';
+import * as C              from 'fp-ts/lib/Console';
 
 import * as Env            from '@core/config/env';
 import { App }             from './components';
@@ -19,7 +20,7 @@ const renderOrHydrate = needHydrate
 loadableReady(() => {
     if (isSWNeeded) {
         if (!window.isSecureContext) {
-            window.console.log('SW need a secure context');
+            C.log('SW need a secure context')();
         }
 
         if ('serviceWorker' in navigator) {
@@ -27,9 +28,9 @@ loadableReady(() => {
                 try {
                     await navigator.serviceWorker.register('/sw.js', { scope: '/' });
 
-                    window.console.log('SW registered');
+                    C.log('SW registered')();
                 } catch (err) {
-                    window.console.log('SW registration failed: ', err);
+                    C.error(`SW registration failed: ${ err }`)();
                 }
             });
         }

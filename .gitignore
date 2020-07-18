@@ -5,5 +5,4 @@
 .cache
 error.log
 /public/fonts
-/views/
 /public/**/build/
