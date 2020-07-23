@@ -3,7 +3,8 @@ import React, { useEffect }                     from 'react';
 import { hot }                                  from 'react-hot-loader/root';
 import { useSelector, useDispatch }             from 'react-redux';
 import { renderRoutes, matchRoutes }            from 'react-router-config';
-import { Transition, TransitionGroup }          from 'react-transition-group';
+
+// import { Transition, TransitionGroup }          from 'react-transition-group';
 import { ThemeProvider }                        from 'styled-components/macro';
 import { push as pushAction }                   from 'connected-react-router';
 import * as IO                                  from 'fp-ts/lib/IO';
@@ -82,7 +83,8 @@ const Root: React.FC<Props> = (props) => {
             <S.Wrapper>
                 <GlobalStyles />
                 <LanguageProvider>
-                    <TransitionGroup className="transition-group">
+                    <>
+                        { /* <TransitionGroup className="transition-group">
                         <Transition
                             key={ location.key }
                             timeout={ 650 }
@@ -90,13 +92,14 @@ const Root: React.FC<Props> = (props) => {
                             exit
                         >
                             { (state) => (
-                                <S.AnimationContainer state={ state }>
-                                    { renderRoutes(route.routes, getInitialProps(staticContext)) }
-                                </S.AnimationContainer>
+                                <S.AnimationContainer state={ state }> */ }
+                        { renderRoutes(route.routes, getInitialProps(staticContext)) }
+                        { /* </S.AnimationContainer>
                             ) }
-                        </Transition>
+                        </Transition> */ }
                         <ModalManager />
-                    </TransitionGroup>
+                        { /* </TransitionGroup> */ }
+                    </>
                 </LanguageProvider>
             </S.Wrapper>
         </ThemeProvider>

@@ -39,7 +39,7 @@
                 "alias": {
                     "@app": "./src/app",
                     "@core": "./src/core",
-                    "@utils": "./src/utils",
+                    "@utils": "./src/core/utils",
                     "@ui-kit": "./src/ui-kit",
                     "@vendors": "./src/vendors",
                     "@server": "./server",
