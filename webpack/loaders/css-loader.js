@@ -1,27 +1,38 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-function getCssLoader(isClient = true) {
+const { isProd } = require('../utils/isProd');
+
+function getClientCssLoader() {
     const cssLoader = {
-        test: /\.css$/,
+        test  : /\.css$/,
+        loader: [ {
+            loader : MiniCssExtractPlugin.loader,
+            options: {
+                hmr      : !isProd(),
+                reloadAll: true
+            },
+        }, {
+            loader: 'css'
+        } ]
     };
 
-    if (isClient) {
-        cssLoader.loader = [
-            {
-                loader : MiniCssExtractPlugin.loader,
-                options: {
-                    hmr      : process.env.NODE_ENV === 'development',
-                    reloadAll: true
-                },
-            },
-            'cache?cacheDirectory=.cache/css-cache',
-            'css',
-        ];
-    } else {
-        cssLoader.loader = 'css';
+    if (!isProd()) {
+        cssLoader.loader.unshift({
+            loader : 'cache',
+            options: {
+                cacheDirectory: '.cache/css-cache'
+            }
+        });
     }
 
     return cssLoader;
 }
 
-module.exports = { getCssLoader };
+function getServerCssLoader() {
+    return {
+        test  : /\.css$/,
+        loader: 'css'
+    };
+}
+
+module.exports = { getClientCssLoader, getServerCssLoader };

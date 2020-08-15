@@ -1,30 +1,37 @@
-function getSVGLoader(isClient = true) {
+const svgToMiniDataURI = require('mini-svg-data-uri');
+
+const { createHashHelper } = require('../utils/createHashHelper');
+const { isProd }           = require('../utils/isProd');
+
+const addHash = createHashHelper(isProd());
+
+function getSVGLoader() {
     const SVGLoader = {
-        test  : /\.svg$/,
-        loader: [
-            'babel',
-            {
-                loader : 'react-svg',
-                options: {
-                    jsx : true,
-                    svgo: {
-                        plugins: [ {
-                            removeTitle               : true,
-                            inlineStyles              : true,
-                            removeEmptyAttrs          : true,
-                            convertColors             : true,
-                            removeUselessStrokeAndFill: true,
-                            removeDimensions          : true,
-                        } ],
-                        floatPrecision: 2
-                    }
-                }
-            }
-        ]
+        test  : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        issuer: {
+            test: /\.(j|t)s(x)?$/
+        },
+        loader: [ {
+            loader: '@svgr/webpack'
+        }, {
+            loader : 'url',
+            options: {
+                generator : (content) => svgToMiniDataURI(content.toString()),
+                limit     : 4096,
+                name      : addHash('[name].[ext]', 'contenthash:8'),
+                outputPath: '../public/svgs/build',
+                publicPath: '/public/svgs/build'
+            },
+        } ]
     };
 
-    if (isClient) {
-        SVGLoader.loader.unshift('cache?cacheDirectory=.cache/svg-cache!thread');
+    if (!isProd()) {
+        SVGLoader.loader.unshift({
+            loader : 'cache',
+            options: {
+                cacheDirectory: '.cache/svg-cache'
+            }
+        });
     }
 
     return SVGLoader;
