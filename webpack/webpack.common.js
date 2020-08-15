@@ -10,18 +10,17 @@ const HtmlPlugin                     = require('html-webpack-plugin');
 const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
 const HtmlPugPlugin                  = require('html-webpack-pug-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
-const HardSourceWebpackPlugin        = require('hard-source-webpack-plugin');
 const ImageminWebpWebpackPlugin      = require('imagemin-webp-webpack-plugin');
 
-const { getJsLoader }         = require('./loaders/js-loader');
-const { getImageLoader }      = require('./loaders/image-loader');
-const { getFontsLoader }      = require('./loaders/font-loader');
-const { getCssLoader }        = require('./loaders/css-loader');
-const { getSassLoader }       = require('./loaders/sass-loader');
-const { getSassModuleLoader } = require('./loaders/sass-module-loader');
-const { getSVGLoader }        = require('./loaders/svg-loader');
-const { collectEnvVars }      = require('./utils/collectEnvVars');
-const { createHashHelper }    = require('./utils/createHashHelper');
+const { getJsLoader }               = require('./loaders/js-loader');
+const { getImageLoader }            = require('./loaders/image-loader');
+const { getFontsLoader }            = require('./loaders/font-loader');
+const { getClientCssLoader }        = require('./loaders/css-loader');
+const { getClientSassLoader }       = require('./loaders/sass-loader');
+const { getClientSassModuleLoader } = require('./loaders/sass-module-loader');
+const { getSVGLoader }              = require('./loaders/svg-loader');
+const { collectEnvVars }            = require('./utils/collectEnvVars');
+const { createHashHelper }          = require('./utils/createHashHelper');
 
 const paths = {
     src     : path.resolve('src'),
@@ -97,9 +96,9 @@ module.exports = {
             module: {
                 rules: [
                     getJsLoader(),
-                    getCssLoader(),
-                    getSassLoader(),
-                    getSassModuleLoader(),
+                    getClientCssLoader(),
+                    getClientSassLoader(),
+                    getClientSassModuleLoader(),
                     getImageLoader(),
                     getFontsLoader(),
                     getSVGLoader()
@@ -151,7 +150,7 @@ module.exports = {
                     cleanOnceBeforeBuildPatterns: [
                         '**/*',
                         '!server.js',
-                        '!*.server.js'
+                        '!*.server.js',
                     ],
                     cleanAfterEveryBuildPatterns: [
                         '!*.server.js',
@@ -159,23 +158,6 @@ module.exports = {
                         'precache-manifest.*.js'
                     ],
                 }),
-                new HardSourceWebpackPlugin({
-                    cacheDirectory: path.resolve(__dirname, '..', '.cache/hard_source_plugin/'),
-                    configHash(webpackConfig) {
-                        return require('node-object-hash')({ sort: false }).hash(webpackConfig);
-                    },
-                }),
-                new HardSourceWebpackPlugin.ExcludeModulePlugin([
-                    {
-                        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-                    },
-                    {
-                        test: /loadable\.js/
-                    },
-                    {
-                        test: /src\/vendors/
-                    }
-                ]),
             ])
         };
     }

@@ -1,6 +1,8 @@
 const webpack                  = require('webpack');
+const path                     = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const HardSourceWebpackPlugin  = require('hard-source-webpack-plugin');
 
 const { paths, configureBundler } = require('./webpack.common');
 
@@ -35,6 +37,23 @@ module.exports = configureBundler({
             },
             failOnError: true
         }),
+        new HardSourceWebpackPlugin({
+            cacheDirectory: path.resolve(__dirname, '..', '.cache/hard_source_plugin/'),
+            configHash(webpackConfig) {
+                return require('node-object-hash')({ sort: false }).hash(webpackConfig);
+            },
+        }),
+        new HardSourceWebpackPlugin.ExcludeModulePlugin([
+            {
+                test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+            },
+            {
+                test: /loadable\.js/
+            },
+            {
+                test: /src\/vendors/
+            }
+        ]),
         new webpack.ProgressPlugin(bundlingProgress)
     ]
 });

@@ -37,7 +37,6 @@ module.exports = configureBundler({
     ],
     plugins: [
         new CompressionPlugin({
-            cache   : '.cache/compression_plugin_cache',
             filename: '[path].gz[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),

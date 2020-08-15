@@ -1,43 +1,59 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-function getSassModuleLoader(isClient = true) {
-    const sassModuleLoader = {
-        test: /\.module\.s(c|a)ss$/,
-    };
+const { isProd } = require('../utils/isProd');
 
-    if (isClient) {
-        sassModuleLoader.loader = [
+const options = {
+    test: /\.module\.s(c|a)ss$/,
+};
+
+const commonLoaders = [ {
+    loader : 'css',
+    options: {
+        modules         : true,
+        exportOnlyLocals: true,
+        localIdentName  : '[name]__[local]___[hash:base64:5]',
+    }
+}, {
+    loader: 'resolve-url',
+},  {
+    loader : 'sass',
+    options: {
+        sourceMap: !isProd()
+    }
+} ];
+
+function getClientSassModuleLoader() {
+    const sassModuleLoader = {
+        ...options,
+        loader: [
             {
                 loader : MiniCssExtractPlugin.loader,
                 options: {
-                    hmr      : process.env.NODE_ENV === 'development',
+                    hmr      : !isProd(),
                     reloadAll: true,
                 },
             },
-            'cache?cacheDirectory=.cache/sass-module-cache',
-            'css?modules&localIdentName=[name]__[local]___[hash:base64:5]',
-            'resolve-url',
-            {
-                loader : 'sass',
-                options: {
-                    sourceMap: process.env.NODE_ENV === 'development'
-                }
+            ...commonLoaders
+        ]
+    };
+
+    if (!isProd()) {
+        sassModuleLoader.loader.unshift({
+            loader : 'cache',
+            options: {
+                cacheDirectory: '.cache/sass-module-cache'
             }
-        ];
-    } else {
-        sassModuleLoader.loader = [
-            'css?modules&exportOnlyLocals&localIdentName=[name]__[local]___[hash:base64:5]',
-            'resolve-url',
-            {
-                loader : 'sass',
-                options: {
-                    sourceMap: process.env.NODE_ENV === 'development'
-                }
-            }
-        ];
+        });
     }
 
     return sassModuleLoader;
 }
 
-module.exports = { getSassModuleLoader };
+function getServerSassModuleLoader() {
+    return {
+        ...options,
+        loader: commonLoaders
+    };
+}
+
+module.exports = { getClientSassModuleLoader, getServerSassModuleLoader };

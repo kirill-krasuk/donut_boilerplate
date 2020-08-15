@@ -1,17 +1,20 @@
-function getImageLoader(isClient = true) {
-    const imageLoader = {
+const { isProd }           = require('../utils/isProd');
+const { createHashHelper } = require('../utils/createHashHelper');
+
+const addHash = createHashHelper(isProd());
+
+function getImageLoader() {
+    return {
         test  : /\.(gif|png|jpe?g)$/i,
         loader: [
             {
                 loader : 'file',
                 options: {
-                    name      : '[name].[contenthash:8].[ext]',
+                    name      : addHash('[name].[ext]', 'contenthash:8'),
                     outputPath: '../public/images/build',
-                    publicPath: '/public/images/build',
-                    emit      : !isClient
+                    publicPath: '/public/images/build'
                 }
             },
-            'thread',
             {
                 loader : 'image-webpack',
                 options: {
@@ -33,8 +36,6 @@ function getImageLoader(isClient = true) {
             }
         ]
     };
-
-    return imageLoader;
 }
 
 module.exports = { getImageLoader };

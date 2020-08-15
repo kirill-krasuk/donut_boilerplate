@@ -1,44 +1,54 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-function getSassLoader(isClient = true) {
+const { isProd } = require('../utils/isProd');
+
+const options = {
+    test   : /\.s(c|a)ss$/,
+    exclude: /\.module\.(s(a|c)ss)$/,
+};
+
+const commonLoaders = [ {
+    loader: 'css'
+}, {
+    loader: 'resolve-url'
+}, {
+    loader : 'sass',
+    options: {
+        sourceMap: !isProd()
+    }
+} ];
+
+function getClientSassLoader() {
     const sassLoader = {
-        test   : /\.s(c|a)ss$/,
-        exclude: /\.module\.(s(a|c)ss)$/,
+        ...options,
+        loader: [  {
+            loader : MiniCssExtractPlugin.loader,
+            options: {
+                hmr      : !isProd(),
+                reloadAll: true
+            },
+        },
+        ...commonLoaders
+        ]
     };
 
-    if (isClient) {
-        sassLoader.loader = [
-            {
-                loader : MiniCssExtractPlugin.loader,
-                options: {
-                    hmr      : process.env.NODE_ENV === 'development',
-                    reloadAll: true
-                },
-            },
-            'cache?cacheDirectory=.cache/sass-cache',
-            'css',
-            'resolve-url',
-            {
-                loader : 'sass',
-                options: {
-                    sourceMap: process.env.NODE_ENV === 'development'
-                }
+    if (!isProd()) {
+        sassLoader.loader.unshift({
+            loader : 'cache',
+            options: {
+                cacheDirectory: '.cache/sass-cache'
             }
-        ];
-    } else {
-        sassLoader.loader = [
-            'css',
-            'resolve-url',
-            {
-                loader : 'sass',
-                options: {
-                    sourceMap: process.env.NODE_ENV === 'development'
-                }
-            }
-        ];
+        });
     }
 
     return sassLoader;
 }
 
-module.exports = { getSassLoader };
+function getServerSassLoader() {
+    return {
+        ...options,
+        loader: commonLoaders
+    };
+}
+
+module.exports = { getClientSassLoader, getServerSassLoader };

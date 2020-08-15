@@ -2,13 +2,13 @@ const path          = require('path');
 const nodeExternals = require('webpack-node-externals');
 const Dotenv        = require('dotenv-webpack');
 
-const { getJsLoader }         = require('./loaders/js-loader');
-const { getImageLoader }      = require('./loaders/image-loader');
-const { getFontsLoader }      = require('./loaders/font-loader');
-const { getCssLoader }        = require('./loaders/css-loader');
-const { getSassLoader }       = require('./loaders/sass-loader');
-const { getSVGLoader }        = require('./loaders/svg-loader');
-const { getSassModuleLoader } = require('./loaders/sass-module-loader');
+const { getJsLoader }               = require('./loaders/js-loader');
+const { getImageLoader }            = require('./loaders/image-loader');
+const { getFontsLoader }            = require('./loaders/font-loader');
+const { getServerCssLoader }        = require('./loaders/css-loader');
+const { getServerSassLoader }       = require('./loaders/sass-loader');
+const { getSVGLoader }              = require('./loaders/svg-loader');
+const { getServerSassModuleLoader } = require('./loaders/sass-module-loader');
 
 const PATHS = {
     entry : path.resolve(__dirname, '..', 'server/index.ts'),
@@ -47,13 +47,13 @@ module.exports = (env, argv) => ({
     },
     module: {
         rules: [
-            getJsLoader(false),
-            getCssLoader(false),
-            getSassLoader(false),
-            getSassModuleLoader(false),
-            getImageLoader(false),
-            getSVGLoader(false),
-            getFontsLoader(false)
+            getJsLoader(),
+            getServerCssLoader(),
+            getServerSassLoader(),
+            getServerSassModuleLoader(),
+            getImageLoader(),
+            getSVGLoader(),
+            getFontsLoader()
         ]
     },
     externals: [ nodeExternals({

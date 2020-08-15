@@ -1,12 +1,19 @@
-function getJsLoader(isClient = true) {
+const { isProd } = require('../utils/isProd');
+
+function getJsLoader() {
     const jsLoader = {
         test   : /\.(j|t)s(x)?$/,
-        loader : 'babel',
+        loader : [ { loader: 'babel' } ],
         exclude: [ /node_modules/, /\.(spec|test)\.js$/ ]
     };
 
-    if (isClient && process.env.BABEL_ENV === 'development') {
-        jsLoader.loader = `cache?cacheDirectory=.cache/js-cache!${ jsLoader.loader }?cacheDirectory=.cache/babel`;
+    if (!isProd()) {
+        jsLoader.loader.unshift({
+            loader : 'cache',
+            options: {
+                cacheDirectory: '.cache/js-cache'
+            }
+        });
     }
 
     return jsLoader;

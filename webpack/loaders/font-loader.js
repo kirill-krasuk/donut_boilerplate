@@ -1,21 +1,28 @@
-function getFontsLoader(isClient = true) {
+const { isProd }           = require('../utils/isProd');
+const { createHashHelper } = require('../utils/createHashHelper');
+
+const addHash = createHashHelper(isProd());
+
+function getFontsLoader() {
     const fontsLoader = {
         test  : /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: [
-            {
-                loader : 'file',
-                options: {
-                    name      : '[name].[contenthash:8].[ext]',
-                    outputPath: '../public/fonts/build',
-                    publicPath: '/public/fonts/build',
-                    emit      : !isClient
-                }
+        loader: [ {
+            loader : 'file',
+            options: {
+                name      : addHash('[name].[ext]', 'contenthash:8'),
+                outputPath: '../public/fonts/build',
+                publicPath: '/public/fonts/build',
             }
-        ]
+        } ]
     };
 
-    if (isClient) {
-        fontsLoader.loader.unshift('cache?cacheDirectory=.cache/fonts-cache!thread');
+    if (!isProd()) {
+        fontsLoader.loader.unshift({
+            loader : 'cache',
+            options: {
+                cacheDirectory: '.cache/fonts-cache'
+            }
+        });
     }
 
     return fontsLoader;
