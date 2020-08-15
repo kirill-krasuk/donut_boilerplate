@@ -16,8 +16,10 @@ const bundler = webpack(webpackConfig);
 export function useDevMiddlewares(app: Application): void {
     if (env === 'development') {
         app.use(DevMiddleware(bundler, {
-            publicPath : webpackConfig.output.publicPath,
-            writeToDisk: (name: string) => new RegExp(/(\.json|\.pug|sw\.js|manifest)/, 'gi').test(name),
+            publicPath: webpackConfig.output.publicPath,
+
+            // writeToDisk: (name: string) => new RegExp(/(\.json|\.pug|sw\.js|manifest|svg)/, 'gi').test(name),
+            writeToDisk: true,
             stats      : {
                 all         : false,
                 modules     : true,
