@@ -1,9 +1,15 @@
 declare module '*.svg' {
     const content: any;
     export default content;
+    export const ReactComponent: any;
 }
 
 declare module '*.jpg' {
+    const content: any;
+    export default content;
+}
+
+declare module '*.module.sass' {
     const content: any;
     export default content;
 }
