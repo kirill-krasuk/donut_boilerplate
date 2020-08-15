@@ -1,7 +1,7 @@
-import styled        from 'styled-components/macro';
+import styled                        from 'styled-components/macro';
 
-import LogoSVG       from '@svgs/new_logo.svg';
-import { LOGO_SIZE } from '@ui-kit/constants/header';
+import { ReactComponent as LogoSVG } from '@svgs/new_logo.svg';
+import { LOGO_SIZE }                 from '@ui-kit/constants/header';
 
 export const Logo = styled(LogoSVG)`
     height: ${ LOGO_SIZE };
