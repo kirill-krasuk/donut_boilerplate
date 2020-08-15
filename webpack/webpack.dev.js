@@ -43,17 +43,13 @@ module.exports = configureBundler({
                 return require('node-object-hash')({ sort: false }).hash(webpackConfig);
             },
         }),
-        new HardSourceWebpackPlugin.ExcludeModulePlugin([
-            {
-                test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-            },
-            {
-                test: /loadable\.js/
-            },
-            {
-                test: /src\/vendors/
-            }
-        ]),
+        new HardSourceWebpackPlugin.ExcludeModulePlugin([ {
+            test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+        }, {
+            test: /loadable\.js/
+        }, {
+            test: /src\/vendors/
+        } ]),
         new webpack.ProgressPlugin(bundlingProgress)
     ]
 });
