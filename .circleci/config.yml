@@ -20,6 +20,7 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
+            - run: npm install
             - run: npm run test
             - run: npm run lint
             - run: npm run check-types
