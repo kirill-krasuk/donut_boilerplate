@@ -28,11 +28,11 @@
 			"@server/*": ["server/*"],
 			"@public/*": ["public/*"], 
 			"@fonts/*": ["src/assets/fonts/*"],
-			"@test/*": ["test/*"],
+			"@test/*": ["test/*"]
         },
         "types": ["jest", "node"],
         "typeRoots": [ "./src", "./node_modules/@types"]
     },
-    "include": ["src/**/*", "server/**/*"],
+    "include": ["src/**/*", "server/**/*", "test/**/*"],
     "exclude": ["node_modules", "**/node_modules/*"]
   }
