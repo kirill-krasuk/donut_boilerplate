@@ -3,13 +3,11 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   install_dependencies:
-    executor:
-      name: node/default
+    executor: node/default
     steps:
       - run: npm install
   build: 
-    executor:
-      name: node/default
+    executor: node/default
     steps:
       - checkout
       - node/with-cache:
@@ -18,8 +16,7 @@ jobs:
             - run: npm run build:prod:server
             - run: npm run build:prod:client
   test:
-    executor:
-      name: node/default
+    executor: node/default
     steps:
       - checkout
       - node/with-cache:
