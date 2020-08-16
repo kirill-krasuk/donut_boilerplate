@@ -28,12 +28,13 @@ jobs:
             - run: npm run lint
             - run: npm run check-types
 workflows:
-    build-and-test:
-      jobs:
-        - install_dependencies
-        - build:
-          requires:
-            - install_dependencies
-        - test:
-          requires:
-            - install_dependencies
+  version: 2
+  build-and-test:
+    jobs:
+      - install_dependencies
+      - build:
+        requires:
+          - install_dependencies
+      - test:
+        requires:
+          - install_dependencies
