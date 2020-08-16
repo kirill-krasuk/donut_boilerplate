@@ -1,5 +1,6 @@
 import React                        from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { hot }                      from 'react-hot-loader/root';
 import { EOLocale as T }            from 'eo-locale';
 import { Sun }                      from '@styled-icons/fa-solid/Sun';
 import { Moon }                     from '@styled-icons/fa-solid/Moon';
@@ -11,8 +12,30 @@ import { getLocale }                from '@core/selectors/locale';
 import { changeLocaleAction }       from '@core/actions/locale/index';
 import { Theme }                    from '@core/enums/theme';
 import { Locale }                   from '@core/enums/locale';
+import { createToggleHelper }       from '@core/utils/toggler';
+import { createFactory }            from '@core/utils/factory';
 import * as S                       from './styled';
 import messages                     from './messages';
+
+const toggleLocale = createToggleHelper({
+    [Locale.Ru]: Locale.En,
+    [Locale.En]: Locale.Ru
+});
+
+const toggleThemeMode = createToggleHelper({
+    [Theme.Dark] : Theme.Light,
+    [Theme.Light]: Theme.Dark,
+});
+
+const themeIconFactory = createFactory({
+    [Theme.Light]: Sun,
+    [Theme.Dark] : Moon
+});
+
+const themeLogoFactory = createFactory({
+    [Theme.Dark] : S.Logo,
+    [Theme.Light]: S.DarkLogo
+});
 
 const Header: React.FC = () => {
     const dispatch = useDispatch();
@@ -25,46 +48,26 @@ const Header: React.FC = () => {
     const changeTheme: typeof changeThemeAction   = composeWithDispatch(changeThemeAction);
     const changeLocale: typeof changeLocaleAction = composeWithDispatch(changeLocaleAction);
 
-    const ThemeIcon = {
-        [Theme.Light]: Sun,
-        [Theme.Dark] : Moon
-    }[mode];
-
-    const ThemeLogo = {
-        [Theme.Dark] : S.Logo,
-        [Theme.Light]: S.DarkLogo
-    }[mode];
-
-    const reverseLocale = {
-        [Locale.Ru]: Locale.En,
-        [Locale.En]: Locale.Ru
-    };
-
-    const reverseThemeMode = {
-        [Theme.Dark] : Theme.Light,
-        [Theme.Light]: Theme.Dark,
-    };
-
     const handleChangeTheme = () => {
-        changeTheme(reverseThemeMode[mode]);
+        changeTheme(toggleThemeMode(mode));
     };
 
     const handleChangeLocale = () => {
-        changeLocale(reverseLocale[locale]);
+        changeLocale(toggleLocale(locale));
     };
 
     return (
         <S.Header>
             <S.Nav>
                 <S.ThemeIcon>
-                    <ThemeIcon onClick={ handleChangeTheme } />
+                    { themeIconFactory(mode, { onClick: handleChangeTheme }) }
                 </S.ThemeIcon>
                 <S.LocaleToggler onClick={ handleChangeLocale }>
-                    { reverseLocale[locale] }
+                    { locale }
                 </S.LocaleToggler>
             </S.Nav>
             <S.Content>
-                <ThemeLogo />
+                { themeLogoFactory(mode) }
                 <S.Title>
                     <T.Text id={ messages.title } />
                 </S.Title>
@@ -73,4 +76,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+export default hot(Header);
