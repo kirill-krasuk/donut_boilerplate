@@ -3,8 +3,6 @@ import React, { useEffect }                     from 'react';
 import { hot }                                  from 'react-hot-loader/root';
 import { useSelector, useDispatch }             from 'react-redux';
 import { renderRoutes, matchRoutes }            from 'react-router-config';
-
-// import { Transition, TransitionGroup }          from 'react-transition-group';
 import { ThemeProvider }                        from 'styled-components/macro';
 import { push as pushAction }                   from 'connected-react-router';
 import * as IO                                  from 'fp-ts/lib/IO';
@@ -15,7 +13,7 @@ import R                                        from 'ramda';
 import { theme }                                from '@core/config/theme';
 import { getMode }                              from '@core/selectors/theme';
 import { protectRedirect, routes as appRoutes } from '@app/routes/routes';
-import { GlobalStyles }                         from '@core/components/GlobalStyles';
+import { GlobalStyles }                         from '@app/components/GlobalStyles';
 import LanguageProvider                         from '@core/components/LanguageProvider';
 import ModalManager                             from '@core/components/ModalManager';
 import { Context }                              from '@server/types/context';
@@ -84,21 +82,8 @@ const Root: React.FC<Props> = (props) => {
                 <GlobalStyles />
                 <LanguageProvider>
                     <>
-                        { /* <TransitionGroup className="transition-group">
-                        <Transition
-                            key={ location.key }
-                            timeout={ 650 }
-                            mountOnEnter
-                            exit
-                        >
-                            { (state) => (
-                                <S.AnimationContainer state={ state }> */ }
                         { renderRoutes(route.routes, getInitialProps(staticContext)) }
-                        { /* </S.AnimationContainer>
-                            ) }
-                        </Transition> */ }
                         <ModalManager />
-                        { /* </TransitionGroup> */ }
                     </>
                 </LanguageProvider>
             </S.Wrapper>
