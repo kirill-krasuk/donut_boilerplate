@@ -1,8 +1,8 @@
-version: 2.1
+version: 2
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  install_dependencies:
+  setup:
     executor: node/default
     steps:
       - checkout
@@ -36,10 +36,10 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - install_dependencies
+      - setup
       - build:
           requires:
-              - install_dependencies
+              - setup
       - test:
           requires:
-              - install_dependencies
+              - setup
