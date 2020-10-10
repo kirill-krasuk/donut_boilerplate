@@ -5,6 +5,7 @@ jobs:
   install_dependencies:
     executor: node/default
     steps:
+      - checkout
       - run: npm install
   build: 
     executor: node/default
