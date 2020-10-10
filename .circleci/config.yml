@@ -20,12 +20,17 @@ jobs:
             - run: npm run build:prod:client
             - run: ls -la
             - run: pwd
+            - persist_to_workspace:
+              root: workspace
+              paths: ./
   test:
     executor: node/default
     steps:
       - checkout
       - node/with-cache:
           steps:
+            - attach_workspace:
+              at: /tmp/workspace
             - run: bash ./scripts/ci.sh
             - run: ls -la
             - run: pwd
