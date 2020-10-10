@@ -3,10 +3,12 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   install_dependencies:
+    working_directory: ~/new_boileplate
     executor: node/default
     steps:
       - run: npm install
   build: 
+    working_directory: ~/new_boileplate
     executor: node/default
     steps:
       - checkout
@@ -16,15 +18,16 @@ jobs:
             - run: npm run build:prod:server
             - run: npm run build:prod:client
   test:
+    working_directory: ~/new_boileplate
     executor: node/default
     steps:
       - checkout
       - node/with-cache:
           steps:
-            # - run: bash ./scripts/ci.sh
-            - run: npm run test
-            - run: npm run lint
-            - run: npm run check-types
+            - run: bash ./scripts/ci.sh
+            # - run: npm run test
+            # - run: npm run lint
+            # - run: npm run check-types
 workflows:
   version: 2
   build-and-test:
