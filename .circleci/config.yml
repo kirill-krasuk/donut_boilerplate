@@ -21,8 +21,9 @@ jobs:
             - run: ls -la
             - run: pwd
             - persist_to_workspace:
-                root: ~/
-                paths: project/node_modules
+                root: ./
+                paths:
+                  - ./
   test:
     executor: node/default
     steps:
@@ -30,7 +31,7 @@ jobs:
       - node/with-cache:
           steps:
             - attach_workspace:
-                at: ~/
+                at: ./
             - run: bash ./scripts/ci.sh
             - run: ls -la
             - run: pwd
