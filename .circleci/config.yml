@@ -3,12 +3,12 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   install_dependencies:
-    working_directory: ~/new_boileplate
+    working_directory: ~/new_boilerplate
     executor: node/default
     steps:
       - run: npm install
   build: 
-    working_directory: ~/new_boileplate
+    working_directory: ~/new_boilerplate
     executor: node/default
     steps:
       - checkout
@@ -18,7 +18,7 @@ jobs:
             - run: npm run build:prod:server
             - run: npm run build:prod:client
   test:
-    working_directory: ~/new_boileplate
+    working_directory: ~/new_boilerplate
     executor: node/default
     steps:
       - checkout
