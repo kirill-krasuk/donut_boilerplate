@@ -8,6 +8,7 @@ jobs:
       - checkout
       - run: npm install
       - run: ls -la
+      - run: pwd
   build: 
     executor: node/default
     steps:
@@ -17,6 +18,8 @@ jobs:
             - run: cp .env.example .env
             - run: npm run build:prod:server
             - run: npm run build:prod:client
+            - run: ls -la
+            - run: pwd
   test:
     executor: node/default
     steps:
@@ -24,6 +27,8 @@ jobs:
       - node/with-cache:
           steps:
             - run: bash ./scripts/ci.sh
+            - run: ls -la
+            - run: pwd
             # - run: npm run test
             # - run: npm run lint
             # - run: npm run check-types
