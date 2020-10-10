@@ -6,6 +6,8 @@ NPM_VERSION=$(npm -v)
 echo used node version ${NODE_VERSION}
 echo used npm version ${NPM_VERSION}
 
+ls -la
+
 # run next command if previos success
 ./node_modules/.bin/tsc --noEmit -p . &&
 ./node_modules/.bin/eslint . &&
