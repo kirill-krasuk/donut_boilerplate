@@ -43,7 +43,7 @@ const Header: React.FC = () => {
     const mode   = useSelector(getMode);
     const locale = useSelector(getLocale);
 
-    const composeWithDispatch: = R.partial(R.compose, [ dispatch ]);
+    const composeWithDispatch: any = R.partial(R.compose, [ dispatch ]);
 
     const changeTheme: typeof changeThemeAction   = composeWithDispatch(changeThemeAction);
     const changeLocale: typeof changeLocaleAction = composeWithDispatch(changeLocaleAction);
