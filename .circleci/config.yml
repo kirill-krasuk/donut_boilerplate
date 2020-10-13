@@ -32,7 +32,9 @@ jobs:
           steps:
             - attach_workspace:
                 at: ./
-            - run: bash ./scripts/ci.sh
+            - run: 
+                name: Run CI  
+                command: bash ./scripts/ci.sh
             - run: ls -la
             - run: pwd
             # - run: npm run test
