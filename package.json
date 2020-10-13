@@ -4,9 +4,7 @@
   "description": "React Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start:app": "cross-env BABEL_ENV=development NODE_ENV=development node ./dist/server.js",
-    "build:server": "webpack --config ./webpack/webpack.server.js --mode=development",
-    "start": "npm run build:server && npm run start:app",
+    "start": "bash ./scripts/start.sh",
     "run:prod": "node ./dist/server.js",
     "clear-build-assets": "rm -rf ./public/**/build",
     "build:prod:server": "NODE_ENV=production webpack --config ./webpack/webpack.server.js --mode=production",
@@ -22,7 +20,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u",
-    "check-types": "tsc --noEmit -p ."
+    "check-types": "tsc --noEmit -p .",
+    "ci": "bash ./scripts/ci.sh"
   },
   "pre-commit": [],
   "repository": {
