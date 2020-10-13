@@ -8,9 +8,9 @@ jobs:
         - checkout
         - run: npm install
         - persist_to_workspace:
-                root: ./
-                paths:
-                    - ./
+            root: ./
+            paths:
+                - ./
     build: 
         executor: node/default
         steps:
