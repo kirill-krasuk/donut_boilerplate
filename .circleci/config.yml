@@ -7,23 +7,21 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: ls -la
-      - run: pwd
+      - persist_to_workspace:
+            root: ./
+            paths:
+                - ./
   build: 
     executor: node/default
     steps:
       - checkout
       - node/with-cache:
           steps:
+            - attach_workspace:
+                at: ./
             - run: cp .env.example .env
             - run: npm run build:prod:server
             - run: npm run build:prod:client
-            - run: ls -la
-            - run: pwd
-            - persist_to_workspace:
-                root: ./
-                paths:
-                  - ./
   test:
     executor: node/default
     steps:
@@ -35,11 +33,6 @@ jobs:
             - run: 
                 name: Run CI  
                 command: bash ./scripts/ci.sh
-            - run: ls -la
-            - run: pwd
-            # - run: npm run test
-            # - run: npm run lint
-            # - run: npm run check-types
 workflows:
   version: 2
   build-and-test:
