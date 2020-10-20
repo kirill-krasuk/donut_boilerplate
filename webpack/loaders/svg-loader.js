@@ -7,14 +7,15 @@ const addHash = createHashHelper(isProd());
 
 function getSVGLoader() {
     const SVGLoader = {
-        test  : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        issuer: {
-            test: /\.(j|t)s(x)?$/
-        },
-        loader: [ {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+
+        // issuer: {
+        //     test: /\.(j|t)s(x)?$/
+        // },
+        use: [ {
             loader: '@svgr/webpack'
         }, {
-            loader : 'url',
+            loader : 'url-loader',
             options: {
                 generator : (content) => svgToMiniDataURI(content.toString()),
                 limit     : 4096,
@@ -26,8 +27,8 @@ function getSVGLoader() {
     };
 
     if (!isProd()) {
-        SVGLoader.loader.unshift({
-            loader : 'cache',
+        SVGLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/svg-cache'
             }

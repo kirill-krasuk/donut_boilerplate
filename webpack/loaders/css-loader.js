@@ -4,21 +4,21 @@ const { isProd } = require('../utils/isProd');
 
 function getClientCssLoader() {
     const cssLoader = {
-        test  : /\.css$/,
-        loader: [ {
+        test: /\.css$/,
+        use : [ {
             loader : MiniCssExtractPlugin.loader,
             options: {
                 hmr      : !isProd(),
                 reloadAll: true
             },
         }, {
-            loader: 'css'
+            loader: 'css-loader'
         } ]
     };
 
     if (!isProd()) {
-        cssLoader.loader.unshift({
-            loader : 'cache',
+        cssLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/css-cache'
             }
@@ -31,7 +31,7 @@ function getClientCssLoader() {
 function getServerCssLoader() {
     return {
         test  : /\.css$/,
-        loader: 'css'
+        loader: 'css-loader'
     };
 }
 

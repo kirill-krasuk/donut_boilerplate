@@ -8,11 +8,11 @@ const options = {
 };
 
 const commonLoaders = [ {
-    loader: 'css'
+    loader: 'css-loader'
 }, {
-    loader: 'resolve-url'
+    loader: 'resolve-url-loader'
 }, {
-    loader : 'sass',
+    loader : 'sass-loader',
     options: {
         sourceMap: !isProd()
     }
@@ -21,7 +21,7 @@ const commonLoaders = [ {
 function getClientSassLoader() {
     const sassLoader = {
         ...options,
-        loader: [  {
+        use: [  {
             loader : MiniCssExtractPlugin.loader,
             options: {
                 hmr      : !isProd(),
@@ -33,8 +33,8 @@ function getClientSassLoader() {
     };
 
     if (!isProd()) {
-        sassLoader.loader.unshift({
-            loader : 'cache',
+        sassLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/sass-cache'
             }
@@ -47,7 +47,7 @@ function getClientSassLoader() {
 function getServerSassLoader() {
     return {
         ...options,
-        loader: commonLoaders
+        use: commonLoaders
     };
 }
 
