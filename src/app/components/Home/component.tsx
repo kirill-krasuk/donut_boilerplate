@@ -1,12 +1,16 @@
-import React             from 'react';
+import { FC }            from 'react';
 import { EOLocale as T } from 'eo-locale';
 import { routes }        from '@app/routes/routes';
 import Header            from '@app/components/Header';
 import * as S            from './styled';
 import messages          from './messages';
 import { Props }         from './types';
+import * as test         from './test';
 
-const Home: React.FC<Props> = () => (
+test.a();
+test.b();
+
+const Home: FC<Props> = () => (
     <>
         <Header />
         <S.Container>

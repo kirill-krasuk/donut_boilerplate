@@ -1,4 +1,3 @@
-import React                   from 'react';
 import { Helmet }              from 'react-helmet';
 import { Home }                from '@app/components';
 import prefetch                from '@app/components/Home/prefetch';

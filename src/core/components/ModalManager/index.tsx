@@ -1,4 +1,4 @@
-import React                from 'react';
+import { FC }               from 'react';
 import { createPortal }     from 'react-dom';
 import { useSelector }      from 'react-redux';
 import * as O               from 'fp-ts/lib/Option';
@@ -10,7 +10,7 @@ import { Modals }           from '@app/enums/modal';
 import * as S               from './styled';
 import modals               from './modals';
 
-const ModalManager: React.FC = () => {
+const ModalManager: FC = () => {
     const modalIdOption = useSelector(getModalIdOption);
 
     const getModalNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('modal'));
