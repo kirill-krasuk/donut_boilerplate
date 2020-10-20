@@ -17,7 +17,6 @@ module.exports = configureBundler({
     minimize : true,
     minimizer: [
         new TerserPlugin({
-            cache        : true,
             parallel     : true,
             terserOptions: {
                 warnings       : false,
@@ -40,7 +39,6 @@ module.exports = configureBundler({
             filename: '[path].gz[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
-
         new BrotliPlugin({
             filename: '[path].br[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
