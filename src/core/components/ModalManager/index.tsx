@@ -1,7 +1,6 @@
 import React                from 'react';
 import { createPortal }     from 'react-dom';
 import { useSelector }      from 'react-redux';
-import { hot }              from 'react-hot-loader/root';
 import * as O               from 'fp-ts/lib/Option';
 import { IO }               from 'fp-ts/lib/IO';
 import { pipe }             from 'fp-ts/lib/pipeable';
@@ -50,4 +49,4 @@ const ModalManager: React.FC = () => {
     );
 };
 
-export default hot(ModalManager);
+export default ModalManager;

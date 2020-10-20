@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import React, { useEffect }                     from 'react';
-import { hot }                                  from 'react-hot-loader/root';
 import { useSelector, useDispatch }             from 'react-redux';
 import { renderRoutes, matchRoutes }            from 'react-router-config';
 import { ThemeProvider }                        from 'styled-components/macro';
@@ -91,4 +90,4 @@ const Root: React.FC<Props> = (props) => {
     );
 };
 
-export default hot(Root);
+export default Root;

@@ -14,7 +14,7 @@
     "env": {
         "development": {
             "plugins": [
-                "react-hot-loader/babel" // hot module reloading
+                "react-refresh/babel"
             ]
         },
         "production": {
