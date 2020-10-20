@@ -16,22 +16,17 @@ const PATHS = {
 };
 
 module.exports = (env, argv) => ({
-    mode   : argv.mode,
-    target : 'node',
-    entry  : PATHS.entry,
-    devtool: false,
-    node   : {
+    mode  : argv.mode,
+    target: 'node',
+    entry : PATHS.entry,
+    node  : {
         __dirname : true,
         __filename: false
     },
     output: {
-        path         : PATHS.output,
-        filename     : 'server.js',
-        publicPath   : '/dist/',
-        libraryTarget: 'commonjs2'
-    },
-    resolveLoader: {
-        moduleExtensions: [ '-loader' ]
+        path      : PATHS.output,
+        filename  : 'server.js',
+        publicPath: '/dist/',
     },
     resolve: {
         extensions: [
@@ -57,12 +52,12 @@ module.exports = (env, argv) => ({
         ]
     },
     externals: [ nodeExternals({
-        whitelist: [
+        allowlist: [
             /\.(eot|woff|woff2|ttf|otf)$/,
             /\.(svg|png|jpg|jpeg|gif|ico)$/,
             /\.(mp4|mp3|ogg|swf|webp)$/,
             /\.(css|scss|sass|sss|less)$/
-        ].filter(x => x)
+        ].filter(Boolean)
     }) ],
     plugins: [
         new Dotenv()
