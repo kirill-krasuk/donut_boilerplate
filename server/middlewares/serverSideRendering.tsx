@@ -18,7 +18,8 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     res.set('X-Is-Cacheable', 'true');
 
     const { theme: mode = 'dark', locale = 'en', token } = req.cookies;
-    const history                                        = createMemoryHistory({
+
+    const history = createMemoryHistory({
         initialEntries: [ req.url ]
     });
 
