@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import './shim';
 
-import express                 from 'express';
+import express, { Response }   from 'express';
 import shrinkRay               from 'shrink-ray-current';
 import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
@@ -28,7 +28,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/dist', useStatic(`${ __dirname  }/../dist`, { maxAge: ONE_MONTH_CACHE }));
+app.use('/dist', useStatic(`${ __dirname  }/../dist`, {
+    maxAge    : ONE_MONTH_CACHE,
+    setHeaders: (res: Response) => {
+        res.set('Service-Worker-Allowed', '/');
+        res.set('X-Is-Cacheable', 'true');
+    }
+}));
 app.use('/sw.js', useStatic(`${ __dirname  }/../dist/sw.js`));
 app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), { enableBrotli: true }));
 app.use('/images', useStatic(`${ __dirname  }/../public/images`, { maxAge: ONE_MONTH_CACHE }));
