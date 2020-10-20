@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Provider }         from 'react-redux';
-import { hot }              from 'react-hot-loader/root';
 import { fromEvent }        from 'rxjs';
 import * as IO              from 'fp-ts/lib/IO';
 import * as O               from 'fp-ts/lib/Option';
@@ -51,4 +50,4 @@ const App: React.FC = () => {
     );
 };
 
-export default hot(App);
+export default App;

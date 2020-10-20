@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const webpack                        = require('webpack');
-const path                           = require('path');
-const { InjectManifest }             = require('workbox-webpack-plugin');
-const { CleanWebpackPlugin }         = require('clean-webpack-plugin');
-const LoadablePlugin                 = require('@loadable/webpack-plugin');
-const Dotenv                         = require('dotenv-webpack');
-const MiniCssExtractPlugin           = require('mini-css-extract-plugin');
-const HtmlPlugin                     = require('html-webpack-plugin');
-const HtmlHardDiskPlugin             = require('html-webpack-harddisk-plugin');
-const HtmlPugPlugin                  = require('html-webpack-pug-plugin');
-const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
-const ImageminWebpWebpackPlugin      = require('imagemin-webp-webpack-plugin');
+const webpack                         = require('webpack');
+const path                            = require('path');
+const { InjectManifest }              = require('workbox-webpack-plugin');
+const { CleanWebpackPlugin }          = require('clean-webpack-plugin');
+const LoadablePlugin                  = require('@loadable/webpack-plugin');
+const Dotenv                          = require('dotenv-webpack');
+const MiniCssExtractPlugin            = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin               = require('html-webpack-plugin');
+const HtmlHardDiskPlugin              = require('html-webpack-harddisk-plugin');
+const HtmlPugPlugin                   = require('html-webpack-pug-plugin');
+const { HtmlWebpackSkipAssetsPlugin } = require('html-webpack-skip-assets-plugin');
+const ImageminWebpWebpackPlugin       = require('imagemin-webp-webpack-plugin');
 
 const { getJsLoader }               = require('./loaders/js-loader');
 const { getImageLoader }            = require('./loaders/image-loader');
@@ -50,10 +50,7 @@ module.exports = {
                 publicPath   : '/dist/',
                 pathinfo     : false,
             },
-            devtool      : options.devtool || false,
-            resolveLoader: {
-                moduleExtensions: [ '-loader' ]
-            },
+            devtool: options.devtool || false,
             resolve: {
                 extensions: [
                     '.ts',
@@ -66,7 +63,6 @@ module.exports = {
                     '.json'
                 ],
                 alias: {
-                    'react-dom': isProd ? 'react-dom' : '@hot-loader/react-dom',
                     'fp-ts/lib': 'fp-ts/es6' // use import in app from lib
                 }
             },
@@ -74,27 +70,29 @@ module.exports = {
                 runtimeChunk: 'single',
                 minimize    : options.minimize || false,
                 minimizer   : options.minimizer,
+                emitOnErrors: options.emitOnErrors || false,
                 splitChunks : {
                     cacheGroups: {
-                        reactVendor: {
+                        default: {
                             test              : /(react|redux)/g,
-                            name              : 'react-vendors',
+                            filename          : 'react-vendors.js',
                             chunks            : 'initial',
                             reuseExistingChunk: true,
-                            priority          : 40
+                            priority          : -10
                         },
-                        vendors: {
+                        defaultVendors: {
                             test              : /[\\/]node_modules[\\/]/,
-                            name              : 'vendors',
+                            filename          : 'vendors.js',
                             chunks            : 'initial',
                             reuseExistingChunk: true,
-                            priority          : 30
+                            priority          : -20
                         }
                     }
                 }
             },
             module: {
-                rules: [
+                unsafeCache: true,
+                rules      : [
                     getJsLoader(),
                     getClientCssLoader(),
                     getClientSassLoader(),
@@ -119,18 +117,18 @@ module.exports = {
                     strict           : true
                 }),
                 new InjectManifest({
-                    swDest           : './sw.js',
-                    importWorkboxFrom: 'cdn',
-                    include          : /(\.js(\.gz)?$)/,
-                    swSrc            : `./internals/sw-manifest.${ options.mode }.js`,
+                    swDest : './sw.js',
+                    include: [ '**/*.js', '**/*.js.gz' ],
+                    exclude: [ '**/*.hot-update.json' ],
+                    swSrc  : './internals/service-worker.js',
                 }),
-                new HtmlPlugin({
+                new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
+                new HtmlWebpackPlugin({
                     template         : paths.template,
                     filename         : paths.view,
                     alwaysWriteToDisk: true,
                     excludeAssets    : [ /\.(js|css)/ ]
                 }),
-                new HtmlWebpackExcludeAssetsPlugin(), // for excludeAssets
                 new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
                 new HtmlPugPlugin(),
                 new MiniCssExtractPlugin({
@@ -155,6 +153,7 @@ module.exports = {
                     cleanAfterEveryBuildPatterns: [
                         '!*.server.js',
                         '*.hot-update.json',
+                        '!index.pug',
                         'precache-manifest.*.js'
                     ],
                 }),
