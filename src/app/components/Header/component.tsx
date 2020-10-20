@@ -1,4 +1,4 @@
-import React                        from 'react';
+import { FC }                       from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { EOLocale as T }            from 'eo-locale';
 import { Sun }                      from '@styled-icons/fa-solid/Sun';
@@ -36,7 +36,7 @@ const themeLogoFactory = createFactory({
     [Theme.Light]: S.DarkLogo
 });
 
-const Header: React.FC = () => {
+const Header: FC = () => {
     const dispatch = useDispatch();
 
     const mode   = useSelector(getMode);

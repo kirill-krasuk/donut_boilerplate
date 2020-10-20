@@ -1,9 +1,9 @@
-import React      from 'react';
+import { FC }     from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Second } from '@app/components';
 
-const SecondPage: React.FC = () => (
+const SecondPage: FC = () => (
     <>
         <Helmet
             title="Second page"

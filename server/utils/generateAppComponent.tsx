@@ -1,4 +1,3 @@
-import React                     from 'react';
 import { Provider }              from 'react-redux';
 import { renderRoutes }          from 'react-router-config';
 import { StaticRouter }          from 'react-router';

@@ -1,4 +1,4 @@
-import React                 from 'react';
+import { FC }                from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import styled                from 'styled-components/macro';
 
@@ -30,7 +30,7 @@ const Link = styled(ReactLink)`
     margin-top: 20px;
 `;
 
-const Page404: React.FC = () => (
+const Page404: FC = () => (
     <Container>
         <Title>
             4

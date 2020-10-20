@@ -1,11 +1,11 @@
-import React             from 'react';
+import { FC }            from 'react';
 import { EOLocale as T } from 'eo-locale';
 import { routes }        from '@app/routes/routes';
 import Header            from '@app/components/Header';
 import * as S            from './styled';
 import messages          from './messages';
 
-const Second: React.FC = () => (
+const Second: FC = () => (
     <>
         <Header />
         <S.Container>
