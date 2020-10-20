@@ -5,9 +5,9 @@ const addHash = createHashHelper(isProd());
 
 function getFontsLoader() {
     const fontsLoader = {
-        test  : /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: [ {
-            loader : 'file',
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use : [ {
+            loader : 'file-loader',
             options: {
                 name      : addHash('[name].[ext]', 'contenthash:8'),
                 outputPath: '../public/fonts/build',
@@ -17,8 +17,8 @@ function getFontsLoader() {
     };
 
     if (!isProd()) {
-        fontsLoader.loader.unshift({
-            loader : 'cache',
+        fontsLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/fonts-cache'
             }

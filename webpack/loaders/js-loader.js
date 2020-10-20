@@ -3,13 +3,13 @@ const { isProd } = require('../utils/isProd');
 function getJsLoader() {
     const jsLoader = {
         test   : /\.(j|t)s(x)?$/,
-        loader : [ { loader: 'babel' } ],
+        use    : [ { loader: 'babel-loader' } ],
         exclude: [ /node_modules/, /\.(spec|test)\.js$/ ]
     };
 
     if (!isProd()) {
-        jsLoader.loader.unshift({
-            loader : 'cache',
+        jsLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/js-cache'
             }
