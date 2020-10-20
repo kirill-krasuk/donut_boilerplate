@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 require('@babel/register')({
     plugins: [
         'dynamic-import-node',
@@ -13,3 +14,9 @@ require('abortcontroller-polyfill/dist/polyfill-patch-fetch');
 
 require('@server/polyfills/promise');
 require('@server/polyfills/array');
+
+// @ts-expect-error
+global.$RefreshReg$ = () => {};
+
+// @ts-expect-error
+global.$RefreshSig$ = () => () => {};
