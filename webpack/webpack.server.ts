@@ -1,4 +1,3 @@
-import webpack                       from 'webpack';
 import path                          from 'path';
 import nodeExternals                 from 'webpack-node-externals';
 import Dotenv                        from 'dotenv-webpack';
@@ -10,7 +9,6 @@ import { getServerCssLoader }        from './loaders/css-loader';
 import { getServerSassLoader }       from './loaders/sass-loader';
 import { getSVGLoader }              from './loaders/svg-loader';
 import { getServerSassModuleLoader } from './loaders/sass-module-loader';
-import { bundlingProgress }          from './utils/bundlingProgress';
 
 const PATHS = {
     entry : path.resolve(__dirname, '..', 'server/index.ts'),
@@ -36,12 +34,12 @@ const serverConfig = (_, argv) => ({
             '.ts',
             '.tsx',
             '.js',
-            '.jsx',
             '.css',
             '.sass',
-            '.scss',
             '.json'
         ],
+        symlinks        : false,
+        cacheWithContext: false,
     },
     module: {
         rules: [
@@ -63,8 +61,7 @@ const serverConfig = (_, argv) => ({
         ].filter(Boolean)
     }) ],
     plugins: [
-        new Dotenv(),
-        new webpack.ProgressPlugin(bundlingProgress('Server progress bundling: '))
+        new Dotenv()
     ]
 });
 

@@ -32,6 +32,24 @@ export default configureBundler({
             }),
             new OptimizeCssAssetsPlugin()
         ],
+        splitChunks: {
+            cacheGroups: {
+                default: {
+                    test              : /(react|redux)/g,
+                    filename          : 'react-vendors.js',
+                    chunks            : 'initial',
+                    reuseExistingChunk: true,
+                    priority          : -10
+                },
+                defaultVendors: {
+                    test              : /[\\/]node_modules[\\/]/,
+                    filename          : 'vendors.js',
+                    chunks            : 'initial',
+                    reuseExistingChunk: true,
+                    priority          : -20
+                }
+            }
+        },
     },
     plugins: [
         new CompressionPlugin({
