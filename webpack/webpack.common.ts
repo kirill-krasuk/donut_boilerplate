@@ -70,7 +70,7 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
             runtimeChunk: 'single',
             ...options.optimization,
         },
-        cache : options.cache || null,
+        cache : options.cache || false,
         stats : options.stats,
         module: {
             unsafeCache: true,
