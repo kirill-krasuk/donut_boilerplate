@@ -1,10 +1,6 @@
 #!/bin/bash
 
-NODE_VERSION=$(node -v)
-NPM_VERSION=$(npm -v)
-
-echo used node version ${NODE_VERSION}
-echo used npm version ${NPM_VERSION}
+bash ./scripts/node_version.sh
 
 if [ ! -d "./node_modules/" ]; then
     echo node_modules not found
