@@ -1,15 +1,15 @@
 {
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "target": "es5",
+        "target": "es2015",
+        "module": "esnext",
         "lib": ["es5", "es6", "es7", "es2017", "dom"],
 		"baseUrl": "./",
         "rootDir": "./",
         "allowJs": false,
         "checkJs": false,
         "strict": true,
-        "jsx": "react",
-        "module": "esnext",
+        "jsx": "react-jsx",
         "moduleResolution": "node",
         "noEmit": true,
         "noUnusedLocals": true,

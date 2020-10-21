@@ -17,7 +17,7 @@ const parseOtherValues = flow(
 );
 
 export const getEnv = (getEnv: IO.IO<NodeJS.ProcessEnv>) => <T = string>(key: string, defaultValue?: T) => pipe(
-    E.fromNullable(new Error('Such a variable does not exist'))(getEnv()[key]),
+    E.fromNullable(new Error(`Such a variable ${ key } does not exist`))(getEnv()[key]),
     E.map(dropEmptyValue),
     (either) => pipe(
         either,

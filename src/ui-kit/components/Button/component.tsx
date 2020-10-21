@@ -1,6 +1,4 @@
-import React, { FC }                 from 'react';
-import { hot }                       from 'react-hot-loader/root';
-
+import { FC }                        from 'react';
 import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 import * as S                        from './styled';
 import { Props }                     from './types';
@@ -32,4 +30,4 @@ Button.defaultProps = {
     style: ButtonStyles.Primary
 };
 
-export default hot(Button);
+export default Button;

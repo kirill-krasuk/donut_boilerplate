@@ -1,5 +1,3 @@
-import React            from 'react';
-
 import { ButtonStyles } from '@ui-kit/enums/button';
 import { Button }       from './component';
 

@@ -1,26 +1,18 @@
 {
     "presets": [
-        // [
-        //     "@babel/preset-env",
-        //     {
-        //         "targets": {
-        //             "esmodules": true
-        //         }
-        //     }
-        // ],
         "@babel/preset-typescript",
-        "@babel/preset-react"
+        ["@babel/preset-react", { "runtime": "automatic" }]
     ],
     "env": {
         "development": {
             "plugins": [
-                "react-hot-loader/babel" // hot module reloading
+                "react-refresh/babel"
             ]
         },
         "production": {
             "plugins": [
                 [ "transform-remove-console", {
-                    "exclude": [ "error", "warn" ]
+                    "exclude": [ "error", "warn", "info" ]
                 } ],
                 "transform-remove-debugger",
                 "@babel/plugin-transform-react-inline-elements",
@@ -53,7 +45,6 @@
         ],
         "macros", // babel-plugin-macros for libraries, who's use runtime
         "ramda",
-        "transform-react-jsx",
         "@loadable/babel-plugin", // for loadable chunks
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }],

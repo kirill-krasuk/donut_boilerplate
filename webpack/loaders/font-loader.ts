@@ -1,13 +1,13 @@
-const { isProd }           = require('../utils/isProd');
-const { createHashHelper } = require('../utils/createHashHelper');
+import { isProd }           from '../utils/isProd';
+import { createHashHelper } from '../utils/createHashHelper';
 
 const addHash = createHashHelper(isProd());
 
-function getFontsLoader() {
-    const fontsLoader = {
-        test  : /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: [ {
-            loader : 'file',
+export function getFontsLoader() {
+    const fontsLoader: Record<string, any> = {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use : [ {
+            loader : 'file-loader',
             options: {
                 name      : addHash('[name].[ext]', 'contenthash:8'),
                 outputPath: '../public/fonts/build',
@@ -17,8 +17,8 @@ function getFontsLoader() {
     };
 
     if (!isProd()) {
-        fontsLoader.loader.unshift({
-            loader : 'cache',
+        fontsLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/fonts-cache'
             }
@@ -27,5 +27,3 @@ function getFontsLoader() {
 
     return fontsLoader;
 }
-
-module.exports = { getFontsLoader };

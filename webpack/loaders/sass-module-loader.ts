@@ -1,31 +1,37 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const { isProd } = require('../utils/isProd');
+import { isProd }           from '../utils/isProd';
 
 const options = {
     test: /\.module\.s(c|a)ss$/,
 };
 
 const commonLoaders = [ {
-    loader : 'css',
+    loader : 'thread-loader',
+    options: {
+        workers           : 2,
+        workerParallelJobs: 50,
+    }
+}, {
+    loader : 'css-loader',
     options: {
         modules         : true,
         exportOnlyLocals: true,
         localIdentName  : '[name]__[local]___[hash:base64:5]',
     }
 }, {
-    loader: 'resolve-url',
+    loader: 'resolve-url-loader',
 },  {
-    loader : 'sass',
+    loader : 'sass-loader',
     options: {
         sourceMap: !isProd()
     }
 } ];
 
-function getClientSassModuleLoader() {
-    const sassModuleLoader = {
+export function getClientSassModuleLoader() {
+    const sassModuleLoader: Record<string, any> = {
         ...options,
-        loader: [
+        use: [
             {
                 loader : MiniCssExtractPlugin.loader,
                 options: {
@@ -38,8 +44,8 @@ function getClientSassModuleLoader() {
     };
 
     if (!isProd()) {
-        sassModuleLoader.loader.unshift({
-            loader : 'cache',
+        sassModuleLoader.use.unshift({
+            loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/sass-module-cache'
             }
@@ -49,11 +55,9 @@ function getClientSassModuleLoader() {
     return sassModuleLoader;
 }
 
-function getServerSassModuleLoader() {
+export function getServerSassModuleLoader() {
     return {
         ...options,
-        loader: commonLoaders
+        use: commonLoaders
     };
 }
-
-module.exports = { getClientSassModuleLoader, getServerSassModuleLoader };

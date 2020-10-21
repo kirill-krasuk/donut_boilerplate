@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component }    from 'react';
 
 // import { EHTTPMethod }      from '@core/enums/http';
-import { Props, State }     from './types.js';
+import { Props, State } from './types.js';
 
 class ErrorBoundary extends Component<Props, State> {
     state = {

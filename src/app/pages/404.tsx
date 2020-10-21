@@ -1,6 +1,5 @@
-import React                 from 'react';
+import { FC }                from 'react';
 import { Link as ReactLink } from 'react-router-dom';
-import { hot }               from 'react-hot-loader/root';
 import styled                from 'styled-components/macro';
 
 import DonutZero             from '@images/donut-zero.png';
@@ -31,7 +30,7 @@ const Link = styled(ReactLink)`
     margin-top: 20px;
 `;
 
-const Page404: React.FC = () => (
+const Page404: FC = () => (
     <Container>
         <Title>
             4
@@ -43,4 +42,4 @@ const Page404: React.FC = () => (
     </Container>
 );
 
-export default hot(Page404);
+export default Page404;

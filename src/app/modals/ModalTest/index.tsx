@@ -1,8 +1,8 @@
-import React     from 'react';
+import { FC }    from 'react';
 
 import { Modal } from '@ui-kit/components';
 
-const ModalTest: React.FC = () => (
+const ModalTest: FC = () => (
     <Modal title="Test">
         It is a test modal
     </Modal>

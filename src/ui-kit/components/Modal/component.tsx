@@ -1,8 +1,7 @@
-import React, {
+import {
     FC, useEffect, useRef, useCallback
 } from 'react';
 import { useDispatch }       from 'react-redux';
-import { hot }               from 'react-hot-loader/root';
 import { fromEvent }         from 'rxjs';
 import R                     from 'ramda';
 
@@ -67,4 +66,4 @@ const Modal: FC<Props> = (props) => {
     );
 };
 
-export default hot(Modal);
+export default Modal;

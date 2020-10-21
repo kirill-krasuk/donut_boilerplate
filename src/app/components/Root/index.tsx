@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useEffect }                     from 'react';
-import { hot }                                  from 'react-hot-loader/root';
+import { useEffect, FC }                        from 'react';
 import { useSelector, useDispatch }             from 'react-redux';
 import { renderRoutes, matchRoutes }            from 'react-router-config';
 import { ThemeProvider }                        from 'styled-components/macro';
@@ -22,7 +21,7 @@ import { getInitialProps }                      from '@utils/props/getInitialPro
 import * as S                                   from './styled';
 import { Props }                                from './types';
 
-const Root: React.FC<Props> = (props) => {
+const Root: FC<Props> = (props) => {
     const { route, location, staticContext } = props;
 
     const [ routes ]              = matchRoutes(route.routes!, location.pathname);
@@ -91,4 +90,4 @@ const Root: React.FC<Props> = (props) => {
     );
 };
 
-export default hot(Root);
+export default Root;

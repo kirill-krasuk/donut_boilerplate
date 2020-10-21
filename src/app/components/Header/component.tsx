@@ -1,6 +1,5 @@
-import React                        from 'react';
+import { FC }                       from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { hot }                      from 'react-hot-loader/root';
 import { EOLocale as T }            from 'eo-locale';
 import { Sun }                      from '@styled-icons/fa-solid/Sun';
 import { Moon }                     from '@styled-icons/fa-solid/Moon';
@@ -37,7 +36,7 @@ const themeLogoFactory = createFactory({
     [Theme.Light]: S.DarkLogo
 });
 
-const Header: React.FC = () => {
+const Header: FC = () => {
     const dispatch = useDispatch();
 
     const mode   = useSelector(getMode);
@@ -76,4 +75,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default hot(Header);
+export default Header;

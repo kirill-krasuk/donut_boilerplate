@@ -18,5 +18,5 @@ fi
 
 echo -e "\nStart application\n"
 
-./node_modules/.bin/webpack --config ./webpack/webpack.server.js --mode=development
+./node_modules/.bin/cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack  --config ./webpack/webpack.server.ts --mode=development
 ./node_modules/.bin/cross-env BABEL_ENV=development NODE_ENV=development node ./dist/server.js
