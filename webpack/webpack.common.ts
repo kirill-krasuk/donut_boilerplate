@@ -36,6 +36,8 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
 
     const addHash = createHashHelper(isProd);
 
+    const serviceWorkerEnabled = JSON.parse(process.env.SERVICE_WORKER_ENABLE as string);
+
     return {
         context,
         target: 'browserslist',
@@ -95,7 +97,7 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
                 silent           : false,
                 strict           : true
             }),
-            new InjectManifest({
+            serviceWorkerEnabled && new InjectManifest({
                 swDest : './sw.js',
                 include: [ '**/*.js', '**/*.js.gz' ],
                 exclude: [ '**/*.hot-update.json' ],
@@ -136,6 +138,6 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
                     'precache-manifest.*.js'
                 ],
             }),
-        ])
+        ]).filter(Boolean)
     };
 }
