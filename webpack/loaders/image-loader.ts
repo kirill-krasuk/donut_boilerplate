@@ -4,7 +4,7 @@ import { createHashHelper } from '../utils/createHashHelper';
 const addHash = createHashHelper(isProd());
 
 export function getImageLoader() {
-    return {
+    const imageLoader: Record<string, any> = {
         test: /\.(gif|png|jpe?g)$/i,
         use : [
             {
@@ -36,4 +36,15 @@ export function getImageLoader() {
             }
         ]
     };
+
+    if (isProd()) {
+        imageLoader.use.unshift({
+            loader : 'cache-loader',
+            options: {
+                cacheDirectory: '.cache/images-cache'
+            }
+        });
+    }
+
+    return imageLoader;
 }
