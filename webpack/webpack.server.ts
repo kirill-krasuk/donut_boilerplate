@@ -1,23 +1,23 @@
-const webpack       = require('webpack');
-const path          = require('path');
-const nodeExternals = require('webpack-node-externals');
-const Dotenv        = require('dotenv-webpack');
+import webpack                       from 'webpack';
+import path                          from 'path';
+import nodeExternals                 from 'webpack-node-externals';
+import Dotenv                        from 'dotenv-webpack';
 
-const { getJsLoader }               = require('./loaders/js-loader');
-const { getImageLoader }            = require('./loaders/image-loader');
-const { getFontsLoader }            = require('./loaders/font-loader');
-const { getServerCssLoader }        = require('./loaders/css-loader');
-const { getServerSassLoader }       = require('./loaders/sass-loader');
-const { getSVGLoader }              = require('./loaders/svg-loader');
-const { getServerSassModuleLoader } = require('./loaders/sass-module-loader');
-const { bundlingProgress }          = require('./utils/bundlingProgress');
+import { getJsLoader }               from './loaders/js-loader';
+import { getImageLoader }            from './loaders/image-loader';
+import { getFontsLoader }            from './loaders/font-loader';
+import { getServerCssLoader }        from './loaders/css-loader';
+import { getServerSassLoader }       from './loaders/sass-loader';
+import { getSVGLoader }              from './loaders/svg-loader';
+import { getServerSassModuleLoader } from './loaders/sass-module-loader';
+import { bundlingProgress }          from './utils/bundlingProgress';
 
 const PATHS = {
     entry : path.resolve(__dirname, '..', 'server/index.ts'),
     output: path.resolve(__dirname, '..', 'dist')
 };
 
-module.exports = (env, argv) => ({
+const serverConfig = (_, argv) => ({
     mode  : argv.mode,
     target: 'node',
     entry : PATHS.entry,
@@ -67,3 +67,5 @@ module.exports = (env, argv) => ({
         new webpack.ProgressPlugin(bundlingProgress('Server progress bundling: '))
     ]
 });
+
+export default serverConfig;

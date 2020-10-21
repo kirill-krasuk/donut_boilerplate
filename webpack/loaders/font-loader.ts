@@ -1,10 +1,10 @@
-const { isProd }           = require('../utils/isProd');
-const { createHashHelper } = require('../utils/createHashHelper');
+import { isProd }           from '../utils/isProd';
+import { createHashHelper } from '../utils/createHashHelper';
 
 const addHash = createHashHelper(isProd());
 
-function getFontsLoader() {
-    const fontsLoader = {
+export function getFontsLoader() {
+    const fontsLoader: Record<string, any> = {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use : [ {
             loader : 'file-loader',
@@ -27,5 +27,3 @@ function getFontsLoader() {
 
     return fontsLoader;
 }
-
-module.exports = { getFontsLoader };

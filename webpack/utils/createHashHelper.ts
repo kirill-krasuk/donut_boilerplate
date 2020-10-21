@@ -1,9 +1,7 @@
-function createHashHelper(isProd) {
-    return function (template, hash) {
+export function createHashHelper(isProd: boolean) {
+    return function (template: string, hash: string) {
         return isProd
             ? template.replace(/\.[^.]+$/, `.[${ hash }]$&`)
             : template;
     };
 }
-
-module.exports = { createHashHelper };

@@ -5,10 +5,6 @@ import Header            from '@app/components/Header';
 import * as S            from './styled';
 import messages          from './messages';
 import { Props }         from './types';
-import * as test         from './test';
-
-test.a();
-test.b();
 
 const Home: FC<Props> = () => (
     <>

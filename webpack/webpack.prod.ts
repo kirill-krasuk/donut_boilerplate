@@ -1,12 +1,12 @@
-const BrotliPlugin             = require('brotli-webpack-plugin');
-const CompressionPlugin        = require('compression-webpack-plugin');
-const OptimizeCssAssetsPlugin  = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin             = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+import BrotliPlugin                from 'brotli-webpack-plugin';
+import CompressionPlugin           from 'compression-webpack-plugin';
+import OptimizeCssAssetsPlugin     from 'optimize-css-assets-webpack-plugin';
+import TerserPlugin                from 'terser-webpack-plugin';
+import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
 
-const { paths, configureBundler } = require('./webpack.common');
+import { paths, configureBundler } from './webpack.common';
 
-module.exports = configureBundler({
+export default configureBundler({
     mode : 'production',
     entry: {
         bundle: [
@@ -21,13 +21,9 @@ module.exports = configureBundler({
             new TerserPlugin({
                 parallel     : true,
                 terserOptions: {
-                    warnings       : false,
-                    parse          : {},
-                    compress       : {},
+                    compress       : true,
                     mangle         : true,
-                    output         : null,
                     toplevel       : false,
-                    nameCache      : null,
                     ie8            : false,
                     keep_classnames: undefined,
                     keep_fnames    : false,
@@ -43,8 +39,8 @@ module.exports = configureBundler({
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
         new BrotliPlugin({
-            filename: '[path].br[query]',
-            test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+            asset: '[path].br[query]',
+            test : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
         new BundleAnalyzerPlugin({
             analyzerMode  : 'static',

@@ -1,13 +1,13 @@
-const webpack                   = require('webpack');
-const { BundleAnalyzerPlugin }  = require('webpack-bundle-analyzer');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+import webpack                     from 'webpack';
+import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
+import ReactRefreshWebpackPlugin   from '@pmmmwh/react-refresh-webpack-plugin';
 
-// const CircularDependencyPlugin = require('circular-dependency-plugin');
+// import CircularDependencyPlugin from 'circular-dependency-plugin';
 
-const { paths, configureBundler } = require('./webpack.common');
-const { bundlingProgress }        = require('./utils/bundlingProgress');
+import { paths, configureBundler } from './webpack.common';
+import { bundlingProgress }        from './utils/bundlingProgress';
 
-module.exports = configureBundler({
+export default configureBundler({
     mode : 'development',
     entry: {
         bundle: [
