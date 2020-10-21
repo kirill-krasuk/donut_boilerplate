@@ -5,10 +5,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 // const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { paths, configureBundler } = require('./webpack.common');
-
-const bundlingProgress = (percentage, message) => {
-    process.stdout.write(`\t${ (percentage * 100).toFixed(2) }% ${ message }\r`);
-};
+const { bundlingProgress }        = require('./utils/bundlingProgress');
 
 module.exports = configureBundler({
     mode : 'development',
@@ -20,10 +17,13 @@ module.exports = configureBundler({
         ]
     },
     devtool     : 'eval-cheap-module-source-map',
-    minimizer   : [],
-    watch       : true,
-    emitOnErrors: true,
-    plugins     : [
+    optimization: {
+        usedExports : true,
+        emitOnErrors: true,
+    },
+    stats  : 'normal',
+    watch  : true,
+    plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin({
             overlay: {
@@ -45,6 +45,6 @@ module.exports = configureBundler({
         //     failOnError: true
         // }),
 
-        new webpack.ProgressPlugin(bundlingProgress)
+        new webpack.ProgressPlugin(bundlingProgress('Client progress bundling: '))
     ]
 });
