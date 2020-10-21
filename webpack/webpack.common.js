@@ -41,6 +41,7 @@ module.exports = {
 
         return {
             context,
+            target: 'browserslist',
             mode  : options.mode,
             entry : options.entry,
             output: {
