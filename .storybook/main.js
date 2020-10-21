@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
     stories: ['../src/**/*.stories.tsx'],
     addons: [
-        // 'storybook-addon-react-docgen',
         '@storybook/addon-storysource',
         '@storybook/addon-actions',
         '@storybook/addon-a11y',
