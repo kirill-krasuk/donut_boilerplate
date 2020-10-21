@@ -12,7 +12,7 @@
         "production": {
             "plugins": [
                 [ "transform-remove-console", {
-                    "exclude": [ "error", "warn" ]
+                    "exclude": [ "error", "warn", "info" ]
                 } ],
                 "transform-remove-debugger",
                 "@babel/plugin-transform-react-inline-elements",

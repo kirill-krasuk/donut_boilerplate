@@ -53,7 +53,7 @@ app.use('/', serverSideRendering);
 
 app.listen(+port, (host as string), () => {
     // eslint-disable-next-line no-console
-    console.log(`
+    console.info(`
         =====================================================
         \t\t${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }
                         Server started at 
