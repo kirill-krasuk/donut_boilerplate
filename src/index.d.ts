@@ -60,3 +60,19 @@ declare module 'enzyme-adapter-react-16' {
     const content: any;
     export default content;
 }
+
+declare module 'html-webpack-pug-plugin' {
+    const content: any;
+    export default content;
+}
+
+declare module 'html-webpack-skip-assets-plugin'{
+    const content: any;
+    export const HtmlWebpackSkipAssetsPlugin: any;
+    export default content;
+}
+
+declare module 'imagemin-webp-webpack-plugin'{
+    const content: any;
+    export default content;
+}

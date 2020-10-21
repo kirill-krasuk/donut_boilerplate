@@ -1,6 +1,6 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const { isProd } = require('../utils/isProd');
+import { isProd }           from '../utils/isProd';
 
 const options = {
     test   : /\.s(c|a)ss$/,
@@ -18,8 +18,8 @@ const commonLoaders = [ {
     }
 } ];
 
-function getClientSassLoader() {
-    const sassLoader = {
+export function getClientSassLoader() {
+    const sassLoader: Record<string, any> = {
         ...options,
         use: [  {
             loader : MiniCssExtractPlugin.loader,
@@ -44,11 +44,9 @@ function getClientSassLoader() {
     return sassLoader;
 }
 
-function getServerSassLoader() {
+export function getServerSassLoader() {
     return {
         ...options,
         use: commonLoaders
     };
 }
-
-module.exports = { getClientSassLoader, getServerSassLoader };

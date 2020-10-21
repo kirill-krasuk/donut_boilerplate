@@ -1,7 +1,7 @@
-const { isProd } = require('../utils/isProd');
+import { isProd } from '../utils/isProd';
 
-function getJsLoader() {
-    const jsLoader = {
+export function getJsLoader() {
+    const jsLoader: Record<string, any> = {
         test   : /\.(j|t)s(x)?$/,
         use    : [ { loader: 'babel-loader' } ],
         exclude: [ /node_modules/, /\.(spec|test)\.js$/ ]
@@ -18,5 +18,3 @@ function getJsLoader() {
 
     return jsLoader;
 }
-
-module.exports = { getJsLoader };

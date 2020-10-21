@@ -1,15 +1,13 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
 const { parsed } = dotenv.config();
 
-function collectEnvVars() {
+export function collectEnvVars() {
     return Object
         .keys(parsed || {})
-        .reduce((acc, curr) => {
+        .reduce((acc: Record<string, any>, curr) => {
             acc[curr] = JSON.stringify(process.env[curr]);
 
             return acc;
         }, {});
 }
-
-module.exports = { collectEnvVars };

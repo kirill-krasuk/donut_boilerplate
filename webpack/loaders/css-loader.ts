@@ -1,9 +1,9 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const { isProd } = require('../utils/isProd');
+import { isProd }           from '../utils/isProd';
 
-function getClientCssLoader() {
-    const cssLoader = {
+export function getClientCssLoader() {
+    const cssLoader: Record<string, any> = {
         test: /\.css$/,
         use : [ {
             loader : MiniCssExtractPlugin.loader,
@@ -28,11 +28,9 @@ function getClientCssLoader() {
     return cssLoader;
 }
 
-function getServerCssLoader() {
+export function getServerCssLoader() {
     return {
         test  : /\.css$/,
         loader: 'css-loader'
     };
 }
-
-module.exports = { getClientCssLoader, getServerCssLoader };

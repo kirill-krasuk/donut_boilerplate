@@ -1,9 +1,9 @@
-const { isProd }           = require('../utils/isProd');
-const { createHashHelper } = require('../utils/createHashHelper');
+import { isProd }           from '../utils/isProd';
+import { createHashHelper } from '../utils/createHashHelper';
 
 const addHash = createHashHelper(isProd());
 
-function getImageLoader() {
+export function getImageLoader() {
     return {
         test: /\.(gif|png|jpe?g)$/i,
         use : [
@@ -37,5 +37,3 @@ function getImageLoader() {
         ]
     };
 }
-
-module.exports = { getImageLoader };
