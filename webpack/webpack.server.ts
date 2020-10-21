@@ -28,6 +28,11 @@ const serverConfig = (_, argv) => ({
         filename  : 'server.js',
         publicPath: '/dist/',
     },
+    cache: {
+        type          : 'filesystem',
+        name          : 'server-cache',
+        cacheDirectory: path.resolve(__dirname, '../.cache')
+    },
     stats  : false,
     resolve: {
         extensions: [
