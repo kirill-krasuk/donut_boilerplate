@@ -1,4 +1,4 @@
-import React   from 'react';
+import { FC }  from 'react';
 import * as TE from 'fp-ts/lib/TaskEither';
 
 type RouteObject = {
@@ -6,5 +6,5 @@ type RouteObject = {
     query: string;
 }
 
-export type PrefetchedComponent<TProps> = React.FC<TProps> & { prefetch: (routeObject: RouteObject, auth: boolean) => TE.TaskEither<void, any> }
+export type PrefetchedComponent<TProps> = FC<TProps> & { prefetch: (routeObject: RouteObject, auth: boolean) => TE.TaskEither<void, any> }
 export type PComponent = PrefetchedComponent<any>;

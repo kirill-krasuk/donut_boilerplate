@@ -1,10 +1,9 @@
-import React      from 'react';
-import { hot }    from 'react-hot-loader/root';
+import { FC }     from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Second } from '@app/components';
 
-const SecondPage: React.FC = () => (
+const SecondPage: FC = () => (
     <>
         <Helmet
             title="Second page"
@@ -13,4 +12,4 @@ const SecondPage: React.FC = () => (
     </>
 );
 
-export default hot(SecondPage);
+export default SecondPage;

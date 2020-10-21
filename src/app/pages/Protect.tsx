@@ -1,6 +1,6 @@
-import React from 'react';
+import { FC } from 'react';
 
-const ProtectPage: React.FC = () => (
+const ProtectPage: FC = () => (
     <span>Protected Route</span>
 );
 

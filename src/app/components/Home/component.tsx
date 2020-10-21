@@ -1,14 +1,12 @@
-import React             from 'react';
+import { FC }            from 'react';
 import { EOLocale as T } from 'eo-locale';
-import { hot }           from 'react-hot-loader/root';
-
 import { routes }        from '@app/routes/routes';
 import Header            from '@app/components/Header';
 import * as S            from './styled';
 import messages          from './messages';
 import { Props }         from './types';
 
-const Home: React.FC<Props> = () => (
+const Home: FC<Props> = () => (
     <>
         <Header />
         <S.Container>
@@ -22,4 +20,4 @@ const Home: React.FC<Props> = () => (
     </>
 );
 
-export default hot(Home);
+export default Home;

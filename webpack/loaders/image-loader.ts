@@ -1,14 +1,14 @@
-const { isProd }           = require('../utils/isProd');
-const { createHashHelper } = require('../utils/createHashHelper');
+import { isProd }           from '../utils/isProd';
+import { createHashHelper } from '../utils/createHashHelper';
 
 const addHash = createHashHelper(isProd());
 
-function getImageLoader() {
-    return {
-        test  : /\.(gif|png|jpe?g)$/i,
-        loader: [
+export function getImageLoader() {
+    const imageLoader: Record<string, any> = {
+        test: /\.(gif|png|jpe?g)$/i,
+        use : [
             {
-                loader : 'file',
+                loader : 'file-loader',
                 options: {
                     name      : addHash('[name].[ext]', 'contenthash:8'),
                     outputPath: '../public/images/build',
@@ -16,7 +16,7 @@ function getImageLoader() {
                 }
             },
             {
-                loader : 'image-webpack',
+                loader : 'image-webpack-loader',
                 options: {
                     mozjpeg: {
                         progressive: true,
@@ -36,6 +36,15 @@ function getImageLoader() {
             }
         ]
     };
-}
 
-module.exports = { getImageLoader };
+    if (isProd()) {
+        imageLoader.use.unshift({
+            loader : 'cache-loader',
+            options: {
+                cacheDirectory: '.cache/images-cache'
+            }
+        });
+    }
+
+    return imageLoader;
+}

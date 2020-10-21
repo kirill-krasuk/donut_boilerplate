@@ -1,7 +1,6 @@
-import React                from 'react';
+import { FC }               from 'react';
 import { createPortal }     from 'react-dom';
 import { useSelector }      from 'react-redux';
-import { hot }              from 'react-hot-loader/root';
 import * as O               from 'fp-ts/lib/Option';
 import { IO }               from 'fp-ts/lib/IO';
 import { pipe }             from 'fp-ts/lib/pipeable';
@@ -11,7 +10,7 @@ import { Modals }           from '@app/enums/modal';
 import * as S               from './styled';
 import modals               from './modals';
 
-const ModalManager: React.FC = () => {
+const ModalManager: FC = () => {
     const modalIdOption = useSelector(getModalIdOption);
 
     const getModalNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('modal'));
@@ -50,4 +49,4 @@ const ModalManager: React.FC = () => {
     );
 };
 
-export default hot(ModalManager);
+export default ModalManager;
