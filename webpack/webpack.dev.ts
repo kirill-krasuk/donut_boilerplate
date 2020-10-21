@@ -1,5 +1,6 @@
 import webpack                     from 'webpack';
 import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
+import path                        from 'path';
 import ReactRefreshWebpackPlugin   from '@pmmmwh/react-refresh-webpack-plugin';
 
 // import CircularDependencyPlugin from 'circular-dependency-plugin';
@@ -14,6 +15,11 @@ export default configureBundler({
             `${ paths.entry }`,
             'webpack-hot-middleware/client'
         ]
+    },
+    cache: {
+        type          : 'filesystem',
+        name          : 'dev-client-cache',
+        cacheDirectory: path.resolve(__dirname, '../.cache')
     },
     devtool     : 'eval-cheap-module-source-map',
     optimization: {
