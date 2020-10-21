@@ -38,7 +38,7 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
 
     const serviceWorkerEnabled = JSON.parse(process.env.SERVICE_WORKER_ENABLE as string);
 
-    return {
+    const config: webpack.Configuration = {
         context,
         target: 'browserslist',
         mode  : options.mode,
@@ -50,7 +50,7 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
             publicPath   : '/dist/',
             pathinfo     : false,
         },
-        devtool: options.devtool || false,
+        devtool: options.devtool,
         resolve: {
             extensions: [
                 '.ts',
@@ -70,7 +70,6 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
             runtimeChunk: 'single',
             ...options.optimization,
         },
-        cache : options.cache || false,
         stats : options.stats,
         module: {
             unsafeCache: true,
@@ -141,4 +140,10 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
             }),
         ]).filter(Boolean)
     };
+
+    if (options.cache) {
+        config.cache = options.cache;
+    }
+
+    return config;
 }
