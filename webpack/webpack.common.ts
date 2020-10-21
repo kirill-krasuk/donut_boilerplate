@@ -54,37 +54,19 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
                 '.ts',
                 '.tsx',
                 '.js',
-                '.jsx',
                 '.css',
                 '.sass',
-                '.scss',
                 '.json'
             ],
-            alias: {
+            symlinks        : false,
+            cacheWithContext: false,
+            alias           : {
                 'fp-ts/lib': 'fp-ts/es6' // use import in app from lib
             }
         },
         optimization: {
             runtimeChunk: 'single',
             ...options.optimization,
-            splitChunks : {
-                cacheGroups: {
-                    default: {
-                        test              : /(react|redux)/g,
-                        filename          : 'react-vendors.js',
-                        chunks            : 'initial',
-                        reuseExistingChunk: true,
-                        priority          : -10
-                    },
-                    defaultVendors: {
-                        test              : /[\\/]node_modules[\\/]/,
-                        filename          : 'vendors.js',
-                        chunks            : 'initial',
-                        reuseExistingChunk: true,
-                        priority          : -20
-                    }
-                }
-            }
         },
         stats : options.stats,
         module: {

@@ -6,6 +6,12 @@ export function getClientCssLoader() {
     const cssLoader: Record<string, any> = {
         test: /\.css$/,
         use : [ {
+            loader : 'thread-loader',
+            options: {
+                workers           : 2,
+                workerParallelJobs: 50,
+            }
+        }, {
             loader : MiniCssExtractPlugin.loader,
             options: {
                 hmr      : !isProd(),

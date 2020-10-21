@@ -8,6 +8,12 @@ const options = {
 };
 
 const commonLoaders = [ {
+    loader : 'thread-loader',
+    options: {
+        workers           : 2,
+        workerParallelJobs: 50,
+    }
+}, {
     loader: 'css-loader'
 }, {
     loader: 'resolve-url-loader'

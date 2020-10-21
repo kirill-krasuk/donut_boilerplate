@@ -5,7 +5,6 @@ import ReactRefreshWebpackPlugin   from '@pmmmwh/react-refresh-webpack-plugin';
 // import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 import { paths, configureBundler } from './webpack.common';
-import { bundlingProgress }        from './utils/bundlingProgress';
 
 export default configureBundler({
     mode : 'development',
@@ -18,8 +17,11 @@ export default configureBundler({
     },
     devtool     : 'eval-cheap-module-source-map',
     optimization: {
-        usedExports : true,
-        emitOnErrors: true,
+        usedExports           : true,
+        emitOnErrors          : true,
+        removeAvailableModules: false,
+        removeEmptyChunks     : false,
+        splitChunks           : false,
     },
     stats  : 'normal',
     watch  : true,
@@ -44,7 +46,5 @@ export default configureBundler({
         //     },
         //     failOnError: true
         // }),
-
-        new webpack.ProgressPlugin(bundlingProgress('Client progress bundling: '))
     ]
 });
