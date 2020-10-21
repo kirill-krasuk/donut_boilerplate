@@ -14,26 +14,29 @@ module.exports = configureBundler({
             `${ paths.entry }`,
         ]
     },
-    minimize : true,
-    minimizer: [
-        new TerserPlugin({
-            parallel     : true,
-            terserOptions: {
-                warnings       : false,
-                parse          : {},
-                compress       : {},
-                mangle         : true,
-                output         : null,
-                toplevel       : false,
-                nameCache      : null,
-                ie8            : false,
-                keep_classnames: undefined,
-                keep_fnames    : false,
-                safari10       : false,
-            },
-        }),
-        new OptimizeCssAssetsPlugin()
-    ],
+    stats       : 'detailed',
+    optimization: {
+        minimize : true,
+        minimizer: [
+            new TerserPlugin({
+                parallel     : true,
+                terserOptions: {
+                    warnings       : false,
+                    parse          : {},
+                    compress       : {},
+                    mangle         : true,
+                    output         : null,
+                    toplevel       : false,
+                    nameCache      : null,
+                    ie8            : false,
+                    keep_classnames: undefined,
+                    keep_fnames    : false,
+                    safari10       : false,
+                },
+            }),
+            new OptimizeCssAssetsPlugin()
+        ],
+    },
     plugins: [
         new CompressionPlugin({
             filename: '[path].gz[query]',

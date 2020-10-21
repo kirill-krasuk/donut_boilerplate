@@ -20,15 +20,6 @@ export function useDevMiddlewares(app: Application): void {
 
             // writeToDisk: (name: string) => new RegExp(/(\.json|\.pug|sw\.js|manifest|svg)/, 'gi').test(name),
             writeToDisk: true,
-            stats      : {
-                all         : false,
-                modules     : true,
-                maxModules  : 0,
-                errors      : true,
-                warnings    : env === 'development',
-                moduleTrace : true,
-                errorDetails: true
-            }
         }));
 
         app.use(HotMiddleware(bundler));

@@ -1,3 +1,4 @@
+const webpack       = require('webpack');
 const path          = require('path');
 const nodeExternals = require('webpack-node-externals');
 const Dotenv        = require('dotenv-webpack');
@@ -9,6 +10,7 @@ const { getServerCssLoader }        = require('./loaders/css-loader');
 const { getServerSassLoader }       = require('./loaders/sass-loader');
 const { getSVGLoader }              = require('./loaders/svg-loader');
 const { getServerSassModuleLoader } = require('./loaders/sass-module-loader');
+const { bundlingProgress }          = require('./utils/bundlingProgress');
 
 const PATHS = {
     entry : path.resolve(__dirname, '..', 'server/index.ts'),
@@ -28,6 +30,7 @@ module.exports = (env, argv) => ({
         filename  : 'server.js',
         publicPath: '/dist/',
     },
+    stats  : false,
     resolve: {
         extensions: [
             '.ts',
@@ -60,6 +63,7 @@ module.exports = (env, argv) => ({
         ].filter(Boolean)
     }) ],
     plugins: [
-        new Dotenv()
+        new Dotenv(),
+        new webpack.ProgressPlugin(bundlingProgress('Server progress bundling: '))
     ]
 });

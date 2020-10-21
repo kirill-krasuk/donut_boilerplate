@@ -68,9 +68,7 @@ module.exports = {
             },
             optimization: {
                 runtimeChunk: 'single',
-                minimize    : options.minimize || false,
-                minimizer   : options.minimizer,
-                emitOnErrors: options.emitOnErrors || false,
+                ...options.optimization,
                 splitChunks : {
                     cacheGroups: {
                         default: {
@@ -90,6 +88,7 @@ module.exports = {
                     }
                 }
             },
+            stats : options.stats,
             module: {
                 unsafeCache: true,
                 rules      : [
