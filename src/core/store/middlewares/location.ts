@@ -1,6 +1,6 @@
 import { Middleware }             from 'redux';
 
-import { isFirstRenderingAction } from '@core/actions/location';
+import { isFirstRenderingAction } from '@core/store/actions/location';
 import { getIsFirstRendering }    from '@core/selectors/location';
 import { Action }                 from '@core/types/actions';
 

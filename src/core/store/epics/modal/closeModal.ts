@@ -8,7 +8,7 @@ import { pipe }                                                   from 'fp-ts/li
 import { flow }                                                   from 'fp-ts/lib/function';
 
 import { CloseModal }                                             from '@core/types/modal';
-import { CLOSE_MODAL, setModalHistoryFlagAction, setModalAction } from '@core/actions/modal';
+import { CLOSE_MODAL, setModalHistoryFlagAction, setModalAction } from '@core/store/actions/modal';
 
 const checkHasModalQuery = (search: string) => !!~search.indexOf('action');
 

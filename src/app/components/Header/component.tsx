@@ -5,10 +5,10 @@ import { Sun }                      from '@styled-icons/fa-solid/Sun';
 import { Moon }                     from '@styled-icons/fa-solid/Moon';
 import R                            from 'ramda';
 
-import { changeThemeAction }        from '@core/actions/theme';
+import { changeThemeAction }        from '@core/store/actions/theme';
 import { getMode }                  from '@core/selectors/theme';
 import { getLocale }                from '@core/selectors/locale';
-import { changeLocaleAction }       from '@core/actions/locale/index';
+import { changeLocaleAction }       from '@core/store/actions/locale/index';
 import { Theme }                    from '@core/enums/theme';
 import { Locale }                   from '@core/enums/locale';
 import { createToggleHelper }       from '@core/utils/toggler';

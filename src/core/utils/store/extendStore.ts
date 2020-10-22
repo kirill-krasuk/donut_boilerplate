@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { History }                     from 'history';
 
-import createRootReducer               from '@core/reducers';
+import createRootReducer               from '@core/store/reducers';
 import { ExtendedStore, AsyncReducer } from './types';
 
 export const extendStore = (store: ExtendedStore, history: History<any>, asyncState: Record<string, any>): void => {

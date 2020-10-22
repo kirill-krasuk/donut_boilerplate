@@ -1,6 +1,6 @@
 import { combineEpics }   from 'redux-observable';
 
-import epics              from '@app/epics';
+import epics              from '@app/store/epics';
 import { callModalEpic }  from './modal/callModal';
 import { closeModalEpic } from './modal/closeModal';
 import { locationEpic }   from './location';
