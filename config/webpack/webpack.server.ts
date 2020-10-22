@@ -11,8 +11,8 @@ import { getSVGLoader }              from './loaders/svg-loader';
 import { getServerSassModuleLoader } from './loaders/sass-module-loader';
 
 const PATHS = {
-    entry : path.resolve(__dirname, '..', 'server/index.ts'),
-    output: path.resolve(__dirname, '..', 'dist')
+    entry : path.resolve(__dirname, '../..', 'server/index.ts'),
+    output: path.resolve(__dirname, '../..', 'dist')
 };
 
 const serverConfig = (_, argv) => ({
@@ -31,7 +31,7 @@ const serverConfig = (_, argv) => ({
     cache: {
         type          : 'filesystem',
         name          : 'server-cache',
-        cacheDirectory: path.resolve(__dirname, '../.cache')
+        cacheDirectory: path.resolve(__dirname, '../../.cache')
     },
     stats  : false,
     resolve: {

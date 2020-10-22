@@ -4,7 +4,7 @@ import * as log4js           from 'log4js';
 const logger = log4js.getLogger();
 
 log4js.configure({
-    appenders : { cheese: { type: 'file', filename: 'error.log' } },
+    appenders : { cheese: { type: 'file', filename: '/logs/error.log' } },
     categories: { default: { appenders: [ 'cheese' ], level: 'error' } }
 });
 

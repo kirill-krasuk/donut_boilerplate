@@ -19,7 +19,7 @@ export default configureBundler({
     cache: {
         type          : 'filesystem',
         name          : 'dev-client-cache',
-        cacheDirectory: path.resolve(__dirname, '../.cache')
+        cacheDirectory: path.resolve(__dirname, '../../.cache')
     },
     devtool     : 'eval-cheap-module-source-map',
     optimization: {

@@ -11,7 +11,7 @@ fi
 # run next command if previos success
 ./node_modules/.bin/tsc --noEmit -p . &&
 ./node_modules/.bin/eslint . &&
-./node_modules/.bin/jest --env=jsdom &&
+./node_modules/.bin/jest --env=jsdom -c=./config/jest/jest.config.js &&
 ./node_modules/.bin/stylelint './src/**/*.ts'
 
 if [ $? -eq 1 ]; then

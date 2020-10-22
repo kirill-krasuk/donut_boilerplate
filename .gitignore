@@ -3,5 +3,5 @@
 /stats/
 .env
 .cache
-error.log
+/logs/
 /public/**/build/
