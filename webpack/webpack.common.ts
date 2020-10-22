@@ -27,7 +27,7 @@ export const paths = {
     src     : path.resolve('src'),
     dist    : path.resolve('dist'),
     entry   : path.resolve('src/core/index.tsx'),
-    template: path.resolve('src/core/template/index.pug'),
+    template: path.resolve('src/core/index.pug'),
     view    : path.resolve('dist/index.pug')
 };
 
