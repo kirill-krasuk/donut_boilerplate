@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NM_BIN=./node_modules/.bin
+
 bash ./scripts/node_version.sh
 
 if [ ! -d "./node_modules/" ]; then
@@ -9,10 +11,10 @@ if [ ! -d "./node_modules/" ]; then
 fi
 
 # run next command if previos success
-./node_modules/.bin/tsc --noEmit -p . &&
-./node_modules/.bin/eslint . &&
-./node_modules/.bin/jest --env=jsdom -c=./config/jest/jest.config.js &&
-./node_modules/.bin/stylelint './src/**/*.ts'
+$NM_BIN/tsc --noEmit -p . &&
+$NM_BIN/eslint . &&
+$NM_BIN/jest --env=jsdom -c=./config/jest/jest.config.js &&
+$NM_BIN/stylelint './src/**/*.ts'
 
 if [ $? -eq 1 ]; then
     echo 🚨🚨🚨 CI failed 🚨🚨🚨
