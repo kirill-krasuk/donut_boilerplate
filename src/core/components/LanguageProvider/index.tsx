@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { EOLocale }    from 'eo-locale';
 
 import locales         from '@core/locales';
-import { getLocale }   from '@core/selectors/locale';
+import { getLocale }   from '@core/store/selectors/locale';
 import { Props }       from './types';
 
 const LanguageProvider: FC<Props> = (props) => {

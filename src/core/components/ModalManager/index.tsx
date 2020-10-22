@@ -5,7 +5,7 @@ import * as O               from 'fp-ts/lib/Option';
 import { IO }               from 'fp-ts/lib/IO';
 import { pipe }             from 'fp-ts/lib/pipeable';
 
-import { getModalIdOption } from '@core/selectors/modal';
+import { getModalIdOption } from '@core/store/selectors/modal';
 import { Modals }           from '@app/enums/modal';
 import * as S               from './styled';
 import modals               from './modals';
