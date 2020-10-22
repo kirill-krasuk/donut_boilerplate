@@ -101,7 +101,7 @@ export function configureBundler(options: Record<string, any>): webpack.Configur
                 swDest : './sw.js',
                 include: [ '**/*.js', '**/*.js.gz' ],
                 exclude: [ '**/*.hot-update.json' ],
-                swSrc  : './internals/service-worker.js',
+                swSrc  : './src/core/service-worker.js',
             }),
             new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
             new HtmlWebpackPlugin({
