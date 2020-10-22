@@ -6,8 +6,8 @@ import { Moon }                     from '@styled-icons/fa-solid/Moon';
 import R                            from 'ramda';
 
 import { changeThemeAction }        from '@core/store/actions/theme';
-import { getMode }                  from '@core/selectors/theme';
-import { getLocale }                from '@core/selectors/locale';
+import { getMode }                  from '@core/store/selectors/theme';
+import { getLocale }                from '@core/store/selectors/locale';
 import { changeLocaleAction }       from '@core/store/actions/locale/index';
 import { Theme }                    from '@core/enums/theme';
 import { Locale }                   from '@core/enums/locale';

@@ -10,7 +10,7 @@ import { pipe }                                 from 'fp-ts/lib/pipeable';
 import R                                        from 'ramda';
 
 import { theme }                                from '@core/config/theme';
-import { getMode }                              from '@core/selectors/theme';
+import { getMode }                              from '@core/store/selectors/theme';
 import { protectRedirect, routes as appRoutes } from '@app/routes/routes';
 import { GlobalStyles }                         from '@app/components/GlobalStyles';
 import LanguageProvider                         from '@core/components/LanguageProvider';
