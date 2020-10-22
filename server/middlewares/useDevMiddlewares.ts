@@ -4,8 +4,8 @@ import DevMiddleware     from 'webpack-dev-middleware';
 import HotMiddleware     from 'webpack-hot-middleware';
 
 import config            from '@server/config';
-import webpackConfigDev  from '../../webpack/webpack.dev';
-import webpackConfigProd from '../../webpack/webpack.prod';
+import webpackConfigDev  from '../../config/webpack/webpack.dev';
+import webpackConfigProd from '../../config/webpack/webpack.prod';
 
 const { env } = config;
 

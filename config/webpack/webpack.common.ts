@@ -21,7 +21,7 @@ import { getSVGLoader }                from './loaders/svg-loader';
 import { collectEnvVars }              from './utils/collectEnvVars';
 import { createHashHelper }            from './utils/createHashHelper';
 
-const context = path.resolve(__dirname, '..');
+const context = path.resolve(__dirname, '../..');
 
 export const paths = {
     src     : path.resolve('src'),

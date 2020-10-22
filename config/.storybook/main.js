@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    stories: ['../src/**/*.stories.tsx'],
+    stories: ['../../src/**/*.stories.tsx'],
     addons: [
         '@storybook/addon-storysource',
         '@storybook/addon-actions',
@@ -23,7 +23,7 @@ module.exports = {
                 {
                     loader: 'react-docgen-typescript-loader',
                     options: {
-                        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+                        tsconfigPath: path.resolve(__dirname, '../../tsconfig.json'),
                     },
                 },
             ],

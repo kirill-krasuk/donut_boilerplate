@@ -4,6 +4,6 @@
         "module": "commonjs",
         "target": "es5",
         "esModuleInterop": true,
-        "typeRoots": ["./src", "./node_modules/@types"]
+        "typeRoots": ["../../src", "../../node_modules/@types"]
     }
   }

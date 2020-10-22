@@ -1,4 +1,5 @@
 module.exports = {
+    rootDir        : '../../',
     cacheDirectory : './.cache/jest',
     preset         : 'ts-jest',
     testEnvironment: 'node',
@@ -8,7 +9,7 @@ module.exports = {
     },
     setupFilesAfterEnv: [
         '@testing-library/jest-dom/extend-expect',
-        './test/setup.ts'
+        './config/jest/setup.ts'
     ],
     moduleFileExtensions: [
         'ts',
@@ -22,7 +23,7 @@ module.exports = {
         '(/src/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$'
     ],
     snapshotSerializers: [
-        '<rootDir>/node_modules/enzyme-to-json/serializer'
+        '<rootDir>node_modules/enzyme-to-json/serializer'
     ],
     moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/test/__mocks__/file.ts',
@@ -45,7 +46,7 @@ module.exports = {
         // to transform jsx into js rather than leaving it jsx such as the next build requires. you
         // can see this setting in tsconfig.jest.json -> "jsx": "react"
         'ts-jest': {
-            tsConfig: '<rootDir>/tsconfig.jest.json'
+            tsConfig: '<rootDir>/config/jest/tsconfig.jest.json'
         }
     }
 };
