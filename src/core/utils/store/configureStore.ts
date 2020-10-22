@@ -12,14 +12,14 @@ import { mergeMap, takeUntil }                             from 'rxjs/operators'
 import { History }                                         from 'history';
 import { compose, isEmpty }                                from 'ramda';
 
-import { themeMiddleware }                                 from '@core/middlewares/theme';
-import { localeMiddleware }                                from '@core/middlewares/locale';
-import { locationMiddleware }                              from '@core/middlewares/location';
+import { themeMiddleware }                                 from '@core/store/middlewares/theme';
+import { localeMiddleware }                                from '@core/store/middlewares/locale';
+import { locationMiddleware }                              from '@core/store/middlewares/location';
 import * as Env                                            from '@core/config/env';
-import ssrReducers                                         from '@app/reducers/serverReducer';
+import ssrReducers                                         from '@app/store/reducers/serverReducer';
 import request$                                            from '@core/services/RequestManager';
-import rootEpic                                            from '@core/epics';
-import createRootReducer                                   from '@core/reducers';
+import rootEpic                                            from '@core/store/epics';
+import createRootReducer                                   from '@core/store/reducers';
 import { Environment }                                     from '@core/enums/env';
 import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
@@ -79,12 +79,12 @@ export function configureStore(preloadedState: object = {}, history: History<any
         epicMiddleware.run(hotReloadingEpic);
 
         if ((module as any).hot) {
-            (module as any).hot.accept('../../reducers', () => {
+            (module as any).hot.accept('../../store/reducers', () => {
                 store.replaceReducer(createRootReducer(history));
             });
 
-            (module as any).hot.accept('../../epics', () => {
-                const nextRootEpic = require('../../epics').default;
+            (module as any).hot.accept('../../store/epics', () => {
+                const nextRootEpic = require('../../store/epics').default;
 
                 store.dispatch({ type: 'EPIC_END' });
                 epic$.next(nextRootEpic);

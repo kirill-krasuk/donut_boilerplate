@@ -1,7 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 import { initial }       from '@devexperts/remote-data-ts';
 
-import * as actions      from '@app/actions/posts';
+import * as actions      from '@app/store/actions/posts';
 import { State, Action } from './types';
 
 const initState: State = initial;

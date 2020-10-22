@@ -2,7 +2,7 @@ import { combineReducers, Reducer, Action } from 'redux';
 import { connectRouter }                    from 'connected-react-router';
 import { History }                          from 'history';
 
-import appReducers                          from '@app/reducers';
+import appReducers                          from '@app/store/reducers';
 import theme                                from './theme';
 import locale                               from './locale';
 import modal                                from './modal';

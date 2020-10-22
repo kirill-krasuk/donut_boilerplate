@@ -2,7 +2,7 @@ import { createReducer }  from 'typesafe-actions';
 import { Lens }           from 'monocle-ts';
 import * as O             from 'fp-ts/lib/Option';
 
-import * as actions       from '@core/actions/modal';
+import * as actions       from '@core/store/actions/modal';
 import { State, Actions } from './types';
 
 export const initState: State = {

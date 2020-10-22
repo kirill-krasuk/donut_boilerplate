@@ -5,9 +5,9 @@ import { map, switchMap }                                        from 'rxjs/oper
 import * as O                                                    from 'fp-ts/lib/Option';
 import { pipe }                                                  from 'fp-ts/lib/pipeable';
 
-import { emptyEpicAction }                                       from '@core/actions/emptyEpic';
+import { emptyEpicAction }                                       from '@core/store/actions/emptyEpic';
 import { CallModal, CallModalObjectPayload }                     from '@core/types/modal';
-import { CALL_MODAL, setModalAction, setModalHistoryFlagAction } from '@core/actions/modal';
+import { CALL_MODAL, setModalAction, setModalHistoryFlagAction } from '@core/store/actions/modal';
 import { Modals }                                                from '@app/enums/modal';
 import { camelToSnake }                                          from '@utils/string';
 

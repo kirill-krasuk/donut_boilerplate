@@ -1,6 +1,6 @@
 import { createReducer } from 'typesafe-actions';
 
-import * as actions      from '@core/actions/locale';
+import * as actions      from '@core/store/actions/locale';
 import { Locale }        from '@core/enums/locale';
 import { Action, State } from './types';
 

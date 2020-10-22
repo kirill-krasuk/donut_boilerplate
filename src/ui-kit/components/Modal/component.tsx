@@ -6,7 +6,7 @@ import { fromEvent }         from 'rxjs';
 import R                     from 'ramda';
 
 import { useClickOutside }   from '@core/hooks/useClickOutside';
-import { closeModalAction }  from '@core/actions/modal';
+import { closeModalAction }  from '@core/store/actions/modal';
 import { useLockBodyScroll } from '@core/hooks';
 import * as S                from './styled';
 import { Props }             from './types';

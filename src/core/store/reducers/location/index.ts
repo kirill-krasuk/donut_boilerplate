@@ -1,7 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 import { Lens }          from 'monocle-ts';
 
-import * as actions      from '@core/actions/location';
+import * as actions      from '@core/store/actions/location';
 import { State, Action } from './types';
 
 const initState: State = {
