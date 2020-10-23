@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# this is npm context, because this script
+# must running from package.json
+
 if [[ -d "./.cache" ]]; then
     echo "⚠️ Detecting old caches"
     sleep 1

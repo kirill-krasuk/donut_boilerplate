@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# this is npm context, because this script
+# must running from package.json
+
 source $NVM_DIR/nvm.sh;
 
 NODE_VERSION=$(node -v)

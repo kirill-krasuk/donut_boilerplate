@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# this is npm context, because this script
+# must running from package.json
+
 if [ ! -d "./node_modules/" ]; then 
-    bash ./scripts/prune_caches.sh
+    if [ -d "./.cache" ]; then
+        bash ./scripts/prune_caches.sh
+    fi
 
     echo "⚠️ Dependencies not installed"
     echo -e "\nInstalling...\n"
