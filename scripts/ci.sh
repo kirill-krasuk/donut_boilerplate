@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# this is npm context, because this script
+# must running from package.json
+
 NM_BIN=./node_modules/.bin
 
 bash ./scripts/node_version.sh
