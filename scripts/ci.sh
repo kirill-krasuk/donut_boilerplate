@@ -14,9 +14,9 @@ if [ ! -d "./node_modules/" ]; then
 fi
 
 # run next command if previos success
+bash ./scripts/test.sh &&
 $NM_BIN/tsc --noEmit -p . &&
 $NM_BIN/eslint . &&
-$NM_BIN/jest --env=jsdom -c=./config/jest/jest.config.js &&
 $NM_BIN/stylelint './src/**/*.ts'
 
 if [ $? -eq 1 ]; then
