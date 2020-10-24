@@ -1,6 +1,7 @@
 /node_modules/
 /dist/
 /stats/
+/coverage/
 .env
 .cache
 /logs/

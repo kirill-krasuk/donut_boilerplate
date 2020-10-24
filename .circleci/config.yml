@@ -20,7 +20,7 @@ jobs:
             - attach_workspace:
                 at: ./
             - run: cp .env.example .env
-            - run: npm run build:prod
+            - run: bash ./scripts/build_prod.sh
     test:
         executor: node/default
         steps:
