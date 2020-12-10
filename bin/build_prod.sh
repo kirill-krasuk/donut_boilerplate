@@ -2,7 +2,7 @@
 
 # this is npm context, because this script
 # must running from package.json
-CONTEXT=./scripts
+CONTEXT=./bin
 NM_BIN=./node_modules/.bin
 
 WEBPACK_TS_PATH=./config/webpack/tsconfig.webpack.json

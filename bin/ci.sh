@@ -5,7 +5,7 @@
 
 NM_BIN=./node_modules/.bin
 
-bash ./scripts/node_version.sh
+bash ./bin/node_version.sh
 
 if [ ! -d "./node_modules/" ]; then
     echo node_modules not found
@@ -14,7 +14,7 @@ if [ ! -d "./node_modules/" ]; then
 fi
 
 # run next command if previos success
-bash ./scripts/test.sh &&
+bash ./bin/test.sh &&
 $NM_BIN/tsc --noEmit -p . &&
 $NM_BIN/eslint . &&
 $NM_BIN/stylelint './src/**/*.ts'

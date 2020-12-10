@@ -5,7 +5,7 @@
 
 if [ ! -d "./node_modules/" ]; then 
     if [ -d "./.cache" ]; then
-        bash ./scripts/prune_caches.sh
+        bash ./bin/prune_caches.sh
     fi
 
     echo "⚠️ Dependencies not installed"
