@@ -29,7 +29,7 @@ export default configureBundler({
         removeEmptyChunks     : false,
         splitChunks           : false,
     },
-    stats  : 'none',
+    stats  : 'errors-warnings',
     watch  : true,
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
