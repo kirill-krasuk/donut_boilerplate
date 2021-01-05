@@ -8,8 +8,7 @@ describe('Replace file extension helper', () => {
         expect(replaceExtension(received, 'webp')).toEqual(expected);
     });
 
-    // TODO: fix test
-    it.skip('should get file path and replace extension with query params correctly', () => {
+    it('should get file path and replace extension with query params correctly', () => {
         const received = 'image.jpg?resize=300,300';
         const expected = 'image.webp?resize=300,300';
 

@@ -1,2 +1,2 @@
 export const replaceExtension = (filePath: string, toExt: string) => filePath
-    .replace(/\.([^.]+)($|\?)/gi, (_match, _$1, $2) => `.${ toExt }${ $2 }`);
+    .replace(/\.([^.?]+)($|[?&\w\d=]+)/gi, (_match, _$1, $2) => `.${ toExt }${ $2 }`);
