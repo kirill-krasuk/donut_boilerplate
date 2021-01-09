@@ -6,7 +6,7 @@ CONTEXT=./bin
 NM_BIN=./node_modules/.bin
 
 bash $CONTEXT/node_version.sh
-bash $CONTEXT/install_deps.sh
+bash $CONTEXT/install_deps_dev.sh
 
 echo -e "\n🔧 Building development version \n"
 

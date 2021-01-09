@@ -11,12 +11,16 @@ WEBPACK_CLIENT_CFG=./config/webpack/webpack.prod.ts
 
 bash $CONTEXT/node_version.sh
 bash $CONTEXT/prune_caches.sh
-bash $CONTEXT/install_deps.sh
+bash $CONTEXT/install_deps_prod.sh
 
 # # clear previouos build assets
 rm -rf ./public/**/build
 
 echo -e "\n🔧 Building production version \n"
+
+if [ ! -d ./logs ]; then 
+    mkdir ./logs
+fi
 
 $NM_BIN/cross-env TS_NODE_PROJECT=$WEBPACK_TS_PATH  NODE_ENV=production webpack \
     --config $WEBPACK_SERVER_CFG --mode=production &&
