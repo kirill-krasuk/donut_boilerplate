@@ -2,8 +2,7 @@ import webpack                     from 'webpack';
 import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
 import path                        from 'path';
 import ReactRefreshWebpackPlugin   from '@pmmmwh/react-refresh-webpack-plugin';
-
-// import CircularDependencyPlugin from 'circular-dependency-plugin';
+import CircularDependencyPlugin    from 'circular-dependency-plugin';
 
 import { paths, configureBundler } from './webpack.common';
 
@@ -44,13 +43,12 @@ export default configureBundler({
             analyzerPort: 8181,
             analyzerHost: '127.0.0.1'
         }),
-
-        // new CircularDependencyPlugin({
-        //     exclude: /node_modules/,
-        //     onDetected({ paths, compilation }) {
-        //         compilation.errors.push(new Error(paths.join(' -> ')));
-        //     },
-        //     failOnError: true
-        // }),
+        new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            onDetected({ paths, compilation }) {
+                compilation.errors.push(new Error(paths.join(' -> ')));
+            },
+            failOnError: true
+        }),
     ]
 });
