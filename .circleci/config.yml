@@ -6,7 +6,7 @@ jobs:
         executor: node/default
         steps:
         - checkout
-        - run: npm install
+        - run: npm ci
         - persist_to_workspace:
             root: ./
             paths:
