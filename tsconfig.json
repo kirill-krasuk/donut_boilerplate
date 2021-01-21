@@ -3,7 +3,15 @@
         "allowSyntheticDefaultImports": true,
         "target": "es2015",
         "module": "esnext",
-        "lib": ["es5", "es6", "es7", "es2017", "dom"],
+        "lib": [
+            "es5", 
+            "es6", 
+            "es7", 
+            "ES2017", 
+            "ES2018", 
+            "ES2019", 
+            "dom"
+        ],
 		"baseUrl": "./",
         "rootDir": "./",
         "allowJs": false,
