@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # this is npm context, because this script
-# must running from package.json
+# must running from app root
 
 source $NVM_DIR/nvm.sh;
 

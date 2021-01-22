@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # this is npm context, because this script
-# must running from package.json
+# must running from app root
 
 bash ./bin/build_prod.sh &&
 echo -e "\n🍩 Start application 🍩\n" &&

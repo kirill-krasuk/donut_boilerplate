@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # this is npm context, because this script
-# must running from package.json
+# must running from app root
 
 if [ ! -d "./node_modules/" ]; then 
     if [ -d "./.cache" ]; then
