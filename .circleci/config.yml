@@ -28,16 +28,22 @@ commands:
 
 jobs:
     setup:
-        executor: node/default
+        executor: 
+            name: node/default
+            tag: "12.19.0"
         steps:
         - initial
     build: 
-        executor: node/default
+        executor: 
+            name: node/default
+            tag: "12.19.0"
         steps:
         - checkout
         - build
     test:
-        executor: node/default
+        executor: 
+            name: node/default
+            tag: "12.19.0"
         steps:
         - checkout
         - attach_workspace:
