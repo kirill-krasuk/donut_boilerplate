@@ -43,6 +43,8 @@ export default configureBundler({
             analyzerPort: 8181,
             analyzerHost: '127.0.0.1'
         }),
+
+        // @ts-ignore
         new CircularDependencyPlugin({
             exclude: /node_modules/,
             onDetected({ paths, compilation }) {

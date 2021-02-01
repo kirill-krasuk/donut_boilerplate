@@ -1,3 +1,4 @@
+import { WebpackPluginInstance }   from 'webpack';
 import BrotliPlugin                from 'brotli-webpack-plugin';
 import CompressionPlugin           from 'compression-webpack-plugin';
 import OptimizeCssAssetsPlugin     from 'optimize-css-assets-webpack-plugin';
@@ -14,7 +15,7 @@ export default configureBundler({
             `${ paths.entry }`,
         ]
     },
-    stats       : 'detailed',
+    stats       : 'errors-only',
     optimization: {
         minimize : true,
         minimizer: [
@@ -30,7 +31,7 @@ export default configureBundler({
                     safari10       : false,
                 },
             }),
-            new OptimizeCssAssetsPlugin()
+            new OptimizeCssAssetsPlugin() as WebpackPluginInstance
         ],
         splitChunks: {
             cacheGroups: {
@@ -56,14 +57,14 @@ export default configureBundler({
             filename: '[path].gz[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
-        new BrotliPlugin({
-            asset: '[path].br[query]',
-            test : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
-        }),
         new BundleAnalyzerPlugin({
             analyzerMode  : 'static',
             openAnalyzer  : false,
             reportFilename: '../stats/prod-report.html',
         }),
+        new BrotliPlugin({
+            asset: '[path].br[query]',
+            test : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+        }) as WebpackPluginInstance,
     ]
 });
