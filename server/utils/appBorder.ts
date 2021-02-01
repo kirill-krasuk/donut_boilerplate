@@ -1,7 +1,7 @@
 import box from 'boxen';
 
 // eslint-disable-next-line no-console
-export const appBorder = (content: string) => console.log(box(content, {
+export const appBorder = (content: string) => console.info(box(content, {
     padding: {
         top   : 1,
         right : 10,
