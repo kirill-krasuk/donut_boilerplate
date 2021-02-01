@@ -37,7 +37,7 @@ export function getImageLoader() {
         ]
     };
 
-    if (isProd()) {
+    if (!isProd()) {
         imageLoader.use.unshift({
             loader : 'cache-loader',
             options: {
