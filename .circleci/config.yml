@@ -7,7 +7,8 @@ commands:
     initial-dev:
         steps:
         - checkout
-        - node/install-packages
+        - node/install-packages:
+            override-ci-command: npm i --only=development
         - persist_to_workspace:
             root: ./
             paths:
