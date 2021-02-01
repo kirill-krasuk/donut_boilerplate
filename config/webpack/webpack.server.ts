@@ -10,6 +10,7 @@ import { getServerCssLoader }                   from './loaders/css-loader';
 import { getServerSassLoader }                  from './loaders/sass-loader';
 import { getSVGLoader }                         from './loaders/svg-loader';
 import { getServerSassModuleLoader }            from './loaders/sass-module-loader';
+import { isProd }                               from './utils/isProd';
 
 const PATHS = {
     entry : path.resolve(__dirname, '../..', 'server/index.ts'),
@@ -29,11 +30,13 @@ const serverConfig = (_, argv): Configuration => ({
         filename  : 'server.js',
         publicPath: '/dist/',
     },
-    cache: {
-        type          : 'filesystem',
-        name          : 'server-cache',
-        cacheDirectory: path.resolve(__dirname, '../../.cache')
-    },
+    cache: !isProd()
+        ? {
+            type          : 'filesystem',
+            name          : 'server-cache',
+            cacheDirectory: path.resolve(__dirname, '../../.cache')
+        }
+        : false,
     stats  : false,
     resolve: {
         extensions: [

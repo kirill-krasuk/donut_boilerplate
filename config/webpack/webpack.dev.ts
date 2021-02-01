@@ -28,7 +28,7 @@ export default configureBundler({
         removeEmptyChunks     : false,
         splitChunks           : false,
     },
-    stats  : 'errors-warnings',
+    stats  : 'summary',
     watch  : true,
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
