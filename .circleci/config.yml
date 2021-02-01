@@ -35,9 +35,7 @@ jobs:
         executor: node/default
         steps:
         - checkout
-        - node/with-cache:
-            steps:
-            - build
+        - build
     test:
         executor: node/default
         steps:
