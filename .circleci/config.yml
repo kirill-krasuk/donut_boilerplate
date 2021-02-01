@@ -19,8 +19,12 @@ jobs:
             steps:
             - attach_workspace:
                 at: ./
-            - run: cp .env.example .env
-            - run: npm run build:prod
+            - run: 
+                name: Setting Environment
+                command: cp .env.example .env
+            - run: 
+                name: Building production version
+                command: npm run build:prod
     test:
         executor: node/default
         steps:
