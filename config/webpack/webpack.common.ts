@@ -31,7 +31,7 @@ export const paths = {
     view    : path.resolve('dist/index.pug')
 };
 
-export function configureBundler(options: Record<string, any>): webpack.Configuration {
+export function configureBundler(options: webpack.Configuration): webpack.Configuration {
     const isProd = options.mode === 'production';
 
     const addHash = createHashHelper(isProd);

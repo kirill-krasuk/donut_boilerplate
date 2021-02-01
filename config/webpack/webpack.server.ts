@@ -1,21 +1,22 @@
-import path                          from 'path';
-import nodeExternals                 from 'webpack-node-externals';
-import Dotenv                        from 'dotenv-webpack';
+import { Configuration, WebpackPluginInstance } from 'webpack';
+import path                                     from 'path';
+import nodeExternals                            from 'webpack-node-externals';
+import Dotenv                                   from 'dotenv-webpack';
 
-import { getJsLoader }               from './loaders/js-loader';
-import { getImageLoader }            from './loaders/image-loader';
-import { getFontsLoader }            from './loaders/font-loader';
-import { getServerCssLoader }        from './loaders/css-loader';
-import { getServerSassLoader }       from './loaders/sass-loader';
-import { getSVGLoader }              from './loaders/svg-loader';
-import { getServerSassModuleLoader } from './loaders/sass-module-loader';
+import { getJsLoader }                          from './loaders/js-loader';
+import { getImageLoader }                       from './loaders/image-loader';
+import { getFontsLoader }                       from './loaders/font-loader';
+import { getServerCssLoader }                   from './loaders/css-loader';
+import { getServerSassLoader }                  from './loaders/sass-loader';
+import { getSVGLoader }                         from './loaders/svg-loader';
+import { getServerSassModuleLoader }            from './loaders/sass-module-loader';
 
 const PATHS = {
     entry : path.resolve(__dirname, '../..', 'server/index.ts'),
     output: path.resolve(__dirname, '../..', 'dist')
 };
 
-const serverConfig = (_, argv) => ({
+const serverConfig = (_, argv): Configuration => ({
     mode  : argv.mode,
     target: 'node',
     entry : PATHS.entry,
@@ -66,7 +67,7 @@ const serverConfig = (_, argv) => ({
         ].filter(Boolean)
     }) ],
     plugins: [
-        new Dotenv()
+        new Dotenv() as WebpackPluginInstance
     ]
 });
 
