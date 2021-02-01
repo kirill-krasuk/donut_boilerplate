@@ -9,7 +9,7 @@ commands:
         - checkout
         - run: 
             name: Instal dependencies
-            command: npm i
+            command: npm ci
         - persist_to_workspace:
             root: ./
             paths:
