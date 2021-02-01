@@ -7,10 +7,8 @@ commands:
     initial: 
         steps:
         - checkout
-        # - run: 
-        #     name: Instal dependencies
-        #     command: npm ci
-        - node/install-packages
+        - node/install-packages:
+            override-ci-command: npm ci --production
         - persist_to_workspace:
             root: ./
             paths:
