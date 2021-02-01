@@ -7,7 +7,6 @@ import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
 import bodyParser              from 'body-parser';
 import path                    from 'path';
-import dayjs                   from 'dayjs';
 import processImage            from 'express-processimage';
 
 import expressStaticGzip       from 'express-static-gzip';
@@ -17,6 +16,8 @@ import { errorLogging }        from './middlewares/errorLogging';
 import { useDevMiddlewares }   from './middlewares/useDevMiddlewares';
 import { ONE_MONTH_CACHE }     from './constants/cache';
 import { useStatic }           from './utils/useStatic';
+import { appBorder }           from './utils/appBorder';
+import { getAppOutputInfo }    from './utils/appOutput';
 
 const { host, port } = config;
 
@@ -51,14 +52,4 @@ useDevMiddlewares(app);
 app.use('/handle_error', errorLogging);
 app.use('/', serverSideRendering);
 
-app.listen(+port, (host as string), () => {
-    // eslint-disable-next-line no-console
-    console.info(`
-        =====================================================
-        \t\t${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }
-                        Server started at 
-                        Address: ${ host }                   
-                        Port:    ${ port }                       
-        =====================================================
-    `);
-});
+app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
