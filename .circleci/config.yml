@@ -4,27 +4,26 @@ orbs:
   node: circleci/node@1.1.6
 
 commands:
-  initial: 
-    steps:
-    - checkout
-    - run: 
-        name: Instal dependencies
-        command: npm i
-    - persist_to_workspace:
-        root: ./
-        paths:
-            - ./
-  build:
-    steps:
-    - attach_workspace:
-        at: ./
-    - run: 
-        name: Setting Environment
-        command: cp .env.example .env
-    - run: 
-        name: Building production version
-        command: npm run build:prod
-
+    initial: 
+        steps:
+        - checkout
+        - run: 
+            name: Instal dependencies
+            command: npm i
+        - persist_to_workspace:
+            root: ./
+            paths:
+                - ./
+    build:
+        steps:
+        - attach_workspace:
+            at: ./
+        - run: 
+            name: Setting Environment
+            command: cp .env.example .env
+        - run: 
+            name: Building production version
+            command: npm run build:prod
 
 jobs:
     setup:
