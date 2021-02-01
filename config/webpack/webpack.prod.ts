@@ -15,7 +15,7 @@ export default configureBundler({
             `${ paths.entry }`,
         ]
     },
-    stats       : 'errors-only',
+    stats       : 'summary',
     optimization: {
         minimize : true,
         minimizer: [
