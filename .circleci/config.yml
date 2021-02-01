@@ -4,7 +4,15 @@ orbs:
   node: circleci/node@4.1.0
 
 commands:
-    initial: 
+    initial-dev:
+        steps:
+        - checkout
+        - node/install-packages
+        - persist_to_workspace:
+            root: ./
+            paths:
+                - ./
+    initial-prod: 
         steps:
         - checkout
         - node/install-packages:
@@ -25,12 +33,18 @@ commands:
             command: npm run build:prod
 
 jobs:
-    setup:
+    setup-prod:
         executor: 
             name: node/default
             tag: "12.19.0"
         steps:
-        - initial
+        - initial-prod
+    setup-dev:
+        executor: 
+            name: node/default
+            tag: "12.19.0"
+        steps:
+        - initial-dev
     build: 
         executor: 
             name: node/default
@@ -54,10 +68,11 @@ workflows:
     version: 2
     build-and-test:
         jobs:
-        - setup
+        - setup-dev
+        - setup-prod
         - build:
             requires:
-                - setup
+                - setup-prod
         - test:
             requires:
-                - setup
+                - setup-dev
