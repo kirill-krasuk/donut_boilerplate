@@ -42,13 +42,11 @@ jobs:
         executor: node/default
         steps:
         - checkout
-        - node/with-cache:
-            steps:
-            - attach_workspace:
-                at: ./
-            - run: 
-                name: Run CI  
-                command: npm run ci
+        - attach_workspace:
+            at: ./
+        - run: 
+            name: Run CI  
+            command: npm run ci
 
 workflows:
     version: 2
