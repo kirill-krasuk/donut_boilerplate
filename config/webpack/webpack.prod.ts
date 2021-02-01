@@ -7,6 +7,8 @@ import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
 
 import { paths, configureBundler } from './webpack.common';
 
+const isNeedBundleAnalyze = JSON.parse(process.env.BUILD_ANALYZE || 'false');
+
 export default configureBundler({
     mode : 'production',
     entry: {
@@ -57,7 +59,7 @@ export default configureBundler({
             filename: '[path].gz[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }),
-        new BundleAnalyzerPlugin({
+        isNeedBundleAnalyze && new BundleAnalyzerPlugin({
             analyzerMode  : 'static',
             openAnalyzer  : false,
             reportFilename: '../stats/prod-report.html',
@@ -66,5 +68,5 @@ export default configureBundler({
             asset: '[path].br[query]',
             test : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
         }) as WebpackPluginInstance,
-    ]
+    ].filter(Boolean)
 });

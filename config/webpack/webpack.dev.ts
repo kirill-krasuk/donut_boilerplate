@@ -1,10 +1,12 @@
-import webpack                     from 'webpack';
-import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
-import path                        from 'path';
-import ReactRefreshWebpackPlugin   from '@pmmmwh/react-refresh-webpack-plugin';
-import CircularDependencyPlugin    from 'circular-dependency-plugin';
+import webpack, { WebpackPluginInstance } from 'webpack';
+import { BundleAnalyzerPlugin }           from 'webpack-bundle-analyzer';
+import path                               from 'path';
+import ReactRefreshWebpackPlugin          from '@pmmmwh/react-refresh-webpack-plugin';
+import CircularDependencyPlugin           from 'circular-dependency-plugin';
 
-import { paths, configureBundler } from './webpack.common';
+import { paths, configureBundler }        from './webpack.common';
+
+const isNeedBundleAnalyze = JSON.parse(process.env.BUILD_ANALYZE || 'false');
 
 export default configureBundler({
     mode : 'development',
@@ -38,19 +40,17 @@ export default configureBundler({
                 sockIntegration: 'whm',
             },
         }),
-        new BundleAnalyzerPlugin({
+        isNeedBundleAnalyze && new BundleAnalyzerPlugin({
             openAnalyzer: false,
             analyzerPort: 8181,
             analyzerHost: '127.0.0.1'
         }),
-
-        // @ts-ignore
         new CircularDependencyPlugin({
             exclude: /node_modules/,
             onDetected({ paths, compilation }) {
                 compilation.errors.push(new Error(paths.join(' -> ')));
             },
             failOnError: true
-        }),
-    ]
+        }) as WebpackPluginInstance,
+    ].filter(Boolean)
 });
