@@ -2,14 +2,14 @@
 import './shim';
 
 import express, { Response }   from 'express';
+import processImage            from 'express-processimage';
+import expressStaticGzip       from 'express-static-gzip';
 import shrinkRay               from 'shrink-ray-current';
 import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
 import bodyParser              from 'body-parser';
 import path                    from 'path';
-import processImage            from 'express-processimage';
 
-import expressStaticGzip       from 'express-static-gzip';
 import config                  from './config';
 import { serverSideRendering } from './middlewares/serverSideRendering';
 import { errorLogging }        from './middlewares/errorLogging';
