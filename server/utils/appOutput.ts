@@ -8,8 +8,10 @@ export type OutputInfo = {
     port: string
 };
 
+// TODO: need env helpers
 const isBundleAnalyzerOn = JSON.parse(process.env.BUILD_ANALYZE || 'false');
 const analyzerPort       = process.env.BUNDLE_ANALYZER_PORT;
+const isDev              = process.env.NODE_ENV === 'development';
 
 export const getAppOutputInfo = ({ host, port }: OutputInfo) => [
     `      ${ chalk.bold('Welcome to DONUT BOILERPLATE 🍩🍩🍩') }`,
@@ -18,7 +20,7 @@ export const getAppOutputInfo = ({ host, port }: OutputInfo) => [
     '',
     `            ${ chalk.gray.bold('Server started at') }`,
     `${ chalk.green.bold('Address:') }         ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ port }`) }`,
-    isBundleAnalyzerOn && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
+    isDev && isBundleAnalyzerOn && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
     '',
     chalk.gray.bold('Copy address to clipboard and run it in browser')
 ]
