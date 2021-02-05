@@ -37,6 +37,12 @@
                 ]
             }
         ],
+        "no-console": [
+            "error", 
+            { 
+                "allow": ["warn", "error", "info"] 
+            }
+        ],
         "no-sequences": 0,
         "no-bitwise": 0,
         "@typescript-eslint/explicit-function-return-type": 0,
@@ -164,6 +170,7 @@
         "react",
         "react-hooks"
     ],
+    "ignorePatterns": ["**/lib/*"],
     "overrides": [
         {
             // enable the rule specifically for TypeScript files
