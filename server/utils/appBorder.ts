@@ -10,7 +10,8 @@ export const appBorder = (content: string) => console.info(box(content, {
     },
     margin     : 2,
     borderColor: 'magentaBright',
-    align      : 'center',
+
+    // align      : 'center',
 
     // @ts-ignore
     borderStyle: 'double'
