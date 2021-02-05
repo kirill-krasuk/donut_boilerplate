@@ -4,5 +4,4 @@
 # must running from app root
 
 bash ./bin/build_prod.sh &&
-echo -e "\n🍩 Start application 🍩\n" &&
-node ./dist/server.js 2>> ./logs/error_build.log
+bash ./bin/run_prod.sh
