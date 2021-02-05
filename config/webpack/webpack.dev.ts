@@ -7,6 +7,7 @@ import CircularDependencyPlugin           from 'circular-dependency-plugin';
 import { paths, configureBundler }        from './webpack.common';
 
 const isNeedBundleAnalyze = JSON.parse(process.env.BUILD_ANALYZE || 'false');
+const analyzerPort        = parseInt(process.env.BUNDLE_ANALYZER_PORT || '8181', 10);
 
 export default configureBundler({
     mode : 'development',
@@ -42,7 +43,7 @@ export default configureBundler({
         }),
         isNeedBundleAnalyze && new BundleAnalyzerPlugin({
             openAnalyzer: false,
-            analyzerPort: 8181,
+            analyzerPort,
             analyzerHost: '127.0.0.1'
         }),
         new CircularDependencyPlugin({
