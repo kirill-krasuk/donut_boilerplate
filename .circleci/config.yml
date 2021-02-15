@@ -8,7 +8,7 @@ commands:
         steps:
         - checkout
         - node/install-packages:
-            override-ci-command: npm i --only=development
+            override-ci-command: yarn
         - persist_to_workspace:
             root: ./
             paths:
@@ -17,7 +17,7 @@ commands:
         steps:
         - checkout
         - node/install-packages:
-            override-ci-command: npm ci --production
+            override-ci-command: yarn
         - persist_to_workspace:
             root: ./
             paths:
@@ -31,39 +31,39 @@ commands:
             command: cp .env.example .env
         - run: 
             name: Building production version
-            command: npm run build:prod
+            command: yarn bundle
 
 jobs:
     setup-prod:
         executor: 
             name: node/default
-            tag: "12.19.0"
+            tag: "15.8.0"
         steps:
         - initial-prod
     setup-dev:
         executor: 
             name: node/default
-            tag: "12.19.0"
+            tag: "15.8.0"
         steps:
         - initial-dev
     build: 
         executor: 
             name: node/default
-            tag: "12.19.0"
+            tag: "15.8.0"
         steps:
         - checkout
         - build
     test:
         executor: 
             name: node/default
-            tag: "12.19.0"
+            tag: "15.8.0"
         steps:
         - checkout
         - attach_workspace:
             at: ./
         - run: 
             name: Run CI  
-            command: npm run ci
+            command: yarn ci
 
 workflows:
     version: 2
