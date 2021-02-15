@@ -17,8 +17,7 @@ export async function useDevMiddlewares(app: Application): Promise<void> {
             stats     : webpackConfig?.stats,
 
             // writeToDisk: (name: string) => new RegExp(/(\.json|\.pug|sw\.js|manifest|svg)/, 'gi').test(name),
-            writeToDisk        : true,
-            serverSideRendering: true
+            writeToDisk: true,
         }));
 
         app.use(HotMiddleware(bundler));
