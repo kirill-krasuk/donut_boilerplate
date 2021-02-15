@@ -1,4 +1,5 @@
 import { Helmet }              from 'react-helmet';
+
 import { Home }                from '@app/components';
 import prefetch                from '@app/components/Home/prefetch';
 import { PrefetchedComponent } from '@core/types/components';
