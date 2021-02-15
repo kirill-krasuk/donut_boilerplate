@@ -7,8 +7,9 @@ commands:
     initial-dev:
         steps:
         - checkout
-        - node/install-packages:
-            override-ci-command: yarn
+        - run:
+            name: Install Dependencies
+            command: yarn install --immutable
         - persist_to_workspace:
             root: ./
             paths:
@@ -16,8 +17,9 @@ commands:
     initial-prod: 
         steps:
         - checkout
-        - node/install-packages:
-            override-ci-command: yarn
+        - run:
+            name: Install Dependencies
+            command: yarn install --immutable
         - persist_to_workspace:
             root: ./
             paths:
@@ -37,26 +39,22 @@ jobs:
     setup-prod:
         executor: 
             name: node/default
-            tag: "15.8.0"
         steps:
         - initial-prod
     setup-dev:
         executor: 
             name: node/default
-            tag: "15.8.0"
         steps:
         - initial-dev
     build: 
         executor: 
             name: node/default
-            tag: "15.8.0"
         steps:
         - checkout
         - build
     test:
         executor: 
             name: node/default
-            tag: "15.8.0"
         steps:
         - checkout
         - attach_workspace:
