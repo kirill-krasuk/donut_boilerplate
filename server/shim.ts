@@ -3,10 +3,9 @@ require('@babel/register')({
     plugins: [
         'dynamic-import-node',
         'macros'
-    ]
+    ],
+    cache: false
 });
-
-require('@babel/polyfill');
 
 // @ts-ignore
 global.fetch = require('node-fetch');
