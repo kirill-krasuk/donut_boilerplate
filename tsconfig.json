@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "target": "es2015",
-        "module": "esnext",
+        "target": "es5",
+        "module": "commonjs",
         "lib": [
             "es5", 
             "es6", 
@@ -12,7 +12,6 @@
             "ES2019", 
             "dom"
         ],
-		"baseUrl": "./",
         "rootDir": "./",
         "allowJs": false,
         "checkJs": false,
@@ -20,27 +19,36 @@
         "jsx": "react-jsx",
         "moduleResolution": "node",
         "noEmit": true,
+        "incremental": true,
+        "downlevelIteration": true,
+        "importHelpers": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "allowUnreachableCode": true,
         "pretty": true,
-        "skipLibCheck": true,
         "sourceMap": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "types": ["node", "jest"],
         "paths": {
-			"@core/*": ["src/core/*"],
-			"@app/*": ["src/app/*"],
-			"@utils/*": ["src/core/utils/*"],
-			"@ui-kit/*": ["src/ui-kit/*"],
-			"@images/*": ["src/assets/images/*"],
-            "@svgs/*": ["src/assets/svgs/*"],
-			"@server/*": ["server/*"],
-			"@public/*": ["public/*"], 
-			"@fonts/*": ["src/assets/fonts/*"],
-			"@test/*": ["test/*"]
+            "@core/*": ["./src/core/*"],
+            "@app/*": ["./src/app/*"],
+            "@utils/*": ["./src/core/utils/*"],
+            "@ui-kit/*": ["./src/ui-kit/*"],
+            "@images/*": ["./src/assets/images/*"],
+            "@svgs/*": ["./src/assets/svgs/*"],
+            "@server/*": ["./server/*"],
+            "@public/*": ["./public/*"], 
+            "@fonts/*": ["./src/assets/fonts/*"],
+            "@test/*": ["./test/*"]
         },
-        "types": ["jest", "node"],
-        "typeRoots": [ "./src", "./node_modules/@types"]
     },
-    "include": ["src/**/*", "server/**/*", "test/**/*", "config/jest/setup.ts"],
-    "exclude": ["node_modules", "**/node_modules/*"]
+    "include": [
+        "src/**/*", 
+        "server/**/*", 
+        "test/**/*", 
+        "tools/**/*",
+        "config/jest/setup.ts",
+        "config/webpack/**/*"
+    ],
   }

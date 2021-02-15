@@ -5,6 +5,12 @@
 .env
 .cache
 /logs/
-error.log
+*.log
 /public/**/build/
 .npmrc
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
