@@ -18,6 +18,7 @@ import { ONE_MONTH_CACHE }     from './constants/cache';
 import { useStatic }           from './utils/useStatic';
 import { appBorder }           from './utils/appBorder';
 import { getAppOutputInfo }    from './utils/appOutput';
+import { openInBrowser }       from './utils/openInBrowser';
 
 const { host, port } = config;
 
@@ -60,4 +61,7 @@ useDevMiddlewares(app);
 app.use('/handle_error', errorLogging);
 app.use('/', serverSideRendering);
 
-app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
+app.listen(+port, (host as string), () => {
+    appBorder(getAppOutputInfo({ host, port }));
+    openInBrowser({ host, port });
+});
