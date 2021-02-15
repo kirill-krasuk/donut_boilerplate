@@ -46,6 +46,10 @@ declare module 'webpack-hot-middleware' {
     export default content;
 }
 
+declare module 'webpack-pnp-externals' {
+    export const WebpackPnpExternals: any;
+}
+
 declare module '*.dev' {
     const content: any;
     export default content;
