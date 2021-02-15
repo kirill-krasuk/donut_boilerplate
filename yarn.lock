@@ -3857,6 +3857,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/ip@npm:^1":
+  version: 1.1.0
+  resolution: "@types/ip@npm:1.1.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: 81427b093d33de6be13c5e370f85df29a4af52d816537bf051d7d2e349ea04d1c9d075cd5bbfc9bddb0699e31e4fadfe661829f4747d93fadfc63d5f5c9dab1a
+  languageName: node
+  linkType: hard
+
 "@types/is-function@npm:^1.0.0":
   version: 1.0.0
   resolution: "@types/is-function@npm:1.0.0"
@@ -16863,6 +16872,7 @@ fsevents@^1.2.7:
     "@types/express-processimage": ^10.1.0
     "@types/figlet": ^1.2.1
     "@types/history": ^4.7.8
+    "@types/ip": ^1
     "@types/isomorphic-fetch": 0.0.35
     "@types/jest": ^26.0.19
     "@types/js-cookie": ^2.2.6
@@ -16973,6 +16983,7 @@ fsevents@^1.2.7:
     immutable: ^4.0.0-rc.12
     inkscape: ^3.1.1
     io-ts: ^2.2.13
+    ip: ^1.1.5
     isomorphic-fetch: ^3.0.0
     jest: ^26.6.3
     jest-styled-components: ^7.0.3
