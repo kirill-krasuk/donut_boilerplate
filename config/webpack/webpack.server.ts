@@ -1,24 +1,26 @@
-import { Configuration, WebpackPluginInstance } from 'webpack';
-import path                                     from 'path';
-import nodeExternals                            from 'webpack-node-externals';
-import Dotenv                                   from 'dotenv-webpack';
+import webpack, { Configuration }    from 'webpack';
+import path                          from 'path';
+import { WebpackPnpExternals }       from 'webpack-pnp-externals';
 
-import { getJsLoader }                          from './loaders/js-loader';
-import { getImageLoader }                       from './loaders/image-loader';
-import { getFontsLoader }                       from './loaders/font-loader';
-import { getServerCssLoader }                   from './loaders/css-loader';
-import { getServerSassLoader }                  from './loaders/sass-loader';
-import { getSVGLoader }                         from './loaders/svg-loader';
-import { getServerSassModuleLoader }            from './loaders/sass-module-loader';
-import { isProd }                               from './utils/isProd';
+import { getJsLoader }               from './loaders/js-loader';
+import { getImageLoader }            from './loaders/image-loader';
+import { getFontsLoader }            from './loaders/font-loader';
+import { getServerCssLoader }        from './loaders/css-loader';
+import { getServerSassLoader }       from './loaders/sass-loader';
+import { getSVGLoader }              from './loaders/svg-loader';
+import { getServerSassModuleLoader } from './loaders/sass-module-loader';
+import { isProd }                    from './utils/isProd';
+import { getEnvs }                   from './utils/getEnvs';
 
 const PATHS = {
     entry : path.resolve(__dirname, '../..', 'server/index.ts'),
     output: path.resolve(__dirname, '../..', 'dist')
 };
 
-const serverConfig = (_, argv): Configuration => ({
-    mode  : argv.mode,
+const mode = process.env.NODE_ENV as 'development' | 'production' || 'development';
+
+const serverConfig: Configuration = {
+    mode,
     target: 'node',
     entry : PATHS.entry,
     node  : {
@@ -37,7 +39,7 @@ const serverConfig = (_, argv): Configuration => ({
             cacheDirectory: path.resolve(__dirname, '../../.cache')
         }
         : false,
-    stats  : false,
+    stats  : 'summary',
     resolve: {
         extensions: [
             '.ts',
@@ -61,17 +63,12 @@ const serverConfig = (_, argv): Configuration => ({
             getFontsLoader()
         ]
     },
-    externals: [ nodeExternals({
-        allowlist: [
-            /\.(eot|woff|woff2|ttf|otf)$/,
-            /\.(svg|png|jpg|jpeg|gif|ico)$/,
-            /\.(mp4|mp3|ogg|swf|webp)$/,
-            /\.(css|scss|sass|sss|less)$/
-        ].filter(Boolean)
-    }) ],
-    plugins: [
-        new Dotenv() as WebpackPluginInstance
+    externals: [ WebpackPnpExternals() ],
+    plugins  : [
+        new webpack.DefinePlugin({
+            'process.env': { NODE_ENV: JSON.stringify(mode), ...getEnvs() }
+        }),
     ]
-});
+};
 
 export default serverConfig;

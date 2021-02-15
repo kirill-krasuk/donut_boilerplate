@@ -1,4 +1,4 @@
-import { WebpackPluginInstance }   from 'webpack';
+import webpack                     from 'webpack';
 import BrotliPlugin                from 'brotli-webpack-plugin';
 import CompressionPlugin           from 'compression-webpack-plugin';
 import OptimizeCssAssetsPlugin     from 'optimize-css-assets-webpack-plugin';
@@ -17,7 +17,12 @@ export default configureBundler({
             `${ paths.entry }`,
         ]
     },
-    stats       : 'summary',
+    stats      : 'summary',
+    performance: {
+        hints            : false,
+        maxEntrypointSize: 512000,
+        maxAssetSize     : 512000
+    },
     optimization: {
         minimize : true,
         minimizer: [
@@ -33,20 +38,21 @@ export default configureBundler({
                     safari10       : false,
                 },
             }),
-            new OptimizeCssAssetsPlugin() as WebpackPluginInstance
+            new OptimizeCssAssetsPlugin() as webpack.WebpackPluginInstance
         ],
         splitChunks: {
+            chunks     : 'all',
             cacheGroups: {
                 default: {
                     test              : /(react|redux)/g,
-                    filename          : 'react-vendors.js',
+                    filename          : 'react-vendors.[contenthash:8].js',
                     chunks            : 'initial',
                     reuseExistingChunk: true,
                     priority          : -10
                 },
                 defaultVendors: {
-                    test              : /[\\/]node_modules[\\/]/,
-                    filename          : 'vendors.js',
+                    test              : /.yarn/,
+                    filename          : 'vendors.[contenthash:8].js',
                     chunks            : 'initial',
                     reuseExistingChunk: true,
                     priority          : -20
@@ -58,6 +64,7 @@ export default configureBundler({
         new CompressionPlugin({
             filename: '[path].gz[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+            minRatio: 0.8
         }),
         isNeedBundleAnalyze && new BundleAnalyzerPlugin({
             analyzerMode  : 'static',
@@ -65,8 +72,9 @@ export default configureBundler({
             reportFilename: '../stats/prod-report.html',
         }),
         new BrotliPlugin({
-            asset: '[path].br[query]',
-            test : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
-        }) as WebpackPluginInstance,
+            asset   : '[path].br[query]',
+            test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+            minRatio: 0.8
+        }) as webpack.WebpackPluginInstance,
     ].filter(Boolean)
 });
