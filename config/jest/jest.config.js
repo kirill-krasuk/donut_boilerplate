@@ -22,9 +22,6 @@ module.exports = {
         // for jest watch matching test files
         '(/src/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$'
     ],
-    snapshotSerializers: [
-        '<rootDir>node_modules/enzyme-to-json/serializer'
-    ],
     moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/test/__mocks__/file.ts',
         '\\.svg$'                                                                        : '<rootDir>/test/__mocks__/svgr.ts',
