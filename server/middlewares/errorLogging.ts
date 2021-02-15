@@ -1,14 +1,22 @@
 import { Request, Response } from 'express';
 import * as log4js           from 'log4js';
-
-const logger = log4js.getLogger();
-
-log4js.configure({
-    appenders : { cheese: { type: 'file', filename: 'error.log' } },
-    categories: { default: { appenders: [ 'cheese' ], level: 'error' } }
-});
+import fs                    from 'fs';
+import path                  from 'path';
 
 export function errorLogging(req: Request, res: Response): void {
+    const logDir = path.resolve(__dirname, '../../logs');
+
+    if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir);
+    }
+
+    const logger = log4js.getLogger();
+
+    log4js.configure({
+        appenders : { cheese: { type: 'file', filename: path.resolve(logDir, 'app_errors.log') } },
+        categories: { default: { appenders: [ 'cheese' ], level: 'error' } }
+    });
+
     const { stack } = req.body;
 
     const err = stack.join('\n');
