@@ -10,6 +10,7 @@ WEBPACK_CLIENT_CFG=./config/webpack/webpack.prod.ts
 
 bash $CONTEXT/run_banner.sh &&
 bash $CONTEXT/mklogs.sh
+bash $CONTEXT/prune_caches.sh
 source ./bin/colors.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building production server" &&
