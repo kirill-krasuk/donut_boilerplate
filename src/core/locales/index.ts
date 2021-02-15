@@ -1,4 +1,4 @@
-import { ILocale }   from 'eo-locale';
+import { ILocale }   from '@eo-locale/core';
 
 import appEnMessages from '@app/locales/en.json';
 import appRuMessages from '@app/locales/ru.json';
