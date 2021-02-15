@@ -43,6 +43,7 @@ export default configureBundler({
         }),
         isNeedBundleAnalyze && new BundleAnalyzerPlugin({
             openAnalyzer: false,
+            logLevel    : 'silent',
             analyzerPort,
             analyzerHost: '127.0.0.1'
         }),

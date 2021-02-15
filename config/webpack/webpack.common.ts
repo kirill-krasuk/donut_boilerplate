@@ -102,7 +102,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 } ],
                 overrideExtension: true,
                 detailedLogs     : false,
-                silent           : false,
+                silent           : true,
                 strict           : true
             }),
             serviceWorkerEnabled && new InjectManifest({
