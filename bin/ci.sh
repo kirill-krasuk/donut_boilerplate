@@ -5,7 +5,6 @@ bash ./bin/node_version.sh
 
 source ./bin/colors.sh
 
-echo -e "${BBlack}${On_Blue} INFO ${Color_Off} Run test suites"
 bash ./bin/test.sh &&
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run typescript checking"

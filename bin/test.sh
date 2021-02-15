@@ -2,7 +2,7 @@
 
 source ./bin/colors.sh
 
-echo -e "${BBlack}${On_Blue} INFO ${Color_Off} Run tests"
+echo -e "${BBlack}${On_Blue} INFO ${Color_Off} Run tests suites"
 
 CONFIG_PATH=./config/jest/jest.config.js
 
