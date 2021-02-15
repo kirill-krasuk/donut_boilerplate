@@ -10,9 +10,14 @@ export function getJsLoader() {
                 workerParallelJobs: 50,
             }
         }, {
-            loader: 'babel-loader'
+            loader : require.resolve('babel-loader'),
+            options: {
+                compact: false
+            }
+        }, {
+            loader: 'shebang-loader'
         } ],
-        exclude: [ /node_modules/, /\.(spec|test)\.js$/ ]
+        exclude: [ /\.(spec|test)\.js$/ ]
     };
 
     if (!isProd()) {
