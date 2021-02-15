@@ -1,15 +1,22 @@
 {
-    "javascript.validate.enable": false,
-    "git.enableSmartCommit": true,
-    "git.autofetch": true,
-    "explorer.confirmDelete": false,
-    "typescript.validate.enable": true,
-    "git.confirmSync": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "css.validate": false,
-    "less.validate": false,
-    "scss.validate": false,
-    "typescript.tsdk": "node_modules/typescript/lib"
+  "javascript.validate.enable": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "explorer.confirmDelete": false,
+  "typescript.validate.enable": true,
+  "git.confirmSync": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "stylelint.stylelintPath": ".yarn/sdks/stylelint/lib/index.js"
 }
