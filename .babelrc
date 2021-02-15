@@ -1,5 +1,9 @@
 {
     "presets": [
+        ["@babel/preset-env", {
+            "corejs": 3,
+            "useBuiltIns": "usage"
+        }],
         "@babel/preset-typescript",
         ["@babel/preset-react", { "runtime": "automatic" }]
     ],
@@ -53,5 +57,6 @@
         "@babel/plugin-proposal-optional-chaining",
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-transform-runtime"
-    ]
+    ],
+    "ignore": ["**/*.d.ts"]
 }
