@@ -1,6 +1,7 @@
 import dayjs           from 'dayjs';
 import chalk           from 'chalk';
 
+import env             from '@server/config';
 import { getHostname } from './getHostname';
 
 export type OutputInfo = {
@@ -8,10 +9,8 @@ export type OutputInfo = {
     port: string
 };
 
-// TODO: need env helpers
-const isBundleAnalyzerOn = JSON.parse(process.env.BUILD_ANALYZE || 'false');
-const analyzerPort       = process.env.BUNDLE_ANALYZER_PORT;
-const isDev              = process.env.NODE_ENV === 'development';
+const { isBuildAnalyzer, analyzerPort } = env;
+const isDev                             = env.env === 'development';
 
 export const getAppOutputInfo = ({ host, port }: OutputInfo) => [
     `      ${ chalk.bold('Welcome to DONUT BOILERPLATE 🍩🍩🍩') }`,
@@ -20,7 +19,7 @@ export const getAppOutputInfo = ({ host, port }: OutputInfo) => [
     '',
     `            ${ chalk.gray.bold('Server started at') }`,
     `${ chalk.green.bold('Address:') }         ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ port }`) }`,
-    isDev && isBundleAnalyzerOn && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
+    isDev && isBuildAnalyzer && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
     '',
     chalk.gray.bold('Copy address to clipboard and run it in browser')
 ]
