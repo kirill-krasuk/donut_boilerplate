@@ -3,14 +3,20 @@
 # this is npm context, because this script
 # must running from app root
 CONTEXT=./bin
-NM_BIN=./node_modules/.bin
 
+bash $CONTEXT/run_banner.sh
 bash $CONTEXT/node_version.sh
-bash $CONTEXT/install_deps_dev.sh
+bash $CONTEXT/mklogs.sh
 
-echo -e "\n🔧 Building development version \n"
+source $CONTEXT/colors.sh
 
-$NM_BIN/cross-env TS_NODE_PROJECT=./config/webpack/tsconfig.webpack.json webpack \
-    --config ./config/webpack/webpack.server.ts --mode=development &&
-echo -e "\n🍩 Start application 🍩\n" &&
-$NM_BIN/cross-env BABEL_ENV=development NODE_ENV=development node ./dist/server.js
+echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building development version\n"
+
+NODE_ENV=development \
+yarn ts-node -P $TOOLS_TS_CONFIG ./tools/scripts/bundle.ts -c ./config/webpack/webpack.server.ts \
+2>> ./logs/bundle_errors.log
+
+echo -e "\n${BBlack}${On_Green} START ${Color_Off} 🍩 application 🍩\n" && \
+BABEL_ENV=development NODE_ENV=development \
+yarn node ./dist/server.js \
+2>> ./logs/server_run_errors.log

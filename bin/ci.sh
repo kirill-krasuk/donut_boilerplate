@@ -1,28 +1,29 @@
 #!/bin/bash
 
-# this is npm context, because this script
-# must running from app root
-
-NM_BIN=./node_modules/.bin
-
+bash ./bin/run_banner.sh
 bash ./bin/node_version.sh
 
-if [ ! -d "./node_modules/" ]; then
-    echo node_modules not found
-    echo check if dependencies are installed
-    exit 1
-fi
+source ./bin/colors.sh
 
-# run next command if previos success
+echo -e "${BBlack}${On_Blue} INFO ${Color_Off} Run test suites"
 bash ./bin/test.sh &&
-$NM_BIN/tsc --noEmit -p . &&
-$NM_BIN/eslint . &&
-$NM_BIN/stylelint './src/**/*.ts'
+
+echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run typescript checking"
+yarn tsc --noEmit -p . &&
+echo -e "${BBlack}${On_Green} PASS ${Color_Off} Type check was successful"
+
+echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run eslint checking"
+yarn eslint . &&
+echo -e "${BBlack}${On_Green} PASS ${Color_Off} Code style check was successful"
+
+echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run stylelinitng"
+yarn stylelint './src/**/*.ts' &&
+echo -e "${BBlack}${On_Green} PASS ${Color_Off} Stylelint check was successful\n"
 
 if [ $? -eq 1 ]; then
-    echo 🚨🚨🚨 CI failed 🚨🚨🚨
+    echo -e "🚨🚨🚨 CI ${BRed}failed${Color_Off} 🚨🚨🚨"
     exit 1
 else
-    echo ✨✨✨CI passed in ${SECONDS} seconds✨✨✨
+    echo -e "✨✨✨ CI ${BGreen}passed${Color_Off} in ${SECONDS} seconds ✨✨✨"
     exit 0
 fi
