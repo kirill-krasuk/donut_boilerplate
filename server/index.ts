@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import './shim';
 
-import express, { Response }   from 'express';
+import express                 from 'express';
 import processImage            from 'express-processimage';
 import expressStaticGzip       from 'express-static-gzip';
 import shrinkRay               from 'shrink-ray-current';
@@ -29,15 +29,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/dist', useStatic(`${ __dirname  }/../dist`, {
-    maxAge    : ONE_MONTH_CACHE,
-    setHeaders: (res: Response) => {
-        res.set('Service-Worker-Allowed', '/');
-        res.set('X-Is-Cacheable', 'true');
+app.use('/dist', expressStaticGzip(path.resolve(`${ __dirname  }/../dist`), {
+    enableBrotli   : true,
+    orderPreference: [ 'br', 'gzip', 'deflate' ],
+    serveStatic    : {
+        maxAge    : ONE_MONTH_CACHE,
+        setHeaders: (res) => {
+            res.setHeader('Service-Worker-Allowed', '/');
+            res.setHeader('X-Is-Cacheable', 'true');
+        }
     }
 }));
+app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), {
+    enableBrotli   : true,
+    orderPreference: [ 'br', 'gzip', 'deflate' ],
+}));
+
 app.use('/sw.js', useStatic(`${ __dirname  }/../dist/sw.js`));
-app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), { enableBrotli: true }));
 app.use('/images', useStatic(`${ __dirname  }/../public/images`, { maxAge: ONE_MONTH_CACHE }));
 app.use('/images/build', useStatic(`${ __dirname  }/../public/images/build`, { maxAge: ONE_MONTH_CACHE }));
 app.use('/fonts/build', useStatic(`${ __dirname  }/../public/fonts/build`, { maxAge: ONE_MONTH_CACHE }));
@@ -45,7 +53,7 @@ app.use('/', useStatic(`${ __dirname  }/../public/root`));
 
 app.use(favicon(path.join(__dirname, '..', '/public/images/favicon.ico')));
 app.set('view engine', 'pug');
-app.set('views', path.join(`${ __dirname  }/../dist`));
+app.set('views', path.join(`${ __dirname  }/../src/core`));
 
 useDevMiddlewares(app);
 
