@@ -3,7 +3,6 @@ import path                            from 'path';
 import { InjectManifest }              from 'workbox-webpack-plugin';
 import { CleanWebpackPlugin }          from 'clean-webpack-plugin';
 import LoadablePlugin                  from '@loadable/webpack-plugin';
-import Dotenv                          from 'dotenv-webpack';
 import MiniCssExtractPlugin            from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin               from 'html-webpack-plugin';
 import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
@@ -18,7 +17,7 @@ import { getClientCssLoader }          from './loaders/css-loader';
 import { getClientSassLoader }         from './loaders/sass-loader';
 import { getClientSassModuleLoader }   from './loaders/sass-module-loader';
 import { getSVGLoader }                from './loaders/svg-loader';
-import { collectEnvVars }              from './utils/collectEnvVars';
+import { getEnvs }                     from './utils/getEnvs';
 import { createHashHelper }            from './utils/createHashHelper';
 
 const context = path.resolve(__dirname, '../..');
@@ -50,7 +49,9 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             publicPath   : '/dist/',
             pathinfo     : false,
         },
-        devtool: options.devtool,
+        ...(options.devtool && {
+            devtool: options.devtool
+        }),
         resolve: {
             extensions: [
                 '.ts',
@@ -63,14 +64,21 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             symlinks        : false,
             cacheWithContext: false,
             alias           : {
-                'fp-ts/lib': 'fp-ts/es6' // use import in app from lib
+                'fp-ts/lib'       : 'fp-ts/es6', // use import in app from lib
+                'react-dom/server': require.resolve('react-dom/server')
             }
         },
+        ...(options.cache && {
+            cache: options.cache
+        }),
         optimization: {
             runtimeChunk: 'single',
             ...options.optimization,
         },
-        stats : options.stats,
+        stats: options.stats,
+        ...(options.performance && {
+            performance: options.performance
+        }),
         module: {
             unsafeCache: true,
             rules      : [
@@ -118,9 +126,8 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             }),
             new LoadablePlugin(),
             new webpack.DefinePlugin({
-                'process.env': { NODE_ENV: JSON.stringify(options.mode), ...collectEnvVars() }
+                'process.env': { NODE_ENV: JSON.stringify(options.mode), ...getEnvs() }
             }),
-            new Dotenv(),
             new webpack.ContextReplacementPlugin(
                 /moment[/\\]locale$/,
                 /ru/
@@ -140,10 +147,6 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             }),
         ]).filter(Boolean)
     };
-
-    if (options.cache) {
-        config.cache = options.cache;
-    }
 
     return config;
 }
