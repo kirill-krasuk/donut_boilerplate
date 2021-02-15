@@ -1,7 +1,5 @@
 #!/bin/bash
 
-bash ./bin/run_banner.sh
-
 source ./bin/colors.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} Run tests"
