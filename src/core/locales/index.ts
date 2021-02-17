@@ -1,4 +1,4 @@
-import { ILocale }   from '@eo-locale/core';
+import { Locale }    from '@eo-locale/core';
 
 import appEnMessages from '@app/locales/en.json';
 import appRuMessages from '@app/locales/ru.json';
@@ -15,7 +15,7 @@ const ruMessages = {
     ...uiRuMessages
 };
 
-const locales: ILocale[] = [ {
+const locales: Locale[] = [ {
     language: 'en',
     messages: enMessages
 }, {
