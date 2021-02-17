@@ -10,10 +10,11 @@ import { generateAppComponent }     from '@server/utils/generateAppComponent';
 import { generateStaticTemplate }   from '@server/utils/generateStaticTemplate';
 import { renderTemplate }           from '@server/utils/renderTemplate';
 import { getLoadableChunksOptions } from '@server/utils/getLoadableChunksOptions';
+import { headers }                  from '@server/constants/headers';
 
 export async function serverSideRendering(req: Request, res: Response): Promise<void> {
-    res.set('Service-Worker-Allowed', '/');
-    res.set('X-Is-Cacheable', 'true');
+    res.set(...headers.sw);
+    res.set(...headers.isCacheable);
 
     const { loadableStats, useFileSystem } = getLoadableChunksOptions(res.locals);
 
