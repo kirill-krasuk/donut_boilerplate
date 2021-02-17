@@ -23,7 +23,7 @@ export function getImageLoader() {
                         quality    : 65
                     },
                     optipng: {
-                        enabled: process.env.NODE_ENV === 'production'
+                        enabled: isProd()
                     },
                     pngquant: {
                         quality: [ 0.65, 0.90 ],

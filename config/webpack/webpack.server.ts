@@ -66,7 +66,11 @@ const serverConfig: Configuration = {
     externals: [ WebpackPnpExternals() ],
     plugins  : [
         new webpack.DefinePlugin({
-            'process.env': { NODE_ENV: JSON.stringify(mode), ...getEnvs() }
+            'process.env': { NODE_ENV: JSON.stringify(mode), ...getEnvs() },
+            __IS_DEV__   : mode === 'development',
+            __IS_PROD__  : mode === 'production',
+            __IS_SERVER__: true,
+            __IS_CLIENT__: false
         }),
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
