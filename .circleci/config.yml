@@ -25,6 +25,17 @@ commands:
             name: Building production version
             command: yarn bundle
 
+    debug:
+        steps:
+        - attach_workspace:
+            at: ./
+        - run:
+            name: debug1
+            command: cat ./logs/bundle_errors_1.log
+        - run:
+            name: debug2
+            command: cat ./logs/bundle_errors_2.log
+
 jobs:
     setup:
         executor: 
@@ -37,6 +48,7 @@ jobs:
         steps:
         - checkout
         - build
+        - debug
     test:
         executor: 
             name: node/default
