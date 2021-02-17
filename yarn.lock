@@ -1699,14 +1699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eo-locale/core@npm:1.2.1":
-  version: 1.2.1
-  resolution: "@eo-locale/core@npm:1.2.1"
-  checksum: de937487aefd57d66a4eb883d1b884c4a9546be04e49de4177af345c805170d96175212ade5bde10b6c772f33c3e31c42b7aa02fffb264b22e774b62e062a78f
-  languageName: node
-  linkType: hard
-
-"@eo-locale/core@npm:^1.2.1":
+"@eo-locale/core@npm:^1.2.1, @eo-locale/core@npm:^1.4.14":
   version: 1.4.14
   resolution: "@eo-locale/core@npm:1.4.14"
   checksum: b457eb9544767dd03456a99a3ad50466de35cadb1e8ca649bcbbf869a7180dca256a5eaace06f30d6ff79b80be36cc026f8f01b1645e46c3816d4079da6be86f
@@ -10090,15 +10083,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eo-locale@npm:7.3.1":
-  version: 7.3.1
-  resolution: "eo-locale@npm:7.3.1"
+"eo-locale@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "eo-locale@npm:7.4.2"
   dependencies:
     "@eo-locale/core": ^1.2.1
   peerDependencies:
     react: ^16.8.0
     react-dom: ^16.8.0
-  checksum: 1ea8d379ebb1837ca676522598e621ccf16230f99507066eda0cb61e8d9386ce8af84ca599e47d3db1cd2302085098fd754fa497b462c880ba1892b36e85197d
+  checksum: eea88092a10c3af388cddba8b58c444f22ca4fd3054ab9a25a688d1d0f37534ebf70f13275b52540ba8a467b32ba5f671f17c3424ca7bc030e44cce76709d302
   languageName: node
   linkType: hard
 
@@ -16833,7 +16826,7 @@ fsevents@^1.2.7:
     "@babel/register": ^7.12.10
     "@babel/runtime": ^7.12.13
     "@devexperts/remote-data-ts": ^2.0.4
-    "@eo-locale/core": 1.2.1
+    "@eo-locale/core": ^1.4.14
     "@eo-locale/polyfills": ^1.0.1
     "@loadable/babel-plugin": ^5.13.2
     "@loadable/component": ^5.14.0
@@ -16956,7 +16949,7 @@ fsevents@^1.2.7:
     enzyme: ^3.10.0
     enzyme-adapter-react-16: ^1.14.0
     enzyme-to-json: ^3.3.5
-    eo-locale: 7.3.1
+    eo-locale: ^7.4.2
     eslint: ^7.17.0
     eslint-config-airbnb-base: ^14.2.1
     eslint-plugin-arca: ^0.10.0

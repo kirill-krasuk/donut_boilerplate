@@ -64,8 +64,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             symlinks        : false,
             cacheWithContext: false,
             alias           : {
-                'fp-ts/lib'       : 'fp-ts/es6', // use import in app from lib
-                'react-dom/server': require.resolve('react-dom/server')
+                'fp-ts/lib': 'fp-ts/es6', // use import in app from lib
             }
         },
         ...(options.cache && {
