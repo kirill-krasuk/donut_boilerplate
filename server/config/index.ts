@@ -7,4 +7,5 @@ export default {
     isOpenInBrowser: getEnv('OPEN_IN_BROWSER', false),
     isBuildAnalyzer: getEnv('BUILD_ANALYZE', false),
     analyzerPort   : getEnv('BUNDLE_ANALYZER_PORT', null),
+    writeToDisk    : getEnv('WRITE_ASSETS_TO_DISK', true)
 };
