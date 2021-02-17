@@ -1,21 +1,21 @@
-import { Request, Response }      from 'express';
-import { ChunkExtractor }         from '@loadable/server';
-import { createMemoryHistory }    from 'history';
-import path                       from 'path';
+import { Request, Response }        from 'express';
+import { ChunkExtractor }           from '@loadable/server';
+import { createMemoryHistory }      from 'history';
 
-import { configureStore }         from '@utils/store/configureStore';
-import { prefetch }               from '@server/utils/prefetch';
-import { Context }                from '@server/types/context';
-import { initializeState }        from '@server/utils/initializeState';
-import { generateAppComponent }   from '@server/utils/generateAppComponent';
-import { generateStaticTemplate } from '@server/utils/generateStaticTemplate';
-import { renderTemplate }         from '@server/utils/renderTemplate';
-
-const statsFile = path.resolve(__dirname, '../../dist/loadable-stats.json');
+import { configureStore }           from '@utils/store/configureStore';
+import { prefetch }                 from '@server/utils/prefetch';
+import { Context }                  from '@server/types/context';
+import { initializeState }          from '@server/utils/initializeState';
+import { generateAppComponent }     from '@server/utils/generateAppComponent';
+import { generateStaticTemplate }   from '@server/utils/generateStaticTemplate';
+import { renderTemplate }           from '@server/utils/renderTemplate';
+import { getLoadableChunksOptions } from '@server/utils/getLoadableChunksOptions';
 
 export async function serverSideRendering(req: Request, res: Response): Promise<void> {
     res.set('Service-Worker-Allowed', '/');
     res.set('X-Is-Cacheable', 'true');
+
+    const { loadableStats, useFileSystem } = getLoadableChunksOptions(res.locals);
 
     const { theme: mode = 'dark', locale = 'en', token } = req.cookies;
 
@@ -24,7 +24,11 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     });
 
     const { store } = configureStore({}, history);
-    const extractor = new ChunkExtractor({ statsFile, entrypoints: [ 'bundle' ] });
+    const extractor = new ChunkExtractor({
+        stats          : loadableStats,
+        entrypoints    : [ 'bundle' ],
+        inputFileSystem: useFileSystem
+    });
 
     const props = await prefetch(req.url, { token });
 
