@@ -6,10 +6,10 @@ import HotMiddleware   from 'webpack-hot-middleware';
 import config          from '@server/config';
 import webpackConfig   from '../../config/webpack/webpack.dev';
 
-const { env, writeToDisk } = config;
+const { writeToDisk } = config;
 
 export async function useDevMiddlewares(app: Application): Promise<void> {
-    if (env === 'development') {
+    if (__IS_DEV__) {
         const bundler = webpack(webpackConfig);
 
         app.use(DevMiddleware(bundler, {

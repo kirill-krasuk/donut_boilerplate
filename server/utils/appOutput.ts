@@ -12,7 +12,6 @@ export type OutputInfo = {
 };
 
 const { isBuildAnalyzer, analyzerPort } = env;
-const isDev                             = env.env === 'development';
 
 export const getAppOutputInfo = ({ host, port }: OutputInfo) => {
     let messageAboutBrowser = 'Copy address to clipboard and run it in browser';
@@ -37,7 +36,7 @@ export const getAppOutputInfo = ({ host, port }: OutputInfo) => {
         `${ ' '.repeat(12) }${ chalk.gray.bold('Server started at') }`,
         `${ chalk.green.bold('Local:') }${ ' '.repeat(11) }${ chalk.underline.cyan(`http://${ hostname }:${ port }`) }`,
         network && `${ chalk.green.bold('Network:') }${ ' '.repeat(9) }${ chalk.underline.cyan(`http://${ network }:${ port }`) }`,
-        isDev && isBuildAnalyzer && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
+        __IS_DEV__ && isBuildAnalyzer && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
         '',
         chalk.gray.bold(messageAboutBrowser)
     ]

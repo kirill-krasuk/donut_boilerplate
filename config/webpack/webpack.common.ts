@@ -126,7 +126,11 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             }),
             new LoadablePlugin(),
             new webpack.DefinePlugin({
-                'process.env': { NODE_ENV: JSON.stringify(options.mode), ...getEnvs() }
+                'process.env': { NODE_ENV: JSON.stringify(options.mode), ...getEnvs() },
+                __IS_DEV__   : options.mode === 'development',
+                __IS_PROD__  : options.mode === 'production',
+                __IS_SERVER__: false,
+                __IS_CLIENT__: true
             }),
             new webpack.ContextReplacementPlugin(
                 /moment[/\\]locale$/,
