@@ -31,14 +31,14 @@ export default async function (pathToConfig: string) {
                 }
 
                 if (messages.warnings.length) {
-                    messages.warnings.forEach(console.warn);
+                    messages.warnings.forEach(console.log);
                     console.log(chalk.black.bgYellow.bold(' WARN '), `Webpack compiled with warnings in ${ toSeconds(compilationTime) }s.`);
 
                     return;
                 }
 
                 if (messages.errors.length) {
-                    messages.errors.forEach(console.error);
+                    messages.errors.forEach(console.log);
                     console.log(chalk.black.bgRed.bold(' FAIL '), `Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
 
                     return;
