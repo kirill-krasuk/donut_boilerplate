@@ -39,7 +39,7 @@ const serverConfig: Configuration = {
             cacheDirectory: path.resolve(__dirname, '../../.cache')
         }
         : false,
-    stats  : 'summary',
+    stats  : 'detailed',
     resolve: {
         extensions: [
             '.ts',
