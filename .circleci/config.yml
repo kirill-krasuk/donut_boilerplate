@@ -4,17 +4,7 @@ orbs:
   node: circleci/node@4.1.0
 
 commands:
-    initial-dev:
-        steps:
-        - checkout
-        - run:
-            name: Install Dependencies
-            command: yarn install --immutable
-        - persist_to_workspace:
-            root: ./
-            paths:
-                - ./
-    initial-prod: 
+    initial:
         steps:
         - checkout
         - run:
@@ -36,16 +26,11 @@ commands:
             command: yarn bundle
 
 jobs:
-    setup-prod:
+    setup:
         executor: 
             name: node/default
         steps:
-        - initial-prod
-    setup-dev:
-        executor: 
-            name: node/default
-        steps:
-        - initial-dev
+        - initial
     build: 
         executor: 
             name: node/default
@@ -67,11 +52,10 @@ workflows:
     version: 2
     build-and-test:
         jobs:
-        - setup-dev
-        - setup-prod
+        - setup
         - build:
             requires:
-                - setup-prod
+                - setup
         - test:
             requires:
-                - setup-dev
+                - setup
