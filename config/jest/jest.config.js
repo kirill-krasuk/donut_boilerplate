@@ -44,6 +44,10 @@ module.exports = {
         // can see this setting in tsconfig.jest.json -> "jsx": "react"
         'ts-jest': {
             tsconfig: '<rootDir>/config/jest/tsconfig.jest.json'
-        }
+        },
+        __IS_DEV__   : true,
+        __IS_PROD__  : false,
+        __IS_SERVER__: false,
+        __IS_CLIENT__: true
     }
 };
