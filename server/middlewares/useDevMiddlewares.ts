@@ -9,26 +9,24 @@ import webpackConfig   from '../../config/webpack/webpack.dev';
 
 const { writeToDisk } = config;
 
-export async function useDevMiddlewares(app: Application): Promise<void> {
-    if (__IS_DEV__) {
-        const { sw, isCacheable } = headers;
+export function useDevMiddlewares(app: Application): void {
+    const { sw, isCacheable } = headers;
 
-        const [ swKey, swValue ]                   = sw;
-        const [ isCacheableKey, isCacheableValue ] = isCacheable;
+    const [ swKey, swValue ]                   = sw;
+    const [ isCacheableKey, isCacheableValue ] = isCacheable;
 
-        const bundler = webpack(webpackConfig);
+    const bundler = webpack(webpackConfig);
 
-        app.use(DevMiddleware(bundler, {
-            publicPath      : webpackConfig?.output?.publicPath,
-            stats           : webpackConfig?.stats,
-            serverSideRender: true,
-            headers         : {
-                [swKey]         : [ swValue ],
-                [isCacheableKey]: [ isCacheableValue ]
-            },
-            writeToDisk
-        }));
+    app.use(DevMiddleware(bundler, {
+        publicPath      : webpackConfig?.output?.publicPath,
+        stats           : webpackConfig?.stats,
+        serverSideRender: true,
+        headers         : {
+            [swKey]         : [ swValue ],
+            [isCacheableKey]: [ isCacheableValue ]
+        },
+        writeToDisk
+    }));
 
-        app.use(HotMiddleware(bundler));
-    }
+    app.use(HotMiddleware(bundler));
 }
