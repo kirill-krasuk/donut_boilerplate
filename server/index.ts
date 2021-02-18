@@ -14,7 +14,6 @@ import { ServeStaticOptions }  from 'serve-static';
 import config                  from './config';
 import { serverSideRendering } from './middlewares/serverSideRendering';
 import { errorLogging }        from './middlewares/errorLogging';
-import { useDevMiddlewares }   from './middlewares/useDevMiddlewares';
 import { ONE_MONTH_CACHE }     from './constants/cache';
 import { useStatic }           from './utils/useStatic';
 import { appBorder }           from './utils/appBorder';
@@ -25,44 +24,51 @@ const { host, port } = config;
 
 const app = express();
 
-app.use(shrinkRay());
-app.use(processImage());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+async function main() {
+    app.use(shrinkRay());
+    app.use(processImage());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(cookieParser());
 
-const serveStaticOptions: ServeStaticOptions = {
-    maxAge    : ONE_MONTH_CACHE,
-    setHeaders: (res) => {
-        res.setHeader(...headers.sw);
-        res.setHeader(...headers.isCacheable);
+    const serveStaticOptions: ServeStaticOptions = {
+        maxAge    : ONE_MONTH_CACHE,
+        setHeaders: (res) => {
+            res.setHeader(...headers.sw);
+            res.setHeader(...headers.isCacheable);
+        }
+    };
+
+    app.use('/dist', expressStaticGzip(path.resolve(`${ __dirname  }/../dist`), {
+        enableBrotli   : true,
+        orderPreference: [ 'br', 'gzip', 'deflate' ],
+        serveStatic    : serveStaticOptions
+    }));
+    app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), {
+        enableBrotli   : true,
+        orderPreference: [ 'br', 'gzip', 'deflate' ],
+        serveStatic    : serveStaticOptions
+    }));
+
+    app.use('/sw.js', useStatic(`${ __dirname  }/../dist/sw.js`));
+    app.use('/images', useStatic(`${ __dirname  }/../public/images`, { maxAge: ONE_MONTH_CACHE }));
+    app.use('/images/build', useStatic(`${ __dirname  }/../public/images/build`, { maxAge: ONE_MONTH_CACHE }));
+    app.use('/fonts/build', useStatic(`${ __dirname  }/../public/fonts/build`, { maxAge: ONE_MONTH_CACHE }));
+    app.use('/', useStatic(`${ __dirname  }/../public/root`));
+
+    app.use(favicon(path.join(__dirname, '..', '/public/images/favicon.ico')));
+    app.set('view engine', 'pug');
+    app.set('views', path.join(`${ __dirname  }/../src/core`));
+
+    if (__IS_DEV__) {
+        const { useDevMiddlewares } = await import('./middlewares/useDevMiddlewares');
+        useDevMiddlewares(app);
     }
-};
 
-app.use('/dist', expressStaticGzip(path.resolve(`${ __dirname  }/../dist`), {
-    enableBrotli   : true,
-    orderPreference: [ 'br', 'gzip', 'deflate' ],
-    serveStatic    : serveStaticOptions
-}));
-app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), {
-    enableBrotli   : true,
-    orderPreference: [ 'br', 'gzip', 'deflate' ],
-    serveStatic    : serveStaticOptions
-}));
+    app.use('/handle_error', errorLogging);
+    app.use('/', serverSideRendering);
 
-app.use('/sw.js', useStatic(`${ __dirname  }/../dist/sw.js`));
-app.use('/images', useStatic(`${ __dirname  }/../public/images`, { maxAge: ONE_MONTH_CACHE }));
-app.use('/images/build', useStatic(`${ __dirname  }/../public/images/build`, { maxAge: ONE_MONTH_CACHE }));
-app.use('/fonts/build', useStatic(`${ __dirname  }/../public/fonts/build`, { maxAge: ONE_MONTH_CACHE }));
-app.use('/', useStatic(`${ __dirname  }/../public/root`));
+    app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
+}
 
-app.use(favicon(path.join(__dirname, '..', '/public/images/favicon.ico')));
-app.set('view engine', 'pug');
-app.set('views', path.join(`${ __dirname  }/../src/core`));
-
-useDevMiddlewares(app);
-
-app.use('/handle_error', errorLogging);
-app.use('/', serverSideRendering);
-
-app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
+main();
