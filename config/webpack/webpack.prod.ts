@@ -37,8 +37,8 @@ export default configureBundler({
                     keep_fnames    : false,
                     safari10       : false,
                 },
-            }),
-            new OptimizeCssAssetsPlugin() as webpack.WebpackPluginInstance
+            }) as any,
+            new OptimizeCssAssetsPlugin()
         ],
         splitChunks: {
             chunks     : 'all',
