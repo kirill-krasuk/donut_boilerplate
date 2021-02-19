@@ -47,6 +47,7 @@ export default async function (pathToConfig: string) {
             }
         } catch (err) {
             console.log(chalk.black.bgRed.bold(' FAIL '), `Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
+            process.exit(1);
         }
     });
 }
