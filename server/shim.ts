@@ -1,11 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-require('@babel/register')({
-    plugins: [
-        'dynamic-import-node',
-        'macros'
-    ],
-    cache: false
-});
 
 // @ts-ignore
 global.fetch = require('node-fetch');
