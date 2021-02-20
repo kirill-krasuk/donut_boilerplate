@@ -115,10 +115,17 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 template         : paths.template,
                 filename         : paths.view,
                 alwaysWriteToDisk: true,
-                excludeAssets    : [ /\.(js|css)/ ]
+
+                // force disable minification for
+                // correctly building pug file
+                // because indentation matters
+                minify       : false,
+                excludeAssets: [ /\.(js|css)/ ]
             }),
             new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
-            new HtmlPugPlugin(),
+            new HtmlPugPlugin({
+                adjustIndent: true
+            }),
             new MiniCssExtractPlugin({
                 filename     : addHash('[name].css', 'contenthash:8'),
                 chunkFilename: addHash('[id].css', 'contenthash:8'),
