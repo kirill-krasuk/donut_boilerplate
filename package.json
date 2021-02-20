@@ -17,7 +17,6 @@
   },
   "license": "ISC",
   "author": "Kirill Krasuk",
-  "main": "index.js",
   "scripts": {
     "bundle": "bash ./bin/bundle.sh",
     "ci": "bash ./bin/ci.sh",
@@ -35,7 +34,6 @@
     "types": "tsc --noEmit -p ."
   },
   "dependencies": {
-    "@babel/register": "^7.12.10",
     "@babel/runtime": "^7.12.13",
     "@devexperts/remote-data-ts": "^2.0.4",
     "@eo-locale/core": "^1.4.14",
@@ -139,7 +137,6 @@
     "yargs-parser": "^20.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.12",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
@@ -251,9 +248,9 @@
     "eslint-plugin-varspacing": "^1.2.2",
     "file-loader": "^6.1.1",
     "html-webpack-harddisk-plugin": "^1.0.2",
-    "html-webpack-plugin": "^5.0.0-alpha.6",
-    "html-webpack-pug-plugin": "^2.0.0",
-    "html-webpack-skip-assets-plugin": "0.0.2",
+    "html-webpack-plugin": "^5.2.0",
+    "html-webpack-pug-plugin": "^2.0.1",
+    "html-webpack-skip-assets-plugin": "1.0.1",
     "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^7.0.1",
     "imagemin-webp-webpack-plugin": "^3.3.3",
