@@ -17,7 +17,7 @@ export default configureBundler({
             `${ paths.entry }`,
         ]
     },
-    stats      : 'detailed',
+    stats      : 'summary',
     performance: {
         hints            : false,
         maxEntrypointSize: 512000,
