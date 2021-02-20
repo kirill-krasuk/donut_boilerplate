@@ -29,10 +29,14 @@ FROM prepared_node_env AS bundler
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+COPY .yarn .yarn
+COPY yarn.lock package.json .yarnrc.yml ./
+
+RUN yarn
+
 COPY . .
 
-RUN yarn && \
-    yarn bundle
+RUN yarn bundle
 
 #------------------------
 
@@ -70,7 +74,7 @@ WORKDIR /usr/src/app
 
 # install the bash, 
 # since alpina goes without it by default
-RUN apk add --update --no-cache bash && \
+RUN apk add --no-cache bash && \
     rm -rf /var/cache/apk/*
 
 # copy bundle results
@@ -87,4 +91,4 @@ COPY package.json yarn.lock .yarnrc.yml ./
 
 EXPOSE ${PORT_TO_EXPOSE}
 
-CMD ["yarn", "run:server"]
+ENTRYPOINT ["yarn", "run:server"]
