@@ -6,6 +6,9 @@
 #
 FROM node:15.8.0-alpine AS prepared_node_env
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
 # installing all tools for building 
 # some nodejs modules
 RUN apk add --no-cache --virtual .gyp \
@@ -19,15 +22,13 @@ RUN apk add --no-cache --virtual .gyp \
     libpng-dev \
     libjpeg-turbo-dev
 
+COPY .yarn .yarn
+COPY yarn.lock package.json .yarnrc.yml ./
+
 
 #---------> image for installing production dependencies <---------
 
 FROM prepared_node_env AS installer
-
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-COPY . .
 
 # installing production dependencies.
 # this helps to reduce the final image size by almost half
@@ -37,12 +38,6 @@ RUN yarn workspaces focus --all --production
 #----------------> image for bundling application <----------------
 
 FROM prepared_node_env AS bundler
-
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-COPY .yarn .yarn
-COPY yarn.lock package.json .yarnrc.yml ./
 
 RUN yarn
 
