@@ -24,6 +24,9 @@ commands:
         - run: 
             name: Building production version
             command: yarn bundle
+        - run: ls -lah
+        - run: ls -lah logs
+        - run: cat ./logs/bundle_errors_2.log
 
 jobs:
     setup:
