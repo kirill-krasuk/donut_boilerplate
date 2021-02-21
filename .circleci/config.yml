@@ -12,7 +12,11 @@ commands:
             command: sudo apt-get update
         - run:
             name: Install tools
-            command: sudo apt-get install libtool libpng-dev libpng16 libjpeg-turbo8
+            command: |
+                sudo apt-get install libtool \
+                    libpng-dev \
+                    libpng16-16 \
+                    libjpeg-turbo8
         - run:
             name: Run ldconfig
             command: sudo ldconfig
