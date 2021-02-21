@@ -8,12 +8,12 @@ import shrinkRay               from 'shrink-ray-current';
 import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
 import bodyParser              from 'body-parser';
-import path                    from 'path';
 
 import config                  from './config';
 import { serverSideRendering } from './middlewares/serverSideRendering';
 import { errorLogging }        from './middlewares/errorLogging';
 import { ONE_MONTH_CACHE }     from './constants/cache';
+import { paths }               from './constants/paths';
 import { useStatic }           from './utils/useStatic';
 import { appBorder }           from './utils/appBorder';
 import { getAppOutputInfo }    from './utils/appOutput';
@@ -32,26 +32,26 @@ async function main() {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
 
-    app.use('/dist', expressStaticGzip(path.resolve(`${ __dirname  }/../dist`), {
+    app.use('/dist', expressStaticGzip(paths.dist, {
         enableBrotli   : true,
         orderPreference: [ 'br', 'gzip', 'deflate' ],
         serveStatic    : serveStaticOptions
     }));
-    app.use('/public', expressStaticGzip(path.resolve(`${ __dirname  }/../public`), {
+    app.use('/public', expressStaticGzip(paths.public, {
         enableBrotli   : true,
         orderPreference: [ 'br', 'gzip', 'deflate' ],
         serveStatic    : serveStaticOptions
     }));
 
-    app.use('/sw.js', useStatic(`${ __dirname  }/../dist/sw.js`));
-    app.use('/images', useStatic(`${ __dirname  }/../public/images`, { maxAge: ONE_MONTH_CACHE }));
-    app.use('/images/build', useStatic(`${ __dirname  }/../public/images/build`, { maxAge: ONE_MONTH_CACHE }));
-    app.use('/fonts/build', useStatic(`${ __dirname  }/../public/fonts/build`, { maxAge: ONE_MONTH_CACHE }));
-    app.use('/', useStatic(`${ __dirname  }/../public/root`));
+    app.use('/sw.js', useStatic(paths.serviceWorker));
+    app.use('/images', useStatic(paths.images.static, { maxAge: ONE_MONTH_CACHE }));
+    app.use('/images/build', useStatic(paths.images.builded, { maxAge: ONE_MONTH_CACHE }));
+    app.use('/fonts/build', useStatic(paths.fonts, { maxAge: ONE_MONTH_CACHE }));
+    app.use('/', useStatic(paths.root));
 
-    app.use(favicon(path.join(__dirname, '..', '/public/images/favicon.ico')));
+    app.use(favicon(paths.favicon));
     app.set('view engine', 'pug');
-    app.set('views', path.join(`${ __dirname  }/../dist`));
+    app.set('views', paths.dist);
 
     if (__IS_DEV__) {
         const { useDevMiddlewares } = await import('./middlewares/useDevMiddlewares');
