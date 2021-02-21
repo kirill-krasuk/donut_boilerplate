@@ -19,6 +19,8 @@ import { useStatic }           from './utils/useStatic';
 import { appBorder }           from './utils/appBorder';
 import { getAppOutputInfo }    from './utils/appOutput';
 import { headers }             from './constants/headers';
+import { createExitHandler }   from './handlers/process';
+import { handleClose }         from './handlers/server';
 
 const { host, port } = config;
 
@@ -68,7 +70,14 @@ async function main() {
     app.use('/handle_error', errorLogging);
     app.use('/', serverSideRendering);
 
-    app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
+    const server = app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
+
+    server.on('close', handleClose);
+
+    const handleExit = createExitHandler(server);
+
+    process.on('SIGTERM', handleExit);
+    process.on('SIGINT', handleExit);
 }
 
 main();
