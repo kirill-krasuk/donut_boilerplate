@@ -7,19 +7,16 @@ commands:
     initial:
         steps:
         - checkout
-        - run: 
-            name: Set repo
-            command: sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         - run:
             name: Update repo
             command: sudo apt-get update
-        - run: sudo apt dist-upgrade -y
         - run:
             name: Install tools
             command: |
                 sudo apt-get install libtool \
+                    automake \
+                    autoconf \
                     libpng-dev \
-                    libpng16-16 \
                     libjpeg-turbo8
         - run:
             name: Run ldconfig
