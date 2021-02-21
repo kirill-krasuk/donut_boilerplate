@@ -7,9 +7,13 @@ commands:
     initial:
         steps:
         - checkout
+        - run: 
+            name: Set repo
+            command: sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         - run:
             name: Update repo
             command: sudo apt-get update
+        - run: sudo apt dist-upgrade -y
         - run:
             name: Install tools
             command: |
