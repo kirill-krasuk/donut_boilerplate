@@ -47,11 +47,13 @@ jobs:
     setup:
         machine:
             image: ubuntu-2004:202010-01
+        resource_class: large
         steps:
         - initial
     build: 
         machine:
             image: ubuntu-2004:202010-01
+        resource_class: large
         steps:
         - checkout
         - build
@@ -59,6 +61,7 @@ jobs:
     test:
         machine:
             image: ubuntu-2004:202010-01
+        resource_class: large
         steps:
         - checkout
         - attach_workspace:
