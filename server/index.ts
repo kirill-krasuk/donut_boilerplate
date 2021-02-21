@@ -60,6 +60,7 @@ async function main() {
 
     process.once('SIGTERM', handleExit);
     process.once('SIGINT', handleExit);
+    process.once('SIGKILL', handleExit);
 }
 
 main();
