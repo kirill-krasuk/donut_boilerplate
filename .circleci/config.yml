@@ -12,7 +12,7 @@ commands:
             command: sudo apt-get update
         - run:
             name: Install tools
-            command: sudo apt-get install libtool libpng-dev libpng16-16 libjpeg-turbo8
+            command: sudo apt-get install libtool libpng-dev libpng16.so.16 libjpeg-turbo8
         - run:
             name: Install Dependencies
             command: yarn install --immutable
