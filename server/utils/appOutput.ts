@@ -29,16 +29,16 @@ export const getAppOutputInfo = ({ host, port }: OutputInfo) => {
     }
 
     return [
-        `${ ' '.repeat(6) }${ chalk.bold('Welcome to DONUT BOILERPLATE 🍩🍩🍩') }`,
+        chalk`${ ' '.repeat(6) }{bold Welcome to DONUT BOILERPLATE 🍩🍩🍩}`,
         '',
-        `${ chalk.green.bold('Server time:') }${ ' '.repeat(5) }${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }`,
+        chalk`{green.bold Server time:}${ ' '.repeat(5) }${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }`,
         '',
-        `${ ' '.repeat(12) }${ chalk.gray.bold('Server started at') }`,
-        `${ chalk.green.bold('Local:') }${ ' '.repeat(11) }${ chalk.underline.cyan(`http://${ hostname }:${ port }`) }`,
-        network && `${ chalk.green.bold('Network:') }${ ' '.repeat(9) }${ chalk.underline.cyan(`http://${ network }:${ port }`) }`,
-        __IS_DEV__ && isBuildAnalyzer && `${ chalk.green.bold('Bundle analyzer:') } ${ chalk.underline.cyan(`http://${ getHostname(host) }:${ analyzerPort }`) }`,
+        chalk`${ ' '.repeat(12) }{gray.bold Server started at}`,
+        chalk`{green.bold Local:}${ ' '.repeat(11) }{underline.cyan http://${ hostname }:${ port }}`,
+        network && chalk`{green.bold Network:}${ ' '.repeat(9) }{underline.cyan http://${ network }:${ port }}`,
+        __IS_DEV__ && isBuildAnalyzer && chalk`{green.bold Bundle analyzer:} {underline.cyan http://${ getHostname(host) }:${ analyzerPort }}`,
         '',
-        chalk.gray.bold(messageAboutBrowser)
+        chalk`{gray.bold ${ messageAboutBrowser }}`
     ]
         .filter(row => row !== false)
         .map(row => `${ row }\n`)

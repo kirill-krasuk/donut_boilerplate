@@ -13,7 +13,7 @@ export function compileTime(time: number) {
     }
 
     if (time > MEDIUM) {
-        console.log(chalk.black.bgYellow.bold(' WARN '), chalk.yellow('Time of compilation is too long.'));
+        console.log(chalk`{black.bgYellow.bold  WARN } {yellow Time of compilation is too long.}`);
         return chalk.red(time);
     }
 }

@@ -28,28 +28,28 @@ export default async function (pathToConfig: string) {
                 });
 
                 if (!messages.errors.length && !messages.warnings.length) {
-                    console.log(chalk.black.bgGreen.bold(' PASS '), `Webpack compiled successfully in ${ compileTime(+toSeconds(compilationTime)) }s.`);
+                    console.log(chalk`{black.bgGreen.bold  PASS } Webpack compiled successfully in ${ compileTime(+toSeconds(compilationTime)) }s.`);
 
                     return;
                 }
 
                 if (messages.warnings.length) {
                     messages.warnings.forEach(console.warn);
-                    console.log(chalk.black.bgYellow.bold(' WARN '), `Webpack compiled with warnings in ${ toSeconds(compilationTime) }s.`);
+                    console.log(chalk`{black.bgYellow.bold  WARN }Webpack compiled with warnings in ${ toSeconds(compilationTime) }s.`);
 
                     return;
                 }
 
                 if (messages.errors.length) {
                     messages.errors.forEach(console.error);
-                    console.log(chalk.black.bgRed.bold(' FAIL '), `Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
+                    console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
 
                     process.exit(1);
                     return;
                 }
             }
         } catch (err) {
-            console.log(chalk.black.bgRed.bold(' FAIL '), `Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
+            console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
 
             process.exit(1);
         }
