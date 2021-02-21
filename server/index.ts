@@ -3,7 +3,6 @@ import './shim';
 
 import express                 from 'express';
 import processImage            from 'express-processimage';
-import expressStaticGzip       from 'express-static-gzip';
 import shrinkRay               from 'shrink-ray-current';
 import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
@@ -19,7 +18,7 @@ import { appBorder }           from './utils/appBorder';
 import { getAppOutputInfo }    from './utils/appOutput';
 import { createExitHandler }   from './handlers/process';
 import { handleClose }         from './handlers/server';
-import { serveStaticOptions }  from './constants/static';
+import { staticCompression }   from './handlers/staticCompression';
 
 const { host, port } = config;
 
@@ -32,16 +31,8 @@ async function main() {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
 
-    app.use('/dist', expressStaticGzip(paths.dist, {
-        enableBrotli   : true,
-        orderPreference: [ 'br', 'gzip', 'deflate' ],
-        serveStatic    : serveStaticOptions
-    }));
-    app.use('/public', expressStaticGzip(paths.public, {
-        enableBrotli   : true,
-        orderPreference: [ 'br', 'gzip', 'deflate' ],
-        serveStatic    : serveStaticOptions
-    }));
+    app.use('/dist', staticCompression(paths.dist));
+    app.use('/public', staticCompression(paths.public));
 
     app.use('/sw.js', useStatic(paths.serviceWorker));
     app.use('/images', useStatic(paths.images.static, { maxAge: ONE_MONTH_CACHE }));
