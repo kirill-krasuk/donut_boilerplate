@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ./bin/variables.sh
 source ./bin/colors.sh
 
 bash ./bin/mklogs.sh
