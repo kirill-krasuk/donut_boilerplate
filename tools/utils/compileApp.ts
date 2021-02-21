@@ -41,19 +41,18 @@ export default async function (pathToConfig: string) {
                 }
 
                 if (messages.errors.length) {
-                    console.info('try', messages);
                     messages.errors.forEach(console.error);
                     console.log(chalk.black.bgRed.bold(' FAIL '), `Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
 
-                    // process.exit(1);
+                    process.exit(1);
                     return;
                 }
             }
         } catch (err) {
-            console.info('catch', err);
+            console.error('ERROR!', err);
             console.log(chalk.black.bgRed.bold(' FAIL '), `Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
 
-            // process.exit(1);
+            process.exit(1);
         }
     });
 }
