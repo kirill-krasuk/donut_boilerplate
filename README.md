@@ -1,3 +1,4 @@
+![Donut Logo]
 (https://github.com/kirill-krasuk/new_boilerplate/blob/develop/public/images/logo128x128.png)
 
 # Donut Boilerplate
