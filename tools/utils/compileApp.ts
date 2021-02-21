@@ -23,8 +23,8 @@ export default async function (pathToConfig: string) {
             if (stats) {
                 const rawMessages = stats.toJson({ all: false, warnings: true, errors: true });
                 messages          = formatWebpackMessages({
-                    errors  : rawMessages.errors.map((e) => e.message),
-                    warnings: rawMessages.warnings.map((e) => e.message),
+                    errors  : rawMessages!.errors!.map((e) => e.message),
+                    warnings: rawMessages!.warnings!.map((e) => e.message),
                 });
 
                 if (!messages.errors.length && !messages.warnings.length) {
