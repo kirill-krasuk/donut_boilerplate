@@ -60,11 +60,6 @@ declare module '*.prod' {
     export default content;
 }
 
-declare module 'enzyme-adapter-react-16' {
-    const content: any;
-    export default content;
-}
-
 declare module 'html-webpack-pug-plugin' {
     const content: any;
     export default content;
