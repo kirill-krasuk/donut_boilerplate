@@ -1,3 +1,5 @@
+(https://github.com/kirill-krasuk/new_boilerplate/blob/develop/public/images/logo128x128.png)
+
 # Donut Boilerplate
 
 [![CircleCI](https://circleci.com/gh/kirill-krasuk/new_boilerplate.svg?style=svg)](https://circleci.com/gh/kirill-krasuk/new_boilerplate.svg)
