@@ -19,11 +19,23 @@ RUN apk add --no-cache --virtual .gyp \
     libpng-dev \
     libjpeg-turbo-dev
 
-#------------------------
 
-#
-# image for bundling application
-#
+#---------> image for installing production dependencies <---------
+
+FROM prepared_node_env AS installer
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY . .
+
+# installing production dependencies.
+# this helps to reduce the final image size by almost half
+RUN yarn workspaces focus --all --production
+
+
+#----------------> image for bundling application <----------------
+
 FROM prepared_node_env AS bundler
 
 RUN mkdir -p /usr/src/app
@@ -38,27 +50,8 @@ COPY . .
 
 RUN yarn bundle
 
-#------------------------
 
-#
-# image for installing production dependencies
-#
-FROM prepared_node_env AS installer
-
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-COPY . .
-
-# installing production dependencies.
-# this helps to reduce the final image size by almost half
-RUN yarn workspaces focus --all --production
-
-#------------------------
-
-#
-# prod lightweight image
-#
+#--------------------> prod lightweight image <--------------------
 
 # we use an empty alpina image, 
 # since we no longer need tools to build modules, 
@@ -71,24 +64,32 @@ ARG PORT_TO_EXPOSE=80
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+RUN chown node:node .
 
-# install the bash, 
+# install the bash,
 # since alpina goes without it by default
-RUN apk add --no-cache bash && \
-    rm -rf /var/cache/apk/*
+RUN apk add --no-cache bash \
+    dumb-init \
+    && rm -rf /var/cache/apk/*
+
+USER node
 
 # copy bundle results
-COPY --from=bundler /usr/src/app/dist dist
-COPY --from=bundler /usr/src/app/public public
+COPY --chown=node:node --from=bundler /usr/src/app/dist dist
+COPY --chown=node:node --from=bundler /usr/src/app/public public
 
 # copy prod dependencies
-COPY --from=installer /usr/src/app/.yarn .yarn
-COPY --from=installer /usr/src/app/.pnp.cjs .
+COPY --chown=node:node --from=installer /usr/src/app/.yarn .yarn
+COPY --chown=node:node --from=installer /usr/src/app/.pnp.cjs .
 
 # copy other
-COPY bin bin
-COPY package.json yarn.lock .yarnrc.yml ./
+COPY --chown=node:node bin bin
+COPY --chown=node:node package.json yarn.lock .yarnrc.yml ./
 
 EXPOSE ${PORT_TO_EXPOSE}
 
-ENTRYPOINT ["yarn", "run:server"]
+# dumb-init is a simple process supervisor and 
+# init system designed to run as PID 1 
+# inside minimal container environments
+ENTRYPOINT [ "dumb-init", "--"]
+CMD ["yarn", "run:server"]
