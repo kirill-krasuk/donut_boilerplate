@@ -1,5 +1,7 @@
 # Run `make build-no-cache` to update dependencies
 
+#-------------------> base image for builders <--------------------
+
 #
 # use alpine image with installed
 # nodejs tools for reusable
