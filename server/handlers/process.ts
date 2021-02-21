@@ -2,7 +2,7 @@ import { Server } from 'http';
 import chalk      from 'chalk';
 
 export const createExitHandler = (server: Server) => (signal: NodeJS.Signals) => {
-    console.info(`\n${ chalk.black.bgBlue.bold(' INFO ') } ${ chalk.green.bold(signal) } received.`);
+    console.info(chalk`\n{black.bgBlue.bold  INFO } {green.bold ${ signal }} received.`);
 
     server.close();
 
