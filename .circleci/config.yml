@@ -4,20 +4,6 @@ commands:
     initial:
         steps:
         - checkout
-        # - run:
-        #     name: Update repo
-        #     command: sudo apt-get update
-        # - run:
-        #     name: Install tools
-        #     command: |
-        #         sudo apt-get install libtool \
-        #             automake \
-        #             autoconf \
-        #             libpng-dev \
-        #             libjpeg-turbo8
-        # - run:
-        #     name: Run ldconfig
-        #     command: sudo ldconfig
         - run:
             name: Install Dependencies
             command: yarn install --immutable
@@ -35,10 +21,12 @@ commands:
         - run: 
             name: Building production version
             command: yarn bundle
-        - run: ls -lah
-        - run: ls -lah logs
-        - run: cat ./logs/bundle_errors_2.log
-        - run: cat ./logs/bundle_errors_1.log
+        - run: 
+            name: Echo build logs
+            command: cat ./logs/bundle_errors_1.log
+        - run: 
+            name: Echo build logs
+            command: cat ./logs/bundle_errors_2.log
 
 jobs:
     setup:
