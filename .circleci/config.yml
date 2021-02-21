@@ -45,20 +45,20 @@ commands:
 
 jobs:
     setup:
-        machine:
-            image: ubuntu-2004:202010-01
+        docker:
+            - image: cimg/node:15.8
         steps:
         - initial
     build: 
-        machine:
-            image: ubuntu-2004:202010-01
+        docker:
+            - image: cimg/node:15.8
         steps:
         - checkout
         - build
         
     test:
-        machine:
-            image: ubuntu-2004:202010-01
+        docker:
+            - image: cimg/node:15.8
         steps:
         - checkout
         - attach_workspace:
