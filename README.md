@@ -1,4 +1,4 @@
-![Donut Logo](/public/images/logo128x128.png)
+<span style="display:block;text-align:center">![Donut Logo](/public/images/logo256x256.png)</span>
 
 # Donut Boilerplate
 
