@@ -9,7 +9,6 @@ import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
 import bodyParser              from 'body-parser';
 import path                    from 'path';
-import { ServeStaticOptions }  from 'serve-static';
 
 import config                  from './config';
 import { serverSideRendering } from './middlewares/serverSideRendering';
@@ -18,9 +17,9 @@ import { ONE_MONTH_CACHE }     from './constants/cache';
 import { useStatic }           from './utils/useStatic';
 import { appBorder }           from './utils/appBorder';
 import { getAppOutputInfo }    from './utils/appOutput';
-import { headers }             from './constants/headers';
 import { createExitHandler }   from './handlers/process';
 import { handleClose }         from './handlers/server';
+import { serveStaticOptions }  from './constants/static';
 
 const { host, port } = config;
 
@@ -32,14 +31,6 @@ async function main() {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
-
-    const serveStaticOptions: ServeStaticOptions = {
-        maxAge    : ONE_MONTH_CACHE,
-        setHeaders: (res) => {
-            res.setHeader(...headers.sw);
-            res.setHeader(...headers.isCacheable);
-        }
-    };
 
     app.use('/dist', expressStaticGzip(path.resolve(`${ __dirname  }/../dist`), {
         enableBrotli   : true,
