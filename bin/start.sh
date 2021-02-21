@@ -15,7 +15,7 @@ source $CONTEXT/colors.sh
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building development version\n"
 
 BABEL_CACHE_PATH=$BABEL_CACHE_PATH  NODE_ENV=development \
-yarn ts-node -P $TOOLS_TS_CONFIG ./tools/scripts/bundle.ts -c ./config/webpack/webpack.server.ts \
+ts-node -P $TOOLS_TS_CONFIG ./tools/scripts/bundle.ts -c ./config/webpack/webpack.server.ts \
 2> ./logs/bundle_errors_1.log
 
 echo -e "\n${BBlack}${On_Green} START ${Color_Off} 🍩 application 🍩\n" && \
