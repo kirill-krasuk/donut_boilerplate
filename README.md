@@ -6,19 +6,21 @@
   <img src="https://circleci.com/gh/kirill-krasuk/new_boilerplate.svg?style=svg" alt="circle ci result"/>
 </p>
 
-
 <h1 align="center">
 Donut Boilerplate
 </h1>
 
-This template uses Yarn v2 (codenamed Berry). We are taking a new approach to installing dependencies - [PnP](https://classic.yarnpkg.com/en/docs/pnp/).<br/>
+This template uses Yarn🧶 v2 (codenamed Berry). We are taking a new approach to installing dependencies - [PnP](https://classic.yarnpkg.com/en/docs/pnp/).
 You can check out the yarn cli [here](https://yarnpkg.com/cli/install).
 
 This template comes with circleci ♻️.<br/>
 You just have to link your repository to a CircleCI account.
 
-## How to start
+The template is already prepared to work with a service worker ⚙️. To enable/disable it, change the **`SERVICE_WORKER_ENABLE`** variable. <br/>
+To do development inside a service worker, go to the path `<appRootDir>/src/core/service-worker.js`.<br/>
+In the browser, the service worker connects to the _**/sw.js**_ path
 
+## How to start
 - Copy and edit environment variables `cp .env.example .env`
 - Install all dependencies `yarn`
 - Finally start developing `yarn start`
@@ -32,6 +34,7 @@ You can also start production via docker.
 - `make build-image` for building docker image. Set environment variables in *`.env`*  which contain **DOCKER***
 - `make run-container` for run docker container.
 - the rest of the commands and what they do you can see in the Makefile
+
 ## Helpful information
 1. By default, the application opens in the browser, this can be inconvenient and this setting can be disabled in the *`.env`* file by setting **`OPEN_IN_BROWSER`**`=false`
 1. In development mode, all builded assets are written to memory, if you need to look at the source or if you prefer to have it all in the visible area, you can set **`WRITE_ASSETS_TO_DISK`**`=true` 
@@ -39,6 +42,25 @@ You can also start production via docker.
 1. In development mode, you can run or not run bundle analyzer. 
 The variable is responsible for this **`BUILD_ANALYZE`**. In production analyzer write results in stats directory. You can also set the port to the analyzer server
 1. To use production build via docker, you are recommended to rewrite *`.env`* docker-specific variables
+
+## Useful scripts
+
+All these scripts are described in package.json and called through the `yarn <command>` command.
+
+- `bundle` - build production version
+- `ci` - run all commands to test the application
+- `lint` - code style checking
+- `lint:css` - css style checking
+- `prunecaches` - delete app caches
+- `run:server` - start builded app
+- `start` - build and run development app
+- `start:prod` - build and run production app
+- `storybook` - run storybook
+- `test` - run jest for testing
+  - `test:coverage`
+  - `test:update`
+  - `test:watch`
+- `types` - run typescript checking
 
 ## Stack used
 - App developing 🧑‍💻
