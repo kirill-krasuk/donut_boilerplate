@@ -137,6 +137,7 @@
     "yargs-parser": "^20.2.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.17",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.12",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
@@ -164,6 +165,7 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "@types/babel__core": "^7",
     "@types/babel__preset-env": "^7",
     "@types/bluebird": "^3",
     "@types/body-parser": "^1.19.0",
