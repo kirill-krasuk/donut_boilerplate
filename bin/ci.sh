@@ -1,11 +1,13 @@
 #!/bin/bash
 
-bash ./bin/run_banner.sh
-bash ./bin/node_version.sh
+source ./bin/variables.sh
 
-source ./bin/colors.sh
+bash $CONTEXT/run_banner.sh
+bash $CONTEXT/node_version.sh
 
-bash ./bin/test.sh &&
+source $CONTEXT/colors.sh
+
+bash $CONTEXT/test.sh &&
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run typescript checking"
 yarn tsc --noEmit -p . &&
