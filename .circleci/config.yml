@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@4.1.0
-
 commands:
     initial:
         steps:
@@ -10,17 +7,17 @@ commands:
         - run:
             name: Update repo
             command: sudo apt-get update
-        - run:
-            name: Install tools
-            command: |
-                sudo apt-get install libtool \
-                    automake \
-                    autoconf \
-                    libpng-dev \
-                    libjpeg-turbo8
-        - run:
-            name: Run ldconfig
-            command: sudo ldconfig
+        # - run:
+        #     name: Install tools
+        #     command: |
+        #         sudo apt-get install libtool \
+        #             automake \
+        #             autoconf \
+        #             libpng-dev \
+        #             libjpeg-turbo8
+        # - run:
+        #     name: Run ldconfig
+        #     command: sudo ldconfig
         - run:
             name: Install Dependencies
             command: yarn install --immutable
@@ -46,19 +43,19 @@ commands:
 jobs:
     setup:
         docker:
-            - image: cimg/node:15.8
+            - image: node:15.8.0
         steps:
         - initial
     build: 
         docker:
-            - image: cimg/node:15.8
+            - image: node:15.8.0
         steps:
         - checkout
         - build
         
     test:
         docker:
-            - image: cimg/node:15.8
+            - image: node:15.8.0
         steps:
         - checkout
         - attach_workspace:
