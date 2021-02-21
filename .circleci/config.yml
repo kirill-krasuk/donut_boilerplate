@@ -4,9 +4,9 @@ commands:
     initial:
         steps:
         - checkout
-        - run:
-            name: Update repo
-            command: sudo apt-get update
+        # - run:
+        #     name: Update repo
+        #     command: sudo apt-get update
         # - run:
         #     name: Install tools
         #     command: |
