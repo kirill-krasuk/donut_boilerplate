@@ -45,20 +45,20 @@ commands:
 
 jobs:
     setup:
-        executor: 
-            name: node/default
+        machine:
+            image: ubuntu-2004:202010-01
         steps:
         - initial
     build: 
-        executor: 
-            name: node/default
+        machine:
+            image: ubuntu-2004:202010-01
         steps:
         - checkout
         - build
         
     test:
-        executor: 
-            name: node/default
+        machine:
+            image: ubuntu-2004:202010-01
         steps:
         - checkout
         - attach_workspace:
