@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# this is npm context, because this script
-# must running from app root
-CONTEXT=./bin
-TOOLS_TS_CONFIG=./tools/tsconfig.json
-BABEL_CACHE_PATH=./.cache/babel-register
+source ./bin/variables.sh
 
 bash $CONTEXT/run_banner.sh
 bash $CONTEXT/node_version.sh

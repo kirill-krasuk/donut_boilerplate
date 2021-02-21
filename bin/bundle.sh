@@ -1,17 +1,11 @@
 #! /bin/bash
 
-CONTEXT=./bin
-
-TOOLS_TS_CONFIG=./tools/tsconfig.json
-BUNDLE_TOOL_PATH=./tools/scripts/bundle.ts
-
-WEBPACK_SERVER_CFG=./config/webpack/webpack.server.ts
-WEBPACK_CLIENT_CFG=./config/webpack/webpack.prod.ts
+source ./bin/variables.sh
 
 bash $CONTEXT/run_banner.sh &&
 bash $CONTEXT/mklogs.sh
 bash $CONTEXT/prune_caches.sh
-source ./bin/colors.sh
+source $CONTEXT/colors.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building production server" &&
 
