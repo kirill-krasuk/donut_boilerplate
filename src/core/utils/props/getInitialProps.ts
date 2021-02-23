@@ -10,7 +10,7 @@ let initialProps = O.none;
 
 const getInitialPropsFromDOM: IO.IO<O.Option<{ [key: string]: any }>> = () => {
     if (canUseDOM) {
-        if (Object.prototype.hasOwnProperty.call(window, '__INITIAL_PROPS__')) {
+        if (Reflect.has(window, '__INITIAL_PROPS__')) {
             // @ts-ignore
             initialProps = window.__INITIAL_PROPS__;
 
