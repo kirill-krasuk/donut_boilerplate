@@ -5173,15 +5173,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:*, acorn@npm:^8.0.4":
-  version: 8.0.5
-  resolution: "acorn@npm:8.0.5"
-  bin:
-    acorn: bin/acorn
-  checksum: b138585ca3948355fb0125105576b90326d4bdfd610f6c8bab382d281c9ea99d2360280c0aa4548f2e4b924eea2256a273140c49fc1be46d8a3b4b3bfefd8a62
-  languageName: node
-  linkType: hard
-
 "acorn@npm:^6.4.1":
   version: 6.4.2
   resolution: "acorn@npm:6.4.2"
@@ -5197,6 +5188,15 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 2bde98c28c1be9a08e41e581179b776b43396c9486ce52b2b9848d73c53df38c516b7edba4bacdc84cabc9d7a3299f3b46ef240ae261c38dbf8ddd89f635bd32
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.0.4":
+  version: 8.0.5
+  resolution: "acorn@npm:8.0.5"
+  bin:
+    acorn: bin/acorn
+  checksum: b138585ca3948355fb0125105576b90326d4bdfd610f6c8bab382d281c9ea99d2360280c0aa4548f2e4b924eea2256a273140c49fc1be46d8a3b4b3bfefd8a62
   languageName: node
   linkType: hard
 
@@ -14602,17 +14602,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"json-schema@npm:*, json-schema@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "json-schema@npm:0.3.0"
-  checksum: 1d0895cca1b01e3a290de6b7cae5d5cf7bb2764f6a032bc85f0bc0dd50d1820c0d8bd71159ba921e4c1c6e47f909b5d2308f6bbbf191e1b47ac7b6adc526fb5b
-  languageName: node
-  linkType: hard
-
 "json-schema@npm:0.2.3":
   version: 0.2.3
   resolution: "json-schema@npm:0.2.3"
   checksum: d382ea841f0af5cf6ae3b63043c6ddbd144086de52342b5dd32d8966872dce1e0ed280f6b27c5fba97e50cf8640f27b593e039cb95df365718ada03ef0feb9f2
+  languageName: node
+  linkType: hard
+
+"json-schema@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "json-schema@npm:0.3.0"
+  checksum: 1d0895cca1b01e3a290de6b7cae5d5cf7bb2764f6a032bc85f0bc0dd50d1820c0d8bd71159ba921e4c1c6e47f909b5d2308f6bbbf191e1b47ac7b6adc526fb5b
   languageName: node
   linkType: hard
 
@@ -16481,6 +16481,7 @@ fsevents@^1.2.7:
     redux-devtools-extension: ^2.13.8
     redux-mock-store: ^1.5.4
     redux-observable: ^1.2.0
+    regenerator-runtime: ^0.13.7
     reselect: ^4.0.0
     resolve-url-loader: ^3.1.2
     rxjs: ^6.6.3
