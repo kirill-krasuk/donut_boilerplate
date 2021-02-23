@@ -15,7 +15,7 @@ const lift = <L, A>(check: (a: A) => E.Either<L, A>): LiftedRule<L, A> => a => p
 
 const provideRules = (value: string) => (rules: Rule[]) => rules.map(rule => lift(rule)(value));
 
-export const isValid = (errors: Record<string, ValidatedValue>) => Object.keys(errors).every((key) => E.isRight(errors[key]));
+export const isValid = (errors: Record<string, ValidatedValue>) => Reflect.ownKeys(errors).every((key) => E.isRight(errors[key]));
 
 export const parseError = flow(
     E.fold(
