@@ -54,8 +54,10 @@ export function configureStore(preloadedState: object = {}, history: History<any
             ? composeWithDevTools
             : compose;
 
+    const rootReducer = createRootReducer(history, {}, ssrReducers);
+
     const store: ExtendedStore = createStore(
-        createRootReducer(history, {}, ssrReducers),
+        rootReducer,
         staticPreloadedState,
         composeEnhancers(applyMiddleware(...middlewares))
     );
@@ -92,5 +94,5 @@ export function configureStore(preloadedState: object = {}, history: History<any
         }
     }
 
-    return { store, history };
+    return { store, history, rootReducer };
 }

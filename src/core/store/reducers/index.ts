@@ -1,12 +1,12 @@
-import { combineReducers, Reducer, Action } from 'redux';
-import { connectRouter }                    from 'connected-react-router';
-import { History }                          from 'history';
+import { combineReducers, Action } from 'redux';
+import { connectRouter }           from 'connected-react-router';
+import { History }                 from 'history';
 
-import appReducers                          from '@app/store/reducers';
-import theme                                from './theme';
-import locale                               from './locale';
-import modal                                from './modal';
-import location                             from './location';
+import appReducers                 from '@app/store/reducers';
+import theme                       from './theme';
+import locale                      from './locale';
+import modal                       from './modal';
+import location                    from './location';
 
 export const staticReducers = {
     router: connectRouter({} as any),
@@ -28,10 +28,11 @@ export default (
     history: History<any>,
     asyncReducers?: Record<string, any>,
     ssrReducers?: Record<string, any>
-): Reducer<any, Action<any>> => (state: any, action: Action) => {
+): ReturnType<typeof appReducer> => (state, action: Action) => {
     // this place need for unset state on logout
     if (action.type === 'LOGOUT') {
-        // eslint-disable-next-line
+        // @ts-ignore
+        // eslint-disable-next-line no-param-reassign
         state = {
             ...state,
 
