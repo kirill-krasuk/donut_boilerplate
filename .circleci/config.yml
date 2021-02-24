@@ -6,7 +6,7 @@ commands:
         - checkout
         - run:
             name: Install Dependencies
-            command: yarn install --immutable
+            command: yarn install
         - persist_to_workspace:
             root: ./
             paths:
