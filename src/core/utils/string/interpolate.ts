@@ -6,7 +6,7 @@ const escapeRegex = /{{(\s)?\$([0-9]+)(\s)?}}/g;
 
 const normalizeValues = (args: string[]): number[] => args.map(arg => parseInt(arg.replace(escapeRegex, '$2'), 10));
 
-const replace = (str: string, args: string[] | null, valuesToReplace: Array<string | number>, index = 0): string => (
+const replace = (str: string, args: string[] | null, valuesToReplace: ReadonlyArray<string | number>, index = 0): string => (
     // eslint-disable-next-line no-nested-ternary
     args
         ? args.length <= index
@@ -20,7 +20,7 @@ const replace = (str: string, args: string[] | null, valuesToReplace: Array<stri
         : str
 );
 
-export const interpolate = (message: string | null | undefined, args: Array<string | number>, defaultMessage?: string) => pipe(
+export const interpolate = (message: string | null | undefined, args: ReadonlyArray<string | number>, defaultMessage?: string) => pipe(
     O.fromNullable(message || null),
     (messageOption) => pipe(
         messageOption,
