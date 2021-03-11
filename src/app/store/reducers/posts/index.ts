@@ -7,5 +7,5 @@ import { State, Action } from './types';
 const initState: State = initial;
 
 export default createReducer<State, Action>(initState, {
-    [ actions.SET_POSTS ]: (_state, { payload }) => payload
+    [ actions.setPostsAction.type ]: (_state, { payload }) => payload
 });

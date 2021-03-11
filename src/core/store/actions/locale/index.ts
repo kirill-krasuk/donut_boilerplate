@@ -1,1 +1,1 @@
-export { CHANGE_LOCALE, changeLocaleAction } from './changeLocale';
+export { changeLocaleAction } from './changeLocale';

@@ -1,1 +1,1 @@
-export { isFirstRenderingAction, IS_FIRST_RENDERING } from './isFirstRendering';
+export { isFirstRenderingAction } from './isFirstRendering';

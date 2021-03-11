@@ -12,7 +12,7 @@ export const initState: State = {
 const themeLens = Lens.fromProp<State>()('mode');
 
 export default createReducer<State, Action>(initState, {
-    [actions.CHANGE_THEME]: (state, { payload }) => (
+    [actions.changeThemeAction.type]: (state, { payload }) => (
         themeLens
             .set(payload)(state)
     )

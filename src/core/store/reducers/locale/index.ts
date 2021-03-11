@@ -7,5 +7,5 @@ import { Action, State } from './types';
 export const initState: State = Locale.En;
 
 export default createReducer<State, Action>(initState, {
-    [actions.CHANGE_LOCALE]: (_state, { payload }) => payload
+    [actions.changeLocaleAction.type]: (_state, { payload }) => payload
 });

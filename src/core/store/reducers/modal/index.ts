@@ -14,11 +14,11 @@ const modalIdLens      = Lens.fromProp<State>()('id');
 const modalHistoryLens = Lens.fromProp<State>()('hasHistory');
 
 export default createReducer<State, Actions>(initState, {
-    [ actions.SET_MODAL ]: (state, { payload }) => (
+    [actions.setModalAction.type]: (state, { payload }) => (
         modalIdLens
             .set(payload)(state)
     ),
-    [actions.SET_MODAL_HISTORY_FLAG]: (state, { payload }) => (
+    [actions.setModalHistoryFlagAction.type]: (state, { payload }) => (
         modalHistoryLens
             .set(payload)(state)
     )

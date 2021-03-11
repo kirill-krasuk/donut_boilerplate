@@ -1,6 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createActionCreator } from '@core/utils/redux/action';
+import { SetModal }            from '@core/types/modal';
 
-import { SetModal }     from '@core/types/modal';
-
-export const SET_MODAL: SetModal['type'] = 'core/SET_MODAL';
-export const setModalAction = createAction(SET_MODAL)<SetModal['payload']>();
+export const setModalAction = createActionCreator('core/SET_MODAL')<SetModal['payload']>();

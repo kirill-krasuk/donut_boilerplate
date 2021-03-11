@@ -1,15 +1,15 @@
-import { of, Observable }                                        from 'rxjs';
-import { ActionsObservable, ofType }                             from 'redux-observable';
-import { push }                                                  from 'connected-react-router';
-import { map, switchMap }                                        from 'rxjs/operators';
-import * as O                                                    from 'fp-ts/lib/Option';
-import { pipe }                                                  from 'fp-ts/lib/pipeable';
+import { of, Observable }                                             from 'rxjs';
+import { ActionsObservable, ofType }                                  from 'redux-observable';
+import { push }                                                       from 'connected-react-router';
+import { map, switchMap }                                             from 'rxjs/operators';
+import * as O                                                         from 'fp-ts/lib/Option';
+import { pipe }                                                       from 'fp-ts/lib/pipeable';
 
-import { emptyEpicAction }                                       from '@core/store/actions/emptyEpic';
-import { CallModal, CallModalObjectPayload }                     from '@core/types/modal';
-import { CALL_MODAL, setModalAction, setModalHistoryFlagAction } from '@core/store/actions/modal';
-import { Modals }                                                from '@app/enums/modal';
-import { camelToSnake }                                          from '@utils/string';
+import { emptyEpicAction }                                            from '@core/store/actions/emptyEpic';
+import { CallModal, CallModalObjectPayload }                          from '@core/types/modal';
+import { callModalAction, setModalAction, setModalHistoryFlagAction } from '@core/store/actions/modal';
+import { Modals }                                                     from '@app/enums/modal';
+import { camelToSnake }                                               from '@utils/string';
 
 type ReturnTypeEpic = Observable<object>
 
@@ -36,7 +36,7 @@ const dispatchModalHFlag = ({ history, id: idOption }: CallModalObjectPayload) =
 );
 
 export const callModalEpic = (action$: ActionsObservable<CallModal>) => action$.pipe(
-    ofType(CALL_MODAL),
+    ofType(callModalAction.type),
     map(callModalById),
     switchMap(action => {
         if (action instanceof Observable) {

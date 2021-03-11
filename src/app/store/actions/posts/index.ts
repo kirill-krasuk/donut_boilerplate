@@ -1,1 +1,1 @@
-export { SET_POSTS, setPostsAction } from './setPosts';
+export { setPostsAction } from './setPosts';

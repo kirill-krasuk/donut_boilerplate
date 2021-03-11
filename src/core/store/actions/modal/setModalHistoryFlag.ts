@@ -1,6 +1,5 @@
-import { createAction }        from 'typesafe-actions';
-
+import { createActionCreator } from '@core/utils/redux/action';
 import { SetModalHistoryFlag } from '@core/types/modal';
 
-export const SET_MODAL_HISTORY_FLAG: SetModalHistoryFlag['type'] = 'core/SET_MODAL_HISTORY_FLAG';
-export const setModalHistoryFlagAction = createAction(SET_MODAL_HISTORY_FLAG)<SetModalHistoryFlag['payload']>();
+export const setModalHistoryFlagAction
+    = createActionCreator('core/SET_MODAL_HISTORY_FLAG')<SetModalHistoryFlag['payload']>();
