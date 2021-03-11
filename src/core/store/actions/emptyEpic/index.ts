@@ -1,6 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createActionCreator } from '@core/utils/redux/action';
+import { EmptyEpic }           from '@core/types/empty';
 
-import { EmptyEpic }    from '@core/types/empty';
-
-export const EMPTY_EPIC: EmptyEpic['type'] = 'core/EMPTY_EPIC';
-export const emptyEpicAction = createAction(EMPTY_EPIC)<EmptyEpic['payload']>();
+export const emptyEpicAction = createActionCreator('core/EMPTY_EPIC')<EmptyEpic['payload']>();

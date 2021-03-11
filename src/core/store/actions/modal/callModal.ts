@@ -1,6 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createActionCreator } from '@core/utils/redux/action';
+import { CallModal }           from '@core/types/modal';
 
-import { CallModal }    from '@core/types/modal';
-
-export const CALL_MODAL: CallModal['type'] = 'core/CALL_MODAL';
-export const callModalAction = createAction(CALL_MODAL)<CallModal['payload']>();
+export const callModalAction = createActionCreator('core/CALL_MODAL')<CallModal['payload']>();

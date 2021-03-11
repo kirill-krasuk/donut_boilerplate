@@ -1,6 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createActionCreator } from '@core/utils/redux/action';
+import { CloseModal }          from '@core/types/modal';
 
-import { CloseModal }   from '@core/types/modal';
-
-export const CLOSE_MODAL: CloseModal['type'] = 'core/CLOSE_MODAL';
-export const closeModalAction = createAction(CLOSE_MODAL)<CloseModal['payload']>();
+export const closeModalAction = createActionCreator('core/CLOSE_MODAL')<CloseModal['payload']>();

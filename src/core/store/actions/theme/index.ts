@@ -1,1 +1,1 @@
-export { CHANGE_THEME, changeThemeAction } from './changeTheme';
+export { changeThemeAction } from './changeTheme';

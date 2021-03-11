@@ -11,7 +11,7 @@ const initState: State = {
 const locationLens = Lens.fromProp<State>()('isFirstRendering');
 
 export default createReducer<State, Action>(initState, {
-    [actions.IS_FIRST_RENDERING]: (state, { payload }) => (
+    [actions.isFirstRenderingAction.type]: (state, { payload }) => (
         locationLens
             .set(payload)(state)
     )

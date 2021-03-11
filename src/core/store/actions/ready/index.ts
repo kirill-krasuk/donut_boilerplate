@@ -1,5 +1,4 @@
-import { createAction } from 'typesafe-actions';
-import { Ready }        from '@core/types/ready';
+import { createActionCreator } from '@core/utils/redux/action';
+import { Ready }               from '@core/types/ready';
 
-export const READY: Ready['type'] = 'core/READY';
-export const readyAction = createAction(READY)<Ready['payload']>();
+export const readyAction = createActionCreator('core/READY')<Ready['payload']>();

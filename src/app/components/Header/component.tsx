@@ -1,20 +1,18 @@
-import { FC }                       from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { EOLocale as T }            from 'eo-locale';
-import { Sun }                      from '@styled-icons/fa-solid/Sun';
-import { Moon }                     from '@styled-icons/fa-solid/Moon';
-import R                            from 'ramda';
+import { FC }                 from 'react';
+import { useSelector }        from 'react-redux';
+import { EOLocale as T }      from 'eo-locale';
+import { Sun }                from '@styled-icons/fa-solid/Sun';
+import { Moon }               from '@styled-icons/fa-solid/Moon';
 
-import { changeThemeAction }        from '@core/store/actions/theme';
-import { getMode }                  from '@core/store/selectors/theme';
-import { getLocale }                from '@core/store/selectors/locale';
-import { changeLocaleAction }       from '@core/store/actions/locale/index';
-import { Theme }                    from '@core/enums/theme';
-import { Locale }                   from '@core/enums/locale';
-import { createToggleHelper }       from '@core/utils/toggler';
-import { createFactory }            from '@core/utils/factory';
-import * as S                       from './styled';
-import messages                     from './messages';
+import { getMode }            from '@core/store/selectors/theme';
+import { getLocale }          from '@core/store/selectors/locale';
+import { Theme }              from '@core/enums/theme';
+import { Locale }             from '@core/enums/locale';
+import { createToggleHelper } from '@core/utils/toggler';
+import { createFactory }      from '@core/utils/factory';
+import { useActions }         from '@core/hooks/useActions';
+import * as S                 from './styled';
+import messages               from './messages';
 
 const toggleLocale = createToggleHelper({
     [Locale.Ru]: Locale.En,
@@ -37,22 +35,17 @@ const themeLogoFactory = createFactory({
 });
 
 const Header: FC = () => {
-    const dispatch = useDispatch();
+    const { changeThemeAction, changeLocaleAction } = useActions();
 
     const mode   = useSelector(getMode);
     const locale = useSelector(getLocale);
 
-    const composeWithDispatch: any = R.partial(R.compose, [ dispatch ]);
-
-    const changeTheme: typeof changeThemeAction   = composeWithDispatch(changeThemeAction);
-    const changeLocale: typeof changeLocaleAction = composeWithDispatch(changeLocaleAction);
-
     const handleChangeTheme = () => {
-        changeTheme(toggleThemeMode(mode));
+        changeThemeAction(toggleThemeMode(mode));
     };
 
     const handleChangeLocale = () => {
-        changeLocale(toggleLocale(locale));
+        changeLocaleAction(toggleLocale(locale));
     };
 
     return (

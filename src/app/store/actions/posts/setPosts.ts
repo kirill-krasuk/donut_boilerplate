@@ -1,6 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createActionCreator } from '@core/utils/redux/action';
+import { SetPosts }            from '@app/types/posts';
 
-import { SetPosts }     from '@app/types/posts';
-
-export const SET_POSTS: SetPosts['type'] = 'app/SET_POSTS';
-export const setPostsAction = createAction(SET_POSTS)<SetPosts['payload']>();
+export const setPostsAction = createActionCreator('app/SET_POSTS')<SetPosts['payload']>();

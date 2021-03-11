@@ -1,6 +1,4 @@
-import { createAction } from 'typesafe-actions';
+import { createActionCreator } from '@core/utils/redux/action';
+import { ChangeTheme }         from '@core/types/theme';
 
-import { ChangeTheme }  from '@core/types/theme';
-
-export const CHANGE_THEME: ChangeTheme['type'] = 'core/CHANGE_THEME';
-export const changeThemeAction = createAction(CHANGE_THEME)<ChangeTheme['payload']>();
+export const changeThemeAction = createActionCreator('core/CHANGE_THEME')<ChangeTheme['payload']>();
