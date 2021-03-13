@@ -23,10 +23,10 @@ commands:
             command: yarn bundle
         - run: 
             name: Echo build logs
-            command: cat ./logs/bundle_errors_1.log
+            command: cat ./logs/server_bundle.error.log
         - run: 
             name: Echo build logs
-            command: cat ./logs/bundle_errors_2.log
+            command: cat ./logs/client_bundle.error.log
 
 jobs:
     setup:
