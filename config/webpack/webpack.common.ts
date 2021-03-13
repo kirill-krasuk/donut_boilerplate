@@ -30,6 +30,9 @@ export const paths = {
     view    : path.resolve('dist/index.pug')
 };
 
+export const __IS_CLIENT__ = true;
+export const __IS_SERVER__ = false;
+
 export function configureBundler(options: webpack.Configuration): webpack.Configuration {
     const isProd = options.mode === 'production';
 
@@ -135,8 +138,8 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 'process.env': { NODE_ENV: JSON.stringify(options.mode), ...getEnvs() },
                 __IS_DEV__   : options.mode === 'development',
                 __IS_PROD__  : options.mode === 'production',
-                __IS_SERVER__: false,
-                __IS_CLIENT__: true
+                __IS_SERVER__,
+                __IS_CLIENT__
             }),
             new webpack.ContextReplacementPlugin(
                 /moment[/\\]locale$/,

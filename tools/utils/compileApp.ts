@@ -10,8 +10,10 @@ function toSeconds(time: number) {
 }
 
 export default async function (pathToConfig: string) {
-    const { default: webpackConfig } = await import(pathToConfig);
-    const start                      = Date.now();
+    const { default: webpackConfig, __IS_SERVER__ } = await import(pathToConfig);
+    const start                                     = Date.now();
+
+    const env = __IS_SERVER__ ? 'SERVER' : 'CLIENT';
 
     const compiler = webpack(webpackConfig);
 
@@ -28,28 +30,28 @@ export default async function (pathToConfig: string) {
                 });
 
                 if (!messages.errors.length && !messages.warnings.length) {
-                    console.log(chalk`{black.bgGreen.bold  PASS } Webpack compiled successfully in ${ compileTime(+toSeconds(compilationTime)) }s.`);
+                    console.log(chalk`{black.bgGreen.bold  PASS } Webpack compiled {blue.bold ${ env }} successfully in ${ compileTime(+toSeconds(compilationTime)) }s.`);
 
                     return;
                 }
 
                 if (messages.warnings.length) {
                     messages.warnings.forEach(console.warn);
-                    console.log(chalk`{black.bgYellow.bold  WARN }Webpack compiled with warnings in ${ toSeconds(compilationTime) }s.`);
+                    console.log(chalk`{black.bgYellow.bold  WARN }Webpack compiled {blue.bold ${ env }} with warnings in ${ toSeconds(compilationTime) }s.`);
 
                     return;
                 }
 
                 if (messages.errors.length) {
                     messages.errors.forEach(console.error);
-                    console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
+                    console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
 
                     process.exit(1);
                     return;
                 }
             }
         } catch (err) {
-            console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled with errors in ${ toSeconds(compilationTime) }s.`);
+            console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
 
             process.exit(1);
         }

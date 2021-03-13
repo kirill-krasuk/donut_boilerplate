@@ -19,6 +19,9 @@ const PATHS = {
 
 const mode = process.env.NODE_ENV as 'development' | 'production' || 'development';
 
+export const __IS_SERVER__ = true;
+export const __IS_CLIENT__ = false;
+
 const serverConfig: Configuration = {
     mode,
     target: 'node',
@@ -69,8 +72,8 @@ const serverConfig: Configuration = {
             'process.env': { NODE_ENV: JSON.stringify(mode), ...getEnvs() },
             __IS_DEV__   : mode === 'development',
             __IS_PROD__  : mode === 'production',
-            __IS_SERVER__: true,
-            __IS_CLIENT__: false
+            __IS_SERVER__,
+            __IS_CLIENT__
         }),
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
