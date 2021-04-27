@@ -13,7 +13,7 @@ import { pipe }                                      from 'fp-ts/lib/pipeable';
 import R                                             from 'ramda';
 
 import { HTTPMethod }                                from '@core/enums/http';
-import * as Env                                      from '@core/config/env';
+import env                                           from '@env/';
 import { DefaultHeaders, UrlORRequest, RequestBody } from '@core/types/HTTP';
 
 const DEFAULT_HEADERS = {
@@ -21,7 +21,7 @@ const DEFAULT_HEADERS = {
     Accept        : 'application/json'
 };
 
-const apiHost = () => Env.get('apiHost');
+const apiHost = () => env.api;
 
 const getToken: IO.IO<O.Option<string>> = () => O.fromNullable(Cookie.get('token'));
 

@@ -10,6 +10,6 @@ export function getEnvs() {
 
             return /^(\d+|false|true)$/.test(envVar)
                 ? { ...acc, [curr]: JSON.parse(envVar) }
-                : { ...acc, [curr]: `"${ envVar }"` };
+                : { ...acc, [curr]: envVar ? `"${ envVar }"` : null };
         }, {});
 }

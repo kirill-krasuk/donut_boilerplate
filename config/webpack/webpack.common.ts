@@ -38,7 +38,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
 
     const addHash = createHashHelper(isProd);
 
-    const serviceWorkerEnabled = JSON.parse(process.env.SERVICE_WORKER_ENABLE as string);
+    const serviceWorkerEnabled = JSON.parse(process.env.SERVICE_WORKER_ENABLE as unknown as string);
 
     const config: webpack.Configuration = {
         context,

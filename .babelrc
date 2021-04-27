@@ -43,7 +43,8 @@
                     "@images": "./src/assets/images",
                     "@fonts": "./src/assets/fonts",
                     "@svgs": "./src/assets/svgs",
-                    "@test": "./test"
+                    "@test": "./test",
+                    "@env": "./config/env"
                 }
             }
         ],

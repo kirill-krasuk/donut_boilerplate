@@ -3,11 +3,11 @@ import webpack         from 'webpack';
 import DevMiddleware   from 'webpack-dev-middleware';
 import HotMiddleware   from 'webpack-hot-middleware';
 
-import config          from '@server/config';
+import env             from '@env/';
 import { headers }     from '@server/constants/headers';
 import webpackConfig   from '../../config/webpack/webpack.dev';
 
-const { writeToDisk } = config;
+const { writeToDisk } = env;
 
 export function useDevMiddlewares(app: Application): void {
     const { sw, isCacheable } = headers;
