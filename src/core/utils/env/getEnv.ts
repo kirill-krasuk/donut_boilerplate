@@ -13,7 +13,7 @@ export const getEnv = (getEnv: IO.IO<NodeJS.ProcessEnv>) => <T = string>(key: st
         either,
         E.fold(
             (reason) => (C.error(reason)(), O.none),
-            (value) => value
+            (value) => value as O.Option<T>
         ),
     ),
     O.fold(
