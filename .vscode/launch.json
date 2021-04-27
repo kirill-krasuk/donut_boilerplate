@@ -5,15 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
-            "request": "attach",
             "name": "Attach to Chrome",
             "port": 9222,
-            "urlFilter": "http://localhost:7356*",
-            "skipFiles": [
-                "node_modules/**"
-            ],
-            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "request": "attach",
+            "type": "pwa-chrome",
             "webRoot": "${workspaceFolder}"
         },
         {
