@@ -1,1 +1,1 @@
-export { setPostsAction } from './posts/setPosts';
+export * from './posts';
