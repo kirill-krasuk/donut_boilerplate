@@ -5173,6 +5173,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"acorn@npm:*":
+  version: 8.1.0
+  resolution: "acorn@npm:8.1.0"
+  bin:
+    acorn: bin/acorn
+  checksum: 99ccf30832b00ff7e19dff353479fd303c5a82c4ae0a5c5904a6c03316658b89bbdca40f5d8473e6aedd988a404190abd7b431dbd3160df4c09a10398b84bf1c
+  languageName: node
+  linkType: hard
+
 "acorn@npm:^6.4.1":
   version: 6.4.2
   resolution: "acorn@npm:6.4.2"
@@ -14602,17 +14611,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"json-schema@npm:*, json-schema@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "json-schema@npm:0.3.0"
+  checksum: 1d0895cca1b01e3a290de6b7cae5d5cf7bb2764f6a032bc85f0bc0dd50d1820c0d8bd71159ba921e4c1c6e47f909b5d2308f6bbbf191e1b47ac7b6adc526fb5b
+  languageName: node
+  linkType: hard
+
 "json-schema@npm:0.2.3":
   version: 0.2.3
   resolution: "json-schema@npm:0.2.3"
   checksum: d382ea841f0af5cf6ae3b63043c6ddbd144086de52342b5dd32d8966872dce1e0ed280f6b27c5fba97e50cf8640f27b593e039cb95df365718ada03ef0feb9f2
-  languageName: node
-  linkType: hard
-
-"json-schema@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "json-schema@npm:0.3.0"
-  checksum: 1d0895cca1b01e3a290de6b7cae5d5cf7bb2764f6a032bc85f0bc0dd50d1820c0d8bd71159ba921e4c1c6e47f909b5d2308f6bbbf191e1b47ac7b6adc526fb5b
   languageName: node
   linkType: hard
 
