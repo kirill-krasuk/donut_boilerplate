@@ -8,7 +8,7 @@ import favicon                 from 'serve-favicon';
 import cookieParser            from 'cookie-parser';
 import bodyParser              from 'body-parser';
 
-import config                  from './config';
+import env                     from '@env/';
 import { serverSideRendering } from './middlewares/serverSideRendering';
 import { errorLogging }        from './middlewares/errorLogging';
 import { ONE_MONTH_CACHE }     from './constants/cache';
@@ -19,8 +19,9 @@ import { getAppOutputInfo }    from './utils/appOutput';
 import { createExitHandler }   from './handlers/process';
 import { handleClose }         from './handlers/server';
 import { staticCompression }   from './handlers/staticCompression';
+import '../config/env';
 
-const { host, port } = config;
+const { host, port } = env;
 
 const app = express();
 
@@ -52,7 +53,7 @@ async function main() {
     app.use('/handle_error', errorLogging);
     app.use('/', serverSideRendering);
 
-    const server = app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port })));
+    const server = app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port: port.toString() })));
 
     server.on('close', handleClose);
 

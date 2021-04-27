@@ -15,7 +15,7 @@ import { compose, isEmpty }                                from 'ramda';
 import { themeMiddleware }                                 from '@core/store/middlewares/theme';
 import { localeMiddleware }                                from '@core/store/middlewares/locale';
 import { locationMiddleware }                              from '@core/store/middlewares/location';
-import * as Env                                            from '@core/config/env';
+import env                                                 from '@env/';
 import ssrReducers                                         from '@app/store/reducers/serverReducer';
 import request$                                            from '@core/services/RequestManager';
 import rootEpic                                            from '@core/store/epics';
@@ -28,7 +28,7 @@ import { ExtendedStore }                                   from './types';
 export function configureStore(preloadedState: object = {}, history: History<any>) {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
-    const env = Env.get('appEnv');
+    const { appEnv } = env;
 
     const isClientSide = !isEmpty(preloadedState);
 
@@ -50,7 +50,7 @@ export function configureStore(preloadedState: object = {}, history: History<any
     }
 
     const composeEnhancers: Function =
-        env === Environment.Dev
+        appEnv === Environment.Dev
             ? composeWithDevTools
             : compose;
 

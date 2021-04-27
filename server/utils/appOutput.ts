@@ -3,7 +3,7 @@ import chalk           from 'chalk';
 import openBrowser     from 'react-dev-utils/openBrowser';
 import ip              from 'ip';
 
-import env             from '@server/config';
+import env             from '@env/';
 import { getHostname } from './getHostname';
 
 export type OutputInfo = {

@@ -37,6 +37,7 @@ module.exports = {
         '@public/(.*)'                                                                   : '<rootDir>/public/$1',
         '@fonts/(.*)'                                                                    : '<rootDir>/src/assets/fonts/$1',
         '@test/(.*)'                                                                     : '<rootDir>/test/$1',
+        '@env/(.*)'                                                                      : '<rootDir>/config/env/$1'
     },
     globals: {
         // we must specify a custom tsconfig for tests because we need the typescript transform

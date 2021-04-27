@@ -6,9 +6,6 @@ import CircularDependencyPlugin    from 'circular-dependency-plugin';
 
 import { paths, configureBundler } from './webpack.common';
 
-const isNeedBundleAnalyze = JSON.parse(process.env.BUILD_ANALYZE || 'false');
-const analyzerPort        = parseInt(process.env.BUNDLE_ANALYZER_PORT || '8181', 10);
-
 export default configureBundler({
     mode : 'development',
     entry: {
@@ -41,10 +38,10 @@ export default configureBundler({
                 sockIntegration: 'whm',
             },
         }),
-        isNeedBundleAnalyze && new BundleAnalyzerPlugin({
+        process.env.BUILD_ANALYZE && new BundleAnalyzerPlugin({
             openAnalyzer: false,
             logLevel    : 'silent',
-            analyzerPort,
+            analyzerPort: process.env.BUNDLE_ANALYZER_PORT,
             analyzerHost: '127.0.0.1'
         }),
         new CircularDependencyPlugin({
@@ -52,6 +49,6 @@ export default configureBundler({
                 compilation.errors.push(new Error(paths.join(' -> ')));
             },
             failOnError: true
-        }) as webpack.WebpackPluginInstance,
-    ].filter(Boolean)
+        }),
+    ].filter(Boolean) as webpack.WebpackPluginInstance[]
 });

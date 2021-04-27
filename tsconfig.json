@@ -40,7 +40,8 @@
             "@server/*": ["./server/*"],
             "@public/*": ["./public/*"], 
             "@fonts/*": ["./src/assets/fonts/*"],
-            "@test/*": ["./test/*"]
+            "@test/*": ["./test/*"],
+            "@env/*": ["./config/env"]
         },
     },
     "include": [
@@ -49,6 +50,7 @@
         "test/**/*", 
         "tools/**/*",
         "config/jest/setup.ts",
-        "config/webpack/**/*"
+        "config/webpack/**/*",
+        "config/env/*"
     ],
   }

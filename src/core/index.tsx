@@ -4,20 +4,17 @@ import { IO }              from 'fp-ts/lib/IO';
 import * as O              from 'fp-ts/lib/Option';
 import * as C              from 'fp-ts/lib/Console';
 
-import * as Env            from '@core/config/env';
+import env                 from '@env/';
 import { App }             from './components';
 
 const getRootNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('root'));
 
-const isSWNeeded  = Env.get('swEnable');
-const needHydrate = Env.get('needHydrate');
-
-const renderOrHydrate = needHydrate
+const renderOrHydrate = env.needHydrate
     ? hydrate
     : render;
 
 loadableReady(() => {
-    if (isSWNeeded) {
+    if (env.swEnable) {
         if (!window.isSecureContext) {
             C.log('SW need a secure context')();
         }
