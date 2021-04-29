@@ -1,23 +1,29 @@
 import { ActionCreator, ActionCreatorType, ActionCreatorWithMetaType } from '@core/types/actions';
 
-declare type TypeConstant = string;
+type ActionType<T> = T extends { type: infer Type, payload: infer Payload, meta?: infer Meta }
+    ? { type: Type, payload: Payload, meta?: Meta }
+    : { type: string, payload: undefined, meta?: undefined };
 
-export function createActionCreator<T extends TypeConstant>(type: T) {
-    return function<P, M = undefined> (): ActionCreator<T, P, M> {
-        function actionCreator(payload: P): ActionCreatorType<T, P>
-        function actionCreator(payload: P, meta: M): ActionCreatorWithMetaType<T, P, M>
+export function createActionCreator<T>() {
+    return function<K extends ActionType<T>> (type: K['type']) : ActionCreator<
+        K['type'],
+        K['payload'],
+        K['meta']
+    > {
+        function actionCreator(payload: K['payload']): ActionCreatorType<
+            K['type'],
+            K['payload']
+        >
+        function actionCreator(payload: K['payload'], meta: K['meta']): ActionCreatorWithMetaType<
+            K['type'],
+            K['payload'],
+            K['meta']
+        >
         function actionCreator(payload: any, meta?: any): any {
-            if (meta) {
-                return {
-                    type,
-                    payload,
-                    meta
-                };
-            }
-
             return {
                 type,
-                payload
+                payload,
+                ...(meta && { meta })
             };
         }
 
