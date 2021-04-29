@@ -2,4 +2,4 @@
 
 source ./bin/variables.sh
 
-ts-node -P $TOOLS_TS_CONFIG ./tools/scripts/showBanner.ts
+ts-node -P $TOOLS_TS_CONFIG ./cli/scripts/showBanner.ts
