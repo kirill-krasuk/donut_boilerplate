@@ -40,14 +40,14 @@
             "@server/*": ["./server/*"],
             "@public/*": ["./public/*"], 
             "@fonts/*": ["./src/assets/fonts/*"],
-            "@test/*": ["./test/*"],
+            "@test/*": ["src/test/*"],
             "@env/*": ["./config/env"]
         },
     },
     "include": [
         "src/**/*", 
         "server/**/*", 
-        "test/**/*", 
+        "src/test/**/*", 
         "cli/**/*",
         "config/jest/setup.ts",
         "config/webpack/**/*",
