@@ -8,6 +8,11 @@ export type ChangeTheme = {
     payload: ETheme;
 }
 
+export type ChangePreferColorScheme = {
+    type: 'core/CHANGE_PREFER_COLOR_SCHEME';
+    payload: ETheme;
+}
+
 export type ThemeState = {
     mode: ETheme;
 }

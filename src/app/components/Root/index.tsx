@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { useEffect, FC }                        from 'react';
+import { useEffect, FC, useState }              from 'react';
 import { useSelector, useDispatch }             from 'react-redux';
 import { renderRoutes, matchRoutes }            from 'react-router-config';
 import { ThemeProvider }                        from 'styled-components/macro';
@@ -8,8 +8,9 @@ import * as IO                                  from 'fp-ts/lib/IO';
 import * as O                                   from 'fp-ts/lib/Option';
 import { pipe }                                 from 'fp-ts/lib/pipeable';
 import R                                        from 'ramda';
+import Cookie                                   from 'js-cookie';
 
-import { theme }                                from '@core/config/theme';
+import { theme as themes }                      from '@core/config/theme';
 import { getMode }                              from '@core/store/selectors/theme';
 import { protectRedirect, routes as appRoutes } from '@app/routes/routes';
 import { GlobalStyles }                         from '@app/components/GlobalStyles';
@@ -18,8 +19,18 @@ import ModalManager                             from '@core/components/ModalMana
 import { Context }                              from '@server/types/context';
 import { getAuthToken }                         from '@utils/auth/getToken';
 import { getInitialProps }                      from '@utils/props/getInitialProps';
+import { Theme }                                from '@core/enums/theme';
+import { useActions }                           from '@core/hooks/useActions';
 import * as S                                   from './styled';
 import { Props }                                from './types';
+
+function getDarkModeQuery() {
+    if (__IS_CLIENT__) {
+        return window.matchMedia('(prefers-color-scheme: dark)');
+    }
+
+    return null;
+}
 
 const Root: FC<Props> = (props) => {
     const { route, location, staticContext } = props;
@@ -29,6 +40,10 @@ const Root: FC<Props> = (props) => {
 
     const dispatch = useDispatch();
     const mode     = useSelector(getMode);
+
+    const [ theme, setTheme ] = useState(mode);
+
+    const { changePreferColorScheme } = useActions();
 
     const composeWithDispatch: Function = R.partial(R.compose, [ dispatch ]);
 
@@ -68,6 +83,10 @@ const Root: FC<Props> = (props) => {
         })
     );
 
+    const handleChangeTheme = (event: MediaQueryListEvent) => {
+        setTheme(event.matches ? Theme.Dark : Theme.Light);
+    };
+
     useEffect(() => {
         // isLogged logic here
         if (matchedRoute.protect) {
@@ -75,8 +94,34 @@ const Root: FC<Props> = (props) => {
         }
     }, [ matchedRoute, push ]);
 
+    // change theme by os theme
+    // if the theme is not set force
+    useEffect(() => {
+        if (!Cookie.get('theme')) {
+            const currentTheme = getDarkModeQuery()?.matches
+                ? Theme.Dark
+                : Theme.Light;
+
+            changePreferColorScheme(currentTheme);
+            setTheme(currentTheme);
+        }
+    }, [ changePreferColorScheme, theme ]);
+
+    // prefer-color-scheme listener
+    useEffect(() => {
+        if (!Cookie.get('theme')) {
+            const darkModeQuery = getDarkModeQuery();
+
+            darkModeQuery?.addEventListener('change', handleChangeTheme);
+
+            return () => {
+                darkModeQuery?.removeEventListener('change', handleChangeTheme);
+            };
+        }
+    });
+
     return (
-        <ThemeProvider theme={ { ...theme, mode } }>
+        <ThemeProvider theme={ { ...themes, mode: theme } }>
             <S.Wrapper>
                 <GlobalStyles />
                 <LanguageProvider>
