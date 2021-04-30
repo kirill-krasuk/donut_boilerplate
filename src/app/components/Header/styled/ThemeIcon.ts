@@ -1,21 +1,19 @@
-import styled, { css }     from 'styled-components/macro';
+import styled              from 'styled-components/macro';
 
-import { Theme }           from '@core/types/theme';
 import { THEME_ICON_SIZE } from '@ui-kit/constants/header';
+import { Theme }           from '@core/types/theme';
 
 export const ThemeIcon = styled.div`
-    ${ ({ theme }: Theme) => css`
-        & svg {
-            height: ${ THEME_ICON_SIZE };
-            width: ${ THEME_ICON_SIZE };
-            color: ${ theme[theme.mode].icon.color };
-            filter: brightness(1);
-            margin-left: 20px;
+    & svg {
+        height: ${ THEME_ICON_SIZE };
+        width: ${ THEME_ICON_SIZE };
+        color: var(--icon);
+        filter: brightness(1);
+        margin-left: 20px;
 
-            &:hover {
-                cursor: pointer;
-                filter: ${ theme.mode === 'light' ? 'brightness(0.85)' : 'brightness(1.14)' };
-            }
+        &:hover {
+            cursor: pointer;
+            filter: ${ ({ theme }: Theme) => (!theme.isDark ? 'brightness(0.85)' : 'brightness(1.14)') }; 
         }
-    ` };
+    }
 `;

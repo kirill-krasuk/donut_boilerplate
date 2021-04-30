@@ -1,6 +1,5 @@
 import styled, { css }               from 'styled-components/macro';
 
-import { Theme }                     from '@core/types/theme';
 import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 
 type Props = {
@@ -10,12 +9,12 @@ type Props = {
 };
 
 export const Wrapper = styled.button<Props>`
-    ${ ({ size, theme, cStyle }: Theme<Props>) => css`
+    ${ ({ size, cStyle }) => css`
         height: ${ size };
-        color: ${ theme[theme.mode][cStyle] };
+        color: var(--${ cStyle });
         background-color: white;
         border-radius: 10px;
-        border: 1px solid ${ theme[theme.mode][cStyle] };
+        border: 1px solid var(--${ cStyle });
         outline: none;
         cursor: pointer;
 

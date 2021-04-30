@@ -21,16 +21,9 @@ import { getAuthToken }                         from '@utils/auth/getToken';
 import { getInitialProps }                      from '@utils/props/getInitialProps';
 import { Theme }                                from '@core/enums/theme';
 import { useActions }                           from '@core/hooks/useActions';
+import { getDarkModeQuery, setDataThemeAttr }   from '@core/utils/dom';
 import * as S                                   from './styled';
 import { Props }                                from './types';
-
-function getDarkModeQuery() {
-    if (__IS_CLIENT__) {
-        return window.matchMedia('(prefers-color-scheme: dark)');
-    }
-
-    return null;
-}
 
 const Root: FC<Props> = (props) => {
     const { route, location, staticContext } = props;
@@ -94,6 +87,10 @@ const Root: FC<Props> = (props) => {
         }
     }, [ matchedRoute, push ]);
 
+    useEffect(() => {
+        setDataThemeAttr(theme);
+    }, [ theme ]);
+
     // change theme by os theme
     // if the theme is not set force
     useEffect(() => {
@@ -121,7 +118,12 @@ const Root: FC<Props> = (props) => {
     });
 
     return (
-        <ThemeProvider theme={ { ...themes, mode: theme } }>
+        <ThemeProvider theme={ {
+            ...themes,
+            mode  : theme,
+            isDark: theme === Theme.Dark
+        } }
+        >
             <S.Wrapper>
                 <GlobalStyles />
                 <LanguageProvider>
