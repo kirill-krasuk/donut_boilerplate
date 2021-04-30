@@ -15,5 +15,9 @@ export default createReducer<State, Action>(initState, {
     [actions.changeThemeAction.type]: (state, { payload }) => (
         themeLens
             .set(payload)(state)
+    ),
+    [actions.changePreferColorScheme.type]: (state, { payload }) => (
+        themeLens
+            .set(payload)(state)
     )
 });

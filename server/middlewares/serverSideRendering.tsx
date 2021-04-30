@@ -2,6 +2,8 @@ import { Request, Response }        from 'express';
 import { ChunkExtractor }           from '@loadable/server';
 import { createMemoryHistory }      from 'history';
 
+import { initState as themeState }  from '@core/store/reducers/theme';
+import { initState as localeState } from '@core/store/reducers/locale';
 import { configureStore }           from '@utils/store/configureStore';
 import { prefetch }                 from '@server/utils/prefetch';
 import { Context }                  from '@server/types/context';
@@ -18,7 +20,11 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
 
     const { loadableStats, useFileSystem } = getLoadableChunksOptions(res.locals);
 
-    const { theme: mode = 'dark', locale = 'en', token } = req.cookies;
+    const {
+        theme: mode = themeState.mode,
+        locale = localeState,
+        token
+    } = req.cookies;
 
     const history = createMemoryHistory({
         initialEntries: [ req.url ]
