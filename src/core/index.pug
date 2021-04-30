@@ -12,6 +12,16 @@ html(lang="ru" data-theme=`${mode}`)
         | !{styleChunksTags}
         | !{styleComponentsTags}
     body
+        script#prefers-scheme(type="text/javascript").
+            (function () {
+                const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+                const currentTheme = document.documentElement.dataset.theme;
+
+                if (currentTheme !== 'dark' && darkModeQuery.matches) {
+                    document.documentElement.dataset.theme = 'dark';
+                }
+            })();
         #root
             | !{html}
         #modal
