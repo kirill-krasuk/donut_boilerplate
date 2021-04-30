@@ -8,7 +8,8 @@ export function generateStaticTemplate({
     Component,
     store,
     extractor,
-    props
+    props,
+    mode
 }: OptionsForGenerate): StaticTemplate {
     const sheet = new ServerStyleSheet();
 
@@ -21,6 +22,7 @@ export function generateStaticTemplate({
         styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
         storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replace(/</g, '\\u003c') }`,
         initialProps       : `window.__INITIAL_PROPS__ = ${ JSON.stringify(props) }`,
+        mode,
         title,
         meta
     };

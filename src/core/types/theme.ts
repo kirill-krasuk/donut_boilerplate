@@ -17,4 +17,4 @@ export type ThemeState = {
     mode: ETheme;
 }
 
-export type Theme<T = {}> = ThemedStyledProps<T, typeof theme & { mode: ETheme }>
+export type Theme<T = {}> = ThemedStyledProps<T, typeof theme & { mode: ETheme, isDark: boolean }>

@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 import styled, { css }    from 'styled-components/macro';
 
-import { Theme }          from '@core/types/theme';
 import { AnimationProps } from '../types';
 
 export const AnimationContainer = styled.section<AnimationProps>`
@@ -10,7 +9,7 @@ export const AnimationContainer = styled.section<AnimationProps>`
     top: 0;
     left: 0;
     min-height: 100vh;
-    background-color: ${ ({ theme }: Theme) => theme[theme.mode].background };
+    background-color: var(--background);
 
     ${ ({ state }) => {
         switch (state) {

@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components/macro';
-
-import { Theme }       from '@core/types/theme';
+import styled from 'styled-components/macro';
 
 export const Text = styled.span`
-    ${ ({ theme }: Theme) => css`
-        font-weight: 500;
-        color: ${ theme[theme.mode].typography.text };
-        font-size: 1.42rem;
-        margin-bottom: 10px;
-    ` };
+    font-weight: 500;
+    color: var(--text);
+    font-size: 1.42rem;
+    margin-bottom: 10px;
 `;

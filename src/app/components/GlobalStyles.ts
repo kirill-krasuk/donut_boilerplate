@@ -1,8 +1,17 @@
-import { createGlobalStyle } from 'styled-components/macro';
+import { createGlobalStyle }                     from 'styled-components/macro';
 
-import { Theme }             from '@core/types/theme';
+import { darkValues, lightValues, commonValues } from '@app/theme';
 
 export const GlobalStyles = createGlobalStyle`
+    :root {
+        ${ commonValues }
+        ${ lightValues }
+
+        &[data-theme="dark"] {
+            ${ darkValues }
+        }
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -13,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     html, body {
         overflow-x: hidden;
         font-size: 14px;
-        background-color: ${ ({ theme }: Theme) => theme[theme.mode].background };
+        background-color: var(--background);
         min-height: 100vh;
     }
 

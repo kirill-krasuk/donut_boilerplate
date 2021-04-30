@@ -55,6 +55,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
         }),
         store,
         extractor,
-        props
+        props,
+        mode
     }));
 }
