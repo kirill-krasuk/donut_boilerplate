@@ -13,6 +13,7 @@
             "dom"
         ],
         "rootDir": "./",
+        "baseUrl": "./",
         "allowJs": false,
         "checkJs": false,
         "strict": true,
@@ -40,7 +41,7 @@
             "@server/*": ["./server/*"],
             "@public/*": ["./public/*"], 
             "@fonts/*": ["./src/assets/fonts/*"],
-            "@test/*": ["src/test/*"],
+            "@test/*": ["./src/test/*"],
             "@env/*": ["./config/env"]
         },
     },
