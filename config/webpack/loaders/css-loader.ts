@@ -19,6 +19,8 @@ export function getClientCssLoader() {
             },
         }, {
             loader: 'css-loader'
+        }, {
+            loader: 'postcss-loader'
         } ]
     };
 
