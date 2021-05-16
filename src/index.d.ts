@@ -1,35 +1,74 @@
+/* CSS MODULES */
+declare module '*.module.css' {
+    const classes: { [key: string]: string };
+    export default classes;
+}
+declare module '*.module.scss' {
+    const classes: { [key: string]: string };
+    export default classes;
+}
+declare module '*.module.sass' {
+    const classes: { [key: string]: string };
+    export default classes;
+}
+declare module '*.module.less' {
+    const classes: { [key: string]: string };
+    export default classes;
+}
+declare module '*.module.styl' {
+    const classes: { [key: string]: string };
+    export default classes;
+}
+
+/* CSS */
+declare module '*.css';
+declare module '*.scss';
+declare module '*.sass';
+declare module '*.less';
+declare module '*.styl';
+
+/* FONTS */
+declare module '*.ttf';
+declare module '*.otf';
+declare module '*.woff';
+declare module '*.woff2';
+declare module '*.eot';
+
+/* IMAGES */
+declare module '*.bmp' {
+    const ref: string;
+    export default ref;
+}
+declare module '*.gif' {
+    const ref: string;
+    export default ref;
+}
+declare module '*.jpg' {
+    const ref: string;
+    export default ref;
+}
+declare module '*.jpeg' {
+    const ref: string;
+    export default ref;
+}
+declare module '*.png' {
+    const ref: string;
+    export default ref;
+}
+
 declare module '*.svg' {
     const content: any;
     export default content;
     export const ReactComponent: any;
 }
 
-declare module '*.jpg' {
-    const content: any;
-    export default content;
-}
-
-declare module '*.module.sass' {
-    const content: any;
-    export default content;
-}
-
+/* CUSTOM: ADD YOUR OWN HERE */
 declare module '*.json' {
     const content: any;
     export default content;
 }
 
-declare module '*.png' {
-    const content: any;
-    export default content;
-}
-
 declare module 'express-processimage';
-
-declare module '*.ttf' {
-    const content: any;
-    export default content;
-}
 
 declare module 'dotenv' {
     const content: any;
