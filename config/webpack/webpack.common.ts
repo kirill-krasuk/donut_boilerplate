@@ -9,6 +9,7 @@ import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
+import Dotenv                          from 'dotenv-webpack';
 
 import { getJsLoader }                 from './loaders/js-loader';
 import { getImageLoader }              from './loaders/image-loader';
@@ -23,11 +24,13 @@ import { createHashHelper }            from './utils/createHashHelper';
 const context = path.resolve(__dirname, '../..');
 
 export const paths = {
-    src     : path.resolve('src'),
-    dist    : path.resolve('dist'),
-    entry   : path.resolve('src/core/index.tsx'),
-    template: path.resolve('src/core/index.pug'),
-    view    : path.resolve('dist/index.pug')
+    src       : path.resolve('src'),
+    dist      : path.resolve('dist'),
+    entry     : path.resolve('src/core/index.tsx'),
+    template  : path.resolve('src/core/index.pug'),
+    view      : path.resolve('dist/index.pug'),
+    env       : path.resolve('./.env'),
+    envExample: path.resolve('./.env.example'),
 };
 
 export const __IS_CLIENT__ = true;
@@ -119,9 +122,9 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 filename         : paths.view,
                 alwaysWriteToDisk: true,
 
-                // force disable minification for
-                // correctly building pug file
-                // because indentation matters
+                /* force disable minification for
+                 correctly building pug file
+                 because indentation matters */
                 minify       : false,
                 excludeAssets: [ /\.(js|css)/ ]
             }),
@@ -140,6 +143,14 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 __IS_PROD__  : options.mode === 'production',
                 __IS_SERVER__,
                 __IS_CLIENT__
+            }),
+
+            /* for validate .env files
+             on consistency of variables */
+            new Dotenv({
+                path            : paths.env,
+                safe            : paths.envExample,
+                allowEmptyValues: true,
             }),
             new webpack.ContextReplacementPlugin(
                 /moment[/\\]locale$/,
