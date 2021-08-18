@@ -9438,6 +9438,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-defaults@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "dotenv-defaults@npm:2.0.2"
+  dependencies:
+    dotenv: ^8.2.0
+  checksum: 8cfbaf5dbbbf9bd95fd67cf1bec675903885ee2904dc7914e0aa3ec19e97a3119f7b4d714cb12f07bdb80ecbbece0f91a8036b96901515b241ac979da23365ba
+  languageName: node
+  linkType: hard
+
 "dotenv-expand@npm:^5.1.0":
   version: 5.1.0
   resolution: "dotenv-expand@npm:5.1.0"
@@ -9453,6 +9462,17 @@ __metadata:
   peerDependencies:
     webpack: ^1 || ^2 || ^3 || ^4
   checksum: a4ef436b38ed99f0dca297e8e0aafca47cebf8fc4b30027f1d14607f782db296640600cbec3bbd3fb382d54542534b98628ec24d6dd7bbb8bafe06282d11133f
+  languageName: node
+  linkType: hard
+
+"dotenv-webpack@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "dotenv-webpack@npm:7.0.3"
+  dependencies:
+    dotenv-defaults: ^2.0.2
+  peerDependencies:
+    webpack: ^4 || ^5
+  checksum: 9766f730b00d5a5b411fe1128ce9613da3fe180d753d72c927b53c4f94fe1c6dfee051d66c63e812a763ee3e76bfa88292e8cf626a9e74ded1a38ad34f2fd149
   languageName: node
   linkType: hard
 
@@ -16553,6 +16573,7 @@ fsevents@^1.2.7:
     dayjs: ^1.9.3
     debug: ^4.3.1
     dotenv: ^8.2.0
+    dotenv-webpack: ^7.0.3
     ejs: ^3.1.6
     encoding: ^0.1.13
     eo-locale: ^7.4.2
