@@ -32,3 +32,11 @@ delete-unused-images:
 
 delete-all-containers:
 	docker rm $(docker ps -a -f status=exited -q)
+
+# this example for use command
+# if in directory with makefile
+# exists file with name as command
+.PHONY: test
+test:
+	echo test
+	
