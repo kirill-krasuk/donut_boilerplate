@@ -18,7 +18,8 @@
                 "style",
                 "test",
                 "struct",
-                "lint"
+                "lint",
+                "chore"
             ]
         ]
     }
