@@ -32,7 +32,8 @@
     "test:coverage": "bash ./bin/test.sh c",
     "test:update": "bash ./bin/test.sh u",
     "test:watch": "bash ./bin/test.sh w",
-    "types": "tsc --noEmit -p ."
+    "types": "tsc --noEmit -p .",
+    "commit": "cz"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.13",
@@ -251,6 +252,7 @@
     "brotli-webpack-plugin": "^1.1.0",
     "cache-loader": "^4.1.0",
     "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "3.3.0",
     "dotenv-webpack": "^7.0.3",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
