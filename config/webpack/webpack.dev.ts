@@ -1,10 +1,11 @@
-import webpack                     from 'webpack';
-import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
-import path                        from 'path';
-import ReactRefreshWebpackPlugin   from '@pmmmwh/react-refresh-webpack-plugin';
-import CircularDependencyPlugin    from 'circular-dependency-plugin';
+import webpack                   from 'webpack';
+import { BundleAnalyzerPlugin }  from 'webpack-bundle-analyzer';
+import path                      from 'path';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CircularDependencyPlugin  from 'circular-dependency-plugin';
 
-import { paths, configureBundler } from './webpack.common';
+import { configureBundler }      from './webpack.common';
+import { paths }                 from './constants/path';
 
 export default configureBundler({
     mode : 'development',
@@ -28,7 +29,7 @@ export default configureBundler({
         removeEmptyChunks     : false,
         splitChunks           : false,
     },
-    stats  : 'summary',
+    stats  : 'errors-warnings',
     watch  : true,
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
