@@ -40,9 +40,9 @@
                     "@vendors": "./src/vendors",
                     "@server": "./server",
                     "@public": "./public",
-                    "@images": "./src/assets/images",
-                    "@fonts": "./src/assets/fonts",
-                    "@svgs": "./src/assets/svgs",
+                    "@images": "./assets/images",
+                    "@fonts": "./assets/fonts",
+                    "@svgs": "./assets/svgs",
                     "@test": "./src/test",
                     "@env": "./config/env"
                 }
