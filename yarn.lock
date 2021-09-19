@@ -4343,6 +4343,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/punycode@npm:^2":
+  version: 2.1.0
+  resolution: "@types/punycode@npm:2.1.0"
+  checksum: 6835698becab395eb9ac186970fd7879aeb522ea72d516ef9d681d787989653fcc2439ecc07d48280e1ca11862773b806efeec3fdbd1207528829a83b65d4275
+  languageName: node
+  linkType: hard
+
 "@types/q@npm:^1.5.1":
   version: 1.5.4
   resolution: "@types/q@npm:1.5.4"
@@ -11223,6 +11230,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"extract-css-chunks-webpack-plugin@npm:^4.9.0":
+  version: 4.9.0
+  resolution: "extract-css-chunks-webpack-plugin@npm:4.9.0"
+  dependencies:
+    loader-utils: ^2.0.0
+    normalize-url: 1.9.1
+    schema-utils: ^1.0.0
+    webpack-sources: ^1.1.0
+  peerDependencies:
+    webpack: ^4.4.0 || ^5.0.0
+  checksum: 4dfac502b35902d9f4498ce404b4767306f6742e50b9cc1e56d92aa545cb96802c20d897842ea4ba64e7eb3cf9a224f3616181a17a36d00e85cc272664e8a20f
+  languageName: node
+  linkType: hard
+
 "extsprintf@npm:1.3.0":
   version: 1.3.0
   resolution: "extsprintf@npm:1.3.0"
@@ -17428,6 +17449,7 @@ fsevents@^1.2.7:
     "@types/optimize-css-assets-webpack-plugin": ^5.0.1
     "@types/parse5": ^6
     "@types/prop-types": ^15
+    "@types/punycode": ^2
     "@types/qs": ^6
     "@types/query-string": ^6.3.0
     "@types/ramda": ^0.27.34
@@ -17511,6 +17533,7 @@ fsevents@^1.2.7:
     express: ^4.17.1
     express-processimage: ^10.1.0
     express-static-gzip: ^2.0.7
+    extract-css-chunks-webpack-plugin: ^4.9.0
     figlet: ^1.5.0
     file-loader: ^6.1.1
     fp-ts: ^2.9.3
@@ -17559,6 +17582,7 @@ fsevents@^1.2.7:
     postcss-preset-env: ^6.7.0
     prop-types: ^15.7.2
     pug: ^3.0.0
+    punycode: ^2.1.1
     qs: ^6.9.6
     query-string: ^6.13.8
     querystring: ^0.2.0

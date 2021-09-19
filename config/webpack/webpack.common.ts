@@ -3,7 +3,7 @@ import path                            from 'path';
 import { InjectManifest }              from 'workbox-webpack-plugin';
 import { CleanWebpackPlugin }          from 'clean-webpack-plugin';
 import LoadablePlugin                  from '@loadable/webpack-plugin';
-import MiniCssExtractPlugin            from 'mini-css-extract-plugin';
+import ExtractCssChunks                from 'extract-css-chunks-webpack-plugin';
 import HtmlWebpackPlugin               from 'html-webpack-plugin';
 import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
@@ -11,6 +11,7 @@ import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
 import Dotenv                          from 'dotenv-webpack';
 
+import { paths }                       from './constants/path';
 import { getJsLoader }                 from './loaders/js-loader';
 import { getImageLoader }              from './loaders/image-loader';
 import { getFontsLoader }              from './loaders/font-loader';
@@ -22,16 +23,6 @@ import { getEnvs }                     from './utils/getEnvs';
 import { createHashHelper }            from './utils/createHashHelper';
 
 const context = path.resolve(__dirname, '../..');
-
-export const paths = {
-    src       : path.resolve('src'),
-    dist      : path.resolve('dist'),
-    entry     : path.resolve('src/core/index.tsx'),
-    template  : path.resolve('src/core/index.pug'),
-    view      : path.resolve('dist/index.pug'),
-    env       : path.resolve('./.env'),
-    envExample: path.resolve('./.env.example'),
-};
 
 export const __IS_CLIENT__ = true;
 export const __IS_SERVER__ = false;
@@ -71,6 +62,11 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             cacheWithContext: false,
             alias           : {
                 'fp-ts/lib': 'fp-ts/es6', // use import in app from lib
+
+                // for css import, url and etc usage resources alias
+                fonts : paths.fonts,
+                images: paths.images,
+                svgs  : paths.svgs
             }
         },
         ...(options.cache && {
@@ -132,7 +128,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             new HtmlPugPlugin({
                 adjustIndent: true
             }),
-            new MiniCssExtractPlugin({
+            new ExtractCssChunks({
                 filename     : addHash('[name].css', 'contenthash:8'),
                 chunkFilename: addHash('[id].css', 'contenthash:8'),
             }),

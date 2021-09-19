@@ -1,18 +1,16 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 
-import { isProd }           from '../utils/isProd';
+import { isProd }       from '../utils/isProd';
 
 const options = {
     test   : /\.s(c|a)ss$/,
-    exclude: /\.module\.(s(a|c)ss)$/,
+    exclude: /\.modules?\.(s(a|c)ss)$/,
 };
 
-const commonLoaders = [ {
-    loader : 'thread-loader',
-    options: {
-        workers           : 2,
-        workerParallelJobs: 50,
-    }
+const useLoaders = [ {
+    loader: isProd()
+        ? ExtractCssChunks.loader
+        : 'style-loader'
 }, {
     loader: 'css-loader'
 }, {
@@ -27,19 +25,17 @@ const commonLoaders = [ {
 export function getClientSassLoader() {
     const sassLoader: Record<string, any> = {
         ...options,
-        use: [  {
-            loader : MiniCssExtractPlugin.loader,
-            options: {
-                hmr      : !isProd(),
-                reloadAll: true
-            },
-        },
-        ...commonLoaders
-        ]
+        use: useLoaders
     };
 
     if (!isProd()) {
         sassLoader.use.unshift({
+            loader : 'thread-loader',
+            options: {
+                workers           : 2,
+                workerParallelJobs: 50,
+            }
+        }, {
             loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/sass-cache'
@@ -53,6 +49,6 @@ export function getClientSassLoader() {
 export function getServerSassLoader() {
     return {
         ...options,
-        use: commonLoaders
+        use: useLoaders
     };
 }
