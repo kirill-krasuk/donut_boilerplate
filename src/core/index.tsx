@@ -9,12 +9,12 @@ import { App }             from './components';
 
 const getRootNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('root'));
 
-const renderOrHydrate = env.needHydrate
+const renderOrHydrate = env.client.needHydrate
     ? hydrate
     : render;
 
 loadableReady(() => {
-    if (env.swEnable) {
+    if (env.client.swEnable) {
         if (!window.isSecureContext) {
             C.log('SW need a secure context')();
         }

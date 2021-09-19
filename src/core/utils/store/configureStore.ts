@@ -28,7 +28,7 @@ import { ExtendedStore }                                   from './types';
 export function configureStore(preloadedState: object = {}, history: History<any>) {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
-    const { appEnv } = env;
+    const { appEnv } = env.client;
 
     const isClientSide = !isEmpty(preloadedState);
 

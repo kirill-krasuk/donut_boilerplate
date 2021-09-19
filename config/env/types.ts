@@ -1,7 +1,7 @@
 export type ConfigSchema = {
-    [key: string]: (env: NodeJS.ProcessEnv) => string | number | boolean
+    readonly [key: string]: (env: NodeJS.ProcessEnv) => string | number | boolean | null
 }
 
 export type Config<T extends ConfigSchema> = {
-    [key in keyof T]: ReturnType<T[key]>
+    readonly [key in keyof T]: ReturnType<T[key]>
 }

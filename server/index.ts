@@ -21,7 +21,7 @@ import { handleClose }         from './handlers/server';
 import { staticCompression }   from './handlers/staticCompression';
 import '../config/env';
 
-const { host, port } = env;
+const { host, port } = env.server;
 
 const app = express();
 

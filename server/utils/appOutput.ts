@@ -11,14 +11,14 @@ export type OutputInfo = {
     port: string
 };
 
-const { isBuildAnalyzer, analyzerPort } = env;
+const { isBuildAnalyzer, analyzerPort, isOpenInBrowser } = env.server;
 
 export const getAppOutputInfo = ({ host, port }: OutputInfo) => {
     let messageAboutBrowser = 'Copy address to clipboard and run it in browser';
     let network             = '';
     const hostname          = getHostname(host);
 
-    if (env.isOpenInBrowser) {
+    if (isOpenInBrowser) {
         if (openBrowser(`http://${ hostname }:${ port }`)) {
             messageAboutBrowser = 'The app has been opened in browser!';
         }
