@@ -3,15 +3,15 @@ import * as TE                  from 'fp-ts/lib/TaskEither';
 
 import env                      from '@env/';
 
-const { host } = env;
+const { api } = env.client;
 
 const get = <T = any>(url: string) => TE.tryCatch<Error, AxiosResponse<T>>(
-    () => axios.get(`${ host }${ url }`),
+    () => axios.get(`${ api }${ url }`),
     reason => new Error(String(reason))
 );
 
 const post = <T = any>(url: string) => TE.tryCatch<Error, AxiosResponse<T>>(
-    () => axios.post(`${ host }${ url }`),
+    () => axios.post(`${ api }${ url }`),
     reason => new Error(String(reason))
 );
 

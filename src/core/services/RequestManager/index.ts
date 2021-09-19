@@ -21,7 +21,7 @@ const DEFAULT_HEADERS = {
     Accept        : 'application/json'
 };
 
-const apiHost = () => env.api;
+const apiHost = () => env.client.api;
 
 const getToken: IO.IO<O.Option<string>> = () => O.fromNullable(Cookie.get('token'));
 

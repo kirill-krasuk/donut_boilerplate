@@ -7,7 +7,7 @@ import env             from '@env/';
 import { headers }     from '@server/constants/headers';
 import webpackConfig   from '../../config/webpack/webpack.dev';
 
-const { writeToDisk } = env;
+const { writeToDisk } = env.server;
 
 export function useDevMiddlewares(app: Application): void {
     const { sw, isCacheable } = headers;

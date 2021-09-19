@@ -7,7 +7,7 @@ import { BundleAnalyzerPlugin }    from 'webpack-bundle-analyzer';
 
 import { paths, configureBundler } from './webpack.common';
 
-const isNeedBundleAnalyze = JSON.parse(process.env.BUILD_ANALYZE || 'false');
+const isNeedBundleAnalyze = process.env.BUILD_ANALYZE || JSON.parse('false');
 
 export default configureBundler({
     mode : 'production',
