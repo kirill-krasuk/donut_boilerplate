@@ -5,6 +5,7 @@ module.exports = {
     addons: [
         '@storybook/addon-storysource',
         '@storybook/addon-actions',
+        '@storybook/addon-postcss',
         '@storybook/addon-a11y',
         {
             name: '@storybook/addon-docs',
