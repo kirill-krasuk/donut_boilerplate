@@ -9,7 +9,6 @@ import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
-import Dotenv                          from 'dotenv-webpack';
 
 import { paths }                       from './constants/path';
 import { getJsLoader }                 from './loaders/js-loader';
@@ -139,14 +138,6 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 __IS_PROD__  : options.mode === 'production',
                 __IS_SERVER__,
                 __IS_CLIENT__
-            }),
-
-            /* for validate .env files
-             on consistency of variables */
-            new Dotenv({
-                path            : paths.env,
-                safe            : paths.envExample,
-                allowEmptyValues: true,
             }),
             new webpack.ContextReplacementPlugin(
                 /moment[/\\]locale$/,
