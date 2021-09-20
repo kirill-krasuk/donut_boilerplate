@@ -1,5 +1,5 @@
 import { Locale }             from '@core/enums/locale';
-import { createToggleHelper } from '@core/utils/toggler';
+import { createToggleHelper } from '@utils/toggler';
 
 export const toggleLocale = createToggleHelper({
     [Locale.Ru]: Locale.En,

@@ -1,5 +1,5 @@
 import browserHistory     from '@utils/history';
-import { configureStore } from './configureStore';
+import { configureStore } from '@core/utils/store/configureStore';
 
 // @ts-ignore
 const preloadedState = window.__PRELOADED_STATE__;
@@ -8,4 +8,4 @@ const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
 
 export const { store, history, rootReducer } = configureStore(preloadedState, browserHistory);
-export { shakeReducers } from './shakeReducers';
+export { shakeReducers } from '@core/utils/store/shakeReducers';

@@ -29,7 +29,7 @@ module.exports = {
         '/\.module\.s(c|a)ss$/'                                                          : 'identity-obj-proxy',
         '@core/(.*)'                                                                     : '<rootDir>/src/core/$1',
         '@app/(.*)'                                                                      : '<rootDir>/src/app/$1',
-        '@utils/(.*)'                                                                    : '<rootDir>/src/core/utils/$1',
+        '@utils/(.*)'                                                                    : '<rootDir>/src/utils/$1',
         '@ui-kit/(.*)'                                                                   : '<rootDir>/src/ui-kit/$1',
         '@images/(.*)'                                                                   : '<rootDir>/assets/images/$1',
         '@svgs/(.*)'                                                                     : '<rootDir>/assets/svgs/$1',

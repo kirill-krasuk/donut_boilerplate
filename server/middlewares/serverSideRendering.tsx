@@ -4,7 +4,7 @@ import { createMemoryHistory }      from 'history';
 
 import { initState as themeState }  from '@core/store/reducers/theme';
 import { initState as localeState } from '@core/store/reducers/locale';
-import { configureStore }           from '@utils/store/configureStore';
+import { configureStore }           from '@core/utils/store/configureStore';
 import { prefetch }                 from '@server/utils/prefetch';
 import { Context }                  from '@server/types/context';
 import { initializeState }          from '@server/utils/initializeState';

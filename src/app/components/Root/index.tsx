@@ -21,7 +21,7 @@ import { getAuthToken }                         from '@utils/auth/getToken';
 import { getInitialProps }                      from '@utils/props/getInitialProps';
 import { Theme }                                from '@core/enums/theme';
 import { useActions }                           from '@core/hooks/useActions';
-import { getDarkModeQuery, setDataThemeAttr }   from '@core/utils/dom';
+import { getDarkModeQuery, setDataThemeAttr }   from '@utils/dom';
 import * as S                                   from './styled';
 import { Props }                                from './types';
 
