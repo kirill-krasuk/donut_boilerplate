@@ -62,15 +62,15 @@ export default configureBundler({
         },
     },
     plugins: [
-        new CompressionPlugin({
-            filename: '[path].gz[query]',
-            test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
-            minRatio: 0.8
-        }),
         isNeedBundleAnalyze && new BundleAnalyzerPlugin({
             analyzerMode  : 'static',
             openAnalyzer  : false,
             reportFilename: '../stats/prod-report.html',
+        }),
+        new CompressionPlugin({
+            filename: '[file].gz[query]',
+            test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+            minRatio: 0.8
         }),
         new BrotliPlugin({
             asset   : '[path].br[query]',
