@@ -1,4 +1,4 @@
-import { createToggleHelper } from '@core/utils/toggler';
+import { createToggleHelper } from '@utils/toggler';
 import { Theme }              from '@core/enums/theme';
 
 export const toggleTheme = createToggleHelper({

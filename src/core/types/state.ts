@@ -1,3 +1,3 @@
-import { rootReducer } from '@core/utils/store';
+import { rootReducer } from '@core/store';
 
 export type RootState = Omit<ReturnType<typeof rootReducer>, '$CombinedState'>;

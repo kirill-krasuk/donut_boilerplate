@@ -34,7 +34,7 @@
         "paths": {
             "@core/*": ["./src/core/*"],
             "@app/*": ["./src/app/*"],
-            "@utils/*": ["./src/core/utils/*"],
+            "@utils/*": ["src/utils/*"],
             "@ui-kit/*": ["./src/ui-kit/*"],
             "@images/*": ["./assets/images/*"],
             "@svgs/*": ["./assets/svgs/*"],
