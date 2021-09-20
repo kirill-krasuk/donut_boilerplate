@@ -1,28 +1,13 @@
-import { FC }                 from 'react';
-import { useSelector }        from 'react-redux';
-import { EOLocale as T }      from 'eo-locale';
-import { Sun }                from '@styled-icons/fa-solid/Sun';
-import { Moon }               from '@styled-icons/fa-solid/Moon';
+import { FC }                      from 'react';
+import { EOLocale as T }           from 'eo-locale';
+import { Sun }                     from '@styled-icons/fa-solid/Sun';
+import { Moon }                    from '@styled-icons/fa-solid/Moon';
 
-import { getMode }            from '@core/store/selectors/theme';
-import { getLocale }          from '@core/store/selectors/locale';
-import { Theme }              from '@core/enums/theme';
-import { Locale }             from '@core/enums/locale';
-import { createToggleHelper } from '@core/utils/toggler';
-import { createFactory }      from '@core/utils/factory';
-import { useActions }         from '@core/hooks/useActions';
-import * as S                 from './styled';
-import messages               from './messages';
-
-const toggleLocale = createToggleHelper({
-    [Locale.Ru]: Locale.En,
-    [Locale.En]: Locale.Ru
-});
-
-const toggleThemeMode = createToggleHelper({
-    [Theme.Dark] : Theme.Light,
-    [Theme.Light]: Theme.Dark,
-});
+import { Theme }                   from '@core/enums/theme';
+import { createFactory }           from '@core/utils/factory';
+import { useLocale, useThemeMode } from '@app/hooks';
+import * as S                      from './styled';
+import messages                    from './messages';
 
 const themeIconFactory = createFactory({
     [Theme.Light]: Sun,
@@ -35,18 +20,8 @@ const themeLogoFactory = createFactory({
 });
 
 const Header: FC = () => {
-    const { changeThemeAction, changeLocaleAction } = useActions();
-
-    const mode   = useSelector(getMode);
-    const locale = useSelector(getLocale);
-
-    const handleChangeTheme = () => {
-        changeThemeAction(toggleThemeMode(mode));
-    };
-
-    const handleChangeLocale = () => {
-        changeLocaleAction(toggleLocale(locale));
-    };
+    const { locale, handleChangeLocale } = useLocale();
+    const { mode, handleChangeTheme }    = useThemeMode();
 
     return (
         <S.Header>
