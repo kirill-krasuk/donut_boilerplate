@@ -3,11 +3,11 @@ import styled    from 'styled-components/macro';
 import { Theme } from '@core/types/theme';
 
 export const LocaleToggler = styled.div`
-    font-size: 2rem;
-    color: var(--icon);
-    filter: brightness(1);
     margin-right: 20px;
+    color: var(--icon);
+    font-size: 2rem;
     text-transform: uppercase;
+    filter: brightness(1);
 
     &:hover {
         cursor: pointer;
