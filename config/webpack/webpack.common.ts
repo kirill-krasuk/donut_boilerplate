@@ -9,6 +9,9 @@ import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 
+// use for bench webpack build
+// import SpeedMeasurePlugin              from 'speed-measure-webpack-plugin';
+
 import { paths }                       from './constants/path';
 import { getJsLoader }                 from './loaders/js-loader';
 import { getImageLoader }              from './loaders/image-loader';
@@ -19,6 +22,9 @@ import { getClientSassModuleLoader }   from './loaders/sass-module-loader';
 import { getSVGLoader }                from './loaders/svg-loader';
 import { getEnvs }                     from './utils/getEnvs';
 import { createHashHelper }            from './utils/createHashHelper';
+
+// use smp.wrap on config object
+// const smp = new SpeedMeasurePlugin();
 
 const context = path.resolve(__dirname, '../..');
 
