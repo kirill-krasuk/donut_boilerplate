@@ -20,10 +20,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     html, body {
+        min-height: 100vh;
         overflow-x: hidden;
         font-size: 14px;
         background-color: var(--background);
-        min-height: 100vh;
     }
 
     #root {
