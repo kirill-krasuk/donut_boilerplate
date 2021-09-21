@@ -8,9 +8,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "css.validate": true,
-  "less.validate": true,
-  "scss.validate": true,
+  "stylelint.enable": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.configFile": "config/css/styled.stylelint.json",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "search.exclude": {
     "**/.yarn": true,
