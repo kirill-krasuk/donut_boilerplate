@@ -8,7 +8,6 @@ import HtmlWebpackPlugin               from 'html-webpack-plugin';
 import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
-import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
 
 import { paths }                       from './constants/path';
 import { getJsLoader }                 from './loaders/js-loader';
@@ -93,18 +92,6 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         },
         watch  : options.watch || false,
         plugins: options!.plugins!.concat([
-            new ImageminWebpWebpackPlugin({
-                config: [ {
-                    test   : /\.(jpe?g|png)/,
-                    options: {
-                        quality: 75
-                    }
-                } ],
-                overrideExtension: true,
-                detailedLogs     : false,
-                silent           : true,
-                strict           : true
-            }),
             serviceWorkerEnabled && new InjectManifest({
                 swDest : './sw.js',
                 include: [ '**/*.js', '**/*.js.gz' ],
