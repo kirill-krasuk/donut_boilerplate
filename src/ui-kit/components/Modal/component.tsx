@@ -6,7 +6,7 @@ import { fromEvent }         from 'rxjs';
 import { useClickOutside }   from '@core/hooks/useClickOutside';
 import { useLockBodyScroll } from '@core/hooks';
 import { useActions }        from '@core/hooks/useActions';
-import * as S                from './styled';
+import * as S                from './styles';
 import { Props }             from './types';
 
 const Modal: FC<Props> = (props) => {

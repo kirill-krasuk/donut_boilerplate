@@ -22,7 +22,7 @@ import { getInitialProps }                      from '@utils/props/getInitialPro
 import { Theme }                                from '@core/enums/theme';
 import { useActions }                           from '@core/hooks/useActions';
 import { getDarkModeQuery, setDataThemeAttr }   from '@utils/dom';
-import * as S                                   from './styled';
+import * as S                                   from './styles';
 import { Props }                                from './types';
 
 const Root: FC<Props> = (props) => {
