@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/public/images/logo256x256.png" alt="Donut Logo"/>
+  <img src="./public/images/logo256x256.png" alt="Donut Logo"/>
 </p>
 
 <p align="center">
@@ -42,6 +42,8 @@ You can also start production via docker.
 1. In development mode, you can run or not run bundle analyzer. 
 The variable is responsible for this **`BUILD_ANALYZE`**. In production analyzer write results in stats directory. You can also set the port to the analyzer server
 1. To use production build via docker, you are recommended to rewrite *`.env`* docker-specific variables
+1. To configure **`stylelint`** [go to guide](./docs/stylelint/README.md)
+1. For use conventional-commits use `yarn commit` or follow the commitlint rules on normal git use
 
 ## Useful scripts
 
@@ -50,7 +52,9 @@ All these scripts are described in package.json and called through the `yarn <co
 - `bundle` - build production version
 - `ci` - run all commands to test the application
 - `lint` - code style checking
-- `lint:css` - css style checking
+  - `lint-fix` - fix js syntax
+  - `lint:styled` - styled-components style checking
+  - `lint:css` - css style checking
 - `prunecaches` - delete app caches
 - `run:server` - start builded app
 - `start` - build and run development app
@@ -61,6 +65,8 @@ All these scripts are described in package.json and called through the `yarn <co
   - `test:update`
   - `test:watch`
 - `types` - run typescript checking
+- `commit` - run for use commitizen better commit
+- `release` - generate CHANGELOG based your commits
 
 ## Stack used
 - App developing 🧑‍💻
@@ -83,6 +89,9 @@ All these scripts are described in package.json and called through the `yarn <co
   - [eslint](https://eslint.org/)
   - [stylelint](https://stylelint.io/)
   - [typescript](https://www.typescriptlang.org/)
+  - [commitlint](https://commitlint.js.org/#/) 🚥
+  - [husky](https://typicode.github.io/husky/#/) 🐶
+  - [commitizen](http://commitizen.github.io/cz-cli/)
 - Testing 🧪
   - [Jest](https://jestjs.io/en/) 🃏
   - [@testing-library/react](https://testing-library.com/) 🦑
