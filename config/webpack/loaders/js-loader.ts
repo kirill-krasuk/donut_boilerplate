@@ -14,8 +14,6 @@ export function getJsLoader() {
             options: {
                 compact: false
             }
-        }, {
-            loader: 'shebang-loader'
         } ],
         exclude: [ /\.(spec|test)\.js$/ ]
     };
