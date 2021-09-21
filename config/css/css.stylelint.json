@@ -1,0 +1,16 @@
+{
+    "plugins": [ 
+        "stylelint-scss", 
+        "stylelint-order",
+		"stylelint-a11y"
+    ],
+    "extends": [
+        "stylelint-config-airbnb",
+        "stylelint-config-recommended",
+        "stylelint-declaration-block-no-ignored-properties"
+    ],
+    "rules": {
+        "indentation": 4,
+        "block-opening-brace-space-before": "always"
+    }
+}
