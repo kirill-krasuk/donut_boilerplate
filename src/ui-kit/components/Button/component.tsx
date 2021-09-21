@@ -1,6 +1,6 @@
 import { FC }                        from 'react';
 import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
-import * as S                        from './styled';
+import * as S                        from './styles';
 import { Props }                     from './types';
 
 /**

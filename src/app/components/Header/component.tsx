@@ -6,7 +6,7 @@ import { Moon }                    from '@styled-icons/fa-solid/Moon';
 import { Theme }                   from '@core/enums/theme';
 import { createFactory }           from '@utils/factory';
 import { useLocale, useThemeMode } from '@app/hooks';
-import * as S                      from './styled';
+import * as S                      from './styles';
 import messages                    from './messages';
 
 const themeIconFactory = createFactory({

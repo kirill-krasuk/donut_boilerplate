@@ -7,7 +7,7 @@ import { pipe }             from 'fp-ts/lib/pipeable';
 
 import { getModalIdOption } from '@core/store/selectors/modal';
 import { Modals }           from '@app/enums/modal';
-import * as S               from './styled';
+import * as S               from './styles';
 import modals               from './modals';
 
 const ModalManager: FC = () => {
