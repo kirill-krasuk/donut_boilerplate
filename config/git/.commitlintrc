@@ -19,7 +19,8 @@
                 "test",
                 "struct",
                 "lint",
-                "chore"
+                "chore",
+                "wip"
             ]
         ]
     }
