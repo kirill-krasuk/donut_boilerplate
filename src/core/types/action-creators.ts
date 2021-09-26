@@ -3,6 +3,10 @@ export type Action = {
     payload: any;
 }
 
+export type ActionType<T> = T extends { type: infer Type, payload: infer Payload, meta?: infer Meta }
+    ? { type: Type, payload: Payload, meta?: Meta }
+    : { type: string, payload: undefined, meta?: undefined };
+
 export type ActionCreatorType<Type, Payload> = {
     type: Type,
     payload: Payload
