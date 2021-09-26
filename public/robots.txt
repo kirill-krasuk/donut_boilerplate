@@ -1,0 +1,7 @@
+# example
+
+User-agent: *
+Disallow: /login/
+Disallow: /*.pdf$
+
+Sitemap: https://www.example.com/sitemap.xml
