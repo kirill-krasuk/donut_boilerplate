@@ -1,8 +1,9 @@
-import { ActionCreator, ActionCreatorType, ActionCreatorWithMetaType } from '@core/types/actions';
-
-type ActionType<T> = T extends { type: infer Type, payload: infer Payload, meta?: infer Meta }
-    ? { type: Type, payload: Payload, meta?: Meta }
-    : { type: string, payload: undefined, meta?: undefined };
+import {
+    ActionType,
+    ActionCreator,
+    ActionCreatorType,
+    ActionCreatorWithMetaType
+} from '@core/types/action-creators';
 
 export function createActionCreator<T>() {
     return function<K extends ActionType<T>> (type: K['type']) : ActionCreator<
