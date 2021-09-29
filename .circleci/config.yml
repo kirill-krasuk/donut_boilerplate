@@ -72,7 +72,7 @@ jobs:
             name: Run Test
             command: |
                 TEST=$(circleci tests glob **/__tests__/*.(j|t)sx? | circleci tests split --split-by=timings)
-                yarn test $TEST
+                yarn jest $TEST
         - run:
             command: cp junit.xml ~/junit/
             when: always
