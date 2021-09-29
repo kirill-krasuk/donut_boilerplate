@@ -7,8 +7,6 @@ bash $CONTEXT/node_version.sh
 
 source $CONTEXT/colors.sh
 
-bash $CONTEXT/test.sh &&
-
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run typescript checking"
 yarn tsc --noEmit -p . &&
 echo -e "${BBlack}${On_Green} PASS ${Color_Off} Type check was successful"
