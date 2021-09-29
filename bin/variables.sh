@@ -3,6 +3,7 @@ CONTEXT=./bin
 TOOLS_TS_CONFIG=./cli/tsconfig.json
 BUNDLE_TOOL_PATH=./cli/scripts/bundle.ts
 JEST_CONFIG_PATH=./config/jest/jest.config.js
+CI_JEST_CONFIG_PATH=./config/jest/ci.jest.config.js
 
 WEBPACK_SERVER_CFG=./config/webpack/webpack.server.ts
 WEBPACK_CLIENT_CFG=./config/webpack/webpack.prod.ts
