@@ -30,7 +30,7 @@
         "sourceMap": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
-        "types": ["node", "jest"],
+        "types": ["node", "jest", "@testing-library/jest-dom"],
         "paths": {
             "@core/*": ["./src/core/*"],
             "@app/*": ["./src/app/*"],

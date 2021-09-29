@@ -8,6 +8,7 @@ module.exports = {
         '^.+\\.svg$': 'jest-svg-transformer'
     },
     setupFilesAfterEnv: [
+        '@testing-library/jest-dom',
         '@testing-library/jest-dom/extend-expect',
         './config/jest/setup.ts'
     ],
