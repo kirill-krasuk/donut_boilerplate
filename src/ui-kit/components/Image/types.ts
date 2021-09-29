@@ -15,5 +15,6 @@ type ImageSet = {
 export type Props = {
     src: string;
     webp?: boolean;
+    alt: string;
     set?: ImageSet[];
 }
