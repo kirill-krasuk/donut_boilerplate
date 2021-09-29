@@ -34,7 +34,8 @@
       "commit-msg": "console",
       "*.epic.ts": "ngrx-state",
       ".cz-config.js": "git",
-      "*.jest.config.js": "jest"
+      "*.jest.config.js": "jest",
+      "*.stylelint.json": "stylelint"
   },
   "material-icon-theme.folders.associations": {
       "enums": "typescript",
