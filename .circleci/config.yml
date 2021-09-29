@@ -62,7 +62,7 @@ jobs:
         
     test:
         docker: *node_image
-        parallelism: 4
+        parallelism: 3
         steps:
         - checkout
         - attach_workspace:
