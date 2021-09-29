@@ -20,7 +20,7 @@
   "scripts": {
     "bundle": "bash ./bin/bundle.sh",
     "ci": "bash ./bin/ci.sh",
-    "circleci": "bash ./bin/circleci.sh",
+    "circleci": "bash ./bin/circleci_test.sh",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "lint:styled": "stylelint --config ./config/css/styled.stylelint.json './src/**/*.ts'",
