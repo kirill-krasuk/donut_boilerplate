@@ -67,11 +67,19 @@ jobs:
         - checkout
         - attach_workspace:
             at: ./
+        - run: mkdir ~/junit
         - run: 
             name: Run Test
             command: |
                 TEST=$(circleci tests glob **/__tests__/*.(j|t)sx? | circleci tests split --split-by=timings)
                 yarn test $TEST
+        - run:
+            command: cp junit.xml ~/junit/
+            when: always
+        - store_test_results:
+            path: ~/junit
+        - store_artifacts:
+            path: ~/junit
 
 workflows:
     version: 2
