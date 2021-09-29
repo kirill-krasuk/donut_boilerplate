@@ -5,12 +5,12 @@ import styled                from 'styled-components/macro';
 import DonutZero             from '@images/donut-zero.png';
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 `;
 
 const Title = styled.h1`
@@ -20,21 +20,21 @@ const Title = styled.h1`
 `;
 
 const Description = styled.h2`
-    font-size: 4rem;
     color: white;
+    font-size: 4rem;
     text-shadow: 4px 4px 0px rgb(115, 67, 46);
 `;
 
 const Link = styled(ReactLink)`
-    color: white;
     margin-top: 20px;
+    color: white;
 `;
 
 const Page404: FC = () => (
     <Container>
         <Title>
             4
-            <img src={ DonutZero } />
+            <img src={ DonutZero } alt="Zero" />
             4
         </Title>
         <Description>Sorry :( page not found</Description>
