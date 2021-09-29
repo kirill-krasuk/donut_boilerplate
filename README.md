@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://circleci.com/gh/kirill-krasuk/new_boilerplate.svg?style=svg" alt="circle ci result"/>
+  <img src="https://circleci.com/gh/kirill-krasuk/donut_boilerplate.svg?style=svg" alt="circle ci result"/>
 </p>
 
 <h1 align="center">
