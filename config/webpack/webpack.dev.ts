@@ -3,6 +3,7 @@ import { BundleAnalyzerPlugin }  from 'webpack-bundle-analyzer';
 import path                      from 'path';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin  from 'circular-dependency-plugin';
+import WebpackNotifierPlugin     from 'webpack-notifier';
 
 import { configureBundler }      from './webpack.common';
 import { paths }                 from './constants/path';
@@ -44,6 +45,10 @@ export default configureBundler({
             logLevel    : 'silent',
             analyzerPort: process.env.BUNDLE_ANALYZER_PORT,
             analyzerHost: '127.0.0.1'
+        }),
+        new WebpackNotifierPlugin({
+            title: process.env.APP_NAME || 'Webpack',
+            emoji: true,
         }),
         new CircularDependencyPlugin({
             onDetected({ paths, compilation }) {
