@@ -3,15 +3,9 @@ module.exports = {
     cacheDirectory : './.cache/jest',
     preset         : 'ts-jest',
     testEnvironment: 'node',
-    reporters      : [
-        'default',
-        [ 'jest-junit', {
-            addFileAttribute: 'true'
-        } ]
-    ],
-    transform: {
+    transform      : {
         '.tsx?$'    : 'ts-jest',
-        '^.+\\.svg$': 'jest-svg-transformer'
+        '^.+\\.svg$': 'svg-jest'
     },
     setupFilesAfterEnv: [
         '@testing-library/jest-dom',
