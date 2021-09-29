@@ -22,7 +22,8 @@
         "plugin:@typescript-eslint/recommended",
         "airbnb-base",
         "plugin:varspacing/recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended"
     ],
     "rules": {
         "array-callback-return": 0,
@@ -169,7 +170,8 @@
         "arca",
         "varspacing",
         "react",
-        "react-hooks"
+        "react-hooks",
+        "jsx-a11y"
     ],
     "ignorePatterns": ["**/lib/*"],
     "overrides": [
