@@ -6505,6 +6505,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webpack-notifier@npm:^1":
+  version: 1.8.3
+  resolution: "@types/webpack-notifier@npm:1.8.3"
+  dependencies:
+    "@types/webpack": ^4
+  checksum: 6b27ce437d197e6ce3ab83efebe05446c21412cf0f5078353389bb3b19e80bdcfce18aea75c036b507eec9c3d2369e2f5534f330192349d6c4c69178d84ae4cf
+  languageName: node
+  linkType: hard
+
 "@types/webpack-plugin-serve@npm:^1.4.1":
   version: 1.4.1
   resolution: "@types/webpack-plugin-serve@npm:1.4.1"
@@ -21145,6 +21154,7 @@ __metadata:
     "@types/tough-cookie": ^4
     "@types/webpack": ^5.28.0
     "@types/webpack-bundle-analyzer": ^4.4.1
+    "@types/webpack-notifier": ^1
     "@types/webpack-plugin-serve": ^1.4.1
     "@types/workbox-webpack-plugin": ^5.1.5
     "@types/yargs": ^16.0.0
@@ -21233,6 +21243,7 @@ __metadata:
     mini-svg-data-uri: ^1.2.3
     monocle-ts: ^2.3.4
     node-fetch: ^2.6.1
+    node-notifier: ^10.0.0
     node-sass: ^6.0.1
     node-zopfli-es: ^1.0.7
     optimize-css-assets-webpack-plugin: ^6.0.1
@@ -21320,6 +21331,7 @@ __metadata:
     webpack-cli: ^4.5.0
     webpack-dev-middleware: ^4.1.0
     webpack-hot-middleware: ^2.25.0
+    webpack-notifier: ^1.13.0
     webpack-plugin-serve: ^1.2.1
     webpack-pnp-externals: ^1.1.0
     workbox-cacheable-response: ^5.1.4
@@ -21525,6 +21537,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-notifier@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "node-notifier@npm:10.0.0"
+  dependencies:
+    growly: ^1.3.0
+    is-wsl: ^2.2.0
+    semver: ^7.3.5
+    shellwords: ^0.1.1
+    uuid: ^8.3.2
+    which: ^2.0.2
+  checksum: a9c648ed2d9e0716ad9142ba08247f1461a754f7dc67d5f6dba9f9fbc8a773d1b6a7433718b4fc1623839813ac8b24b57b9f5ce0943a94555e5ae33b3833c34f
+  languageName: node
+  linkType: hard
+
 "node-notifier@npm:^8.0.0":
   version: 8.0.1
   resolution: "node-notifier@npm:8.0.1"
@@ -21536,6 +21562,20 @@ __metadata:
     uuid: ^8.3.0
     which: ^2.0.2
   checksum: b84f24060f9f968c6141fcd16d22125caa42eb048fa5867f63e3411384a0bbc22b82d1a64e242ee9a557aaf6a0542a562713c4467f648dbcffea15d6da08f750
+  languageName: node
+  linkType: hard
+
+"node-notifier@npm:^9.0.0":
+  version: 9.0.1
+  resolution: "node-notifier@npm:9.0.1"
+  dependencies:
+    growly: ^1.3.0
+    is-wsl: ^2.2.0
+    semver: ^7.3.2
+    shellwords: ^0.1.1
+    uuid: ^8.3.0
+    which: ^2.0.2
+  checksum: a75623912ec6c3fd7c4e6f1c04586adf716a3610268bdbd5adfeb95dc75a2126c10368d98051530aa0dc6fe8d72791d5033ad6dd2a5f63d009fea30f7292f07e
   languageName: node
   linkType: hard
 
@@ -30457,7 +30497,7 @@ typescript@4.2.2:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.3.0":
+"uuid@npm:^8.3.0, uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
@@ -30844,6 +30884,16 @@ typescript@4.2.2:
     clone-deep: ^4.0.1
     wildcard: ^2.0.0
   checksum: 09608c3a4928246e9c1c09c22b5f867c38d0ab0fb027ebcc3b15d42659f06a10cfa7f7e2cf2a0ace6f2d571c1cd744ec23e7b2069d34a70378e163e8e035c290
+  languageName: node
+  linkType: hard
+
+"webpack-notifier@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "webpack-notifier@npm:1.13.0"
+  dependencies:
+    node-notifier: ^9.0.0
+    strip-ansi: ^6.0.0
+  checksum: fb0fd86975092c883d4c654fc101aac0cfb328bff4002839be0ef8870fec48325bedd0f4a715e859230df04aa15e6fd49f6a56c176d6122eb5bc45e26877d9de
   languageName: node
   linkType: hard
 
