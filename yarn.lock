@@ -6505,7 +6505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack-notifier@npm:^1":
+"@types/webpack-notifier@npm:^1.8.3":
   version: 1.8.3
   resolution: "@types/webpack-notifier@npm:1.8.3"
   dependencies:
@@ -18559,6 +18559,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-junit@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "jest-junit@npm:12.3.0"
+  dependencies:
+    mkdirp: ^1.0.4
+    strip-ansi: ^5.2.0
+    uuid: ^8.3.2
+    xml: ^1.0.1
+  checksum: b1527eecba967b5f4f021117a14cb5c7cf6b5d99cd0efb50078198ec22a751afde0559db3fd9ff5485959d238787109277fdc8c591d566e270ae742748443407
+  languageName: node
+  linkType: hard
+
 "jest-leak-detector@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-leak-detector@npm:26.6.2"
@@ -21154,7 +21166,7 @@ __metadata:
     "@types/tough-cookie": ^4
     "@types/webpack": ^5.28.0
     "@types/webpack-bundle-analyzer": ^4.4.1
-    "@types/webpack-notifier": ^1
+    "@types/webpack-notifier": ^1.8.3
     "@types/webpack-plugin-serve": ^1.4.1
     "@types/workbox-webpack-plugin": ^5.1.5
     "@types/yargs": ^16.0.0
@@ -21232,6 +21244,7 @@ __metadata:
     ip: ^1.1.5
     isomorphic-fetch: ^3.0.0
     jest: ^26.6.3
+    jest-junit: ^12.3.0
     jest-styled-components: ^7.0.3
     jest-svg-transformer: ^1.0.0
     jpegtran: ^2.0.0
@@ -31719,6 +31732,13 @@ typescript@4.2.2:
   version: 3.0.0
   resolution: "xml-name-validator@npm:3.0.0"
   checksum: b3ac459afed783c285bb98e4960bd1f3ba12754fd4f2320efa0f9181ca28928c53cc75ca660d15d205e81f92304419afe94c531c7cfb3e0649aa6d140d53ecb0
+  languageName: node
+  linkType: hard
+
+"xml@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "xml@npm:1.0.1"
+  checksum: 11b5545ef3f8fec3fa29ce251f50ad7b6c97c103ed4d851306ec23366f5fa4699dd6a942262df52313a0cd1840ab26256da253c023bad3309d8ce46fe6020ca0
   languageName: node
   linkType: hard
 

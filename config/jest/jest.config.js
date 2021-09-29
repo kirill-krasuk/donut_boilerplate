@@ -3,7 +3,13 @@ module.exports = {
     cacheDirectory : './.cache/jest',
     preset         : 'ts-jest',
     testEnvironment: 'node',
-    transform      : {
+    reporters      : [
+        'default',
+        [ 'jest-junit', {
+            addFileAttribute: 'true'
+        } ]
+    ],
+    transform: {
         '.tsx?$'    : 'ts-jest',
         '^.+\\.svg$': 'jest-svg-transformer'
     },
