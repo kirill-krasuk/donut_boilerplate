@@ -8,15 +8,15 @@ bash $CONTEXT/node_version.sh
 source $CONTEXT/colors.sh
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run typescript checking"
-yarn tsc --noEmit -p . &&
+yarn types &&
 echo -e "${BBlack}${On_Green} PASS ${Color_Off} Type check was successful"
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run eslint checking"
-yarn eslint . &&
+yarn lint &&
 echo -e "${BBlack}${On_Green} PASS ${Color_Off} Code style check was successful"
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run stylelinitng"
-yarn stylelint './src/**/*.ts' &&
+yarn lint:styled &&
 echo -e "${BBlack}${On_Green} PASS ${Color_Off} Stylelint check was successful\n"
 
 if [ $? -eq 1 ]; then
