@@ -6,6 +6,10 @@ aliases:
             name: Restore yarn cache
             key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
 
+    - &node_image
+        - image: node:15.8.0
+        
+
 commands:
     initial:
         steps:
@@ -46,27 +50,28 @@ commands:
 
 jobs:
     setup:
-        docker:
-            - image: node:15.8.0
+        docker: *node_image
+        
         steps:
         - initial
     build: 
-        docker:
-            - image: node:15.8.0
+        docker: *node_image
         steps:
         - checkout
         - build
         
     test:
-        docker:
-            - image: node:15.8.0
+        docker: *node_image
+        parallelism: 5
         steps:
         - checkout
         - attach_workspace:
             at: ./
         - run: 
-            name: Run CI  
-            command: yarn ci
+            name: Run Test
+            command: |
+                TEST=$(circleci tests glob **/__tests__/*.(j|t)sx? | circleci tests split --split-by=timings)
+                yarn test $TEST
 
 workflows:
     version: 2
