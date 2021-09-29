@@ -51,7 +51,7 @@ commands:
 jobs:
     setup:
         docker: *node_image
-        
+        parallelism: 4
         steps:
         - initial
     build: 
@@ -70,7 +70,7 @@ jobs:
         - run: mkdir ~/junit
         - run: 
             name: Run Test
-            command: yarn circleci
+            command: yarn ci
         - run:
             command: cp junit.xml ~/junit/
             when: always
