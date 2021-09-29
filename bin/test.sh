@@ -1,6 +1,10 @@
 #!/bin/bash
 
 source ./bin/variables.sh
+
+bash $CONTEXT/run_banner.sh
+bash $CONTEXT/node_version.sh
+
 source ./bin/colors.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} Run tests suites"
