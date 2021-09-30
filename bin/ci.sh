@@ -9,7 +9,7 @@ source $CONTEXT/colors.sh
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run jest testing"
 TEST=$(circleci tests glob **/__tests__/*.{ts,tsx,js,jsx} | circleci tests split --split-by=timings)
-yarn jest --env=jsdom -c=$CI_JEST_CONFIG_PATH $TEST
+yarn jest -c=$CI_JEST_CONFIG_PATH $TEST
 
 if [ $? -eq 1 ]; then
     echo -e "🚨🚨🚨 Tests ${BRed}failed${Color_Off} 🚨🚨🚨"
