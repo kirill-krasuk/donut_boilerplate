@@ -28,27 +28,29 @@
     ".commitlintrc": "jsonc"
   },
   "material-icon-theme.files.associations": {
-      ".czrc": "commitlint",
-      ".pnp.cjs": "yarn",
-      "*.tsbuildinfo": "tsconfig",
-      "commit-msg": "console",
-      "*.epic.ts": "ngrx-state",
-      ".cz-config.js": "git",
-      "*.jest.config.js": "jest",
-      "*.stylelint.json": "stylelint"
+    ".czrc": "commitlint",
+    ".pnp.cjs": "yarn",
+    "*.tsbuildinfo": "tsconfig",
+    "commit-msg": "console",
+    "*.epic.ts": "ngrx-state",
+    ".cz-config.js": "git",
+    "*.jest.config.js": "jest",
+    "*.stylelint.json": "stylelint"
   },
   "material-icon-theme.folders.associations": {
-      "enums": "typescript",
-      "epics": "ngrx-state",
-      "epic": "ngrx-state",
-      "ui-kit": "theme",
-      "jest": "test",
-      "git": "git"
+    "enums": "typescript",
+    "epics": "ngrx-state",
+    "epic": "ngrx-state",
+    "ui-kit": "theme",
+    "jest": "test",
+    "git": "git"
   },
   "javascript.inlayHints.parameterNames.enabled": "all",
   "material-icon-theme.folders.color": "#90a4ae",
   "material-icon-theme.opacity": 1,
   "material-icon-theme.saturation": 1,
   "material-icon-theme.folders.theme": "specific",
-  "material-icon-theme.activeIconPack": "react_redux"
+  "material-icon-theme.activeIconPack": "react_redux",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false
 }
