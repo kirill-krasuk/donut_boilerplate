@@ -1,9 +1,10 @@
 import './shim';
-import React              from 'react';
-import { addDecorator }   from '@storybook/react';
-import { ThemeProvider }  from 'styled-components/macro';
+import React                 from 'react';
+import { addDecorator }      from '@storybook/react';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { ThemeProvider }     from 'styled-components/macro';
 
-import { theme }          from '@core/config/theme';
+import { theme }             from '@core/config/theme';
 
 addDecorator((storyFn) => (
     <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
@@ -13,4 +14,7 @@ addDecorator((storyFn) => (
 
 export const parameters = {
     layout: 'centered',
+    viewport: {
+        viewports: INITIAL_VIEWPORTS
+    }
 };
