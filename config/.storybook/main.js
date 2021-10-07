@@ -8,6 +8,7 @@ module.exports = {
         '@storybook/addon-actions',
         '@storybook/addon-postcss',
         '@storybook/addon-a11y',
+        '@storybook/addon-viewport',
         '@geometricpanda/storybook-addon-badges',
         {
             name: '@storybook/addon-docs',

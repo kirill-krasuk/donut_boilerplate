@@ -46,3 +46,8 @@ export const withEmoji = (args: any) => (
         </span>
     </Button>
 );
+withEmoji.parameters = {
+    viewport: {
+        defaultViewport: 'iphonex'
+    }
+};
