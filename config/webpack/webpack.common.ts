@@ -141,6 +141,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                     '**/*',
                     '!server.js',
                     '!*.server.js',
+                    '!index.pug'
                 ],
                 cleanAfterEveryBuildPatterns: [
                     '!*.server.js',

@@ -45,7 +45,7 @@ export default configureBundler({
             logLevel    : 'silent',
             analyzerPort: process.env.BUNDLE_ANALYZER_PORT,
             analyzerHost: '127.0.0.1'
-        }),
+        }) as any,
         new WebpackNotifierPlugin({
             title: process.env.APP_NAME || 'Webpack',
             emoji: true,
@@ -56,5 +56,5 @@ export default configureBundler({
             },
             failOnError: true
         }),
-    ].filter(Boolean) as webpack.WebpackPluginInstance[]
+    ].filter(Boolean)
 });
