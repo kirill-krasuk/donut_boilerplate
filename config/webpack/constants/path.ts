@@ -7,7 +7,7 @@ export const paths = {
     template     : path.resolve('src/core/index.pug'),
     view         : path.resolve('dist/index.pug'),
     postCssConfig: path.resolve('config/css/.postcssrc'),
-    fonts        : path.resolve('assets/fonts'),
-    images       : path.resolve('assets/images'),
-    svgs         : path.resolve('assets/svgs'),
+    fonts        : path.resolve('src/assets/fonts'),
+    images       : path.resolve('src/assets/images'),
+    svgs         : path.resolve('src/assets/svgs'),
 };
