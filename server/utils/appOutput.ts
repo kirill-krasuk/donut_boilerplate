@@ -35,7 +35,7 @@ export const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
         chalk`{green.bold Server time:}${ ' '.repeat(5) }${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }`,
         '',
         !!standardPort && chalk`${ ' '.repeat(13) }{yellow.bold !!!Attention!!!}`,
-        !!standardPort && chalk`${ ' '.repeat(4) }Port {cyan.bold ${ standardPort }} is busy. Use {cyan.bold ${ port }} instead`,
+        !!standardPort && chalk`Port from {bold ENV} {cyan.bold ${ standardPort }} is busy. Use {cyan.bold ${ port }} instead`,
         !!standardPort && '',
         chalk`${ ' '.repeat(12) }{gray.bold Server started at}`,
         chalk`{green.bold Local:}${ ' '.repeat(11) }{underline.cyan http://${ hostname }:${ port }}`,
