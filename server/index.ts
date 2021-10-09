@@ -18,7 +18,6 @@ import { useStatic }                                 from './utils/useStatic';
 import { createExitHandler }                         from './handlers/process';
 import { handleClose }                               from './handlers/server';
 import { staticCompression }                         from './handlers/staticCompression';
-import '../config/env';
 
 const { host, port } = env.server;
 
