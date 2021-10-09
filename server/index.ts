@@ -8,13 +8,13 @@ import favicon                                       from 'serve-favicon';
 import cookieParser                                  from 'cookie-parser';
 
 import env                                           from '@env/';
+import { createUsePortHandler }                      from './handlers/handleUsePort';
+import { createServerRunner }                        from './utils/runServer';
 import { serverSideRendering }                       from './middlewares/serverSideRendering';
 import { errorLogging }                              from './middlewares/errorLogging';
 import { ONE_MONTH_CACHE }                           from './constants/cache';
 import { paths }                                     from './constants/paths';
 import { useStatic }                                 from './utils/useStatic';
-import { appBorder }                                 from './utils/appBorder';
-import { getAppOutputInfo }                          from './utils/appOutput';
 import { createExitHandler }                         from './handlers/process';
 import { handleClose }                               from './handlers/server';
 import { staticCompression }                         from './handlers/staticCompression';
@@ -23,6 +23,9 @@ import '../config/env';
 const { host, port } = env.server;
 
 const app = express();
+
+const runServer     = createServerRunner(app);
+const handleUsePort = createUsePortHandler({ port, host }, runServer);
 
 async function main() {
     app.use(shrinkRay());
@@ -52,9 +55,10 @@ async function main() {
     app.use('/handle_error', errorLogging);
     app.use('/', serverSideRendering);
 
-    const server = app.listen(+port, (host as string), () => appBorder(getAppOutputInfo({ host, port: port.toString() })));
+    const server = runServer({ port, host });
 
     server.on('close', handleClose);
+    server.once('error', handleUsePort);
 
     const handleExit = createExitHandler(server);
 

@@ -8,12 +8,13 @@ import { getHostname } from './getHostname';
 
 export type OutputInfo = {
     host: string,
-    port: string
+    port: string,
+    standardPort?: number | string
 };
 
 const { isBuildAnalyzer, analyzerPort, isOpenInBrowser } = env.server;
 
-export const getAppOutputInfo = ({ host, port }: OutputInfo) => {
+export const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
     let messageAboutBrowser = 'Copy address to clipboard and run it in browser';
     let network             = '';
     const hostname          = getHostname(host);
@@ -33,6 +34,9 @@ export const getAppOutputInfo = ({ host, port }: OutputInfo) => {
         '',
         chalk`{green.bold Server time:}${ ' '.repeat(5) }${ dayjs(Date.now()).format('HH:mm:ss DD:MM:YYYY') }`,
         '',
+        !!standardPort && chalk`${ ' '.repeat(13) }{yellow.bold !!!Attention!!!}`,
+        !!standardPort && chalk`${ ' '.repeat(4) }Port {cyan.bold ${ standardPort }} is busy. Use {cyan.bold ${ port }} instead`,
+        !!standardPort && '',
         chalk`${ ' '.repeat(12) }{gray.bold Server started at}`,
         chalk`{green.bold Local:}${ ' '.repeat(11) }{underline.cyan http://${ hostname }:${ port }}`,
         network && chalk`{green.bold Network:}${ ' '.repeat(9) }{underline.cyan http://${ network }:${ port }}`,
