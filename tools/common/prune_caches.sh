@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./bin/colors.sh
+source ./tools/common/colors.sh
 
 if [[ -d "./.cache" ]]; then
     echo -e "${BBlack}${On_Yellow} WARN ${Color_Off} ⚠️ Detecting old caches"

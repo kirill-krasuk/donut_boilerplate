@@ -1,12 +1,12 @@
 #!/bin/bash
 
-source ./bin/variables.sh
+source ./tools/common/variables.sh
 
-bash $CONTEXT/run_banner.sh
-bash $CONTEXT/node_version.sh
-bash $CONTEXT/mklogs.sh
+bash $COMMON/banner.sh
+bash $COMMON/node_version.sh
+bash $COMMON/mklogs.sh
 
-source $CONTEXT/colors.sh
+source $COMMON/colors.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building development version\n"
 
