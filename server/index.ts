@@ -29,8 +29,8 @@ const handleUsePort = createUsePortHandler({ port, host }, runServer);
 async function main() {
     app.use(shrinkRay());
     app.use(processImage());
-    app.use(json() as RequestHandler);
-    app.use(urlencoded({ extended: false }) as RequestHandler);
+    app.use(<RequestHandler>json());
+    app.use(<RequestHandler>urlencoded({ extended: false }));
     app.use(cookieParser());
 
     app.use('/dist', staticCompression(paths.dist));

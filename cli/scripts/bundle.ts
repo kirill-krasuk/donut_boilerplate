@@ -8,6 +8,8 @@ import compile            from '../utils/compileApp';
 
 const { argv } = yargs.options(bundleToolArgs);
 
-const pathToConfig = path.resolve(process.cwd(), argv.config as string);
+const config = argv.config as string;
+
+const pathToConfig = path.resolve(process.cwd(), config);
 
 compile(pathToConfig);
