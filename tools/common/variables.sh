@@ -1,4 +1,9 @@
-CONTEXT=./bin
+#! /bin/bash
+
+CONTEXT=./tools
+CI_CONTEXT=$CONTEXT/ci
+BUILD_CONTEXT=$CCONTEXT/build
+COMMON=$CONTEXT/common
 
 TOOLS_TS_CONFIG=./cli/tsconfig.json
 BUNDLE_TOOL_PATH=./cli/scripts/bundle.ts

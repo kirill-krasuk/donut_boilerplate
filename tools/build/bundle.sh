@@ -1,11 +1,11 @@
 #! /bin/bash
 
-source ./bin/variables.sh
+source ./tools/common/variables.sh
 
-bash $CONTEXT/run_banner.sh &&
-bash $CONTEXT/mklogs.sh
-bash $CONTEXT/prune_caches.sh
-source $CONTEXT/colors.sh
+bash $COMMON/banner.sh &&
+bash $COMMON/mklogs.sh
+bash $COMMON/prune_caches.sh
+source $COMMON/colors.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building production server" &&
 
