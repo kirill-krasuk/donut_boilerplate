@@ -3,7 +3,7 @@ import path                          from 'path';
 import { WebpackPnpExternals }       from 'webpack-pnp-externals';
 
 import { getJsLoader }               from './loaders/js-loader';
-import { getImageLoader }            from './loaders/image-loader';
+import { getServerImageLoader }      from './loaders/image-loader';
 import { getFontsLoader }            from './loaders/font-loader';
 import { getServerCssLoader }        from './loaders/css-loader';
 import { getServerSassLoader }       from './loaders/sass-loader';
@@ -61,7 +61,7 @@ const serverConfig: Configuration = {
             getServerCssLoader(),
             getServerSassLoader(),
             getServerSassModuleLoader(),
-            getImageLoader(),
+            getServerImageLoader(),
             getSVGLoader(),
             getFontsLoader()
         ]
