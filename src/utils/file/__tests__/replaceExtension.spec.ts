@@ -14,4 +14,18 @@ describe('Replace file extension helper', () => {
 
         expect(replaceExtension(received, 'webp')).toEqual(expected);
     });
+
+    it('should get file path and replace extension with content hash correctly', () => {
+        const received = 'image.cdefa51d.jpg';
+        const expected = 'image.cdefa51d.webp';
+
+        expect(replaceExtension(received, 'webp')).toEqual(expected);
+    });
+
+    it('should get file path and replace extension with content hash and query params correctly', () => {
+        const received = 'image.cdefa51d.jpg?resize=300,300';
+        const expected = 'image.cdefa51d.webp?resize=300,300';
+
+        expect(replaceExtension(received, 'webp')).toEqual(expected);
+    });
 });

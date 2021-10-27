@@ -8,6 +8,7 @@ import HtmlWebpackPlugin               from 'html-webpack-plugin';
 import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
+import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
 
 // use for bench webpack build
 // import SpeedMeasurePlugin              from 'speed-measure-webpack-plugin';
@@ -104,6 +105,18 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 exclude: [ '**/*.hot-update.json' ],
                 swSrc  : './src/core/service-worker.js',
             }),
+            new ImageminWebpWebpackPlugin({
+                config: [ {
+                    test   : /\.(jpe?g|png|gif)/,
+                    options: {
+                        quality: 75
+                    }
+                } ],
+                overrideExtension: true,
+                detailedLogs     : false,
+                silent           : true,
+                strict           : true
+            }),
             new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
             new HtmlWebpackPlugin({
                 template         : paths.template,
@@ -137,6 +150,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 /ru/
             ),
             new CleanWebpackPlugin({
+                dry                         : true,
                 cleanOnceBeforeBuildPatterns: [
                     '**/*',
                     '!server.js',
@@ -149,6 +163,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                     '!index.pug',
                     'precache-manifest.*.js'
                 ],
+                dangerouslyAllowCleanPatternsOutsideProject: true,
             }),
         ]).filter(Boolean)
     };

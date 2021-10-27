@@ -9,6 +9,8 @@ import webpackConfig   from '../../config/webpack/webpack.dev';
 
 const { writeToDisk } = env.server;
 
+const fileExtensionsToWrite = /\.(jpe?g|webp|png|svg|gif|ttf|otf|woff|woff2)$/;
+
 export function useDevMiddlewares(app: Application): void {
     const { sw, isCacheable } = headers;
 
@@ -25,7 +27,7 @@ export function useDevMiddlewares(app: Application): void {
             [swKey]         : [ swValue ],
             [isCacheableKey]: [ isCacheableValue ]
         },
-        writeToDisk
+        writeToDisk: writeToDisk || ((filePath: string) => fileExtensionsToWrite.test(filePath))
     }));
 
     app.use(HotMiddleware(bundler));
