@@ -30,7 +30,11 @@
         "sourceMap": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
-        "types": ["node", "jest", "@testing-library/jest-dom"],
+        "types": [
+            "node", 
+            "jest", 
+            "@testing-library/jest-dom"
+        ],
         "paths": {
             "@core/*": ["./src/core/*"],
             "@app/*": ["./src/app/*"],
@@ -50,6 +54,7 @@
         "server/**/*", 
         "src/test/**/*", 
         "cli/**/*",
+        "tools/**/*",
         "config/jest/setup.ts",
         "config/webpack/**/*",
         "config/env/*"
