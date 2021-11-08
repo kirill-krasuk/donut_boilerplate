@@ -45,6 +45,7 @@
     "jest": "test",
     "git": "git"
   },
+  "cSpell.language": "en,ru",
   "javascript.inlayHints.parameterNames.enabled": "all",
   "material-icon-theme.folders.color": "#90a4ae",
   "material-icon-theme.opacity": 1,
