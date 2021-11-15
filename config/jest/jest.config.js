@@ -4,8 +4,8 @@ module.exports = {
     preset         : 'ts-jest',
     testEnvironment: 'node',
     transform      : {
-        '.tsx?$'    : 'ts-jest',
-        '^.+\\.svg$': 'svg-jest'
+        '^.+\\.(t|j)sx?$': '@swc/jest',
+        '^.+\\.svg$'     : 'svg-jest'
     },
     setupFilesAfterEnv: [
         '@testing-library/jest-dom',
