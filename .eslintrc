@@ -26,6 +26,11 @@
         "plugin:jsx-a11y/recommended"
     ],
     "rules": {
+		"no-tabs": [
+			"error", { 
+				"allowIndentationTabs": true 
+			}
+		],
         "array-callback-return": 0,
         "no-restricted-imports": [
             "error",
