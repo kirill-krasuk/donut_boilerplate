@@ -85,6 +85,7 @@
     "immutable": "^4.0.0-rc.12",
     "inkscape": "^3.1.1",
     "io-ts": "^2.2.13",
+    "io-ts-types": "^0.5.16",
     "ip": "^1.1.5",
     "isomorphic-fetch": "^3.0.0",
     "jpegtran": "^2.0.0",
@@ -129,7 +130,7 @@
     "schema-utils": "^3.1.1",
     "serve-favicon": "^2.5.0",
     "serve-static": "^1.14.1",
-    "sharp": "^0.26.0",
+    "sharp": "^0.29.3",
     "shrink-ray-current": "^4.1.2",
     "sockjs-client": "^1.5.0",
     "spawn-sync": "^2.0.0",
@@ -341,5 +342,6 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-webpack-plugin": "^6.0.2"
-  }
+  },
+  "packageManager": "yarn@3.1.0"
 }
