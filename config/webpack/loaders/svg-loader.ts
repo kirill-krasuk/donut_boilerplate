@@ -5,10 +5,17 @@ import { isProd }           from '../utils/isProd';
 
 const addHash = createHashHelper(isProd());
 
-export function getSVGLoader() {
-    const SVGLoader: Record<string, any> = {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use : [ {
+export const getSVGLoader = () => ({
+    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+    use : [
+        ...!isProd() && [ {
+            loader : 'cache-loader',
+            options: {
+                cacheDirectory: '.cache/svg-cache'
+            }
+        } ],
+
+        {
             loader: '@svgr/webpack'
         }, {
             loader : 'url-loader',
@@ -19,17 +26,6 @@ export function getSVGLoader() {
                 outputPath: '../public/svgs/build',
                 publicPath: '/public/svgs/build'
             },
-        } ]
-    };
-
-    if (!isProd()) {
-        SVGLoader.use.unshift({
-            loader : 'cache-loader',
-            options: {
-                cacheDirectory: '.cache/svg-cache'
-            }
-        });
-    }
-
-    return SVGLoader;
-}
+        }
+    ].filter(Boolean)
+});

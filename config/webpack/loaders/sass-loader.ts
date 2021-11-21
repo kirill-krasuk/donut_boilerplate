@@ -46,9 +46,7 @@ export function getClientSassLoader() {
     return sassLoader;
 }
 
-export function getServerSassLoader() {
-    return {
-        ...options,
-        use: useLoaders
-    };
-}
+export const getServerSassLoader = () => ({
+    ...options,
+    use: useLoaders
+});
