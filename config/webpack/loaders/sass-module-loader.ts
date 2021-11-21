@@ -50,9 +50,7 @@ export function getClientSassModuleLoader() {
     return sassModuleLoader;
 }
 
-export function getServerSassModuleLoader() {
-    return {
-        ...options,
-        use: commonLoaders
-    };
-}
+export const getServerSassModuleLoader = () => ({
+    ...options,
+    use: commonLoaders
+});

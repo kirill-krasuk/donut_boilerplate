@@ -3,10 +3,23 @@ import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import { paths }        from '../constants/path';
 import { isProd }       from '../utils/isProd';
 
-export function getClientCssLoader() {
-    const cssLoader: Record<string, any> = {
-        test: /\.css$/,
-        use : [ {
+export const getClientCssLoader = () => ({
+    test: /\.css$/,
+    use : [
+        ...!isProd() && [ {
+            loader : 'thread-loader',
+            options: {
+                workers           : 2,
+                workerParallelJobs: 50,
+            }
+        }, {
+            loader : 'cache-loader',
+            options: {
+                cacheDirectory: '.cache/css-cache'
+            }
+        } ],
+
+        {
             loader: isProd()
                 ? ExtractCssChunks.loader
                 : 'style-loader'
@@ -19,30 +32,11 @@ export function getClientCssLoader() {
                     config: paths.postCssConfig
                 },
             },
-        } ]
-    };
+        }
+    ].filter(Boolean)
+});
 
-    if (!isProd()) {
-        cssLoader.use.unshift({
-            loader : 'thread-loader',
-            options: {
-                workers           : 2,
-                workerParallelJobs: 50,
-            }
-        }, {
-            loader : 'cache-loader',
-            options: {
-                cacheDirectory: '.cache/css-cache'
-            }
-        });
-    }
-
-    return cssLoader;
-}
-
-export function getServerCssLoader() {
-    return {
-        test  : /\.css$/,
-        loader: 'css-loader'
-    };
-}
+export const getServerCssLoader = () => ({
+    test  : /\.css$/,
+    loader: 'css-loader'
+});
