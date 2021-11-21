@@ -5,11 +5,9 @@ import {
     Middleware
 } from 'redux';
 import { createEpicMiddleware, ofType, ActionsObservable } from 'redux-observable';
-import { routerMiddleware }                                from 'connected-react-router';
 import { composeWithDevTools }                             from 'redux-devtools-extension';
 import { BehaviorSubject, Observable }                     from 'rxjs';
 import { mergeMap, takeUntil }                             from 'rxjs/operators';
-import { History }                                         from 'history';
 import { compose, isEmpty }                                from 'ramda';
 
 import { themeMiddleware }                                 from '@core/store/middlewares/theme';
@@ -25,7 +23,7 @@ import { extendStore }                                     from './extendStore';
 import { shakeReducers }                                   from './shakeReducers';
 import { ExtendedStore }                                   from './types';
 
-export function configureStore(preloadedState: object = {}, history: History<any>) {
+export function configureStore(preloadedState: object = {}) {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
     const { appEnv } = env.client;
@@ -42,7 +40,6 @@ export function configureStore(preloadedState: object = {}, history: History<any
         locationMiddleware,
         themeMiddleware,
         localeMiddleware,
-        routerMiddleware(history)
     ];
 
     if (isClientSide) {
@@ -54,7 +51,7 @@ export function configureStore(preloadedState: object = {}, history: History<any
             ? composeWithDevTools
             : compose;
 
-    const rootReducer = createRootReducer(history, {}, ssrReducers);
+    const rootReducer = createRootReducer({}, ssrReducers);
 
     const store: ExtendedStore = createStore(
         rootReducer,
@@ -62,7 +59,7 @@ export function configureStore(preloadedState: object = {}, history: History<any
         composeEnhancers(applyMiddleware(...middlewares))
     );
 
-    extendStore(store, history, asyncPreloadedState);
+    extendStore(store, asyncPreloadedState);
 
     if (isClientSide) {
         const epic$ = new BehaviorSubject(rootEpic);
@@ -82,7 +79,7 @@ export function configureStore(preloadedState: object = {}, history: History<any
 
         if ((module as any).hot) {
             (module as any).hot.accept('../../store/reducers', () => {
-                store.replaceReducer(createRootReducer(history));
+                store.replaceReducer(createRootReducer({}));
             });
 
             (module as any).hot.accept('../../store/epics', () => {
@@ -94,5 +91,5 @@ export function configureStore(preloadedState: object = {}, history: History<any
         }
     }
 
-    return { store, history, rootReducer };
+    return { store, rootReducer };
 }

@@ -1,15 +1,15 @@
-import { useEffect, FC }  from 'react';
-import { Provider }       from 'react-redux';
-import { fromEvent }      from 'rxjs';
-import * as IO            from 'fp-ts/lib/IO';
-import * as O             from 'fp-ts/lib/Option';
-import { pipe }           from 'fp-ts/lib/pipeable';
-import { sequenceT }      from 'fp-ts/lib/Apply';
+import { useEffect, FC } from 'react';
+import { Provider }      from 'react-redux';
+import { fromEvent }     from 'rxjs';
+import * as IO           from 'fp-ts/lib/IO';
+import * as O            from 'fp-ts/lib/Option';
+import { pipe }          from 'fp-ts/lib/pipeable';
+import { sequenceT }     from 'fp-ts/lib/Apply';
 
-import Router             from '@core/components/Router';
-import { store, history } from '@core/store';
-import ErrorBoundary      from '../ErrorBoundary';
-import ReadyWrapper       from '../ReadyWrapper';
+import Router            from '@core/components/Router';
+import { store }         from '@core/store';
+import ErrorBoundary     from '../ErrorBoundary';
+import ReadyWrapper      from '../ReadyWrapper';
 
 // manual connection of fonts
 // import './fonts.css';
@@ -43,7 +43,7 @@ const App: FC = () => {
         <ErrorBoundary>
             <Provider store={ store }>
                 <ReadyWrapper>
-                    <Router history={ history } />
+                    <Router />
                 </ReadyWrapper>
             </Provider>
         </ErrorBoundary>

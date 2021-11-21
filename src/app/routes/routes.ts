@@ -5,6 +5,9 @@ export const routes = {
     second: {
         path: '/second'
     },
+    posts: {
+        path: '/posts'
+    },
     protect: {
         path   : '/protect',
         protect: true

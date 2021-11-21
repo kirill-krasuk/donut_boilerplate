@@ -1,23 +1,15 @@
-import { Helmet }              from 'react-helmet';
+import { FC }     from 'react';
+import { Helmet } from 'react-helmet';
 
-import { Home }                from '@app/components';
-import prefetch                from '@app/components/Home/prefetch';
-import { PrefetchedComponent } from '@core/types/components';
-import { PostsRD }             from '@app/types/posts';
+import { Home }   from '@app/components';
 
-export type InitialProps = {
-    posts: PostsRD;
-}
-
-const HomePage: PrefetchedComponent<InitialProps> = (props) => (
+const HomePage: FC = () => (
     <>
         <Helmet
             title="Home page"
         />
-        <Home { ...props } />
+        <Home />
     </>
 );
-
-HomePage.prefetch = prefetch;
 
 export default HomePage;

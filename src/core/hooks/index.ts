@@ -4,3 +4,4 @@ export { usePrevious } from './usePrevious';
 export { useWhyDidYouUpdate } from './useWhyDidYouUpdate';
 export { useMedia } from './useMedia';
 export { useLockBodyScroll } from './useLockBodyScroll';
+export { useInitialProps } from './useInitialProps';
