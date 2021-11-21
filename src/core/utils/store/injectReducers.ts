@@ -1,10 +1,9 @@
 import R                                       from 'ramda';
 
-import { canUseDOM }                           from '@utils/dom';
 import { InjectedReducersType, ExtendedStore } from './types';
 
 export function injectReducers(reducers: InjectedReducersType) {
-    if (canUseDOM) {
+    if (__IS_CLIENT__) {
         import('@core/store').then(({ store }) => R
             .keys(reducers)
             .forEach((key) => (store as ExtendedStore).injectReducer(key, reducers[key]))

@@ -1,7 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
 
-import { canUseDOM }                        from '@utils/dom';
-
 const mediaSSRMock = {
     matches       : false,
     addListener   : () => undefined,
@@ -10,7 +8,7 @@ const mediaSSRMock = {
 
 export function useMedia(queries: string[], values: number[], defaultValue: number) {
     const mediaQueryLists = queries.map(q => (
-        canUseDOM
+        __IS_CLIENT__
             ? window.matchMedia(q)
             : mediaSSRMock
     ));
