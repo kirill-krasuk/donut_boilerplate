@@ -1,6 +1,5 @@
 import { useEffect, FC } from 'react';
 import { Provider }      from 'react-redux';
-import { fromEvent }     from 'rxjs';
 
 import Router            from '@core/components/Router';
 import { store }         from '@core/store';
@@ -24,10 +23,7 @@ const clearServerDataContainer = () => {
 
 const App: FC = () => {
     useEffect(() => {
-        const subscription = fromEvent(window, 'load')
-            .subscribe(clearServerDataContainer);
-
-        return () => subscription.unsubscribe();
+        clearServerDataContainer();
     }, []);
 
     return (

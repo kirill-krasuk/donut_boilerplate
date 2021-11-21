@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { fromEvent } from 'rxjs';
 
 export function useClickOutside(ref: any, handler: Function) {
     useEffect(() => {
@@ -7,18 +6,15 @@ export function useClickOutside(ref: any, handler: Function) {
             if (!ref.current || ref.current.contains(event.target)) {
                 return;
             }
-
             handler(event);
         };
 
-        const mouseSubscription = fromEvent(document, 'mousedown')
-            .subscribe(listener);
-        const touchSubscription = fromEvent(document, 'touchstart')
-            .subscribe(listener);
+        document.addEventListener('mousedown', listener);
+        document.addEventListener('touchstart', listener);
 
         return () => {
-            mouseSubscription.unsubscribe();
-            touchSubscription.unsubscribe();
+            document.removeEventListener('mousedown', listener);
+            document.removeEventListener('touchstart', listener);
         };
-    },  [ ref, handler ]);
+    }, [ ref, handler ]);
 }
