@@ -1,7 +1,6 @@
 import {
     FC, useEffect, useRef, useCallback
 } from 'react';
-import { fromEvent }         from 'rxjs';
 
 import { useClickOutside }   from '@core/hooks/useClickOutside';
 import { useLockBodyScroll } from '@core/hooks';
@@ -31,12 +30,12 @@ const Modal: FC<Props> = (props) => {
     }, [ closeModalAction, onClose ]);
 
     useEffect(() => {
-        const subscription = fromEvent<KeyboardEvent>(document, 'keyup')
-            .subscribe(handleKeyPress);
+        // const subscription = fromEvent<KeyboardEvent>(document, 'keyup')
+        //     .subscribe(handleKeyPress);
 
-        return () => {
-            subscription.unsubscribe();
-        };
+        // return () => {
+        //     subscription.unsubscribe();
+        // };
     }, [ handleKeyPress ]);
 
     useClickOutside(ref, () => {
