@@ -23,5 +23,5 @@ export async function prefetch(url: string, auth: any = null) {
         }
     }
 
-    return null;
+    return {};
 }

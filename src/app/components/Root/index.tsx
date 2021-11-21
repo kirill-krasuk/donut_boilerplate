@@ -9,7 +9,8 @@ import { theme as themes }                    from '@core/config/theme';
 import { getMode }                            from '@core/store/selectors/theme';
 import { GlobalStyles }                       from '@app/components/GlobalStyles';
 import LanguageProvider                       from '@core/components/LanguageProvider';
-import ModalManager                           from '@core/components/ModalManager';
+
+// import ModalManager                           from '@core/components/ModalManager';
 import { Theme }                              from '@core/enums/theme';
 import { useActions }                         from '@core/hooks/useActions';
 import { getDarkModeQuery, setDataThemeAttr } from '@utils/dom';
@@ -68,7 +69,7 @@ const Root: FC = () => {
                 <LanguageProvider>
                     <>
                         <Outlet />
-                        <ModalManager />
+                        { /* <ModalManager /> */ }
                     </>
                 </LanguageProvider>
             </S.Wrapper>

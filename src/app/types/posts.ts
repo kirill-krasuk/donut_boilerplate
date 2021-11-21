@@ -7,5 +7,5 @@ export type Post = {
 
 export type SetPosts = {
     type: 'app/SET_POSTS';
-    payload: Post;
+    payload: Post[] | null;
 }
