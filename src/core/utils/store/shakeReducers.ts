@@ -2,7 +2,6 @@ import R                  from 'ramda';
 
 import { staticReducers } from '@core/store/reducers';
 
-// TODO: to declarative
 export function shakeReducers(preloadedState: Record<string, any>): ReadonlyArray<Record<string, any>> {
     const preloadedStateCopy = R.clone(preloadedState);
 
