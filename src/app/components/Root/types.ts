@@ -1,11 +1,11 @@
-import { RouteConfig }      from 'react-router-config';
+import { RouteObject }      from 'react-router';
 import { Location }         from 'history';
 import { TransitionStatus } from 'react-transition-group/Transition';
 
 import { Context }          from '@server/types/context';
 
 export type Props = {
-    route: RouteConfig;
+    route: RouteObject;
     location: Location;
     staticContext?: Context;
 }

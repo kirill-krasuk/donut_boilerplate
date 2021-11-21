@@ -1,0 +1,34 @@
+import { PC }              from '@core/types/components';
+import { useInitialProps } from '@core/hooks';
+import env                 from '@env/';
+import { Post }            from '@app/types/posts';
+
+type InitialProps = {
+    posts: Post[]
+}
+
+const PostsPage: PC = () => {
+    const { posts } = useInitialProps<InitialProps>();
+
+    return posts && (
+        <div style={ { color: 'white' } }>
+            { posts.map(post => (
+                <div key={ post.id }>
+                    <span>{ `${ post.id  })` } </span>
+                    <span>{ post.title }</span>
+                </div>
+            )) }
+        </div>
+    );
+};
+
+PostsPage.prefetch = async () => {
+    const res  = await fetch(`${ env.client.api }/posts`);
+    const data = await res.json();
+
+    return {
+        posts: data
+    };
+};
+
+export default PostsPage;
