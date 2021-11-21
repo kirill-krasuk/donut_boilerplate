@@ -5,9 +5,8 @@ import { routes }        from '@app/routes/routes';
 import Header            from '@app/components/Header';
 import * as S            from './styles';
 import messages          from './messages';
-import { Props }         from './types';
 
-const Home: FC<Props> = () => (
+const Home: FC = () => (
     <>
         <Header />
         <S.Container>

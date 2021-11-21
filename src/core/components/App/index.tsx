@@ -1,10 +1,6 @@
 import { useEffect, FC } from 'react';
 import { Provider }      from 'react-redux';
 import { fromEvent }     from 'rxjs';
-import * as IO           from 'fp-ts/lib/IO';
-import * as O            from 'fp-ts/lib/Option';
-import { pipe }          from 'fp-ts/lib/pipeable';
-import { sequenceT }     from 'fp-ts/lib/Apply';
 
 import Router            from '@core/components/Router';
 import { store }         from '@core/store';
@@ -14,27 +10,22 @@ import ReadyWrapper      from '../ReadyWrapper';
 // manual connection of fonts
 // import './fonts.css';
 
-const fromServerData = (containerID: string): IO.IO<O.Option<HTMLElement>> => () => O.fromNullable(document.getElementById(containerID));
+const fromServerData = (containerID: string) => document.getElementById(containerID);
 
-const clearReduxContainer: IO.IO<void> = () => {
-    pipe(
-        sequenceT(O.option)(
-            fromServerData('ssr-store')(),
-            fromServerData('initial-props')(),
-        ),
-        O.map(([ storage, initProps ]) => {
-            storage.parentNode && storage.parentNode.removeChild(storage);
-            initProps.parentNode && initProps.parentNode.removeChild(initProps);
+const clearContainer = (container: HTMLElement | null) => container
+    && container.parentNode
+    && container.parentNode.removeChild(container);
 
-            return O.none;
-        })
-    );
+const clearServerDataContainer = () => {
+    [ 'ssr-store', 'initial-props' ]
+        .map(fromServerData)
+        .forEach(clearContainer);
 };
 
 const App: FC = () => {
     useEffect(() => {
         const subscription = fromEvent(window, 'load')
-            .subscribe(clearReduxContainer);
+            .subscribe(clearServerDataContainer);
 
         return () => subscription.unsubscribe();
     }, []);

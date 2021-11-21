@@ -15,7 +15,6 @@ import { localeMiddleware }                                from '@core/store/mid
 import { locationMiddleware }                              from '@core/store/middlewares/location';
 import env                                                 from '@env/';
 import ssrReducers                                         from '@app/store/reducers/serverReducer';
-import request$                                            from '@core/services/RequestManager';
 import rootEpic                                            from '@core/store/epics';
 import createRootReducer                                   from '@core/store/reducers';
 import { Environment }                                     from '@core/enums/env';
@@ -30,11 +29,7 @@ export function configureStore(preloadedState: object = {}) {
 
     const isClientSide = !isEmpty(preloadedState);
 
-    const epicMiddleware = createEpicMiddleware({
-        dependencies: {
-            request$
-        }
-    });
+    const epicMiddleware = createEpicMiddleware();
 
     const middlewares: Middleware[] = [
         locationMiddleware,
