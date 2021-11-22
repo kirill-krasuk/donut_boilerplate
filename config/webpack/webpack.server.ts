@@ -1,5 +1,4 @@
 import webpack, { Configuration }    from 'webpack';
-import path                          from 'path';
 import { WebpackPnpExternals }       from 'webpack-pnp-externals';
 
 import { getJsLoader }               from './loaders/js-loader';
@@ -11,11 +10,7 @@ import { getSVGLoader }              from './loaders/svg-loader';
 import { getServerSassModuleLoader } from './loaders/sass-module-loader';
 import { isProd }                    from './utils/isProd';
 import { getEnvs }                   from './utils/getEnvs';
-
-const PATHS = {
-    entry : path.resolve(__dirname, '../..', 'server/index.ts'),
-    output: path.resolve(__dirname, '../..', 'dist')
-};
+import { paths }                     from './constants/path';
 
 const mode = process.env.NODE_ENV as 'development' | 'production' || 'development';
 
@@ -25,13 +20,13 @@ export const __IS_CLIENT__ = false;
 const serverConfig: Configuration = {
     mode,
     target: 'node',
-    entry : PATHS.entry,
+    entry : paths.server.entry,
     node  : {
         __dirname : true,
         __filename: false
     },
     output: {
-        path      : PATHS.output,
+        path      : paths.server.output,
         filename  : 'server.js',
         publicPath: '/dist/',
     },
@@ -39,7 +34,7 @@ const serverConfig: Configuration = {
         ? {
             type          : 'filesystem',
             name          : 'server-cache',
-            cacheDirectory: path.resolve(__dirname, '../../.cache')
+            cacheDirectory: paths.cacheDir
         }
         : false,
     stats  : 'summary',

@@ -19,7 +19,7 @@ export function getLoadableChunksOptions(locals: any) {
         };
     }
 
-    const rawData      = fs.readFileSync(path.resolve(__dirname, '../../dist/', loadableStatsFileName));
+    const rawData      = fs.readFileSync(path.resolve('dist', loadableStatsFileName));
     const statFileJSON = JSON.parse(rawData.toString());
 
     return {

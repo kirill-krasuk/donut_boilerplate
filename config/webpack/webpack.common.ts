@@ -1,5 +1,4 @@
 import webpack                         from 'webpack';
-import path                            from 'path';
 import { InjectManifest }              from 'workbox-webpack-plugin';
 import { CleanWebpackPlugin }          from 'clean-webpack-plugin';
 import LoadablePlugin                  from '@loadable/webpack-plugin';
@@ -27,8 +26,6 @@ import { createHashHelper }            from './utils/createHashHelper';
 // use smp.wrap on config object
 // const smp = new SpeedMeasurePlugin();
 
-const context = path.resolve(__dirname, '../..');
-
 export const __IS_CLIENT__ = true;
 export const __IS_SERVER__ = false;
 
@@ -40,13 +37,13 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
     const serviceWorkerEnabled = JSON.parse(process.env.SERVICE_WORKER_ENABLE as unknown as string);
 
     const config: webpack.Configuration = {
-        context,
-        target: 'browserslist',
-        mode  : options.mode,
-        entry : options.entry,
-        output: {
+        context: paths.context,
+        target : 'browserslist',
+        mode   : options.mode,
+        entry  : options.entry,
+        output : {
             chunkFilename: addHash('[name].js', 'contenthash:8'),
-            path         : `${ paths.dist }`,
+            path         : `${ paths.client.dist }`,
             filename     : addHash('[name].js', 'contenthash:8'),
             publicPath   : '/dist/',
             pathinfo     : false,
@@ -69,9 +66,9 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 'fp-ts/lib': 'fp-ts/es6', // use import in app from lib
 
                 // for css import, url and etc usage resources alias
-                fonts : paths.fonts,
-                images: paths.images,
-                svgs  : paths.svgs
+                fonts : paths.client.fonts,
+                images: paths.client.images,
+                svgs  : paths.client.svgs
             }
         },
         ...(options.cache && {
@@ -119,8 +116,8 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
             }),
             new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
             new HtmlWebpackPlugin({
-                template         : paths.template,
-                filename         : paths.view,
+                template         : paths.client.template,
+                filename         : paths.client.view,
                 alwaysWriteToDisk: true,
 
                 /* force disable minification for
@@ -150,7 +147,6 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 /ru/
             ),
             new CleanWebpackPlugin({
-                dry                         : true,
                 cleanOnceBeforeBuildPatterns: [
                     '**/*',
                     '!server.js',
@@ -163,7 +159,6 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                     '!index.pug',
                     'precache-manifest.*.js'
                 ],
-                dangerouslyAllowCleanPatternsOutsideProject: true,
             }),
         ]).filter(Boolean)
     };
