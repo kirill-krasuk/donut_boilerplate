@@ -1,21 +1,27 @@
-import path from 'path';
+import path                from 'path';
+
+import { getPathsFromMap } from '../utils/getPathsFromMap';
+
+const clientPathMap = {
+    src          : 'src',
+    dist         : 'dist',
+    entry        : 'src/core/index.tsx',
+    template     : 'src/core/index.pug',
+    view         : 'dist/index.pug',
+    postCssConfig: 'config/css/.postcssrc',
+    fonts        : 'src/assets/fonts',
+    images       : 'src/assets/images',
+    svgs         : 'src/assets/svgs',
+} as const;
+
+const serverPathMap = {
+    entry : 'server/index.ts',
+    output: 'dist'
+} as const;
 
 export const paths = {
-    client: {
-        src          : path.resolve('src'),
-        dist         : path.resolve('dist'),
-        entry        : path.resolve('src/core/index.tsx'),
-        template     : path.resolve('src/core/index.pug'),
-        view         : path.resolve('dist/index.pug'),
-        postCssConfig: path.resolve('config/css/.postcssrc'),
-        fonts        : path.resolve('src/assets/fonts'),
-        images       : path.resolve('src/assets/images'),
-        svgs         : path.resolve('src/assets/svgs'),
-    },
-    server: {
-        entry : path.resolve('server/index.ts'),
-        output: path.resolve('dist')
-    },
+    client  : getPathsFromMap(clientPathMap),
+    server  : getPathsFromMap(serverPathMap),
     context : path.resolve(''),
     cacheDir: path.resolve('.cache')
 };
