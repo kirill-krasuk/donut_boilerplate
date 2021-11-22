@@ -29,7 +29,7 @@ export const getClientCssLoader = () => ({
             loader : 'postcss-loader',
             options: {
                 postcssOptions: {
-                    config: paths.postCssConfig
+                    config: paths.client.postCssConfig
                 },
             },
         }
