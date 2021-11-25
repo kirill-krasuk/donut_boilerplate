@@ -1,5 +1,6 @@
 import webpack, { Configuration }    from 'webpack';
 import { WebpackPnpExternals }       from 'webpack-pnp-externals';
+import SpeedMeasurePlugin            from 'speed-measure-webpack-plugin';
 
 import { getJsLoader }               from './loaders/js-loader';
 import { getServerImageLoader }      from './loaders/image-loader';
@@ -12,12 +13,15 @@ import { isProd }                    from './utils/isProd';
 import { getEnvs }                   from './utils/getEnvs';
 import { paths }                     from './constants/path';
 
-const mode = process.env.NODE_ENV as 'development' | 'production' || 'development';
+const smp = new SpeedMeasurePlugin();
+
+const mode            = process.env.NODE_ENV as 'development' | 'production' || 'development';
+const useSpeedMeasure = process.env.USE_SPEED_MEASURE_SERVER;
 
 export const __IS_SERVER__ = true;
 export const __IS_CLIENT__ = false;
 
-const serverConfig: Configuration = {
+const config: Configuration = {
     mode,
     target: 'node',
     entry : paths.server.entry,
@@ -76,4 +80,6 @@ const serverConfig: Configuration = {
     ]
 };
 
-export default serverConfig;
+export default useSpeedMeasure
+    ? smp.wrap(config)
+    : config;
