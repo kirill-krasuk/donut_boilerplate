@@ -8,9 +8,7 @@ import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
-
-// use for bench webpack build
-// import SpeedMeasurePlugin              from 'speed-measure-webpack-plugin';
+import SpeedMeasurePlugin              from 'speed-measure-webpack-plugin';
 
 import { paths }                       from './constants/path';
 import { getJsLoader }                 from './loaders/js-loader';
@@ -24,10 +22,12 @@ import { getEnvs }                     from './utils/getEnvs';
 import { createHashHelper }            from './utils/createHashHelper';
 
 // use smp.wrap on config object
-// const smp = new SpeedMeasurePlugin();
+const smp = new SpeedMeasurePlugin();
 
 export const __IS_CLIENT__ = true;
 export const __IS_SERVER__ = false;
+
+const useSpeedMeasure = process.env.USE_SPEED_MEASURE_CLIENT;
 
 export function configureBundler(options: webpack.Configuration): webpack.Configuration {
     const isProd = options.mode === 'production';
@@ -163,5 +163,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         ]).filter(Boolean)
     };
 
-    return config;
+    return useSpeedMeasure
+        ? smp.wrap(config)
+        : config;
 }
