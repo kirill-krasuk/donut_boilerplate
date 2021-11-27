@@ -1,7 +1,7 @@
-import { InferValueTypes } from '@core/types/utility';
-import { ModalState }      from '@core/types/modal';
-import * as actions        from '@core/store/actions/modal';
+import { ModalState }   from '@core/types/modal';
+import * as actions     from '@core/store/actions/modal';
+import { ActionTypeOF } from '@core/types/action-creators';
 
 export type State = ModalState;
 
-export type Actions = ReturnType<InferValueTypes<typeof actions>>;
+export type Actions = ActionTypeOF<typeof actions>;

@@ -1,7 +1,7 @@
-import { InferValueTypes } from '@core/types/utility';
-import { ThemeState }      from '@core/types/theme';
-import * as actions        from '@core/store/actions/theme';
+import { ThemeState }   from '@core/types/theme';
+import * as actions     from '@core/store/actions/theme';
+import { ActionTypeOF } from '@core/types/action-creators';
 
 export type State = ThemeState;
 
-export type Action = ReturnType<InferValueTypes<typeof actions>>;
+export type Action = ActionTypeOF<typeof actions>
