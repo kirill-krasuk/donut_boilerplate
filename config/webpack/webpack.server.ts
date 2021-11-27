@@ -16,7 +16,7 @@ import { paths }                     from './constants/path';
 const smp = new SpeedMeasurePlugin();
 
 const mode            = process.env.NODE_ENV as 'development' | 'production' || 'development';
-const useSpeedMeasure = process.env.USE_SPEED_MEASURE_SERVER;
+const useSpeedMeasure = JSON.parse(process.env.USE_SPEED_MEASURE_SERVER || 'false');
 
 export const __IS_SERVER__ = true;
 export const __IS_CLIENT__ = false;

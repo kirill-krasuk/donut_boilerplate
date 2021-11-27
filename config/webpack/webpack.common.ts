@@ -27,7 +27,7 @@ const smp = new SpeedMeasurePlugin();
 export const __IS_CLIENT__ = true;
 export const __IS_SERVER__ = false;
 
-const useSpeedMeasure = process.env.USE_SPEED_MEASURE_CLIENT;
+const useSpeedMeasure = JSON.parse(process.env.USE_SPEED_MEASURE_CLIENT || 'false');
 
 export function configureBundler(options: webpack.Configuration): webpack.Configuration {
     const isProd = options.mode === 'production';
