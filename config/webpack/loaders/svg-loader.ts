@@ -8,12 +8,12 @@ const addHash = createHashHelper(isProd());
 export const getSVGLoader = () => ({
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
     use : [
-        ...!isProd() && [ {
+        !isProd() && {
             loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/svg-cache'
             }
-        } ],
+        },
 
         {
             loader: '@svgr/webpack'

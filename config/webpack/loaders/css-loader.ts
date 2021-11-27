@@ -6,7 +6,7 @@ import { isProd }       from '../utils/isProd';
 export const getClientCssLoader = () => ({
     test: /\.css$/,
     use : [
-        ...!isProd() && [ {
+        ...!isProd() ? [ {
             loader : 'thread-loader',
             options: {
                 workers           : 2,
@@ -17,7 +17,7 @@ export const getClientCssLoader = () => ({
             options: {
                 cacheDirectory: '.cache/css-cache'
             }
-        } ],
+        } ] : [],
 
         {
             loader: isProd()
@@ -33,7 +33,7 @@ export const getClientCssLoader = () => ({
                 },
             },
         }
-    ].filter(Boolean)
+    ]
 });
 
 export const getServerCssLoader = () => ({

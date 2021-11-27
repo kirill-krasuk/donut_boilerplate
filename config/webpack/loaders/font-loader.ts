@@ -6,12 +6,12 @@ const addHash = createHashHelper(isProd());
 export const getFontsLoader = () => ({
     test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
     use : [
-        ...!isProd() && [ {
+        !isProd() && {
             loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/fonts-cache'
             }
-        } ],
+        },
 
         {
             loader : 'file-loader',
