@@ -3,12 +3,12 @@ import { isProd } from '../utils/isProd';
 export const getJsLoader = () => ({
     test: /\.(j|t)s(x)?$/,
     use : [
-        ...!isProd() && [ {
+        !isProd() && {
             loader : 'cache-loader',
             options: {
                 cacheDirectory: '.cache/js-cache'
             }
-        } ],
+        },
 
         {
             loader : 'thread-loader',
