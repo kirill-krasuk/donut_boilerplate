@@ -4574,7 +4574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.2.108":
+"@swc/core@npm:^1.2.112":
   version: 1.2.112
   resolution: "@swc/core@npm:1.2.112"
   dependencies:
@@ -4620,14 +4620,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/jest@npm:^0.2.5":
-  version: 0.2.9
-  resolution: "@swc/jest@npm:0.2.9"
+"@swc/jest@npm:^0.2.10":
+  version: 0.2.10
+  resolution: "@swc/jest@npm:0.2.10"
   dependencies:
     "@jest/create-cache-key-function": ^27.3.1
   peerDependencies:
     "@swc/core": "*"
-  checksum: 2463242d9e18aa93fb584985b69f229e614bd6dda442d2d24e1ace2e7a13705ff43d139e055a96e007bffd2f682cb488c7bd04bf2491ab04ac9f8d2cbefa5b3b
+  checksum: cd1de65b2d3d4711a37a924df5322f294e92f990a926308b02966f408cd416f8915cc52dbae62349e542d5e3258369f5600427b50b36327255381fc0f6490bf0
   languageName: node
   linkType: hard
 
@@ -20442,8 +20442,8 @@ __metadata:
     "@storybook/theming": ^6.3.8
     "@styled-icons/fa-solid": ^10.34.0
     "@svgr/webpack": ^5.5.0
-    "@swc/core": ^1.2.108
-    "@swc/jest": ^0.2.5
+    "@swc/core": ^1.2.112
+    "@swc/jest": ^0.2.10
     "@testing-library/dom": ^7.29.4
     "@testing-library/jest-dom": ^5.11.8
     "@testing-library/react": ^11.2.2
