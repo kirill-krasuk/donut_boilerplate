@@ -12,8 +12,6 @@ export const themeMiddleware: Middleware = () => (next: Function) => (action: Ac
         if (__IS_CLIENT__) {
             setDataThemeAttr(action.payload);
         }
-
-        return next(action);
     }
 
     return next(action);
