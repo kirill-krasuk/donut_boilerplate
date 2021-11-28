@@ -1,7 +1,7 @@
 import { Middleware }        from 'redux';
 import Cookie                from 'js-cookie';
 
-import { Action }            from '@core/types/action-creators';
+import { Action }            from '@core/types/actions';
 import { changeThemeAction } from '@core/store/actions/theme';
 import { setDataThemeAttr }  from '@utils/dom';
 
