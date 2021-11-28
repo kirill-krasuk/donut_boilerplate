@@ -9,7 +9,13 @@ const replace = (str: string, args: string[] | null, valuesToReplace: ReadonlyAr
             return str;
         }
 
-        const replaceValue = valuesToReplace[normalizeValues(args!)[index]].toString();
+        const interpolateKey = normalizeValues(args!)[index];
+
+        if (interpolateKey + 1 > valuesToReplace.length) {
+            throw new Error(`Invalid interpolation key: ${ args[index] }, max key is: $${ valuesToReplace.length - 1 }`);
+        }
+
+        const replaceValue = valuesToReplace[interpolateKey].toString();
 
         return replace(
             str.replace(args![index], replaceValue),
