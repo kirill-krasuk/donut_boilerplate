@@ -1,9 +1,9 @@
-import { useLocation, matchRoutes }             from 'react-router';
+import { useLocation, matchRoutes, useNavigate } from 'react-router';
 
-import routes                                   from '@app/routes';
-import { Context }                              from '@server/types/context';
-import { protectRedirect, routes as appRoutes } from '@app/routes/routes';
-import { AppRouteObject }                       from '../types';
+import routes                                    from '@app/routes';
+import { Context }                               from '@server/types/context';
+import { protectRedirect, routes as appRoutes }  from '@app/routes/routes';
+import { AppRouteObject }                        from '../types';
 
 const redirect = (serverContext: Context | undefined, status: number, to: string): void => {
     /* eslint-disable no-param-reassign */
@@ -15,6 +15,7 @@ const redirect = (serverContext: Context | undefined, status: number, to: string
 
 export function useRedirect(context?: Context): void {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const matchedRoutes = matchRoutes(routes, location.pathname);
 
@@ -27,6 +28,8 @@ export function useRedirect(context?: Context): void {
 
         if (matchedRoute.route.protect) {
             redirect(context, 301, protectRedirect);
+
+            navigate(protectRedirect, { replace: true });
         }
     }
 }

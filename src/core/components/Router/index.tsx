@@ -1,14 +1,14 @@
 import { FC }            from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
-import HTTPProvider      from '../HTTPProvider';
+import RedirectProvider  from '../RedirectProvider';
 import Routes            from './RootRoute';
 
 const Router: FC = () => (
     <BrowserRouter>
-        <HTTPProvider>
+        <RedirectProvider>
             <Routes />
-        </HTTPProvider>
+        </RedirectProvider>
     </BrowserRouter>
 );
 
