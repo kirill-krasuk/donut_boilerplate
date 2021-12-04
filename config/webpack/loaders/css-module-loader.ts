@@ -1,11 +1,11 @@
 import ExtractCssChunks   from 'extract-css-chunks-webpack-plugin';
 
-import { paths }          from '../constants/path';
 import { fileExtensions } from '../constants/files';
+import { paths }          from '../constants/path';
 import { isProd }         from '../utils/isProd';
 
-export const getClientCssLoader = () => ({
-    test: fileExtensions.css,
+export const getClientCssModuleLoader = () => ({
+    test: fileExtensions.cssModule,
     use : [
         ...!isProd() ? [ {
             loader : 'thread-loader',
@@ -25,7 +25,12 @@ export const getClientCssLoader = () => ({
                 ? ExtractCssChunks.loader
                 : 'style-loader'
         }, {
-            loader: 'css-loader'
+            loader : 'css-loader',
+            options: {
+                modules: {
+                    localIdentName: '[local]--[hash:base64:5]'
+                }
+            }
         }, {
             loader : 'postcss-loader',
             options: {
@@ -37,7 +42,7 @@ export const getClientCssLoader = () => ({
     ]
 });
 
-export const getServerCssLoader = () => ({
-    test  : fileExtensions.css,
+export const getServerCssModuleLoader = () => ({
+    test  : fileExtensions.cssModule,
     loader: 'css-loader'
 });

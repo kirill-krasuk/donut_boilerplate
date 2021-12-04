@@ -1,10 +1,11 @@
 import { isProd }           from '../utils/isProd';
 import { createHashHelper } from '../utils/createHashHelper';
+import { fileExtensions }   from '../constants/files';
 
 const addHash = createHashHelper(isProd());
 
 export const getFontsLoader = () => ({
-    test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+    test: fileExtensions.fonts,
     use : [
         !isProd() && {
             loader : 'cache-loader',

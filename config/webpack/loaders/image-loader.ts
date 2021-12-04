@@ -1,10 +1,11 @@
 import { isProd }           from '../utils/isProd';
 import { createHashHelper } from '../utils/createHashHelper';
+import { fileExtensions }   from '../constants/files';
 
 const addHash = createHashHelper(isProd());
 
 const imageLoader: Record<string, any> = {
-    test: /\.(gif|png|jpe?g)/i,
+    test: fileExtensions.images,
     use : [ {
         loader : 'file-loader',
         options: {
