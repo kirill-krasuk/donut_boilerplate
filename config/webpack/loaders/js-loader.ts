@@ -1,7 +1,8 @@
-import { isProd } from '../utils/isProd';
+import { fileExtensions } from '../constants/files';
+import { isProd }         from '../utils/isProd';
 
 export const getJsLoader = () => ({
-    test: /\.(j|t)s(x)?$/,
+    test: fileExtensions.js,
     use : [
         !isProd() && {
             loader : 'cache-loader',
@@ -23,5 +24,5 @@ export const getJsLoader = () => ({
             }
         }
     ].filter(Boolean),
-    exclude: [ /\.(spec|test)\.js$/ ]
+    exclude: [ fileExtensions.tests ]
 });

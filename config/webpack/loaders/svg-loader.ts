@@ -1,4 +1,5 @@
 import svgToMiniDataURI     from 'mini-svg-data-uri';
+import { fileExtensions }   from '../constants/files';
 
 import { createHashHelper } from '../utils/createHashHelper';
 import { isProd }           from '../utils/isProd';
@@ -6,7 +7,7 @@ import { isProd }           from '../utils/isProd';
 const addHash = createHashHelper(isProd());
 
 export const getSVGLoader = () => ({
-    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+    test: fileExtensions.svgs,
     use : [
         !isProd() && {
             loader : 'cache-loader',
