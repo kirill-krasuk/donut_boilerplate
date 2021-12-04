@@ -1,3 +1,5 @@
+import { InferValueTypes } from '@core/types/utility';
+
 export type Action = {
     type: string;
     payload: any;
@@ -26,3 +28,5 @@ export type ActionCreator<Type, Payload, Meta> = {
     type: Type;
     toString: ActionToString<Type>;
 }
+
+export type ActionTypeOF<T extends { [key: string]: ActionCreator<any, any, any> }> = ReturnType<InferValueTypes<T>>;

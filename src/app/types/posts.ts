@@ -1,5 +1,3 @@
-import { RemoteData } from '@devexperts/remote-data-ts';
-
 export type Post = {
     userId: number;
     id: number;
@@ -7,9 +5,7 @@ export type Post = {
     body: string;
 }
 
-export type PostsRD = RemoteData<Error, Post[]>;
-
 export type SetPosts = {
     type: 'app/SET_POSTS';
-    payload: PostsRD;
+    payload: Post[] | null;
 }

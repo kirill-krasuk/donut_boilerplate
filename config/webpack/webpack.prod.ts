@@ -14,7 +14,7 @@ export default configureBundler({
     entry: {
         bundle: [
             // require.resolve('react-app-polyfill/ie11'),
-            `${ paths.entry }`,
+            `${ paths.client.entry }`,
         ]
     },
     stats      : 'summary',

@@ -17,14 +17,31 @@ module.exports = {
             },
         },
     ],
+    staticDirs: [path.resolve('../..', 'public')],
     webpackFinal: async config => {
         config.module.rules.push({
-            test: /\.(ts|tsx)$/,
+            test: /\.tsx?$/,
             use: [
                 {
                     loader: 'babel-loader',
                 },
             ],
+        }, {
+            test: /\.modules?\.(s(a|c)ss)$/,
+            use: [
+                'style-loader', 
+                {
+                    loader : 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: '[local]--[hash:base64:5]'
+                        }
+                    }
+                },
+                'resolve-url-loader',
+                'sass-loader'
+            ],
+            include: path.resolve(__dirname, '../../'),
         });
 
         config.resolve.extensions.push('.ts', '.tsx');

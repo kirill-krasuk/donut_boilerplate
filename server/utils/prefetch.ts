@@ -1,36 +1,27 @@
-import { matchRoutes } from 'react-router-config';
-import * as RD         from '@devexperts/remote-data-ts';
-import * as E          from 'fp-ts/lib/Either';
-import * as O          from 'fp-ts/lib/Option';
-import { pipe }        from 'fp-ts/lib/pipeable';
+import { matchRoutes }      from 'react-router';
 
-import { PComponent }  from '@core/types/components';
-import routes          from '@core/components/Router/routes';
+import { routes }           from '@core/components/Router/RootRoute';
+import { RouteForPrefetch } from '@core/types/components';
 
 export async function prefetch(url: string, auth: any = null) {
     const [ pathname, query ] = url.split('?');
-    const [ , appRoute ]      = matchRoutes(routes, pathname);
+
+    /**
+     * appRoute on first element in array
+     * because zero element is Root Wrapper Component
+     */
+    const [ , appRoute ] = matchRoutes(routes, pathname)!;
 
     if (appRoute && appRoute.route) {
-        const { route, match } = appRoute;
-        const { component }    = route;
+        const { route }   = appRoute;
+        const { element } = route as RouteForPrefetch;
 
-        const pComponent = component as PComponent;
+        if (element.type.prefetch) {
+            const data = await element.type.prefetch({ query }, auth);
 
-        if (pComponent.prefetch) {
-            const data = await pComponent.prefetch({ params: match.params, query }, auth)();
-
-            return pipe(
-                data,
-                E.fold(
-                    (error) => RD.fromEither(E.left(error)),
-                    (values: Record<string, any>) => Object
-                        .keys(values)
-                        .reduce((acc: Record<string, any>, curr: string) => ({ ...acc, [curr]: RD.fromEither(E.right(values[curr])) }), {})
-                ),
-                O.fromNullable
-            );
+            return data;
         }
     }
-    return O.none;
+
+    return {};
 }

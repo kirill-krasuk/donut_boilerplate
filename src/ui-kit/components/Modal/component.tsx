@@ -1,11 +1,11 @@
 import {
     FC, useEffect, useRef, useCallback
 } from 'react';
-import { fromEvent }         from 'rxjs';
 
 import { useClickOutside }   from '@core/hooks/useClickOutside';
 import { useLockBodyScroll } from '@core/hooks';
 import { useActions }        from '@core/hooks/useActions';
+import { KeyCodes }          from '@core/enums/keyCodes';
 import * as S                from './styles';
 import { Props }             from './types';
 
@@ -19,9 +19,9 @@ const Modal: FC<Props> = (props) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const handleKeyPress = useCallback((ev: KeyboardEvent) => {
-        const { keyCode } = ev;
+        const { code } = ev;
 
-        if (keyCode === 27) {
+        if (code === KeyCodes.Escape) {
             closeModalAction();
 
             if (onClose) {
@@ -31,11 +31,10 @@ const Modal: FC<Props> = (props) => {
     }, [ closeModalAction, onClose ]);
 
     useEffect(() => {
-        const subscription = fromEvent<KeyboardEvent>(document, 'keyup')
-            .subscribe(handleKeyPress);
+        document.addEventListener('keyup', handleKeyPress);
 
         return () => {
-            subscription.unsubscribe();
+            document.removeEventListener('keyup', handleKeyPress);
         };
     }, [ handleKeyPress ]);
 
@@ -48,17 +47,19 @@ const Modal: FC<Props> = (props) => {
     });
 
     return (
-        <S.Wrapper ref={ ref }>
-            {
-                title &&
-                <S.Head>
-                    { title }
-                </S.Head>
-            }
-            <S.Body>
-                { children }
-            </S.Body>
-        </S.Wrapper>
+        <S.Backdrop>
+            <S.Wrapper ref={ ref }>
+                {
+                    title &&
+                    <S.Head>
+                        { title }
+                    </S.Head>
+                }
+                <S.Body>
+                    { children }
+                </S.Body>
+            </S.Wrapper>
+        </S.Backdrop>
     );
 };
 

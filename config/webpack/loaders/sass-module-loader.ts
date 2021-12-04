@@ -1,15 +1,18 @@
-import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
+import ExtractCssChunks   from 'extract-css-chunks-webpack-plugin';
+import { fileExtensions } from '../constants/files';
 
-import { isProd }       from '../utils/isProd';
+import { isProd }         from '../utils/isProd';
 
 const options = {
-    test: /\.modules?\.s(c|a)ss$/,
+    test: fileExtensions.sassModule,
 };
 
-const commonLoaders = [ {
+const useLoaders = [ {
     loader : 'css-loader',
     options: {
-        modules: true
+        modules: {
+            localIdentName: '[local]--[hash:base64:5]'
+        }
     }
 }, {
     loader: 'resolve-url-loader',
@@ -23,7 +26,7 @@ const commonLoaders = [ {
 export function getClientSassModuleLoader() {
     const sassModuleLoader: Record<string, any> = {
         ...options,
-        use: commonLoaders
+        use: useLoaders
     };
 
     if (!isProd()) {
@@ -50,9 +53,7 @@ export function getClientSassModuleLoader() {
     return sassModuleLoader;
 }
 
-export function getServerSassModuleLoader() {
-    return {
-        ...options,
-        use: commonLoaders
-    };
-}
+export const getServerSassModuleLoader = () => ({
+    ...options,
+    use: useLoaders
+});

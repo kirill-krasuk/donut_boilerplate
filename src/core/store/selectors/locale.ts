@@ -6,4 +6,4 @@ import { Selector }       from '@core/types/selector';
 
 const selectProp: Selector<Locale> = R.prop('locale');
 
-export const getLocale = createSelector(selectProp, R.identity);
+export const getLocale = createSelector(selectProp, (state) => state);

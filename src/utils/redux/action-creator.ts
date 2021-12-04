@@ -3,7 +3,7 @@ import {
     ActionCreator,
     ActionCreatorType,
     ActionCreatorWithMetaType
-} from '@core/types/action-creators';
+} from '@core/types/actions';
 
 export function createActionCreator<T>() {
     return function<K extends ActionType<T>> (type: K['type']) : ActionCreator<

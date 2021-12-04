@@ -1,41 +1,15 @@
-import * as O        from 'fp-ts/lib/Option';
-import * as IO       from 'fp-ts/lib/IO';
-import { pipe }      from 'fp-ts/lib/pipeable';
-import R             from 'ramda';
+import { Context } from '@server/types/context';
 
-import { Context }   from '@server/types/context';
-import { canUseDOM } from '@utils/dom';
-
-let initialProps = O.none;
-
-const getInitialPropsFromDOM: IO.IO<O.Option<{ [key: string]: any }>> = () => {
-    if (canUseDOM) {
-        if (Reflect.has(window, '__INITIAL_PROPS__')) {
-            // @ts-ignore
-            initialProps = window.__INITIAL_PROPS__;
-
-            // @ts-ignore
-            delete window.__INITIAL_PROPS__;
-        }
-
-        return initialProps;
+const getInitialPropsFromDOM = () => {
+    if (Reflect.has(window, '__INITIAL_PROPS__')) {
+        return (window as any).__INITIAL_PROPS__;
     }
 
-    return O.none;
+    return {};
 };
 
-export const getInitialProps = (ctx?: Context) => pipe(
-    ctx,
-    O.fromNullable,
-    O.chain(({ initialProps }) => initialProps),
-    O.fold(
-        () => pipe(
-            getInitialPropsFromDOM(),
-            O.fold(
-                () => ({}),
-                R.identity
-            )
-        ),
-        R.identity
-    )
-);
+export function getInitialProps(serverContext?: Context) {
+    return __IS_CLIENT__
+        ? getInitialPropsFromDOM()
+        : serverContext?.initialProps;
+}

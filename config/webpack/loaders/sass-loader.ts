@@ -1,10 +1,11 @@
-import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
+import ExtractCssChunks   from 'extract-css-chunks-webpack-plugin';
+import { fileExtensions } from '../constants/files';
 
-import { isProd }       from '../utils/isProd';
+import { isProd }         from '../utils/isProd';
 
 const options = {
-    test   : /\.s(c|a)ss$/,
-    exclude: /\.modules?\.(s(a|c)ss)$/,
+    test   : fileExtensions.sass,
+    exclude: fileExtensions.sassModule,
 };
 
 const useLoaders = [ {
@@ -46,9 +47,7 @@ export function getClientSassLoader() {
     return sassLoader;
 }
 
-export function getServerSassLoader() {
-    return {
-        ...options,
-        use: useLoaders
-    };
-}
+export const getServerSassLoader = () => ({
+    ...options,
+    use: useLoaders
+});

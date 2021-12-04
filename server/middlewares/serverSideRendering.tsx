@@ -1,6 +1,5 @@
 import { Request, Response }        from 'express';
 import { ChunkExtractor }           from '@loadable/server';
-import { createMemoryHistory }      from 'history';
 
 import { initState as themeState }  from '@core/store/reducers/theme';
 import { initState as localeState } from '@core/store/reducers/locale';
@@ -20,17 +19,15 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
 
     const { loadableStats, useFileSystem } = getLoadableChunksOptions(res.locals);
 
+    const location = req.url;
+
     const {
         theme: mode = themeState.mode,
         locale = localeState,
         token
     } = req.cookies;
 
-    const history = createMemoryHistory({
-        initialEntries: [ req.url ]
-    });
-
-    const { store } = configureStore({}, history);
+    const { store } = configureStore({});
     const extractor = new ChunkExtractor({
         stats          : loadableStats,
         entrypoints    : [ 'bundle' ],
@@ -41,21 +38,25 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
 
     const context: Context = {
         token,
-        initialProps: props
+        initialProps: props,
     };
 
     initializeState(store, { mode, locale });
 
-    renderTemplate(res, context, generateStaticTemplate({
-        Component: generateAppComponent({
-            store,
-            context,
-            location: req.url,
-            extractor,
-        }),
+    const Component = generateAppComponent({
+        store,
+        context,
+        location,
+        extractor,
+    });
+
+    const template = generateStaticTemplate({
+        Component,
         store,
         extractor,
         props,
         mode
-    }));
+    });
+
+    renderTemplate(res, context, template);
 }
