@@ -1,7 +1,7 @@
 import { FC }              from 'react';
 
 import { getInitialProps } from '@utils/props/getInitialProps';
-import { useRedirect }     from './hooks/useRedirect';
+import { useRedirect }     from './hooks';
 import { Provider }        from './context';
 import { Props }           from './types';
 
@@ -10,7 +10,7 @@ import { Props }           from './types';
  *
  * Use for extend with auth redirect logic
  */
-const HTTPProvider: FC<Props> = ({ context: serverContext, children }) => {
+const RedirectProvider: FC<Props> = ({ context: serverContext, children }) => {
     useRedirect(serverContext);
 
     return (
@@ -20,4 +20,4 @@ const HTTPProvider: FC<Props> = ({ context: serverContext, children }) => {
     );
 };
 
-export default HTTPProvider;
+export default RedirectProvider;
