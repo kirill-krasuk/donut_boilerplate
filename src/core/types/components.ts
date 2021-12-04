@@ -1,10 +1,11 @@
-import { FC }  from 'react';
-import * as TE from 'fp-ts/lib/TaskEither';
+import { FC }          from 'react';
+import { RouteObject } from 'react-router';
 
-type RouteObject = {
-    params: Record<string, any>;
+type RouteProps = {
+    params?: Record<string, any>;
     query: string;
 }
 
-export type PrefetchedComponent<TProps> = FC<TProps> & { prefetch: (routeObject: RouteObject, auth: boolean) => TE.TaskEither<void, any> }
-export type PComponent = PrefetchedComponent<any>;
+export type PrefetchedComponent<T> = FC<Partial<T>> & { prefetch: (routeObject: RouteProps, auth: boolean) => any }
+export type PC<T = any> = PrefetchedComponent<T>;
+export type RouteForPrefetch = RouteObject & { element: { type: PC } };

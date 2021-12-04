@@ -1,29 +1,13 @@
-import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
+import ExtractCssChunks   from 'extract-css-chunks-webpack-plugin';
 
-import { paths }        from '../constants/path';
-import { isProd }       from '../utils/isProd';
+import { paths }          from '../constants/path';
+import { fileExtensions } from '../constants/files';
+import { isProd }         from '../utils/isProd';
 
-export function getClientCssLoader() {
-    const cssLoader: Record<string, any> = {
-        test: /\.css$/,
-        use : [ {
-            loader: isProd()
-                ? ExtractCssChunks.loader
-                : 'style-loader'
-        }, {
-            loader: 'css-loader'
-        }, {
-            loader : 'postcss-loader',
-            options: {
-                postcssOptions: {
-                    config: paths.postCssConfig
-                },
-            },
-        } ]
-    };
-
-    if (!isProd()) {
-        cssLoader.use.unshift({
+export const getClientCssLoader = () => ({
+    test: fileExtensions.css,
+    use : [
+        ...!isProd() ? [ {
             loader : 'thread-loader',
             options: {
                 workers           : 2,
@@ -34,15 +18,26 @@ export function getClientCssLoader() {
             options: {
                 cacheDirectory: '.cache/css-cache'
             }
-        });
-    }
+        } ] : [],
 
-    return cssLoader;
-}
+        {
+            loader: isProd()
+                ? ExtractCssChunks.loader
+                : 'style-loader'
+        }, {
+            loader: 'css-loader'
+        }, {
+            loader : 'postcss-loader',
+            options: {
+                postcssOptions: {
+                    config: paths.client.postCssConfig
+                },
+            },
+        }
+    ]
+});
 
-export function getServerCssLoader() {
-    return {
-        test  : /\.css$/,
-        loader: 'css-loader'
-    };
-}
+export const getServerCssLoader = () => ({
+    test  : fileExtensions.css,
+    loader: 'css-loader'
+});

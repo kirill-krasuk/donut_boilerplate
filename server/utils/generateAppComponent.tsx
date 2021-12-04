@@ -1,9 +1,9 @@
 import { Provider }              from 'react-redux';
-import { renderRoutes }          from 'react-router-config';
-import { StaticRouter }          from 'react-router';
+import { StaticRouter }          from 'react-router-dom/server';
+import Routes                    from '@core/components/Router/RootRoute';
 import { ChunkExtractorManager } from '@loadable/server';
+import { RedirectProvider }      from '@core/components';
 
-import routes                    from '@core/components/Router/routes';
 import { GenerateAppOptions }    from '@server/types/appComponent';
 
 export function generateAppComponent({
@@ -14,10 +14,12 @@ export function generateAppComponent({
 }: GenerateAppOptions) {
     return (): JSX.Element => (
         <Provider store={ store }>
-            <StaticRouter context={ context } location={ location }>
-                <ChunkExtractorManager extractor={ extractor }>
-                    { renderRoutes(routes) }
-                </ChunkExtractorManager>
+            <StaticRouter location={ location }>
+                <RedirectProvider context={ context }>
+                    <ChunkExtractorManager extractor={ extractor }>
+                        <Routes />
+                    </ChunkExtractorManager>
+                </RedirectProvider>
             </StaticRouter>
         </Provider>
     );

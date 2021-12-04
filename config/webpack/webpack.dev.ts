@@ -1,6 +1,5 @@
 import webpack                   from 'webpack';
 import { BundleAnalyzerPlugin }  from 'webpack-bundle-analyzer';
-import path                      from 'path';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin  from 'circular-dependency-plugin';
 import WebpackNotifierPlugin     from 'webpack-notifier';
@@ -13,14 +12,14 @@ export default configureBundler({
     entry: {
         bundle: [
             // require.resolve('react-app-polyfill/ie11'),
-            `${ paths.entry }`,
+            `${ paths.client.entry }`,
             'webpack-hot-middleware/client'
         ]
     },
     cache: {
         type          : 'filesystem',
         name          : 'dev-client-cache',
-        cacheDirectory: path.resolve(__dirname, '../../.cache')
+        cacheDirectory: paths.cacheDir
     },
     devtool     : 'eval-cheap-module-source-map',
     optimization: {
@@ -52,7 +51,7 @@ export default configureBundler({
         }),
         new CircularDependencyPlugin({
             onDetected({ paths, compilation }) {
-                compilation.errors.push(new Error(paths.join(' -> ')));
+                compilation.errors.push((new Error(paths.join(' -> ')) as webpack.WebpackError));
             },
             failOnError: true
         }),

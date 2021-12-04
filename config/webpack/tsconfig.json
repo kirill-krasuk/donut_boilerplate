@@ -4,7 +4,8 @@
         "module": "commonjs",
         "target": "es5",
         "esModuleInterop": true,
-        "types": ["node"]
+        "types": ["node"],
+        "resolveJsonModule": true
     },
     "include": [
         "../"

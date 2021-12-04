@@ -1,9 +1,17 @@
-import { isProd } from '../utils/isProd';
+import { fileExtensions } from '../constants/files';
+import { isProd }         from '../utils/isProd';
 
-export function getJsLoader() {
-    const jsLoader: Record<string, any> = {
-        test: /\.(j|t)s(x)?$/,
-        use : [ {
+export const getJsLoader = () => ({
+    test: fileExtensions.js,
+    use : [
+        !isProd() && {
+            loader : 'cache-loader',
+            options: {
+                cacheDirectory: '.cache/js-cache'
+            }
+        },
+
+        {
             loader : 'thread-loader',
             options: {
                 workers           : 2,
@@ -14,18 +22,7 @@ export function getJsLoader() {
             options: {
                 compact: false
             }
-        } ],
-        exclude: [ /\.(spec|test)\.js$/ ]
-    };
-
-    if (!isProd()) {
-        jsLoader.use.unshift({
-            loader : 'cache-loader',
-            options: {
-                cacheDirectory: '.cache/js-cache'
-            }
-        });
-    }
-
-    return jsLoader;
-}
+        }
+    ].filter(Boolean),
+    exclude: [ fileExtensions.tests ]
+});

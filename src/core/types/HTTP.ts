@@ -1,5 +1,4 @@
 import { HTTPMethod } from '@core/enums/http';
-import request$       from '@core/services/RequestManager';
 
 export interface RequestExtended extends RequestInit {
     method: HTTPMethod;
@@ -23,5 +22,3 @@ export type RequestBody =
     | undefined
 
 export type UrlORRequest = string | RequestExtended;
-
-export type RequestObservable = typeof request$;

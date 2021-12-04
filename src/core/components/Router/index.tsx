@@ -1,18 +1,15 @@
-import { FC }              from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { renderRoutes }    from 'react-router-config';
+import { FC }            from 'react';
 
-import routes              from './routes';
-import { Props }           from './types';
+import { BrowserRouter } from 'react-router-dom';
+import RedirectProvider  from '../RedirectProvider';
+import Routes            from './RootRoute';
 
-const Router: FC<Props> = (props) => {
-    const { history } = props;
-
-    return (
-        <ConnectedRouter history={ history }>
-            { renderRoutes(routes) }
-        </ConnectedRouter>
-    );
-};
+const Router: FC = () => (
+    <BrowserRouter>
+        <RedirectProvider>
+            <Routes />
+        </RedirectProvider>
+    </BrowserRouter>
+);
 
 export default Router;

@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "plugins": [ { 
+            "name": "typescript-plugin-css-modules" 
+        } ],
         "allowSyntheticDefaultImports": true,
         "target": "es5",
         "module": "commonjs",
@@ -19,6 +22,7 @@
         "strict": true,
         "jsx": "react-jsx",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "noEmit": true,
         "incremental": true,
         "downlevelIteration": true,
@@ -38,7 +42,7 @@
         "paths": {
             "@core/*": ["./src/core/*"],
             "@app/*": ["./src/app/*"],
-            "@utils/*": ["src/utils/*"],
+            "@utils/*": ["./src/utils/*"],
             "@ui-kit/*": ["./src/ui-kit/*"],
             "@images/*": ["./src/assets/images/*"],
             "@svgs/*": ["./src/assets/svgs/*"],
@@ -59,4 +63,4 @@
         "config/webpack/**/*",
         "config/env/*"
     ],
-  }
+}
