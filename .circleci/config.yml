@@ -7,7 +7,7 @@ aliases:
             key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
 
     - &node_image
-        - image: node:15.8.0
+        - image: node:16.13.0
         
 
 commands:
