@@ -20,3 +20,4 @@
 ./.yarn/install-state.gz
 ./.yarn/sdks
 .pnp.cjs
+.pnp.loader.mjs
