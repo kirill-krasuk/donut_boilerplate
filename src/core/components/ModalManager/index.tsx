@@ -1,49 +1,23 @@
-// import { FC }               from 'react';
-// import { createPortal }     from 'react-dom';
-// import { useSelector }      from 'react-redux';
+import { FC }           from 'react';
+import { createPortal } from 'react-dom';
+import { useSelector }  from 'react-redux';
 
-// import { getModalIdOption } from '@core/store/selectors/modal';
-// import { Modals }           from '@app/enums/modal';
-// import * as S               from './styles';
-// import modals               from './modals';
+import { getModalId }   from '@core/store/selectors/modal';
+import modals           from './modals';
 
-// const ModalManager: FC = () => {
-//     const modalIdOption = useSelector(getModalIdOption);
+const modalNode = document.getElementById('modal')!;
 
-//     const getModalNode: IO<O.Option<HTMLElement>> = () => O.fromNullable(document.getElementById('modal'));
+const ModalManager: FC = () => {
+    const id = useSelector(getModalId);
 
-//     const createPortalOption = (Modal: JSX.Element) => pipe(
-//         getModalNode(),
-//         O.fold(
-//             () => null,
-//             (modalNode) => createPortal(Modal, modalNode)
-//         )
-//     );
+    if (!id) {
+        return null;
+    }
 
-//     const renderModal = (id: Modals) => pipe(
-//         modals[id],
-//         (CalledModal) => (
-//             <S.Wrapper>
-//                 <CalledModal />
-//             </S.Wrapper>
-//         )
-//     );
+    return createPortal(
+        modals[id],
+        modalNode
+    );
+};
 
-//     const renderModalOption = (modalIdOption: O.Option<Modals>) => {
-//         const id = O.toNullable(modalIdOption);
-
-//         return !id
-//             ? O.none
-//             : O.some(renderModal(id));
-//     };
-
-//     return pipe(
-//         renderModalOption(modalIdOption),
-//         O.fold(
-//             () => null,
-//             createPortalOption
-//         )
-//     );
-// };
-
-// export default ModalManager;
+export default ModalManager;
