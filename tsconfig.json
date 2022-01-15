@@ -4,6 +4,7 @@
             "name": "typescript-plugin-css-modules" 
         } ],
         "allowSyntheticDefaultImports": true,
+        "tsBuildInfoFile": ".cache/.tsbuildinfo",
         "target": "es5",
         "module": "commonjs",
         "lib": [

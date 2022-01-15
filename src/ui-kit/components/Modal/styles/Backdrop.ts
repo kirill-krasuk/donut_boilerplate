@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Wrapper = styled.div`
+export const Backdrop = styled.div`
     position: absolute;
     top: 0;
     left: 0;
