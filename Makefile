@@ -9,10 +9,10 @@ endif
 
 # DOCKER COMMANDS
 build-image:
-	@docker build --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
+	@docker build --platform linux/amd64 --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
 
 build-no-cache:
-	@docker build --no-cache --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
+	@docker build --platform linux/amd64 --no-cache --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
 
 delete-image:
 	@docker rmi $(DOCKER_TAG)
