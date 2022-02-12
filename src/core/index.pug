@@ -1,5 +1,5 @@
 doctype html
-html(lang="ru" data-theme=`${mode}`)
+html(lang="ru" class=`${mode}`)
     head
         meta(name="viewport" content="width=device-width")
         meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
@@ -9,9 +9,6 @@ html(lang="ru" data-theme=`${mode}`)
         | !{meta}
         link(rel="manifest" href="/manifest.json")
         link(rel="apple-touch-icon" sizes="128x128" href="public/images/logo128x128.png")
-        | !{styleChunksTags}
-        | !{styleComponentsTags}
-    body
         script#prefers-scheme(type="text/javascript").
             (function () {
                 const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -22,6 +19,9 @@ html(lang="ru" data-theme=`${mode}`)
                     document.documentElement.dataset.theme = 'dark';
                 }
             })();
+        | !{styleChunksTags}
+        | !{styleComponentsTags}
+    body
         #root
             | !{html}
         #modal

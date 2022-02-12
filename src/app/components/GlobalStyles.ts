@@ -2,14 +2,17 @@ import { createGlobalStyle }                     from 'styled-components/macro';
 
 import { darkValues, lightValues, commonValues } from '@app/theme';
 
-export const GlobalStyles = createGlobalStyle`
+export default createGlobalStyle`
+    .light {
+        ${ lightValues }
+    }
+
+    .dark {
+        ${ darkValues }
+    }
+
     :root {
         ${ commonValues }
-        ${ lightValues }
-
-        &[data-theme="dark"] {
-            ${ darkValues }
-        }
     }
 
     * {

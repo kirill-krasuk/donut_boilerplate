@@ -1,6 +1,6 @@
 import { useRoutes, RouteObject } from 'react-router';
 
-import { Root }                   from '@app/components';
+import Root                       from '@core/components/Root';
 import appRoutes                  from '@app/routes';
 
 export const routes: RouteObject[]  = [ {
