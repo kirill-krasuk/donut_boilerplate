@@ -1,7 +1,7 @@
-import { PC }              from '@core/types/components';
-import { useInitialProps } from '@core/hooks';
+import { PC }              from '@shared/types/components';
+import { useInitialProps } from '@hooks/index';
 import env                 from '@env/';
-import { Post }            from '@app/types/posts';
+import { Post }            from '@app/store/types/posts';
 
 type InitialProps = {
     posts: Post[]

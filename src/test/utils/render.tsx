@@ -4,7 +4,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import { Provider }              from 'react-redux';
 import { ThemeProvider }         from 'styled-components';
 
-import { theme }                 from '@core/config/theme';
+import { theme }                 from '@app/theme';
 import { BrowserRouter }         from 'react-router-dom';
 import { LanguageProvider }      from '@core/components';
 import { store }                 from '../__mocks__/store';

@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import R                  from 'ramda';
 
-import { Selector }       from '@core/types/selector';
-import { ModalState }     from '@core/types/modal';
+import { Selector }       from '@shared/types/selector';
+import { ModalState }     from '@core/store/types/modal';
 
 const selectModal: Selector<ModalState> = R.prop('modal');
 

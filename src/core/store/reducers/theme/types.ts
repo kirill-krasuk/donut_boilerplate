@@ -1,6 +1,6 @@
-import { ThemeState }   from '@core/types/theme';
+import { ThemeState }   from '@app/types/theme';
 import * as actions     from '@core/store/actions/theme';
-import { ActionTypeOF } from '@core/types/actions';
+import { ActionTypeOF } from '@shared/types/actions';
 
 export type State = ThemeState;
 

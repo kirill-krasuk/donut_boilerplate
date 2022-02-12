@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import R                  from 'ramda';
 
-import { ThemeState }     from '@core/types/theme';
-import { Selector }       from '@core/types/selector';
+import { ThemeState }     from '@app/types/theme';
+import { Selector }       from '@shared/types/selector';
 
 const selectTheme: Selector<ThemeState> = R.prop('theme');
 

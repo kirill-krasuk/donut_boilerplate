@@ -1,4 +1,4 @@
-import { IsFirstRendering, LocationState } from '@core/types/location';
+import { IsFirstRendering, LocationState } from '@core/store/types/location';
 
 export type State = LocationState;
 

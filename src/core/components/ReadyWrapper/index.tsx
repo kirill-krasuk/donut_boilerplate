@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 
-import { useActions }    from '@core/hooks/useActions';
+import { useActions }    from '@hooks/useActions';
 import { Props }         from './types';
 
 const ReadyWrapper: FC<Props> = (props) => {

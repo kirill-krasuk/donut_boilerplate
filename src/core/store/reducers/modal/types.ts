@@ -1,6 +1,6 @@
-import { ModalState }   from '@core/types/modal';
+import { ModalState }   from '@core/store/types/modal';
 import * as actions     from '@core/store/actions/modal';
-import { ActionTypeOF } from '@core/types/actions';
+import { ActionTypeOF } from '@shared/types/actions';
 
 export type State = ModalState;
 
