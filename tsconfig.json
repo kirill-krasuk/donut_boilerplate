@@ -61,8 +61,7 @@
     "include": [
         "src/**/*", 
         "server/**/*", 
-        "src/test/**/*", 
-        "cli/**/*",
+        "src/test/**/*",
         "tools/**/*",
         "config/jest/setup.ts",
         "config/webpack/**/*",

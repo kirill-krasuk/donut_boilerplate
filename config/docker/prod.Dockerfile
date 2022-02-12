@@ -82,7 +82,6 @@ COPY --chown=node:node --from=installer /usr/src/app/.pnp.cjs .
 
 # copy other
 COPY --chown=node:node tools tools
-COPY --chown=node:node cli cli
 COPY --chown=node:node package.json yarn.lock .yarnrc.yml ./
 
 EXPOSE ${PORT_TO_EXPOSE}
