@@ -17,7 +17,7 @@ module.exports = {
             },
         },
     ],
-    staticDirs: [path.resolve('../..', 'public')],
+    staticDirs: [path.resolve('public')],
     webpackFinal: async config => {
         config.module.rules.push({
             test: /\.tsx?$/,
