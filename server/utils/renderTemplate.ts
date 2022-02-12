@@ -10,12 +10,13 @@ const redirectIFStatusExist = (res: Response, context: Context, template: Static
         return;
     }
 
-    res.redirect(context.status as number, context.to!);
+    return res.redirect(context.status as number, context.to!);
 };
 
 export function renderTemplate(res: Response, context: Context, template: StaticTemplate): void {
     if (context.to) {
         redirectIFStatusExist(res, context, template);
+
         return;
     }
 

@@ -4,8 +4,6 @@
 global.fetch = require('node-fetch');
 require('abortcontroller-polyfill/dist/polyfill-patch-fetch');
 
-require('@server/polyfills/array');
-
 // @ts-expect-error
 global.$RefreshReg$ = () => {};
 
