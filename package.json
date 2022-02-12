@@ -90,7 +90,7 @@
     "mime": "^2.5.0",
     "node-fetch": "^2.6.1",
     "node-notifier": "^10.0.0",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "node-zopfli-es": "^1.0.7",
     "optipng": "^3.0.0",
     "pngcrush": "^3.0.0",
