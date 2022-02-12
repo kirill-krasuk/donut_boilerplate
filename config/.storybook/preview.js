@@ -4,7 +4,7 @@ import { addDecorator }      from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { ThemeProvider }     from 'styled-components/macro';
 
-import { theme }             from '@core/config/theme';
+import { theme }             from '@app/theme';
 
 addDecorator((storyFn) => (
     <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
