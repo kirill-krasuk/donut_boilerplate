@@ -9,10 +9,6 @@ const options = {
 };
 
 const useLoaders = [ {
-    loader: isProd()
-        ? ExtractCssChunks.loader
-        : 'style-loader'
-}, {
     loader: 'css-loader'
 }, {
     loader: 'resolve-url-loader'
@@ -26,7 +22,14 @@ const useLoaders = [ {
 export function getClientSassLoader() {
     const sassLoader: Record<string, any> = {
         ...options,
-        use: useLoaders
+        use: [
+            {
+                loader: isProd()
+                    ? ExtractCssChunks.loader
+                    : 'style-loader'
+            },
+            ...useLoaders
+        ]
     };
 
     if (!isProd()) {
