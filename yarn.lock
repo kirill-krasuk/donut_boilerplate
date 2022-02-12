@@ -5639,17 +5639,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-router-config@npm:^5.0.3":
-  version: 5.0.3
-  resolution: "@types/react-router-config@npm:5.0.3"
-  dependencies:
-    "@types/history": "*"
-    "@types/react": "*"
-    "@types/react-router": "*"
-  checksum: 7024ac48ddbab674fee2dea1afcb63ee740ade6a1bf98e360d980c9fd87ea9251b84b0213d622344d4a0d44eb822888826c39c2cd5aa0d0213accaa7407da91b
-  languageName: node
-  linkType: hard
-
 "@types/react-router-dom@npm:^5.3.2":
   version: 5.3.2
   resolution: "@types/react-router-dom@npm:5.3.2"
@@ -15441,6 +15430,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"history@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "history@npm:5.2.0"
+  dependencies:
+    "@babel/runtime": ^7.7.6
+  checksum: 2c6a05aa86793e0a0857013457f34474c17f81a012c6bdb00bf30862389ac6a8c2df113d82176f67af2fd534ea9dc4e1218470c5526355b6fc1aefcc971f2eb2
+  languageName: node
+  linkType: hard
+
 "hmac-drbg@npm:^1.0.1":
   version: 1.0.1
   resolution: "hmac-drbg@npm:1.0.1"
@@ -20491,7 +20489,6 @@ __metadata:
     "@types/react-is": ^17.0.2
     "@types/react-redux": ^7.1.18
     "@types/react-router": ^5.1.17
-    "@types/react-router-config": ^5.0.3
     "@types/react-router-dom": ^5.3.2
     "@types/react-transition-group": ^4.4.3
     "@types/redux": ^3.6.0
@@ -20626,9 +20623,8 @@ __metadata:
     react-is: ^17.0.2
     react-redux: ^7.2.5
     react-refresh: ^0.10.0
-    react-router: ^6.0.2
-    react-router-config: ^5.1.1
-    react-router-dom: ^6.0.2
+    react-router: ^6.2.1
+    react-router-dom: ^6.2.1
     react-transition-group: ^4.4.2
     redux: ^4.1.1
     redux-devtools-extension: ^2.13.9
@@ -24716,19 +24712,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-config@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "react-router-config@npm:5.1.1"
-  dependencies:
-    "@babel/runtime": ^7.1.2
-  peerDependencies:
-    react: ">=15"
-    react-router: ">=5"
-  checksum: bde7ee79444454bf7c3737fd9c5c268021012c8cc37bc19116b2e7daa28c4231598c275816c7f32c16f9f974dc707b91de279291a5e39efce2e1b1569355b87a
-  languageName: node
-  linkType: hard
-
-"react-router-dom@npm:^6.0.0, react-router-dom@npm:^6.0.2":
+"react-router-dom@npm:^6.0.0":
   version: 6.0.2
   resolution: "react-router-dom@npm:6.0.2"
   dependencies:
@@ -24741,7 +24725,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:6.0.2, react-router@npm:^6.0.0, react-router@npm:^6.0.2":
+"react-router-dom@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "react-router-dom@npm:6.2.1"
+  dependencies:
+    history: ^5.2.0
+    react-router: 6.2.1
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: fa0edc69fddf0cb1313bcb3dbd5eb2b2ff24a75ee03ba928995e16a6a251585750f91d966612e868eb68a5aebc4a5240be40fd96c4acf1d8d48d33f54ad3f4e2
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.0.2, react-router@npm:^6.0.0":
   version: 6.0.2
   resolution: "react-router@npm:6.0.2"
   dependencies:
@@ -24749,6 +24746,17 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 9d4f3a8002a90f38be022c6740e11e9bb481e60ad04c5a0ce2d6dbe685059c09b3037c45414d6e7e40eb97308842380413cfb93c5cdcb992e7ee0c50b4f7fcaa
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.2.1, react-router@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "react-router@npm:6.2.1"
+  dependencies:
+    history: ^5.2.0
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 081a89237ab4f32195d1f2173bc4b3d95637cd6942a4d1a9e90d4ac8c80faa95528255ca2ec44c1e88c1b369e712c4ca74cba5ae3acef6fc30a51a62805b95a4
   languageName: node
   linkType: hard
 

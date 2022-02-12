@@ -2,7 +2,7 @@ import { HelmetDatum }    from 'react-helmet';
 import { Store }          from 'redux';
 import { ChunkExtractor } from '@loadable/server';
 
-import { Theme }          from '@core/enums/theme';
+import { Theme }          from '@app/enums/theme';
 
 export type StaticTemplate = {
     [key: string]: string | HelmetDatum;

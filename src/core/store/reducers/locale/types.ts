@@ -1,4 +1,4 @@
-import { ChangeLocale, LocaleState } from '@core/types/locale';
+import { ChangeLocale, LocaleState } from '@app/types/locale';
 
 export type State = LocaleState;
 

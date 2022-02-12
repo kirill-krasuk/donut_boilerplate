@@ -2,8 +2,8 @@ import { useState, useEffect }                from 'react';
 import { useSelector }                        from 'react-redux';
 import Cookie                                 from 'js-cookie';
 
-import { Theme }                              from '@core/enums/theme';
-import { useActions }                         from '@core/hooks/useActions';
+import { Theme }                              from '@app/enums/theme';
+import { useActions }                         from '@hooks/useActions';
 import { getMode }                            from '@core/store/selectors/theme';
 import { setDataThemeAttr, getDarkModeQuery } from '@utils/dom';
 

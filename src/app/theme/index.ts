@@ -1,6 +1,6 @@
 import { css }     from 'styled-components/macro';
 
-import { Theme }   from '@core/types/theme';
+import { Theme }   from '@app/types/theme';
 import { palette } from './palette';
 
 export const theme = {

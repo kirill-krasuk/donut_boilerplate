@@ -1,5 +1,5 @@
-import { Locale } from '@core/enums/locale';
-import { Theme }  from '@core/enums/theme';
+import { Locale } from '@app/enums/locale';
+import { Theme }  from '@app/enums/theme';
 
 export type InitState = {
     mode: Theme;

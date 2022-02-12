@@ -12,7 +12,7 @@ import { locationMiddleware }  from '@core/store/middlewares/location';
 import env                     from '@env/';
 import ssrReducers             from '@app/store/reducers/serverReducer';
 import createRootReducer       from '@core/store/reducers';
-import { Environment }         from '@core/enums/env';
+import { Environment }         from '@enums/env';
 import { extendStore }         from './extendStore';
 import { shakeReducers }       from './shakeReducers';
 import { ExtendedStore }       from './types';

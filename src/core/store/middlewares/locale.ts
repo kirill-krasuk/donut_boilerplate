@@ -1,7 +1,7 @@
 import { Middleware }         from 'redux';
 import Cookie                 from 'js-cookie';
 
-import { Action }             from '@core/types/actions';
+import { Action }             from '@shared/types/actions';
 import { changeLocaleAction } from '@core/store/actions/locale';
 
 export const localeMiddleware: Middleware = () => (next: Function) => (action: Action) => (

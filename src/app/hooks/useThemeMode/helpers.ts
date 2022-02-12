@@ -1,5 +1,5 @@
 import { createToggleHelper } from '@utils/toggler';
-import { Theme }              from '@core/enums/theme';
+import { Theme }              from '@app/enums/theme';
 
 export const toggleTheme = createToggleHelper({
     [Theme.Dark] : Theme.Light,

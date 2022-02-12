@@ -1,7 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 
 import * as actions      from '@core/store/actions/theme';
-import { Theme }         from '@core/enums/theme';
+import { Theme }         from '@app/enums/theme';
 import { State, Action } from './types';
 
 export const initState: State = {

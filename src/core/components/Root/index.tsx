@@ -3,14 +3,14 @@ import { FC }              from 'react';
 import { Outlet }          from 'react-router-dom';
 import { ThemeProvider }   from 'styled-components/macro';
 
-import { theme as themes } from '@core/config/theme';
+import { theme as themes } from '@app/theme';
 import { GlobalStyles }    from '@app/components';
 import LanguageProvider    from '@core/components/LanguageProvider';
-import { Theme }           from '@core/enums/theme';
+import { Theme }           from '@app/enums/theme';
 import { useTheme }        from './hooks';
-
-// import ModalManager                           from '@core/components/ModalManager';
 import * as S              from './styles';
+
+// import ModalManager    from '@core/components/ModalManager';
 
 const Root: FC = () => {
     const theme = useTheme();
