@@ -5,7 +5,7 @@ import { Props, State } from './types';
 class ErrorBoundary extends Component<Props, State> {
     state = {
         hasError: false
-    }
+    };
 
     // TODO: fix error logging
     componentDidCatch() {

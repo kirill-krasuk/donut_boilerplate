@@ -8,7 +8,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "typescript.tsserver.pluginPaths": ["typescript-plugin-css-modules"],
+  "typescript.tsserver.pluginPaths": [
+    "typescript-plugin-css-modules"
+  ],
   "stylelint.enable": true,
   "css.validate": false,
   "less.validate": false,

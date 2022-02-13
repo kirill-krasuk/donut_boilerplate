@@ -6,7 +6,7 @@ const _snakeToCamel = <T extends string>(str: T, formatter: StringFormatter): T 
     .replace(/_/g, '') as T;
 
 function snakeToCamel<T extends string = string>(formatter: StringFormatter, str: T): T;
-function snakeToCamel<T extends string = string>(formatter: StringFormatter): (str: T) => T
+function snakeToCamel<T extends string = string>(formatter: StringFormatter): (str: T) => T;
 function snakeToCamel<T extends string = string>(formatter: StringFormatter = StringFormatter.Lower, str?: T) {
     return !str
         ? (str: T): T => _snakeToCamel(str, formatter)

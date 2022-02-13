@@ -51,7 +51,7 @@ export default configureBundler({
         }),
         new CircularDependencyPlugin({
             onDetected({ paths, compilation }) {
-                compilation.errors.push((new Error(paths.join(' -> ')) as webpack.WebpackError));
+                compilation.errors.push((new Error(paths.join(' -> ')) as any));
             },
             failOnError: true
         }),
