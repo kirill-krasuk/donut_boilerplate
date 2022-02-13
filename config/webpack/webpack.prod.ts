@@ -13,7 +13,6 @@ export default configureBundler({
     mode : 'production',
     entry: {
         bundle: [
-            // require.resolve('react-app-polyfill/ie11'),
             `${ paths.client.entry }`,
         ]
     },

@@ -11,7 +11,6 @@ export default configureBundler({
     mode : 'development',
     entry: {
         bundle: [
-            // require.resolve('react-app-polyfill/ie11'),
             `${ paths.client.entry }`,
             'webpack-hot-middleware/client'
         ]
