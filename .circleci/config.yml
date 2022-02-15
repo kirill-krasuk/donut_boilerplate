@@ -27,6 +27,8 @@ commands:
             paths:
                 - .yarn/cache
                 - .yarn/unplugged
+                - .yarn/build-state.yml
+                - .yarn/install-state.gz
         - persist_to_workspace:
             root: ./
             paths:
