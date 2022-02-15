@@ -1,13 +1,14 @@
-import BrotliPlugin             from 'brotli-webpack-plugin';
-import CompressionPlugin        from 'compression-webpack-plugin';
-import OptimizeCssAssetsPlugin  from 'optimize-css-assets-webpack-plugin';
-import TerserPlugin             from 'terser-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import BrotliPlugin            from 'brotli-webpack-plugin';
+import CompressionPlugin       from 'compression-webpack-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import TerserPlugin            from 'terser-webpack-plugin';
 
-import { configureBundler }     from './webpack.common';
-import { paths }                from './constants/path';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-const isNeedBundleAnalyze = process.env.BUILD_ANALYZE || JSON.parse('false');
+import { configureBundler }    from './webpack.common';
+import { paths }               from './constants/path';
+
+// const isNeedBundleAnalyze = process.env.BUILD_ANALYZE || JSON.parse('false');
 
 export default configureBundler({
     mode : 'production',
@@ -65,16 +66,10 @@ export default configureBundler({
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
             minRatio: 0.8
         }),
-
-        // isNeedBundleAnalyze && new BundleAnalyzerPlugin({
-        //     analyzerMode  : 'static',
-        //     openAnalyzer  : false,
-        //     reportFilename: '../stats/prod-report.html',
-        // }) as any,
         new BrotliPlugin({
             asset   : '[path].br[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
             minRatio: 0.8
         }),
-    ].filter(Boolean)
+    ].filter(Boolean) as any
 });
