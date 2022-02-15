@@ -1,6 +1,5 @@
 {
     "plugins": [ 
-        "stylelint-scss", 
         "stylelint-order",
 		"stylelint-a11y"
     ],
@@ -12,5 +11,10 @@
     "rules": {
         "indentation": 4,
         "block-opening-brace-space-before": "always"
-    }
+    },
+    "overrides": [ {
+        "files": ["**/*.{sass,scss}"],
+        "plugin": ["stylelint-scss"],
+        "customSyntax": "postcss-scss"
+    } ]
 }
