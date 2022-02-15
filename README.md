@@ -17,7 +17,7 @@ This template comes with circleci ♻️.<br/>
 You just have to link your repository to a CircleCI account.
 
 The template is already prepared to work with a service worker ⚙️. To enable/disable it, change the **`SERVICE_WORKER_ENABLE`** variable. <br/>
-To do development inside a service worker, go to the path `<appRootDir>/src/core/service-worker.js`.<br/>
+To do development inside a service worker, go to the path `<appRootDir>/core/client/service-worker.js`.<br/>
 In the browser, the service worker connects to the _**/sw.js**_ path
 
 ## How to start

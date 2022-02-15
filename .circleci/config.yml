@@ -43,12 +43,6 @@ commands:
         - run: 
             name: Building production version
             command: yarn bundle
-        - run: 
-            name: Echo build logs
-            command: cat ./logs/server_bundle.error.log
-        - run: 
-            name: Echo build logs
-            command: cat ./logs/client_bundle.error.log
 
 jobs:
     setup:
