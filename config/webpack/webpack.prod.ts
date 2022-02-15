@@ -65,11 +65,12 @@ export default configureBundler({
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
             minRatio: 0.8
         }),
-        isNeedBundleAnalyze && new BundleAnalyzerPlugin({
-            analyzerMode  : 'static',
-            openAnalyzer  : false,
-            reportFilename: '../stats/prod-report.html',
-        }) as any,
+
+        // isNeedBundleAnalyze && new BundleAnalyzerPlugin({
+        //     analyzerMode  : 'static',
+        //     openAnalyzer  : false,
+        //     reportFilename: '../stats/prod-report.html',
+        // }) as any,
         new BrotliPlugin({
             asset   : '[path].br[query]',
             test    : /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
