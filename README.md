@@ -75,16 +75,15 @@ All these scripts are described in package.json and called through the `yarn <co
   - [Styled-components](https://styled-components.com/) 💅🏾
   - [Styled-icons](https://styled-icons.js.org/) 💅
   - [Typescript](https://www.typescriptlang.org/)
-  - [RxJS](https://rxjs-dev.firebaseapp.com/guide/overview)
-  - [Ramda](https://ramdajs.com/docs/#) helpers 🐏
-  - [fp-ts](https://gcanti.github.io/fp-ts/learning-resources/)
+  - [Ramda](https://ramdajs.com/docs/#)🐏 
   - SSR
   - [Storybook](https://storybook.js.org/) 📗
 - Bundling 📦
   - [webpack](https://webpack.js.org/) v5
   - [babel](https://babeljs.io/) v7
   - [typescript](https://www.typescriptlang.org/) v4
-  - Yarn v2([Berry](https://yarnpkg.com/getting-started/migration)) 🧶
+  - [PostCSS](https://postcss.org/)🔮
+  - [Yarn v2 (Berry)](https://yarnpkg.com/getting-started/migration) 🧶
 - Tooling 🛠
   - [eslint](https://eslint.org/)
   - [stylelint](https://stylelint.io/)
