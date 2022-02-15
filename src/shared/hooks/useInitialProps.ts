@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { context }    from '@core/components/RedirectProvider/context';
+import { context }    from '@client/components/RedirectProvider/context';
 
 export function useInitialProps<T>() {
     const data = useContext<T>(context);

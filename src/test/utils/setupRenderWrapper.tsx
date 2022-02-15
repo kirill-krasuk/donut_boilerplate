@@ -6,7 +6,7 @@ import { BrowserRouter }    from 'react-router-dom';
 import { render, waitFor }  from '@testing-library/react';
 
 import { theme }            from '@app/theme';
-import { LanguageProvider } from '@core/components';
+import { LanguageProvider } from '@client/components';
 import { store }            from '../__mocks__/store';
 
 async function setupRenderWrapper<T extends Object>(Component: React.FC<any>, props: T = {} as T) {

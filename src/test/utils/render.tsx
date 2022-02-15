@@ -6,7 +6,7 @@ import { ThemeProvider }         from 'styled-components';
 
 import { theme }                 from '@app/theme';
 import { BrowserRouter }         from 'react-router-dom';
-import { LanguageProvider }      from '@core/components';
+import { LanguageProvider }      from '@client/components';
 import { store }                 from '../__mocks__/store';
 
 const AllTheProviders: React.ComponentType = ({ children }) => (

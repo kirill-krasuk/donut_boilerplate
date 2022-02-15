@@ -2,7 +2,7 @@ import { useCallback }  from 'react';
 import { useSelector }  from 'react-redux';
 
 import { useActions }   from '@hooks/useActions';
-import { getLocale }    from '@core/store/selectors/locale';
+import { getLocale }    from '@client/store/selectors/locale';
 import { toggleLocale } from './helpers';
 
 export function useLocale() {

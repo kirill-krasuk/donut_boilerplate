@@ -41,30 +41,31 @@
             "@testing-library/jest-dom"
         ],
         "paths": {
-            "@core/*": ["./src/core/*"],
-            "@shared/*": ["./src/shared/*"],
+            "@public/*": ["./public/*"], 
+            "@client/*": ["./core/client/*"],
+            "@server/*": ["core/server/*"],
             "@app/*": ["./src/app/*"],
+            "@images/*": ["./src/assets/images/*"],
+            "@fonts/*": ["./src/assets/fonts/*"],
+            "@svgs/*": ["./src/assets/svgs/*"],
+            "@shared/*": ["./src/shared/*"],
             "@utils/*": ["src/shared/utils/*"],
             "@hooks/*": ["src/shared/hooks/*"],
             "@enums/*": ["src/shared/enums/*"],
             "@types/*": ["src/shared/types/*"],
             "@ui-kit/*": ["src/shared/ui-kit/*"],
-            "@images/*": ["./src/assets/images/*"],
-            "@svgs/*": ["./src/assets/svgs/*"],
-            "@server/*": ["./server/*"],
-            "@public/*": ["./public/*"], 
-            "@fonts/*": ["./src/assets/fonts/*"],
             "@test/*": ["./src/test/*"],
             "@env/*": ["./config/env"]
         },
     },
     "include": [
         "src/**/*", 
-        "server/**/*", 
+        "core/server/**/*", 
         "src/test/**/*",
         "tools/**/*",
         "config/jest/setup.ts",
         "config/webpack/**/*",
-        "config/env/*"
+        "config/env/*", 
+        "core/client/*"    
     ],
 }
