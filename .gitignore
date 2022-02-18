@@ -16,3 +16,5 @@
 .pnp.*
 tsconfig.tsbuildinfo
 junit.xml
+.idea
+.swc
