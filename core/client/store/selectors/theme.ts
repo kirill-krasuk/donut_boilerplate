@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import R                  from 'ramda';
 
 import { ThemeState }     from '@app/types/theme';
-import { Selector }       from '@shared/types/selector';
+import { Selector }       from '@lib/redux';
 
 const selectTheme: Selector<ThemeState> = R.prop('theme');
 

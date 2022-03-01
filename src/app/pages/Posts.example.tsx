@@ -1,4 +1,4 @@
-import { PC }              from '@shared/types/components';
+import { PC }              from '@lib/react';
 import { useInitialProps } from '@hooks/index';
 import env                 from '@env/';
 import { Post }            from '@app/store/types/posts';
