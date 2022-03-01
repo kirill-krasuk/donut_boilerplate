@@ -1,4 +1,4 @@
-import { HTTPMethod } from '@enums/http';
+import { HTTPMethod } from '../enums/http';
 
 export interface RequestExtended extends RequestInit {
     method: HTTPMethod;
