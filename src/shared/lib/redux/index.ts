@@ -1,5 +1,5 @@
 export { createActionCreator } from './functions/actions/action-creator';
 
-export { Action, ActionTypeOF } from './types/actions';
-export { Selector } from './types/selector';
-export { RootState } from './types/state';
+export type { Action, ActionTypeOF } from './types/actions';
+export type { Selector } from './types/selector';
+export type { RootState } from './types/state';
