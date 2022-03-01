@@ -49,6 +49,7 @@
             "@fonts/*": ["./src/assets/fonts/*"],
             "@svgs/*": ["./src/assets/svgs/*"],
             "@shared/*": ["./src/shared/*"],
+            "@lib/*": ["./src/shared/lib/*"],
             "@utils/*": ["src/shared/utils/*"],
             "@hooks/*": ["src/shared/hooks/*"],
             "@enums/*": ["src/shared/enums/*"],

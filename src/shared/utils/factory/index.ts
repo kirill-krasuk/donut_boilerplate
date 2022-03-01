@@ -1,1 +1,0 @@
-export { createFactory } from './createFactory';

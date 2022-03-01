@@ -30,6 +30,7 @@ module.exports = {
         '/\.module\.s(c|a)ss$/'                                                          : 'identity-obj-proxy',
         '@client/(.*)'                                                                   : '<rootDir>/core/client$1',
         '@shared/(.*)'                                                                   : '<rootDir>/src/shared/$1',
+        '@lib/(.*)'                                                                      : '<rootDir>/src/shared/lib/$1',
         '@app/(.*)'                                                                      : '<rootDir>/src/app/$1',
         '@utils/(.*)'                                                                    : '<rootDir>/src/shared/utils/$1',
         '@types/(.*)'                                                                    : '<rootDir>/src/shared/types/$1',

@@ -1,4 +1,4 @@
-import { interpolate } from '../interpolate';
+import { interpolate } from '../functions/interpolate';
 
 describe('interpolate string function', () => {
     it('should correctly interpolate', () => {

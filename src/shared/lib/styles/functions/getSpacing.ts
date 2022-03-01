@@ -1,4 +1,4 @@
-import { Space } from '@shared/types/style';
+import { Space } from '../types/spacing';
 
 const toStringPx = (num: number) => `${ num }px`;
 

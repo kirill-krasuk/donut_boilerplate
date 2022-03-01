@@ -4,7 +4,7 @@ import { Sun }                     from '@styled-icons/fa-solid/Sun';
 import { Moon }                    from '@styled-icons/fa-solid/Moon';
 
 import { Theme }                   from '@app/enums/theme';
-import { createFactory }           from '@utils/factory';
+import { createFactory }           from '@lib/react';
 import { useLocale, useThemeMode } from '@app/hooks';
 import * as S                      from './styles';
 import messages                    from './messages';

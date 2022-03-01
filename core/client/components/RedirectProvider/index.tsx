@@ -1,6 +1,6 @@
 import { FC }              from 'react';
 
-import { getInitialProps } from '@utils/props/getInitialProps';
+import { getInitialProps } from '@lib/react';
 import { useRedirect }     from './hooks';
 import { Provider }        from './context';
 import { Props }           from './types';

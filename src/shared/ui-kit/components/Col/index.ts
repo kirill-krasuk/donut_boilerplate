@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/macro';
 
-import { getSpacing }  from '@utils/styles';
+import { getSpacing }  from '@lib/styles';
 import { Props }       from './types';
 
 export const Col = styled.div<Props>`

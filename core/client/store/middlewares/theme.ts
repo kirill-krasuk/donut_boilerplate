@@ -1,9 +1,9 @@
 import { Middleware }        from 'redux';
 import Cookie                from 'js-cookie';
 
-import { Action }            from '@shared/types/actions';
+import { Action }            from '@lib/redux';
 import { changeThemeAction } from '@client/store/actions/theme';
-import { setDataThemeAttr }  from '@utils/dom';
+import { setDataThemeAttr }  from '@lib/dom';
 
 export const themeMiddleware: Middleware = () => (next: Function) => (action: Action) => {
     if (action.type === changeThemeAction.type) {

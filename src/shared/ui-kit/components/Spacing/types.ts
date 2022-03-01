@@ -1,4 +1,4 @@
-import { Space } from '@shared/types/style';
+import { Space } from '@lib/styles';
 
 export type Props = {
     padding?: Space;

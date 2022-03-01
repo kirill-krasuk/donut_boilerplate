@@ -38,6 +38,7 @@
                     "@client": "./core/client",
                     "@server": "./core/server",
                     "@shared": "./src/shared",
+                    "@lib": "./src/shared/lib",
                     "@utils": "./src/shared/utils",
                     "@hooks": "./src/shared/hooks",
                     "@enums": "./src/shared/enums",

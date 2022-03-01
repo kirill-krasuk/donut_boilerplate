@@ -1,4 +1,4 @@
-import { camelToSnake } from '../camelToSnake';
+import { camelToSnake } from '../functions/camelToSnake';
 
 describe('camelToSnake utility function', () => {
     it('function mus transformed string correctly with first lower letter case', () => {

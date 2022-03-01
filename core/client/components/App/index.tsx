@@ -2,9 +2,9 @@ import { useEffect, FC }            from 'react';
 import { Provider }                 from 'react-redux';
 
 import Router                       from '@client/components/Router';
+import ErrorBoundary                from '@client/components/ErrorBoundary';
+import ReadyWrapper                 from '@client/components/ReadyWrapper';
 import { store }                    from '@client/store';
-import ErrorBoundary                from '../ErrorBoundary';
-import ReadyWrapper                 from '../ReadyWrapper';
 import { clearServerDataContainer } from './helpers';
 
 // manual connection of fonts

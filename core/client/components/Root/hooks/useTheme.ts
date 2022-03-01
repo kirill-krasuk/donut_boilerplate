@@ -5,7 +5,7 @@ import Cookie                                 from 'js-cookie';
 import { Theme }                              from '@app/enums/theme';
 import { useActions }                         from '@hooks/useActions';
 import { getMode }                            from '@client/store/selectors/theme';
-import { setDataThemeAttr, getDarkModeQuery } from '@utils/dom';
+import { setDataThemeAttr, getDarkModeQuery } from '@lib/dom';
 
 export function useTheme() {
     const mode = useSelector(getMode);

@@ -29,6 +29,8 @@ commands:
                 - .yarn/unplugged
                 - .yarn/build-state.yml
                 - .yarn/install-state.gz
+                - .pnp.cjs
+                - .pnp.loader.mjs
         - persist_to_workspace:
             root: ./
             paths:

@@ -1,5 +1,5 @@
-import { StringFormatter } from '@enums/string';
-import { snakeToCamel }    from '../snakeToCamel';
+import { StringFormatter } from '../enums/formatter';
+import { snakeToCamel }    from '../functions/snakeToCamel';
 
 describe('snakeToCamel util function', () => {
     it('function must transform snake to camel with lower case', () => {
