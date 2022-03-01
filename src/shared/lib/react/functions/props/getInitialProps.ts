@@ -1,3 +1,4 @@
+// TODO: refactor dependency
 import { Context } from '@server/types/context';
 
 const getInitialPropsFromDOM = () => {
