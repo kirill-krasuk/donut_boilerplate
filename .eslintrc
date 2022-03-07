@@ -21,19 +21,19 @@
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "airbnb-base",
-        "plugin:varspacing/recommended",
         "plugin:react/recommended",
         "plugin:jsx-a11y/recommended"
     ],
     "rules": {
+        "align-assignments/align-assignments": [2, { "requiresOnly": false } ],
 		"no-tabs": [
-			"error", { 
+			2, { 
 				"allowIndentationTabs": true 
 			}
 		],
         "array-callback-return": 0,
         "no-restricted-imports": [
-            "error",
+            2,
             {
                 "paths": [{
                     "name": "styled-components",
@@ -45,7 +45,7 @@
             }
         ],
         "no-console": [
-            "error", 
+            2, 
             { 
                 "allow": ["warn", "error", "info"] 
             }
@@ -63,7 +63,7 @@
         "@typescript-eslint/explicit-module-boundary-types": 0,
         "@typescript-eslint/ban-ts-comment": 0,
         "@typescript-eslint/ban-types": 0,
-        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-unused-vars": [2],
         "arrow-parens": 0,
         "no-restricted-syntax": 0,
         "lines-between-class-members": 0,
@@ -129,7 +129,11 @@
         "import/no-extraneous-dependencies": 0,
         "import/no-unresolved": 0,
         "import/extensions": 0,
-        "indent": [2, 4, {"SwitchCase": 1, "ignoredNodes": ["TemplateLiteral > *"]}],
+        "indent": [2, 4, {
+            "VariableDeclarator": 1,
+            "SwitchCase": 1, 
+            "ignoredNodes": ["TemplateLiteral > *"]
+        }],
         "consistent-return": 0,
         "comma-dangle": [2, "only-multiline"],
         "template-curly-spacing": [2, "always"],
@@ -168,25 +172,28 @@
         ],
         "arca/melted-constructs": 2,
         "no-underscore-dangle": 0,
-        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/rules-of-hooks": 2,
         "react-hooks/exhaustive-deps": 2,
         "no-useless-computed-key": 0
     },
     "plugins": [
         "arca",
-        "varspacing",
+        "align-assignments",
         "react",
         "react-hooks",
         "jsx-a11y"
     ],
     "ignorePatterns": ["**/lib/*"],
-    "overrides": [
-        {
-            // enable the rule specifically for TypeScript files
-            "files": ["*.ts", "*.tsx"],
-            "rules": {
-                "@typescript-eslint/explicit-function-return-type": 0
-            }
+    "overrides": [ {
+        // enable the rule specifically for TypeScript files
+        "files": ["*.ts", "*.tsx"],
+        "rules": {
+            "@typescript-eslint/explicit-function-return-type": 0
         }
-    ]
+    }, {
+        "files": ["**/reducer.ts"],
+        "rules": {
+            "no-param-reassign": 0
+        }
+    } ]
 }

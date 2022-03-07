@@ -3,7 +3,7 @@ import { EOLocale as T }           from 'eo-locale';
 import { Sun }                     from '@styled-icons/fa-solid/Sun';
 import { Moon }                    from '@styled-icons/fa-solid/Moon';
 
-import { Theme }                   from '@app/enums/theme';
+import { Theme }                   from '@entities/theme';
 import { createFactory }           from '@lib/react';
 import { useLocale, useThemeMode } from '@app/hooks';
 import * as S                      from './styles';

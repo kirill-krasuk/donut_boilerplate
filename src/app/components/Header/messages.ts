@@ -1,3 +1,3 @@
 export default {
-    title: 'ui/components/Header/title',
+    title: 'app/components/Header/title',
 };

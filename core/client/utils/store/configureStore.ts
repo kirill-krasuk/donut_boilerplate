@@ -6,9 +6,8 @@ import {
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { compose }             from 'ramda';
 
-import { themeMiddleware }     from '@client/store/middlewares/theme';
-import { localeMiddleware }    from '@client/store/middlewares/locale';
 import { locationMiddleware }  from '@client/store/middlewares/location';
+import appMiddlewares          from '@app/store/middlewares';
 import env                     from '@env/';
 import ssrReducers             from '@app/store/reducers/serverReducer';
 import createRootReducer       from '@client/store/reducers';
@@ -24,8 +23,7 @@ export function configureStore(preloadedState: object = {}) {
 
     const middlewares: Middleware[] = [
         locationMiddleware,
-        themeMiddleware,
-        localeMiddleware,
+        ...appMiddlewares,
     ];
 
     if (__IS_CLIENT__) {

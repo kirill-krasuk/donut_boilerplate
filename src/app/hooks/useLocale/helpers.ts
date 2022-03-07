@@ -1,4 +1,4 @@
-import { Locale }             from '@app/enums/locale';
+import { Locale }             from '@entities/locale';
 import { createToggleHelper } from '@utils/toggler';
 
 export const toggleLocale = createToggleHelper({

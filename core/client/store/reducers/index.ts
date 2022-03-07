@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux';
 
 import appReducers         from '@app/store/reducers';
-import theme               from './theme';
-import locale              from './locale';
 import modal               from './modal';
 import location            from './location';
 
 export const staticReducers = {
-    theme,
-    locale,
     modal,
     location,
     ...appReducers

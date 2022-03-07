@@ -1,6 +1,6 @@
 import { createGlobalStyle }                     from 'styled-components/macro';
 
-import { darkValues, lightValues, commonValues } from '@app/theme';
+import { darkValues, lightValues, commonValues } from '@entities/theme/model/theme';
 
 export default createGlobalStyle`
     .light {

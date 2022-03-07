@@ -1,1 +1,0 @@
-export { setPostsAction } from './setPosts';

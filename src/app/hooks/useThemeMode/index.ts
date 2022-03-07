@@ -1,18 +1,17 @@
-import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useCallback }              from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { useActions }  from '@hooks/index';
-import { getMode }     from '@client/store/selectors/theme';
-import { toggleTheme } from './helpers';
+import { themeModel }               from '@entities/theme';
+import { toggleTheme }              from './helpers';
 
 export function useThemeMode() {
-    const { changeThemeAction } = useActions();
+    const dispatch = useDispatch();
 
-    const mode = useSelector(getMode);
+    const mode = useSelector(themeModel.selectors.getMode);
 
     const handleChangeTheme = useCallback(() => {
-        changeThemeAction(toggleTheme(mode));
-    }, [ changeThemeAction, mode ]);
+        dispatch(themeModel.actions.changeTheme(toggleTheme(mode)));
+    }, [ dispatch, mode ]);
 
     return {
         mode,

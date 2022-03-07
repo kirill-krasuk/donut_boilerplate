@@ -3,10 +3,10 @@ import { FC }              from 'react';
 import { Outlet }          from 'react-router-dom';
 import { ThemeProvider }   from 'styled-components/macro';
 
-import { theme as themes } from '@app/theme';
+import { theme as themes } from '@entities/theme/model/theme';
 import { GlobalStyles }    from '@app/components';
 import LanguageProvider    from '@client/components/LanguageProvider';
-import { Theme }           from '@app/enums/theme';
+import { Theme }           from '@entities/theme';
 import { useTheme }        from './hooks';
 import * as S              from './styles';
 

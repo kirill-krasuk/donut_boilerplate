@@ -1,0 +1,8 @@
+{
+    "app/components/HomePage/title": "Отредактируйте src/app/components/HomePage для изменений",
+    "app/components/HomePage/link": "перейдите на вторую страницу",
+    "app/components/SecondPage/title": "Отредактируйте src/app/components/SecondPage для изменений",
+    "app/components/SecondPage/link": "перейдите на главную страницу",
+    "app/components/SecondPage/protect": "редирект to protected route",
+    "app/components/Header/title": "Добро пожаловать в Donut Boilerplate v2"
+}

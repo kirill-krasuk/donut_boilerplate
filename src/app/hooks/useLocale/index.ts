@@ -1,18 +1,17 @@
-import { useCallback }  from 'react';
-import { useSelector }  from 'react-redux';
+import { useCallback }              from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useActions }   from '@hooks/useActions';
-import { getLocale }    from '@client/store/selectors/locale';
-import { toggleLocale } from './helpers';
+import { localeModel }              from '@entities/locale';
+import { toggleLocale }             from './helpers';
 
 export function useLocale() {
-    const { changeLocaleAction } = useActions();
+    const dispatch = useDispatch();
 
-    const locale = useSelector(getLocale);
+    const locale = useSelector(localeModel.selectors.getLocale);
 
     const handleChangeLocale = useCallback(() => {
-        changeLocaleAction(toggleLocale(locale));
-    }, [ changeLocaleAction, locale ]);
+        dispatch(localeModel.actions.changeLocale(toggleLocale(locale)));
+    }, [ dispatch, locale ]);
 
     return {
         locale,

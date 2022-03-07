@@ -1,10 +1,23 @@
-export const getNodeEnv             = ({ NODE_ENV }: NodeJS.ProcessEnv) => NODE_ENV ?? 'production';
-export const getHost                = ({ HOST }: NodeJS.ProcessEnv) => HOST ?? '127.0.0.1';
-export const getPort                = ({ PORT }: NodeJS.ProcessEnv) => PORT ?? '3000';
-export const getApiHost             = ({ API_HOST }: NodeJS.ProcessEnv) => API_HOST ?? 'https://jsonplaceholder.typicode.com';
-export const getOpeInBrowser        = ({ OPEN_IN_BROWSER }: NodeJS.ProcessEnv) => OPEN_IN_BROWSER ?? false;
-export const getBuildAnalyze        = ({ BUILD_ANALYZE }: NodeJS.ProcessEnv) => BUILD_ANALYZE ?? false;
-export const getBundleAnalyzerPort  = ({ BUNDLE_ANALYZER_PORT }: NodeJS.ProcessEnv) => BUNDLE_ANALYZER_PORT ?? null;
-export const getWriteToDisk         = ({ WRITE_ASSETS_TO_DISK }: NodeJS.ProcessEnv) => WRITE_ASSETS_TO_DISK ?? true;
-export const getServiceWorkerEnable = ({ SERVICE_WORKER_ENABLE }: NodeJS.ProcessEnv) => SERVICE_WORKER_ENABLE ?? false;
-export const getHydrate             = ({ HYDRATE }: NodeJS.ProcessEnv) => HYDRATE ?? true;
+const getNodeEnv             = ({ NODE_ENV }: NodeJS.ProcessEnv) => NODE_ENV ?? 'production';
+const getHost                = ({ HOST }: NodeJS.ProcessEnv) => HOST ?? '127.0.0.1';
+const getPort                = ({ PORT }: NodeJS.ProcessEnv) => PORT ?? '3000';
+const getApiHost             = ({ API_HOST }: NodeJS.ProcessEnv) => API_HOST ?? 'https://jsonplaceholder.typicode.com';
+const getOpeInBrowser        = ({ OPEN_IN_BROWSER }: NodeJS.ProcessEnv) => OPEN_IN_BROWSER ?? false;
+const getBuildAnalyze        = ({ BUILD_ANALYZE }: NodeJS.ProcessEnv) => BUILD_ANALYZE ?? false;
+const getBundleAnalyzerPort  = ({ BUNDLE_ANALYZER_PORT }: NodeJS.ProcessEnv) => BUNDLE_ANALYZER_PORT ?? null;
+const getWriteToDisk         = ({ WRITE_ASSETS_TO_DISK }: NodeJS.ProcessEnv) => WRITE_ASSETS_TO_DISK ?? true;
+const getServiceWorkerEnable = ({ SERVICE_WORKER_ENABLE }: NodeJS.ProcessEnv) => SERVICE_WORKER_ENABLE ?? false;
+const getHydrate             = ({ HYDRATE }: NodeJS.ProcessEnv) => HYDRATE ?? true;
+
+export {
+    getNodeEnv,
+    getHost,
+    getPort,
+    getApiHost,
+    getOpeInBrowser,
+    getBuildAnalyze,
+    getBundleAnalyzerPort,
+    getWriteToDisk,
+    getServiceWorkerEnable,
+    getHydrate
+};

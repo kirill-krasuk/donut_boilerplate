@@ -1,7 +1,7 @@
 import styled              from 'styled-components/macro';
 
 import { THEME_ICON_SIZE } from '@ui-kit/constants/header';
-import { Theme }           from '@app/types/theme';
+import { AppTheme }        from '@entities/theme';
 
 export const ThemeIcon = styled.div`
     & svg {
@@ -13,7 +13,7 @@ export const ThemeIcon = styled.div`
         
         &:hover {
             cursor: pointer;
-            filter: ${ ({ theme }: Theme) => (!theme.isDark ? 'brightness(0.85)' : 'brightness(1.14)') }; 
+            filter: ${ ({ theme }: AppTheme) => (!theme.isDark ? 'brightness(0.85)' : 'brightness(1.14)') }; 
         }
     }
 `;

@@ -1,1 +1,0 @@
-export { changeLocaleAction } from './changeLocale';

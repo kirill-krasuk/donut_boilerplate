@@ -1,8 +1,8 @@
 import { Request, Response }        from 'express';
 import { ChunkExtractor }           from '@loadable/server';
 
-import { initState as themeState }  from '@client/store/reducers/theme';
-import { initState as localeState } from '@client/store/reducers/locale';
+import { localeModel }              from '@entities/locale';
+import { themeModel }               from '@entities/theme';
 import { configureStore }           from '@client/utils/store/configureStore';
 import { prefetch }                 from '@server/utils/prefetch';
 import { Context }                  from '@server/types/context';
@@ -22,8 +22,8 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
     const location = req.url;
 
     const {
-        theme: mode = themeState.mode,
-        locale = localeState,
+        theme: mode = themeModel.initialState.mode,
+        locale = localeModel.initialState,
         token
     } = req.cookies;
 

@@ -3446,9 +3446,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@eslint/eslintrc@npm:1.1.0"
+"@eslint/eslintrc@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@eslint/eslintrc@npm:1.2.0"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.3.2
@@ -3459,7 +3459,7 @@ __metadata:
     js-yaml: ^4.1.0
     minimatch: ^3.0.4
     strip-json-comments: ^3.1.1
-  checksum: 784aa2157e2808b52bbbaf1d1cfca9a6ba0b2faaa3696eb7a1229d4b357400fbd8a6aa09a16e7ae0868ea075d3a8f365cf5928b6d05a1df47f40a1167423a4fa
+  checksum: a5e51dcf02627363567094456d7880b46b6a14a285d7a057f083ca903bdd862483bb6314cbc9fb6fa2d2c4537d50e0d28bd5e39650840241ae4796faaec65d2e
   languageName: node
   linkType: hard
 
@@ -4121,6 +4121,26 @@ __metadata:
     react: 15.x || 16.x || 16.4.0-alpha.0911da3
     react-dom: 15.x || 16.x || 16.4.0-alpha.0911da3
   checksum: f64372497e0464a9fdfd79283fec3f4fd01ee093f1599d8a8035e0a41fbce22113bfa46dcea63aa8b7b4e0796e916f134aa8e3fccd3974be397e7c19468de3c4
+  languageName: node
+  linkType: hard
+
+"@reduxjs/toolkit@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@reduxjs/toolkit@npm:1.8.0"
+  dependencies:
+    immer: ^9.0.7
+    redux: ^4.1.2
+    redux-thunk: ^2.4.1
+    reselect: ^4.1.5
+  peerDependencies:
+    react: ^16.9.0 || ^17.0.0 || 18.0.0-beta
+    react-redux: ^7.2.1 || ^8.0.0-beta
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-redux:
+      optional: true
+  checksum: e229571b80d7f5c4407af2050ac2a26a22472541fef1705d5e8b73b93bfb2884072d79e1cea2cd81d89939cc6b6073ef3ddf1680950aac66ba34cd202a6cf371
   languageName: node
   linkType: hard
 
@@ -13906,6 +13926,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-align-assignments@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "eslint-plugin-align-assignments@npm:1.1.2"
+  peerDependencies:
+    eslint: ">=0.8.0"
+  checksum: 560be8c6bc390ed0f8c8c63f82b6010528117ba79d43d35e4f759ad970be406eb521ce032efc7852f8ddf6bb0cbf547258d81b8f5b97829034aa7119b82ed717
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-arca@npm:^0.13.3":
   version: 0.13.3
   resolution: "eslint-plugin-arca@npm:0.13.3"
@@ -13991,13 +14020,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-varspacing@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "eslint-plugin-varspacing@npm:1.2.2"
-  checksum: b51d4cb21d2d9d93b8adf22eb6bb1e2f66d0eb75b1560a499d6ed7886674f35a1bf52341c3de642db19f57c672e058da8bb292107a828b0911a48545d39174dc
-  languageName: node
-  linkType: hard
-
 "eslint-scope@npm:5.1.1, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -14053,11 +14075,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.9.0":
-  version: 8.9.0
-  resolution: "eslint@npm:8.9.0"
+"eslint@npm:^8.10.0":
+  version: 8.10.0
+  resolution: "eslint@npm:8.10.0"
   dependencies:
-    "@eslint/eslintrc": ^1.1.0
+    "@eslint/eslintrc": ^1.2.0
     "@humanwhocodes/config-array": ^0.9.2
     ajv: ^6.10.0
     chalk: ^4.0.0
@@ -14094,7 +14116,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: 8efecdb9752ee6cb4d2787a14e00cbeab29562ed95dd71c6f3f8ac410426a067d5aa659416d2290e46ca44bc5607e6a6e6c62f814694d8639f80666f522022a7
+  checksum: 8b31ab3de5b48b6828bf13c09c9e62ee0045fa0afa017efaa73eedcf4dc33bc204ee4c467d4677e37967d1645f73816ddef4271422e691fded352040f8f83093
   languageName: node
   linkType: hard
 
@@ -21580,6 +21602,7 @@ __metadata:
     "@loadable/server": ^5.15.2
     "@loadable/webpack-plugin": ^5.15.2
     "@pmmmwh/react-refresh-webpack-plugin": 0.5.4
+    "@reduxjs/toolkit": ^1.8.0
     "@storybook/addon-a11y": ^6.4.19
     "@storybook/addon-actions": ^6.4.19
     "@storybook/addon-docs": ^6.4.19
@@ -21681,14 +21704,14 @@ __metadata:
     dayjs: ^1.10.7
     dotenv: ^16.0.0
     eo-locale: ^7.4.2
-    eslint: ^8.9.0
+    eslint: ^8.10.0
     eslint-config-airbnb-base: ^15.0.0
+    eslint-plugin-align-assignments: ^1.1.2
     eslint-plugin-arca: ^0.13.3
     eslint-plugin-import: ^2.25.4
     eslint-plugin-jsx-a11y: ^6.5.1
     eslint-plugin-react: ^7.28.0
     eslint-plugin-react-hooks: ^4.3.0
-    eslint-plugin-varspacing: ^1.2.2
     express: ^4.17.2
     express-processimage: ^10.2.3
     express-static-gzip: ^2.1.5
@@ -26130,6 +26153,15 @@ __metadata:
   dependencies:
     lodash.isplainobject: ^4.0.6
   checksum: 571eab2cca3e46321969025af865ddd780804c811be9db277fddf772d86e3ea67b4ef1b19ea3866417d41eb1b73605103020321f68cf68f379a52679a6823d12
+  languageName: node
+  linkType: hard
+
+"redux-thunk@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "redux-thunk@npm:2.4.1"
+  peerDependencies:
+    redux: ^4
+  checksum: af5abb425fb9dccda02e5f387d6f3003997f62d906542a3d35fc9420088f550dc1a018bdc246c7d23ee852b4d4ab8b5c64c5be426e45a328d791c4586a3c6b6e
   languageName: node
   linkType: hard
 

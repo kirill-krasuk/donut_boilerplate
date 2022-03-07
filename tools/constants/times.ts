@@ -1,2 +1,7 @@
-export const FAST = 50;
-export const MEDIUM = 150;
+const FAST   = 50;
+const MEDIUM = 150;
+
+export {
+    FAST,
+    MEDIUM
+};

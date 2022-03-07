@@ -5,7 +5,7 @@ import { ThemeProvider }    from 'styled-components';
 import { BrowserRouter }    from 'react-router-dom';
 import { render, waitFor }  from '@testing-library/react';
 
-import { theme }            from '@app/theme';
+import { theme }            from '@entities/theme/model/theme';
 import { LanguageProvider } from '@client/components';
 import { store }            from '../__mocks__/store';
 
