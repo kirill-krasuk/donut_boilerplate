@@ -1,5 +1,5 @@
 import { HelmetDatum }    from 'react-helmet';
-import { Store }          from 'redux';
+import { Store }          from '@reduxjs/toolkit';
 import { ChunkExtractor } from '@loadable/server';
 
 import { Theme }          from '@entities/theme';

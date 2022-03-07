@@ -1,4 +1,4 @@
-import { Selector as ReSelector } from 'reselect';
+import { Selector as ReSelector } from '@reduxjs/toolkit';
 
 // TODO: refactor dependency
 import { RootState }              from './state';

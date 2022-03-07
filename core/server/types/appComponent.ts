@@ -1,4 +1,4 @@
-import { Store }          from 'redux';
+import { Store }          from '@reduxjs/toolkit';
 import { ChunkExtractor } from '@loadable/server';
 
 import { Context }        from '@server/types/context';

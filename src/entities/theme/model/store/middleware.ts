@@ -1,4 +1,4 @@
-import { Middleware }       from 'redux';
+import { Middleware }       from '@reduxjs/toolkit';
 import Cookie               from 'js-cookie';
 
 import { Action }           from '@lib/redux';

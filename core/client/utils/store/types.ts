@@ -1,4 +1,4 @@
-import { Store, Reducer } from 'redux';
+import { Store, Reducer } from '@reduxjs/toolkit';
 
 export type AsyncReducer = Reducer<any, any>;
 

@@ -2,7 +2,7 @@ import {
     createStore,
     applyMiddleware,
     Middleware
-} from 'redux';
+} from '@reduxjs/toolkit';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { compose }             from 'ramda';
 

@@ -7006,26 +7006,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/redux@npm:^3.6.0":
-  version: 3.6.31
-  resolution: "@types/redux@npm:3.6.31"
-  checksum: 7bfaa5c5390364d8ba4132033f9887f1c1ed96fda434d3f70be801e0997542a89c03dcd656e3bc8a1ea84bb6450e25e833cf17302dbd9055d6ff0e1f1b4f9a31
-  languageName: node
-  linkType: hard
-
 "@types/relateurl@npm:*":
   version: 0.2.29
   resolution: "@types/relateurl@npm:0.2.29"
   checksum: 33226abf47dc03523f88dacb6c2acd185285e754a8e64dd832156fcfbeee053b3c9c63dcb01c06aa263f6e7cb1e53f819718d41dbf7ede38b9d00893cec4a6f6
-  languageName: node
-  linkType: hard
-
-"@types/reselect@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@types/reselect@npm:2.2.0"
-  dependencies:
-    reselect: "*"
-  checksum: 034b5796c16316b60561fca01503111ecddde638178efc20c7293f07ef7d9cbc2bffce267899381f630fa9ffef3bfed54384fe87756e97132b4dc2881f585e19
   languageName: node
   linkType: hard
 
@@ -21657,9 +21641,7 @@ __metadata:
     "@types/react-router": ^5.1.18
     "@types/react-router-dom": ^5.3.3
     "@types/react-transition-group": ^4.4.4
-    "@types/redux": ^3.6.0
     "@types/redux-mock-store": ^1.0.3
-    "@types/reselect": ^2.2.0
     "@types/serve-favicon": ^2.5.3
     "@types/serve-static": ^1.13.10
     "@types/speed-measure-webpack-plugin": ^1.3.4
@@ -21766,7 +21748,6 @@ __metadata:
     redux: ^4.1.2
     redux-devtools-extension: ^2.13.9
     redux-mock-store: ^1.5.4
-    reselect: ^4.1.5
     resolve-url-loader: ^5.0.0
     sass-loader: ^12.6.0
     schema-utils: ^3.1.1
@@ -26684,7 +26665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reselect@npm:*, reselect@npm:^4.0.0, reselect@npm:^4.1.5":
+"reselect@npm:^4.0.0, reselect@npm:^4.1.5":
   version: 4.1.5
   resolution: "reselect@npm:4.1.5"
   checksum: 54c13c1e795b2ea70cba8384138aebe78adda00cbea303cc94b64da0a70d74c896cc9a03115ae38b8bff990e7a60dcd6452ab68cbec01b0b38c1afda70714cf0

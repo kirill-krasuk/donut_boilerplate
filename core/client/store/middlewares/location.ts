@@ -1,4 +1,4 @@
-import { Middleware }             from 'redux';
+import { Middleware }             from '@reduxjs/toolkit';
 
 import { isFirstRenderingAction } from '@client/store/actions/location';
 import { getIsFirstRendering }    from '@client/store/selectors/location';

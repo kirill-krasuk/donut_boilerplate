@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 
 import appReducers         from '@app/store/reducers';
 import modal               from './modal';

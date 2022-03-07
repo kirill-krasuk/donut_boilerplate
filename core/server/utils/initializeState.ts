@@ -1,4 +1,4 @@
-import { Store }       from 'redux';
+import { Store }       from '@reduxjs/toolkit';
 
 import { localeModel } from '@entities/locale';
 import { themeModel }  from '@entities/theme';
