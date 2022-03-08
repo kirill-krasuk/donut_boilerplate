@@ -70,6 +70,6 @@
         "config/jest/setup.ts",
         "config/webpack/**/*",
         "config/env/*", 
-        "core/client/*"    
+        "core/client/**/*"    
     ],
 }

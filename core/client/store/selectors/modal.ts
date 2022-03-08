@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import R                  from 'ramda';
 
-import { Selector }       from '@shared/types/selector';
+import { Selector }       from '@lib/redux';
 import { ModalState }     from '@client/store/types/modal';
 
 const selectModal: Selector<ModalState> = R.prop('modal');

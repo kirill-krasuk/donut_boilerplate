@@ -1,16 +1,17 @@
 import { FC, useEffect } from 'react';
+import { useDispatch }   from 'react-redux';
 
-import { useActions }    from '@hooks/useActions';
+import { readyAction }   from '@client/store/actions';
 import { Props }         from './types';
 
 const ReadyWrapper: FC<Props> = (props) => {
     const { children } = props;
 
-    const { readyAction } = useActions();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        readyAction();
-    }, [ readyAction ]);
+        dispatch(readyAction());
+    }, [ dispatch ]);
 
     return (
         <>{ children }</>

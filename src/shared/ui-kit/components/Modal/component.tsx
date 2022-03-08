@@ -1,16 +1,18 @@
 import {
     FC, useEffect, useRef, useCallback
 } from 'react';
+import { useDispatch }                        from 'react-redux';
 
-import { useClickOutside, useLockBodyScroll, useActions } from '@hooks/index';
-import { KeyCodes }                                       from '@enums/keyCodes';
-import * as S                                             from './styles';
-import { Props }                                          from './types';
+import { useClickOutside, useLockBodyScroll } from '@hooks/index';
+import { KeyCodes }                           from '@enums/keyCodes';
+import { closeModalAction }                   from '@client/store/actions';
+import * as S                                 from './styles';
+import { Props }                              from './types';
 
 const Modal: FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
-    const { closeModalAction } = useActions();
+    const dispatch = useDispatch();
 
     useLockBodyScroll();
 
@@ -20,13 +22,13 @@ const Modal: FC<Props> = (props) => {
         const { code } = ev;
 
         if (code === KeyCodes.Escape) {
-            closeModalAction();
+            dispatch(closeModalAction());
 
             if (onClose) {
                 onClose();
             }
         }
-    }, [ closeModalAction, onClose ]);
+    }, [ dispatch, onClose ]);
 
     useEffect(() => {
         document.addEventListener('keyup', handleKeyPress);

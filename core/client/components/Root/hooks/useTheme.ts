@@ -1,16 +1,15 @@
 import { useState, useEffect }                from 'react';
-import { useSelector, useDispatch }           from 'react-redux';
+import { useSelector }                        from 'react-redux';
 import Cookie                                 from 'js-cookie';
 
 import { Theme, themeModel }                  from '@entities/theme';
 import { setDataThemeAttr, getDarkModeQuery } from '@lib/dom';
+import { useActions }                         from '@hooks/index';
 
 export function useTheme() {
-    const dispatch = useDispatch();
-
-    const mode = useSelector(themeModel.selectors.getMode);
-
-    const [ theme, setTheme ] = useState(mode);
+    const { changePreferColorScheme } = useActions(themeModel.actions);
+    const mode                        = useSelector(themeModel.selectors.getMode);
+    const [ theme, setTheme ]         = useState(mode);
 
     const handleChangeTheme = (event: MediaQueryListEvent) => {
         setTheme(event.matches ? Theme.Dark : Theme.Light);
@@ -28,10 +27,10 @@ export function useTheme() {
                 ? Theme.Dark
                 : Theme.Light;
 
-            dispatch(themeModel.actions.changePreferColorScheme(currentTheme));
+            changePreferColorScheme(currentTheme);
             setTheme(currentTheme);
         }
-    }, [ dispatch, theme ]);
+    }, [ changePreferColorScheme, theme ]);
 
     // prefer-color-scheme listener
     useEffect(() => {
