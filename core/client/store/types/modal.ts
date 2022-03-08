@@ -1,4 +1,4 @@
-import { Modals } from '@app/enums/modal';
+import { Modals } from '@features/modals';
 
 export type CallModalObjectPayload = {
     history: boolean;
