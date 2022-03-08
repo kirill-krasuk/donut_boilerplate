@@ -1,12 +1,12 @@
 import { useRoutes, RouteObject } from 'react-router';
 
 import Root                       from '@client/components/Root';
-import appRoutes                  from '@app/pages';
+import { AppRoutes }              from '@pages/index';
 
 export const routes: RouteObject[] = [ {
     path    : '/',
     element : <Root />,
-    children: appRoutes
+    children: AppRoutes
 } ];
 
 const Routes = () => useRoutes(routes);

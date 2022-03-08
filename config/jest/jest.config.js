@@ -33,6 +33,7 @@ module.exports = {
         '@entities/(.*)'                                                                 : '<rootDir>/src/entities/$1',
         '@features/(.*)'                                                                 : '<rootDir>/src/features/$1',
         '@widgets/(.*)'                                                                  : '<rootDir>/src/widgets/$1',
+        '@pages/(.*)'                                                                    : '<rootDir>/src/pages/$1',
         '@processes/(.*)'                                                                : '<rootDir>/src/processes/$1',
         '@lib/(.*)'                                                                      : '<rootDir>/src/shared/lib/$1',
         '@app/(.*)'                                                                      : '<rootDir>/src/app/$1',

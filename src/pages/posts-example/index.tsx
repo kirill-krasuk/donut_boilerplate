@@ -1,7 +1,7 @@
 import loadable from '@loadable/component';
 
-export default loadable(
-    () => import(/* webpackChunkName: "Home" */'./component'),
+export const Posts = loadable(
+    () => import(/* webpackChunkName: "Posts" */'./ui/Posts'),
     {
         fallback: <div>Loading...</div>
     }

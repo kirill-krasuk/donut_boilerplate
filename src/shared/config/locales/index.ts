@@ -1,7 +1,7 @@
 import { Locale } from '@eo-locale/core';
 
-import enMessages from '@app/config/locales/en.json';
-import ruMessages from '@app/config/locales/ru.json';
+import enMessages from './en.json';
+import ruMessages from './ru.json';
 
 const locales: Locale[] = [ {
     language: 'en',

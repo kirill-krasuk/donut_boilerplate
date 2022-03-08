@@ -7,7 +7,7 @@ import { Theme }                   from '@entities/theme';
 import { createFactory }           from '@lib/react';
 import { useLocale, useThemeMode } from '@app/hooks';
 import * as S                      from './styles';
-import messages                    from './messages';
+import locales                     from '../config/locales';
 
 const themeIconFactory = createFactory({
     [Theme.Light]: Sun,
@@ -36,7 +36,7 @@ const Header: FC = () => {
             <S.Content>
                 { themeLogoFactory(mode) }
                 <S.Title>
-                    <T.Text id={ messages.title } />
+                    <T.Text id={ locales.title } />
                 </S.Title>
             </S.Content>
         </S.Header>

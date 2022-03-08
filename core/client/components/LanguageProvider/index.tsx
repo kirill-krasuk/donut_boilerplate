@@ -2,7 +2,7 @@ import { FC }          from 'react';
 import { useSelector } from 'react-redux';
 import { EOLocale }    from 'eo-locale';
 
-import locales         from '@app/config/locales';
+import locales         from '@shared/config/locales';
 import { localeModel } from '@entities/locale';
 import { Props }       from './types';
 

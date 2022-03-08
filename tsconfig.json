@@ -51,6 +51,7 @@
             "@entities/*": ["./src/entities/*"],
             "@features/*": ["./src/features/*"],
             "@widgets/*": ["./src/widgets/*"],
+            "@pages/*": ["./src/pages/*"],
             "@processes/*": ["./src/processes/*"],
             "@lib/*": ["./src/shared/lib/*"],
             "@utils/*": ["src/shared/utils/*"],
