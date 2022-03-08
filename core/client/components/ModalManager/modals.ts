@@ -1,3 +1,3 @@
-import * as modals from '@app/modals';
+import * as modals from '@features/modals';
 
 export default modals;
