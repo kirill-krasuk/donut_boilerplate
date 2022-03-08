@@ -6,7 +6,6 @@ import {
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { compose }             from 'ramda';
 
-import { locationMiddleware }  from '@client/store/middlewares/location';
 import appMiddlewares          from '@app/store/middlewares';
 import env                     from '@env/';
 import ssrReducers             from '@app/store/reducers/serverReducer';
@@ -22,7 +21,6 @@ export function configureStore(preloadedState: object = {}) {
     const { appEnv } = env.client;
 
     const middlewares: Middleware[] = [
-        locationMiddleware,
         ...appMiddlewares,
     ];
 

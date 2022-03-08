@@ -2,11 +2,9 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 import appReducers         from '@app/store/reducers';
 import modal               from './modal';
-import location            from './location';
 
 export const staticReducers = {
     modal,
-    location,
     ...appReducers
 };
 
