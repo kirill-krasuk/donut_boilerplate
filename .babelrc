@@ -48,6 +48,7 @@
                     "@hooks": "./src/shared/hooks",
                     "@enums": "./src/shared/enums",
                     "@types": "./src/shared/types",
+                    "@config": "./src/shared/config",
                     "@ui-kit": "./src/shared/ui-kit",
                     "@vendors": "./src/vendors",
                     "@images": "./src/assets/images",

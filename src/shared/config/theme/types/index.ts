@@ -1,6 +1,6 @@
 import { ThemedStyledProps } from 'styled-components/macro';
 
-import { theme }             from '../model/theme';
+import { theme }             from '../theme';
 import { Theme }             from './enums';
 
 export type ThemeState = {

@@ -1,7 +1,7 @@
 import { createReducer }                        from '@reduxjs/toolkit';
 
+import { Theme }                                from '@config/theme';
 import { changeTheme, changePreferColorScheme } from './actions';
-import { Theme }                                from '../../types/enums';
 
 export const initialState = {
     mode: Theme.Light

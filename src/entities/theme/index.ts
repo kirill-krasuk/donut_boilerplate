@@ -1,8 +1,8 @@
 export type {
     AppTheme,
     ThemeState
-} from './types';
+} from '@config/theme';
 
-export { Theme } from './types/enums';
+export { Theme } from '@config/theme';
 
 export * as themeModel from './model';

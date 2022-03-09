@@ -39,6 +39,7 @@ module.exports = {
         '@app/(.*)'                                                                      : '<rootDir>/src/app/$1',
         '@utils/(.*)'                                                                    : '<rootDir>/src/shared/utils/$1',
         '@types/(.*)'                                                                    : '<rootDir>/src/shared/types/$1',
+        '@config/(.*)'                                                                   : '<rootDir>/src/shared/config/$1',
         '@enums/(.*)'                                                                    : '<rootDir>/src/shared/enums/$1',
         '@hooks/(.*)'                                                                    : '<rootDir>/src/shared/hooks/$1',
         '@ui-kit/(.*)'                                                                   : '<rootDir>/src/shared/ui-kit/$1',

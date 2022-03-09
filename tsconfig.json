@@ -58,6 +58,7 @@
             "@hooks/*": ["src/shared/hooks/*"],
             "@enums/*": ["src/shared/enums/*"],
             "@types/*": ["src/shared/types/*"],
+            "@config/*": ["src/shared/config/*"],
             "@ui-kit/*": ["src/shared/ui-kit/*"],
             "@test/*": ["./src/test/*"],
             "@env/*": ["./config/env"]
