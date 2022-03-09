@@ -10,7 +10,8 @@ const Image: FC<Props> = (props) => {
     return (
         <picture>
             { webp && <source srcSet={ replaceExtension(src, 'webp') } type="image/webp" /> }
-            <img src={ src } alt={ alt } />
+
+            <img alt={ alt } src={ src } />
         </picture>
     );
 };

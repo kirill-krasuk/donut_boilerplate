@@ -12,7 +12,7 @@ export async function prefetch(url: string, auth: any = null) {
      */
     const [ , appRoute ] = matchRoutes(routes, pathname)!;
 
-    if (appRoute && appRoute.route) {
+    if (appRoute?.route) {
         const { route }   = appRoute;
         const { element } = route as RouteForPrefetch;
 

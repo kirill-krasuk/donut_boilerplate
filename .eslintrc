@@ -5,36 +5,25 @@
         "es6": true,
         "node": true
     },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion":  11, 
-        "sourceType":  "module",
-        "ecmaFeatures":  {
-            "jsx":  true
-        }
-    },
     "settings": {
         "react": {
             "version": "detect"
         }
     },
     "extends": [
-        "plugin:@typescript-eslint/recommended",
         "airbnb-base",
         "plugin:react/recommended",
         "plugin:jsx-a11y/recommended"
     ],
     "rules": {
-        "align-assignments/align-assignments": [2, { "requiresOnly": false } ],
-		"no-tabs": [
-			2, { 
+        "align-assignments/align-assignments": [2, { 
+            "requiresOnly": false 
+        } ],
+		"no-tabs": [2, { 
 				"allowIndentationTabs": true 
-			}
-		],
+        } ],
         "array-callback-return": 0,
-        "no-restricted-imports": [
-            2,
-            {
+        "no-restricted-imports": [2, {
                 "paths": [{
                     "name": "styled-components",
                     "message": "Please import from styled-components/macro."
@@ -42,46 +31,13 @@
                 "patterns": [
                     "!styled-components/macro"
                 ]
-            }
-        ],
-        "no-console": [
-            2, 
-            { 
+        } ],
+        "no-console": [2, { 
                 "allow": ["warn", "error", "info"] 
-            }
-        ],
+        } ],
         "default-param-last": 0,
         "no-sequences": 0,
         "no-bitwise": 0,
-        "@typescript-eslint/explicit-function-return-type": 0,
-        "@typescript-eslint/no-non-null-assertion": 0,
-        "@typescript-eslint/consistent-type-assertions": 0,
-        "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/camelcase": 0,
-        "@typescript-eslint/no-var-requires": 0,
-        "@typescript-eslint/ban-ts-ignore": 0,
-        "@typescript-eslint/explicit-module-boundary-types": 0,
-        "@typescript-eslint/ban-ts-comment": 0,
-        "@typescript-eslint/ban-types": 0,
-        "@typescript-eslint/no-unused-vars": [2],
-        "@typescript-eslint/member-delimiter-style": [2, {
-            "multiline": {
-                "delimiter": "comma",
-                "requireLast": false
-            },
-            "singleline": {
-                "delimiter": "comma",        
-                "requireLast": false
-            },
-            "overrides": {
-                "interface": {
-                    "multiline": {
-                        "delimiter": "semi",
-                        "requireLast": true
-                    }
-                }
-            }
-        }],
         "arrow-parens": 0,
         "no-restricted-syntax": 0,
         "lines-between-class-members": 0,
@@ -105,8 +61,10 @@
         "computed-property-spacing": 0,
         "class-methods-use-this": 0,
         "react/jsx-uses-react": 0,
+        "react/destructuring-assignment": [2, "always"],
         "react/react-in-jsx-scope": 0,
         "react/jsx-indent": [2, 4],
+        "react/jsx-curly-newline": [2, { "multiline": "consistent", "singleline": "consistent" }],
         "react/jsx-indent-props": [2, 4],
         "react/jsx-equals-spacing": 0,
         "react/jsx-tag-spacing": 2,
@@ -115,16 +73,19 @@
         "react/jsx-boolean-value": 1,
         "react/jsx-closing-bracket-location": [2],
         "react/jsx-curly-spacing": [2, {"when": "always", "children": true}],
-        "react/jsx-handler-names": 1,
+        "react/jsx-handler-names": 2,
         "react/jsx-key": 1,
         "react/jsx-max-props-per-line": 0,
         "react/jsx-no-bind": 0,
-        "react/jsx-no-duplicate-props": 1,
+        "react/jsx-newline": [2, { "prevent": false }],
+        "react/jsx-no-comment-textnodes": 2,
+        "react/jsx-no-target-blank": 2,
+        "react/jsx-sort-default-props": 2,
+        "react/jsx-sort-props": 2,
         "react/jsx-no-literals": 0,
         "react/jsx-no-undef": 1,
         "react/jsx-pascal-case": 1,
         "react/jsx-sort-prop-types": 0,
-        "react/jsx-sort-props": 0,
         "react/jsx-uses-vars": 1,
         "react/no-danger": 1,
         "react/no-deprecated": 0,
@@ -151,7 +112,7 @@
             "VariableDeclarator": 1,
             "SwitchCase": 1, 
             "ignoredNodes": ["TemplateLiteral > *"]
-        }],
+        } ],
         "consistent-return": 0,
         "comma-dangle": [2, "only-multiline"],
         "template-curly-spacing": [2, "always"],
@@ -161,9 +122,7 @@
         "one-var": 0,
         "func-names": 0,
         "function-paren-newline": 0,
-        "lines-around-comment": [
-            2,
-            {
+        "lines-around-comment": [2, {
                 "beforeBlockComment": true,
                 "afterBlockComment": false,
                 "beforeLineComment": true,
@@ -174,20 +133,13 @@
                 "allowObjectEnd": true,
                 "allowArrayStart": true,
                 "allowArrayEnd": true
-            }
-        ],
-        "key-spacing": [
-            2,
-            {
+        } ],
+        "key-spacing": [2, {
                 "align": "colon"
-            }
-        ],
-        "arca/import-align": [
-            2,
-            {
+        } ],
+        "arca/import-align": [2, {
                 "collapseExtraSpaces": true
-            }
-        ],
+        } ],
         "arca/melted-constructs": 2,
         "no-underscore-dangle": 0,
         "react-hooks/rules-of-hooks": 2,
@@ -205,13 +157,118 @@
     "overrides": [ {
         // enable the rule specifically for TypeScript files
         "files": ["*.ts", "*.tsx"],
+        "parser": "@typescript-eslint/parser",
+        "extends": "plugin:@typescript-eslint/recommended",
+        "parserOptions": {
+            "project": "./tsconfig.json",
+            "ecmaVersion": 11, 
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "jsx": true
+            }
+        },
         "rules": {
-            "@typescript-eslint/explicit-function-return-type": 0
+            "@typescript-eslint/explicit-function-return-type": 0,
+            "@typescript-eslint/await-thenable": 2,
+            "@typescript-eslint/no-non-null-assertion": 0,
+            "@typescript-eslint/method-signature-style": [2, "method"],
+            "@typescript-eslint/no-extra-non-null-assertion": 2,
+            "@typescript-eslint/no-unnecessary-type-constraint": 2,
+            "@typescript-eslint/prefer-as-const": 2,
+            "@typescript-eslint/consistent-type-assertions": 0,
+            "@typescript-eslint/no-for-in-array": 2,
+            "@typescript-eslint/no-inferrable-types": 2,
+            "@typescript-eslint/prefer-includes": 2,
+            "@typescript-eslint/prefer-optional-chain": 2,
+            "@typescript-eslint/prefer-string-starts-ends-with": 2,
+            "@typescript-eslint/prefer-ts-expect-error": 2,
+            "@typescript-eslint/require-array-sort-compare": 2,
+            "@typescript-eslint/restrict-plus-operands": 2,
+            "@typescript-eslint/sort-type-union-intersection-members": 2,
+            "@typescript-eslint/type-annotation-spacing": 2,
+            "@typescript-eslint/unified-signatures": 2,
+            "@typescript-eslint/no-explicit-any": 0,
+            "@typescript-eslint/camelcase": 0,
+            "@typescript-eslint/no-var-requires": 0,
+            "@typescript-eslint/ban-ts-ignore": 0,
+            "@typescript-eslint/explicit-module-boundary-types": 0,
+            "@typescript-eslint/ban-ts-comment": 0,
+            "@typescript-eslint/ban-types":  [2, {
+                "types": {
+                    "String": {
+                        "message": "Use string instead",
+                        "fixWith": "string"
+                    }
+                    // add other bans
+                }
+            } ],
+            "@typescript-eslint/no-unused-vars": [2],
+            "@typescript-eslint/member-delimiter-style": [2, {
+                "multiline": {
+                    "delimiter": "comma",
+                    "requireLast": false
+                },
+                "singleline": {
+                    "delimiter": "comma",        
+                    "requireLast": false
+                },
+                "overrides": {
+                    "interface": {
+                        "multiline": {
+                            "delimiter": "semi",
+                            "requireLast": true
+                        }
+                    }
+                }
+            }]
         }
     }, {
         "files": ["**/reducer.ts"],
         "rules": {
             "no-param-reassign": 0
+        }
+    }, {
+        "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+        "plugins": [
+            "jest",
+            "testing-library"
+        ],
+        "extends": [
+            "plugin:jest/recommended",
+            "plugin:testing-library/react"
+        ],
+        "env": {
+            "jest/globals": true
+        },
+        "settings": {
+            "jest": {
+                "version": 27
+            }
+        },
+        "rules": {
+            "testing-library/await-async-query": 2,
+            "testing-library/no-await-sync-query": 2,
+            "testing-library/no-debugging-utils": 1,
+            "testing-library/no-dom-import": 0,
+            "@typescript-eslint/unbound-method": 0,
+            "jest/no-alias-methods": 2,
+            "jest/consistent-test-it": ["error", {"fn": "it"}],
+            "jest/no-deprecated-functions": 2,
+            "jest/prefer-comparison-matcher": 2,
+            "jest/prefer-called-with": 2,
+            "jest/prefer-equality-matcher": 2,
+            "jest/prefer-expect-assertions": [2, { "onlyFunctionsWithAsyncKeyword": true }],
+            "jest/prefer-expect-resolves": 2,
+            "jest/prefer-spy-on": 2,
+            "jest/prefer-strict-equal": 2,
+            "jest/prefer-to-be": 2,
+            "jest/prefer-to-contain": 2,
+            "jest/prefer-to-have-length": 2,
+            "jest/no-disabled-tests": 1,
+            "jest/no-focused-tests": 2,
+            "jest/no-identical-title": 2,
+            "jest/require-top-level-describe": 2,
+            "jest/valid-expect": 2
         }
     } ]
 }

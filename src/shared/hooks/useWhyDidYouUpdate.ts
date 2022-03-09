@@ -9,7 +9,7 @@ export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
 
             const changesObj = allKeys.reduce((acc, key) => {
                 if (typeof key !== 'symbol') {
-                    if (previousProps && previousProps.current) {
+                    if (previousProps?.current) {
                         if (previousProps.current[key] !== props[key]) {
                             return {
                                 ...acc,

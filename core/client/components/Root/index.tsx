@@ -24,9 +24,11 @@ const Root: FC = () => {
         >
             <S.Wrapper>
                 <GlobalStyles />
+
                 <LanguageProvider>
                     <>
                         <Outlet />
+
                         { /* <ModalManager /> */ }
                     </>
                 </LanguageProvider>

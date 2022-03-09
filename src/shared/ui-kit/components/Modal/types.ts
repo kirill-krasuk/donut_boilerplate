@@ -6,7 +6,7 @@ export type Props = {
     /**
      * close handler
     */
-    onClose?: () => void,
+    onClose?(): void,
 
     /**
      * Modal title

@@ -27,11 +27,14 @@ class ErrorBoundary extends Component<Props, State> {
     }
 
     render() {
-        if (this.state.hasError) {
+        const { hasError } = this.state;
+        const { children } = this.props;
+
+        if (hasError) {
             return <div>Oops, something goes wrong</div>;
         }
 
-        return this.props.children;
+        return children;
     }
 }
 

@@ -1,3 +1,4 @@
+import { MouseEvent }                from 'react';
 import styled, { css }               from 'styled-components/macro';
 
 import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
@@ -5,7 +6,7 @@ import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 type Props = {
     size: ButtonSizes,
     cStyle: ButtonStyles,
-    onClick?: Function
+    onClick?(e: MouseEvent<HTMLButtonElement>): void
 };
 
 export const Wrapper = styled.button<Props>`

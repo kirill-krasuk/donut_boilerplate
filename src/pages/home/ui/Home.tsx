@@ -12,11 +12,14 @@ const Home: FC = () => (
         <Helmet
             title="Home page"
         />
+
         <Header />
+
         <S.Container>
             <S.Text>
                 <T.Text id={ locales.title } />
             </S.Text>
+
             <S.Link to={ routes.second.path }>
                 <T.Text id={ locales.link } />
             </S.Link>

@@ -15,6 +15,8 @@ import { extendStore }         from './extendStore';
 import { shakeReducers }       from './shakeReducers';
 import { ExtendedStore }       from './types';
 
+type Enhancers = (...args: any) => any
+
 export function configureStore(preloadedState: object = {}) {
     const [ staticPreloadedState, asyncPreloadedState ] = shakeReducers(preloadedState);
 
@@ -29,10 +31,9 @@ export function configureStore(preloadedState: object = {}) {
         middlewares.push();
     }
 
-    const composeEnhancers: Function =
-        appEnv === Environment.Dev
-            ? composeWithDevTools
-            : compose;
+    const composeEnhancers: Enhancers = appEnv === Environment.Dev
+        ? composeWithDevTools
+        : compose;
 
     const rootReducer = createRootReducer({}, ssrReducers);
 

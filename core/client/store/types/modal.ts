@@ -7,7 +7,7 @@ export type CallModalObjectPayload = {
 
 export type CallModal = {
     type: 'core/CALL_MODAL',
-    payload: Modals | CallModalObjectPayload
+    payload: CallModalObjectPayload | Modals
 }
 
 export type SetModal = {

@@ -7,4 +7,4 @@ export type ThemeState = {
     mode: Theme
 }
 
-export type AppTheme<T = {}> = ThemedStyledProps<T, typeof theme & { mode: Theme, isDark: boolean }>
+export type AppTheme<T = Record<string, any>> = ThemedStyledProps<T, typeof theme & { mode: Theme, isDark: boolean }>

@@ -5,7 +5,7 @@ import { Action }           from '@lib/redux';
 import { setDataThemeAttr } from '@lib/dom';
 import { changeTheme }      from './actions';
 
-export const middleware: Middleware = () => (next: Function) => (action: Action) => {
+export const middleware: Middleware = () => (next) => (action: Action) => {
     if (action.type === changeTheme.type) {
         Cookie.set('theme', action.payload);
 

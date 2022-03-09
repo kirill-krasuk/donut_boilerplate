@@ -19,9 +19,8 @@ export default (
     ssrReducers?: Record<string, any>
 ): ReturnType<typeof appReducer> => (state, action) => {
     // this place need for unset state on logout
-    // @ts-ignore
     if (action.type === 'LOGOUT') {
-        // @ts-ignore
+        // @ts-expect-error
         // eslint-disable-next-line no-param-reassign
         state = {
             ...state,

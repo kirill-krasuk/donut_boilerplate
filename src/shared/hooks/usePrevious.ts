@@ -7,7 +7,7 @@ export function usePrevious<T>(value: T) {
         ref.current = value;
     }, [ value ]);
 
-    if (ref && ref.current) {
+    if (ref?.current) {
         return ref.current;
     }
 

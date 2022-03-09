@@ -20,8 +20,8 @@ export function useDevMiddlewares(app: Application): void {
     const bundler = webpack(webpackConfig);
 
     app.use(DevMiddleware(bundler, {
-        publicPath      : webpackConfig?.output?.publicPath,
-        stats           : webpackConfig?.stats,
+        publicPath      : webpackConfig.output?.publicPath,
+        stats           : webpackConfig.stats,
         serverSideRender: true,
         headers         : {
             [swKey]         : [ swValue ],

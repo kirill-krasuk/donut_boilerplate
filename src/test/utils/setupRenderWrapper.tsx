@@ -9,7 +9,7 @@ import { theme }            from '@entities/theme/model/theme';
 import { LanguageProvider } from '@client/components';
 import { store }            from '../__mocks__/store';
 
-async function setupRenderWrapper<T extends Object>(Component: React.FC<any>, props: T = {} as T) {
+async function setupRenderWrapper<T extends Record<string, any>>(Component: React.FC<any>, props: T = {} as T) {
     const wrapper = render(
         <BrowserRouter>
             <Provider store={ store }>

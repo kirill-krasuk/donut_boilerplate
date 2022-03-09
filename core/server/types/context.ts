@@ -3,7 +3,5 @@ export type Context = {
     url?: string,
     to?: string,
     token?: string,
-    initialProps:{
-        [key: string]: any
-    } | {}
+    initialProps: Record<string, any>
 }

@@ -55,6 +55,7 @@ const Modal: FC<Props> = (props) => {
                         { title }
                     </S.Head>
                 }
+
                 <S.Body>
                     { children }
                 </S.Body>

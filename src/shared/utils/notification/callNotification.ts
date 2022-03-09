@@ -4,7 +4,7 @@ const options = {
 };
 
 export function callNotification(overrideOptions?: Record<string, any>) {
-    const notifyTitle   = (overrideOptions && overrideOptions.title) || 'Donut notify';
+    const notifyTitle   = overrideOptions?.title || 'Donut notify';
     const notifyOptions = {
         ...options,
         ...overrideOptions

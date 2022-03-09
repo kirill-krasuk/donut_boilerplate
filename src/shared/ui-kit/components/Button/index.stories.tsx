@@ -41,7 +41,7 @@ export const withText = (args: any) => {
 
 export const withEmoji = (args: any) => (
     <Button { ...args }>
-        <span role="img" aria-label="so cool">
+        <span aria-label="so cool" role="img">
             😀 😎 👍 💯
         </span>
     </Button>
