@@ -9,7 +9,7 @@ import { closeModalAction }                   from '@client/store/actions';
 import * as S                                 from './styles';
 import { Props }                              from './types';
 
-const Modal: FC<Props> = (props) => {
+export const Modal: FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
     const dispatch = useDispatch();

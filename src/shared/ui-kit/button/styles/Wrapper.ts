@@ -1,7 +1,7 @@
 import { MouseEvent }                from 'react';
 import styled, { css }               from 'styled-components/macro';
 
-import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
+import { ButtonSizes, ButtonStyles } from '../enums';
 
 type Props = {
     size: ButtonSizes,

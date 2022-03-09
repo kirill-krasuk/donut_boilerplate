@@ -4,7 +4,7 @@ import { Props }            from './types';
 
 // TODO: complete
 
-const Image: FC<Props> = (props) => {
+export const Image: FC<Props> = (props) => {
     const { src, webp, alt } = props;
 
     return (

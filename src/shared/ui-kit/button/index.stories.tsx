@@ -3,8 +3,8 @@ import {
 } from '@storybook/addon-knobs';
 import { BADGE }        from '@geometricpanda/storybook-addon-badges';
 
-import { ButtonStyles } from '@ui-kit/enums/button';
-import { Button }       from './component';
+import { ButtonStyles } from './enums';
+import { Button }       from './Button';
 
 export default {
     title     : 'Design System/Atoms/Button',

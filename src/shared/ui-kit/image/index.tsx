@@ -1,7 +1,7 @@
 import loadable from '@loadable/component';
 
-export default loadable(
-    () => import(/* webpackChunkName: "Modal" */'./component'),
+export const Image = loadable(
+    () => import(/* webpackChunkName: "Image" */'./Image'),
     {
         fallback: <div>Loading...</div>
     }

@@ -1,6 +1,6 @@
 import { FC }    from 'react';
 
-import { Modal } from '@ui-kit/components';
+import { Modal } from '@ui-kit/modal';
 
 const ModalTest: FC = () => (
     <Modal title="Test">

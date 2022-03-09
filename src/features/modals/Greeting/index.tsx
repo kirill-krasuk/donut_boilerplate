@@ -1,6 +1,6 @@
 import { FC }    from 'react';
 
-import { Modal } from '@ui-kit/components';
+import { Modal } from '@ui-kit/modal/Modal';
 
 const Greeting: FC = () => (
     <Modal title="Welcome">
