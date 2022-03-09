@@ -3,7 +3,7 @@ import { useSelector }  from 'react-redux';
 
 import { localeModel }  from '@entities/locale';
 import { useActions }   from '@hooks/index';
-import { toggleLocale } from './helpers';
+import { toggleLocale } from '../../lib/toggleLocale';
 
 export function useLocale() {
     const { changeLocale } = useActions(localeModel.actions);

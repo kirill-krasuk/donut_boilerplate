@@ -1,13 +1,13 @@
-import { FC }                      from 'react';
-import { EOLocale as T }           from 'eo-locale';
-import { Sun }                     from '@styled-icons/fa-solid/Sun';
-import { Moon }                    from '@styled-icons/fa-solid/Moon';
+import { FC }                from 'react';
+import { EOLocale as T }     from 'eo-locale';
+import { Sun }               from '@styled-icons/fa-solid/Sun';
+import { Moon }              from '@styled-icons/fa-solid/Moon';
 
-import { Theme }                   from '@entities/theme';
-import { createFactory }           from '@lib/react';
-import { useLocale, useThemeMode } from '@app/hooks';
-import * as S                      from './styles';
-import locales                     from '../config/locales';
+import { Theme, themeModel } from '@entities/theme';
+import { createFactory }     from '@lib/react';
+import { localeModel }       from '@entities/locale';
+import * as S                from './styles';
+import locales               from '../config/locales';
 
 const themeIconFactory = createFactory({
     [Theme.Light]: Sun,
@@ -20,8 +20,8 @@ const themeLogoFactory = createFactory({
 });
 
 const Header: FC = () => {
-    const { locale, handleChangeLocale } = useLocale();
-    const { mode, handleChangeTheme }    = useThemeMode();
+    const { locale, handleChangeLocale } = localeModel.hooks.useLocale();
+    const { mode, handleChangeTheme }    = themeModel.hooks.useThemeMode();
 
     return (
         <S.Header>

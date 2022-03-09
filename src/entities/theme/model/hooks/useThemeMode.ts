@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { themeModel }  from '@entities/theme';
 import { useActions }  from '@hooks/index';
-import { toggleTheme } from './helpers';
+import { toggleTheme } from '../../lib/toggleTheme';
 
 export function useThemeMode() {
     const { changeTheme } = useActions(themeModel.actions);
