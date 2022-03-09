@@ -36,7 +36,7 @@ You can also start production via docker.
 - the rest of the commands and what they do you can see in the Makefile
 
 ## Helpful information
-1. for correct and scalable application look at the [structure doc]('./docs/structure/')
+1. for correct and scalable application look at the [structure doc](/docs/structure/)
 1. By default, the application opens in the browser, this can be inconvenient and this setting can be disabled in the *`.env`* file by setting **`OPEN_IN_BROWSER`**`=false`
 1. In development mode, all builded assets are written to memory, if you need to look at the source or if you prefer to have it all in the visible area, you can set **`WRITE_ASSETS_TO_DISK`**`=true` 
 1. In development mode, we recommend setting **`HYDRATE`**`=false`, but in production, `true`
