@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 
 export type Props = {
-    children: ReactNode;
+    children: ReactNode,
 
     /**
      * close handler
     */
-    onClose?: () => void;
+    onClose?: () => void,
 
     /**
      * Modal title
     */
-    title?: string;
+    title?: string
 }

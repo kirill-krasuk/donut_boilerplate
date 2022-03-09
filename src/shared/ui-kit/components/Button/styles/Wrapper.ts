@@ -3,9 +3,9 @@ import styled, { css }               from 'styled-components/macro';
 import { ButtonSizes, ButtonStyles } from '@ui-kit/enums/button';
 
 type Props = {
-    size: ButtonSizes;
-    cStyle: ButtonStyles;
-    onClick?: Function;
+    size: ButtonSizes,
+    cStyle: ButtonStyles,
+    onClick?: Function
 };
 
 export const Wrapper = styled.button<Props>`

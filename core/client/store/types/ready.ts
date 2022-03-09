@@ -1,4 +1,4 @@
 export type Ready = {
-    type: 'core/READY';
-    payload: void;
+    type: 'core/READY',
+    payload: void
 }

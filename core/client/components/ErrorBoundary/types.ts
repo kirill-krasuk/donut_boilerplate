@@ -1,7 +1,7 @@
 export type State = {
-    hasError: boolean;
+    hasError: boolean
 }
 
 export type Props = {
-    children: JSX.Element;
+    children: JSX.Element
 }

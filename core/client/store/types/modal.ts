@@ -1,31 +1,31 @@
 import { Modals } from '@features/modals';
 
 export type CallModalObjectPayload = {
-    history: boolean;
-    id: Modals;
+    history: boolean,
+    id: Modals
 }
 
 export type CallModal = {
-    type: 'core/CALL_MODAL';
-    payload: Modals | CallModalObjectPayload;
+    type: 'core/CALL_MODAL',
+    payload: Modals | CallModalObjectPayload
 }
 
 export type SetModal = {
-    type: 'core/SET_MODAL';
-    payload: Modals;
+    type: 'core/SET_MODAL',
+    payload: Modals
 }
 
 export type SetModalHistoryFlag = {
-    type: 'core/SET_MODAL_HISTORY_FLAG';
-    payload: boolean;
+    type: 'core/SET_MODAL_HISTORY_FLAG',
+    payload: boolean
 }
 
 export type CloseModal = {
-    type: 'core/CLOSE_MODAL';
-    payload: void;
+    type: 'core/CLOSE_MODAL',
+    payload: void
 }
 
 export type ModalState = {
-    id: Modals | null;
-    hasHistory: boolean;
+    id: Modals | null,
+    hasHistory: boolean
 }

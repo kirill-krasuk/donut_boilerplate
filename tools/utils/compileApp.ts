@@ -19,7 +19,7 @@ export default async function (pathToConfig: string) {
 
     compiler.run((_err, stats) => {
         const compilationTime = Date.now() - start;
-        let messages: { errors: any; warnings: any; };
+        let messages: { errors: any, warnings: any };
 
         try {
             if (stats) {
