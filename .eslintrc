@@ -135,10 +135,10 @@
                 "allowArrayEnd": true
         } ],
         "key-spacing": [2, {
-                "align": "colon"
+            "align": "colon"
         } ],
         "arca/import-align": [2, {
-                "collapseExtraSpaces": true
+            "collapseExtraSpaces": true
         } ],
         "arca/melted-constructs": 2,
         "no-underscore-dangle": 0,

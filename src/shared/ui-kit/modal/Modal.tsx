@@ -7,7 +7,7 @@ import { useClickOutside, useLockBodyScroll } from '@hooks/index';
 import { KeyCodes }                           from '@enums/keyCodes';
 import { closeModalAction }                   from '@client/store/actions';
 import * as S                                 from './styles';
-import { Props }                              from './types';
+import { Props }                              from './type';
 
 export const Modal: FC<Props> = (props) => {
     const { children, onClose, title } = props;

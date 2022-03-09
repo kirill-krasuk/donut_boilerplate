@@ -65,12 +65,10 @@
     },
     "include": [
         "src/**/*", 
-        "core/server/**/*", 
-        "src/test/**/*",
+        "core/**/*", 
         "tools/**/*",
         "config/jest/setup.ts",
         "config/webpack/**/*",
         "config/env/*", 
-        "core/client/**/*"    
     ],
 }

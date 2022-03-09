@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent }     from 'react';
 
 import { ButtonSizes, ButtonStyles } from './enums';
 
