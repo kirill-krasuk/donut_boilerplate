@@ -10,7 +10,7 @@
 Donut Boilerplate
 </h1>
 
-This template uses Yarn🧶 v2 (codenamed Berry). We are taking a new approach to installing dependencies - [PnP](https://classic.yarnpkg.com/en/docs/pnp/).
+This template based on [Feature-Sliced Design](https://feature-sliced.design/). Uses Yarn🧶 v2 (codenamed Berry). We are taking a new approach to installing dependencies - [PnP](https://classic.yarnpkg.com/en/docs/pnp/).
 You can check out the yarn cli [here](https://yarnpkg.com/cli/install).
 
 This template comes with circleci ♻️.<br/>
@@ -36,6 +36,7 @@ You can also start production via docker.
 - the rest of the commands and what they do you can see in the Makefile
 
 ## Helpful information
+1. for correct and scalable application look at the [structure doc]('./docs/structure/')
 1. By default, the application opens in the browser, this can be inconvenient and this setting can be disabled in the *`.env`* file by setting **`OPEN_IN_BROWSER`**`=false`
 1. In development mode, all builded assets are written to memory, if you need to look at the source or if you prefer to have it all in the visible area, you can set **`WRITE_ASSETS_TO_DISK`**`=true` 
 1. In development mode, we recommend setting **`HYDRATE`**`=false`, but in production, `true`
@@ -78,6 +79,7 @@ All these scripts are described in package.json and called through the `yarn <co
   - [Ramda](https://ramdajs.com/docs/#)🐏 
   - SSR
   - [Storybook](https://storybook.js.org/) 📗
+  - [Feature-Sliced Design](https://feature-sliced.design/) 🍰
 - Bundling 📦
   - [webpack](https://webpack.js.org/) v5
   - [babel](https://babeljs.io/) v7
