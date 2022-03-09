@@ -7,7 +7,7 @@ export class HTTPError extends Error {
     _body: Record<string, any> | typeof undefined;
 
     constructor(response: Response, request: Request, body?: Record<string, any>) {
-        const message    = `HTTPError: ${ response.status } ${ response.status }`;
+        const message = `HTTPError: ${ response.status } ${ response.status }`;
         super(message);
 
         const stackTrace: string = this._formatStack();

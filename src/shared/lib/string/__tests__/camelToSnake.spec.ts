@@ -5,13 +5,13 @@ describe('camelToSnake utility function', () => {
         const received = 'helloWorld';
         const expected = 'hello_world';
 
-        expect(camelToSnake(received)).toEqual(expected);
+        expect(camelToSnake(received)).toBe(expected);
     });
 
     it('function must transformed string correctly with first upper letter', () => {
         const received = 'HelloWorld';
         const expected = 'hello_world';
 
-        expect(camelToSnake(received)).toEqual(expected);
+        expect(camelToSnake(received)).toBe(expected);
     });
 });

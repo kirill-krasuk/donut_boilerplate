@@ -6,7 +6,7 @@ import {
 } from '../../types/actions';
 
 export function createActionCreator<T>() {
-    return function<K extends ActionType<T>> (type: K['type']) : ActionCreator<
+    return function<K extends ActionType<T>> (type: K['type']): ActionCreator<
         K['type'],
         K['payload'],
         K['meta']

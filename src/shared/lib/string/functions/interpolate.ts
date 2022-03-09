@@ -3,7 +3,7 @@ const escapeRegex = /{{(\s)?\$([0-9]+)(\s)?}}/g;
 const normalizeValues = (args: string[]): number[] => args
     .map(arg => parseInt(arg.replace(escapeRegex, '$2'), 10));
 
-const replace = (str: string, args: string[] | null, valuesToReplace: ReadonlyArray<string | number>, index = 0): string => {
+const replace = (str: string, args: string[] | null, valuesToReplace: ReadonlyArray<number | string>, index = 0): string => {
     if (args) {
         if (args.length <= index) {
             return str;
@@ -28,7 +28,7 @@ const replace = (str: string, args: string[] | null, valuesToReplace: ReadonlyAr
     return str;
 };
 
-export const interpolate = (message: string | null, values: ReadonlyArray<string | number>, defaultMessage?: string): string => {
+export const interpolate = (message: string | null, values: ReadonlyArray<number | string>, defaultMessage?: string): string => {
     const messageToReplace = message
         ? message
         : defaultMessage || '';

@@ -153,7 +153,6 @@
         "react-hooks",
         "jsx-a11y"
     ],
-    "ignorePatterns": ["**/lib/*"],
     "overrides": [ {
         // enable the rule specifically for TypeScript files
         "files": ["*.ts", "*.tsx"],

@@ -6,19 +6,19 @@ export interface RequestExtended extends RequestInit {
 }
 
 export type DefaultHeaders = {
-    'Content-Type': string;
-    Accept: string;
+    'Content-Type': string,
+    Accept: string
 }
 
 export type RequestBody =
-    | string
-    | Blob
+    ArrayBuffer
     | ArrayBufferView
-    | ArrayBuffer
+    | Blob
     | FormData
-    | URLSearchParams
     | ReadableStream<Uint8Array>
+    | URLSearchParams
+    | string
     | null
     | undefined
 
-export type UrlORRequest = string | RequestExtended;
+export type UrlORRequest = RequestExtended | string;
