@@ -4,6 +4,8 @@
 
 <p align="center">
   <img src="https://circleci.com/gh/kirill-krasuk/donut_boilerplate.svg?style=svg" alt="circle ci result"/>
+  <img src="https://img.shields.io/circleci/build/github/kirill-krasuk/donut_boilerplate" alt="build result">
+  <img src="https://img.shields.io/badge/donut-template-blueviolet" alt="badge">
 </p>
 
 <h1 align="center">
