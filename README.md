@@ -8,8 +8,8 @@
   <img src="https://img.shields.io/badge/donut-template-blueviolet" alt="badge">
 </p>
 
-<h1 align="center">
-Donut Boilerplate
+<h1 align="center" style="font-size: 45px; font-weight: bold">
+<span style="color: yellow">Donut</span> <span style="color: #F05158">Boilerplate</span>
 </h1>
 
 This template based on [Feature-Sliced Design](https://feature-sliced.design/). Uses Yarn🧶 v2 (codenamed Berry). We are taking a new approach to installing dependencies - [PnP](https://classic.yarnpkg.com/en/docs/pnp/).
