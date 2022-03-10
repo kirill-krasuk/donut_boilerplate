@@ -5,7 +5,7 @@ import HotMiddleware   from 'webpack-hot-middleware';
 
 import env             from '@env/';
 import { headers }     from '@server/constants/headers';
-import webpackConfig   from '../../../config/webpack/webpack.dev';
+import webpackConfig   from '../../config/webpack/webpack.dev';
 
 const { writeToDisk } = env.server;
 

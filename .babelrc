@@ -35,8 +35,8 @@
                 "alias": {
                     "@app": "./src/app",
                     "@public": "./public",
+                    "@server": "./server",
                     "@client": "./core/client",
-                    "@server": "./core/server",
                     "@shared": "./src/shared",
                     "@entities": "./src/entities",
                     "@features": "./src/features",

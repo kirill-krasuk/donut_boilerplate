@@ -45,7 +45,7 @@ module.exports = {
         '@ui-kit/(.*)'                                                                   : '<rootDir>/src/shared/ui-kit/$1',
         '@images/(.*)'                                                                   : '<rootDir>/assets/images/$1',
         '@svgs/(.*)'                                                                     : '<rootDir>/assets/svgs/$1',
-        '@server/(.*)'                                                                   : '<rootDir>/core/server/$1',
+        '@server/(.*)'                                                                   : '<rootDir>/server/$1',
         '@public/(.*)'                                                                   : '<rootDir>/public/$1',
         '@fonts/(.*)'                                                                    : '<rootDir>/assets/fonts/$1',
         '@test/(.*)'                                                                     : '<rootDir>/test/$1',

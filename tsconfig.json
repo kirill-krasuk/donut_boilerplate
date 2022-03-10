@@ -42,7 +42,7 @@
         "paths": {
             "@public/*": ["./public/*"], 
             "@client/*": ["./core/client/*"],
-            "@server/*": ["core/server/*"],
+            "@server/*": ["server/*"],
             "@app/*": ["./src/app/*"],
             "@images/*": ["./src/assets/images/*"],
             "@fonts/*": ["./src/assets/fonts/*"],
@@ -71,5 +71,6 @@
         "config/jest/setup.ts",
         "config/webpack/**/*",
         "config/env/*", 
+        "server/**/*", 
     ],
 }

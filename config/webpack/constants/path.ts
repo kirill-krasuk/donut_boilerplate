@@ -15,7 +15,7 @@ const clientPathMap = {
 } as const;
 
 const serverPathMap = {
-    entry : 'core/server/index.ts',
+    entry : 'server/index.ts',
     output: 'dist'
 } as const;
 
