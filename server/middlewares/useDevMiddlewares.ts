@@ -1,25 +1,26 @@
-import { Application } from 'express';
-import webpack         from 'webpack';
-import DevMiddleware   from 'webpack-dev-middleware';
-import HotMiddleware   from 'webpack-hot-middleware';
+import { Application }              from 'express';
+import webpack                      from 'webpack';
+import DevMiddleware                from 'webpack-dev-middleware';
+import HotMiddleware                from 'webpack-hot-middleware';
 
-import env             from '@env/';
-import { headers }     from '@server/constants/headers';
-import webpackConfig   from '../../config/webpack/webpack.dev';
+import env                          from '@env/';
+import { headers }                  from '@server/constants/headers';
+import { createCompilationPromise } from '@server/utils/createCompilationPromise';
+import webpackConfig                from '../../config/webpack/webpack.dev';
 
 const { writeToDisk } = env.server;
 
 const fileExtensionsToWrite = /\.(jpe?g|webp|png|svg|gif|ttf|otf|woff|woff2)$/;
 
-export function useDevMiddlewares(app: Application): void {
+export function useDevMiddlewares(app: Application) {
     const { sw, isCacheable } = headers;
 
     const [ swKey, swValue ]                   = sw;
     const [ isCacheableKey, isCacheableValue ] = isCacheable;
 
-    const bundler = webpack(webpackConfig);
+    const compiler = webpack(webpackConfig);
 
-    app.use(DevMiddleware(bundler, {
+    app.use(DevMiddleware(compiler, {
         publicPath      : webpackConfig.output?.publicPath,
         stats           : webpackConfig.stats,
         serverSideRender: true,
@@ -30,5 +31,7 @@ export function useDevMiddlewares(app: Application): void {
         writeToDisk: writeToDisk || ((filePath: string) => fileExtensionsToWrite.test(filePath))
     }));
 
-    app.use(HotMiddleware(bundler));
+    app.use(HotMiddleware(compiler));
+
+    return createCompilationPromise(compiler);
 }

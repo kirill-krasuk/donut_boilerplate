@@ -48,7 +48,9 @@ async function main() {
 
     if (__IS_DEV__) {
         const { useDevMiddlewares } = await import('./middlewares/useDevMiddlewares');
-        useDevMiddlewares(app);
+        const compilationPromise    = useDevMiddlewares(app);
+
+        await compilationPromise;
     }
 
     app.use('/handle_error', errorLogging);
