@@ -19,10 +19,8 @@ export const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
     let network             = '';
     const hostname          = getHostname(host);
 
-    if (isOpenInBrowser) {
-        if (openBrowser(`http://${ hostname }:${ port }`)) {
-            messageAboutBrowser = 'The app has been opened in browser!';
-        }
+    if (isOpenInBrowser && openBrowser(`http://${ hostname }:${ port }`)) {
+        messageAboutBrowser = 'The app has been opened in browser!';
     }
 
     if (hostname === 'localhost') {

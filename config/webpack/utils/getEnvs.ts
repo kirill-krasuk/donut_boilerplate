@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-object-from-entries */
 import dotenv from 'dotenv';
 
 const { parsed } = dotenv.config();

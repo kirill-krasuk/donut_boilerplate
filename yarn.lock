@@ -10268,7 +10268,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"builtin-modules@npm:^3.1.0":
+"builtin-modules@npm:^3.0.0, builtin-modules@npm:^3.1.0":
   version: 3.2.0
   resolution: "builtin-modules@npm:3.2.0"
   checksum: 0265aa1ba78e1a16f4e18668d815cb43fb364e6a6b8aa9189c6f44c7b894a551a43b323c40206959d2d4b2568c1f2805607ad6c88adc306a776ce6904cca6715
@@ -10891,7 +10891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^3.2.0":
+"ci-info@npm:^3.2.0, ci-info@npm:^3.3.0":
   version: 3.3.0
   resolution: "ci-info@npm:3.3.0"
   checksum: c3d86fe374938ecda5093b1ba39acb535d8309185ba3f23587747c6a057e63f45419b406d880304dbc0e1d72392c9a33e42fe9a1e299209bc0ded5efaa232b66
@@ -10951,6 +10951,15 @@ __metadata:
   dependencies:
     source-map: ~0.6.0
   checksum: 10855820829b8b6ea94e462313fdc177b297aca5c7870a969591549d6a766824f912b5e58773bd345b2a7effae863ab492258b5a77a40029fba6d11d861cbee3
+  languageName: node
+  linkType: hard
+
+"clean-regexp@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "clean-regexp@npm:1.0.0"
+  dependencies:
+    escape-string-regexp: ^1.0.5
+  checksum: 0b1ce281b07da2463c6882ea2e8409119b6cabbd9f687cdbdcee942c45b2b9049a2084f7b5f228c63ef9f21e722963ae0bfe56a735dbdbdd92512867625a7e40
   languageName: node
   linkType: hard
 
@@ -12073,6 +12082,15 @@ __metadata:
   dependencies:
     capture-stack-trace: ^1.0.0
   checksum: 7254a6f96002d3226d3c1fec952473398761eb4fb12624c5dce6ed0017cdfad6de39b29aa7139680d7dcf416c25f2f308efda6eb6d9b7123f829b19ef8271511
+  languageName: node
+  linkType: hard
+
+"create-eslint-index@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "create-eslint-index@npm:1.0.0"
+  dependencies:
+    lodash.get: ^4.3.0
+  checksum: 34c859910c6873381e795f22352522c23755856ce444e95eec5bf09b640cab50ff8bbc241c61fc0362f42bb713a85ef7aeaa49d0d73d0560bf43f0a0c20b54d6
   languageName: node
   linkType: hard
 
@@ -14083,6 +14101,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-ramda@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "eslint-plugin-ramda@npm:2.5.1"
+  dependencies:
+    create-eslint-index: ^1.0.0
+    ramda: 0.25.0
+    req-all: ^1.0.0
+  checksum: ec972dcd659e5cede5d5f4415d3a572d5bfd5a79b09e7a8475a8605a3bb320f5e78609914539a0ee4d424116802910b2e967e48e0e9fe5a7e18c8fdf14c96570
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react-hooks@npm:^4.3.0":
   version: 4.3.0
   resolution: "eslint-plugin-react-hooks@npm:4.3.0"
@@ -14124,6 +14153,30 @@ __metadata:
   peerDependencies:
     eslint: ^7.5.0 || ^8.0.0
   checksum: 8c9db0f535f807c7b2b23474c216a7239dbe21c5147e4d694f4a49f0e61c85a4ec8c2e77bc16ccb0a2c19e599f519bbf8108370d4721c4f17400bed170ec74aa
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-unicorn@npm:^41.0.0":
+  version: 41.0.0
+  resolution: "eslint-plugin-unicorn@npm:41.0.0"
+  dependencies:
+    "@babel/helper-validator-identifier": ^7.15.7
+    ci-info: ^3.3.0
+    clean-regexp: ^1.0.0
+    eslint-utils: ^3.0.0
+    esquery: ^1.4.0
+    indent-string: ^4.0.0
+    is-builtin-module: ^3.1.0
+    lodash: ^4.17.21
+    pluralize: ^8.0.0
+    read-pkg-up: ^7.0.1
+    regexp-tree: ^0.1.24
+    safe-regex: ^2.1.1
+    semver: ^7.3.5
+    strip-indent: ^3.0.0
+  peerDependencies:
+    eslint: ">=8.8.0"
+  checksum: 661d572b244f9f61121806cb0b9b4914f37e978089633e8b401d95b736f5acb9ed70f398de9cebcdbb1456961e7360c2b196483a793f6f1613c2a4989a298488
   languageName: node
   linkType: hard
 
@@ -18027,6 +18080,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-builtin-module@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "is-builtin-module@npm:3.1.0"
+  dependencies:
+    builtin-modules: ^3.0.0
+  checksum: f1e5dd2cd5f252d4d799b20a0c8c4f7e9c399c4d141749af76ca0121058d4062c3015d026f1b1409dd3d2a4ddfb9b15cf6eb9c370fed53fea8652ce35b5e95cb
+  languageName: node
+  linkType: hard
+
 "is-callable@npm:^1.1.4, is-callable@npm:^1.2.4":
   version: 1.2.4
   resolution: "is-callable@npm:1.2.4"
@@ -20345,7 +20407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.get@npm:^4":
+"lodash.get@npm:^4, lodash.get@npm:^4.3.0":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
@@ -21816,9 +21878,11 @@ __metadata:
     eslint-plugin-import: ^2.25.4
     eslint-plugin-jest: ^26.1.1
     eslint-plugin-jsx-a11y: ^6.5.1
+    eslint-plugin-ramda: ^2.5.1
     eslint-plugin-react: ^7.28.0
     eslint-plugin-react-hooks: ^4.3.0
     eslint-plugin-testing-library: ^5.0.6
+    eslint-plugin-unicorn: ^41.0.0
     express: ^4.17.2
     express-processimage: ^10.2.3
     express-static-gzip: ^2.1.5
@@ -23523,6 +23587,13 @@ __metadata:
   dependencies:
     irregular-plurals: ^1.0.0
   checksum: d77a2f4766c622cfe5d34fe8c3503cc4925015d0875678fbda3a852b14016d30d47aa82f63a454409219061b0c0d7fc2138e7d71d94dec453624580ee3578769
+  languageName: node
+  linkType: hard
+
+"pluralize@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "pluralize@npm:8.0.0"
+  checksum: 08931d4a6a4a5561a7f94f67a31c17e6632cb21e459ab3ff4f6f629d9a822984cf8afef2311d2005fbea5d7ef26016ebb090db008e2d8bce39d0a9a9d218736e
   languageName: node
   linkType: hard
 
@@ -25421,6 +25492,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ramda@npm:0.25.0":
+  version: 0.25.0
+  resolution: "ramda@npm:0.25.0"
+  checksum: 008abbcc69aefd89a2a4a0c9f4cf9f8da2ec490a0e1e261b4c88de8540ef0c383d469bfdf71b758b559377c71bfa8efea164fdb1779169359a86b46f7cb23cb1
+  languageName: node
+  linkType: hard
+
 "ramda@npm:^0.21.0":
   version: 0.21.0
   resolution: "ramda@npm:0.21.0"
@@ -26376,6 +26454,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regexp-tree@npm:^0.1.24, regexp-tree@npm:~0.1.1":
+  version: 0.1.24
+  resolution: "regexp-tree@npm:0.1.24"
+  bin:
+    regexp-tree: bin/regexp-tree
+  checksum: 5807013289d9205288d665e0f8d8cff94843dfd55fdedd1833eb9d9bbd07188a37dfa02942ec5cdc671180037f715148fac1ba6f18fd6be4268e5a8feb49d340
+  languageName: node
+  linkType: hard
+
 "regexp.prototype.flags@npm:^1.2.0, regexp.prototype.flags@npm:^1.3.1":
   version: 1.3.1
   resolution: "regexp.prototype.flags@npm:1.3.1"
@@ -26724,6 +26811,13 @@ __metadata:
   version: 1.0.1
   resolution: "replace-ext@npm:1.0.1"
   checksum: 4994ea1aaa3d32d152a8d98ff638988812c4fa35ba55485630008fe6f49e3384a8a710878e6fd7304b42b38d1b64c1cd070e78ece411f327735581a79dd88571
+  languageName: node
+  linkType: hard
+
+"req-all@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "req-all@npm:1.0.0"
+  checksum: d883e504e4b7cb4257281f1db34fb58d9c0412293f3356512f693807c18313177d849da5238a3db29bd56ccf111a89e8a95c3f82bb29de1cf4386a55be8bfcd7
   languageName: node
   linkType: hard
 
@@ -27129,6 +27223,15 @@ __metadata:
   dependencies:
     ret: ~0.1.10
   checksum: 9a8bba57c87a841f7997b3b951e8e403b1128c1a4fd1182f40cc1a20e2d490593d7c2a21030fadfea320c8e859219019e136f678c6689ed5960b391b822f01d5
+  languageName: node
+  linkType: hard
+
+"safe-regex@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "safe-regex@npm:2.1.1"
+  dependencies:
+    regexp-tree: ~0.1.1
+  checksum: 5d734e2193c63ef0cb00f60c0244e0f8a30ecb31923633cd34636808d6a7c4c206d650017953ae1db8bc33967c2f06af33488dea6f038f4e38212beb7bed77b4
   languageName: node
   linkType: hard
 

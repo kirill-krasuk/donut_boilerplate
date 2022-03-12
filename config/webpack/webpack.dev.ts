@@ -28,7 +28,7 @@ export default configureBundler({
         removeEmptyChunks     : false,
         splitChunks           : false,
     },
-    ignoreWarnings: [ /DeprecationWarning/i ],
+    ignoreWarnings: [ /deprecationwarning/i ],
     stats         : process.env.WEBPACK_DEV_STATS || 'none',
     watch         : true,
     plugins       : [

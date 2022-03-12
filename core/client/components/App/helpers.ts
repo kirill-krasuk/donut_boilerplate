@@ -1,6 +1,6 @@
-const fromServerData = (containerID: string) => document.getElementById(containerID);
+const fromServerData = (containerID: string) => document.querySelector(`#${ containerID }`);
 
-const clearContainer = (container: HTMLElement | null) => container?.parentNode?.removeChild(container);
+const clearContainer = (container: Element | null) => container?.remove();
 
 export const clearServerDataContainer = () => {
     [ 'ssr-store', 'initial-props' ]

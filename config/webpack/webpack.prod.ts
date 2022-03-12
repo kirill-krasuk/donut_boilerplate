@@ -19,8 +19,8 @@ export default configureBundler({
     stats      : 'detailed',
     performance: {
         hints            : false,
-        maxEntrypointSize: 512000,
-        maxAssetSize     : 512000
+        maxEntrypointSize: 512_000,
+        maxAssetSize     : 512_000
     },
     optimization: {
         minimize : true,

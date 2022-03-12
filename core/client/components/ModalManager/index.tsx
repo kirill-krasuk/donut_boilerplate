@@ -5,7 +5,7 @@ import { useSelector }  from 'react-redux';
 import { getModalId }   from '@client/store/selectors/modal';
 import modals           from './modals';
 
-const modalNode = document.getElementById('modal')!;
+const modalNode = document.querySelector('#modal')!;
 
 const ModalManager: FC = () => {
     const id = useSelector(getModalId);

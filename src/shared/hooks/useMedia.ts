@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useEffect, useState, useCallback } from 'react';
 
 const mediaSSRMock = {
     matches       : false,
-    addListener   : () => undefined,
-    removeListener: () => undefined
+    addListener   : () => {},
+    removeListener: () => {}
 };
 
 export function useMedia(queries: string[], values: number[], defaultValue: number) {

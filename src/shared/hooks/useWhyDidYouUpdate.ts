@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-object-from-entries */
 import { useEffect, useRef } from 'react';
 
 export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
@@ -8,20 +9,18 @@ export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
             const allKeys = Reflect.ownKeys({ ...previousProps.current, ...props });
 
             const changesObj = allKeys.reduce((acc, key) => {
-                if (typeof key !== 'symbol') {
-                    if (previousProps?.current) {
-                        if (previousProps.current[key] !== props[key]) {
-                            return {
-                                ...acc,
-                                [key]: {
-                                    from: previousProps.current[key],
-                                    to  : props[key]
-                                }
-                            };
-                        }
-
-                        return acc;
+                if (typeof key !== 'symbol' && previousProps?.current) {
+                    if (previousProps.current[key] !== props[key]) {
+                        return {
+                            ...acc,
+                            [key]: {
+                                from: previousProps.current[key],
+                                to  : props[key]
+                            }
+                        };
                     }
+
+                    return acc;
                 }
 
                 return acc;

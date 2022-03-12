@@ -13,9 +13,61 @@
     "extends": [
         "airbnb-base",
         "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended"
+        "plugin:jsx-a11y/recommended",
+        "plugin:ramda/recommended"
+    ],
+    "plugins": [
+        "arca",
+        "align-assignments",
+        "react",
+        "react-hooks",
+        "jsx-a11y",
+        "unicorn",
+        "ramda"
     ],
     "rules": {
+        "unicorn/better-regex": 2,
+        "unicorn/empty-brace-spaces": 2,
+        "unicorn/escape-case": 2,
+        "unicorn/no-array-push-push": 2,
+        "unicorn/no-instanceof-array": 2,
+        "unicorn/no-lonely-if": 2,
+        "unicorn/no-invalid-remove-event-listener": 2,
+        "unicorn/no-nested-ternary": 2,
+        "unicorn/no-object-as-default-parameter": 2,
+        "unicorn/no-unreadable-array-destructuring": 2,
+        "unicorn/no-useless-fallback-in-spread": 2,
+        "unicorn/no-useless-undefined": 2,
+        "unicorn/number-literal-case": 2,
+        "unicorn/numeric-separators-style": 2,
+        "unicorn/prefer-add-event-listener": 2,
+        "unicorn/prefer-array-find": 2,
+        "unicorn/prefer-array-some": 2,
+        "unicorn/prefer-at": 2,
+        "unicorn/prefer-code-point": 2,
+        "unicorn/prefer-date-now": 2,
+        "unicorn/prefer-dom-node-append": 2,
+        "unicorn/prefer-dom-node-dataset": 2,
+        "unicorn/prefer-dom-node-remove": 2,
+        "unicorn/prefer-dom-node-text-content": 2,
+        "unicorn/prefer-export-from": 2,
+        "unicorn/prefer-includes": 2,
+        "unicorn/prefer-keyboard-event-key": 2,
+        "unicorn/prefer-modern-dom-apis": 2,
+        "unicorn/prefer-number-properties": 2,
+        "unicorn/prefer-object-from-entries": 2,
+        "unicorn/prefer-prototype-methods": 2,
+        "unicorn/prefer-query-selector": 2,
+        "unicorn/prefer-reflect-apply": 2,
+        "unicorn/prefer-regexp-test": 2,
+        "unicorn/prefer-string-replace-all": 2,
+        "unicorn/prefer-string-starts-ends-with": 2,
+        "unicorn/prefer-string-trim-start-end": 2,
+        "unicorn/prefer-ternary": 2,
+        "unicorn/prefer-switch": 2,
+        "unicorn/prefer-type-error": 2,
+        "unicorn/require-number-to-fixed-digits-argument": 2,
+        "unicorn/template-indent": [2, { "indent": 4, "tags": [ "styled" ], "functions": ["div"] }],
         "align-assignments/align-assignments": [2, { 
             "requiresOnly": false 
         } ],
@@ -146,13 +198,6 @@
         "react-hooks/exhaustive-deps": 2,
         "no-useless-computed-key": 0
     },
-    "plugins": [
-        "arca",
-        "align-assignments",
-        "react",
-        "react-hooks",
-        "jsx-a11y"
-    ],
     "overrides": [ {
         // enable the rule specifically for TypeScript files
         "files": ["*.ts", "*.tsx"],

@@ -4,7 +4,7 @@ import { loadableReady }   from '@loadable/component';
 import env                 from '@env/';
 import { App }             from './components';
 
-const getRootNode = () => document.getElementById('root');
+const getRootNode = () => document.querySelector('#root');
 
 const renderOrHydrate = env.client.needHydrate
     ? hydrate

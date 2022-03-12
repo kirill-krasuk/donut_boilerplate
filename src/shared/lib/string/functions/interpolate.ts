@@ -1,7 +1,7 @@
-const escapeRegex = /{{(\s)?\$([0-9]+)(\s)?}}/g;
+const escapeRegex = /{{(\s)?\$(\d+)(\s)?}}/g;
 
 const normalizeValues = (args: string[]): number[] => args
-    .map(arg => parseInt(arg.replace(escapeRegex, '$2'), 10));
+    .map(arg => Number.parseInt(arg.replace(escapeRegex, '$2'), 10));
 
 const replace = (str: string, args: string[] | null, valuesToReplace: ReadonlyArray<number | string>, index = 0): string => {
     if (args) {

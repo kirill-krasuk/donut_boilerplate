@@ -45,12 +45,10 @@ export function configureStore(preloadedState: object = {}) {
 
     extendStore(store, asyncPreloadedState);
 
-    if (__IS_CLIENT__) {
-        if ((module as any).hot) {
-            (module as any).hot.accept('../../store/reducers', () => {
-                store.replaceReducer(createRootReducer({}));
-            });
-        }
+    if (__IS_CLIENT__ && (module as any).hot) {
+        (module as any).hot.accept('../../store/reducers', () => {
+            store.replaceReducer(createRootReducer({}));
+        });
     }
 
     return { store, rootReducer };
