@@ -15,3 +15,25 @@ export type ObjValueTuple<T, KS extends any[] = TuplifyUnion<keyof T>, R extends
     KS extends [infer K, ...infer KT]
         ? ObjValueTuple<T, KT, [...R, T[K & keyof T]]>
         : R
+
+export type Extends<A, B, Then = true, Else = false> = A extends B
+    ? Then
+    : Else;
+
+export type If<Condition, Then, Else> = Extends<Condition, true, Then, Else>;
+
+export type And<A extends boolean, B extends boolean> = Extends<
+    A,
+    true,
+    B,
+    false
+>;
+
+export type Or<A extends boolean, B extends boolean> = Extends<
+    A,
+    true,
+    true,
+    B
+>;
+
+export type Not<A extends boolean> = Extends<A, true, false, true>;
