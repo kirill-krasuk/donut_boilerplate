@@ -14145,6 +14145,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-sonarjs@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "eslint-plugin-sonarjs@npm:0.12.0"
+  peerDependencies:
+    eslint: ^5.0.0 || ^6.0.0 || ^7.0.0|| ^8.0.0
+  checksum: 96be3002ce2344a07081c33649d9bb927189153c2e68ecb13069b0adfa4ff2e2cecec6f25ee3d5e29600d8d8aac6e14e54f1990b0847234975f311d48521c828
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-testing-library@npm:^5.0.6":
   version: 5.0.6
   resolution: "eslint-plugin-testing-library@npm:5.0.6"
@@ -21881,6 +21890,7 @@ __metadata:
     eslint-plugin-ramda: ^2.5.1
     eslint-plugin-react: ^7.28.0
     eslint-plugin-react-hooks: ^4.3.0
+    eslint-plugin-sonarjs: ^0.12.0
     eslint-plugin-testing-library: ^5.0.6
     eslint-plugin-unicorn: ^41.0.0
     express: ^4.17.2

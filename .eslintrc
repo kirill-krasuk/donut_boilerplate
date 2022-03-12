@@ -14,7 +14,8 @@
         "airbnb-base",
         "plugin:react/recommended",
         "plugin:jsx-a11y/recommended",
-        "plugin:ramda/recommended"
+        "plugin:ramda/recommended",
+        "plugin:sonarjs/recommended"
     ],
     "plugins": [
         "arca",
@@ -23,7 +24,8 @@
         "react-hooks",
         "jsx-a11y",
         "unicorn",
-        "ramda"
+        "ramda",
+        "sonarjs"
     ],
     "rules": {
         "unicorn/better-regex": 2,
@@ -96,6 +98,7 @@
         "max-len": 0,
         "no-unused-vars": 0,
         "no-redeclare": 0,
+        "no-return-await": 0,
         // TODO: React in setup scripts call this error
         "no-use-before-define": 0,
         "no-new": 0,

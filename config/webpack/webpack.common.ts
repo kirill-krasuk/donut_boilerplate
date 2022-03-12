@@ -27,6 +27,8 @@ const smp = new SpeedMeasurePlugin();
 export const __IS_CLIENT__ = true;
 export const __IS_SERVER__ = false;
 
+const contentHash = 'contenthash:8';
+
 const useSpeedMeasure = JSON.parse(process.env.USE_SPEED_MEASURE_CLIENT || 'false');
 
 export function configureBundler(options: webpack.Configuration): webpack.Configuration {
@@ -42,9 +44,9 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         mode   : options.mode,
         entry  : options.entry,
         output : {
-            chunkFilename: addHash('[name].js', 'contenthash:8'),
+            chunkFilename: addHash('[name].js', contentHash),
             path         : `${ paths.client.dist }`,
-            filename     : addHash('[name].js', 'contenthash:8'),
+            filename     : addHash('[name].js', contentHash),
             publicPath   : '/dist/',
             pathinfo     : false,
         },
@@ -131,8 +133,8 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 adjustIndent: true
             }),
             new ExtractCssChunks({
-                filename     : addHash('[name].css', 'contenthash:8'),
-                chunkFilename: addHash('[id].css', 'contenthash:8'),
+                filename     : addHash('[name].css', contentHash),
+                chunkFilename: addHash('[id].css', contentHash),
             }),
             new LoadablePlugin(),
             new webpack.DefinePlugin({

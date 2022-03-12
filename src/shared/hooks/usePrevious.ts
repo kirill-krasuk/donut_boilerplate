@@ -10,6 +10,4 @@ export function usePrevious<T>(value: T) {
     if (ref?.current) {
         return ref.current;
     }
-
-    return;
 }

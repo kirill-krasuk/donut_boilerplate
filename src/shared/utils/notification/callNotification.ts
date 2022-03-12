@@ -34,11 +34,7 @@ export function callNotification(overrideOptions?: Record<string, any>) {
         Notification.requestPermission().then((permission) => {
             if (permission === 'granted') {
                 new Notification(notifyTitle, notifyOptions);
-
-                return;
             }
         });
-
-        return;
     }
 }
