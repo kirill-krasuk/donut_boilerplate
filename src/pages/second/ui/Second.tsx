@@ -1,7 +1,7 @@
 import { FC }            from 'react';
 import { EOLocale as T } from 'eo-locale';
 
-import { routes }        from '@shared/config/routes';
+import { routes }        from '@config/routes';
 import { Header }        from '@features/header';
 import * as S            from './styles';
 import locales           from '../config/locales';

@@ -1,6 +1,6 @@
 import { RouteObject }   from 'react-router';
 
-import { routes }        from '@shared/config/routes';
+import { routes }        from '@config/routes';
 
 import { Home }          from './home';
 import { Second }        from './second';

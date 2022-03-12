@@ -1,4 +1,4 @@
-import { Theme } from '@shared/config/theme';
+import { Theme } from '@config/theme';
 
 export type ThemeState = {
     mode: Theme

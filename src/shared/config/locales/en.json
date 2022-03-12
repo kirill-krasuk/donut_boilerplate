@@ -1,7 +1,7 @@
 {
-    "app/components/HomePage/title": "Edit src/app/components/HomePage save and reload",
+    "app/components/HomePage/title": "Edit src/pages/Home/ui/Home.tsx save and reload",
     "app/components/HomePage/link": "go to see the second page",
-    "app/components/SecondPage/title": "Edit src/app/components/SecondPage save and reload",
+    "app/components/SecondPage/title": "Edit src/pages/Second/ui/Second.tsx save and reload",
     "app/components/SecondPage/link": "go to see the main page",
     "app/components/SecondPage/protect": "redirect to protected route",
     "app/components/Header/title": "Welcome to Donut Boilerplate v2"

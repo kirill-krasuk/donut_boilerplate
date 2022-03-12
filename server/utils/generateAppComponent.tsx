@@ -3,9 +3,11 @@ import { StaticRouter }          from 'react-router-dom/server';
 
 import Routes                    from '@app/routes';
 import { ChunkExtractorManager } from '@loadable/server';
-import { RedirectProvider }      from '@app/components';
+import { RedirectProvider }      from '@app/providers/with-router';
 import { GenerateAppOptions }    from '@server/types/appComponent';
-import { RootProviders }         from '@app/providers';
+import { ThemeProvider }         from '@app/providers/with-theme';
+import { GlobalStyles }          from '@app/providers/with-styles';
+import { LocalesProvider }       from '@app/providers/with-locales';
 
 export function generateAppComponent({
     store,
@@ -17,11 +19,17 @@ export function generateAppComponent({
         <Provider store={ store }>
             <StaticRouter location={ location }>
                 <RedirectProvider context={ context }>
-                    <ChunkExtractorManager extractor={ extractor }>
-                        <RootProviders />
+                    <LocalesProvider>
+                        <ThemeProvider>
+                            <ChunkExtractorManager extractor={ extractor }>
+                                <>
+                                    <Routes />
 
-                        <Routes />
-                    </ChunkExtractorManager>
+                                    <GlobalStyles />
+                                </>
+                            </ChunkExtractorManager>
+                        </ThemeProvider>
+                    </LocalesProvider>
                 </RedirectProvider>
             </StaticRouter>
         </Provider>
