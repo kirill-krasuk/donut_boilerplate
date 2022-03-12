@@ -1,6 +1,6 @@
-import { useRoutes, RouteObject } from 'react-router';
+import { RouteObject, useRoutes } from 'react-router';
 
-import Root                       from '@client/components/Root';
+import Root                       from '@app/components/Root';
 import { AppRoutes }              from '@pages/index';
 
 export const routes: RouteObject[] = [ {

@@ -1,12 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
 import appReducers         from '@app/store/reducers';
-import modal               from './modal';
 
-export const staticReducers = {
-    modal,
-    ...appReducers
-};
+export const staticReducers = appReducers;
 
 const appReducer = (asyncReducers = {}, ssrReducers = {}) => combineReducers({
     ...staticReducers,

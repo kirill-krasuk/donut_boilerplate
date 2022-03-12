@@ -1,8 +1,9 @@
+import { ComponentType }                         from 'react';
 import { createGlobalStyle }                     from 'styled-components/macro';
 
 import { darkValues, lightValues, commonValues } from '@config/theme';
 
-export default createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     .light {
         ${ lightValues }
     }
@@ -33,3 +34,19 @@ export default createGlobalStyle`
         min-height: inherit;
     }
 `;
+
+export function withGlobalStyles<T>(Component: ComponentType<T>) {
+    function StylesProvider(props: T) {
+        return (
+            <>
+                <GlobalStyles />
+
+                <Component { ...props } />
+            </>
+        );
+    }
+
+    StylesProvider.displayName = `withGlobalStyles(${ Component.displayName })`;
+
+    return StylesProvider;
+}

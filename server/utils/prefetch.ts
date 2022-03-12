@@ -1,6 +1,6 @@
 import { matchRoutes }      from 'react-router';
 
-import { routes }           from '@client/components/Router/RootRoute';
+import { routes }           from '@app/routes';
 import { RouteForPrefetch } from '@lib/react';
 
 export async function prefetch(url: string, auth: any = null) {

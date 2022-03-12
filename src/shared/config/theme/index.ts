@@ -6,5 +6,5 @@ export {
 } from './theme';
 export { palette } from './palette';
 
-export type { ThemeState, AppTheme } from './types';
+export type { AppTheme } from './types';
 export { Theme } from './types/enums';

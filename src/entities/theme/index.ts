@@ -1,7 +1,4 @@
-export type {
-    AppTheme,
-    ThemeState
-} from '@config/theme';
+export type { AppTheme } from '@config/theme';
 
 export { Theme } from '@config/theme';
 

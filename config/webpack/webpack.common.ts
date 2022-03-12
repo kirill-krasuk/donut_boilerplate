@@ -102,7 +102,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 swDest : './sw.js',
                 include: [ '**/*.js', '**/*.js.gz' ],
                 exclude: [ '**/*.hot-update.json' ],
-                swSrc  : './core/client/service-worker.js',
+                swSrc  : './src/app/service-worker.js',
             }),
             new ImageminWebpWebpackPlugin({
                 config: [ {

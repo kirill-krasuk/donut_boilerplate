@@ -5,8 +5,8 @@ import { getPathsFromMap } from '../utils/getPathsFromMap';
 const clientPathMap = {
     src          : 'src',
     dist         : 'dist',
-    entry        : 'core/client/index.tsx',
-    template     : 'core/client/index.pug',
+    entry        : 'src/app/index.tsx',
+    template     : 'src/app/index.pug',
     view         : 'dist/index.pug',
     postCssConfig: 'config/css/.postcssrc',
     fonts        : 'src/assets/fonts',

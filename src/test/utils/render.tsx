@@ -6,17 +6,15 @@ import { ThemeProvider }         from 'styled-components';
 
 import { theme }                 from '@config/theme';
 import { BrowserRouter }         from 'react-router-dom';
-import { LanguageProvider }      from '@client/components';
 import { store }                 from '../__mocks__/store';
 
+// TODO: need locales provider
 const AllTheProviders: React.ComponentType = ({ children }) => (
     <BrowserRouter>
         <Provider store={ store }>
-            <LanguageProvider>
-                <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
-                    { children }
-                </ThemeProvider>
-            </LanguageProvider>
+            <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
+                { children }
+            </ThemeProvider>
         </Provider>
     </BrowserRouter>
 );

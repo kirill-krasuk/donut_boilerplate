@@ -2,13 +2,13 @@ import { FC }           from 'react';
 import { createPortal } from 'react-dom';
 import { useSelector }  from 'react-redux';
 
-import { getModalId }   from '@client/store/selectors/modal';
+import { modalsModel }  from '@features/modals';
 import modals           from './modals';
 
 const modalNode = document.querySelector('#modal')!;
 
 const ModalManager: FC = () => {
-    const id = useSelector(getModalId);
+    const id = useSelector(modalsModel.selectors.getModalId);
 
     if (!id) {
         return null;
