@@ -37,3 +37,5 @@ export type Or<A extends boolean, B extends boolean> = Extends<
 >;
 
 export type Not<A extends boolean> = Extends<A, true, false, true>;
+
+export type Tuple<T = any> = T[] | [T];
