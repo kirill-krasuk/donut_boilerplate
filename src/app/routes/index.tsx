@@ -1,7 +1,7 @@
 import { RouteObject, useRoutes } from 'react-router';
 
 import { AppRoutes }              from '@pages/index';
-import RootView                   from './RootView';
+import { RootView }               from './root-view';
 
 export const routes: RouteObject[] = [ {
     path    : '/',
@@ -9,6 +9,4 @@ export const routes: RouteObject[] = [ {
     children: AppRoutes
 } ];
 
-const Routes = () => useRoutes(routes);
-
-export default Routes;
+export const Routes = () => useRoutes(routes);

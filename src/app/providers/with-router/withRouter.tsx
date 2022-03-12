@@ -1,7 +1,7 @@
 import { ComponentType }    from 'react';
 import { BrowserRouter }    from 'react-router-dom';
 
-import Routes               from '@app/routes';
+import { Routes }           from '@app/routes';
 import { RedirectProvider } from './RedirectProvider';
 
 export function withRouter(Component: ComponentType) {

@@ -1,7 +1,7 @@
 import { Provider }              from 'react-redux';
 import { StaticRouter }          from 'react-router-dom/server';
 
-import Routes                    from '@app/routes';
+import { Routes }                from '@app/routes';
 import { ChunkExtractorManager } from '@loadable/server';
 import { RedirectProvider }      from '@app/providers/with-router';
 import { GenerateAppOptions }    from '@server/types/appComponent';

@@ -6,14 +6,12 @@ import { clearServerDataContainer } from './lib';
 // manual connection of fonts
 // import './styles/fonts.css';
 
-const App: FC = () => {
+export const Application: FC = withAppProviders(() => {
     useEffect(() => {
         clearServerDataContainer();
     }, []);
 
     return null;
-};
+});
 
-App.displayName = 'App';
-
-export default withAppProviders(App);
+Application.displayName = 'App';

@@ -2,7 +2,7 @@ import { hydrate, render } from 'react-dom';
 import { loadableReady }   from '@loadable/component';
 
 import env                 from '@env/';
-import App                 from './Application';
+import { Application }     from './application';
 
 const getRootNode = () => document.querySelector('#root');
 
@@ -30,7 +30,7 @@ loadableReady(() => {
     }
 
     renderOrHydrate(
-        <App />,
+        <Application />,
         getRootNode()
     );
 });

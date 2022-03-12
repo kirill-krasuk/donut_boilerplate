@@ -4,10 +4,8 @@ import { Outlet } from 'react-router-dom';
 
 import * as S     from './styles';
 
-const RootView: FC = () => (
+export const RootView: FC = () => (
     <S.Wrapper>
         <Outlet />
     </S.Wrapper>
 );
-
-export default RootView;
