@@ -28,9 +28,10 @@ export default configureBundler({
         removeEmptyChunks     : false,
         splitChunks           : false,
     },
-    stats  : 'errors-warnings',
-    watch  : true,
-    plugins: [
+    ignoreWarnings: [ /DeprecationWarning/i ],
+    stats         : process.env.WEBPACK_DEV_STATS || 'none',
+    watch         : true,
+    plugins       : [
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin({
             overlay: {

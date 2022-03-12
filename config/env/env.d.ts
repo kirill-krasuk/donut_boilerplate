@@ -3,6 +3,13 @@ declare global {
         interface ProcessEnv {
             APP_NAME?: string;
             NODE_ENV?: 'development' | 'production';
+            WEBPACK_DEV_STATS?: 'detailed'
+                | 'errors-only'
+                | 'errors-warnings'
+                | 'minimal'
+                | 'normal'
+                | 'summary'
+                | 'verbose';
             HOST?: string;
             PORT?: number;
             API_HOST?: string;
