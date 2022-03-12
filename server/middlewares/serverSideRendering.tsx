@@ -3,7 +3,7 @@ import { ChunkExtractor }           from '@loadable/server';
 
 import { localeModel }              from '@entities/locale';
 import { themeModel }               from '@entities/theme';
-import { configureStore }           from '@client/utils/store/configureStore';
+import { store }                    from '@app/store';
 import { prefetch }                 from '@server/utils/prefetch';
 import { Context }                  from '@server/types/context';
 import { initializeState }          from '@server/utils/initializeState';
@@ -27,7 +27,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
         token
     } = req.cookies;
 
-    const { store } = configureStore({});
+    // const { store } = configureStore({});
     const extractor = new ChunkExtractor({
         stats          : loadableStats,
         entrypoints    : [ 'bundle' ],

@@ -3,5 +3,5 @@ export { ModalTest } from './modal-test/ModalTest';
 
 export * as modalsModel from './model';
 
-export { ModalHasHistory, CallModalObjectPayload } from './types';
+export type { ModalHasHistory, CallModalObjectPayload } from './types';
 export { Modals } from './types/enums';

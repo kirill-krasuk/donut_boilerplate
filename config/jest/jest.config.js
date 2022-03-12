@@ -28,7 +28,6 @@ module.exports = {
         '\\.svg$'                                                                        : '<rootDir>/test/__mocks__/svgr.ts',
         'styled-components/macro'                                                        : 'styled-components',
         '/\.module\.s(c|a)ss$/'                                                          : 'identity-obj-proxy',
-        '@client/(.*)'                                                                   : '<rootDir>/core/client$1',
         '@shared/(.*)'                                                                   : '<rootDir>/src/shared/$1',
         '@entities/(.*)'                                                                 : '<rootDir>/src/entities/$1',
         '@features/(.*)'                                                                 : '<rootDir>/src/features/$1',

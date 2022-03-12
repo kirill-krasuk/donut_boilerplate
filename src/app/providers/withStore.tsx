@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { Provider }      from 'react-redux';
 
-import { store }         from '@client/store';
+import { store }         from '../store';
 
 export function withStore<T>(Component: ComponentType<T>) {
     function StoreProvider(props: T) {

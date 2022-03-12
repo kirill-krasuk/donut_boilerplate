@@ -43,7 +43,6 @@
         ],
         "paths": {
             "@public/*": ["./public/*"], 
-            "@client/*": ["./core/client/*"],
             "@server/*": ["server/*"],
             "@app/*": ["./src/app/*"],
             "@images/*": ["./src/assets/images/*"],
