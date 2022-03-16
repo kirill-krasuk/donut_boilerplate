@@ -1,19 +1,65 @@
-import { FC }               from 'react';
-import { replaceExtension } from '@utils/file';
-import { Props }            from './types';
+import { FC, useState }              from 'react';
 
-// TODO: complete
+import { imageConfig }               from './config';
+import { Picture, ProgressiveImage } from './components';
+import { Props }                     from './types';
+import * as S                        from './styles';
 
 export const Image: FC<Props> = (props) => {
-    const { src, webp, alt } = props;
+    const {
+        src,
+        webp,
+        alt,
+        width,
+        height,
+        loadingWidth,
+        progressive
+    } = props;
+
+    const [ isLoaded, setIsLoaded ] = useState(false);
+
+    const handleLoad = () => setIsLoaded(true);
+
+    const renderProgressiveImage = () => {
+        if (progressive) {
+            return (
+                <ProgressiveImage
+                    alt={ alt }
+                    handleLoad={ handleLoad }
+                    height={ height }
+                    isLoaded={ isLoaded }
+                    loadingWidth={ loadingWidth }
+                    src={ src }
+                    webp={ webp }
+                    width={ width }
+                />
+            );
+        }
+
+        return (
+            <Picture
+                src={ src }
+                webp={ webp }
+            >
+                <S.ImgContainer
+                    alt={ alt }
+                    height={ height }
+                    onLoad={ handleLoad }
+                    width={ width }
+                />
+            </Picture>
+        );
+    };
 
     return (
-        <picture>
-            { webp && <source srcSet={ replaceExtension(src, 'webp') } type="image/webp" /> }
-
-            <img alt={ alt } src={ src } />
-        </picture>
+        <S.Container height={ height } width={ width }>
+            { renderProgressiveImage() }
+        </S.Container>
     );
+};
+
+Image.defaultProps = {
+    loadingWidth: imageConfig.loadingWidth
 };
 
 export default Image;
