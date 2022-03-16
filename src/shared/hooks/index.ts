@@ -8,3 +8,4 @@ export { useMedia } from './useMedia';
 export { useLockBodyScroll } from './useLockBodyScroll';
 export { useInitialProps } from './useInitialProps';
 export { useActions } from './useActions';
+export { createIntersectionHook, useIntersection } from './useIntersection';
