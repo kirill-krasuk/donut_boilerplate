@@ -6,3 +6,10 @@ export const Image = loadable(
         fallback: <div>Loading...</div>
     }
 );
+
+export const LazyImage = loadable(
+    () => import(/* webpackChunkName: "LazyImage" */'./LazyImage'),
+    {
+        fallback: <div>Loading...</div>
+    }
+);
