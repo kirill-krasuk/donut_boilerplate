@@ -8,8 +8,10 @@ export function createCompilationPromise(compiler: webpack.Compiler): Promise<vo
             } else {
                 // make delay for server down with error
                 // end output compilation status in stdout
+
+                // TODO: refactoring
                 setTimeout(() => {
-                    process.exit(1);
+                    // process.exit(1);
                 }, 100);
             }
         });
