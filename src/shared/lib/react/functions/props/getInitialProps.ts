@@ -1,5 +1,4 @@
-// TODO: refactor dependency
-import { Context } from '@server/types/context';
+import { Context } from '@shared/types/client-server';
 
 const getInitialPropsFromDOM = () => {
     if (Reflect.has(window, '__INITIAL_PROPS__')) {

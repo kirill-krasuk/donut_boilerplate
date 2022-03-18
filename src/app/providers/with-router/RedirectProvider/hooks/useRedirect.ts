@@ -1,7 +1,7 @@
 import { useLocation, matchRoutes, useNavigate } from 'react-router';
 
 import { AppRoutes }                             from '@pages/index';
-import { Context }                               from '@server/types/context';
+import { Context }                               from '@shared/types/client-server';
 import { protectRedirect, routes as appRoutes }  from '@config/routes';
 import { AppRouteObject }                        from '../types';
 

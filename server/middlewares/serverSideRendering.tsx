@@ -5,7 +5,7 @@ import { localeModel }              from '@entities/locale';
 import { themeModel }               from '@entities/theme';
 import { store }                    from '@app/store';
 import { prefetch }                 from '@server/utils/prefetch';
-import { Context }                  from '@server/types/context';
+import { Context }                  from '@shared/types/client-server';
 import { initializeState }          from '@server/utils/initializeState';
 import { generateAppComponent }     from '@server/utils/generateAppComponent';
 import { generateStaticTemplate }   from '@server/utils/generateStaticTemplate';
