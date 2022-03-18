@@ -1,9 +1,9 @@
-import { FC }              from 'react';
+import { FC }                      from 'react';
 
-import { getInitialProps } from '@lib/react';
-import { useRedirect }     from './hooks';
-import { Provider }        from './context';
-import { Props }           from './types';
+import { getInitialProps }         from '@lib/react';
+import { RedirectContextProvider } from '@shared/context/redirect-context';
+import { useRedirect }             from './hooks';
+import { Props }                   from './types';
 
 /**
  * Server Side Component
@@ -14,8 +14,8 @@ export const RedirectProvider: FC<Props> = ({ context: serverContext, children }
     useRedirect(serverContext);
 
     return (
-        <Provider value={ { ...getInitialProps(serverContext) } }>
+        <RedirectContextProvider value={ { ...getInitialProps(serverContext) } }>
             { children }
-        </Provider>
+        </RedirectContextProvider>
     );
 };
