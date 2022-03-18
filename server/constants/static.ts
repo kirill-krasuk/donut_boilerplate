@@ -1,6 +1,6 @@
 import { ServeStaticOptions } from 'serve-static';
 
-import { headers }            from '../constants/headers';
+import { headers }            from './headers';
 import { ONE_MONTH_CACHE }    from './cache';
 
 export const serveStaticOptions: ServeStaticOptions = {

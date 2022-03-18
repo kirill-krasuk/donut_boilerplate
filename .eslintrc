@@ -8,14 +8,56 @@
     "settings": {
         "react": {
             "version": "detect"
-        }
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            }
+        },
+        "boundaries/include": ["src/**/*.ts", "src/**/*.tsx"],
+        "boundaries/ignore": ["src/**/*.d.ts", "**/__mocks__/**/*", "**/test/**/*"],
+        "boundaries/elements": [
+            {
+                "type": "env",
+                "pattern": "env/*"
+            },
+            {
+                "type": "shared",
+                "pattern": "shared/*"
+            },
+            {
+                "type": "entities",
+                "pattern": "entities/*"
+            },
+            {
+                "type": "features",
+                "pattern": "features/*"
+            },
+            {
+                "type": "widgets",
+                "pattern": "widgets/*"
+            },
+            {
+                "type": "pages",
+                "pattern": "pages/*"
+            },
+            {
+                "type": "processes",
+                "pattern": "processes/*"
+            },
+            {
+                "type": "app",
+                "pattern": "app/*"
+            }
+        ]
     },
     "extends": [
         "airbnb-base",
         "plugin:react/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:ramda/recommended",
-        "plugin:sonarjs/recommended"
+        "plugin:sonarjs/recommended",
+        "plugin:boundaries/recommended"
     ],
     "plugins": [
         "arca",
@@ -25,9 +67,77 @@
         "jsx-a11y",
         "unicorn",
         "ramda",
-        "sonarjs"
+        "sonarjs",
+        "boundaries"
     ],
     "rules": {
+        "boundaries/element-types": [2, {
+            "default": "allow",
+            "rules": [
+                {
+                    "from": "shared",
+                    "disallow": [
+                        "entities",
+                        "features",
+                        "widgets",
+                        "pages",
+                        "processes",
+                        "app"
+                    ],
+                    "message": "Shared cannot use imports like: entities,features,widgets,pages,processes,app"
+                },
+                {
+                    "from": "entities",
+                    "disallow": [
+                        "entities",
+                        "features",
+                        "widgets",
+                        "pages",
+                        "processes",
+                        "app"
+                    ],
+                    "message": "Entities cannot use imports like: entities,features,widgets,pages,processes,app"
+                },
+                {
+                    "from": "features",
+                    "disallow": [
+                        "features",
+                        "widgets",
+                        "pages",
+                        "processes",
+                        "app"
+                    ],
+                    "message": "Features cannot use imports like: features,widgets,pages,processes,app"
+                },
+                {
+                    "from": "widgets",
+                    "disallow": [
+                        "widgets",
+                        "pages",
+                        "processes",
+                        "app"
+                    ],
+                    "message": "Widgets cannot use imports like: widgets,pages,processes,app"
+                },
+                {
+                    "from": "pages",
+                    "disallow": [
+                        "pages",
+                        "processes",
+                        "app"
+                    ],
+                    "message": "Pages cannot use imports like: pages,processes,app"
+                },
+                {
+                    "from": "processes",
+                    "disallow": [
+                        "processes",
+                        "app"
+                    ],
+                    "message": "Processes cannot use imports like: processes,app"
+                }
+            ]
+        }],
         "unicorn/better-regex": 2,
         "unicorn/empty-brace-spaces": 2,
         "unicorn/escape-case": 2,
