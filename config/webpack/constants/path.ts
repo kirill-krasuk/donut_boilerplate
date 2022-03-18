@@ -23,5 +23,8 @@ export const paths = {
     client  : getPathsFromMap(clientPathMap),
     server  : getPathsFromMap(serverPathMap),
     context : path.resolve(''),
-    cacheDir: path.resolve('.cache')
+    cacheDir: path.resolve('.cache'),
+    tsconfig: path.resolve('tsconfig.json'),
+    swSrc   : './src/app/service-worker.js',
+    swDest  : './sw.js'
 };

@@ -7,7 +7,7 @@ import shrinkRay                                     from 'shrink-ray-current';
 import favicon                                       from 'serve-favicon';
 import cookieParser                                  from 'cookie-parser';
 
-import env                                           from '@env/';
+import { env }                                       from '@env/index';
 import { createUsePortHandler }                      from './handlers/handleUsePort';
 import { createServerRunner }                        from './utils/runServer';
 import { serverSideRendering }                       from './middlewares/serverSideRendering';

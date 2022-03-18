@@ -3,7 +3,7 @@ import { generateConfig }             from './generateConfig';
 
 const generateEnvByScheme = generateConfig(process.env);
 
-export default {
+export const env = {
     client: generateEnvByScheme(clientScheme),
     server: generateEnvByScheme(serverScheme)
 };

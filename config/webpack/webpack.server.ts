@@ -2,6 +2,7 @@ import webpack, { Configuration }    from 'webpack';
 import { WebpackPnpExternals }       from 'webpack-pnp-externals';
 import SpeedMeasurePlugin            from 'speed-measure-webpack-plugin';
 
+import { TsconfigPathsPlugin }       from 'tsconfig-paths-webpack-plugin';
 import { getJsLoader }               from './loaders/js-loader';
 import { getServerImageLoader }      from './loaders/image-loader';
 import { getFontsLoader }            from './loaders/font-loader';
@@ -53,6 +54,11 @@ const config: Configuration = {
         ],
         symlinks        : false,
         cacheWithContext: false,
+        plugins         : [
+            new TsconfigPathsPlugin({
+                configFile: paths.tsconfig
+            })
+        ]
     },
     module: {
         rules: [

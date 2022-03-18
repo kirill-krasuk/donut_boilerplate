@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/prefer-optional-chain */
 import { PC }              from '@lib/react';
 import { useInitialProps } from '@hooks/index';
-import env                 from '@env/';
+import { env }             from '@env/index';
 
 type InitialProps = {
     posts: any[]

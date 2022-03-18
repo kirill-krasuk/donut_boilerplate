@@ -1,5 +1,5 @@
 import { createStore } from '@lib/redux';
-import env             from '@env/';
+import { env }         from '@env/index';
 import { Environment } from '@enums/env';
 import rootReducer     from './reducers';
 import appMiddlewares  from './middlewares';

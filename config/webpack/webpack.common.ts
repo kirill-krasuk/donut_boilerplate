@@ -9,6 +9,8 @@ import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
 import SpeedMeasurePlugin              from 'speed-measure-webpack-plugin';
+import { TsconfigPathsPlugin }         from 'tsconfig-paths-webpack-plugin';
+import { fileExtensions }              from './constants/files';
 
 import { paths }                       from './constants/path';
 import { getJsLoader }                 from './loaders/js-loader';
@@ -71,7 +73,12 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 fonts : paths.client.fonts,
                 images: paths.client.images,
                 svgs  : paths.client.svgs
-            }
+            },
+            plugins: [
+                new TsconfigPathsPlugin({
+                    configFile: paths.tsconfig
+                })
+            ]
         },
         ...(options.cache && {
             cache: options.cache
@@ -99,14 +106,14 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         watch  : options.watch || false,
         plugins: options!.plugins!.concat([
             serviceWorkerEnabled && new InjectManifest({
-                swDest : './sw.js',
+                swDest : paths.swDest,
                 include: [ '**/*.js', '**/*.js.gz' ],
                 exclude: [ '**/*.hot-update.json' ],
-                swSrc  : './src/app/service-worker.js',
+                swSrc  : paths.swSrc,
             }),
             new ImageminWebpWebpackPlugin({
                 config: [ {
-                    test   : /\.(jpe?g|png|gif)/,
+                    test   : fileExtensions.images,
                     options: {
                         quality: 75
                     }
@@ -126,7 +133,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                  correctly building pug file
                  because indentation matters */
                 minify       : false,
-                excludeAssets: [ /\.(js|css)/ ]
+                excludeAssets: [ fileExtensions.jsOrCss ]
             }),
             new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
             new HtmlPugPlugin({

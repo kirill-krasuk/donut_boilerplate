@@ -3,7 +3,7 @@ import webpack                      from 'webpack';
 import DevMiddleware                from 'webpack-dev-middleware';
 import HotMiddleware                from 'webpack-hot-middleware';
 
-import env                          from '@env/';
+import { env }                      from '@env/index';
 import { headers }                  from '@server/constants/headers';
 import { createCompilationPromise } from '@server/utils/createCompilationPromise';
 import webpackConfig                from '../../config/webpack/webpack.dev';

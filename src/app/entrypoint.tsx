@@ -1,7 +1,7 @@
 import { hydrate, render } from 'react-dom';
 import { loadableReady }   from '@loadable/component';
 
-import env                 from '@env/';
+import { env }             from '@env/index';
 import { Application }     from './application/Application';
 
 const getRootNode = () => document.querySelector('#root');

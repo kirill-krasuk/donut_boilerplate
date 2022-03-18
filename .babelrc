@@ -26,39 +26,6 @@
         }
     },
     "plugins": [
-        [
-            "module-resolver",
-            {
-                "root": [
-                    "./src"
-                ],
-                "alias": {
-                    "@app": "./src/app",
-                    "@public": "./public",
-                    "@server": "./server",
-                    "@client": "./core/client",
-                    "@shared": "./src/shared",
-                    "@entities": "./src/entities",
-                    "@features": "./src/features",
-                    "@widgets": "./src/widgets",
-                    "@pages": "./src/pages",
-                    "@processes": "./src/processes",
-                    "@lib": "./src/shared/lib",
-                    "@utils": "./src/shared/utils",
-                    "@hooks": "./src/shared/hooks",
-                    "@enums": "./src/shared/enums",
-                    "@types": "./src/shared/types",
-                    "@config": "./src/shared/config",
-                    "@ui-kit": "./src/shared/ui-kit",
-                    "@vendors": "./src/vendors",
-                    "@images": "./src/assets/images",
-                    "@fonts": "./src/assets/fonts",
-                    "@svgs": "./src/assets/svgs",
-                    "@test": "./src/test",
-                    "@env": "./config/env"
-                }
-            }
-        ],
         "macros", // babel-plugin-macros for libraries, who's use runtime
         "ramda",
         "@loadable/babel-plugin", // for loadable chunks

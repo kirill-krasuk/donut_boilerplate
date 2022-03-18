@@ -1,5 +1,6 @@
 export const fileExtensions = {
     js        : /\.(j|t)s(x)?$/,
+    jsOrCss   : /\.(js|css)/,
     tests     : /\.(spec|test)\.js$/,
     css       : /\.css$/,
     cssModule : /\.modules?\.css$/,
