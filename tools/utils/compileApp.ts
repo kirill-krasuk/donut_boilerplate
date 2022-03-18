@@ -44,14 +44,14 @@ export default async function (pathToConfig: string) {
 
                 if (messages.errors.length) {
                     messages.errors.forEach(console.error);
-                    console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
+                    console.error(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
 
                     process.exit(1);
                     return;
                 }
             }
         } catch (err) {
-            console.log(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
+            console.error(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
 
             process.exit(1);
         }
