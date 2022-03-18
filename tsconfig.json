@@ -72,6 +72,6 @@
         "config/jest/setup.ts",
         "config/webpack/**/*",
         "config/env/*", 
-        "server/**/*", 
+        "server/**/*"
     ],
 }

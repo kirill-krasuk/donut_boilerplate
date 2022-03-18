@@ -1,3 +1,8 @@
+const { pathsToModuleNameMapper } = require('ts-jest');
+const ts                          = require('typescript');
+
+const tsconfig = ts.readConfigFile('./tsconfig.json', ts.sys.readFile).config;
+
 module.exports = {
     rootDir        : '../../',
     cacheDirectory : './.cache/jest',
@@ -28,27 +33,7 @@ module.exports = {
         '\\.svg$'                                                                        : '<rootDir>/test/__mocks__/svgr.ts',
         'styled-components/macro'                                                        : 'styled-components',
         '/\.module\.s(c|a)ss$/'                                                          : 'identity-obj-proxy',
-        '@shared/(.*)'                                                                   : '<rootDir>/src/shared/$1',
-        '@entities/(.*)'                                                                 : '<rootDir>/src/entities/$1',
-        '@features/(.*)'                                                                 : '<rootDir>/src/features/$1',
-        '@widgets/(.*)'                                                                  : '<rootDir>/src/widgets/$1',
-        '@pages/(.*)'                                                                    : '<rootDir>/src/pages/$1',
-        '@processes/(.*)'                                                                : '<rootDir>/src/processes/$1',
-        '@lib/(.*)'                                                                      : '<rootDir>/src/shared/lib/$1',
-        '@app/(.*)'                                                                      : '<rootDir>/src/app/$1',
-        '@utils/(.*)'                                                                    : '<rootDir>/src/shared/utils/$1',
-        '@types/(.*)'                                                                    : '<rootDir>/src/shared/types/$1',
-        '@config/(.*)'                                                                   : '<rootDir>/src/shared/config/$1',
-        '@enums/(.*)'                                                                    : '<rootDir>/src/shared/enums/$1',
-        '@hooks/(.*)'                                                                    : '<rootDir>/src/shared/hooks/$1',
-        '@ui-kit/(.*)'                                                                   : '<rootDir>/src/shared/ui-kit/$1',
-        '@images/(.*)'                                                                   : '<rootDir>/assets/images/$1',
-        '@svgs/(.*)'                                                                     : '<rootDir>/assets/svgs/$1',
-        '@server/(.*)'                                                                   : '<rootDir>/server/$1',
-        '@public/(.*)'                                                                   : '<rootDir>/public/$1',
-        '@fonts/(.*)'                                                                    : '<rootDir>/assets/fonts/$1',
-        '@test/(.*)'                                                                     : '<rootDir>/test/$1',
-        '@env/(.*)'                                                                      : '<rootDir>/config/env/$1'
+        ...pathsToModuleNameMapper(tsconfig.compilerOptions.paths, { prefix: '<rootDir>/' })
     },
     globals: {
         // we must specify a custom tsconfig for tests because we need the typescript transform
