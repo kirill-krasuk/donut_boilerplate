@@ -87,6 +87,16 @@ jobs:
             name: Run Linting
             command: yarn ci:lint
         
+    "build storybook":
+        docker: *node_image
+        steps:
+        - checkout
+        - attach_workspace:
+            at: ./
+        - run:
+            name: Build storybook
+            command: yarn storybook:build
+        
 
 workflows:
     version: 2
@@ -100,5 +110,8 @@ workflows:
             requires:
             - setup
         - test:
+            requires:
+             - setup
+        - "build storybook":
             requires:
              - setup

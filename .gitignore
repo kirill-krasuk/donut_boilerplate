@@ -18,3 +18,4 @@ tsconfig.tsbuildinfo
 junit.xml
 .idea
 .swc
+storybook-static

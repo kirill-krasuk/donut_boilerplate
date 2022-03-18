@@ -30,6 +30,7 @@
         "start": "bash ./tools/build/start.sh",
         "start:prod": "bash ./tools/build/start_prod.sh",
         "storybook": "start-storybook -c ./config/.storybook",
+        "storybook:build": "build-storybook -c ./config/.storybook",
         "test": "bash ./tools/ci/test.sh",
         "test:coverage": "bash ./tools/ci/test.sh c",
         "test:update": "bash ./tools/ci/test.sh u",
