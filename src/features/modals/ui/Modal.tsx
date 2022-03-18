@@ -11,6 +11,7 @@ import * as actions                                       from '../model/store/a
 import * as S                                             from './styles';
 import { Props }                                          from './type';
 
+// TODO: complete modal functional
 export const Modal: FC<Props> = (props) => {
     const { children, onClose, title } = props;
 
