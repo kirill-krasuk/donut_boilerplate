@@ -8,7 +8,13 @@ bash $COMMON/node_version.sh
 source $COMMON/colors.sh
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run typescript checking"
-yarn types &&
+TSC_ERRORS=$(yarn types)
+
+if [ ! -z "$TSC_ERRORS" ]; then
+    echo -e "🚨🚨🚨 Linting ${BRed}failed${Color_Off} 🚨🚨🚨"
+    exit 1
+fi
+
 echo -e "${BBlack}${On_Green} PASS ${Color_Off} Type check was successful"
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run eslint checking"
