@@ -38,7 +38,7 @@
         "test:coverage": "bash ./tools/ci/test.sh c",
         "test:update": "bash ./tools/ci/test.sh u",
         "test:watch": "bash ./tools/ci/test.sh w",
-        "types": "tsc --noEmit -p .",
+        "types": "tsc --noEmit -p . 1>&2",
         "commit": "cz",
         "release": "standard-version"
     },
