@@ -98,11 +98,11 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         plugins: options!.plugins!.concat([
             ...htmlPlugins(),
             definePlugin({
-                mode    : options.mode,
+                mode    : options.mode!,
                 isClient: true
             }),
             extractCssPlugin({ isProd }),
-            analyzerPlugin(options.mode),
+            analyzerPlugin(options.mode!),
             serviceWorkerEnabled && new InjectManifest({
                 swDest : paths.swDest,
                 include: [ '**/*.js', '**/*.js.gz' ],
