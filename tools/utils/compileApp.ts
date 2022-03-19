@@ -37,7 +37,7 @@ export default async function (pathToConfig: string) {
 
                 if (messages.warnings.length) {
                     messages.warnings.forEach(console.warn);
-                    console.log(chalk`{black.bgYellow.bold  WARN }Webpack compiled {blue.bold ${ env }} with warnings in ${ toSeconds(compilationTime) }s.`);
+                    console.log(chalk`{black.bgYellow.bold  WARN } Webpack compiled {blue.bold ${ env }} with warnings in ${ toSeconds(compilationTime) }s.`);
 
                     return;
                 }

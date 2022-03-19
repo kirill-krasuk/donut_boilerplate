@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-empty-function */
 // @ts-expect-error
 global.$RefreshReg$ = () => {};
 

@@ -1,26 +1,24 @@
-import webpack, { Configuration }    from 'webpack';
-import { WebpackPnpExternals }       from 'webpack-pnp-externals';
-import SpeedMeasurePlugin            from 'speed-measure-webpack-plugin';
+import webpack, { Configuration } from 'webpack';
+import { WebpackPnpExternals }    from 'webpack-pnp-externals';
 
-import { TsconfigPathsPlugin }       from 'tsconfig-paths-webpack-plugin';
-import { getJsLoader }               from './loaders/js-loader';
-import { getServerImageLoader }      from './loaders/image-loader';
-import { getFontsLoader }            from './loaders/font-loader';
-import { getServerCssLoader }        from './loaders/css-loader';
-import { getServerSassLoader }       from './loaders/sass-loader';
-import { getSVGLoader }              from './loaders/svg-loader';
-import { getServerSassModuleLoader } from './loaders/sass-module-loader';
-import { isProd }                    from './utils/isProd';
-import { getEnvs }                   from './utils/getEnvs';
-import { paths }                     from './constants/path';
+import { jsLoader }               from '../shared/loaders/js-loader';
+import { imageLoader }            from '../shared/loaders/image-loader';
+import { fontsLoader }            from '../shared/loaders/font-loader';
+import { cssLoader }              from '../shared/loaders/css-loader';
+import { cssModuleLoader }        from '../shared/loaders/css-module-loader';
+import { sassLoader }             from '../shared/loaders/sass-loader';
+import { svgLoader }              from '../shared/loaders/svg-loader';
+import { sassModuleLoader }       from '../shared/loaders/sass-module-loader';
+import { paths }                  from '../shared/constants/paths';
+import { tsconfigPathsPlugin }    from '../shared/plugins/tsconfig-paths';
+import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
+import { definePlugin }           from '../shared/plugins/define';
+import { isProd }                 from '../shared/lib/env';
 
-const smp = new SpeedMeasurePlugin();
-
-const mode            = process.env.NODE_ENV as 'development' | 'production' || 'development';
-const useSpeedMeasure = JSON.parse(process.env.USE_SPEED_MEASURE_SERVER || 'false');
-
-export const __IS_SERVER__ = true;
 export const __IS_CLIENT__ = false;
+export const __IS_SERVER__ = true;
+
+const mode = process.env.NODE_ENV as 'development' | 'production' || 'development';
 
 const config: Configuration = {
     mode,
@@ -31,9 +29,8 @@ const config: Configuration = {
         __filename: false
     },
     output: {
-        path      : paths.server.output,
-        filename  : 'server.js',
-        publicPath: '/dist/',
+        path    : paths.server.output,
+        filename: 'server.js',
     },
     cache: !isProd()
         ? {
@@ -54,31 +51,25 @@ const config: Configuration = {
         ],
         symlinks        : false,
         cacheWithContext: false,
-        plugins         : [
-            new TsconfigPathsPlugin({
-                configFile: paths.tsconfig
-            })
-        ]
+        plugins         : [ tsconfigPathsPlugin() ]
     },
     module: {
         rules: [
-            getJsLoader(),
-            getServerCssLoader(),
-            getServerSassLoader(),
-            getServerSassModuleLoader(),
-            getServerImageLoader(),
-            getSVGLoader(),
-            getFontsLoader()
+            jsLoader(),
+            cssLoader().server,
+            cssModuleLoader().server,
+            sassLoader().server,
+            sassModuleLoader().server,
+            imageLoader().server,
+            svgLoader(),
+            fontsLoader()
         ]
     },
     externals: [ WebpackPnpExternals() ],
     plugins  : [
-        new webpack.DefinePlugin({
-            'process.env': { NODE_ENV: JSON.stringify(mode), ...getEnvs() },
-            __IS_DEV__   : mode === 'development',
-            __IS_PROD__  : mode === 'production',
-            __IS_SERVER__,
-            __IS_CLIENT__
+        definePlugin({
+            mode,
+            isClient: false
         }),
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
@@ -86,6 +77,4 @@ const config: Configuration = {
     ]
 };
 
-export default useSpeedMeasure
-    ? smp.wrap(config)
-    : config;
+export default withSpeedMeasurePlugin(config, false);

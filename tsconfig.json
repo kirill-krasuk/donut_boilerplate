@@ -67,11 +67,9 @@
     },
     "include": [
         "src/**/*", 
-        "core/**/*", 
         "tools/**/*",
-        "config/jest/setup.ts",
-        "config/webpack/**/*",
-        "config/env/*", 
-        "server/**/*"
+        "config/**/*", 
+        "server/**/*", 
+        "config/.storybook/*"   
     ],
 }

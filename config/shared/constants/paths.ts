@@ -1,6 +1,6 @@
 import path                from 'path';
 
-import { getPathsFromMap } from '../utils/getPathsFromMap';
+import { getPathsFromMap } from '../lib/path';
 
 const clientPathMap = {
     src          : 'src',
@@ -19,12 +19,19 @@ const serverPathMap = {
     output: 'dist'
 } as const;
 
+const cachesPathMap = {
+    css: '.cache/css-cache'
+} as const;
+
 export const paths = {
     client  : getPathsFromMap(clientPathMap),
     server  : getPathsFromMap(serverPathMap),
+    caches  : getPathsFromMap(cachesPathMap),
     context : path.resolve(''),
     cacheDir: path.resolve('.cache'),
     tsconfig: path.resolve('tsconfig.json'),
+    public  : '/dist/',
     swSrc   : './src/app/service-worker.js',
-    swDest  : './sw.js'
+    swDest  : './sw.js',
+    stories : '../../src/**/*.stories.tsx'
 };

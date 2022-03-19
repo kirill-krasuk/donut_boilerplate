@@ -1,12 +1,18 @@
-import { isProd }           from '../utils/isProd';
-import { createHashHelper } from '../utils/createHashHelper';
+import webpack              from 'webpack';
+
+import { createHashHelper } from '../lib/webpack';
+import { isProd }           from '../lib/env';
 import { fileExtensions }   from '../constants/files';
+import { IsomorphicLoader } from '../types';
 
 const addHash = createHashHelper(isProd());
 
-const imageLoader: Record<string, any> = {
-    test: fileExtensions.images,
-    use : [ {
+const options = {
+    test: fileExtensions.images
+};
+
+export function imageLoader(): IsomorphicLoader {
+    const baseLoader = [ {
         loader : 'file-loader',
         options: {
             name      : addHash('[name].[ext]', 'contenthash:8'),
@@ -32,20 +38,26 @@ const imageLoader: Record<string, any> = {
                 interlaced: false
             }
         }
-    } ]
-};
+    } ];
 
-export const getServerImageLoader = () => imageLoader;
+    const client = {
+        ...options,
+        use: [
+            !isProd() && {
+                loader : 'cache-loader',
+                options: {
+                    cacheDirectory: '.cache/images-cache'
+                }
+            },
 
-export function getImageLoader() {
-    if (!isProd()) {
-        imageLoader.use.unshift({
-            loader : 'cache-loader',
-            options: {
-                cacheDirectory: '.cache/images-cache'
-            }
-        });
-    }
+            ...baseLoader
+        ].filter(Boolean) as webpack.RuleSetUseItem
+    };
 
-    return imageLoader;
+    const server = {
+        ...options,
+        use: baseLoader
+    };
+
+    return { client, server };
 }

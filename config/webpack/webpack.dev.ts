@@ -1,17 +1,16 @@
 import webpack                   from 'webpack';
-import { BundleAnalyzerPlugin }  from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin  from 'circular-dependency-plugin';
 import WebpackNotifierPlugin     from 'webpack-notifier';
 
 import { configureBundler }      from './webpack.common';
-import { paths }                 from './constants/path';
+import { paths }                 from '../shared/constants/paths';
 
 export default configureBundler({
     mode : 'development',
     entry: {
         bundle: [
-            `${ paths.client.entry }`,
+            paths.client.entry,
             'webpack-hot-middleware/client'
         ]
     },
@@ -38,12 +37,6 @@ export default configureBundler({
                 // integration with webpack-hot-middleware
                 sockIntegration: 'whm',
             },
-        }),
-        process.env.BUILD_ANALYZE && new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-            logLevel    : 'silent',
-            analyzerPort: process.env.BUNDLE_ANALYZER_PORT,
-            analyzerHost: '127.0.0.1'
         }) as any,
         new WebpackNotifierPlugin({
             title: process.env.APP_NAME || 'Webpack',

@@ -1,3 +1,3 @@
 export { getSpacing } from './functions/getSpacing';
 
-export { Space } from './types/spacing';
+export type { Space } from './types/spacing';

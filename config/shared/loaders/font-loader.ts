@@ -1,10 +1,12 @@
-import { isProd }           from '../utils/isProd';
-import { createHashHelper } from '../utils/createHashHelper';
+import webpack              from 'webpack';
+
+import { isProd }           from '../lib/env';
+import { createHashHelper } from '../lib/webpack';
 import { fileExtensions }   from '../constants/files';
 
 const addHash = createHashHelper(isProd());
 
-export const getFontsLoader = () => ({
+export const fontsLoader = (): webpack.RuleSetRule => ({
     test: fileExtensions.fonts,
     use : [
         !isProd() && {
@@ -22,5 +24,5 @@ export const getFontsLoader = () => ({
                 publicPath: '/public/fonts/build',
             }
         }
-    ].filter(Boolean)
+    ].filter(Boolean) as webpack.RuleSetUseItem
 });

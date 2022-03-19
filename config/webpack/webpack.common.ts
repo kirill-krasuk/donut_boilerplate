@@ -1,37 +1,31 @@
-import webpack                         from 'webpack';
-import { InjectManifest }              from 'workbox-webpack-plugin';
-import { CleanWebpackPlugin }          from 'clean-webpack-plugin';
-import LoadablePlugin                  from '@loadable/webpack-plugin';
-import ExtractCssChunks                from 'extract-css-chunks-webpack-plugin';
-import HtmlWebpackPlugin               from 'html-webpack-plugin';
-import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
-import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
-import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
-import ImageminWebpWebpackPlugin       from 'imagemin-webp-webpack-plugin';
-import SpeedMeasurePlugin              from 'speed-measure-webpack-plugin';
-import { TsconfigPathsPlugin }         from 'tsconfig-paths-webpack-plugin';
-import { fileExtensions }              from './constants/files';
+import webpack                    from 'webpack';
+import { InjectManifest }         from 'workbox-webpack-plugin';
+import { CleanWebpackPlugin }     from 'clean-webpack-plugin';
+import LoadablePlugin             from '@loadable/webpack-plugin';
+import ImageminWebpWebpackPlugin  from 'imagemin-webp-webpack-plugin';
 
-import { paths }                       from './constants/path';
-import { getJsLoader }                 from './loaders/js-loader';
-import { getImageLoader }              from './loaders/image-loader';
-import { getFontsLoader }              from './loaders/font-loader';
-import { getClientCssLoader }          from './loaders/css-loader';
-import { getClientSassLoader }         from './loaders/sass-loader';
-import { getClientSassModuleLoader }   from './loaders/sass-module-loader';
-import { getSVGLoader }                from './loaders/svg-loader';
-import { getEnvs }                     from './utils/getEnvs';
-import { createHashHelper }            from './utils/createHashHelper';
-
-// use smp.wrap on config object
-const smp = new SpeedMeasurePlugin();
+import { fileExtensions }         from '../shared/constants/files';
+import { paths }                  from '../shared/constants/paths';
+import { jsLoader }               from '../shared/loaders/js-loader';
+import { imageLoader }            from '../shared/loaders/image-loader';
+import { fontsLoader }            from '../shared/loaders/font-loader';
+import { cssLoader }              from '../shared/loaders/css-loader';
+import { cssModuleLoader }        from '../shared/loaders/css-module-loader';
+import { sassLoader }             from '../shared/loaders/sass-loader';
+import { sassModuleLoader }       from '../shared/loaders/sass-module-loader';
+import { svgLoader }              from '../shared/loaders/svg-loader';
+import { createHashHelper }       from '../shared/lib/webpack';
+import { tsconfigPathsPlugin }    from '../shared/plugins/tsconfig-paths';
+import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
+import { definePlugin }           from '../shared/plugins/define';
+import { htmlPlugins }            from '../shared/plugins/html';
+import { analyzerPlugin }         from '../shared/plugins/analyzer';
+import { extractCssPlugin }       from '../shared/plugins/extract-css';
 
 export const __IS_CLIENT__ = true;
 export const __IS_SERVER__ = false;
 
 const contentHash = 'contenthash:8';
-
-const useSpeedMeasure = JSON.parse(process.env.USE_SPEED_MEASURE_CLIENT || 'false');
 
 export function configureBundler(options: webpack.Configuration): webpack.Configuration {
     const isProd = options.mode === 'production';
@@ -47,9 +41,9 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         entry  : options.entry,
         output : {
             chunkFilename: addHash('[name].js', contentHash),
-            path         : `${ paths.client.dist }`,
+            path         : paths.client.dist,
             filename     : addHash('[name].js', contentHash),
-            publicPath   : '/dist/',
+            publicPath   : paths.public,
             pathinfo     : false,
         },
         ...(options.devtool && {
@@ -74,11 +68,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 images: paths.client.images,
                 svgs  : paths.client.svgs
             },
-            plugins: [
-                new TsconfigPathsPlugin({
-                    configFile: paths.tsconfig
-                })
-            ]
+            plugins: [ tsconfigPathsPlugin() ]
         },
         ...(options.cache && {
             cache: options.cache
@@ -94,17 +84,25 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
         module: {
             unsafeCache: true,
             rules      : [
-                getJsLoader(),
-                getClientCssLoader(),
-                getClientSassLoader(),
-                getClientSassModuleLoader(),
-                getImageLoader(),
-                getFontsLoader(),
-                getSVGLoader()
+                jsLoader(),
+                cssLoader().client,
+                cssModuleLoader().client,
+                sassLoader().client,
+                sassModuleLoader().client,
+                imageLoader().client,
+                fontsLoader(),
+                svgLoader()
             ]
         },
         watch  : options.watch || false,
         plugins: options!.plugins!.concat([
+            ...htmlPlugins(),
+            definePlugin({
+                mode    : options.mode,
+                isClient: true
+            }),
+            extractCssPlugin({ isProd }),
+            analyzerPlugin(options.mode),
             serviceWorkerEnabled && new InjectManifest({
                 swDest : paths.swDest,
                 include: [ '**/*.js', '**/*.js.gz' ],
@@ -123,34 +121,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                 silent           : true,
                 strict           : true
             }),
-            new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
-            new HtmlWebpackPlugin({
-                template         : paths.client.template,
-                filename         : paths.client.view,
-                alwaysWriteToDisk: true,
-
-                /* force disable minification for
-                 correctly building pug file
-                 because indentation matters */
-                minify       : false,
-                excludeAssets: [ fileExtensions.jsOrCss ]
-            }),
-            new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
-            new HtmlPugPlugin({
-                adjustIndent: true
-            }),
-            new ExtractCssChunks({
-                filename     : addHash('[name].css', contentHash),
-                chunkFilename: addHash('[id].css', contentHash),
-            }),
             new LoadablePlugin(),
-            new webpack.DefinePlugin({
-                'process.env': { NODE_ENV: JSON.stringify(options.mode), ...getEnvs() },
-                __IS_DEV__   : options.mode === 'development',
-                __IS_PROD__  : options.mode === 'production',
-                __IS_SERVER__,
-                __IS_CLIENT__
-            }),
             new webpack.ContextReplacementPlugin(
                 /moment[/\\]locale$/,
                 /ru/
@@ -169,10 +140,8 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                     'precache-manifest.*.js'
                 ],
             }),
-        ]).filter(Boolean)
+        ].filter(Boolean))
     };
 
-    return useSpeedMeasure
-        ? smp.wrap(config)
-        : config;
+    return withSpeedMeasurePlugin(config);
 }

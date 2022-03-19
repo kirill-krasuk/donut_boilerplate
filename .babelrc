@@ -29,6 +29,7 @@
         "macros", // babel-plugin-macros for libraries, who's use runtime
         "ramda",
         "@loadable/babel-plugin", // for loadable chunks
+        "babel-plugin-named-exports-order", // for storybook
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ["@babel/plugin-proposal-class-properties", { "loose": true }],
         ["@babel/plugin-proposal-private-methods", { "loose": true }],

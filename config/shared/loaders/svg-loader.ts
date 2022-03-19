@@ -1,12 +1,13 @@
+import webpack              from 'webpack';
 import svgToMiniDataURI     from 'mini-svg-data-uri';
-import { fileExtensions }   from '../constants/files';
 
-import { createHashHelper } from '../utils/createHashHelper';
-import { isProd }           from '../utils/isProd';
+import { fileExtensions }   from '../constants/files';
+import { createHashHelper } from '../lib/webpack';
+import { isProd }           from '../lib/env';
 
 const addHash = createHashHelper(isProd());
 
-export const getSVGLoader = () => ({
+export const svgLoader = (): webpack.RuleSetRule => ({
     test: fileExtensions.svgs,
     use : [
         !isProd() && {
@@ -18,7 +19,9 @@ export const getSVGLoader = () => ({
 
         {
             loader: '@svgr/webpack'
-        }, {
+        },
+
+        {
             loader : 'url-loader',
             options: {
                 generator : (content: any) => svgToMiniDataURI(content.toString()),
@@ -28,5 +31,5 @@ export const getSVGLoader = () => ({
                 publicPath: '/public/svgs/build'
             },
         }
-    ].filter(Boolean)
+    ].filter(Boolean) as webpack.RuleSetUseItem
 });

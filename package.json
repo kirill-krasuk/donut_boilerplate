@@ -11,6 +11,9 @@
     "bugs": {
         "url": "https://github.com/kirill-krasuk/new_boilerplate/issues"
     },
+    "resolutions": {
+        "@storybook/react/webpack": "^5"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/kirill-krasuk/new_boilerplate.git"
@@ -136,10 +139,11 @@
         "@storybook/addon-docs": "^6.4.19",
         "@storybook/addon-info": "^5.3.21",
         "@storybook/addon-knobs": "^6.4.0",
-        "@storybook/addon-postcss": "^2.0.0",
         "@storybook/addon-storysource": "^6.4.19",
         "@storybook/addon-viewport": "^6.4.19",
         "@storybook/addons": "^6.4.19",
+        "@storybook/builder-webpack5": "next",
+        "@storybook/manager-webpack5": "next",
         "@storybook/react": "^6.4.19",
         "@storybook/theming": "^6.4.19",
         "@stylelint/postcss-css-in-js": "^0.37.2",
@@ -204,6 +208,7 @@
         "@typescript-eslint/parser": "^5.12.0",
         "autoprefixer": "^10.4.2",
         "babel-loader": "^8.2.3",
+        "babel-plugin-named-exports-order": "^0.0.2",
         "babel-plugin-ramda": "^2.0.0",
         "babel-plugin-styled-components": "^2.0.2",
         "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
