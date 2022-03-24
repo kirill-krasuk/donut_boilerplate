@@ -1,0 +1,54 @@
+/** 
+    this is example styles, by default
+    this styles uses in GlobalStyles components
+    cause app styled-components oriented.
+    its alternative style using
+**/
+
+.light {
+    --primary: #e84393;
+    --secondary: #191D3A;
+
+    --background: #FFFFFF;
+    --header-background: #FF3F84;
+
+    --text: #191D3A; 
+    --icon: #FFFFFF;
+}
+
+.dark {
+    --primary: #191D3A;
+    --secondary: #e84393;
+
+    --background: #191D3A;
+    --header-background: #191D3A;
+
+    --text: #FFFFFF; 
+    --icon: #e84393;
+}
+
+:root {
+    --dark-blue-0: #191D3A;
+    --gray-0: #E5E5E5;
+    --pink-0: #e84393;
+    --pink-1: #FF3F84;
+    --white-0: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color .5s, color .5s ease;
+}
+
+html, body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 14px;
+    background-color: var(--background);
+}
+
+#root {
+    min-height: inherit;
+}

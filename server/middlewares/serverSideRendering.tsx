@@ -27,7 +27,6 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
         token
     } = req.cookies;
 
-    // const { store } = configureStore({});
     const extractor = new ChunkExtractor({
         stats          : loadableStats,
         entrypoints    : [ 'bundle' ],
@@ -50,7 +49,7 @@ export async function serverSideRendering(req: Request, res: Response): Promise<
         extractor,
     });
 
-    const template = generateStaticTemplate({
+    const template = await generateStaticTemplate({
         Component,
         store,
         extractor,

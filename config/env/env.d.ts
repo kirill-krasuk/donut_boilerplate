@@ -10,6 +10,7 @@ declare global {
                 | 'normal'
                 | 'summary'
                 | 'verbose';
+            USE_CRITICAL_CSS_OPTIMIZE?: boolean;
             HOST?: string;
             PORT?: number;
             API_HOST?: string;

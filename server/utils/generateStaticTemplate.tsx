@@ -3,17 +3,24 @@ import { Helmet }                             from 'react-helmet';
 import { renderToString }                     from 'react-dom/server';
 
 import { StaticTemplate, OptionsForGenerate } from '@server/types/template';
+import { env }                                from '@env/index';
 
-export function generateStaticTemplate({
+export async function generateStaticTemplate({
     Component,
     store,
     extractor,
     props,
     mode
-}: OptionsForGenerate): StaticTemplate {
+}: OptionsForGenerate): Promise<StaticTemplate> {
+    let criticalCss = '';
+
     const sheet = new ServerStyleSheet();
 
     const { title, meta } = Helmet.renderStatic();
+
+    if (env.server.useCriticalCSSOptimize) {
+        criticalCss = await extractor.getCssString();
+    }
 
     return {
         html               : renderToString(sheet.collectStyles(<Component />)),
@@ -22,6 +29,7 @@ export function generateStaticTemplate({
         styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
         storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replaceAll('<', '\\u003c') }`,
         initialProps       : `window.__INITIAL_PROPS__ = ${ JSON.stringify(props) }`,
+        criticalCss,
         mode,
         title,
         meta

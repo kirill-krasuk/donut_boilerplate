@@ -8,12 +8,13 @@ export const clientScheme = {
 };
 
 export const serverScheme = {
-    appEnv         : getters.getNodeEnv,
-    host           : getters.getHost,
-    port           : getters.getPort,
-    api            : getters.getApiHost,
-    isOpenInBrowser: getters.getOpeInBrowser,
-    isBuildAnalyzer: getters.getBuildAnalyze,
-    analyzerPort   : getters.getBundleAnalyzerPort,
-    writeToDisk    : getters.getWriteToDisk,
+    appEnv                : getters.getNodeEnv,
+    host                  : getters.getHost,
+    port                  : getters.getPort,
+    api                   : getters.getApiHost,
+    isOpenInBrowser       : getters.getOpeInBrowser,
+    isBuildAnalyzer       : getters.getBuildAnalyze,
+    analyzerPort          : getters.getBundleAnalyzerPort,
+    writeToDisk           : getters.getWriteToDisk,
+    useCriticalCSSOptimize: getters.getUseCriticalCSSOptimize
 };

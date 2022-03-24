@@ -19,6 +19,8 @@ html(lang="ru" class=`${mode}`)
                     document.documentElement.dataset.theme = 'dark';
                 }
             })();
+        style(id="critical-css-path")
+            | !{criticalCss}
         | !{styleChunksTags}
         | !{styleComponentsTags}
     body
