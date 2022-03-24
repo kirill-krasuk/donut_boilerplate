@@ -1,5 +1,5 @@
 import webpack              from 'webpack';
-import ExtractCssChunks     from 'extract-css-chunks-webpack-plugin';
+import ExtractCssChunks     from 'mini-css-extract-plugin';
 
 import { fileExtensions }   from '../constants/files';
 import { paths }            from '../constants/paths';
@@ -61,7 +61,8 @@ export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader =
                     importLoaders: 1,
                     modules      : {
                         localIdentName: '[local]--[hash:base64:5]'
-                    }
+                    },
+                    sourceMap: !isProd()
                 }
             },
 

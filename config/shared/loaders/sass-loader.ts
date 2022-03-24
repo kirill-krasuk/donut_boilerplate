@@ -1,5 +1,5 @@
 import webpack              from 'webpack';
-import ExtractCssChunks     from 'extract-css-chunks-webpack-plugin';
+import ExtractCssChunks     from 'mini-css-extract-plugin';
 
 import { fileExtensions }   from '../constants/files';
 import { isProd }           from '../lib/env';

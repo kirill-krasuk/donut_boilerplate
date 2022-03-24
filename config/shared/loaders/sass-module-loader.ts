@@ -1,5 +1,5 @@
 import webpack              from 'webpack';
-import ExtractCssChunks     from 'extract-css-chunks-webpack-plugin';
+import ExtractCssChunks     from 'mini-css-extract-plugin';
 
 import { IsomorphicLoader } from '../types';
 import { fileExtensions }   from '../constants/files';
