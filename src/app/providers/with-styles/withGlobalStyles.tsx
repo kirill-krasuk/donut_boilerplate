@@ -13,7 +13,7 @@ export function withGlobalStyles(Component: ComponentType) {
         );
     }
 
-    StylesProvider.displayName = `withGlobalStyles(${ Component.displayName })`;
+    StylesProvider.displayName = 'withGlobalStyles';
 
     return StylesProvider;
 }

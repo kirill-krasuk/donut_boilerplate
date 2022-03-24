@@ -11,7 +11,7 @@ export function withTheme(Component: ComponentType) {
         );
     }
 
-    ThemeProviderWrapper.displayName = `withTheme(${ Component.displayName })`;
+    ThemeProviderWrapper.displayName = 'withTheme';
 
     return ThemeProviderWrapper;
 }

@@ -13,7 +13,7 @@ export function withModals(Component: ComponentType) {
         );
     }
 
-    ModalProvider.displayName = `withModals(${ Component.displayName })`;
+    ModalProvider.displayName = 'withModalProvider';
 
     return ModalProvider;
 }

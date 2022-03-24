@@ -12,7 +12,7 @@ export function withStore(Component: ComponentType) {
         );
     }
 
-    StoreProvider.displayName = `withStore(${ Component.displayName })`;
+    StoreProvider.displayName = 'withStore';
 
     return StoreProvider;
 }

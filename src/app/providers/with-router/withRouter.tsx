@@ -1,10 +1,9 @@
-import { ComponentType }    from 'react';
 import { BrowserRouter }    from 'react-router-dom';
 
 import { Routes }           from '@app/routes';
 import { RedirectProvider } from './RedirectProvider';
 
-export function withRouter(Component: ComponentType) {
+export function withRouter() {
     function RouterProvider() {
         return (
             <BrowserRouter>
@@ -15,7 +14,7 @@ export function withRouter(Component: ComponentType) {
         );
     }
 
-    RouterProvider.displayName = `withRouter(${ Component.displayName })`;
+    RouterProvider.displayName = 'withRouterProvider';
 
     return RouterProvider;
 }

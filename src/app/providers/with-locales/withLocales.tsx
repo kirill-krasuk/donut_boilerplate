@@ -11,7 +11,7 @@ export function withLocales(Component: ComponentType) {
         );
     }
 
-    LocalesWrapper.displayName = `withLocales(${ Component.displayName })`;
+    LocalesWrapper.displayName = 'withLocalesProvider';
 
     return LocalesWrapper;
 }
