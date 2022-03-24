@@ -1,8 +1,23 @@
-import loadable from '@loadable/component';
+import loadable            from '@loadable/component';
 
-export const Posts = loadable(
+import { createRoutePage } from '@lib/react';
+import { getPosts }        from './api/getPosts';
+
+const PostsPage = loadable(
     () => import(/* webpackChunkName: "Posts" */'./ui/Posts'),
     {
-        fallback: <div>Loading...</div>
+        fallback: <div>Loading...</div>,
     }
 );
+
+async function prefetch() {
+    return {
+        posts: await getPosts()
+    };
+}
+
+export default createRoutePage({
+    routeName: 'posts',
+    component: PostsPage,
+    prefetch
+});
