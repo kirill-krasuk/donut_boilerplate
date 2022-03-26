@@ -1,9 +1,9 @@
 import { ServeStaticOptions } from 'serve-static';
 
-import { headers }            from './headers';
-import { ONE_MONTH_CACHE }    from './cache';
+import { headers }            from '@server/constants/headers';
+import { ONE_MONTH_CACHE }    from '@server/constants/cache';
 
-export const serveStaticOptions: ServeStaticOptions = {
+export const serveStaticCompressionConfig: ServeStaticOptions = {
     maxAge    : ONE_MONTH_CACHE,
     setHeaders: (res) => {
         res.setHeader(...headers.sw);

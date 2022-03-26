@@ -1,9 +1,9 @@
-import expressStaticGzip      from 'express-static-gzip';
+import expressStaticGzip                from 'express-static-gzip';
 
-import { serveStaticOptions } from '@server/constants/static';
+import { serveStaticCompressionConfig } from '@server/config/compression';
 
 export const staticCompression = (path: string) => expressStaticGzip(path, {
     enableBrotli   : true,
     orderPreference: [ 'br', 'gzip', 'deflate' ],
-    serveStatic    : serveStaticOptions
+    serveStatic    : serveStaticCompressionConfig
 });

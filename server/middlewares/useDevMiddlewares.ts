@@ -11,7 +11,7 @@ import webpackConfig                from '../../config/webpack/webpack.dev';
 const { writeToDisk } = env.server;
 
 const fileExtensionsToWrite = /\.(jpe?g|webp|png|svg|gif|ttf|otf|woff|woff2)$/;
-const filesToWrite          = [ 'sw.js' ];
+const filesToWrite          = [ 'sw.js', 'index.pug' ];
 
 export function useDevMiddlewares(app: Application) {
     const { sw, isCacheable } = headers;

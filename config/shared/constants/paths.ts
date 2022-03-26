@@ -7,7 +7,7 @@ const clientPathMap = {
     dist         : 'dist',
     entry        : 'src/app/entrypoint.tsx',
     template     : 'src/app/index.pug',
-    view         : 'dist/index.pug',
+    view         : 'views/index.pug',
     postCssConfig: 'config/css/.postcssrc',
     fonts        : 'src/assets/fonts',
     images       : 'src/assets/images',

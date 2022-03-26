@@ -5,7 +5,7 @@ import { StaticTemplate } from '@server/types/template';
 
 const redirectIFStatusExist = (res: Response, context: Context, template: StaticTemplate): void => {
     if (context.status === 404) {
-        res.status(404).render('index', template);
+        res.status(404).render('index.pug', template);
 
         return;
     }
@@ -20,5 +20,5 @@ export function renderTemplate(res: Response, context: Context, template: Static
         return;
     }
 
-    return res.render('index', template);
+    return res.render('index.pug', template);
 }
