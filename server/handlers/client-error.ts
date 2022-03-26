@@ -3,7 +3,7 @@ import * as log4js           from 'log4js';
 import fs                    from 'fs';
 import path                  from 'path';
 
-export function errorLogging(req: Request, res: Response): void {
+export function handleClientError(req: Request, res: Response): void {
     const logDir = path.resolve('../../logs');
 
     if (!fs.existsSync(logDir)) {

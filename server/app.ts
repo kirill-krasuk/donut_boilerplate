@@ -1,19 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { json, urlencoded }          from 'express';
-import processImage                  from 'express-processimage';
-import shrinkRay                     from 'shrink-ray-current';
-import favicon                       from 'serve-favicon';
-import cookieParser                  from 'cookie-parser';
-import path                          from 'path';
+import { json, urlencoded }                                  from 'express';
+import processImage                                          from 'express-processimage';
+import shrinkRay                                             from 'shrink-ray-current';
+import favicon                                               from 'serve-favicon';
+import cookieParser                                          from 'cookie-parser';
+import path                                                  from 'path';
 
-import { createServerRunnerPromise } from './utils/runServer';
-import { handleClose }               from './handlers/server';
-import { createExitHandler }         from './handlers/process';
-import { errorLogging }              from './middlewares/errorLogging';
-import { serverSideRendering }       from './middlewares/serverSideRendering';
-import { staticFiles }               from './config/static';
-import { HTTPServerAdapter }         from './adapters/server';
-import { paths }                     from './constants/paths';
+import { createServerRunnerPromise }                         from './lib/server';
+import { handleClose, createExitHandler, handleClientError } from './handlers';
+import { serverSideRendering }                               from './middlewares';
+import { staticFiles }                                       from './config/static';
+import { HTTPServerAdapter }                                 from './adapters/server';
+import { paths }                                             from './constants/paths';
 
 export class Application<T extends HTTPServerAdapter> {
     constructor(private adapter: T) {}
@@ -36,13 +34,13 @@ export class Application<T extends HTTPServerAdapter> {
         this.adapter.registerStaticFiles(staticFiles);
 
         if (__IS_DEV__) {
-            const { useDevMiddlewares } = await import('./middlewares/useDevMiddlewares');
+            const { useDevMiddlewares } = await import('./middlewares');
             const compilationPromise    = useDevMiddlewares(this.adapter as any);
 
             await compilationPromise;
         }
 
-        this.adapter.use('/handle_error', errorLogging);
+        this.adapter.use('/handle_error', handleClientError);
         this.adapter.use('/', serverSideRendering);
     }
 

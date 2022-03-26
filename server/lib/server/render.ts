@@ -1,7 +1,7 @@
 import { Response }       from 'express';
 
 import { Context }        from '@shared/types/client-server';
-import { StaticTemplate } from '@server/types/template';
+import { StaticTemplate } from '@server/lib/react';
 
 const redirectIFStatusExist = (res: Response, context: Context, template: StaticTemplate): void => {
     if (context.status === 404) {

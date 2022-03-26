@@ -5,7 +5,7 @@ import HotMiddleware                from 'webpack-hot-middleware';
 
 import { env }                      from '@env/index';
 import { headers }                  from '@server/constants/headers';
-import { createCompilationPromise } from '@server/utils/createCompilationPromise';
+import { createCompilationPromise } from '@server/lib/webpack';
 import webpackConfig                from '../../config/webpack/webpack.dev';
 
 const { writeToDisk } = env.server;

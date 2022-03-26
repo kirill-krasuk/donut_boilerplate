@@ -1,13 +1,13 @@
 import { Provider }              from 'react-redux';
 import { StaticRouter }          from 'react-router-dom/server';
+import { ChunkExtractorManager } from '@loadable/server';
 
 import { Routes }                from '@app/routes';
-import { ChunkExtractorManager } from '@loadable/server';
 import { RedirectProvider }      from '@app/providers/with-router';
-import { GenerateAppOptions }    from '@server/types/appComponent';
 import { ThemeProvider }         from '@app/providers/with-theme';
 import { GlobalStyles }          from '@app/providers/with-styles';
 import { LocalesProvider }       from '@app/providers/with-locales';
+import { GenerateAppOptions }    from './types';
 
 export function generateAppComponent({
     store,

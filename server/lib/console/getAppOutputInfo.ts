@@ -4,7 +4,7 @@ import openBrowser     from 'react-dev-utils/openBrowser';
 import ip              from 'ip';
 
 import { env }         from '@env/index';
-import { getHostname } from '@server/utils/getHostname';
+import { getHostname } from '@server/lib/server';
 
 export type OutputInfo = {
     host: string,
