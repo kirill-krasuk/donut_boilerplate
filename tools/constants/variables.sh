@@ -6,7 +6,7 @@ BUILD_CONTEXT=$CCONTEXT/build
 COMMON=$CONTEXT/common
 
 TOOLS_TS_CONFIG=./tools/tsconfig.json
-BUNDLE_TOOL_PATH=./tools/build/compile.ts
+BUNDLE_TOOL_PATH=./tools/lib/build/compile.ts
 JEST_CONFIG_PATH=./config/jest/jest.config.js
 CI_JEST_CONFIG_PATH=./config/jest/ci.jest.config.js
 

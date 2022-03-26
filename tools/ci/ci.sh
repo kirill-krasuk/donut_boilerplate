@@ -1,11 +1,11 @@
 #! /bin/bash
 
-source ./tools/common/variables.sh
+source ./tools/constants/variables.sh
 
-bash $COMMON/banner.sh
+bash ./tools/lib/console/banner.sh
 bash $COMMON/node_version.sh
 
-source $COMMON/colors.sh
+source ./tools/constants/colors.sh
 
 echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run jest testing"
 TEST=$(circleci tests glob **/__tests__/*.{ts,tsx,js,jsx} | circleci tests split --split-by=timings)

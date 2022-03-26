@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import chalk            from 'chalk';
 
-import { MEDIUM, FAST } from '../constants/times';
+import { MEDIUM, FAST } from '../../constants/times';
 
-export function compileTime(time: number) {
+export function compilationTime(time: number) {
     if (time < FAST) {
         return chalk.green(time);
     }

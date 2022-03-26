@@ -1,7 +1,7 @@
 import chalk  from 'chalk';
 import figlet from 'figlet';
 
-export function appBanner() {
+export function outputBanner() {
     console.info(
         chalk.magenta.bold(
             figlet.textSync('Donut-tools', {

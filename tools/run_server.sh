@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ./tools/common/variables.sh
-source ./tools/common/colors.sh
+source ./tools/constants/variables.sh
+source ./tools/constants/colors.sh
 
 bash ./tools/common/mklogs.sh
 

@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
-import webpack               from 'webpack';
-import chalk                 from 'chalk';
-import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import webpack                                   from 'webpack';
+import chalk                                     from 'chalk';
+import formatWebpackMessages                     from 'react-dev-utils/formatWebpackMessages';
 
-import { compileTime }       from './compileTime';
+import { compilationTime as getCompilationTime } from './time';
 
 function toSeconds(time: number) {
     return (time / 1000).toFixed(2);
 }
 
-export default async function (pathToConfig: string) {
+export async function compileApp(pathToConfig: string) {
     const { default: webpackConfig, __IS_SERVER__ } = await import(pathToConfig);
     const start                                     = Date.now();
 
@@ -30,7 +30,7 @@ export default async function (pathToConfig: string) {
                 });
 
                 if (!messages.errors.length && !messages.warnings.length) {
-                    console.log(chalk`{black.bgGreen.bold  PASS } Webpack compiled {blue.bold ${ env }} successfully in ${ compileTime(+toSeconds(compilationTime)) }s.`);
+                    console.log(chalk`{black.bgGreen.bold  PASS } Webpack compiled {blue.bold ${ env }} successfully in ${ getCompilationTime(+toSeconds(compilationTime)) }s.`);
 
                     return;
                 }

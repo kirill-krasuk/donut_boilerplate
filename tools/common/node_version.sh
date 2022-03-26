@@ -4,7 +4,7 @@ NODE_VERSION=$(node -v)
 
 VERSION_FROM_NVMRC=$(cat ./.nvmrc)
 
-source ./tools/common/colors.sh
+source ./tools/constants/colors.sh
 
 if [ $NODE_VERSION != $VERSION_FROM_NVMRC ]; then
     echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} 🙅‍♂️ Node version ${NODE_VERSION} did not match with version from config"
