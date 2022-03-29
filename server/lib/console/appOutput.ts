@@ -4,7 +4,7 @@ import { getAppOutputInfo } from './getAppOutputInfo';
 export type OutputInfo = {
     host: string,
     port: string,
-    standardPort?: number | string
+    standardPort?: string
 };
 
 export function appOutput(options: OutputInfo) {

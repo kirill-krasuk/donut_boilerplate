@@ -14,8 +14,8 @@ export async function createServerRunnerPromise(appInstance: Express, standardPo
 
     appInstance.listen(port, host, () => appOutput({
         host,
-        standardPort,
-        port: port.toString()
+        standardPort: standardPort.toString(),
+        port        : port.toString()
     }));
 }
 
@@ -26,8 +26,8 @@ export function createServerRunner(appInstance: Express) {
         // eslint-disable-next-line sonarjs/no-identical-functions
         return appInstance.listen(+port, host, () => appOutput({
             host,
-            standardPort,
-            port: port.toString()
+            standardPort: standardPort?.toString(),
+            port        : port.toString()
         }));
     };
 }
