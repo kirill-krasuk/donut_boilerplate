@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Application }              from 'express';
 import webpack                      from 'webpack';
 import DevMiddleware                from 'webpack-dev-middleware';
@@ -21,7 +22,7 @@ export function useDevMiddlewares(app: Application) {
     const [ swKey, swValue ]                   = sw;
     const [ isCacheableKey, isCacheableValue ] = isCacheable;
 
-    const compiler = webpack(webpackConfig);
+    const compiler = webpack(webpackConfig, () => {});
 
     app.use(DevMiddleware(compiler, {
         publicPath      : webpackConfig.output?.publicPath,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-console */
 import webpack                                   from 'webpack';
 import chalk                                     from 'chalk';
@@ -15,7 +16,7 @@ export async function compileApp(pathToConfig: string) {
 
     const env = __IS_SERVER__ ? 'SERVER' : 'CLIENT';
 
-    const compiler = webpack(webpackConfig);
+    const compiler = webpack(webpackConfig, () => {});
 
     compiler.run((_err, stats) => {
         const compilationTime = Date.now() - start;
