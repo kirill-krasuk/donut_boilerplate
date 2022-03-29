@@ -45,14 +45,6 @@ export function sassModuleLoader(props: Props = defaultProps): IsomorphicLoader 
         use: [
             ...!isProd() && enablePerf ? [
                 {
-                    loader : 'thread-loader',
-                    options: {
-                        workers           : 2,
-                        workerParallelJobs: 50,
-                    }
-                },
-
-                {
                     loader : 'cache-loader',
                     options: {
                         cacheDirectory: '.cache/sass-module-cache'
@@ -61,9 +53,7 @@ export function sassModuleLoader(props: Props = defaultProps): IsomorphicLoader 
             ] : [],
 
             !forceStyleLoader && {
-                loader: isProd()
-                    ? ExtractCssChunks.loader
-                    : 'style-loader'
+                loader: ExtractCssChunks.loader
             },
 
             forceStyleLoader && {

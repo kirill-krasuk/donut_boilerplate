@@ -3,12 +3,14 @@ import webpack                      from 'webpack';
 import DevMiddleware                from 'webpack-dev-middleware';
 import HotMiddleware                from 'webpack-hot-middleware';
 
-import { env }                      from '@env/index';
 import { headers }                  from '@server/constants/headers';
 import { createCompilationPromise } from '@server/lib/webpack';
 import webpackConfig                from '../../config/webpack/webpack.dev';
 
-const { writeToDisk } = env.server;
+// const { writeToDisk } = env.server;
+
+// used-styles scan phys dir
+const writeToDisk = true;
 
 const fileExtensionsToWrite = /\.(jpe?g|webp|png|svg|gif|ttf|otf|woff|woff2)$/;
 const filesToWrite          = [ 'sw.js', 'index.pug' ];

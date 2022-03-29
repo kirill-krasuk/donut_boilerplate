@@ -2,7 +2,7 @@ import { ServerStyleSheet }                   from 'styled-components/macro';
 import { Helmet }                             from 'react-helmet';
 import { renderToString }                     from 'react-dom/server';
 
-import { env }                                from '@env/index';
+import { getStyles }                          from '@server/lib/css';
 import { StaticTemplate, OptionsForGenerate } from './types';
 
 export async function generateStaticTemplate({
@@ -12,20 +12,17 @@ export async function generateStaticTemplate({
     props,
     mode
 }: OptionsForGenerate): Promise<StaticTemplate> {
-    let criticalCss = '';
-
     const sheet = new ServerStyleSheet();
 
     const { title, meta } = Helmet.renderStatic();
+    const html            = renderToString(sheet.collectStyles(<Component />));
 
-    if (env.server.useCriticalCSSOptimize) {
-        criticalCss = await extractor.getCssString();
-    }
+    const { criticalCss, cssChunks } = getStyles(html);
 
     return {
-        html               : renderToString(sheet.collectStyles(<Component />)),
+        html,
         scriptTags         : extractor.getScriptTags(),
-        styleChunksTags    : extractor.getStyleTags(), // loadable components extract styles in chunk files
+        styleChunksTags    : cssChunks, // loadable components extract styles in chunk files
         styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
         storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replaceAll('<', '\\u003c') }`,
         initialProps       : `window.__INITIAL_PROPS__ = ${ JSON.stringify(props) }`,

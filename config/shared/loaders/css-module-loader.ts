@@ -30,14 +30,6 @@ export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader =
         use: [
             ...!isProd() && enablePerf ? [
                 {
-                    loader : 'thread-loader',
-                    options: {
-                        workers           : 2,
-                        workerParallelJobs: 50,
-                    }
-                },
-
-                {
                     loader : 'cache-loader',
                     options: {
                         cacheDirectory: paths.caches.css
@@ -46,9 +38,7 @@ export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader =
             ] : [],
 
             !forceStyleLoader && {
-                loader: isProd()
-                    ? ExtractCssChunks.loader
-                    : 'style-loader'
+                loader: ExtractCssChunks.loader
             },
 
             forceStyleLoader && {

@@ -9,6 +9,7 @@ export const paths = {
         static : path.resolve('public/images'),
         builded: path.resolve('public/images/build')
     },
-    fonts  : path.resolve('fonts/images/build'),
-    favicon: path.resolve('public/images/favicon.ico')
+    fonts     : path.resolve('fonts/images/build'),
+    favicon   : path.resolve('public/images/favicon.ico'),
+    staticDist: '/dist/'
 } as const;
