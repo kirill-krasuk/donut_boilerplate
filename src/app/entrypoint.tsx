@@ -1,14 +1,20 @@
-import { hydrate, render } from 'react-dom';
-import { loadableReady }   from '@loadable/component';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { loadableReady }           from '@loadable/component';
 
-import { env }             from '@env/index';
-import { Application }     from './application/Application';
+import { env }                     from '@env/index';
+import { Application }             from './application/Application';
 
-const getRootNode = () => document.querySelector('#root');
+const rootNode = document.querySelector('#root')!;
 
-const renderOrHydrate = env.client.needHydrate
-    ? hydrate
-    : render;
+function renderRoot() {
+    if (env.client.needHydrate) {
+        return hydrateRoot(rootNode, <Application />);
+    }
+
+    const root = createRoot(rootNode);
+
+    return root.render(<Application />);
+}
 
 loadableReady(() => {
     if (env.client.swEnable) {
@@ -29,8 +35,5 @@ loadableReady(() => {
         }
     }
 
-    renderOrHydrate(
-        <Application />,
-        getRootNode()
-    );
+    renderRoot();
 });
