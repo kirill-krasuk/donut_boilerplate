@@ -1,20 +1,23 @@
 #! /bin/bash
 
+# shellcheck disable=SC1091
 source ./tools/constants/variables.sh
 
 bash ./tools/lib/console/banner.sh
-bash $COMMON/node_version.sh
+bash "$COMMON"/node_version.sh
 
 source ./tools/constants/colors.sh
 
-echo -e "\n${BBlack}${On_Blue} INFO ${Color_Off} Run jest testing"
+echo -e "\n${COLOR_BOLD_BLACK}${BACKGROUND_COLOR_BLUE} INFO ${COLOR_OFF} Run jest testing"
+
+# shellcheck disable=SC2035
 TEST=$(circleci tests glob **/__tests__/*.{ts,tsx,js,jsx} | circleci tests split --split-by=timings)
-yarn jest -c=$CI_JEST_CONFIG_PATH $TEST
+yarn jest -c="$CI_JEST_CONFIG_PATH" "$TEST"
 
 if [ $? -eq 1 ]; then
-    echo -e "🚨🚨🚨 Tests ${BRed}failed${Color_Off} 🚨🚨🚨"
+    echo -e "🚨🚨🚨 Tests ${COLOR_BOLD_RED}failed${COLOR_OFF} 🚨🚨🚨"
     exit 1
 else
-    echo -e "✨✨✨ Tests ${BGreen}passed${Color_Off} in ${SECONDS} seconds ✨✨✨"
+    echo -e "✨✨✨ Tests ${COLOR_BOLD_GREEN}passed${COLOR_OFF} in ${SECONDS} seconds ✨✨✨"
     exit 0
 fi
