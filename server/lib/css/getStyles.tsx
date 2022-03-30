@@ -8,16 +8,20 @@ import {
 } from 'used-styles';
 
 import { paths } from '@server/constants/paths';
-
-enableReactOptimization();
-
-const lookup = discoverProjectStyles(paths.dist);
+import { delay } from '@server/lib/async';
 
 const toTags = (files: string[]) => files
     .map(chunk => `<link href="${ paths.staticDist }${ chunk }" rel="stylesheet" />`)
     .join('');
 
-export function getStyles(html:  ComponentType | string) {
+export async function getStyles(html:  ComponentType | string) {
+    enableReactOptimization();
+
+    const lookup = discoverProjectStyles(paths.dist);
+
+    // need delay for discover styles
+    await delay(100);
+
     if (typeof html === 'string') {
         return {
             criticalCss: getCriticalStyles(html, lookup),

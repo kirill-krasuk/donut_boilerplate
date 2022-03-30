@@ -17,7 +17,7 @@ export async function generateStaticTemplate({
     const { title, meta } = Helmet.renderStatic();
     const html            = renderToString(sheet.collectStyles(<Component />));
 
-    const { criticalCss, cssChunks } = getStyles(html);
+    const { criticalCss, cssChunks } = await getStyles(html);
 
     return {
         html,

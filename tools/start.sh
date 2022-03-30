@@ -1,12 +1,14 @@
 #!/bin/bash
 
+# shellcheck disable=SC1091
 source ./tools/constants/variables.sh
 
 bash ./tools/lib/console/banner.sh
-bash $COMMON/node_version.sh
-bash $COMMON/mklogs.sh
+bash "$COMMON"/node_version.sh
+bash "$COMMON"/mklogs.sh
 
 source ./tools/constants/colors.sh
+source ./tools/common/clear_dist.sh
 
 echo -e "${BBlack}${On_Blue} INFO ${Color_Off} 🔧 Building development version\n"
 

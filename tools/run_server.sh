@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# shellcheck disable=SC1091
 source ./tools/constants/variables.sh
 source ./tools/constants/colors.sh
 
