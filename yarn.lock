@@ -22738,6 +22738,7 @@ __metadata:
     js-cookie: ^3.0.1
     jsdom: ^16.7.0
     log4js: ^6.4.1
+    make-dir: ^3.1.0
     mini-css-extract-plugin: ^2.6.0
     mini-svg-data-uri: ^1.2.3
     node-fetch: ^2.6.7
