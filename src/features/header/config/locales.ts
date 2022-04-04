@@ -1,3 +1,5 @@
-export default {
-    title: 'Header/title',
-};
+import { Locales } from '@config/locales';
+
+export const locales: Locales<'Header'> = {
+    title: 'Header.title',
+} as const;

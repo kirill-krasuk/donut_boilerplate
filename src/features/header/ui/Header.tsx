@@ -7,7 +7,7 @@ import { Theme, themeModel } from '@entities/theme';
 import { createFactory }     from '@lib/react';
 import { localeModel }       from '@entities/locale';
 import * as S                from './styles';
-import locales               from '../config/locales';
+import { locales }           from '../config/locales';
 
 const themeIconFactory = createFactory({
     [Theme.Light]: Sun,

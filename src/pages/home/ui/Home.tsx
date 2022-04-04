@@ -5,7 +5,7 @@ import { EOLocale as T } from 'eo-locale';
 import { routes }        from '@config/routes';
 import { Header }        from '@features/header';
 import * as S            from './styles';
-import locales           from '../config/locales';
+import { locales }       from '../config/locales';
 
 const CodePath = (
     <code>

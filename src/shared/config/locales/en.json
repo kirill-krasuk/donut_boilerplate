@@ -1,10 +1,18 @@
 {
-    "HomePage/title": "Edit {path} save and reload",
-    "HomePage/path": "src/pages/Home/ui/Home.tsx",
-    "HomePage/link": "go to see the second page",
-    "SecondPage/title": "Edit {path} save and reload",
-    "SecondPage/path": "src/pages/Second/ui/Second.tsx",
-    "SecondPage/link": "go to see the main page",
-    "SecondPage/protect": "redirect to protected route",
-    "Header/title": "Welcome to Donut Boilerplate v2"
+    "HomePage": {
+        "title": "Edit {path} save and reload",
+        "path": "src/pages/Home/ui/Home.tsx",
+        "link": "go to see the second page"
+    },
+    "SecondPage": { 
+        "title": "Edit {path} save and reload",
+        "path": "src/pages/Second/ui/Second.tsx",
+        "links": {
+            "toHome": "go to see the main page",
+            "toProtect": "redirect to protected route"
+        }
+    },
+    "Header": { 
+        "title": "Welcome to Donut Boilerplate v2"
+    }
 }

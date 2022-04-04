@@ -41,3 +41,11 @@ export type Not<A extends boolean> = Extends<A, true, false, true>;
 export type Tuple<T = any> = T[] | [T];
 
 export type NoInfer<T> = [T][T extends any ? 0 : never];
+
+export type Primitive = bigint | boolean | number | string | symbol | undefined;
+
+export type PropertyStringPath<T, Prefix=''> = {
+    [K in keyof T]: T[K] extends Array<any> | Primitive
+    ? `${ Prefix & string }${ K & string }`
+    : PropertyStringPath<T[K], `${ Prefix & string }${ K & string }.`> | `${ Prefix & string }${ K & string }` ;
+}[keyof T];
