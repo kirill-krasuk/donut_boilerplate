@@ -22,7 +22,8 @@ async function setupRenderWrapper<T extends Record<string, any>>(Component: Reac
         </BrowserRouter>
     );
 
-    await waitFor(() => null);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    await waitFor(() => {});
 
     return { wrapper, props };
 }

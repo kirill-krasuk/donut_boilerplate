@@ -1,5 +1,5 @@
-import fs   from 'fs';
-import path from 'path';
+import fs   from 'node:fs';
+import path from 'node:path';
 
 function JSONStats(rawData: any) {
     return JSON.parse(rawData.toString());
@@ -9,10 +9,10 @@ export function getLoadableChunksOptions(locals: any) {
     const loadableStatsFileName = 'loadable-stats.json';
 
     if (locals.webpack) {
-        const { devMiddleware }    = locals.webpack;
-        const { outputFileSystem } = devMiddleware;
-        const jsonWebpackStats     = devMiddleware.stats.toJson();
-        const { outputPath }       = jsonWebpackStats;
+        const { devMiddleware }           = locals.webpack;
+        const { outputFileSystem, stats } = devMiddleware;
+        const jsonWebpackStats            = stats.toJson();
+        const { outputPath }              = jsonWebpackStats;
 
         const rawData = outputFileSystem.readFileSync(path.join(outputPath, loadableStatsFileName));
 

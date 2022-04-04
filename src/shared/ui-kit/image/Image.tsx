@@ -44,8 +44,8 @@ export const Image: FC<Props> = (props) => {
                 <S.ImgContainer
                     alt={ alt }
                     height={ height }
-                    onLoad={ handleLoad }
                     width={ width }
+                    onLoad={ handleLoad }
                 />
             </Picture>
         );

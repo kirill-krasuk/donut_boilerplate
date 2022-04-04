@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 
 export const getPathsFromMap = <T extends Record<string, string>>(pathMap: T): T => Object.fromEntries(
     Object

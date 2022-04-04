@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-empty-file */
 // import R                  from 'ramda';
 
 // import { staticReducers } from '@client/store/reducers';

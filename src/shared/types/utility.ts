@@ -11,9 +11,9 @@ export type Push<T extends any[], V> = [...T, V];
 export type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> =
     true extends N ? [] : Push<TuplifyUnion<Exclude<T, L>>, L>
 
-export type ObjValueTuple<T, KS extends any[] = TuplifyUnion<keyof T>, R extends any[] = []> =
+export type ObjectValueTuple<T, KS extends any[] = TuplifyUnion<keyof T>, R extends any[] = []> =
     KS extends [infer K, ...infer KT]
-        ? ObjValueTuple<T, KT, [...R, T[K & keyof T]]>
+        ? ObjectValueTuple<T, KT, [...R, T[K & keyof T]]>
         : R
 
 export type Extends<A, B, Then = true, Else = false> = A extends B

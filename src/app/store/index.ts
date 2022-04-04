@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 import { createStore } from '@lib/redux';
 import { env }         from '@env/index';
 import { Environment } from '@enums/env';

@@ -6,7 +6,7 @@ export function useLocalStorage<T>(key: string, initialValue: T): [T, <V>(value:
             const item = window.localStorage.getItem(key);
 
             return item ? JSON.parse(item) : initialValue;
-        } catch (error) {
+        } catch {
             return initialValue;
         }
     });

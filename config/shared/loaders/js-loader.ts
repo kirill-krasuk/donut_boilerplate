@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 import webpack            from 'webpack';
 
 import { fileExtensions } from '../constants/files';

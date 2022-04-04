@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 const options = {
     body: 'Notification body',
     icon: '/public/images/logo512x512.png'
@@ -11,7 +12,6 @@ export function callNotification(overrideOptions?: Record<string, any>) {
     };
 
     if (!('Notification' in window)) {
-        // eslint-disable-next-line
         alert('This browser does not support desktop notification');
 
         return;
@@ -26,7 +26,6 @@ export function callNotification(overrideOptions?: Record<string, any>) {
     }
 
     if (Notification.permission === 'denied') {
-        // eslint-disable-next-line
         alert('Notifications blocked. Please enable them in your browser.');
     }
 

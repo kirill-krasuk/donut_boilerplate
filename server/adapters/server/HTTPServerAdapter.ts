@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Server }                            from 'http';
+import { Server }                            from 'node:http';
 
 import { staticCompression, useStaticFiles } from '@server/lib/server';
 import {
@@ -52,11 +52,11 @@ export abstract class HTTPServerAdapter<Request = any, Response = any> implement
     public registerStaticFiles(options: StaticFilesOptions[]): void;
     public registerStaticFiles(options: any) {
         if (Array.isArray(options)) {
-            options.forEach((opts) => {
-                if (opts.compression) {
-                    this.staticCompression(opts);
+            options.forEach((option) => {
+                if (option.compression) {
+                    this.staticCompression(option);
                 } else {
-                    this.static(opts);
+                    this.static(option);
                 }
             });
 

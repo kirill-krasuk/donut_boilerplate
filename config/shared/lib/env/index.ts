@@ -1,2 +1,2 @@
 export { isProd } from './isProd';
-export { getEnvs } from './getEnvs';
+export { getEnvironmentVariables } from './getEnvironmentVariables';

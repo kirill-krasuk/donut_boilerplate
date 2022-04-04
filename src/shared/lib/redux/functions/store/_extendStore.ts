@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-empty-file */
 // /* eslint-disable no-param-reassign */
 // import createRootReducer               from '@client/store/reducers';
 // import { ExtendedStore, AsyncReducer } from './types';

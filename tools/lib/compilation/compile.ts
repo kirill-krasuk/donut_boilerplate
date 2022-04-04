@@ -10,7 +10,7 @@ function toSeconds(time: number) {
     return (time / 1000).toFixed(2);
 }
 
-const createCb = (env: string, start: number) => (_err: Error, stats: webpack.Stats) => {
+const createCallback = (env: string, start: number) => (_error: Error, stats: webpack.Stats) => {
     const compilationTime = Date.now() - start;
     let messages: { errors: any, warnings: any };
 
@@ -18,8 +18,8 @@ const createCb = (env: string, start: number) => (_err: Error, stats: webpack.St
         if (stats) {
             const rawMessages = stats.toJson({ all: false, warnings: true, errors: true });
             messages          = formatWebpackMessages({
-                errors  : rawMessages!.errors!.map((e) => e.message),
-                warnings: rawMessages!.warnings!.map((e) => e.message),
+                errors  : rawMessages!.errors!.map((error) => error.message),
+                warnings: rawMessages!.warnings!.map((warning) => warning.message),
             });
 
             if (!messages.errors.length && !messages.warnings.length) {
@@ -43,7 +43,7 @@ const createCb = (env: string, start: number) => (_err: Error, stats: webpack.St
                 return;
             }
         }
-    } catch (err) {
+    } catch {
         console.error(chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(compilationTime) }s.`);
 
         process.exit(1);
@@ -56,9 +56,9 @@ export async function compileApp(pathToConfig: string) {
 
     const env = __IS_SERVER__ ? 'SERVER' : 'CLIENT';
 
-    const cb = createCb(env, start);
+    const callback = createCallback(env, start);
 
-    const compiler = webpack(webpackConfig, cb as any);
+    const compiler = webpack(webpackConfig, callback as any);
 
     compiler.run(() => {});
 }

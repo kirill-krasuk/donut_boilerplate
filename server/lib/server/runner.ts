@@ -20,8 +20,8 @@ export async function createServerRunnerPromise(appInstance: Express, standardPo
 }
 
 export function createServerRunner(appInstance: Express) {
-    return function (serverParams: ServerStartOptions) {
-        const { host, port, standardPort } = serverParams;
+    return function (serverParameters: ServerStartOptions) {
+        const { host, port, standardPort } = serverParameters;
 
         // eslint-disable-next-line sonarjs/no-identical-functions
         return appInstance.listen(+port, host, () => appOutput({

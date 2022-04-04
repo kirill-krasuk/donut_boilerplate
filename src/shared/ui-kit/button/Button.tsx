@@ -18,8 +18,8 @@ export const Button: FC<Props> = (props) => {
     return (
         <S.Wrapper
             cStyle={ style }
-            onClick={ onClick }
             size={ size }
+            onClick={ onClick }
         >
             { children }
         </S.Wrapper>

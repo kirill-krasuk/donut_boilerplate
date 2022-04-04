@@ -21,8 +21,8 @@ export const Modal: FC<Props> = (props) => {
 
     const ref = useRef<HTMLDivElement>(null);
 
-    const handleKeyPress = useCallback((ev: KeyboardEvent) => {
-        const { code } = ev;
+    const handleKeyPress = useCallback((event: KeyboardEvent) => {
+        const { code } = event;
 
         if (code === KeyCodes.Escape) {
             closeModal();

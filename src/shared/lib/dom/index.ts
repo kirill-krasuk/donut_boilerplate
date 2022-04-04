@@ -1,3 +1,3 @@
-export { setDataThemeAttr } from './functions/setDataThemeAttr';
+export { setDataThemeAttribute } from './functions/setDataThemeAttribute';
 export { prevent } from './functions/prevent';
 export { getDarkModeQuery } from './functions/getDarkModeQuery';

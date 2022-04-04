@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-empty-file */
 // import R                                       from 'ramda';
 
 // import { InjectedReducersType, ExtendedStore } from './types';

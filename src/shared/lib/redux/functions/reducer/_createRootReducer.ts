@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-empty-file */
 // import { combineReducers } from '@reduxjs/toolkit';
 
 // import appReducers         from '@app/store/reducers';

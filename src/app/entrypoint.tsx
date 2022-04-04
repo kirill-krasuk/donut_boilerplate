@@ -28,8 +28,8 @@ loadableReady(() => {
                     await navigator.serviceWorker.register('/sw.js', { scope: '/' });
 
                     console.info('SW registered');
-                } catch (err) {
-                    console.error(`SW registration failed: ${ err }`);
+                } catch (error) {
+                    console.error(`SW registration failed: ${ error }`);
                 }
             });
         }

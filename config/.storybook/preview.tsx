@@ -5,9 +5,9 @@ import { ThemeProvider }     from 'styled-components/macro';
 
 import { theme }             from '@shared/config/theme';
 
-addDecorator((storyFn) => (
+addDecorator((storyFunction) => (
     <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
-        { storyFn() }
+        { storyFunction() }
     </ThemeProvider>
 ));
 

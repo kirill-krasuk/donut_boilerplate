@@ -9,7 +9,7 @@ import { theme }                 from '@config/theme';
 import { LocalesProvider }       from '@app/providers/with-locales';
 import { store }                 from '../__mocks__/store';
 
-const AllTheProviders: React.ComponentType = ({ children }) => (
+const AllTheProviders: React.FC = ({ children }) => (
     <BrowserRouter>
         <Provider store={ store }>
             <LocalesProvider>

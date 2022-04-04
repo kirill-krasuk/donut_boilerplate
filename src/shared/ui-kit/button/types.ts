@@ -1,9 +1,9 @@
-import { ReactNode, MouseEvent }     from 'react';
+import { ReactNode, MouseEventHandler } from 'react';
 
-import { ButtonSizes, ButtonStyles } from './enums';
+import { ButtonSizes, ButtonStyles }    from './enums';
 
 export type Props = {
-    onClick?(event: MouseEvent<HTMLButtonElement>): void,
+    onClick?: MouseEventHandler<HTMLButtonElement>,
 
     /**
      * Small 24px

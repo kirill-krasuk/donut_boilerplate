@@ -1,4 +1,4 @@
-export const replaceExtension = (filePath: string, toExt: string) => filePath
+export const replaceExtension = (filePath: string, toExtension: string) => filePath
     .replace(/(\.[^.?]+)(\.[^.?]+)?($|[\w&=?]+)/gi, (_match, $1, $2, $3) => (
 
         // if second param exists
@@ -6,6 +6,6 @@ export const replaceExtension = (filePath: string, toExt: string) => filePath
         // and extension on second place
         // not first
         $2
-            ? `${ $1 }.${ toExt }${ $3 }`
-            : `.${ toExt }${ $3 }`)
+            ? `${ $1 }.${ toExtension }${ $3 }`
+            : `.${ toExtension }${ $3 }`)
     );

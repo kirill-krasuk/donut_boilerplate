@@ -11,7 +11,6 @@ global.document    = document;
 // @ts-expect-error
 global.window = document.defaultView;
 
-// eslint-disable-next-line
 console.error = (message: any) => {
     throw new Error(message);
 };

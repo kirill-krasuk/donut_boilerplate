@@ -5,10 +5,10 @@ import { ServerStartOptions } from '@server/types/server';
 type RunServerCallback = (serverOptions: ServerStartOptions) => void;
 
 export function createUsePortHandler({ port, host }: ServerStartOptions, runServerCB: RunServerCallback) {
-    return async (err: any) => {
+    return async (error: any) => {
         let p = +port;
 
-        if (err.code === 'EADDRINUSE') {
+        if (error.code === 'EADDRINUSE') {
             // eslint-disable-next-line no-await-in-loop
             while (await tcpPortUsed.check(p, host)) {
                 p++;

@@ -1,10 +1,10 @@
-import { useState, useEffect }                from 'react';
-import { useSelector }                        from 'react-redux';
-import Cookie                                 from 'js-cookie';
+import { useState, useEffect }                     from 'react';
+import { useSelector }                             from 'react-redux';
+import Cookie                                      from 'js-cookie';
 
-import { Theme, themeModel }                  from '@entities/theme';
-import { setDataThemeAttr, getDarkModeQuery } from '@lib/dom';
-import { useActions }                         from '@hooks/index';
+import { Theme, themeModel }                       from '@entities/theme';
+import { setDataThemeAttribute, getDarkModeQuery } from '@lib/dom';
+import { useActions }                              from '@hooks/index';
 
 export function useTheme() {
     const { changePreferColorScheme } = useActions(themeModel.actions);
@@ -16,7 +16,7 @@ export function useTheme() {
     };
 
     useEffect(() => {
-        setDataThemeAttr(theme);
+        setDataThemeAttribute(theme);
     }, [ theme ]);
 
     // change theme by os theme

@@ -1,6 +1,6 @@
 #! /usr/bin/env ts-node-script
 
-import path               from 'path';
+import path               from 'node:path';
 import yargs              from 'yargs';
 
 import { bundleToolArgs } from '../../constants/args';

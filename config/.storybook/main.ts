@@ -1,6 +1,6 @@
 /* eslint-disable import/no-import-module-exports */
 import webpack                 from 'webpack';
-import path                    from 'path';
+import path                    from 'node:path';
 
 import { paths }               from '../shared/constants/paths';
 import { jsLoader }            from '../shared/loaders/js-loader';
@@ -15,7 +15,7 @@ const styleProps = {
     forceStyleLoader: true
 };
 
-module.exports = {
+export default {
     core: {
         builder: 'webpack5',
     },

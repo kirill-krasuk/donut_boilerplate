@@ -4,7 +4,7 @@ import processImage                                          from 'express-proce
 import shrinkRay                                             from 'shrink-ray-current';
 import favicon                                               from 'serve-favicon';
 import cookieParser                                          from 'cookie-parser';
-import path                                                  from 'path';
+import path                                                  from 'node:path';
 
 import { createServerRunnerPromise }                         from './lib/server';
 import { handleClose, createExitHandler, handleClientError } from './handlers';

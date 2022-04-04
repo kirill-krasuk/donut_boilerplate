@@ -23,8 +23,8 @@ export const createStore = <S = any, A extends Action = AnyAction>(
             .concat(...middlewares)
     });
 
-    return (reducerReplacementFunc?: (s: typeof store) => void) => {
-        reducerReplacementFunc?.(store);
+    return (reducerReplacementFunction?: (s: typeof store) => void) => {
+        reducerReplacementFunction?.(store);
 
         return store;
     };

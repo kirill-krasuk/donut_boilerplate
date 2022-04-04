@@ -1,1 +1,1 @@
-export const floatingDecimal = (toNum: number) => `([0-9]+)([.,]([0-9]{1,${ toNum }})?)?`;
+export const floatingDecimal = (toNumber: number) => `([0-9]+)([.,]([0-9]{1,${ toNumber }})?)?`;

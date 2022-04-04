@@ -1,5 +1,5 @@
 export const joinURLPath = (publicPath: string, filename: string) => {
-    if (publicPath.substr(-1) === '/') {
+    if (publicPath.endsWith('/')) {
         return `${ publicPath }${ filename }`;
     }
 

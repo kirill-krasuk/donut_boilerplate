@@ -46,8 +46,8 @@ export const ProgressiveImage: FC<ProgressiveImageProps> = (props) => {
                     alt={ alt }
                     height={ height }
                     isLoaded={ isLoaded }
-                    onLoad={ handleLoad }
                     width={ width }
+                    onLoad={ handleLoad }
                 />
             </Picture>
         </>

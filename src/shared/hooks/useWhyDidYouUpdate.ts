@@ -8,7 +8,7 @@ export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
         if (previousProps.current) {
             const allKeys = Reflect.ownKeys({ ...previousProps.current, ...props });
 
-            const changesObj = allKeys.reduce((acc, key) => {
+            const changesObject = allKeys.reduce((acc, key) => {
                 if (typeof key !== 'symbol' && previousProps?.current) {
                     if (previousProps.current[key] !== props[key]) {
                         return {
@@ -26,9 +26,9 @@ export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
                 return acc;
             }, {});
 
-            if (Reflect.ownKeys(changesObj).length) {
+            if (Reflect.ownKeys(changesObject).length) {
                 // eslint-disable-next-line no-console
-                console.log('[why-did-you-update]', name, changesObj);
+                console.log('[why-did-you-update]', name, changesObject);
             }
         }
 

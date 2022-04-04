@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-empty-file */
 // import { Store, Reducer } from '@reduxjs/toolkit';
 
 // export type AsyncReducer = Reducer<any, any>;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { Server } from 'http';
+import { Server } from 'node:http';
 
 export type ErrorHandler<Request = any, Response = any> = (
     error: any,
