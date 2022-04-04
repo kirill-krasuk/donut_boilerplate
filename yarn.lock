@@ -6789,6 +6789,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/duplicate-package-checker-webpack-plugin@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@types/duplicate-package-checker-webpack-plugin@npm:2.1.2"
+  dependencies:
+    "@types/webpack": ^4
+  checksum: 170bac09245d5ae2d81682deeb4136c65f0aef3d75873b56716031718f6e7fd62a5a85c4c9bba1207855b5f0445e291e633673eb02a569b146b990c8b131d034
+  languageName: node
+  linkType: hard
+
 "@types/eslint-scope@npm:^3.7.0":
   version: 3.7.1
   resolution: "@types/eslint-scope@npm:3.7.1"
@@ -22640,6 +22649,7 @@ __metadata:
     "@types/compression-webpack-plugin": ^9.1.1
     "@types/cookie-parser": ^1.4.2
     "@types/dotenv": ^8.2.0
+    "@types/duplicate-package-checker-webpack-plugin": ^2.1.2
     "@types/express": ^4.17.13
     "@types/express-processimage": ^10.1.1
     "@types/figlet": ^1.5.4
