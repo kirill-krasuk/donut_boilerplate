@@ -139,7 +139,7 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
                     '!index.pug',
                     'precache-manifest.*.js'
                 ],
-            }),
+            })
         ].filter(Boolean))
     };
 

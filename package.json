@@ -12,7 +12,10 @@
         "url": "https://github.com/kirill-krasuk/new_boilerplate/issues"
     },
     "resolutions": {
-        "@storybook/react/webpack": "^5"
+        "@storybook/react/webpack": "^5",
+        "react-redux/react-is": "^18.0.0",
+        "@loadable/component/react-is": "^18.0.0",
+        "hoist-non-react-statics/react-is": "^18.0.0"
     },
     "repository": {
         "type": "git",
@@ -223,6 +226,7 @@
         "cache-loader": "^4.1.0",
         "commitizen": "^4.2.4",
         "cz-conventional-changelog-emoji": "^0.1.0",
+        "duplicate-package-checker-webpack-plugin": "^3.0.0",
         "eslint": "^8.10.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-import-resolver-typescript": "^2.5.0",

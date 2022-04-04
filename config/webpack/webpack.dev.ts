@@ -1,10 +1,11 @@
-import webpack                   from 'webpack';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import CircularDependencyPlugin  from 'circular-dependency-plugin';
-import WebpackNotifierPlugin     from 'webpack-notifier';
+import webpack                       from 'webpack';
+import ReactRefreshWebpackPlugin     from '@pmmmwh/react-refresh-webpack-plugin';
+import CircularDependencyPlugin      from 'circular-dependency-plugin';
+import WebpackNotifierPlugin         from 'webpack-notifier';
+import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 
-import { configureBundler }      from './webpack.common';
-import { paths }                 from '../shared/constants/paths';
+import { configureBundler }          from './webpack.common';
+import { paths }                     from '../shared/constants/paths';
 
 export default configureBundler({
     mode : 'development',
@@ -48,5 +49,8 @@ export default configureBundler({
             },
             failOnError: true
         }),
+        new DuplicatePackageCheckerPlugin({
+            verbose: true,
+        })
     ].filter(Boolean)
 });
