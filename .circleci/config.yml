@@ -20,7 +20,7 @@ commands:
                 - yarn-packages-{{ checksum "yarn.lock" }}
         - run:
             name: Install Dependencies
-            command: YARN_ENABLE_IMMUTABLE_INSTALLS=true yarn install
+            command: yarn install
         - save_cache:
             name: Save Yarn Package Cache
             key: yarn-packages-{{ checksum "yarn.lock" }}
