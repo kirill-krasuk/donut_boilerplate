@@ -7,6 +7,12 @@ import { Header }        from '@features/header';
 import * as S            from './styles';
 import locales           from '../config/locales';
 
+const CodePath = (
+    <code>
+        <T.Text id={ locales.path } />
+    </code>
+);
+
 const Home: FC = () => (
     <>
         <Helmet
@@ -17,7 +23,11 @@ const Home: FC = () => (
 
         <S.Container>
             <S.Text>
-                <T.Text id={ locales.title } />
+                <T.Text
+                    html
+                    id={ locales.title }
+                    path={ CodePath }
+                />
             </S.Text>
 
             <S.Link to={ routes.second.path }>

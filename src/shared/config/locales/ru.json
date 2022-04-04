@@ -1,8 +1,10 @@
 {
-    "app/components/HomePage/title": "Отредактируйте src/pages/Home/ui/Home.tsx для изменений",
-    "app/components/HomePage/link": "перейдите на вторую страницу",
-    "app/components/SecondPage/title": "Отредактируйте src/pages/Second/ui/Second.tsx для изменений",
-    "app/components/SecondPage/link": "перейдите на главную страницу",
-    "app/components/SecondPage/protect": "редирект to protected route",
-    "app/components/Header/title": "Добро пожаловать в Donut Boilerplate v2"
+    "HomePage/title": "Отредактируйте {path} для изменений",
+    "HomePage/path": "src/pages/Home/ui/Home.tsx",
+    "HomePage/link": "перейдите на вторую страницу",
+    "SecondPage/title": "Отредактируйте {path} для изменений",
+    "SecondPage/path": "src/pages/Second/ui/Second.tsx",
+    "SecondPage/link": "перейдите на главную страницу",
+    "SecondPage/protect": "редирект to protected route",
+    "Header/title": "Добро пожаловать в Donut Boilerplate v2"
 }

@@ -1,5 +1,6 @@
 export default {
-    title  : 'app/components/SecondPage/title',
-    link   : 'app/components/SecondPage/link',
-    protect: 'app/components/SecondPage/protect',
+    title  : 'SecondPage/title',
+    link   : 'SecondPage/link',
+    path   : 'SecondPage/path',
+    protect: 'SecondPage/protect',
 } as const;

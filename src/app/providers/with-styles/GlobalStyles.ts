@@ -32,4 +32,22 @@ export const GlobalStyles = createGlobalStyle`
     #root {
         min-height: inherit;
     }
+
+    code {
+        color: var(--primary);
+        font-size: inherit;
+        font-family: monospace;
+    }
+
+    p > code,
+    li > code,
+    dd > code,
+    td > code,
+    span > code {
+        padding: .1rem .3rem .2rem;
+        word-wrap: break-word;
+        background: #ffeff0;
+        border-radius: .2rem;
+        box-decoration-break: clone;
+    }
 `;

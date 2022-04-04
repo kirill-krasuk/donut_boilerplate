@@ -51,6 +51,9 @@ export default configureBundler({
         }),
         new DuplicatePackageCheckerPlugin({
             verbose: true,
+            exclude(instance) {
+                return instance.name === 'react-is';
+            }
         })
     ].filter(Boolean)
 });
