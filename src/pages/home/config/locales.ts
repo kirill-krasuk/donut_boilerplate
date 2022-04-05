@@ -1,7 +1,7 @@
-import { Locales } from '@config/locales';
+import { createLocales } from '@lib/locales';
 
-export const locales: Locales<'HomePage'> = {
+export const locales = createLocales<'HomePage'>()({
     title: 'HomePage.title',
     link : 'HomePage.link',
     path : 'HomePage.path'
-} as const;
+});

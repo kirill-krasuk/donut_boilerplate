@@ -1,5 +1,5 @@
-import { Locales } from '@config/locales';
+import { createLocales } from '@lib/locales';
 
-export const locales: Locales<'Header'> = {
+export const locales = createLocales<'Header'>()({
     title: 'Header.title',
-} as const;
+});

@@ -1,12 +1,7 @@
-import { Locale }             from '@eo-locale/core';
-import { PropertyStringPath } from '@shared/types/utility';
+import { Locale } from '@eo-locale/core';
 
-import enMessages             from './en.json';
-import ruMessages             from './ru.json';
-
-export type AppLocales = typeof enMessages;
-
-export type Locales<T extends keyof AppLocales> = Record<string, PropertyStringPath<Pick<AppLocales, T>>>;
+import enMessages from './en.json';
+import ruMessages from './ru.json';
 
 const locales: Locale[] = [ {
     language: 'en',
@@ -15,5 +10,7 @@ const locales: Locale[] = [ {
     language: 'ru',
     messages: ruMessages
 } ];
+
+export type AppLocales = typeof enMessages;
 
 export default locales;

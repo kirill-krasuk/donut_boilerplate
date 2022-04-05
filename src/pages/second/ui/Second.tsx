@@ -26,11 +26,11 @@ const Second: FC = () => (
             </S.Text>
 
             <S.Link to={ routes.home.path }>
-                <T.Text id={ locales.link } />
+                <T.Text id={ locales.toHome } />
             </S.Link>
 
             <S.Link to={ routes.protect.path }>
-                <T.Text id={ locales.protect } />
+                <T.Text id={ locales.toProtect } />
             </S.Link>
         </S.Container>
     </>

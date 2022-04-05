@@ -1,0 +1,1 @@
+export { createLocales } from './createLocales';

@@ -1,8 +1,8 @@
-import { Locales } from '@config/locales';
+import { createLocales } from '@lib/locales';
 
-export const locales: Locales<'SecondPage'> = {
+export const locales = createLocales<'SecondPage'>()({
     title    : 'SecondPage.title',
     toHome   : 'SecondPage.links.toHome',
     toProtect: 'SecondPage.links.toProtect',
     path     : 'SecondPage.path',
-} as const;
+});
