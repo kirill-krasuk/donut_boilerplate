@@ -13,7 +13,9 @@ import { NoInfer }    from '@shared/types/utility';
 
 export const createStore = <S = any, A extends Action = AnyAction>(
     reducer: Reducer<S, A> | ReducersMapObject<S, A>,
-    preloadedState: PreloadedState<CombinedState<NoInfer<S>>> = {},
+
+    // TODO: fix type
+    preloadedState: PreloadedState<CombinedState<NoInfer<S>>> = {} as any,
     middlewares: Middleware[] = []
 ) => {
     const store = configureStore({
