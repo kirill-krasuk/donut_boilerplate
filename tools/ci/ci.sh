@@ -13,7 +13,7 @@ echo -e "\n${COLOR_BOLD_BLACK}${BACKGROUND_COLOR_BLUE} INFO ${COLOR_OFF} Run jes
 # shellcheck disable=SC2035
 TEST=$(circleci tests glob **/__tests__/*.{ts,tsx,js,jsx} | circleci tests split --split-by=timings)
 # shellcheck disable=SC2086
-yarn jest -c=$CI_JEST_CONFIG_PATH $TEST
+yarn jest --runInBand --env=jsdom -c="$CI_JEST_CONFIG_PATH" $TEST
 
 if [ $? -eq 1 ]; then
     echo -e "🚨🚨🚨 Tests ${COLOR_BOLD_RED}failed${COLOR_OFF} 🚨🚨🚨"
