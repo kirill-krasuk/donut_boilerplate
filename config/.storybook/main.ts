@@ -36,8 +36,10 @@ export default {
     ],
     staticDirs  : [ path.resolve('public') ],
     webpackFinal: async (config: webpack.Configuration) => {
-        // find and remove css rule to overwrite
-        // custom and they do not conflict
+        /**
+         * find and remove css rule to overwrite
+         * custom and they do not conflict
+         */
         const cssRuleIndex = config!.module!.rules?.findIndex(
             (rule: any) => rule.test.toString() === /\.css$/.toString()
         );

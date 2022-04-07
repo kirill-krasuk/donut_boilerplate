@@ -4,6 +4,4 @@ export default create({
     base      : 'dark',
     brandTitle: 'Donut Stories',
     brandImage: 'images/logo_donut.png',
-
-    // brandUrl: '',
 });

@@ -19,8 +19,10 @@ export function useTheme() {
         setDataThemeAttribute(theme);
     }, [ theme ]);
 
-    // change theme by os theme
-    // if the theme is not set force
+    /**
+     * change theme by os theme
+     * if the theme is not set force
+     */
     useEffect(() => {
         if (!Cookie.get('theme')) {
             const currentTheme = getDarkModeQuery()?.matches

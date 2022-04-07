@@ -6,8 +6,10 @@ export const createExitHandler = (server: Server) => (signal: NodeJS.Signals) =>
 
     server.close();
 
-    // delay the process exit for a second
-    // to deliver a server close event
+    /**
+     * delay the process exit for a second
+     * to deliver a server close event
+     */
     setTimeout(() => {
         process.exit(0);
     }, 1000);

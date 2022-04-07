@@ -15,9 +15,11 @@ export function htmlPlugins(): webpack.WebpackPluginInstance[] {
             filename         : paths.client.view,
             alwaysWriteToDisk: true,
 
-            /* force disable minification for
-             correctly building pug file
-             because indentation matters */
+            /**
+             * force disable minification for
+             * correctly building pug file
+             * because indentation matters
+             */
             minify       : false,
             excludeAssets: [ fileExtensions.jsOrCss ]
         }),

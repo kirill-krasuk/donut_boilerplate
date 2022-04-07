@@ -1,8 +1,6 @@
 import { FC }              from 'react';
 import { useInitialProps } from '@hooks/index';
 
-// import { env }             from '@env/index';
-
 type InitialProps = {
     posts: any[]
 }
@@ -30,17 +28,5 @@ const PostsPage: FC = () => {
         </div>
     );
 };
-
-// PostsPage.prefetch = async () => {
-//     console.log('DD: ', env.client.api);
-//     const res  = await fetch(`${ env.client.api }/posts`);
-//     const data = await res.json();
-
-//     console.log('DD:', data);
-
-//     return {
-//         posts: data
-//     };
-// };
 
 export default PostsPage;
