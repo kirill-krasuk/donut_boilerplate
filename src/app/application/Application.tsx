@@ -1,7 +1,7 @@
-import { useEffect, FC }            from 'react';
+import { useEffect, FC, PropsWithChildren } from 'react';
 
-import { withAppProviders }         from '../providers';
-import { clearServerDataContainer } from './lib';
+import { withAppProviders }                 from '../providers';
+import { clearServerDataContainer }         from './lib';
 
 // manual connection of fonts
 // import './styles/fonts.css';
@@ -12,7 +12,7 @@ import { clearServerDataContainer } from './lib';
 */
 // import './styles/base-styles.css';
 
-export const Application: FC = withAppProviders(() => {
+export const Application: FC<PropsWithChildren<unknown>> = withAppProviders(() => {
     useEffect(() => {
         clearServerDataContainer();
     }, []);

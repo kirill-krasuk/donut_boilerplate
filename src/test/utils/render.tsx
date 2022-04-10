@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-imports */
-import React                     from 'react';
+import { FC, ReactElement }      from 'react';
 import { BrowserRouter }         from 'react-router-dom';
 import { render, RenderOptions } from '@testing-library/react';
 import { Provider }              from 'react-redux';
@@ -9,7 +9,7 @@ import { theme }                 from '@config/theme';
 import { LocalesProvider }       from '@app/providers/with-locales';
 import { store }                 from '../__mocks__/store';
 
-const AllTheProviders: React.FC = ({ children }) => (
+const AllTheProviders: FC = ({ children }) => (
     <BrowserRouter>
         <Provider store={ store }>
             <LocalesProvider>
@@ -21,7 +21,7 @@ const AllTheProviders: React.FC = ({ children }) => (
     </BrowserRouter>
 );
 
-function customRender(ui: React.ReactElement, options?: Omit<RenderOptions, 'queries'>) {
+function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) {
     return render(ui, { wrapper: AllTheProviders, ...options });
 }
 

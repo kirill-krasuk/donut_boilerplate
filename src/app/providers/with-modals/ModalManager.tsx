@@ -1,4 +1,4 @@
-import { FC }                     from 'react';
+import { FC, PropsWithChildren }  from 'react';
 import { createPortal }           from 'react-dom';
 import { useSelector }            from 'react-redux';
 
@@ -6,7 +6,7 @@ import { modalsModel, modalsMap } from '@features/modals';
 
 const modalNode = document.querySelector('#modal')!;
 
-export const ModalManager: FC = () => {
+export const ModalManager: FC<PropsWithChildren<unknown>> = () => {
     const id = useSelector(modalsModel.selectors.getModalId);
 
     if (!id) {

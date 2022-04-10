@@ -2,7 +2,8 @@ import {
     FC,
     useEffect,
     useRef,
-    useCallback
+    useCallback,
+    PropsWithChildren
 } from 'react';
 
 import { useActions, useClickOutside, useLockBodyScroll } from '@hooks/index';
@@ -12,7 +13,7 @@ import * as S                                             from './styles';
 import { Props }                                          from './type';
 
 // TODO: complete modal functional
-export const Modal: FC<Props> = (props) => {
+export const Modal: FC<PropsWithChildren<Props>> = (props) => {
     const { children, onClose, title } = props;
 
     const { closeModal } = useActions(actions);

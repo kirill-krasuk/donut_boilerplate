@@ -1,10 +1,10 @@
-import { FC }                                     from 'react';
+import { FC, PropsWithChildren }                  from 'react';
 import { ThemeProvider as StyledComponentsTheme } from 'styled-components/macro';
 
 import { theme as themes, Theme }                 from '@config/theme';
 import { themeModel }                             from '@features/theme';
 
-export const ThemeProvider: FC = ({ children }) => {
+export const ThemeProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     const theme = themeModel.hooks.useTheme();
 
     return (

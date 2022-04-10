@@ -1,8 +1,8 @@
-import { ComponentType } from 'react';
+import { ComponentType, PropsWithChildren } from 'react';
 
-import { ModalManager }  from './ModalManager';
+import { ModalManager }                     from './ModalManager';
 
-export function withModals(Component: ComponentType) {
+export function withModals(Component: ComponentType<PropsWithChildren<unknown>>) {
     function ModalProvider() {
         return (
             <>

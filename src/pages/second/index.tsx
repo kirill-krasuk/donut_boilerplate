@@ -1,8 +1,9 @@
-import loadable            from '@loadable/component';
+import { PropsWithChildren } from 'react';
+import loadable              from '@loadable/component';
 
-import { createRoutePage } from '@lib/react';
+import { createRoutePage }   from '@lib/react';
 
-const Second = loadable(
+const Second = loadable<PropsWithChildren<unknown>>(
     () => import(/* webpackChunkName: "Second", webpackPrefetch: true */'./ui/Second'),
     {
         fallback: <div>Loading...</div>

@@ -5,7 +5,7 @@ import { Picture, ProgressiveImage } from './components';
 import { Props }                     from './types';
 import * as S                        from './styles';
 
-export const Image: FC<Props> = (props) => {
+export const Image: FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         src,
         webp,

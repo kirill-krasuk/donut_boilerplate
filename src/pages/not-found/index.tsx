@@ -1,8 +1,9 @@
-import loadable            from '@loadable/component';
+import { PropsWithChildren } from 'react';
+import loadable              from '@loadable/component';
 
-import { createRoutePage } from '@lib/react';
+import { createRoutePage }   from '@lib/react';
 
-const Page404 = loadable(
+const Page404 = loadable<PropsWithChildren<unknown>>(
     () => import(/* webpackChunkName: "Home" */'./ui/Page404'),
     {
         fallback: <div>Loading...</div>

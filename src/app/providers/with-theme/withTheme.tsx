@@ -1,8 +1,8 @@
-import { ComponentType } from 'react';
+import { ComponentType, PropsWithChildren } from 'react';
 
-import { ThemeProvider } from './ThemeProvider';
+import { ThemeProvider }                    from './ThemeProvider';
 
-export function withTheme(Component: ComponentType) {
+export function withTheme(Component: ComponentType<PropsWithChildren<unknown>>) {
     function ThemeProviderWrapper() {
         return (
             <ThemeProvider>

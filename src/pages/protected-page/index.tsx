@@ -1,8 +1,9 @@
-import loadable            from '@loadable/component';
+import { PropsWithChildren } from 'react';
+import loadable              from '@loadable/component';
 
-import { createRoutePage } from '@lib/react';
+import { createRoutePage }   from '@lib/react';
 
-const ProtectedPage = loadable(
+const ProtectedPage = loadable<PropsWithChildren<unknown>>(
     () => import(/* webpackChunkName: "ProtectedPage" */'./ui/ProtectedPage'),
     {
         fallback: <div>Loading...</div>

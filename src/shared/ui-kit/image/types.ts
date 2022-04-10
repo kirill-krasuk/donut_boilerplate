@@ -1,3 +1,5 @@
+import { PropsWithChildren } from 'react';
+
 type ImageSize = {
     width?: number,
     height?: number
@@ -18,18 +20,18 @@ export type StyledProps = {
     height?: ImageSize['height']
 }
 
-export type Props = ImageSize & {
+export type Props = PropsWithChildren<ImageSize & {
     src: string,
     webp?: boolean,
     alt: string,
     progressive?: boolean,
     loadingWidth?: number,
     set?: ImageSet[]
-}
+}>
 
-export type ProgressiveImageProps = Omit<Props, 'progressive'> & {
+export type ProgressiveImageProps = PropsWithChildren<Omit<Props, 'progressive'> & {
     isLoaded: boolean,
     handleLoad(): void
-}
+}>
 
-export type PictureProps = Pick<Props, 'src' | 'webp'>
+export type PictureProps = PropsWithChildren<Pick<Props, 'src' | 'webp'>>
