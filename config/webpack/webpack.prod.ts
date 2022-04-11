@@ -22,19 +22,11 @@ export default configureBundler({
         splitChunks: {
             chunks     : 'all',
             cacheGroups: {
-                default: {
-                    test              : /(react|redux)/g,
-                    filename          : 'react-vendors.[contenthash:8].js',
-                    chunks            : 'initial',
-                    reuseExistingChunk: true,
-                    priority          : -10
-                },
                 defaultVendors: {
                     test              : /.yarn/,
                     filename          : 'vendors.[contenthash:8].js',
                     chunks            : 'initial',
                     reuseExistingChunk: true,
-                    priority          : -20
                 }
             }
         },
