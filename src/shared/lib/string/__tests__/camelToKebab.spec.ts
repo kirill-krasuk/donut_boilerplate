@@ -14,4 +14,18 @@ describe('camelToKebab utility function', () => {
 
         expect(camelToKebab(received)).toBe(expected);
     });
+
+    it('function must transformed path correctly', () => {
+        const received = 'path/HelloWorld/file';
+        const expected = 'path/hello-world/file';
+
+        expect(camelToKebab(received)).toBe(expected);
+    });
+
+    it('function must transformed path correctly to lower case', () => {
+        const received = 'path/Hello/file';
+        const expected = 'path/hello/file';
+
+        expect(camelToKebab(received)).toBe(expected);
+    });
 });
