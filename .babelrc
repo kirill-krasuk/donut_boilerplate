@@ -30,8 +30,6 @@
         "ramda",
         "@loadable/babel-plugin", // for loadable chunks
         "babel-plugin-named-exports-order", // for storybook
-        ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        ["@babel/plugin-proposal-class-properties", { "loose": true }],
         ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
         "@babel/plugin-transform-runtime"
     ],
