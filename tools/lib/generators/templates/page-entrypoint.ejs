@@ -1,0 +1,16 @@
+import { PropsWithChildren } from 'react';
+import loadable              from '@loadable/component';
+
+import { createRoutePage }   from '@lib/react';
+
+const <%= name %> = loadable<PropsWithChildren<unknown>>(
+    () => import(/* webpackChunkName: <%= name %> */'./ui/<%= name %>'),
+    {
+        fallback: <div>Loading...</div>
+    }
+);
+
+export default createRoutePage({
+    routeName: '<%= camelName %>',
+    component: <%= name %>,
+});

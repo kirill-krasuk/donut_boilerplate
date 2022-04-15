@@ -22675,7 +22675,7 @@ __metadata:
     "@types/pug": ^2.0.6
     "@types/query-string": ^6.3.0
     "@types/ramda": ^0.28.8
-    "@types/react": ^18.0.1
+    "@types/react": ^18.0.3
     "@types/react-dev-utils": ^9.0.10
     "@types/react-dom": ^18.0.0
     "@types/react-helmet": ^6.1.5
