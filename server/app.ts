@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import path                                                  from 'node:path';
 import { json, urlencoded }                                  from 'express';
 import processImage                                          from 'express-processimage';
 import shrinkRay                                             from 'shrink-ray-current';
 import favicon                                               from 'serve-favicon';
 import cookieParser                                          from 'cookie-parser';
-import path                                                  from 'node:path';
 
 import { createServerRunnerPromise }                         from './lib/server';
 import { handleClose, createExitHandler, handleClientError } from './handlers';

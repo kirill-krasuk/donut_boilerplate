@@ -1,16 +1,16 @@
 import { HTTPMethod } from '../enums/http';
 
-export interface RequestExtended extends RequestInit {
+interface RequestExtended extends RequestInit {
     method: HTTPMethod;
     url: string;
 }
 
-export type DefaultHeaders = {
+type DefaultHeaders = {
     'Content-Type': string,
     Accept: string
 }
 
-export type RequestBody =
+type RequestBody =
     ArrayBuffer
     | ArrayBufferView
     | Blob
@@ -21,4 +21,11 @@ export type RequestBody =
     | null
     | undefined
 
-export type UrlORRequest = RequestExtended | string;
+type UrlORRequest = RequestExtended | string;
+
+export type {
+    RequestExtended,
+    DefaultHeaders,
+    RequestBody,
+    UrlORRequest
+};

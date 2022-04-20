@@ -4,8 +4,8 @@ import CircularDependencyPlugin      from 'circular-dependency-plugin';
 import WebpackNotifierPlugin         from 'webpack-notifier';
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 
-import { configureBundler }          from './webpack.common';
 import { paths }                     from '../shared/constants/paths';
+import { configureBundler }          from './webpack.common';
 
 export default configureBundler({
     mode : 'development',

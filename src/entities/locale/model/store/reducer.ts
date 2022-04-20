@@ -1,11 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { changeLocale }  from './actions';
 import { Locale }        from '../../types/enums';
+import { changeLocale }  from './actions';
 
-export const initialState = Locale.En;
+const initialState = Locale.En;
 
-export const reducer = createReducer(initialState, (builder) => {
+const reducer = createReducer(initialState, (builder) => {
     builder
         .addCase(changeLocale, (_state, action) => action.payload);
 });
+
+export {
+    initialState,
+    reducer
+};

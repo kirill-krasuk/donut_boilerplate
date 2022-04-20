@@ -15,8 +15,8 @@ import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
 import { definePlugin }           from '../shared/plugins/define';
 import { isProd }                 from '../shared/lib/env';
 
-export const __IS_CLIENT__ = false;
-export const __IS_SERVER__ = true;
+const __IS_CLIENT__ = false;
+const __IS_SERVER__ = true;
 
 const mode = process.env.NODE_ENV as 'development' | 'production' || 'development';
 
@@ -75,6 +75,11 @@ const config: Configuration = {
             maxChunks: 1,
         }),
     ]
+};
+
+export {
+    __IS_CLIENT__,
+    __IS_SERVER__
 };
 
 export default withSpeedMeasurePlugin(config, false);

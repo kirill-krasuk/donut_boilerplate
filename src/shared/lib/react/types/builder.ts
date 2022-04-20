@@ -3,19 +3,25 @@ import { RouteObject }                      from 'react-router';
 
 import { routes }                           from '@config/routes';
 
-export type RouteByPropsPageOptions = {
+type RouteByPropsPageOptions = {
     component: ComponentType<PropsWithChildren<unknown>>,
     path?: string,
     protect?: boolean,
     prefetch?(): Promise<any>
 };
 
-export type RouteByNamePageOptions ={
+type RouteByNamePageOptions ={
     routeName?: keyof typeof routes,
     component: ComponentType<PropsWithChildren<unknown>>,
     prefetch?(): Promise<any>
 }
 
-export type RouteExtendedObject = RouteObject & {
+type RouteExtendedObject = RouteObject & {
     protect: boolean
 }
+
+export type {
+    RouteByNamePageOptions,
+    RouteByPropsPageOptions,
+    RouteExtendedObject
+};

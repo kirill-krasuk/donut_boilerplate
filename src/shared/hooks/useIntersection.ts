@@ -18,7 +18,7 @@ const defaultHookOptions = {
     once: false
 };
 
-export function createIntersectionHook(options: IntersectionObserverInit = defaultIntersectionOptions) {
+function createIntersectionHook(options: IntersectionObserverInit = defaultIntersectionOptions) {
     let observer: IntersectionObserver | null = null;
 
     const listeners = new WeakMap<HTMLElement, ListenersValue>();
@@ -81,4 +81,9 @@ export function createIntersectionHook(options: IntersectionObserverInit = defau
     };
 }
 
-export const { useIntersection } = createIntersectionHook();
+const { useIntersection } = createIntersectionHook();
+
+export {
+    useIntersection,
+    createIntersectionHook
+};

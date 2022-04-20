@@ -1,13 +1,19 @@
 import { Modals } from '@features/modals';
 
-export type CallModalObjectPayload = {
+type CallModalObjectPayload = {
     history: boolean,
     id: Modals
 }
 
-export type ModalHasHistory = boolean;
+type ModalHasHistory = boolean;
 
-export type ModalState = {
+type ModalState = {
     id: Modals | null,
     hasHistory: boolean
 }
+
+export type {
+    CallModalObjectPayload,
+    ModalHasHistory,
+    ModalState
+};

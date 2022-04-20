@@ -1,13 +1,13 @@
 import * as getters from './getters';
 
-export const clientScheme = {
+const clientScheme = {
     appEnv     : getters.getNodeEnv,
     api        : getters.getApiHost,
     swEnable   : getters.getServiceWorkerEnable,
     needHydrate: getters.getHydrate,
 };
 
-export const serverScheme = {
+const serverScheme = {
     appEnv                : getters.getNodeEnv,
     host                  : getters.getHost,
     port                  : getters.getPort,
@@ -17,4 +17,9 @@ export const serverScheme = {
     analyzerPort          : getters.getBundleAnalyzerPort,
     writeToDisk           : getters.getWriteToDisk,
     useCriticalCSSOptimize: getters.getUseCriticalCSSOptimize
+};
+
+export {
+    clientScheme,
+    serverScheme
 };

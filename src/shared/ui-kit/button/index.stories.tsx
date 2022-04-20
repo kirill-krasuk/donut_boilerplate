@@ -25,7 +25,7 @@ export default {
     },
 };
 
-export const withText = (args: any) => {
+const withText = (args: any) => {
     const isLoading = boolean('isLoading', false);
 
     return (
@@ -39,7 +39,7 @@ export const withText = (args: any) => {
     );
 };
 
-export const withEmoji = (args: any) => (
+const withEmoji = (args: any) => (
     <Button { ...args }>
         <span aria-label="so cool" role="img">
             😀 😎 👍 💯
@@ -51,4 +51,9 @@ withEmoji.parameters = {
     viewport: {
         defaultViewport: 'iphonex'
     }
+};
+
+export {
+    withText,
+    withEmoji
 };

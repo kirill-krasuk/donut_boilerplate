@@ -10,9 +10,9 @@ const defaultRouteProps = {
     protect: false
 };
 
-export function createRoutePage(options: RouteByPropsPageOptions): RouteExtendedObject;
-export function createRoutePage(options: RouteByNamePageOptions): RouteExtendedObject;
-export function createRoutePage(options: any): any {
+function createRoutePage(options: RouteByPropsPageOptions): RouteExtendedObject;
+function createRoutePage(options: RouteByNamePageOptions): RouteExtendedObject;
+function createRoutePage(options: any): any {
     if (isRouteFactory(options)) {
         const {
             routeName,
@@ -51,3 +51,7 @@ export function createRoutePage(options: any): any {
         };
     }
 }
+
+export {
+    createRoutePage
+};

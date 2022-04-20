@@ -3,8 +3,13 @@ import { RouteObject }       from 'react-router';
 
 import { Context }           from '@shared/types/client-server';
 
-export type AppRouteObject = Record<string, any> & RouteObject;
+type AppRouteObject = Record<string, any> & RouteObject;
 
-export type Props = PropsWithChildren<{
+type Props = PropsWithChildren<{
     context?: Context
 }>
+
+export type {
+    AppRouteObject,
+    Props
+};

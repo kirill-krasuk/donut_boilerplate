@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import * as log4js           from 'log4js';
 import fs                    from 'node:fs';
 import path                  from 'node:path';
+import { Request, Response } from 'express';
+import * as log4js           from 'log4js';
 
 export function handleClientError(req: Request, res: Response): void {
     const logDirectory = path.resolve('../../logs');

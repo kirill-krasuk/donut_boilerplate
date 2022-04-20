@@ -6,8 +6,8 @@ import { Moon }              from '@styled-icons/fa-solid/Moon';
 import { Theme, themeModel } from '@entities/theme';
 import { createFactory }     from '@lib/react';
 import { localeModel }       from '@entities/locale';
-import * as S                from './styles';
 import { locales }           from '../config/locales';
+import * as S                from './styles';
 
 const themeIconFactory = createFactory({
     [Theme.Light]: Sun,

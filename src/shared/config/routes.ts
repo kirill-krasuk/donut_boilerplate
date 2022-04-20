@@ -1,4 +1,4 @@
-export const routes = {
+const routes = {
     home: {
         path: '/',
     },
@@ -17,4 +17,9 @@ export const routes = {
     }
 } as const;
 
-export const protectRedirect = routes.home.path;
+const protectRedirect = routes.home.path;
+
+export {
+    routes,
+    protectRedirect
+};

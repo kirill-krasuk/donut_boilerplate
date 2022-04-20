@@ -14,13 +14,13 @@ type ImageSet = {
 
 }
 
-export type StyledProps = {
+type StyledProps = {
     isLoaded?: boolean,
     width?: ImageSize['width'],
     height?: ImageSize['height']
 }
 
-export type Props = PropsWithChildren<ImageSize & {
+type Props = PropsWithChildren<ImageSize & {
     src: string,
     webp?: boolean,
     alt: string,
@@ -29,9 +29,16 @@ export type Props = PropsWithChildren<ImageSize & {
     set?: ImageSet[]
 }>
 
-export type ProgressiveImageProps = PropsWithChildren<Omit<Props, 'progressive'> & {
+type ProgressiveImageProps = PropsWithChildren<Omit<Props, 'progressive'> & {
     isLoaded: boolean,
     handleLoad(): void
 }>
 
-export type PictureProps = PropsWithChildren<Pick<Props, 'src' | 'webp'>>
+type PictureProps = PropsWithChildren<Pick<Props, 'src' | 'webp'>>
+
+export {
+    StyledProps,
+    Props,
+    ProgressiveImageProps,
+    PictureProps
+};

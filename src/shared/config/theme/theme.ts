@@ -3,11 +3,11 @@ import { css }      from 'styled-components/macro';
 import { AppTheme } from './types';
 import { palette }  from './palette';
 
-export const theme = {
+const theme = {
     colors: palette
 } as const;
 
-export const commonValues = ({ theme }: AppTheme) => css`
+const commonValues = ({ theme }: AppTheme) => css`
     --dark-blue-0: ${ theme.colors.darkBlue[0] };
     --gray-0: ${ theme.colors.gray[0] };
     --pink-0: ${ theme.colors.pink[0] };
@@ -15,7 +15,7 @@ export const commonValues = ({ theme }: AppTheme) => css`
     --white-0: ${ theme.colors.white[0] };
 `;
 
-export const darkValues = ({ theme }: AppTheme) => css`
+const darkValues = ({ theme }: AppTheme) => css`
     --primary: ${ theme.colors.darkBlue[0] };
     --secondary: ${ theme.colors.pink[0] };
 
@@ -26,7 +26,7 @@ export const darkValues = ({ theme }: AppTheme) => css`
     --icon: ${ theme.colors.pink[0] };
 `;
 
-export const lightValues = ({ theme }: AppTheme) => css`
+const lightValues = ({ theme }: AppTheme) => css`
     --primary: ${ theme.colors.pink[0] };
     --secondary: ${ theme.colors.darkBlue[0] };
 
@@ -36,3 +36,10 @@ export const lightValues = ({ theme }: AppTheme) => css`
     --text: ${ theme.colors.darkBlue[0] }; 
     --icon: ${ theme.colors.white[0] };
 `;
+
+export {
+    theme,
+    commonValues,
+    darkValues,
+    lightValues
+};

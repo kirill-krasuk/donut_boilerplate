@@ -1,6 +1,6 @@
-import webpack from 'webpack';
 import fs      from 'node:fs';
 import path    from 'node:path';
+import webpack from 'webpack';
 import mkdir   from 'make-dir';
 
 type AssetsManifestPluginOptions = {

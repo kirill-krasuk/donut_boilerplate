@@ -5,19 +5,25 @@ import { ChunkExtractor } from '@loadable/server';
 import { Theme }          from '@entities/theme';
 import { Context }        from '@shared/types/client-server';
 
-export type StaticTemplate = Record<string, HelmetDatum | string>
+type StaticTemplate = Record<string, HelmetDatum | string>
 
-export type GenerateAppOptions = {
+type GenerateAppOptions = {
     store: Store,
     context: Context,
     location: string,
     extractor: ChunkExtractor
 }
 
-export type OptionsForGenerate = {
+type OptionsForGenerate = {
     Component(): JSX.Element,
     store: Store,
     extractor: ChunkExtractor,
     props: Record<string, any>,
     mode: Theme
 }
+
+export type {
+    StaticTemplate,
+    GenerateAppOptions,
+    OptionsForGenerate
+};

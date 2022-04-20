@@ -1,4 +1,4 @@
-export enum StatusCode {
+enum StatusCode {
     S400 = 'Bad Request',
     S401 = 'Unauthorized',
     S402 = 'Payment Required',
@@ -15,9 +15,14 @@ export enum StatusCode {
     S504 = 'Gateway Timeout',
 }
 
-export enum HTTPMethod {
+enum HTTPMethod {
     Get = 'GET',
     Post = 'POST',
     Put = 'PUT',
     Delete = 'DELETE'
 }
+
+export {
+    StatusCode,
+    HTTPMethod
+};

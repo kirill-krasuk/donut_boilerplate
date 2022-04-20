@@ -22,12 +22,12 @@ import { htmlPlugins }            from '../shared/plugins/html';
 import { analyzerPlugin }         from '../shared/plugins/analyzer';
 import { extractCssPlugin }       from '../shared/plugins/extract-css';
 
-export const __IS_CLIENT__ = true;
-export const __IS_SERVER__ = false;
+const __IS_CLIENT__ = true;
+const __IS_SERVER__ = false;
 
 const contentHash = 'contenthash:8';
 
-export function configureBundler(options: webpack.Configuration): webpack.Configuration {
+function configureBundler(options: webpack.Configuration): webpack.Configuration {
     const isProd = options.mode === 'production';
 
     const addHash = createHashHelper(isProd);
@@ -145,3 +145,9 @@ export function configureBundler(options: webpack.Configuration): webpack.Config
 
     return withSpeedMeasurePlugin(config);
 }
+
+export {
+    __IS_CLIENT__,
+    __IS_SERVER__,
+    configureBundler
+};

@@ -6,6 +6,12 @@ type RouteProps = {
     query: string
 }
 
-export type PrefetchedComponent<T> = FC<PropsWithChildren<Partial<T>>> & { prefetch(routeObject: RouteProps, auth: boolean): any }
-export type PC<T = any> = PrefetchedComponent<T>;
-export type RouteForPrefetch = RouteObject & { element: { type: PC } };
+type PrefetchedComponent<T> = FC<PropsWithChildren<Partial<T>>> & { prefetch(routeObject: RouteProps, auth: boolean): any }
+type PC<T = any> = PrefetchedComponent<T>;
+type RouteForPrefetch = RouteObject & { element: { type: PC } };
+
+export type {
+    PrefetchedComponent,
+    PC,
+    RouteForPrefetch
+};

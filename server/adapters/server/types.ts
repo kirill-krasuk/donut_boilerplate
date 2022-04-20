@@ -1,32 +1,32 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { Server } from 'node:http';
 
-export type ErrorHandler<Request = any, Response = any> = (
+type ErrorHandler<Request = any, Response = any> = (
     error: any,
     request: Request,
     response: Response,
     next?: Function
 ) => any;
 
-export type RequestHandler<Request = any, Response = any> = (
+type RequestHandler<Request = any, Response = any> = (
     request: Request,
     response: Response,
     next?: Function
 ) => any;
 
-export type ViewTemplateOptions = {
+type ViewTemplateOptions = {
     engine: string,
     viewsPath?: string
 }
 
-export type StaticFilesOptions = {
+type StaticFilesOptions = {
     publicPath: string,
     source: string,
     compression?: boolean,
     extras?: Record<string, unknown>
 }
 
-export interface ServerAdapter<Request = any, Response = any> {
+interface ServerAdapter<Request = any, Response = any> {
     use(path: string, handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>): any;
     use(handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>): any;
 
@@ -44,3 +44,11 @@ export interface ServerAdapter<Request = any, Response = any> {
 
     getServer(): Server | undefined;
 }
+
+export type {
+    ErrorHandler,
+    RequestHandler,
+    ViewTemplateOptions,
+    StaticFilesOptions,
+    ServerAdapter
+};

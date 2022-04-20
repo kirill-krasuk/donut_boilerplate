@@ -1,51 +1,69 @@
-export type InferValueTypes<T> = T extends Record<string, infer U>
+type InferValueTypes<T> = T extends Record<string, infer U>
     ? U
     : never;
 
-export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
 
-export type LastOf<T> = UnionToIntersection<T extends any ? () => T : never> extends () => (infer R) ? R : never
+type LastOf<T> = UnionToIntersection<T extends any ? () => T : never> extends () => (infer R) ? R : never
 
-export type Push<T extends any[], V> = [...T, V];
+type Push<T extends any[], V> = [...T, V];
 
-export type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> =
+type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> =
     true extends N ? [] : Push<TuplifyUnion<Exclude<T, L>>, L>
 
-export type ObjectValueTuple<T, KS extends any[] = TuplifyUnion<keyof T>, R extends any[] = []> =
+type ObjectValueTuple<T, KS extends any[] = TuplifyUnion<keyof T>, R extends any[] = []> =
     KS extends [infer K, ...infer KT]
         ? ObjectValueTuple<T, KT, [...R, T[K & keyof T]]>
         : R
 
-export type Extends<A, B, Then = true, Else = false> = A extends B
+type Extends<A, B, Then = true, Else = false> = A extends B
     ? Then
     : Else;
 
-export type If<Condition, Then, Else> = Extends<Condition, true, Then, Else>;
+type If<Condition, Then, Else> = Extends<Condition, true, Then, Else>;
 
-export type And<A extends boolean, B extends boolean> = Extends<
+type And<A extends boolean, B extends boolean> = Extends<
     A,
     true,
     B,
     false
 >;
 
-export type Or<A extends boolean, B extends boolean> = Extends<
+type Or<A extends boolean, B extends boolean> = Extends<
     A,
     true,
     true,
     B
 >;
 
-export type Not<A extends boolean> = Extends<A, true, false, true>;
+type Not<A extends boolean> = Extends<A, true, false, true>;
 
-export type Tuple<T = any> = T[] | [T];
+type Tuple<T = any> = T[] | [T];
 
-export type NoInfer<T> = [T][T extends any ? 0 : never];
+type NoInfer<T> = [T][T extends any ? 0 : never];
 
-export type Primitive = bigint | boolean | number | string | symbol | undefined;
+type Primitive = bigint | boolean | number | string | symbol | undefined;
 
-export type PropertyStringPath<T, Prefix=''> = {
+type PropertyStringPath<T, Prefix=''> = {
     [K in keyof T]: T[K] extends Array<any> | Primitive
     ? `${ Prefix & string }${ K & string }`
     : PropertyStringPath<T[K], `${ Prefix & string }${ K & string }.`> | `${ Prefix & string }${ K & string }` ;
 }[keyof T];
+
+export {
+    InferValueTypes,
+    UnionToIntersection,
+    LastOf,
+    Push,
+    TuplifyUnion,
+    ObjectValueTuple,
+    Extends,
+    If,
+    And,
+    Or,
+    Not,
+    Tuple,
+    NoInfer,
+    Primitive,
+    PropertyStringPath
+};

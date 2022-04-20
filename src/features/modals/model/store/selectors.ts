@@ -6,12 +6,17 @@ import { ModalState }     from '../../types';
 
 const selectModal: Selector<ModalState> = R.prop('modal');
 
-export const getModalId = createSelector(
+const getModalId = createSelector(
     [ selectModal ],
     R.prop('id')
 );
 
-export const getHasModal = createSelector(
+const getHasModal = createSelector(
     getModalId,
     R.complement(R.isNil)
 );
+
+export {
+    getHasModal,
+    getModalId
+};

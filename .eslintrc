@@ -197,6 +197,10 @@
         "no-console": [2, { 
                 "allow": ["warn", "error", "info"] 
         } ],
+        "import/order": [2, {
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
+        } ],
+        "import/group-exports": 2,
         "default-param-last": 0,
         "no-sequences": 0,
         "no-bitwise": 0,
@@ -295,6 +299,11 @@
         "no-useless-computed-key": 0
     },
     "overrides": [ {
+        "files": ["*.d.ts"],
+        "rules": {
+            "import/group-exports": 0
+        }
+    }, {
         // enable the rule specifically for TypeScript files
         "files": ["*.ts", "*.tsx"],
         "parser": "@typescript-eslint/parser",

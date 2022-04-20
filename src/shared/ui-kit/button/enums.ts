@@ -1,10 +1,15 @@
-export enum ButtonSizes {
+enum ButtonSizes {
     Small = '24px',
     Medium = '32px',
     Large = '48px'
 }
 
-export enum ButtonStyles {
+enum ButtonStyles {
     Primary = 'primary',
     Secondary = 'secondary'
 }
+
+export {
+    ButtonSizes,
+    ButtonStyles
+};
