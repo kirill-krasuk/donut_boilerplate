@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 type ImageSize = {
     width?: number,
@@ -36,7 +36,7 @@ type ProgressiveImageProps = PropsWithChildren<Omit<Props, 'progressive'> & {
 
 type PictureProps = PropsWithChildren<Pick<Props, 'src' | 'webp'>>
 
-export {
+export type {
     StyledProps,
     Props,
     ProgressiveImageProps,

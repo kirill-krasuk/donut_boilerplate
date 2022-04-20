@@ -1,7 +1,8 @@
-import { ComponentType, PropsWithChildren } from 'react';
-import { Provider }                         from 'react-redux';
+import { Provider }                              from 'react-redux';
 
-import { store }                            from '../../store';
+import { store }                                 from '../../store';
+
+import type { ComponentType, PropsWithChildren } from 'react';
 
 export function withStore(Component: ComponentType<PropsWithChildren<unknown>>) {
     function StoreProvider() {

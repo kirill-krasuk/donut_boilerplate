@@ -2,8 +2,9 @@ import { FC, useState }              from 'react';
 
 import { imageConfig }               from './config';
 import { Picture, ProgressiveImage } from './components';
-import { Props }                     from './types';
 import * as S                        from './styles';
+
+import type { Props }                from './types';
 
 export const Image: FC<React.PropsWithChildren<Props>> = (props) => {
     const {

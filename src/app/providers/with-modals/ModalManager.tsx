@@ -1,8 +1,8 @@
-import { FC, PropsWithChildren }  from 'react';
-import { createPortal }           from 'react-dom';
-import { useSelector }            from 'react-redux';
+import { createPortal }               from 'react-dom';
+import { useSelector }                from 'react-redux';
+import { modalsModel, modalsMap }     from '@features/modals';
 
-import { modalsModel, modalsMap } from '@features/modals';
+import type { FC, PropsWithChildren } from 'react';
 
 const modalNode = document.querySelector('#modal')!;
 

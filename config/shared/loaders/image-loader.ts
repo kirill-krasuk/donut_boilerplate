@@ -1,9 +1,9 @@
-import webpack              from 'webpack';
+import { createHashHelper }      from '../lib/webpack';
+import { isProd }                from '../lib/env';
+import { fileExtensions }        from '../constants/files';
 
-import { createHashHelper } from '../lib/webpack';
-import { isProd }           from '../lib/env';
-import { fileExtensions }   from '../constants/files';
-import { IsomorphicLoader } from '../types';
+import type webpack              from 'webpack';
+import type { IsomorphicLoader } from '../types';
 
 const addHash = createHashHelper(isProd());
 

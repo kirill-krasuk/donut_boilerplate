@@ -1,7 +1,7 @@
-import { ServeStaticOptions } from 'serve-static';
+import { headers }                 from '@server/constants/headers';
+import { ONE_MONTH_CACHE }         from '@server/constants/cache';
 
-import { headers }            from '@server/constants/headers';
-import { ONE_MONTH_CACHE }    from '@server/constants/cache';
+import type { ServeStaticOptions } from 'serve-static';
 
 export const serveStaticCompressionConfig: ServeStaticOptions = {
     maxAge    : ONE_MONTH_CACHE,

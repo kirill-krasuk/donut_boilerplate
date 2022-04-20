@@ -4,9 +4,9 @@ import {
     cloneElement,
     isValidElement
 } from 'react';
+import { replaceExtension }  from '@utils/file';
 
-import { replaceExtension } from '@utils/file';
-import { PictureProps }     from '../types';
+import type { PictureProps } from '../types';
 
 export const Picture: FC<PictureProps> = (props) => {
     const {

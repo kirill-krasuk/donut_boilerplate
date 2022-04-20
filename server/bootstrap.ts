@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { env }                  from '@env/index';
 import { ServerAdapterFactory } from '@server/adapters/server';
+
 import { Application }          from './app';
 
 export async function bootstrap() {

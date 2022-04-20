@@ -1,5 +1,6 @@
-import { Server } from 'node:http';
-import chalk      from 'chalk';
+import chalk           from 'chalk';
+
+import type { Server } from 'node:http';
 
 export const createExitHandler = (server: Server) => (signal: NodeJS.Signals) => {
     console.info(chalk`\n{black.bgBlue.bold  INFO } {green.bold ${ signal }} received.`);

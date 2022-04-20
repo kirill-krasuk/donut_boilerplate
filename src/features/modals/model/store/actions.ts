@@ -1,7 +1,7 @@
-import { createAction }                            from '@reduxjs/toolkit';
+import { createAction }                                 from '@reduxjs/toolkit';
 
-import { CallModalObjectPayload, ModalHasHistory } from '../../types';
-import { Modals }                                  from '../../types/enums';
+import type { CallModalObjectPayload, ModalHasHistory } from '../../types';
+import type { Modals }                                  from '../../types/enums';
 
 const callModal           = createAction<CallModalObjectPayload | Modals>('modal/CALL_MODAL');
 const closeModal          = createAction('modal/CLOSE_MODAL');

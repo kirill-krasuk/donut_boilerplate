@@ -1,8 +1,8 @@
-import webpack              from 'webpack';
-
 import { isProd }           from '../lib/env';
 import { createHashHelper } from '../lib/webpack';
 import { fileExtensions }   from '../constants/files';
+
+import type webpack         from 'webpack';
 
 const addHash = createHashHelper(isProd());
 

@@ -1,5 +1,6 @@
-import webpack            from 'webpack';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+
+import type webpack       from 'webpack';
 
 const useSpeedMeasureClient = JSON.parse(process.env.USE_SPEED_MEASURE_CLIENT || 'false');
 const useSpeedMeasureServer = JSON.parse(process.env.USE_SPEED_MEASURE_SERVER || 'false');

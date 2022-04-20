@@ -1,8 +1,9 @@
 /* eslint-disable unicorn/prefer-module */
-import webpack            from 'webpack';
 
 import { fileExtensions } from '../constants/files';
 import { isProd }         from '../lib/env';
+
+import type webpack       from 'webpack';
 
 const defaultProps = {
     enableThread: true,

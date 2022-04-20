@@ -1,8 +1,8 @@
-import { Express }            from 'express';
-import tcpPortUsed            from 'tcp-port-used';
+import tcpPortUsed                 from 'tcp-port-used';
+import { appOutput }               from '@server/lib/console';
 
-import { appOutput }          from '@server/lib/console';
-import { ServerStartOptions } from '@server/types/server';
+import type { Express }            from 'express';
+import type { ServerStartOptions } from '@server/types/server';
 
 async function createServerRunnerPromise(appInstance: Express, standardPort: number | string, host: string) {
     let port = +standardPort;

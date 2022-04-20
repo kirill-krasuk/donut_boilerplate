@@ -1,7 +1,8 @@
-import { FC, PropsWithChildren } from 'react';
-import { Outlet }                from 'react-router-dom';
+import { Outlet }                     from 'react-router-dom';
 
-import * as S                    from './styles';
+import * as S                         from './styles';
+
+import type { FC, PropsWithChildren } from 'react';
 
 export const RootView: FC<PropsWithChildren<unknown>> = () => (
     <S.Wrapper>

@@ -198,7 +198,8 @@
                 "allow": ["warn", "error", "info"] 
         } ],
         "import/order": [2, {
-            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+            "newlines-between": "always"
         } ],
         "import/group-exports": 2,
         "default-param-last": 0,

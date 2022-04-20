@@ -1,5 +1,5 @@
-import { AppLocales }         from '@shared/config/locales';
-import { PropertyStringPath } from '@shared/types/utility';
+import type { AppLocales }         from '@shared/config/locales';
+import type { PropertyStringPath } from '@shared/types/utility';
 
 type Locales<T extends Record<string, any>, L extends keyof AppLocales> = Record<
     keyof T,

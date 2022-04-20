@@ -1,6 +1,7 @@
 import { useEffect, FC, PropsWithChildren } from 'react';
 
 import { withAppProviders }                 from '../providers';
+
 import { clearServerDataContainer }         from './lib';
 
 // manual connection of fonts

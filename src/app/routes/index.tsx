@@ -1,6 +1,6 @@
 import { RouteObject, useRoutes } from 'react-router';
-
 import { AppRoutes }              from '@pages/index';
+
 import { RootView }               from './root-view';
 
 const routes: RouteObject[] = [ {

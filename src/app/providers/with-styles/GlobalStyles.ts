@@ -1,5 +1,4 @@
 import { createGlobalStyle }                     from 'styled-components/macro';
-
 import { darkValues, lightValues, commonValues } from '@config/theme';
 
 export const GlobalStyles = createGlobalStyle`

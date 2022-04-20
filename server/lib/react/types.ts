@@ -1,9 +1,8 @@
-import { HelmetDatum }    from 'react-helmet';
-import { Store }          from '@reduxjs/toolkit';
-import { ChunkExtractor } from '@loadable/server';
-
-import { Theme }          from '@entities/theme';
-import { Context }        from '@shared/types/client-server';
+import type { HelmetDatum }    from 'react-helmet';
+import type { Store }          from '@reduxjs/toolkit';
+import type { ChunkExtractor } from '@loadable/server';
+import type { Theme }          from '@entities/theme';
+import type { Context }        from '@shared/types/client-server';
 
 type StaticTemplate = Record<string, HelmetDatum | string>
 

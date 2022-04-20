@@ -50,7 +50,7 @@ type PropertyStringPath<T, Prefix=''> = {
     : PropertyStringPath<T[K], `${ Prefix & string }${ K & string }.`> | `${ Prefix & string }${ K & string }` ;
 }[keyof T];
 
-export {
+export type {
     InferValueTypes,
     UnionToIntersection,
     LastOf,

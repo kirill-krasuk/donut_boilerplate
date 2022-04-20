@@ -7,9 +7,9 @@ import {
     PreloadedState,
     CombinedState
 } from '@reduxjs/toolkit';
-import { Middleware } from 'redux';
 
-import { NoInfer }    from '@shared/types/utility';
+import type { Middleware } from 'redux';
+import type { NoInfer }    from '@shared/types/utility';
 
 export const createStore = <S = any, A extends Action = AnyAction>(
     reducer: Reducer<S, A> | ReducersMapObject<S, A>,

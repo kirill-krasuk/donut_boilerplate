@@ -5,6 +5,7 @@ import WebpackNotifierPlugin         from 'webpack-notifier';
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
 
 import { paths }                     from '../shared/constants/paths';
+
 import { configureBundler }          from './webpack.common';
 
 export default configureBundler({

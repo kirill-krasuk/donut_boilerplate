@@ -34,6 +34,8 @@
         "allowUnreachableCode": true,
         "pretty": true,
         "sourceMap": true,
+        "importsNotUsedAsValues": "error",
+        "isolatedModules": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
         "types": [

@@ -1,6 +1,6 @@
-import styled       from 'styled-components/macro';
+import styled            from 'styled-components/macro';
 
-import { AppTheme } from '@entities/theme';
+import type { AppTheme } from '@entities/theme';
 
 export const LocaleToggler = styled.div`
     margin-right: 20px;

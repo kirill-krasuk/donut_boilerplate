@@ -1,6 +1,6 @@
-import { FC, PropsWithChildren } from 'react';
+import { Modal }                      from '../ui/Modal';
 
-import { Modal }                 from '../ui/Modal';
+import type { FC, PropsWithChildren } from 'react';
 
 export const Greeting: FC<PropsWithChildren<unknown>> = () => (
     <Modal title="Welcome">

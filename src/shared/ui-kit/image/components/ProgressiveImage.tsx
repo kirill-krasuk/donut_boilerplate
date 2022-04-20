@@ -1,8 +1,9 @@
-import { FC }                    from 'react';
+import * as S                         from '../styles';
 
-import * as S                    from '../styles';
-import { ProgressiveImageProps } from '../types';
-import { Picture }               from './Picture';
+import { Picture }                    from './Picture';
+
+import type { FC }                    from 'react';
+import type { ProgressiveImageProps } from '../types';
 
 export const ProgressiveImage: FC<ProgressiveImageProps> = (props) => {
     const {

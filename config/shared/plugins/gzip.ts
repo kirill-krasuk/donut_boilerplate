@@ -1,8 +1,9 @@
-import webpack            from 'webpack';
 import BrotliPlugin       from 'brotli-webpack-plugin';
 import CompressionPlugin  from 'compression-webpack-plugin';
 
 import { fileExtensions } from '../constants/files';
+
+import type webpack       from 'webpack';
 
 export function gzipPlugins() {
     return [

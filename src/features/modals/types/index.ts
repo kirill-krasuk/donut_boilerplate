@@ -1,4 +1,4 @@
-import { Modals } from '@features/modals';
+import type { Modals } from '@features/modals';
 
 type CallModalObjectPayload = {
     history: boolean,

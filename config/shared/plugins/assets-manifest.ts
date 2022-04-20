@@ -1,7 +1,9 @@
-import fs      from 'node:fs';
-import path    from 'node:path';
-import webpack from 'webpack';
-import mkdir   from 'make-dir';
+import fs           from 'node:fs';
+import path         from 'node:path';
+
+import mkdir        from 'make-dir';
+
+import type webpack from 'webpack';
 
 type AssetsManifestPluginOptions = {
     filename: string

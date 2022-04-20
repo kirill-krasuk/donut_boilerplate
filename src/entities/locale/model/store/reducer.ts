@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import { Locale }        from '../../types/enums';
+
 import { changeLocale }  from './actions';
 
 const initialState = Locale.En;

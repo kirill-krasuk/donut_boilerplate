@@ -1,4 +1,4 @@
-import { Context } from '@shared/types/client-server';
+import type { Context } from '@shared/types/client-server';
 
 const getInitialPropsFromDOM = () => {
     if (Reflect.has(window, '__INITIAL_PROPS__')) {

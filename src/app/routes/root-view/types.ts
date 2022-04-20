@@ -1,4 +1,4 @@
-import { TransitionStatus } from 'react-transition-group/Transition';
+import type { TransitionStatus } from 'react-transition-group/Transition';
 
 export type AnimationProps = {
     state: TransitionStatus

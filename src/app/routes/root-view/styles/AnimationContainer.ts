@@ -1,6 +1,6 @@
-import styled, { css }    from 'styled-components/macro';
+import styled, { css }         from 'styled-components/macro';
 
-import { AnimationProps } from '../types';
+import type { AnimationProps } from '../types';
 
 function animationState({ state }: AnimationProps) {
     switch (state) {

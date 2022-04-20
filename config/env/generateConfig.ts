@@ -1,4 +1,4 @@
-import { Config, ConfigSchema } from './types';
+import type { Config, ConfigSchema } from './types';
 
 export function generateConfig(env: NodeJS.ProcessEnv) {
     return function <T extends ConfigSchema> (configSchema: T): Config<T> {

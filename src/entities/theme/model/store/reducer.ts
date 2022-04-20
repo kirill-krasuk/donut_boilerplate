@@ -1,6 +1,6 @@
 import { createReducer }                        from '@reduxjs/toolkit';
-
 import { Theme }                                from '@config/theme';
+
 import { changeTheme, changePreferColorScheme } from './actions';
 
 const initialState = {

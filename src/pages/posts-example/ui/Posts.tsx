@@ -1,5 +1,6 @@
-import { FC }              from 'react';
 import { useInitialProps } from '@hooks/index';
+
+import type { FC }         from 'react';
 
 type InitialProps = {
     posts: any[]

@@ -1,4 +1,4 @@
-import { Space } from '@lib/styles';
+import type { Space } from '@lib/styles';
 
 export type Props = {
     margin?: Space,

@@ -1,6 +1,5 @@
 /* eslint-disable import/no-import-module-exports */
 import path                    from 'node:path';
-import webpack                 from 'webpack';
 
 import { paths }               from '../shared/constants/paths';
 import { jsLoader }            from '../shared/loaders/js-loader';
@@ -9,6 +8,8 @@ import { cssModuleLoader }     from '../shared/loaders/css-module-loader';
 import { sassModuleLoader }    from '../shared/loaders/sass-module-loader';
 import { sassLoader }          from '../shared/loaders/sass-loader';
 import { tsconfigPathsPlugin } from '../shared/plugins/tsconfig-paths';
+
+import type webpack            from 'webpack';
 
 const styleProps = {
     enablePerf      : false,

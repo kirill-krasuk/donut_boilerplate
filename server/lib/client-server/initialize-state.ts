@@ -1,7 +1,7 @@
-import { Store }               from '@reduxjs/toolkit';
-
 import { localeModel, Locale } from '@entities/locale';
 import { themeModel, Theme }   from '@entities/theme';
+
+import type { Store }          from '@reduxjs/toolkit';
 
 export type InitState = {
     mode: Theme,

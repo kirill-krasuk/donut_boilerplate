@@ -1,6 +1,6 @@
-import tcpPortUsed            from 'tcp-port-used';
+import tcpPortUsed                 from 'tcp-port-used';
 
-import { ServerStartOptions } from '@server/types/server';
+import type { ServerStartOptions } from '@server/types/server';
 
 type RunServerCallback = (serverOptions: ServerStartOptions) => void;
 

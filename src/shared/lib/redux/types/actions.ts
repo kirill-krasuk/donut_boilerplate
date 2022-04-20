@@ -1,4 +1,4 @@
-import { InferValueTypes } from '@shared/types/utility';
+import type { InferValueTypes } from '@shared/types/utility';
 
 type Action = {
     type: string,
@@ -31,7 +31,7 @@ type ActionCreator<Type, Payload, Meta> = {
 
 type ActionTypeOF<T extends { [key: string]: ActionCreator<any, any, any> }> = ReturnType<InferValueTypes<T>>;
 
-export {
+export type {
     Action,
     ActionType,
     ActionCreatorType,

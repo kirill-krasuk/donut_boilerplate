@@ -1,9 +1,10 @@
-import { FC }                      from 'react';
-
 import { getInitialProps }         from '@lib/react';
 import { RedirectContextProvider } from '@shared/context/redirect-context';
+
 import { useRedirect }             from './hooks';
-import { Props }                   from './types';
+
+import type { FC }                 from 'react';
+import type { Props }              from './types';
 
 /**
  * Server Side Component

@@ -8,3 +8,4 @@
 // export type ExtendedStore = Store<any, any> & { asyncReducers: AsyncReducers, injectReducer: AsyncReducer };
 
 // export type InjectedReducersType = Record<string, Record<string, any>>;
+export {};

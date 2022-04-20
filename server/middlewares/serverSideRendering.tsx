@@ -1,15 +1,15 @@
-import { Request, Response }                            from 'express';
 import { ChunkExtractor }                               from '@loadable/server';
-
 import { localeModel }                                  from '@entities/locale';
 import { themeModel }                                   from '@entities/theme';
 import { store }                                        from '@app/store';
 import { prefetch, initializeState }                    from '@server/lib/client-server';
-import { Context }                                      from '@shared/types/client-server';
 import { generateAppComponent, generateStaticTemplate } from '@server/lib/react';
 import { renderTemplate }                               from '@server/lib/server/render';
 import { getLoadableChunksOptions }                     from '@server/lib/webpack';
 import { headers }                                      from '@server/constants/headers';
+
+import type { Context }                                 from '@shared/types/client-server';
+import type { Request, Response }                       from 'express';
 
 export async function serverSideRendering(req: Request, res: Response): Promise<void> {
     res.set(...headers.sw);

@@ -1,7 +1,8 @@
-import { css }      from 'styled-components/macro';
+import { css }           from 'styled-components/macro';
 
-import { AppTheme } from './types';
-import { palette }  from './palette';
+import { palette }       from './palette';
+
+import type { AppTheme } from './types';
 
 const theme = {
     colors: palette

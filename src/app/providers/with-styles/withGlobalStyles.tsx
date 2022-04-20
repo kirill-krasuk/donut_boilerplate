@@ -1,6 +1,6 @@
-import { ComponentType, PropsWithChildren } from 'react';
+import { GlobalStyles }                          from './GlobalStyles';
 
-import { GlobalStyles }                     from './GlobalStyles';
+import type { ComponentType, PropsWithChildren } from 'react';
 
 export function withGlobalStyles(Component: ComponentType<PropsWithChildren<unknown>>) {
     function StylesProvider() {

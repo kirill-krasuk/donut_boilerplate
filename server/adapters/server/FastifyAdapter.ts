@@ -4,7 +4,8 @@ import fastifyExpress                            from 'fastify-express';
 import pointOfView                               from 'point-of-view';
 
 import { HTTPServerAdapter }                     from './HTTPServerAdapter';
-import { ViewTemplateOptions }                   from './types';
+
+import type { ViewTemplateOptions }              from './types';
 
 // TODO: refactoring and support more templates
 const templateEngines: Record<string, unknown> = {

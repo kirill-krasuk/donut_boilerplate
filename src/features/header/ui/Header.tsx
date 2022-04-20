@@ -1,13 +1,15 @@
-import { FC }                from 'react';
 import { EOLocale as T }     from 'eo-locale';
 import { Sun }               from '@styled-icons/fa-solid/Sun';
 import { Moon }              from '@styled-icons/fa-solid/Moon';
-
 import { Theme, themeModel } from '@entities/theme';
 import { createFactory }     from '@lib/react';
 import { localeModel }       from '@entities/locale';
+
 import { locales }           from '../config/locales';
+
 import * as S                from './styles';
+
+import type { FC }           from 'react';
 
 const themeIconFactory = createFactory({
     [Theme.Light]: Sun,

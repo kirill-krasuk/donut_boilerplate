@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css }      from 'styled-components/macro';
 
-import { StyledProps } from '../types';
+import type { StyledProps } from '../types';
 
 export const ImgContainer = styled.img<StyledProps>`
     ${ ({ width, height, isLoaded }) => css`

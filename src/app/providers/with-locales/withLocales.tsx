@@ -1,6 +1,6 @@
-import { ComponentType, PropsWithChildren } from 'react';
+import { LocalesProvider }                       from './LocalesProvider';
 
-import { LocalesProvider }                  from './LocalesProvider';
+import type { ComponentType, PropsWithChildren } from 'react';
 
 export function withLocales(Component: ComponentType<PropsWithChildren<unknown>>) {
     function LocalesWrapper() {

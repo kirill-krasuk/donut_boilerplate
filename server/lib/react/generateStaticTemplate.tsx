@@ -1,9 +1,9 @@
-import { ServerStyleSheet }                   from 'styled-components/macro';
-import { Helmet }                             from 'react-helmet';
-import { renderToString }                     from 'react-dom/server';
+import { ServerStyleSheet }                        from 'styled-components/macro';
+import { Helmet }                                  from 'react-helmet';
+import { renderToString }                          from 'react-dom/server';
+import { getStyles }                               from '@server/lib/css';
 
-import { getStyles }                          from '@server/lib/css';
-import { StaticTemplate, OptionsForGenerate } from './types';
+import type { StaticTemplate, OptionsForGenerate } from './types';
 
 export async function generateStaticTemplate({
     Component,

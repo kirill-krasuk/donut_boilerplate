@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Server }                            from 'node:http';
-
 import { staticCompression, useStaticFiles } from '@server/lib/server';
-import {
+
+import type { Server }                       from 'node:http';
+import type {
     ErrorHandler,
     RequestHandler,
     StaticFilesOptions,

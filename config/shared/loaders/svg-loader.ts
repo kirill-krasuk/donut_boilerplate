@@ -1,9 +1,10 @@
-import webpack              from 'webpack';
 import svgToMiniDataURI     from 'mini-svg-data-uri';
 
 import { fileExtensions }   from '../constants/files';
 import { createHashHelper } from '../lib/webpack';
 import { isProd }           from '../lib/env';
+
+import type webpack         from 'webpack';
 
 const addHash = createHashHelper(isProd());
 

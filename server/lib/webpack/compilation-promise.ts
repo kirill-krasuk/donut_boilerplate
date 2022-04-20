@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import type webpack from 'webpack';
 
 export function createCompilationPromise(compiler: webpack.Compiler): Promise<void> {
     return new Promise((resolve, reject) => {

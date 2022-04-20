@@ -1,8 +1,8 @@
-import { FC }                        from 'react';
-
 import { ButtonSizes, ButtonStyles } from './enums';
-import { Props }                     from './types';
 import * as S                        from './styles';
+
+import type { FC }                   from 'react';
+import type { Props }                from './types';
 
 /**
 * This is Button component for donut boilerplate

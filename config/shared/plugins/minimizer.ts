@@ -1,6 +1,7 @@
-import webpack                 from 'webpack';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin            from 'terser-webpack-plugin';
+
+import type webpack            from 'webpack';
 
 export function minimizerPlugins(): webpack.WebpackPluginInstance[] {
     return [

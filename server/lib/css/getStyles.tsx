@@ -1,14 +1,14 @@
 import { renderToString } from 'react-dom/server';
-import { ComponentType }  from 'react';
 import {
     discoverProjectStyles,
     getUsedStyles,
     getCriticalStyles,
     enableReactOptimization
 } from 'used-styles';
+import { paths }              from '@server/constants/paths';
+import { delay }              from '@server/lib/async';
 
-import { paths } from '@server/constants/paths';
-import { delay } from '@server/lib/async';
+import type { ComponentType } from 'react';
 
 const toTags = (files: string[]) => files
     .map(chunk => `<link href="${ paths.staticDist }${ chunk }" rel="stylesheet" />`)

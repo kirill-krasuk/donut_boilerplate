@@ -1,8 +1,9 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer }   from '@reduxjs/toolkit';
 
-import { ModalState }    from '../../types';
-import { Modals }        from '../../types/enums';
-import * as actions      from './actions';
+import * as actions        from './actions';
+
+import type { ModalState } from '../../types';
+import type { Modals }     from '../../types/enums';
 
 const initialState: ModalState = {
     hasHistory: false,

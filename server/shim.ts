@@ -9,3 +9,5 @@ global.$RefreshReg$ = () => {};
 
 // @ts-expect-error
 global.$RefreshSig$ = () => () => {};
+
+export {};

@@ -1,10 +1,12 @@
-import { FC }            from 'react';
 import { EOLocale as T } from 'eo-locale';
-
 import { routes }        from '@config/routes';
 import { Header }        from '@features/header';
+
 import { locales }       from '../config/locales';
+
 import * as S            from './styles';
+
+import type { FC }       from 'react';
 
 const CodePath = (
     <code>

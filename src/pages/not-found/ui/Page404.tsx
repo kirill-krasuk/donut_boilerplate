@@ -1,7 +1,8 @@
-import { FC }    from 'react';
+import DonutZero   from '@images/donut-zero.png';
 
-import DonutZero from '@images/donut-zero.png';
-import * as S    from './styles';
+import * as S      from './styles';
+
+import type { FC } from 'react';
 
 const Page404: FC = () => (
     <S.Container>

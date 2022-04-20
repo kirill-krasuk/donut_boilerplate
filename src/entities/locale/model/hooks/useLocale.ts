@@ -1,7 +1,7 @@
 import { useCallback }  from 'react';
 import { useSelector }  from 'react-redux';
-
 import { useActions }   from '@hooks/index';
+
 import * as actions     from '../store/actions';
 import { getLocale }    from '../store/selectors';
 import { toggleLocale } from '../../lib/toggleLocale';

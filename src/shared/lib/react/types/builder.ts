@@ -1,7 +1,6 @@
-import { ComponentType, PropsWithChildren } from 'react';
-import { RouteObject }                      from 'react-router';
-
-import { routes }                           from '@config/routes';
+import type { ComponentType, PropsWithChildren } from 'react';
+import type { RouteObject }                      from 'react-router';
+import type { routes }                           from '@config/routes';
 
 type RouteByPropsPageOptions = {
     component: ComponentType<PropsWithChildren<unknown>>,

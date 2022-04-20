@@ -1,6 +1,7 @@
-import { routes }                                                               from '@config/routes';
-import { RouteByNamePageOptions, RouteExtendedObject, RouteByPropsPageOptions } from '../../types/builder';
-import { PC }                                                                   from '../../types/components';
+import { routes }                                                                    from '@config/routes';
+
+import type { PC }                                                                   from '../../types/components';
+import type { RouteByNamePageOptions, RouteExtendedObject, RouteByPropsPageOptions } from '../../types/builder';
 
 function isRouteFactory(options: any): options is RouteByNamePageOptions {
     return Reflect.has(options, 'routeName');

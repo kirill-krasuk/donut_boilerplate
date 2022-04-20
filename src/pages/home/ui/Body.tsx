@@ -1,7 +1,8 @@
 import { EOLocale as T } from 'eo-locale';
-
 import { routes }        from '@config/routes';
+
 import { locales }       from '../config/locales';
+
 import * as S            from './styles';
 import { CodePath }      from './CodePath';
 

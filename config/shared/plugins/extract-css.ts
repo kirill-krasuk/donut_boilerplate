@@ -1,7 +1,8 @@
-import webpack              from 'webpack';
 import ExtractCssChunks     from 'mini-css-extract-plugin';
 
 import { createHashHelper } from '../lib/webpack';
+
+import type webpack         from 'webpack';
 
 export function extractCssPlugin({ isProd }: { isProd: boolean }) {
     const addHash = createHashHelper(isProd);

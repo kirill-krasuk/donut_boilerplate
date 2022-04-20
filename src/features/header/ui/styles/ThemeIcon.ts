@@ -1,7 +1,8 @@
 import styled              from 'styled-components/macro';
 
-import { AppTheme }        from '@entities/theme';
 import { THEME_ICON_SIZE } from '../../config/constants';
+
+import type { AppTheme }   from '@entities/theme';
 
 export const ThemeIcon = styled.div`
     & svg {

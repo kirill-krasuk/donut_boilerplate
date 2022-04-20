@@ -1,7 +1,8 @@
-import express                 from 'express';
+import express                      from 'express';
 
-import { HTTPServerAdapter }   from './HTTPServerAdapter';
-import { ViewTemplateOptions } from './types';
+import { HTTPServerAdapter }        from './HTTPServerAdapter';
+
+import type { ViewTemplateOptions } from './types';
 
 const expressInstance = express();
 

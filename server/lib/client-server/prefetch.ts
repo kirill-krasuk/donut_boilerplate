@@ -1,7 +1,7 @@
-import { matchRoutes }      from 'react-router';
+import { matchRoutes }           from 'react-router';
+import { routes }                from '@app/routes';
 
-import { routes }           from '@app/routes';
-import { RouteForPrefetch } from '@lib/react';
+import type { RouteForPrefetch } from '@lib/react';
 
 export async function prefetch(url: string, auth: any = null) {
     const [ pathname, query ] = url.split('?');

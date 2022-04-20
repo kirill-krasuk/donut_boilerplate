@@ -1,8 +1,8 @@
-import { createSelector } from '@reduxjs/toolkit';
-import R                  from 'ramda';
+import { createSelector }  from '@reduxjs/toolkit';
+import R                   from 'ramda';
 
-import { Selector }       from '@lib/redux';
-import { ThemeState }     from '../../types';
+import type { ThemeState } from '../../types';
+import type { Selector }   from '@lib/redux';
 
 const selectTheme: Selector<ThemeState> = R.prop('theme');
 

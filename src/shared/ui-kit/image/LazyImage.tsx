@@ -1,9 +1,10 @@
 import { FC, useRef, useState }   from 'react';
-
 import { createIntersectionHook } from '@shared/hooks';
+
 import { Image }                  from './Image';
-import { Props }                  from './types';
 import * as S                     from './styles';
+
+import type { Props }             from './types';
 
 const { useIntersection } = createIntersectionHook({
     rootMargin: '40px',
