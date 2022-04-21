@@ -1,17 +1,12 @@
-import { FC } from 'react';
-<% if (styles === 'css') { %>
-import './styles.css';
-<% } else if (styles === 'sass') { %>
-import './styles.scss';
-<% } else if (styles === 'moduleSass') { %>
-import styles from './styles.module.scss';
-<% } else if (styles === 'moduleCss') { %>
-import styles from './styles.module.css';
-<% } else if (styles === 'styled') { %>
-import * as S from './styles';
-<% } %><% if (isNeedLocales) { %>
-import { locales } from '../config/locales';
+<% if (isNeedLocales) { %>import { locales } from '../config/locales';<% } %><% if (styles === 'moduleSass') { %>
+import styles from './styles.module.scss';<% } else if (styles === 'moduleCss') { %>
+import styles from './styles.module.css';<% } else if (styles === 'styled') { %>
+import * as S from './styles';<% } %>
 
+import type { FC } from 'react';<% if (styles === 'css') { %>
+import './styles.css';<% } else if (styles === 'sass') { %>
+import './styles.scss';<% } %>
+<% if (isNeedLocales) { %>
 /**
  * import { EOLocale as T } from 'eo-locale';
  * for render translates

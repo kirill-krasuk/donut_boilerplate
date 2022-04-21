@@ -1,4 +1,4 @@
-export type PatternsWithArrays = {
+type PatternsWithArrays = {
     pattern: string[],
     replace: string[]
 }
@@ -8,8 +8,15 @@ type PatternsWithStrings = {
     replace: string
 }
 
-export type PatternsObject = PatternsWithArrays | PatternsWithStrings;
+type PatternsObject = PatternsWithArrays | PatternsWithStrings;
 
-export type Patterns = {
+type Patterns = {
     [key: string]: PatternsObject
 }
+
+export type {
+    Patterns,
+    PatternsObject,
+    PatternsWithArrays,
+    PatternsWithStrings
+};

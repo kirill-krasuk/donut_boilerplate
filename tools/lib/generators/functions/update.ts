@@ -1,10 +1,12 @@
-import fs                                     from 'node:fs';
-import chalk                                  from 'chalk';
+import fs                                          from 'node:fs';
+import chalk                                       from 'chalk';
 
-import { ROOT_PATH }                          from '../constants/rootPath';
-import { PatternsKey, patterns }              from '../constants/patterns';
-import { PatternsObject, PatternsWithArrays } from '../types/patterns';
+import { ROOT_PATH }                               from '../constants/rootPath';
+import { PatternsKey, patterns }                   from '../constants/patterns';
 
+import type { PatternsObject, PatternsWithArrays } from '../types/patterns';
+
+// TODO: refactoring to regexp logic
 function replacePatternByInterpolateData(data: Record<string, any>, initialValue: string) {
     return Object
         .entries(data)

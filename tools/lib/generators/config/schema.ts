@@ -1,78 +1,44 @@
-import { getLocalesConfigFiles } from '../utils/getLocalesConfigFiles';
-import { camelToKebab }          from '../../../../src/shared/lib/string';
+import {
+    Schema,
+    SchemaConfig,
+    UpdateFileType
+} from '../types/schema';
+import { camelToKebab }                     from '../../../../src/shared/lib/string';
+import { getLocalesSchema, getStyleSchema } from '../utils/schemas';
+import { getSchemaFragment }                from '../utils/schemas/getSchemaFragment';
 
-const cssExtensionsMap = {
-    css       : '.css',
-    sass      : '.scss',
-    moduleSass: '.module.scss',
-    moduleCss : '.module.css'
-};
+import type { Layer, StylesType }           from '../types/common';
 
-type CreateSource = string;
-type CreateTemplate = string;
-
-type UpdateFileType = 'json' | 'routes';
-type UpdateSource = string;
-
-export type Schema = {
-    [key: string]: {
-        create: [CreateSource, CreateTemplate][] | [CreateSource, CreateTemplate],
-        update: [UpdateSource, UpdateFileType][] | [UpdateSource, UpdateFileType]
-    }
+type SchemaProps = {
+    name: string,
+    styleType?: StylesType,
+    layer: Layer,
+    isNeedLocales: boolean,
+    isNeedLazy: boolean
 }
 
-function getStylesTemplates(styleType: keyof typeof cssExtensionsMap | 'styled') {
-    return styleType === 'styled'
-        ? [
-            './templates/styled-component.ejs',
-            './templates/styled-reexport.ejs'
-        ]
-        : './templates/style.ejs';
-}
+export const generateSchema = (props: SchemaProps): Schema => {
+    const {
+        name,
+        styleType,
+        layer,
+        isNeedLocales,
+        isNeedLazy
+    } = props;
 
-function getStylesPath({ styleType, directoryName, layer }) {
-    return styleType === 'styled'
-        ? [
-            `src/${ layer }/${ directoryName }/ui/styles/Example.ts`,
-            `src/${ layer }/${ directoryName }/ui/styles/index.ts`
-        ]
-        : `src/${ layer }/${ directoryName }/ui/style${ cssExtensionsMap[styleType] }`;
-}
-
-export const generateSchema = ({
-    name,
-    styleType,
-    layer,
-    isNeedLocales,
-    isNeedLazy
-}): Schema => {
     const directoryName = camelToKebab(name);
-
-    const isNeedStyles = !!styleType;
 
     console.info(isNeedLazy);
 
-    const styles = getStylesPath({ styleType, directoryName, layer });
+    const locales = getSchemaFragment(isNeedLocales, getLocalesSchema(directoryName));
+    const styles  = getSchemaFragment(!!styleType, getStyleSchema({
+        styleType,
+        directoryName,
+        layer
+    }));
 
-    const stylesTemplate = getStylesTemplates(styleType);
-    const pathsToLocales = getLocalesConfigFiles();
-
-    const commonValues = {
-        ...isNeedStyles && {
-            styles: {
-                create: [
-                    ...Array.isArray(styles)
-                        ? [
-                            [ styles[0], stylesTemplate[0] ],
-                            [ styles[1], stylesTemplate[1] ],
-                        ]
-                        : [ styles, stylesTemplate ]
-                ]
-            }
-        }
-    };
-
-    return {
+    // TODO: more settings
+    const schema: SchemaConfig = {
         pages: {
             index: {
                 create: [
@@ -89,19 +55,13 @@ export const generateSchema = ({
             routes: {
                 update: [
                     'src/shared/config/routes.ts',
-                    'routes'
+                    UpdateFileType.Routes
                 ]
             },
-            ...isNeedLocales && {
-                locales: {
-                    create: [
-                        `src/pages/${ directoryName }/config/locales.ts`,
-                        './templates/locales.ejs',
-                    ],
-                    update: pathsToLocales.map(localePath => [ localePath, 'json' ])
-                }
-            },
-            ...commonValues,
+            locales,
+            styles,
         }
-    }[layer];
+    };
+
+    return schema[layer];
 };

@@ -1,3 +1,5 @@
+// import { generateObjectReplacePattern, generateEndOfObjectPattern } from '../utils/patternGenerators';
+
 /**
  * end of json file
  */
@@ -23,6 +25,11 @@ const routesPattern1 = `
     }
 } as const;
 `;
+
+// TODO: refactoring on regexp
+// const endOfObjectPattern     = generateEndOfObjectPattern();
+// const replaceJSONPattern10   = generateObjectReplacePattern('name', '"localeId"', '"localeValue"');
+// const replaceRoutesPattern10 = generateObjectReplacePattern('camelName', 'path', 'kebabName');
 
 const routesPattern2 = `
     },

@@ -1,6 +1,7 @@
-import prompts from 'prompts';
+import type prompts from 'prompts';
 
-export const layerQuestion: prompts.PromptObject<'layer'> = {
+// TODO: move choices to constants
+const layerQuestion: prompts.PromptObject<'layer'> = {
     type   : 'select',
     name   : 'layer',
     message: 'Select app layer',
@@ -14,14 +15,14 @@ export const layerQuestion: prompts.PromptObject<'layer'> = {
     ],
 };
 
-export const componentQuestion: prompts.PromptObject<'name'> = {
+const componentQuestion: prompts.PromptObject<'name'> = {
     type    : 'text',
     name    : 'name',
     message : 'Write name of component',
     validate: value => value[0].toUpperCase() === value[0] || 'name must be a camelCase format'
 };
 
-export const generateOptionsQuestion: prompts.PromptObject<'generateOptions'> = {
+const generateOptionsQuestion: prompts.PromptObject<'generateOptions'> = {
     type   : 'multiselect',
     name   : 'generateOptions',
     message: 'Enable the options you need when generating',
@@ -32,7 +33,7 @@ export const generateOptionsQuestion: prompts.PromptObject<'generateOptions'> = 
     ]
 };
 
-export const stylesQuestion: prompts.PromptObject<'styles'> = {
+const stylesQuestion: prompts.PromptObject<'styles'> = {
     type   : 'select',
     name   : 'styles',
     message: 'Choose type of styling',
@@ -43,4 +44,11 @@ export const stylesQuestion: prompts.PromptObject<'styles'> = {
         { title: 'sass', value: 'sass' },
         { title: 'sass-module', value: 'moduleSass' },
     ]
+};
+
+export {
+    layerQuestion,
+    componentQuestion,
+    generateOptionsQuestion,
+    stylesQuestion
 };

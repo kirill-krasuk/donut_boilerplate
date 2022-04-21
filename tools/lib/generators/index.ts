@@ -11,16 +11,24 @@ import {
     stylesQuestion
 } from './constants/questions';
 
+import type { Layer, StylesType } from './types/common';
+
 (prompts as any).override(yargs.argv);
 
+type Answers = {
+    layer: Layer,
+    name: string,
+    generateOptions: string[]
+};
+
 async function main() {
-    const { layer, name, generateOptions } = await prompts([
+    const { layer, name, generateOptions }: Answers = await prompts([
         layerQuestion,
         componentQuestion,
         generateOptionsQuestion
     ]);
 
-    let styles;
+    let styles: StylesType | undefined;
 
     if (generateOptions.includes('styles')) {
         ({ styles } = await prompts(stylesQuestion));

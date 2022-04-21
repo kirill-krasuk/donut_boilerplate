@@ -1,6 +1,7 @@
-import { create } from './create';
-import { update } from './update';
-import { Schema } from '../config/schema';
+import { create }      from './create';
+import { update }      from './update';
+
+import type { Schema } from '../types/schema';
 
 function isArrayOfTuples(value: any): value is [string, string][] {
     return Array.isArray(value[0]);

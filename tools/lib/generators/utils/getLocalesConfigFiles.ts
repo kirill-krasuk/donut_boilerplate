@@ -2,6 +2,7 @@ import fs   from 'node:fs';
 import path from 'node:path';
 
 export function getLocalesConfigFiles() {
+    // TODO: move to constant
     const pathToLocales = 'src/shared/config/locales/';
 
     return fs

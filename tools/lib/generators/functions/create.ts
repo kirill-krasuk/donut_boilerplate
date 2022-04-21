@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-nested-template-literals */
-import ejs           from 'ejs';
 import fs            from 'node:fs';
 import path          from 'node:path';
+import ejs           from 'ejs';
 import chalk         from 'chalk';
 
 import { ROOT_PATH } from '../constants/rootPath';
