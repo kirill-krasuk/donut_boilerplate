@@ -1,5 +1,4 @@
 import { StringFormatter } from '../enums/formatter';
-
 import { kebabToSnake }    from './kebabToSnake';
 import { snakeToCamel }    from './snakeToCamel';
 

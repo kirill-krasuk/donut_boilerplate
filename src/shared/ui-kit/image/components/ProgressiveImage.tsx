@@ -1,5 +1,4 @@
 import * as S                         from '../styles';
-
 import { Picture }                    from './Picture';
 
 import type { FC }                    from 'react';

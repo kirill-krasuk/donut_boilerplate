@@ -2,6 +2,7 @@
 import webpack                      from 'webpack';
 import DevMiddleware                from 'webpack-dev-middleware';
 import HotMiddleware                from 'webpack-hot-middleware';
+
 import { headers }                  from '@server/constants/headers';
 import { createCompilationPromise } from '@server/lib/webpack';
 

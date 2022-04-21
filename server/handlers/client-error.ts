@@ -1,6 +1,5 @@
 import fs                         from 'node:fs';
 import path                       from 'node:path';
-
 import * as log4js                from 'log4js';
 
 import type { Request, Response } from 'express';

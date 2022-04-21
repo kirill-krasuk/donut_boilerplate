@@ -1,4 +1,5 @@
 import { ChunkExtractor }                               from '@loadable/server';
+
 import { localeModel }                                  from '@entities/locale';
 import { themeModel }                                   from '@entities/theme';
 import { store }                                        from '@app/store';

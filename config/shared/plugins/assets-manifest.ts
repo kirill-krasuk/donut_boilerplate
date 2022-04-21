@@ -1,6 +1,5 @@
 import fs           from 'node:fs';
 import path         from 'node:path';
-
 import mkdir        from 'make-dir';
 
 import type webpack from 'webpack';

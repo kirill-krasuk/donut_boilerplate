@@ -1,4 +1,5 @@
 import { matchRoutes }           from 'react-router';
+
 import { routes }                from '@app/routes';
 
 import type { RouteForPrefetch } from '@lib/react';

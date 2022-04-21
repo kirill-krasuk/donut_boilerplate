@@ -5,11 +5,11 @@ import {
     useCallback,
     PropsWithChildren
 } from 'react';
+
 import { useActions, useClickOutside, useLockBodyScroll } from '@hooks/index';
 import { KeyCodes }                                       from '@enums/keyCodes';
 
 import * as actions                                       from '../model/store/actions';
-
 import * as S                                             from './styles';
 
 import type { Props }                                     from './type';

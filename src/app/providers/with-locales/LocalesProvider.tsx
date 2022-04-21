@@ -1,5 +1,6 @@
 import { useSelector }                from 'react-redux';
 import { EOLocale }                   from 'eo-locale';
+
 import locales                        from '@config/locales';
 import { localeModel }                from '@entities/locale';
 

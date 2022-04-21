@@ -5,6 +5,7 @@ import {
     getCriticalStyles,
     enableReactOptimization
 } from 'used-styles';
+
 import { paths }              from '@server/constants/paths';
 import { delay }              from '@server/lib/async';
 

@@ -1,4 +1,5 @@
 import styled                     from 'styled-components/macro';
+
 import { ReactComponent as Logo } from '@svgs/new_dark_logo.svg';
 
 import { LOGO_SIZE }              from '../../config/constants';

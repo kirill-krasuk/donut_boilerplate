@@ -1,6 +1,7 @@
 import { useState, useEffect }                     from 'react';
 import { useSelector }                             from 'react-redux';
 import Cookie                                      from 'js-cookie';
+
 import { Theme, themeModel }                       from '@entities/theme';
 import { setDataThemeAttribute, getDarkModeQuery } from '@lib/dom';
 import { useActions }                              from '@hooks/index';

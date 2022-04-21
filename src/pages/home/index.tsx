@@ -1,4 +1,5 @@
 import loadable                   from '@loadable/component';
+
 import { createRoutePage }        from '@lib/react';
 
 import type { PropsWithChildren } from 'react';

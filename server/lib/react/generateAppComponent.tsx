@@ -1,6 +1,7 @@
 import { Provider }                from 'react-redux';
 import { StaticRouter }            from 'react-router-dom/server';
 import { ChunkExtractorManager }   from '@loadable/server';
+
 import { Routes }                  from '@app/routes';
 import { RedirectProvider }        from '@app/providers/with-router';
 import { ThemeProvider }           from '@app/providers/with-theme';

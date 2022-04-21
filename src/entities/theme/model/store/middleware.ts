@@ -1,4 +1,5 @@
 import Cookie                    from 'js-cookie';
+
 import { setDataThemeAttribute } from '@lib/dom';
 
 import { changeTheme }           from './actions';

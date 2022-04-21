@@ -4,6 +4,7 @@ import {
     cloneElement,
     isValidElement
 } from 'react';
+
 import { replaceExtension }  from '@utils/file';
 
 import type { PictureProps } from '../types';

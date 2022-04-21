@@ -1,5 +1,6 @@
 import { createPortal }               from 'react-dom';
 import { useSelector }                from 'react-redux';
+
 import { modalsModel, modalsMap }     from '@features/modals';
 
 import type { FC, PropsWithChildren } from 'react';

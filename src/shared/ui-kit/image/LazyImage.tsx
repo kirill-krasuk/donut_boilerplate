@@ -1,4 +1,5 @@
 import { FC, useRef, useState }   from 'react';
+
 import { createIntersectionHook } from '@shared/hooks';
 
 import { Image }                  from './Image';

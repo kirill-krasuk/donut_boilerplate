@@ -1,4 +1,5 @@
 import { ThemeProvider as StyledComponentsTheme } from 'styled-components/macro';
+
 import { theme as themes, Theme }                 from '@config/theme';
 import { themeModel }                             from '@features/theme';
 

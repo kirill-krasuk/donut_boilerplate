@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/macro';
+
 import { getSpacing }  from '@lib/styles';
 
 import type { Props }  from './type';

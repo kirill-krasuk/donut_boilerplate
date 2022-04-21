@@ -3,6 +3,7 @@ import { Provider }                   from 'react-redux';
 import { ThemeProvider }              from 'styled-components';
 import { BrowserRouter }              from 'react-router-dom';
 import { render, waitFor }            from '@testing-library/react';
+
 import { theme }                      from '@config/theme';
 import { LocalesProvider }            from '@app/providers/with-locales';
 

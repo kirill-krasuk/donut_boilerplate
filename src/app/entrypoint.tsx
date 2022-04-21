@@ -1,5 +1,6 @@
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { loadableReady }           from '@loadable/component';
+
 import { env }                     from '@env/index';
 
 import { Application }             from './application/Application';

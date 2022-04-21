@@ -1,7 +1,6 @@
 import { paths }            from '../shared/constants/paths';
 import { gzipPlugins }      from '../shared/plugins/gzip';
 import { minimizerPlugins } from '../shared/plugins/minimizer';
-
 import { configureBundler } from './webpack.common';
 
 export default configureBundler({
