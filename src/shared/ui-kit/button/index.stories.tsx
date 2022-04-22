@@ -10,20 +10,22 @@ export default {
 	decorators: [ withKnobs ],
 	argTypes  : {
 		onClick: {
-			action: 'clicked',
-		},
+			action: 'clicked'
+		}
 	},
 	parameters: {
 		badges: [ BADGE.EXPERIMENTAL ],
 		a11y  : {
 			config: {
-				rules: [ {
-					id     : 'listitem',
-					enabled: false
-				} ],
-			},
-		},
-	},
+				rules: [
+					{
+						id     : 'listitem',
+						enabled: false
+					}
+				]
+			}
+		}
+	}
 };
 
 const withText = (args: any) => {
@@ -46,8 +48,8 @@ const withEmoji = (args: any) => (
 
 withEmoji.parameters = {
 	viewport: {
-		defaultViewport: 'iphonex',
-	},
+		defaultViewport: 'iphonex'
+	}
 };
 
 export { withText, withEmoji };

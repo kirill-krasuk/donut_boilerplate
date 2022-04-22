@@ -18,7 +18,7 @@ function getLoadableChunksOptions(locals: any) {
 
 		return {
 			useFileSystem: outputFileSystem,
-			loadableStats: JSONStats(rawData),
+			loadableStats: JSONStats(rawData)
 		};
 	}
 
@@ -26,7 +26,7 @@ function getLoadableChunksOptions(locals: any) {
 
 	return {
 		useFileSystem: fs,
-		loadableStats: JSONStats(rawData),
+		loadableStats: JSONStats(rawData)
 	};
 }
 

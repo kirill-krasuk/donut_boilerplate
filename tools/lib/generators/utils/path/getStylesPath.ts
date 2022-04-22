@@ -9,7 +9,7 @@ export function getStylesPath({ styleType, directoryName, layer }: StylePathProp
 
 	const styledComponentsPath = [
 		`src/${ layer }/${ directoryName }/ui/styles/Example.ts`,
-		`src/${ layer }/${ directoryName }/ui/styles/index.ts`,
+		`src/${ layer }/${ directoryName }/ui/styles/index.ts`
 	];
 
 	return styleType === StylesType.Styled

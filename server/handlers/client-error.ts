@@ -17,15 +17,15 @@ export function handleClientError(req: Request, res: Response): void {
 		appenders: {
 			cheese: {
 				type    : 'file',
-				filename: path.resolve(logDirectory, 'app_errors.log'),
-			},
+				filename: path.resolve(logDirectory, 'app_errors.log')
+			}
 		},
 		categories: {
 			default: {
 				appenders: [ 'cheese' ],
 				level    : 'error'
 			}
-		},
+		}
 	});
 
 	const { stack } = req.body;

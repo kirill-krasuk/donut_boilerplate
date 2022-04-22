@@ -8,5 +8,5 @@ export const serveStaticCompressionConfig: ServeStaticOptions = {
 	setHeaders: res => {
 		res.setHeader(...headers.sw);
 		res.setHeader(...headers.isCacheable);
-	},
+	}
 };

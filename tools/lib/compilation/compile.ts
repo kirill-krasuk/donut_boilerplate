@@ -23,7 +23,7 @@ const createCallback = (env: string, start: number) => (_error: Error, stats: we
 			});
 			messages          = formatWebpackMessages({
 				errors  : rawMessages!.errors!.map(error => error.message),
-				warnings: rawMessages!.warnings!.map(warning => warning.message),
+				warnings: rawMessages!.warnings!.map(warning => warning.message)
 			});
 
 			if (!messages.errors.length && !messages.warnings.length) {

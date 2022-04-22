@@ -21,7 +21,7 @@ export const Button: FC<Props> = props => {
 
 Button.defaultProps = {
 	size : ButtonSizes.Medium,
-	style: ButtonStyles.Primary,
+	style: ButtonStyles.Primary
 };
 
 export default Button;

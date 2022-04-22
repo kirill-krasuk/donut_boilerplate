@@ -55,12 +55,12 @@ const routesReplacePattern2 = `
 export const patterns = {
 	json: {
 		pattern: jsonPattern,
-		replace: replaceJSONPattern,
+		replace: replaceJSONPattern
 	},
 	routes: {
 		pattern: [ routesPattern1, routesPattern2 ],
-		replace: [ routesReplacePattern1, routesReplacePattern2 ],
-	},
+		replace: [ routesReplacePattern1, routesReplacePattern2 ]
+	}
 };
 
 export type PatternsKey = keyof typeof patterns;

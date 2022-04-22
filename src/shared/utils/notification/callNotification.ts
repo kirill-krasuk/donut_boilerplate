@@ -1,14 +1,14 @@
 /* eslint-disable no-alert */
 const options = {
 	body: 'Notification body',
-	icon: '/public/images/logo512x512.png',
+	icon: '/public/images/logo512x512.png'
 };
 
 export function callNotification(overrideOptions?: Record<string, any>) {
 	const notifyTitle   = overrideOptions?.title || 'Donut notify';
 	const notifyOptions = {
 		...options,
-		...overrideOptions,
+		...overrideOptions
 	};
 
 	if (!('Notification' in window)) {

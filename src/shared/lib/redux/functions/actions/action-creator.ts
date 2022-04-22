@@ -2,7 +2,7 @@ import type {
 	ActionType,
 	ActionCreator,
 	ActionCreatorType,
-	ActionCreatorWithMetaType,
+	ActionCreatorWithMetaType
 } from '../../types/actions';
 
 function createActionCreator<T>() {
@@ -18,7 +18,7 @@ function createActionCreator<T>() {
 			return {
 				type,
 				payload,
-				...(meta && { meta }),
+				...(meta && { meta })
 			};
 		}
 

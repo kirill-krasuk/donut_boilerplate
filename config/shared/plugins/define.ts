@@ -13,11 +13,11 @@ export function definePlugin({ mode, isClient }: Options) {
 	return new webpack.DefinePlugin({
 		'process.env': {
 			NODE_ENV: JSON.stringify(mode),
-			...getEnvironmentVariables(),
+			...getEnvironmentVariables()
 		},
 		__IS_DEV__   : _mode === 'development',
 		__IS_PROD__  : _mode === 'production',
 		__IS_SERVER__: !isClient,
-		__IS_CLIENT__: isClient,
+		__IS_CLIENT__: isClient
 	});
 }

@@ -5,7 +5,7 @@ import { palette }       from './palette';
 import type { AppTheme } from './types';
 
 const theme = {
-	colors: palette,
+	colors: palette
 } as const;
 
 const commonValues = ({ theme }: AppTheme) => css`

@@ -11,7 +11,8 @@ export function generate(schema: Schema, data: Record<string, any>) {
 	Object.values(schema).forEach(type => {
 		if (type.create) {
 			if (isArrayOfTuples(type.create)) {
-				type.create.forEach(([ destination, template ]) => create(template, destination, data));
+				type.create.forEach(([ destination, template ]) => create(template, destination, data)
+				);
 			} else {
 				const [ destination, template ] = type.create;
 

@@ -13,7 +13,7 @@ const ThemeProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 			theme={ {
 				...themes,
 				mode  : theme,
-				isDark: theme === Theme.Dark,
+				isDark: theme === Theme.Dark
 			} }
 		>
 			{ children }

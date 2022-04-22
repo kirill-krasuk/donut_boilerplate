@@ -35,7 +35,7 @@ function generateObjectReplacePattern(key: string, subKey: string, value: string
 			String.raw`\s{2,4}(?:"{\$${ key }}"|{\$${ key }}):\s{\n`, //    key: {
 			String.raw`\s{4,8}${ subKey }:\s(?:${ value }|(["'])\/{\$${ value }}\1),?\n`, //        subKey: value(,)?
 			String.raw`\s{2,4}},?\n`, //    }(,)?
-			String.raw`};?(\sas\sconst;)?\n$`, // }( as const)(;)?
+			String.raw`};?(\sas\sconst;)?\n$` // }( as const)(;)?
 		].join('')
 	);
 }

@@ -9,7 +9,7 @@ addDecorator(storyFunction => (
 	<ThemeProvider
 		theme={ {
 			...theme,
-			mode: 'dark',
+			mode: 'dark'
 		} }
 	>
 		{ storyFunction() }
@@ -19,8 +19,8 @@ addDecorator(storyFunction => (
 const parameters = {
 	layout  : 'centered',
 	viewport: {
-		viewports: INITIAL_VIEWPORTS,
-	},
+		viewports: INITIAL_VIEWPORTS
+	}
 };
 
 export { parameters };

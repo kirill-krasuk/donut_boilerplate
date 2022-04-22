@@ -9,7 +9,7 @@ import type { ViewTemplateOptions }              from './types';
 
 // TODO: refactoring and support more templates
 const templateEngines: Record<string, unknown> = {
-	pug,
+	pug
 };
 
 const fastifyInstance = fastify();
@@ -37,9 +37,9 @@ export class FastifyAdapter<R = FastifyRequest, RS = FastifyReply> extends HTTPS
 	registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
 		this.instance.register(pointOfView, {
 			engine: {
-				[engine]: templateEngines[engine],
+				[engine]: templateEngines[engine]
 			},
-			root: viewsPath,
+			root: viewsPath
 		});
 	}
 }

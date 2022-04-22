@@ -3,7 +3,7 @@ import {
 	discoverProjectStyles,
 	getUsedStyles,
 	getCriticalStyles,
-	enableReactOptimization,
+	enableReactOptimization
 } from 'used-styles';
 
 import { paths }              from '@server/constants/paths';
@@ -24,7 +24,7 @@ export async function getStyles(html: ComponentType | string) {
 	if (typeof html === 'string') {
 		return {
 			criticalCss: getCriticalStyles(html, lookup),
-			cssChunks  : toTags(getUsedStyles(html, lookup)),
+			cssChunks  : toTags(getUsedStyles(html, lookup))
 		};
 	}
 
@@ -34,6 +34,6 @@ export async function getStyles(html: ComponentType | string) {
 
 	return {
 		criticalCss: getCriticalStyles(markup, lookup),
-		cssChunks  : toTags(getUsedStyles(markup, lookup)),
+		cssChunks  : toTags(getUsedStyles(markup, lookup))
 	};
 }

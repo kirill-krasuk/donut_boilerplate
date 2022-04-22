@@ -6,12 +6,12 @@ import type { Locale } from '@eo-locale/core';
 const locales: Locale[] = [
 	{
 		language: 'en',
-		messages: enMessages,
+		messages: enMessages
 	},
 	{
 		language: 'ru',
-		messages: ruMessages,
-	},
+		messages: ruMessages
+	}
 ];
 
 export type AppLocales = typeof enMessages;

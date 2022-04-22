@@ -14,12 +14,12 @@ export const svgLoader = (): webpack.RuleSetRule => ({
 		!isProd() && {
 			loader : 'cache-loader',
 			options: {
-				cacheDirectory: '.cache/svg-cache',
-			},
+				cacheDirectory: '.cache/svg-cache'
+			}
 		},
 
 		{
-			loader: '@svgr/webpack',
+			loader: '@svgr/webpack'
 		},
 
 		{
@@ -29,8 +29,8 @@ export const svgLoader = (): webpack.RuleSetRule => ({
 				limit     : 4096,
 				name      : addHash('[name].[ext]', 'contenthash:8'),
 				outputPath: '../public/svgs/build',
-				publicPath: '/public/svgs/build',
-			},
-		},
-	].filter(Boolean) as webpack.RuleSetUseItem,
+				publicPath: '/public/svgs/build'
+			}
+		}
+	].filter(Boolean) as webpack.RuleSetUseItem
 });

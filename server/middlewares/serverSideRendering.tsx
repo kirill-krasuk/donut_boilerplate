@@ -23,20 +23,20 @@ async function serverSideRendering(req: Request, res: Response): Promise<void> {
 	const {
 		theme: mode = themeModel.initialState.mode,
 		locale = localeModel.initialState,
-		token,
+		token
 	} = req.cookies;
 
 	const extractor = new ChunkExtractor({
 		stats          : loadableStats,
 		entrypoints    : [ 'bundle' ],
-		inputFileSystem: useFileSystem,
+		inputFileSystem: useFileSystem
 	});
 
 	const props = await prefetch(req.url, { token });
 
 	const context: Context = {
 		token,
-		initialProps: props,
+		initialProps: props
 	};
 
 	initializeState(store, {
@@ -48,7 +48,7 @@ async function serverSideRendering(req: Request, res: Response): Promise<void> {
 		store,
 		context,
 		location,
-		extractor,
+		extractor
 	});
 
 	const template = await generateStaticTemplate({
@@ -56,7 +56,7 @@ async function serverSideRendering(req: Request, res: Response): Promise<void> {
 		store,
 		extractor,
 		props,
-		mode,
+		mode
 	});
 
 	renderTemplate(res, context, template);

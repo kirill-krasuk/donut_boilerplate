@@ -28,7 +28,7 @@ export const generateSchema = (props: SchemaProps): Schema => {
 		getStyleSchema({
 			styleType,
 			directoryName,
-			layer,
+			layer
 		})
 	);
 
@@ -36,17 +36,17 @@ export const generateSchema = (props: SchemaProps): Schema => {
 	const schema: SchemaConfig = {
 		pages: {
 			index: {
-				create: [ `src/pages/${ directoryName }/index.tsx`, './templates/page-entrypoint.ejs' ],
+				create: [ `src/pages/${ directoryName }/index.tsx`, './templates/page-entrypoint.ejs' ]
 			},
 			component: {
-				create: [ `src/pages/${ directoryName }/ui/${ name }.tsx`, './templates/component.ejs' ],
+				create: [ `src/pages/${ directoryName }/ui/${ name }.tsx`, './templates/component.ejs' ]
 			},
 			routes: {
-				update: [ 'src/shared/config/routes.ts', UpdateFileType.Routes ],
+				update: [ 'src/shared/config/routes.ts', UpdateFileType.Routes ]
 			},
 			locales,
-			styles,
-		},
+			styles
+		}
 	};
 
 	return schema[layer];

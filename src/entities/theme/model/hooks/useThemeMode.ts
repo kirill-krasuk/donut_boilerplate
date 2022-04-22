@@ -18,6 +18,6 @@ export function useThemeMode() {
 
 	return {
 		mode,
-		handleChangeTheme,
+		handleChangeTheme
 	};
 }

@@ -9,7 +9,7 @@ export function outputBanner() {
 			figlet.textSync(label, {
 				font            : '3D-ASCII',
 				horizontalLayout: 'default',
-				verticalLayout  : 'default',
+				verticalLayout  : 'default'
 			})
 		)
 	);

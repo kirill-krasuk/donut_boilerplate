@@ -20,7 +20,7 @@ async function createServerRunnerPromise(
 	appInstance.listen(port, host, () => appOutput({
 		host,
 		standardPort: standardPort.toString(),
-		port        : port.toString(),
+		port        : port.toString()
 	})
 	);
 }
@@ -33,7 +33,7 @@ function createServerRunner(appInstance: Express) {
 		return appInstance.listen(+port, host, () => appOutput({
 			host,
 			standardPort: standardPort?.toString(),
-			port        : port.toString(),
+			port        : port.toString()
 		})
 		);
 	};

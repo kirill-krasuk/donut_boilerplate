@@ -5,7 +5,7 @@ import { Theme }                                from '@config/theme';
 import { changeTheme, changePreferColorScheme } from './actions';
 
 const initialState = {
-	mode: Theme.Light,
+	mode: Theme.Light
 };
 
 const reducer = createReducer(initialState, builder => {

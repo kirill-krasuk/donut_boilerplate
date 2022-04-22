@@ -5,7 +5,7 @@ const mockStore               = configureStore(middlewares);
 
 const initState = {
 	locale: 'en',
-	theme : { mode: 'dark' },
+	theme : { mode: 'dark' }
 };
 
 const store = mockStore(initState);

@@ -17,5 +17,5 @@ export const ImgContainer = styled.img<StyledProps>`
 `;
 
 ImgContainer.defaultProps = {
-	isLoaded: true,
+	isLoaded: true
 };

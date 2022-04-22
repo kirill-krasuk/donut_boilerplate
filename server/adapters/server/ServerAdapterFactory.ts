@@ -4,7 +4,7 @@ import { ExpressAdapter } from './ExpressAdapter';
 export class ServerAdapterFactory {
 	private static adapters = {
 		express: ExpressAdapter,
-		fastify: FastifyAdapter,
+		fastify: FastifyAdapter
 	};
 
 	async init(type: keyof typeof ServerAdapterFactory.adapters) {

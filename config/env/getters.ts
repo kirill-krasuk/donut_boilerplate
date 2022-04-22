@@ -21,5 +21,5 @@ export {
 	getWriteToDisk,
 	getServiceWorkerEnable,
 	getUseCriticalCSSOptimize,
-	getHydrate,
+	getHydrate
 };

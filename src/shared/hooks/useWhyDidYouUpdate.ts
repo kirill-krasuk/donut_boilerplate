@@ -18,8 +18,8 @@ export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
 							...acc,
 							[key]: {
 								from: previousProps.current[key],
-								to  : props[key],
-							},
+								to  : props[key]
+							}
 						};
 					}
 

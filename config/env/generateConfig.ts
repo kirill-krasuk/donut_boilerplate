@@ -5,7 +5,7 @@ function generateConfig(env: NodeJS.ProcessEnv) {
 		return Object.keys(configSchema).reduce(
 			(config, currentItem) => ({
 				...config,
-				[currentItem]: configSchema[currentItem](env),
+				[currentItem]: configSchema[currentItem](env)
 			}),
 			{} as Config<T>
 		);

@@ -1,20 +1,20 @@
 const routes = {
 	home: {
-		path: '/',
+		path: '/'
 	},
 	second: {
-		path: '/second',
+		path: '/second'
 	},
 	posts: {
-		path: '/posts',
+		path: '/posts'
 	},
 	protect: {
 		path   : '/protect',
-		protect: true,
+		protect: true
 	},
 	404: {
-		path: '*',
-	},
+		path: '*'
+	}
 } as const;
 
 const protectRedirect = routes.home.path;

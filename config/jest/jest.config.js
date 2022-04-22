@@ -10,17 +10,17 @@ module.exports = {
 	testEnvironment: 'node',
 	transform      : {
 		'^.+\\.(t|j)sx?$': '@swc/jest',
-		'^.+\\.svg$'     : 'svg-jest',
+		'^.+\\.svg$'     : 'svg-jest'
 	},
 	setupFilesAfterEnv: [
 		'@testing-library/jest-dom',
 		'@testing-library/jest-dom/extend-expect',
-		'./config/jest/setup.ts',
+		'./config/jest/setup.ts'
 	],
 	moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json' ],
 	testRegex           : [
 		// for jest watch matching test files
-		'(/src/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
+		'(/src/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$'
 	],
 	moduleNameMapper: {
 		'\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
@@ -29,8 +29,8 @@ module.exports = {
 		'styled-components/macro': 'styled-components',
 		'/.module.s(c|a)ss$/'    : 'identity-obj-proxy',
 		...pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
-			prefix: '<rootDir>/',
-		}),
+			prefix: '<rootDir>/'
+		})
 	},
 	globals: {
 		/**
@@ -39,11 +39,11 @@ module.exports = {
 		 * can see this setting in tsconfig.jest.json -> "jsx": "react"
 		 */
 		'ts-jest': {
-			tsconfig: '<rootDir>/config/jest/tsconfig.json',
+			tsconfig: '<rootDir>/config/jest/tsconfig.json'
 		},
 		__IS_DEV__   : true,
 		__IS_PROD__  : false,
 		__IS_SERVER__: false,
-		__IS_CLIENT__: true,
-	},
+		__IS_CLIENT__: true
+	}
 };

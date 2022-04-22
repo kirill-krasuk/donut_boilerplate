@@ -8,7 +8,7 @@ import {
 	layerQuestion,
 	componentQuestion,
 	generateOptionsQuestion,
-	stylesQuestion,
+	stylesQuestion
 } from './constants/questions';
 
 import type { Layer, StylesType } from './types/common';
@@ -25,7 +25,7 @@ async function main() {
 	const { layer, name, generateOptions }: Answers = await prompts([
 		layerQuestion,
 		componentQuestion,
-		generateOptionsQuestion,
+		generateOptionsQuestion
 	]);
 
 	let styles: StylesType | undefined;
@@ -43,7 +43,7 @@ async function main() {
 		name,
 		isNeedLocales,
 		isNeedLazy,
-		styleType: styles,
+		styleType: styles
 	});
 
 	generate(schema, {
@@ -52,7 +52,7 @@ async function main() {
 		styles,
 		isNeedLocales,
 		kebabName: camelToKebab(name),
-		camelName: name.replace(/^(.)/, (_match, $1) => $1.toLowerCase()),
+		camelName: name.replace(/^(.)/, (_match, $1) => $1.toLowerCase())
 	});
 }
 

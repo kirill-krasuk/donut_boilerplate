@@ -8,20 +8,20 @@ import type { IsomorphicLoader } from '../types';
 
 const options = {
 	test   : fileExtensions.sass,
-	exclude: fileExtensions.sassModule,
+	exclude: fileExtensions.sassModule
 };
 
 const defaultProps = {
 	enablePerf      : true,
 	forceStyleLoader: false,
-	extraOptions    : {},
+	extraOptions    : {}
 };
 
 const cacheLoader = {
 	loader : 'cache-loader',
 	options: {
-		cacheDirectory: '.cache/sass-cache',
-	},
+		cacheDirectory: '.cache/sass-cache'
+	}
 };
 
 type Props = Partial<typeof defaultProps>;
@@ -29,22 +29,22 @@ type Props = Partial<typeof defaultProps>;
 export function sassLoader(props: Props = defaultProps): IsomorphicLoader {
 	const { enablePerf, forceStyleLoader, extraOptions } = {
 		...defaultProps,
-		...props,
+		...props
 	};
 
 	const baseLoader = [
 		{
-			loader: 'css-loader',
+			loader: 'css-loader'
 		},
 		{
-			loader: 'resolve-url-loader',
+			loader: 'resolve-url-loader'
 		},
 		{
 			loader : 'sass-loader',
 			options: {
-				sourceMap: true,
-			},
-		},
+				sourceMap: true
+			}
+		}
 	];
 
 	const client = {
@@ -53,25 +53,25 @@ export function sassLoader(props: Props = defaultProps): IsomorphicLoader {
 			...(!isProd() && enablePerf ? [ cacheLoader ] : []),
 
 			!forceStyleLoader && {
-				loader: ExtractCssChunks.loader,
+				loader: ExtractCssChunks.loader
 			},
 
 			forceStyleLoader && {
-				loader: 'style-loader',
+				loader: 'style-loader'
 			},
 
-			...baseLoader,
+			...baseLoader
 		].filter(Boolean) as webpack.RuleSetUseItem,
-		...extraOptions,
+		...extraOptions
 	};
 
 	const server = {
 		...options,
-		use: baseLoader,
+		use: baseLoader
 	};
 
 	return {
 		client,
-		server,
+		server
 	};
 }

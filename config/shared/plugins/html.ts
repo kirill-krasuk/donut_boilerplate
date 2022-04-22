@@ -22,11 +22,11 @@ export function htmlPlugins(): webpack.WebpackPluginInstance[] {
 			 * because indentation matters
 			 */
 			minify       : false,
-			excludeAssets: [ fileExtensions.jsOrCss ],
+			excludeAssets: [ fileExtensions.jsOrCss ]
 		}),
 		new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
 		new HtmlPugPlugin({
-			adjustIndent: true,
-		}),
+			adjustIndent: true
+		})
 	];
 }

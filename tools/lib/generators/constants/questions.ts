@@ -29,15 +29,15 @@ const layerQuestion: prompts.PromptObject<'layer'> = {
 		{
 			title: 'lib',
 			value: 'lib'
-		},
-	],
+		}
+	]
 };
 
 const componentQuestion: prompts.PromptObject<'name'> = {
 	type    : 'text',
 	name    : 'name',
 	message : 'Write name of component',
-	validate: value => value[0].toUpperCase() === value[0] || 'name must be a camelCase format',
+	validate: value => value[0].toUpperCase() === value[0] || 'name must be a camelCase format'
 };
 
 const generateOptionsQuestion: prompts.PromptObject<'generateOptions'> = {
@@ -56,8 +56,8 @@ const generateOptionsQuestion: prompts.PromptObject<'generateOptions'> = {
 		{
 			title: 'styles',
 			value: 'styles'
-		},
-	],
+		}
+	]
 };
 
 const stylesQuestion: prompts.PromptObject<'styles'> = {
@@ -84,8 +84,8 @@ const stylesQuestion: prompts.PromptObject<'styles'> = {
 		{
 			title: 'sass-module',
 			value: 'moduleSass'
-		},
-	],
+		}
+	]
 };
 
 export {

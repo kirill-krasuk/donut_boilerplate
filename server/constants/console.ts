@@ -23,5 +23,5 @@ export const consoleAttributes = {
 	BgBlue   : '\u001B[44m',
 	BgMagenta: '\u001B[45m',
 	BgCyan   : '\u001B[46m',
-	BgWhite  : '\u001B[47m',
+	BgWhite  : '\u001B[47m'
 } as const;

@@ -17,7 +17,9 @@ const replace = (
 
 		if (interpolateKey + 1 > valuesToReplace.length) {
 			throw new Error(
-				`Invalid interpolation key: ${ args[index] }, max key is: $${ valuesToReplace.length - 1 }`
+				`Invalid interpolation key: ${ args[index] }, max key is: $${
+					valuesToReplace.length - 1
+				}`
 			);
 		}
 

@@ -25,7 +25,7 @@ function getCacheOptions(): webpack.FileCacheOptions | boolean {
 		return {
 			type          : 'filesystem',
 			name          : 'server-cache',
-			cacheDirectory: paths.cacheDir,
+			cacheDirectory: paths.cacheDir
 		};
 	}
 
@@ -38,11 +38,11 @@ const config: Configuration = {
 	entry : paths.server.entry,
 	node  : {
 		__dirname : true,
-		__filename: false,
+		__filename: false
 	},
 	output: {
 		path    : paths.server.output,
-		filename: 'server.js',
+		filename: 'server.js'
 	},
 	cache  : getCacheOptions(),
 	stats  : 'summary',
@@ -50,7 +50,7 @@ const config: Configuration = {
 		extensions      : [ '.ts', '.tsx', '.js', '.css', '.sass', '.json' ],
 		symlinks        : false,
 		cacheWithContext: false,
-		plugins         : [ tsconfigPathsPlugin() ],
+		plugins         : [ tsconfigPathsPlugin() ]
 	},
 	module: {
 		rules: [
@@ -61,19 +61,19 @@ const config: Configuration = {
 			sassModuleLoader().server,
 			imageLoader().server,
 			svgLoader(),
-			fontsLoader(),
-		],
+			fontsLoader()
+		]
 	},
 	externals: [ WebpackPnpExternals() ],
 	plugins  : [
 		definePlugin({
 			mode,
-			isClient: false,
+			isClient: false
 		}),
 		new webpack.optimize.LimitChunkCountPlugin({
-			maxChunks: 1,
-		}),
-	],
+			maxChunks: 1
+		})
+	]
 };
 
 export { __IS_CLIENT__, __IS_SERVER__ };

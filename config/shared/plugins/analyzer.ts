@@ -10,13 +10,13 @@ export function analyzerPlugin(mode: 'development' | 'none' | 'production') {
 			openAnalyzer: false,
 			logLevel    : 'silent',
 			analyzerPort: process.env.BUNDLE_ANALYZER_PORT || 8181,
-			analyzerHost: '127.0.0.1',
+			analyzerHost: '127.0.0.1'
 		},
 		production: {
 			analyzerMode  : 'static',
 			openAnalyzer  : false,
-			reportFilename: '../stats/prod-report.html',
-		},
+			reportFilename: '../stats/prod-report.html'
+		}
 	};
 
 	if (isBuildAnalyzer) {

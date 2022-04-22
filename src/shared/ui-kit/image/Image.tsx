@@ -46,7 +46,7 @@ export const Image: FC<React.PropsWithChildren<Props>> = props => {
 };
 
 Image.defaultProps = {
-	loadingWidth: imageConfig.loadingWidth,
+	loadingWidth: imageConfig.loadingWidth
 };
 
 export default Image;

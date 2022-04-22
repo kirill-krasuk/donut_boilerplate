@@ -9,6 +9,6 @@ export function extractCssPlugin({ isProd }: { isProd: boolean }) {
 
 	return new ExtractCssChunks({
 		filename     : addHash('[name].css', 'contenthash:8'),
-		chunkFilename: addHash('[name].css', 'contenthash:8'),
+		chunkFilename: addHash('[name].css', 'contenthash:8')
 	}) as webpack.WebpackPluginInstance;
 }

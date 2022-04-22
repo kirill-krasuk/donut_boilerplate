@@ -5,7 +5,7 @@ import {
 	Action,
 	AnyAction,
 	PreloadedState,
-	CombinedState,
+	CombinedState
 } from '@reduxjs/toolkit';
 
 import type { Middleware } from 'redux';
@@ -21,7 +21,7 @@ const createStore = <S = any, A extends Action = AnyAction>(
 	const store = configureStore({
 		preloadedState,
 		reducer,
-		middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middlewares),
+		middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middlewares)
 	});
 
 	return (reducerReplacementFunction?: (s: typeof store) => void) => {

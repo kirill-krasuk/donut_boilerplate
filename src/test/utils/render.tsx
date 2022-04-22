@@ -15,11 +15,14 @@ const AllTheProviders: FC = ({ children }) => (
 	<BrowserRouter>
 		<Provider store={ store }>
 			<LocalesProvider>
-				<ThemeProvider theme={ {
-					...theme,
-					mode: 'dark'
-				} }
-				>{ children }</ThemeProvider>
+				<ThemeProvider
+					theme={ {
+						...theme,
+						mode: 'dark'
+					} }
+				>
+					{ children }
+				</ThemeProvider>
 			</LocalesProvider>
 		</Provider>
 	</BrowserRouter>

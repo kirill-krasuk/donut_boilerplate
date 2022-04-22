@@ -9,7 +9,7 @@ type AssetsManifestPluginOptions = {
 };
 
 const defaultOptions = {
-	filename: 'assets-manifest.json',
+	filename: 'assets-manifest.json'
 };
 
 export class AssetsManifestPlugin {
@@ -34,13 +34,13 @@ export class AssetsManifestPlugin {
 			hash              : true,
 			ids               : true,
 			outputPath        : true,
-			publicPath        : true,
+			publicPath        : true
 		});
 
 		// @ts-expect-error
 		stats.chunks = [ ...compilation.chunks ].map(chunk => ({
 			id   : chunk.id,
-			files: [ ...chunk.files ],
+			files: [ ...chunk.files ]
 		}));
 
 		const result = JSON.stringify(stats, null, 2);
@@ -53,7 +53,7 @@ export class AssetsManifestPlugin {
 			},
 			size() {
 				return result.length;
-			},
+			}
 		};
 	}
 
@@ -75,7 +75,7 @@ export class AssetsManifestPlugin {
 		compiler.hooks.make.tap(AssetsManifestPlugin.name, compilation => compilation.hooks.processAssets.tap(
 			{
 				name : AssetsManifestPlugin.name,
-				stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS,
+				stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS
 			},
 			() => {
 				const asset = this.emitAsset(compilation);

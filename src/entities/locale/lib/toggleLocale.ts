@@ -4,5 +4,5 @@ import { Locale }             from '../types/enums';
 
 export const toggleLocale = createToggleHelper({
 	[Locale.Ru]: Locale.En,
-	[Locale.En]: Locale.Ru,
+	[Locale.En]: Locale.Ru
 });

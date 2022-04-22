@@ -44,10 +44,10 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 			path         : paths.client.dist,
 			filename     : addHash('[name].js', contentHash),
 			publicPath   : paths.public,
-			pathinfo     : false,
+			pathinfo     : false
 		},
 		...(options.devtool && {
-			devtool: options.devtool,
+			devtool: options.devtool
 		}),
 		resolve: {
 			extensions      : [ '.ts', '.tsx', '.js', '.css', '.sass', '.json' ],
@@ -59,20 +59,20 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 				// for css import, url and etc usage resources alias
 				fonts : paths.client.fonts,
 				images: paths.client.images,
-				svgs  : paths.client.svgs,
+				svgs  : paths.client.svgs
 			},
-			plugins: [ tsconfigPathsPlugin() ],
+			plugins: [ tsconfigPathsPlugin() ]
 		},
 		...(options.cache && {
-			cache: options.cache,
+			cache: options.cache
 		}),
 		optimization: {
 			runtimeChunk: 'single',
-			...options.optimization,
+			...options.optimization
 		},
 		stats: options.stats,
 		...(options.performance && {
-			performance: options.performance,
+			performance: options.performance
 		}),
 		module: {
 			unsafeCache: true,
@@ -84,8 +84,8 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 				sassModuleLoader().client,
 				imageLoader().client,
 				fontsLoader(),
-				svgLoader(),
-			],
+				svgLoader()
+			]
 		},
 		watch  : options.watch || false,
 		plugins: options!.plugins!.concat(
@@ -93,7 +93,7 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 				...htmlPlugins(),
 				definePlugin({
 					mode    : options.mode!,
-					isClient: true,
+					isClient: true
 				}),
 				extractCssPlugin({ isProd }),
 				analyzerPlugin(options.mode!),
@@ -102,35 +102,40 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 						swDest : paths.swDest,
 						include: [ '**/*.js', '**/*.js.gz' ],
 						exclude: [ '**/*.hot-update.json' ],
-						swSrc  : paths.swSrc,
+						swSrc  : paths.swSrc
 					}),
 				new ImageminWebpWebpackPlugin({
 					config: [
 						{
 							test   : fileExtensions.images,
 							options: {
-								quality: 75,
-							},
-						},
+								quality: 75
+							}
+						}
 					],
 					overrideExtension: true,
 					detailedLogs     : false,
 					silent           : true,
-					strict           : true,
+					strict           : true
 				}),
 				new LoadablePlugin(),
 				new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ru/),
 				new CleanWebpackPlugin({
-					cleanOnceBeforeBuildPatterns: [ '**/*', '!server.js', '!*.server.js', '!index.pug' ],
+					cleanOnceBeforeBuildPatterns: [
+						'**/*',
+						'!server.js',
+						'!*.server.js',
+						'!index.pug'
+					],
 					cleanAfterEveryBuildPatterns: [
 						'!*.server.js',
 						'*.hot-update.json',
 						'!index.pug',
-						'precache-manifest.*.js',
-					],
-				}),
+						'precache-manifest.*.js'
+					]
+				})
 			].filter(Boolean)
-		),
+		)
 	};
 
 	return withSpeedMeasurePlugin(config);

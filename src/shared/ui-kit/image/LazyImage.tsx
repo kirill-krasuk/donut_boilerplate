@@ -9,7 +9,7 @@ import type { Props }             from './types';
 
 const { useIntersection } = createIntersectionHook({
 	rootMargin: '40px',
-	threshold : 0,
+	threshold : 0
 });
 
 export const LazyImage: FC<Props> = props => {

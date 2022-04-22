@@ -14,9 +14,9 @@ export function minimizerPlugins(): webpack.WebpackPluginInstance[] {
 				ie8            : false,
 				keep_classnames: undefined,
 				keep_fnames    : false,
-				safari10       : false,
-			},
+				safari10       : false
+			}
 		}),
-		new OptimizeCssAssetsPlugin(),
+		new OptimizeCssAssetsPlugin()
 	];
 }

@@ -40,5 +40,5 @@ export type {
 	ActionCreatorWithMetaType,
 	ActionToString,
 	ActionCreator,
-	ActionTypeOF,
+	ActionTypeOF
 };

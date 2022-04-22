@@ -11,7 +11,7 @@ export function getStyleSchema(options: StylePathProps) {
 
 	const stylesArrayOfTuple = [
 		[ styles[0], stylesTemplate[0] ],
-		[ styles[1], stylesTemplate[1] ],
+		[ styles[1], stylesTemplate[1] ]
 	];
 
 	const stylesTuple = [ styles, stylesTemplate ];
@@ -19,6 +19,6 @@ export function getStyleSchema(options: StylePathProps) {
 	const create = Array.isArray(styles) ? stylesArrayOfTuple : stylesTuple;
 
 	return {
-		create: create as CreateTuple | CreateTuple[],
+		create: create as CreateTuple | CreateTuple[]
 	};
 }

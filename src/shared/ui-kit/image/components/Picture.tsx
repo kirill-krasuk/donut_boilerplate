@@ -19,7 +19,7 @@ export const Picture: FC<PictureProps> = props => {
 			{ Children.map(children, child => {
 				if (isValidElement(child)) {
 					return cloneElement(child, {
-						src,
+						src
 					});
 				}
 				return child;

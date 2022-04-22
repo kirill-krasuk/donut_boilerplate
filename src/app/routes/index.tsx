@@ -8,8 +8,8 @@ const routes: RouteObject[] = [
 	{
 		path    : '/',
 		element : <RootView />,
-		children: AppRoutes,
-	},
+		children: AppRoutes
+	}
 ];
 
 const Routes = () => useRoutes(routes);

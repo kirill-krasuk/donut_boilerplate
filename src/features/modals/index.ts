@@ -8,5 +8,5 @@ export { Modals } from './types/enums';
 
 export const modalsMap = {
 	Greeting,
-	ModalTest,
+	ModalTest
 };

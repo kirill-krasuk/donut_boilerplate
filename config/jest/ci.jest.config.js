@@ -7,8 +7,8 @@ module.exports = {
 		[
 			'jest-junit',
 			{
-				addFileAttribute: 'true',
-			},
-		],
-	],
+				addFileAttribute: 'true'
+			}
+		]
+	]
 };

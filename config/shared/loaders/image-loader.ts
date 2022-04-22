@@ -8,7 +8,7 @@ import type { IsomorphicLoader } from '../types';
 const addHash = createHashHelper(isProd());
 
 const options = {
-	test: fileExtensions.images,
+	test: fileExtensions.images
 };
 
 export function imageLoader(): IsomorphicLoader {
@@ -18,28 +18,28 @@ export function imageLoader(): IsomorphicLoader {
 			options: {
 				name      : addHash('[name].[ext]', 'contenthash:8'),
 				outputPath: '../public/images/build',
-				publicPath: '/public/images/build',
-			},
+				publicPath: '/public/images/build'
+			}
 		},
 		{
 			loader : 'image-webpack-loader',
 			options: {
 				mozjpeg: {
 					progressive: true,
-					quality    : 65,
+					quality    : 65
 				},
 				optipng: {
-					enabled: isProd(),
+					enabled: isProd()
 				},
 				pngquant: {
 					quality: [ 0.65, 0.9 ],
-					speed  : 4,
+					speed  : 4
 				},
 				gifsicle: {
-					interlaced: false,
-				},
-			},
-		},
+					interlaced: false
+				}
+			}
+		}
 	];
 
 	const client = {
@@ -48,17 +48,17 @@ export function imageLoader(): IsomorphicLoader {
 			!isProd() && {
 				loader : 'cache-loader',
 				options: {
-					cacheDirectory: '.cache/images-cache',
-				},
+					cacheDirectory: '.cache/images-cache'
+				}
 			},
 
-			...baseLoader,
-		].filter(Boolean) as webpack.RuleSetUseItem,
+			...baseLoader
+		].filter(Boolean) as webpack.RuleSetUseItem
 	};
 
 	const server = {
 		...options,
-		use: baseLoader,
+		use: baseLoader
 	};
 
 	return {

@@ -10,12 +10,12 @@ export function gzipPlugins() {
 		new CompressionPlugin({
 			filename: '[file].gz[query]',
 			test    : fileExtensions.staticFiles,
-			minRatio: 0.8,
+			minRatio: 0.8
 		}),
 		new BrotliPlugin({
 			asset   : '[path].br[query]',
 			test    : fileExtensions.staticFiles,
-			minRatio: 0.8,
-		}),
+			minRatio: 0.8
+		})
 	] as webpack.WebpackPluginInstance[];
 }

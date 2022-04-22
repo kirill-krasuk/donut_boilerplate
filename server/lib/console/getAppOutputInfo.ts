@@ -50,7 +50,7 @@ const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
 				host
 			) }:${ analyzerPort }}`,
 		'',
-		chalk`{gray.bold ${ messageAboutBrowser }}`,
+		chalk`{gray.bold ${ messageAboutBrowser }}`
 	]
 		.filter(row => row !== false)
 		.map(row => `${ row }\n`)

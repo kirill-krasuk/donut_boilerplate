@@ -6,13 +6,13 @@ import { configureBundler } from './webpack.common';
 export default configureBundler({
 	mode : 'production',
 	entry: {
-		bundle: [ `${ paths.client.entry }` ],
+		bundle: [ `${ paths.client.entry }` ]
 	},
 	stats      : 'detailed',
 	performance: {
 		hints            : false,
 		maxEntrypointSize: 512_000,
-		maxAssetSize     : 512_000,
+		maxAssetSize     : 512_000
 	},
 	optimization: {
 		minimize   : true,
@@ -24,10 +24,10 @@ export default configureBundler({
 					test              : /.yarn/,
 					filename          : 'vendors.[contenthash:8].js',
 					chunks            : 'initial',
-					reuseExistingChunk: true,
-				},
-			},
-		},
+					reuseExistingChunk: true
+				}
+			}
+		}
 	},
-	plugins: gzipPlugins(),
+	plugins: gzipPlugins()
 });

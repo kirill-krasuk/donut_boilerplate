@@ -11,11 +11,11 @@ type ListenersValue = UseIntersectionOptions & {
 const defaultIntersectionOptions: IntersectionObserverInit = {
 	root      : null,
 	rootMargin: '50px',
-	threshold : 0,
+	threshold : 0
 };
 
 const defaultHookOptions = {
-	once: false,
+	once: false
 };
 
 function createIntersectionHook(options: IntersectionObserverInit = defaultIntersectionOptions) {
@@ -60,7 +60,7 @@ function createIntersectionHook(options: IntersectionObserverInit = defaultInter
 				observer.observe(target);
 				listeners.set(target, {
 					callback,
-					...options,
+					...options
 				});
 			}
 
@@ -77,7 +77,7 @@ function createIntersectionHook(options: IntersectionObserverInit = defaultInter
 	};
 
 	return {
-		useIntersection,
+		useIntersection
 	};
 }
 

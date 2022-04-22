@@ -20,7 +20,7 @@ export class Application<T extends HTTPServerAdapter> {
 	async build() {
 		this.adapter.registerViewTemplate({
 			engine   : 'pug',
-			viewsPath: path.resolve(__dirname, '../views/'),
+			viewsPath: path.resolve(__dirname, '../views/')
 		});
 
 		this.adapter.registerMiddlewares([
@@ -29,7 +29,7 @@ export class Application<T extends HTTPServerAdapter> {
 			json(),
 			urlencoded({ extended: false }),
 			cookieParser(),
-			favicon(paths.favicon),
+			favicon(paths.favicon)
 		]);
 
 		this.adapter.registerStaticFiles(staticFiles);

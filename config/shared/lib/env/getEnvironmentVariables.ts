@@ -10,13 +10,13 @@ function getEnvironmentVariables() {
 		if (/^(\d+|false|true)$/.test(envVariable)) {
 			return {
 				...acc,
-				[curr]: JSON.parse(envVariable),
+				[curr]: JSON.parse(envVariable)
 			};
 		}
 
 		return {
 			...acc,
-			[curr]: envVariable ? `"${ envVariable }"` : null,
+			[curr]: envVariable ? `"${ envVariable }"` : null
 		};
 	}, {});
 }

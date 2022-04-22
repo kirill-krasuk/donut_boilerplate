@@ -34,7 +34,7 @@ export type {
 	UpdateTuple,
 	Schema,
 	SchemaConfig,
-	SchemaMethods,
+	SchemaMethods
 };
 
 export { UpdateFileType };

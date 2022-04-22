@@ -19,10 +19,11 @@ async function setupRenderWrapper<T extends Record<string, any>>(
 		<BrowserRouter>
 			<Provider store={ store }>
 				<LocalesProvider>
-					<ThemeProvider theme={ {
-						...theme,
-						mode: 'dark'
-					} }
+					<ThemeProvider
+						theme={ {
+							...theme,
+							mode: 'dark'
+						} }
 					>
 						<Component { ...props } />
 					</ThemeProvider>

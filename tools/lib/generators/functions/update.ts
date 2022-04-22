@@ -24,7 +24,7 @@ function detectPattern(patternsByType: PatternsObject, file: string) {
 
 		return {
 			pattern: patternsByType.pattern[patternIndex],
-			replace: patternsByType.replace[patternIndex],
+			replace: patternsByType.replace[patternIndex]
 		};
 	}
 

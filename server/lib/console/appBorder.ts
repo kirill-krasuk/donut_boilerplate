@@ -6,10 +6,10 @@ export const appBorder = (content: string) => console.info(
 			top   : 1,
 			right : 10,
 			left  : 10,
-			bottom: 1,
+			bottom: 1
 		},
 		margin     : 2,
 		borderColor: 'magentaBright',
-		borderStyle: 'double',
+		borderStyle: 'double'
 	})
 );

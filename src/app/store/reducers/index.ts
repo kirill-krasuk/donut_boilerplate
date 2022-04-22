@@ -5,5 +5,5 @@ import { modalsModel } from '@features/modals';
 export default {
 	locale: localeModel.reducer,
 	theme : themeModel.reducer,
-	modal : modalsModel.reducer,
+	modal : modalsModel.reducer
 };

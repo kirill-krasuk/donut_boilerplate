@@ -7,7 +7,7 @@ import type { Modals }     from '../../types/enums';
 
 const initialState: ModalState = {
 	hasHistory: false,
-	id        : null,
+	id        : null
 };
 
 function isModalId(value: any): value is Modals {

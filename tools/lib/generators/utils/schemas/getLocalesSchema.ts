@@ -7,13 +7,13 @@ export function getLocalesSchema(directoryName: string) {
 
 	const create: CreateTuple = [
 		`src/pages/${ directoryName }/config/locales.ts`,
-		'./templates/locales.ejs',
+		'./templates/locales.ejs'
 	];
 
 	const update = pathsToLocales.map<UpdateTuple>(localePath => [ localePath, UpdateFileType.JSON ]);
 
 	return {
 		create,
-		update,
+		update
 	};
 }

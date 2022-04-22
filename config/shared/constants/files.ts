@@ -9,7 +9,7 @@ const fileExtensions = {
 	fonts      : /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
 	images     : /\.(gif|png|jpe?g)/i,
 	svgs       : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-	staticFiles: /(\.js(\?.*)?)|(\.css)|(\.html)$/i,
+	staticFiles: /(\.js(\?.*)?)|(\.css)|(\.html)$/i
 };
 
 export { fileExtensions };

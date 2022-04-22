@@ -11,16 +11,16 @@ const clientPathMap = {
 	postCssConfig: 'config/css/.postcssrc',
 	fonts        : 'src/assets/fonts',
 	images       : 'src/assets/images',
-	svgs         : 'src/assets/svgs',
+	svgs         : 'src/assets/svgs'
 } as const;
 
 const serverPathMap = {
 	entry : 'server/index.ts',
-	output: 'dist',
+	output: 'dist'
 } as const;
 
 const cachesPathMap = {
-	css: '.cache/css-cache',
+	css: '.cache/css-cache'
 } as const;
 
 const paths = {
@@ -33,7 +33,7 @@ const paths = {
 	public  : '/dist/',
 	swSrc   : './src/app/service-worker.js',
 	swDest  : './sw.js',
-	stories : '../../src/**/*.stories.tsx',
+	stories : '../../src/**/*.stories.tsx'
 };
 
 export { paths };

@@ -91,12 +91,26 @@
 				"rules": [
 					{
 						"from": "shared",
-						"disallow": ["entities", "features", "widgets", "pages", "processes", "app"],
+						"disallow": [
+							"entities",
+							"features",
+							"widgets",
+							"pages",
+							"processes",
+							"app"
+						],
 						"message": "Shared cannot use imports like: entities,features,widgets,pages,processes,app"
 					},
 					{
 						"from": "entities",
-						"disallow": ["entities", "features", "widgets", "pages", "processes", "app"],
+						"disallow": [
+							"entities",
+							"features",
+							"widgets",
+							"pages",
+							"processes",
+							"app"
+						],
 						"message": "Entities cannot use imports like: entities,features,widgets,pages,processes,app"
 					},
 					{
@@ -294,7 +308,7 @@
 			}
 		],
 		"consistent-return": 0,
-		"comma-dangle": [2, "only-multiline"],
+		"comma-dangle": [2, "never"],
 		"template-curly-spacing": [2, "always"],
 		"object-curly-spacing": [2, "always"],
 		"array-bracket-spacing": [2, "always"],

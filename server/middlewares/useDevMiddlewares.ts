@@ -33,12 +33,12 @@ function useDevMiddlewares(app: Application) {
 			serverSideRender: true,
 			headers         : {
 				[swKey]         : [ swValue ],
-				[isCacheableKey]: [ isCacheableValue ],
+				[isCacheableKey]: [ isCacheableValue ]
 			},
 			writeToDisk:
 				writeToDisk ||
 				((filePath: string) => fileExtensionsToWrite.test(filePath) ||
-					filesToWrite.some(file => filePath.endsWith(file))),
+					filesToWrite.some(file => filePath.endsWith(file)))
 		})
 	);
 

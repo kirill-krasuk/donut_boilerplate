@@ -8,5 +8,5 @@ export type { PC, PrefetchedComponent, RouteForPrefetch } from './types/componen
 export type {
 	RouteByNamePageOptions,
 	RouteByPropsPageOptions,
-	RouteExtendedObject,
+	RouteExtendedObject
 } from './types/builder';

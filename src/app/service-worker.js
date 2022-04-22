@@ -14,7 +14,7 @@ import {
 setCacheNameDetails({
 	prefix  : 'new_boilerplate_cache',
 	precache: 'precache',
-	runtime : 'runtime',
+	runtime : 'runtime'
 });
 precacheAndRoute(self.__WB_MANIFEST);
 cleanupOutdatedCaches();
@@ -29,16 +29,16 @@ registerRoute(
 		plugins  : [
 			new ExpirationPlugin({
 				maxAgeSeconds    : 60 * 60 * 24 * 7,
-				purgeOnQuotaError: true,
-			}),
-		],
+				purgeOnQuotaError: true
+			})
+		]
 	})
 );
 
 registerRoute(
 	/.*(?:googleapis|gstatic)\.com/,
 	new StaleWhileRevalidate({
-		cacheName: 'google_api_cache',
+		cacheName: 'google_api_cache'
 	})
 );
 
@@ -48,9 +48,9 @@ registerRoute(
 		cacheName: 'images_cache',
 		plugins  : [
 			new ExpirationPlugin({
-				maxAgeSeconds: 60 * 60 * 24 * 7,
-			}),
-		],
+				maxAgeSeconds: 60 * 60 * 24 * 7
+			})
+		]
 	})
 );
 
@@ -60,9 +60,9 @@ registerRoute(
 		cacheName: 'fonts_cache',
 		plugins  : [
 			new ExpirationPlugin({
-				maxAgeSeconds: 60 * 60 * 24 * 7,
-			}),
-		],
+				maxAgeSeconds: 60 * 60 * 24 * 7
+			})
+		]
 	})
 );
 
@@ -72,14 +72,14 @@ registerRoute(
 		cacheName: 'pages_cache',
 		plugins  : [
 			new ExpirationPlugin({
-				maxAgeSeconds: 60 * 60 * 24 * 7,
+				maxAgeSeconds: 60 * 60 * 24 * 7
 			}),
 			new CacheableResponsePlugin({
 				headers: {
-					'X-Is-Cacheable': 'true', // set this header on server side for caching static pages
-				},
-			}),
-		],
+					'X-Is-Cacheable': 'true' // set this header on server side for caching static pages
+				}
+			})
+		]
 	})
 );
 
@@ -90,7 +90,7 @@ self.addEventListener('push', event => {
 	const title   = 'Donut Notify';
 	const options = {
 		body: event.data.text(),
-		icon: '/public/images/logo512x512.png',
+		icon: '/public/images/logo512x512.png'
 	};
 
 	event.waitUntil(self.registration.showNotification(title, options));

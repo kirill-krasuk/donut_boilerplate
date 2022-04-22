@@ -5,7 +5,7 @@ const generateEnvByScheme = generateConfig(process.env);
 
 const env = {
 	client: generateEnvByScheme(clientScheme),
-	server: generateEnvByScheme(serverScheme),
+	server: generateEnvByScheme(serverScheme)
 };
 
 export { env };

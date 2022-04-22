@@ -4,7 +4,7 @@ const clientScheme = {
 	appEnv     : getters.getNodeEnv,
 	api        : getters.getApiHost,
 	swEnable   : getters.getServiceWorkerEnable,
-	needHydrate: getters.getHydrate,
+	needHydrate: getters.getHydrate
 };
 
 const serverScheme = {
@@ -16,7 +16,7 @@ const serverScheme = {
 	isBuildAnalyzer       : getters.getBuildAnalyze,
 	analyzerPort          : getters.getBundleAnalyzerPort,
 	writeToDisk           : getters.getWriteToDisk,
-	useCriticalCSSOptimize: getters.getUseCriticalCSSOptimize,
+	useCriticalCSSOptimize: getters.getUseCriticalCSSOptimize
 };
 
 export { clientScheme, serverScheme };

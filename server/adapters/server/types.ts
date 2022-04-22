@@ -53,5 +53,5 @@ export type {
 	RequestHandler,
 	ViewTemplateOptions,
 	StaticFilesOptions,
-	ServerAdapter,
+	ServerAdapter
 };

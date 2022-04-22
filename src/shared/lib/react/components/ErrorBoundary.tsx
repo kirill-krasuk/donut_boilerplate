@@ -12,7 +12,7 @@ type Props = {
 
 export class ErrorBoundary extends Component<Props, State> {
 	state = {
-		hasError: false,
+		hasError: false
 	};
 
 	componentDidCatch(error: Error) {
@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
 		fetch('/handle_error', {
 			method: HTTPMethod.Post,
-			body  : JSON.stringify(stack),
+			body  : JSON.stringify(stack)
 		});
 	}
 

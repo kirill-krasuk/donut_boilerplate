@@ -8,7 +8,7 @@ import type {
 	RequestHandler,
 	StaticFilesOptions,
 	ViewTemplateOptions,
-	ServerAdapter,
+	ServerAdapter
 } from './types';
 
 export abstract class HTTPServerAdapter<Request = any, Response = any>

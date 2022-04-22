@@ -4,7 +4,7 @@ import type { PC } from '../../types/components';
 import type {
 	RouteByNamePageOptions,
 	RouteExtendedObject,
-	RouteByPropsPageOptions,
+	RouteByPropsPageOptions
 } from '../../types/builder';
 
 function isRouteFactory(options: any): options is RouteByNamePageOptions {
@@ -12,7 +12,7 @@ function isRouteFactory(options: any): options is RouteByNamePageOptions {
 }
 
 const defaultRouteProps = {
-	protect: false,
+	protect: false
 };
 
 function createRoutePage(options: RouteByPropsPageOptions): RouteExtendedObject;
@@ -28,12 +28,12 @@ function createRoutePage(options: any): any {
 		if (routeName && routes[routeName]) {
 			const routeProps = {
 				...defaultRouteProps,
-				...routes[routeName],
+				...routes[routeName]
 			};
 
 			return {
 				...routeProps,
-				element: <Component />,
+				element: <Component />
 			};
 		}
 	} else {
@@ -48,7 +48,7 @@ function createRoutePage(options: any): any {
 		return {
 			path,
 			protect,
-			element: <Component />,
+			element: <Component />
 		};
 	}
 }

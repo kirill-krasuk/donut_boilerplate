@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 const mediaSSRMock = {
 	matches       : false,
 	addListener   : () => {},
-	removeListener: () => {},
+	removeListener: () => {}
 };
 
 function useMedia(queries: string[], values: number[], defaultValue: number) {

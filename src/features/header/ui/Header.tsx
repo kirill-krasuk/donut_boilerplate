@@ -13,12 +13,12 @@ import type { FC }           from 'react';
 
 const themeIconFactory = createFactory({
 	[Theme.Light]: Sun,
-	[Theme.Dark] : Moon,
+	[Theme.Dark] : Moon
 });
 
 const themeLogoFactory = createFactory({
 	[Theme.Dark] : S.Logo,
-	[Theme.Light]: S.DarkLogo,
+	[Theme.Light]: S.DarkLogo
 });
 
 const Header: FC = () => {

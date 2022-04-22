@@ -8,20 +8,20 @@ import type webpack              from 'webpack';
 import type { IsomorphicLoader } from '../types/index';
 
 const options = {
-	test: fileExtensions.css,
+	test: fileExtensions.css
 };
 
 const defaultProps = {
 	enablePerf      : true,
 	forceStyleLoader: false,
-	extraOptions    : {},
+	extraOptions    : {}
 };
 
 const cacheLoader = {
 	loader : 'cache-loader',
 	options: {
-		cacheDirectory: paths.caches.css,
-	},
+		cacheDirectory: paths.caches.css
+	}
 };
 
 type Props = Partial<typeof defaultProps>;
@@ -29,7 +29,7 @@ type Props = Partial<typeof defaultProps>;
 export function cssLoader(props: Props = defaultProps): IsomorphicLoader {
 	const { enablePerf, forceStyleLoader, extraOptions } = {
 		...defaultProps,
-		...props,
+		...props
 	};
 
 	const client = {
@@ -38,42 +38,42 @@ export function cssLoader(props: Props = defaultProps): IsomorphicLoader {
 			...(!isProd() && enablePerf ? [ cacheLoader ] : []),
 
 			!forceStyleLoader && {
-				loader: ExtractCssChunks.loader,
+				loader: ExtractCssChunks.loader
 			},
 
 			forceStyleLoader && {
-				loader: 'style-loader',
+				loader: 'style-loader'
 			},
 
 			{
 				loader : 'css-loader',
 				options: {
 					importLoaders: 1,
-					sourceMap    : !isProd(),
-				},
+					sourceMap    : !isProd()
+				}
 			},
 
 			{
 				loader : 'postcss-loader',
 				options: {
 					postcssOptions: {
-						config: paths.client.postCssConfig,
-					},
-				},
-			},
+						config: paths.client.postCssConfig
+					}
+				}
+			}
 		].filter(Boolean) as webpack.RuleSetUseItem,
 		...extraOptions,
-		exclude: fileExtensions.cssModule,
+		exclude: fileExtensions.cssModule
 	};
 
 	const server = {
 		...options,
 		loader : 'css-loader',
-		exclude: fileExtensions.cssModule,
+		exclude: fileExtensions.cssModule
 	};
 
 	return {
 		client,
-		server,
+		server
 	};
 }

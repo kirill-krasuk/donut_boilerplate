@@ -13,12 +13,12 @@ import type webpack            from 'webpack';
 
 const styleProps = {
 	enablePerf      : false,
-	forceStyleLoader: true,
+	forceStyleLoader: true
 };
 
 export default {
 	core: {
-		builder: 'webpack5',
+		builder: 'webpack5'
 	},
 	stories: [ paths.stories ],
 	addons : [
@@ -31,9 +31,9 @@ export default {
 		{
 			name   : '@storybook/addon-docs',
 			options: {
-				configureJSX: true,
-			},
-		},
+				configureJSX: true
+			}
+		}
 	],
 	staticDirs  : [ path.resolve('public') ],
 	webpackFinal: async (config: webpack.Configuration) => {
@@ -54,7 +54,7 @@ export default {
 		config!.module!.rules!.push(
 			jsLoader({
 				enableThread: false,
-				enableCache : false,
+				enableCache : false
 			}),
 
 			cssLoader(styleProps).client,
@@ -66,8 +66,8 @@ export default {
 			sassModuleLoader({
 				...styleProps,
 				extraOptions: {
-					include: path.resolve(__dirname, '../../'),
-				},
+					include: path.resolve(__dirname, '../../')
+				}
 			}).client
 		);
 
@@ -76,5 +76,5 @@ export default {
 		config!.resolve!.plugins = [ tsconfigPathsPlugin() ];
 
 		return config;
-	},
+	}
 };

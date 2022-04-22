@@ -10,12 +10,12 @@ import { configureBundler }          from './webpack.common';
 export default configureBundler({
 	mode : 'development',
 	entry: {
-		bundle: [ paths.client.entry, 'webpack-hot-middleware/client' ],
+		bundle: [ paths.client.entry, 'webpack-hot-middleware/client' ]
 	},
 	cache: {
 		type          : 'filesystem',
 		name          : 'dev-client-cache',
-		cacheDirectory: paths.cacheDir,
+		cacheDirectory: paths.cacheDir
 	},
 	devtool     : 'eval-cheap-module-source-map',
 	optimization: {
@@ -23,7 +23,7 @@ export default configureBundler({
 		emitOnErrors          : true,
 		removeAvailableModules: false,
 		removeEmptyChunks     : false,
-		splitChunks           : false,
+		splitChunks           : false
 	},
 	ignoreWarnings: [ /deprecationwarning/i ],
 	stats         : process.env.WEBPACK_DEV_STATS || 'none',
@@ -33,24 +33,24 @@ export default configureBundler({
 		new ReactRefreshWebpackPlugin({
 			overlay: {
 				// integration with webpack-hot-middleware
-				sockIntegration: 'whm',
-			},
+				sockIntegration: 'whm'
+			}
 		}) as any,
 		new WebpackNotifierPlugin({
 			title: process.env.APP_NAME || 'Webpack',
-			emoji: true,
+			emoji: true
 		}),
 		new CircularDependencyPlugin({
 			onDetected({ paths, compilation }) {
 				compilation.errors.push(new Error(paths.join(' -> ')) as any);
 			},
-			failOnError: true,
+			failOnError: true
 		}),
 		new DuplicatePackageCheckerPlugin({
 			verbose: true,
 			exclude(instance) {
 				return instance.name === 'react-is';
-			},
-		}),
-	].filter(Boolean),
+			}
+		})
+	].filter(Boolean)
 });

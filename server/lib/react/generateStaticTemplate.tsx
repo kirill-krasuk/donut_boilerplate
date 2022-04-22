@@ -11,7 +11,7 @@ export async function generateStaticTemplate({
 	store,
 	extractor,
 	props,
-	mode,
+	mode
 }: OptionsForGenerate): Promise<StaticTemplate> {
 	const sheet = new ServerStyleSheet();
 
@@ -33,6 +33,6 @@ export async function generateStaticTemplate({
 		criticalCss,
 		mode,
 		title,
-		meta,
+		meta
 	};
 }

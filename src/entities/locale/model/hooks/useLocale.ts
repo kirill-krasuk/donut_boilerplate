@@ -18,6 +18,6 @@ export function useLocale() {
 
 	return {
 		locale,
-		handleChangeLocale,
+		handleChangeLocale
 	};
 }

@@ -59,5 +59,5 @@ export type {
 	Tuple,
 	NoInfer,
 	Primitive,
-	PropertyStringPath,
+	PropertyStringPath
 };
