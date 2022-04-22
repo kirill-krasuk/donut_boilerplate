@@ -4,8 +4,8 @@ const middlewares: Array<any> = [];
 const mockStore               = configureStore(middlewares);
 
 const initState = {
-    locale: 'en',
-    theme : { mode: 'dark' }
+	locale: 'en',
+	theme : { mode: 'dark' },
 };
 
 const store = mockStore(initState);

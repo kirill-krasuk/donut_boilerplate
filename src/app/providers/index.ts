@@ -8,10 +8,10 @@ import { withRouter }       from './with-router';
 import { withModals }       from './with-modals';
 
 export const withAppProviders = compose(
-    withStore,
-    withLocales,
-    withTheme,
-    withGlobalStyles,
-    withRouter,
-    withModals,
+	withStore,
+	withLocales,
+	withTheme,
+	withGlobalStyles,
+	withRouter,
+	withModals
 );

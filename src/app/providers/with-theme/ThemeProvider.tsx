@@ -5,17 +5,20 @@ import { themeModel }                             from '@features/theme';
 
 import type { FC, PropsWithChildren }             from 'react';
 
-export const ThemeProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
-    const theme = themeModel.hooks.useTheme();
+const ThemeProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+	const theme = themeModel.hooks.useTheme();
 
-    return (
-        <StyledComponentsTheme theme={ {
-            ...themes,
-            mode  : theme,
-            isDark: theme === Theme.Dark
-        } }
-        >
-            { children }
-        </StyledComponentsTheme>
-    );
+	return (
+		<StyledComponentsTheme
+			theme={ {
+				...themes,
+				mode  : theme,
+				isDark: theme === Theme.Dark,
+			} }
+		>
+			{ children }
+		</StyledComponentsTheme>
+	);
 };
+
+export { ThemeProvider };

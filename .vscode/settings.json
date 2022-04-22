@@ -5,11 +5,12 @@
   "explorer.confirmDelete": false,
   "typescript.validate.enable": true,
   "git.confirmSync": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "typescript.tsserver.pluginPaths": [
-    "typescript-plugin-css-modules"
+  "prettier.configPath": ".prettierrc",
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": [
+    "source.formatDocument",
+    "source.fixAll.eslint"
   ],
   "stylelint.enable": true,
   "css.validate": false,
@@ -55,5 +56,15 @@
   "material-icon-theme.folders.theme": "specific",
   "material-icon-theme.activeIconPack": "react_redux",
   "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false
+  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }

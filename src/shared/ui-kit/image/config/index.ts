@@ -1,3 +1,3 @@
 export const imageConfig = {
-    loadingWidth: 100
+	loadingWidth: 100,
 };

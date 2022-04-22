@@ -8,13 +8,9 @@ const useSpeedMeasureServer = JSON.parse(process.env.USE_SPEED_MEASURE_SERVER ||
 const smp = new SpeedMeasurePlugin();
 
 export function withSpeedMeasurePlugin(config: webpack.Configuration, isClient = true) {
-    if (isClient) {
-        return useSpeedMeasureClient
-            ? smp.wrap(config)
-            : config;
-    }
+	if (isClient) {
+		return useSpeedMeasureClient ? smp.wrap(config) : config;
+	}
 
-    return useSpeedMeasureServer
-        ? smp.wrap(config)
-        : config;
+	return useSpeedMeasureServer ? smp.wrap(config) : config;
 }

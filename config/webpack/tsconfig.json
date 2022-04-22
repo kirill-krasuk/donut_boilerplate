@@ -1,14 +1,11 @@
 {
-    "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "module": "commonjs",
-        "target": "es5",
-        "esModuleInterop": true,
-        "types": ["node"],
-        "resolveJsonModule": true
-    },
-    "include": [
-        "../", 
-        "../.storybook"   
-    ]
-  }
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"module": "commonjs",
+		"target": "es5",
+		"esModuleInterop": true,
+		"types": ["node"],
+		"resolveJsonModule": true
+	},
+	"include": ["../", "../.storybook"]
+}

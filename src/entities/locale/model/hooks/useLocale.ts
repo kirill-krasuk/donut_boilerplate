@@ -8,16 +8,16 @@ import { getLocale }    from '../store/selectors';
 import { toggleLocale } from '../../lib/toggleLocale';
 
 export function useLocale() {
-    const { changeLocale } = useActions(actions);
+	const { changeLocale } = useActions(actions);
 
-    const locale = useSelector(getLocale);
+	const locale = useSelector(getLocale);
 
-    const handleChangeLocale = useCallback(() => {
-        changeLocale(toggleLocale(locale));
-    }, [ changeLocale, locale ]);
+	const handleChangeLocale = useCallback(() => {
+		changeLocale(toggleLocale(locale));
+	}, [ changeLocale, locale ]);
 
-    return {
-        locale,
-        handleChangeLocale,
-    };
+	return {
+		locale,
+		handleChangeLocale,
+	};
 }

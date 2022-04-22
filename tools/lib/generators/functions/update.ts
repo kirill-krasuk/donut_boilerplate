@@ -8,51 +8,50 @@ import type { PatternsObject, PatternsWithArrays } from '../types/patterns';
 
 // TODO: refactoring to regexp logic
 function replacePatternByInterpolateData(data: Record<string, any>, initialValue: string) {
-    return Object
-        .entries(data)
-        .reduce((acc, [ key, value ]) => acc
-            .replaceAll(`{$${ key }}`, value),
-        initialValue);
+	return Object.entries(data).reduce(
+		(acc, [ key, value ]) => acc.replaceAll(`{$${ key }}`, value),
+		initialValue
+	);
 }
 
 function patternIsArray(patternsByType: any): patternsByType is PatternsWithArrays {
-    return Array.isArray(patternsByType.pattern);
+	return Array.isArray(patternsByType.pattern);
 }
 
 function detectPattern(patternsByType: PatternsObject, file: string) {
-    if (patternIsArray(patternsByType)) {
-        const patternIndex = patternsByType.pattern.findIndex(pattern => file.includes(pattern));
+	if (patternIsArray(patternsByType)) {
+		const patternIndex = patternsByType.pattern.findIndex(pattern => file.includes(pattern));
 
-        return {
-            pattern: patternsByType.pattern[patternIndex],
-            replace: patternsByType.replace[patternIndex],
-        };
-    }
+		return {
+			pattern: patternsByType.pattern[patternIndex],
+			replace: patternsByType.replace[patternIndex],
+		};
+	}
 
-    return patternsByType;
+	return patternsByType;
 }
 
 export function update(source: string, type: PatternsKey, data: Record<string, any>) {
-    const sourcePath = ROOT_PATH + source;
-    const file       = fs.readFileSync(sourcePath, 'utf8');
+	const sourcePath = ROOT_PATH + source;
+	const file       = fs.readFileSync(sourcePath, 'utf8');
 
-    const replacePattern = detectPattern(patterns[type], file);
-    const replaceValue   = replacePatternByInterpolateData(data, replacePattern.replace);
+	const replacePattern = detectPattern(patterns[type], file);
+	const replaceValue   = replacePatternByInterpolateData(data, replacePattern.replace);
 
-    if (file.includes(replaceValue)) {
-        return console.info(chalk`[{blue.bold EXISTS}] changes already exists in ${ source }`);
-    }
+	if (file.includes(replaceValue)) {
+		return console.info(chalk`[{blue.bold EXISTS}] changes already exists in ${ source }`);
+	}
 
-    if (!file.includes(replacePattern.pattern)) {
-        return console.error(chalk`[{red.bold ERROR}] Something wrong with ${ source }`);
-    }
+	if (!file.includes(replacePattern.pattern)) {
+		return console.error(chalk`[{red.bold ERROR}] Something wrong with ${ source }`);
+	}
 
-    const res = file.replace(replacePattern.pattern, replaceValue);
+	const res = file.replace(replacePattern.pattern, replaceValue);
 
-    try {
-        fs.writeFileSync(sourcePath, res, 'utf8');
-        console.info(chalk`[{yellow.bold UPDATE}] ${ source }`);
-    } catch {
-        throw new Error(`File update error ${ source }`);
-    }
+	try {
+		fs.writeFileSync(sourcePath, res, 'utf8');
+		console.info(chalk`[{yellow.bold UPDATE}] ${ source }`);
+	} catch {
+		throw new Error(`File update error ${ source }`);
+	}
 }

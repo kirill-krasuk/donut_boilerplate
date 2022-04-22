@@ -1,5 +1,5 @@
 import type { TransitionStatus } from 'react-transition-group/Transition';
 
 export type AnimationProps = {
-    state: TransitionStatus
-}
+	state: TransitionStatus
+};

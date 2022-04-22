@@ -1,7 +1,7 @@
 export function getDarkModeQuery() {
-    if (__IS_CLIENT__) {
-        return window.matchMedia('(prefers-color-scheme: dark)');
-    }
+	if (__IS_CLIENT__) {
+		return window.matchMedia('(prefers-color-scheme: dark)');
+	}
 
-    return null;
+	return null;
 }

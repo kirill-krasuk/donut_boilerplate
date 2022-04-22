@@ -9,24 +9,24 @@ import { paths }                       from '../constants/paths';
 import type webpack                    from 'webpack';
 
 export function htmlPlugins(): webpack.WebpackPluginInstance[] {
-    return [
-        new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
-        new HtmlWebpackPlugin({
-            template         : paths.client.template,
-            filename         : paths.client.view,
-            alwaysWriteToDisk: true,
+	return [
+		new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
+		new HtmlWebpackPlugin({
+			template         : paths.client.template,
+			filename         : paths.client.view,
+			alwaysWriteToDisk: true,
 
-            /**
-             * force disable minification for
-             * correctly building pug file
-             * because indentation matters
-             */
-            minify       : false,
-            excludeAssets: [ fileExtensions.jsOrCss ]
-        }),
-        new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
-        new HtmlPugPlugin({
-            adjustIndent: true
-        }),
-    ];
+			/**
+			 * force disable minification for
+			 * correctly building pug file
+			 * because indentation matters
+			 */
+			minify       : false,
+			excludeAssets: [ fileExtensions.jsOrCss ],
+		}),
+		new HtmlHardDiskPlugin(), // for alwaysWriteToDisk
+		new HtmlPugPlugin({
+			adjustIndent: true,
+		}),
+	];
 }

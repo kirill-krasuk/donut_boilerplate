@@ -5,15 +5,22 @@ import { ThemeProvider }     from 'styled-components/macro';
 
 import { theme }             from '@shared/config/theme';
 
-addDecorator((storyFunction) => (
-    <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
-        { storyFunction() }
-    </ThemeProvider>
+addDecorator(storyFunction => (
+	<ThemeProvider
+		theme={ {
+			...theme,
+			mode: 'dark',
+		} }
+	>
+		{ storyFunction() }
+	</ThemeProvider>
 ));
 
-export const parameters = {
-    layout  : 'centered',
-    viewport: {
-        viewports: INITIAL_VIEWPORTS
-    }
+const parameters = {
+	layout  : 'centered',
+	viewport: {
+		viewports: INITIAL_VIEWPORTS,
+	},
 };
+
+export { parameters };

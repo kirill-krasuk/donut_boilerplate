@@ -11,15 +11,15 @@ const getHydrate                = ({ HYDRATE }: NodeJS.ProcessEnv) => HYDRATE ??
 const getUseCriticalCSSOptimize = ({ USE_CRITICAL_CSS_OPTIMIZE }: NodeJS.ProcessEnv) => USE_CRITICAL_CSS_OPTIMIZE ?? false;
 
 export {
-    getNodeEnv,
-    getHost,
-    getPort,
-    getApiHost,
-    getOpeInBrowser,
-    getBuildAnalyze,
-    getBundleAnalyzerPort,
-    getWriteToDisk,
-    getServiceWorkerEnable,
-    getUseCriticalCSSOptimize,
-    getHydrate
+	getNodeEnv,
+	getHost,
+	getPort,
+	getApiHost,
+	getOpeInBrowser,
+	getBuildAnalyze,
+	getBundleAnalyzerPort,
+	getWriteToDisk,
+	getServiceWorkerEnable,
+	getUseCriticalCSSOptimize,
+	getHydrate,
 };

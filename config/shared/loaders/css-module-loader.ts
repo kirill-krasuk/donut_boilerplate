@@ -8,73 +8,75 @@ import type { IsomorphicLoader } from '../types';
 import type webpack              from 'webpack';
 
 const options = {
-    test: fileExtensions.css
+	test: fileExtensions.css,
 };
 
 const defaultProps = {
-    enablePerf      : true,
-    forceStyleLoader: false,
-    extraOptions    : {}
+	enablePerf      : true,
+	forceStyleLoader: false,
+	extraOptions    : {},
 };
 
-type Props = Partial<typeof defaultProps>
+const cacheLoader = {
+	loader : 'cache-loader',
+	options: {
+		cacheDirectory: paths.caches.css,
+	},
+};
+
+type Props = Partial<typeof defaultProps>;
 
 export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader => {
-    const {
-        enablePerf,
-        forceStyleLoader,
-        extraOptions
-    } = { ...defaultProps, ...props };
+	const { enablePerf, forceStyleLoader, extraOptions } = {
+		...defaultProps,
+		...props,
+	};
 
-    const client = {
-        ...options,
-        use: [
-            ...!isProd() && enablePerf ? [
-                {
-                    loader : 'cache-loader',
-                    options: {
-                        cacheDirectory: paths.caches.css
-                    }
-                }
-            ] : [],
+	const client = {
+		...options,
+		use: [
+			...(!isProd() && enablePerf ? [ cacheLoader ] : []),
 
-            !forceStyleLoader && {
-                loader: ExtractCssChunks.loader
-            },
+			!forceStyleLoader && {
+				loader: ExtractCssChunks.loader,
+			},
 
-            forceStyleLoader && {
-                loader: 'style-loader'
-            },
+			forceStyleLoader && {
+				loader: 'style-loader',
+			},
 
-            {
-                loader : 'css-loader',
-                options: {
-                    importLoaders: 1,
-                    modules      : {
-                        localIdentName: '[local]--[hash:base64:5]'
-                    },
-                    sourceMap: !isProd()
-                }
-            },
+			{
+				loader : 'css-loader',
+				options: {
+					importLoaders: 1,
+					modules      : {
+						localIdentName: '[local]--[hash:base64:5]',
+					},
+					sourceMap: !isProd(),
+				},
+			},
 
-            {
-                loader : 'postcss-loader',
-                options: {
-                    postcssOptions: {
-                        config: paths.client.postCssConfig
-                    },
-                },
-            }
-        ].filter(Boolean) as webpack.RuleSetUseItem,
-        ...extraOptions,
-        include: fileExtensions.cssModule
-    };
+			{
+				loader : 'postcss-loader',
+				options: {
+					postcssOptions: {
+						config: paths.client.postCssConfig,
+					},
+				},
+			},
+		].filter(Boolean) as webpack.RuleSetUseItem,
+		...extraOptions,
+		include: fileExtensions.cssModule,
+	};
 
-    const server = {
-        ...options,
-        loader : 'css-loader',
-        include: fileExtensions.cssModule
-    };
+	const server = {
+		...options,
+		loader : 'css-loader',
+		include: fileExtensions.cssModule,
+	};
 
-    return { client, server };
+	return {
+		client,
+		server,
+	};
 };

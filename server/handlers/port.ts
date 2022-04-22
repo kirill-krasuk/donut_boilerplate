@@ -4,17 +4,26 @@ import type { ServerStartOptions } from '@server/types/server';
 
 type RunServerCallback = (serverOptions: ServerStartOptions) => void;
 
-export function createUsePortHandler({ port, host }: ServerStartOptions, runServerCB: RunServerCallback) {
-    return async (error: any) => {
-        let p = +port;
+export function createUsePortHandler(
+	serverOptions: ServerStartOptions,
+	runServerCB: RunServerCallback
+) {
+	const { port, host } = serverOptions;
 
-        if (error.code === 'EADDRINUSE') {
-            // eslint-disable-next-line no-await-in-loop
-            while (await tcpPortUsed.check(p, host)) {
-                p++;
-            }
+	return async (error: any) => {
+		let p = +port;
 
-            runServerCB({ port: p, host, standardPort: port });
-        }
-    };
+		if (error.code === 'EADDRINUSE') {
+			// eslint-disable-next-line no-await-in-loop
+			while (await tcpPortUsed.check(p, host)) {
+				p++;
+			}
+
+			runServerCB({
+				port        : p,
+				host,
+				standardPort: port
+			});
+		}
+	};
 }

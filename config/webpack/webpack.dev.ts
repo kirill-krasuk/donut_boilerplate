@@ -8,52 +8,49 @@ import { paths }                     from '../shared/constants/paths';
 import { configureBundler }          from './webpack.common';
 
 export default configureBundler({
-    mode : 'development',
-    entry: {
-        bundle: [
-            paths.client.entry,
-            'webpack-hot-middleware/client'
-        ]
-    },
-    cache: {
-        type          : 'filesystem',
-        name          : 'dev-client-cache',
-        cacheDirectory: paths.cacheDir
-    },
-    devtool     : 'eval-cheap-module-source-map',
-    optimization: {
-        usedExports           : true,
-        emitOnErrors          : true,
-        removeAvailableModules: false,
-        removeEmptyChunks     : false,
-        splitChunks           : false,
-    },
-    ignoreWarnings: [ /deprecationwarning/i ],
-    stats         : process.env.WEBPACK_DEV_STATS || 'none',
-    watch         : true,
-    plugins       : [
-        new webpack.HotModuleReplacementPlugin(),
-        new ReactRefreshWebpackPlugin({
-            overlay: {
-                // integration with webpack-hot-middleware
-                sockIntegration: 'whm',
-            },
-        }) as any,
-        new WebpackNotifierPlugin({
-            title: process.env.APP_NAME || 'Webpack',
-            emoji: true,
-        }),
-        new CircularDependencyPlugin({
-            onDetected({ paths, compilation }) {
-                compilation.errors.push((new Error(paths.join(' -> ')) as any));
-            },
-            failOnError: true
-        }),
-        new DuplicatePackageCheckerPlugin({
-            verbose: true,
-            exclude(instance) {
-                return instance.name === 'react-is';
-            }
-        })
-    ].filter(Boolean)
+	mode : 'development',
+	entry: {
+		bundle: [ paths.client.entry, 'webpack-hot-middleware/client' ],
+	},
+	cache: {
+		type          : 'filesystem',
+		name          : 'dev-client-cache',
+		cacheDirectory: paths.cacheDir,
+	},
+	devtool     : 'eval-cheap-module-source-map',
+	optimization: {
+		usedExports           : true,
+		emitOnErrors          : true,
+		removeAvailableModules: false,
+		removeEmptyChunks     : false,
+		splitChunks           : false,
+	},
+	ignoreWarnings: [ /deprecationwarning/i ],
+	stats         : process.env.WEBPACK_DEV_STATS || 'none',
+	watch         : true,
+	plugins       : [
+		new webpack.HotModuleReplacementPlugin(),
+		new ReactRefreshWebpackPlugin({
+			overlay: {
+				// integration with webpack-hot-middleware
+				sockIntegration: 'whm',
+			},
+		}) as any,
+		new WebpackNotifierPlugin({
+			title: process.env.APP_NAME || 'Webpack',
+			emoji: true,
+		}),
+		new CircularDependencyPlugin({
+			onDetected({ paths, compilation }) {
+				compilation.errors.push(new Error(paths.join(' -> ')) as any);
+			},
+			failOnError: true,
+		}),
+		new DuplicatePackageCheckerPlugin({
+			verbose: true,
+			exclude(instance) {
+				return instance.name === 'react-is';
+			},
+		}),
+	].filter(Boolean),
 });

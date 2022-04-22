@@ -9,15 +9,15 @@ import { clearServerDataContainer }         from './lib';
 /**
  * base styles that are used in GlobalStyles,
  * since the CSS-in-JS approach is used by default
-*/
+ */
 // import './styles/base-styles.css';
 
 export const Application: FC<PropsWithChildren<unknown>> = withAppProviders(() => {
-    useEffect(() => {
-        clearServerDataContainer();
-    }, []);
+	useEffect(() => {
+		clearServerDataContainer();
+	}, []);
 
-    return null;
+	return null;
 });
 
 Application.displayName = 'App';

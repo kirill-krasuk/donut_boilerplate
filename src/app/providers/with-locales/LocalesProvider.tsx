@@ -6,15 +6,14 @@ import { localeModel }                from '@entities/locale';
 
 import type { FC, PropsWithChildren } from 'react';
 
-export const LocalesProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
-    const lang = useSelector(localeModel.selectors.getLocale);
+const LocalesProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+	const lang = useSelector(localeModel.selectors.getLocale);
 
-    return (
-        <EOLocale.Provider
-            language={ lang }
-            locales={ locales }
-        >
-            { children }
-        </EOLocale.Provider>
-    );
+	return (
+		<EOLocale.Provider language={ lang } locales={ locales }>
+			{ children }
+		</EOLocale.Provider>
+	);
 };
+
+export { LocalesProvider };

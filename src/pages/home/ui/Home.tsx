@@ -7,15 +7,13 @@ import { Body }    from './Body';
 import type { FC } from 'react';
 
 const Home: FC = () => (
-    <>
-        <Helmet
-            title="Home page"
-        />
+	<>
+		<Helmet title='Home page' />
 
-        <Header />
+		<Header />
 
-        <Body />
-    </>
+		<Body />
+	</>
 );
 
 export default Home;

@@ -1,9 +1,9 @@
 import {
-    FC,
-    useEffect,
-    useRef,
-    useCallback,
-    PropsWithChildren
+	FC,
+	useEffect,
+	useRef,
+	useCallback,
+	PropsWithChildren
 } from 'react';
 
 import { useActions, useClickOutside, useLockBodyScroll } from '@hooks/index';
@@ -15,58 +15,54 @@ import * as S                                             from './styles';
 import type { Props }                                     from './type';
 
 // TODO: complete modal functional
-export const Modal: FC<PropsWithChildren<Props>> = (props) => {
-    const { children, onClose, title } = props;
+export const Modal: FC<PropsWithChildren<Props>> = props => {
+	const { children, onClose, title } = props;
 
-    const { closeModal } = useActions(actions);
+	const { closeModal } = useActions(actions);
 
-    useLockBodyScroll();
+	useLockBodyScroll();
 
-    const ref = useRef<HTMLDivElement>(null);
+	const ref = useRef<HTMLDivElement>(null);
 
-    const handleKeyPress = useCallback((event: KeyboardEvent) => {
-        const { code } = event;
+	const handleKeyPress = useCallback(
+		(event: KeyboardEvent) => {
+			const { code } = event;
 
-        if (code === KeyCodes.Escape) {
-            closeModal();
+			if (code === KeyCodes.Escape) {
+				closeModal();
 
-            if (onClose) {
-                onClose();
-            }
-        }
-    }, [ closeModal, onClose ]);
+				if (onClose) {
+					onClose();
+				}
+			}
+		},
+		[ closeModal, onClose ]
+	);
 
-    useEffect(() => {
-        document.addEventListener('keyup', handleKeyPress);
+	useEffect(() => {
+		document.addEventListener('keyup', handleKeyPress);
 
-        return () => {
-            document.removeEventListener('keyup', handleKeyPress);
-        };
-    }, [ handleKeyPress ]);
+		return () => {
+			document.removeEventListener('keyup', handleKeyPress);
+		};
+	}, [ handleKeyPress ]);
 
-    useClickOutside(ref, () => {
-        if (onClose) {
-            onClose();
-        }
+	useClickOutside(ref, () => {
+		if (onClose) {
+			onClose();
+		}
 
-        closeModal();
-    });
+		closeModal();
+	});
 
-    // TODO: move to ui-kit modal
-    return (
-        <S.Backdrop>
-            <S.Wrapper ref={ ref }>
-                {
-                    title &&
-                    <S.Head>
-                        { title }
-                    </S.Head>
-                }
+	// TODO: move to ui-kit modal
+	return (
+		<S.Backdrop>
+			<S.Wrapper ref={ ref }>
+				{ title && <S.Head>{ title }</S.Head> }
 
-                <S.Body>
-                    { children }
-                </S.Body>
-            </S.Wrapper>
-        </S.Backdrop>
-    );
+				<S.Body>{ children }</S.Body>
+			</S.Wrapper>
+		</S.Backdrop>
+	);
 };

@@ -3,14 +3,22 @@ import dotenv from 'dotenv';
 
 const { parsed } = dotenv.config();
 
-export function getEnvironmentVariables() {
-    return Object
-        .keys(parsed || {})
-        .reduce((acc: Record<string, any>, curr) => {
-            const envVariable = process.env[curr]!;
+function getEnvironmentVariables() {
+	return Object.keys(parsed || {}).reduce((acc: Record<string, any>, curr) => {
+		const envVariable = process.env[curr]!;
 
-            return /^(\d+|false|true)$/.test(envVariable)
-                ? { ...acc, [curr]: JSON.parse(envVariable) }
-                : { ...acc, [curr]: envVariable ? `"${ envVariable }"` : null };
-        }, {});
+		if (/^(\d+|false|true)$/.test(envVariable)) {
+			return {
+				...acc,
+				[curr]: JSON.parse(envVariable),
+			};
+		}
+
+		return {
+			...acc,
+			[curr]: envVariable ? `"${ envVariable }"` : null,
+		};
+	}, {});
 }
+
+export { getEnvironmentVariables };

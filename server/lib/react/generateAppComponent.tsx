@@ -11,28 +11,25 @@ import { LocalesProvider }         from '@app/providers/with-locales';
 import type { GenerateAppOptions } from './types';
 
 export function generateAppComponent({
-    store,
-    context,
-    location,
-    extractor
+	store, context, location, extractor
 }: GenerateAppOptions) {
-    return (): JSX.Element => (
-        <Provider store={ store }>
-            <StaticRouter location={ location }>
-                <RedirectProvider context={ context }>
-                    <LocalesProvider>
-                        <ThemeProvider>
-                            <ChunkExtractorManager extractor={ extractor }>
-                                <>
-                                    <Routes />
+	return (): JSX.Element => (
+		<Provider store={ store }>
+			<StaticRouter location={ location }>
+				<RedirectProvider context={ context }>
+					<LocalesProvider>
+						<ThemeProvider>
+							<ChunkExtractorManager extractor={ extractor }>
+								<>
+									<Routes />
 
-                                    <GlobalStyles />
-                                </>
-                            </ChunkExtractorManager>
-                        </ThemeProvider>
-                    </LocalesProvider>
-                </RedirectProvider>
-            </StaticRouter>
-        </Provider>
-    );
+									<GlobalStyles />
+								</>
+							</ChunkExtractorManager>
+						</ThemeProvider>
+					</LocalesProvider>
+				</RedirectProvider>
+			</StaticRouter>
+		</Provider>
+	);
 }

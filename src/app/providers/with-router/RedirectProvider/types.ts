@@ -5,10 +5,7 @@ import type { Context }           from '@shared/types/client-server';
 type AppRouteObject = Record<string, any> & RouteObject;
 
 type Props = PropsWithChildren<{
-    context?: Context
-}>
+	context?: Context
+}>;
 
-export type {
-    AppRouteObject,
-    Props
-};
+export type { AppRouteObject, Props };

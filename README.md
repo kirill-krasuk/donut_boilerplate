@@ -23,28 +23,32 @@ To do development inside a service worker, go to the path `<appRootDir>/app/serv
 In the browser, the service worker connects to the _**/sw.js**_ path
 
 ## How to start
+
 - Copy and edit environment variables `cp .env.example .env`
 - Install all dependencies `yarn`
 - Finally start developing `yarn start`
 
 ## Hot to run in production mode
+
 - Copy and edit environment variables `cp .env.example .env`
 - Install all dependencies `yarn`
 - Finally start developing `yarn start:prod`
 
 You can also start production via docker.
-- `make build-image` for building docker image. Set environment variables in *`.env`*  which contain **DOCKER***
+
+- `make build-image` for building docker image. Set environment variables in _`.env`_ which contain **DOCKER\***
 - `make run-container` for run docker container.
 - the rest of the commands and what they do you can see in the Makefile
 
 ## Helpful information
+
 1. for correct and scalable application look at the [structure doc](/docs/structure/)
-1. By default, the application opens in the browser, this can be inconvenient and this setting can be disabled in the *`.env`* file by setting **`OPEN_IN_BROWSER`**`=false`
-1. In development mode, all builded assets are written to memory, if you need to look at the source or if you prefer to have it all in the visible area, you can set **`WRITE_ASSETS_TO_DISK`**`=true` 
+1. By default, the application opens in the browser, this can be inconvenient and this setting can be disabled in the _`.env`_ file by setting **`OPEN_IN_BROWSER`**`=false`
+1. In development mode, all builded assets are written to memory, if you need to look at the source or if you prefer to have it all in the visible area, you can set **`WRITE_ASSETS_TO_DISK`**`=true`
 1. In development mode, we recommend setting **`HYDRATE`**`=false`, but in production, `true`
-1. In development mode, you can run or not run bundle analyzer. 
-The variable is responsible for this **`BUILD_ANALYZE`**. In production analyzer write results in stats directory. You can also set the port to the analyzer server
-1. To use production build via docker, you are recommended to rewrite *`.env`* docker-specific variables
+1. In development mode, you can run or not run bundle analyzer.
+   The variable is responsible for this **`BUILD_ANALYZE`**. In production analyzer write results in stats directory. You can also set the port to the analyzer server
+1. To use production build via docker, you are recommended to rewrite _`.env`_ docker-specific variables
 1. To configure **`stylelint`** [go to guide](./docs/stylelint/README.md)
 1. For use conventional-commits use `yarn commit` or follow the commitlint rules on normal git use
 
@@ -72,13 +76,14 @@ All these scripts are described in package.json and called through the `yarn <co
 - `release` - generate CHANGELOG based your commits
 
 ## Stack used
+
 - App developing 🧑‍💻
   - React ecosystem ⚛ (redux, react-redux, reselect ...)
   - [loadable component](https://loadable-components.com/)✂️✨ for split coding
   - [Styled-components](https://styled-components.com/) 💅🏾
   - [Styled-icons](https://styled-icons.js.org/) 💅
   - [Typescript](https://www.typescriptlang.org/)
-  - [Ramda](https://ramdajs.com/docs/#)🐏 
+  - [Ramda](https://ramdajs.com/docs/#)🐏
   - SSR
   - [Storybook](https://storybook.js.org/) 📗
   - [Feature-Sliced Design](https://feature-sliced.design/) 🍰

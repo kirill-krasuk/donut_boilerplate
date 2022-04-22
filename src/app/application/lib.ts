@@ -3,7 +3,5 @@ const fromServerData = (containerID: string) => document.querySelector(`#${ cont
 const clearContainer = (container: Element | null) => container?.remove();
 
 export const clearServerDataContainer = () => {
-    [ 'ssr-store', 'initial-props' ]
-        .map(fromServerData)
-        .forEach(clearContainer);
+	[ 'ssr-store', 'initial-props' ].map(fromServerData).forEach(clearContainer);
 };

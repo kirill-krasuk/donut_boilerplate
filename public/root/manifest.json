@@ -1,46 +1,46 @@
 {
-    "short_name": "Db",
-    "name": "Donut Boilerplate",
-    "description": "New Donut Boilerplate",
-    "icons": [
-      {
-        "src": "/public/images/logo512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      },
-      {
-        "src": "/public/images/logo256x256.png",
-        "sizes": "256x256",
-        "type": "image/png"
-      },
-      {
-        "src": "/public/images/logo128x128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-      },
-      {
-        "src": "/public/images/logo64x64.png",
-        "sizes": "64x64",
-        "type": "image/png"
-      },
-      {
-        "src": "/public/images/logo32x32.png",
-        "sizes": "32x32",
-        "type": "image/png"
-      },
-      {
-        "src": "/public/images/logo24x24.png",
-        "sizes": "24x24",
-        "type": "image/png"
-      },
-      {
-        "src": "/public/images/logo16x16.png",
-        "sizes": "16x16",
-        "type": "image/png"
-      }
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#000000"
-  }
+	"short_name": "Db",
+	"name": "Donut Boilerplate",
+	"description": "New Donut Boilerplate",
+	"icons": [
+		{
+			"src": "/public/images/logo512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/public/images/logo256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "/public/images/logo128x128.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		},
+		{
+			"src": "/public/images/logo64x64.png",
+			"sizes": "64x64",
+			"type": "image/png"
+		},
+		{
+			"src": "/public/images/logo32x32.png",
+			"sizes": "32x32",
+			"type": "image/png"
+		},
+		{
+			"src": "/public/images/logo24x24.png",
+			"sizes": "24x24",
+			"type": "image/png"
+		},
+		{
+			"src": "/public/images/logo16x16.png",
+			"sizes": "16x16",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#000000"
+}

@@ -1,9 +1,9 @@
 {
-    "plugins": [
-        "autoprefixer",
-        "postcss-flexbugs-fixes",
-        "postcss-nested",
-        "postcss-preset-env",
-        "postcss-animation"
-    ]
+	"plugins": [
+		"autoprefixer",
+		"postcss-flexbugs-fixes",
+		"postcss-nested",
+		"postcss-preset-env",
+		"postcss-animation"
+	]
 }

@@ -7,15 +7,14 @@ import type { FC, PropsWithChildren } from 'react';
 
 const modalNode = document.querySelector('#modal')!;
 
-export const ModalManager: FC<PropsWithChildren<unknown>> = () => {
-    const id = useSelector(modalsModel.selectors.getModalId);
+const ModalManager: FC<PropsWithChildren<unknown>> = () => {
+	const id = useSelector(modalsModel.selectors.getModalId);
 
-    if (!id) {
-        return null;
-    }
+	if (!id) {
+		return null;
+	}
 
-    return createPortal(
-        modalsMap[id],
-        modalNode
-    );
+	return createPortal(modalsMap[id], modalNode);
 };
+
+export { ModalManager };

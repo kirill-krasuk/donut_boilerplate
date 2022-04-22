@@ -2,16 +2,18 @@ import { LocalesProvider }                       from './LocalesProvider';
 
 import type { ComponentType, PropsWithChildren } from 'react';
 
-export function withLocales(Component: ComponentType<PropsWithChildren<unknown>>) {
-    function LocalesWrapper() {
-        return (
-            <LocalesProvider>
-                <Component />
-            </LocalesProvider>
-        );
-    }
+function withLocales(Component: ComponentType<PropsWithChildren<unknown>>) {
+	function LocalesWrapper() {
+		return (
+			<LocalesProvider>
+				<Component />
+			</LocalesProvider>
+		);
+	}
 
-    LocalesWrapper.displayName = 'withLocalesProvider';
+	LocalesWrapper.displayName = 'withLocalesProvider';
 
-    return LocalesWrapper;
+	return LocalesWrapper;
 }
+
+export { withLocales };

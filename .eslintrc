@@ -1,412 +1,458 @@
 {
-    "root": true,
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        },
-        "import/external-module-folders": [".yarn"],
-        "import/resolver": {
-            "typescript": {
-                "alwaysTryTypes": true
-            }
-        },
-        "boundaries/include": ["src/**/*.ts", "src/**/*.tsx"],
-        "boundaries/ignore": ["src/**/*.d.ts", "**/__mocks__/**/*", "**/test/**/*"],
-        "boundaries/elements": [
-            {
-                "type": "env",
-                "pattern": "env/*"
-            },
-            {
-                "type": "shared",
-                "pattern": "shared/*"
-            },
-            {
-                "type": "entities",
-                "pattern": "entities/*"
-            },
-            {
-                "type": "features",
-                "pattern": "features/*"
-            },
-            {
-                "type": "widgets",
-                "pattern": "widgets/*"
-            },
-            {
-                "type": "pages",
-                "pattern": "pages/*"
-            },
-            {
-                "type": "processes",
-                "pattern": "processes/*"
-            },
-            {
-                "type": "app",
-                "pattern": "app/*"
-            }
-        ]
-    },
-    "extends": [
-        "airbnb-base",
-        "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended",
-        "plugin:ramda/recommended",
-        "plugin:sonarjs/recommended",
-        "plugin:boundaries/recommended",
-        "plugin:unicorn/recommended"
-    ],
-    "plugins": [
-        "arca",
-        "align-assignments",
-        "react",
-        "react-hooks",
-        "jsx-a11y",
-        "unicorn",
-        "ramda",
-        "sonarjs",
-        "boundaries"
-    ],
-    "rules": {
-        "boundaries/element-types": [2, {
-            "default": "allow",
-            "rules": [
-                {
-                    "from": "shared",
-                    "disallow": [
-                        "entities",
-                        "features",
-                        "widgets",
-                        "pages",
-                        "processes",
-                        "app"
-                    ],
-                    "message": "Shared cannot use imports like: entities,features,widgets,pages,processes,app"
-                },
-                {
-                    "from": "entities",
-                    "disallow": [
-                        "entities",
-                        "features",
-                        "widgets",
-                        "pages",
-                        "processes",
-                        "app"
-                    ],
-                    "message": "Entities cannot use imports like: entities,features,widgets,pages,processes,app"
-                },
-                {
-                    "from": "features",
-                    "disallow": [
-                        "features",
-                        "widgets",
-                        "pages",
-                        "processes",
-                        "app"
-                    ],
-                    "message": "Features cannot use imports like: features,widgets,pages,processes,app"
-                },
-                {
-                    "from": "widgets",
-                    "disallow": [
-                        "widgets",
-                        "pages",
-                        "processes",
-                        "app"
-                    ],
-                    "message": "Widgets cannot use imports like: widgets,pages,processes,app"
-                },
-                {
-                    "from": "pages",
-                    "disallow": [
-                        "pages",
-                        "processes",
-                        "app"
-                    ],
-                    "message": "Pages cannot use imports like: pages,processes,app"
-                },
-                {
-                    "from": "processes",
-                    "disallow": [
-                        "processes",
-                        "app"
-                    ],
-                    "message": "Processes cannot use imports like: processes,app"
-                }
-            ]
-        }],
-        "unicorn/prevent-abbreviations": [2, { 
-            "replacements": {
-                "prop": false,
-                "props": false,
-                "lib": false,
-                "env": false,
-                "ref": false,
-                "acc": false,
-                "curr": false,
-                "args": false,
-                "str": false,
-                "num": false,
-                "fn": false,
-                "NumLock": false,
-                "Dev": false,
-                "dev": false,
-                "Prod": false,
-                "prod": false,
-                "req": false,
-                "res": false
-            } 
-        }],
-        "unicorn/prefer-at": 2,
-        "unicorn/prefer-string-replace-all": 2,
-        "unicorn/template-indent": [2, { 
-            "indent": 4, 
-            "tags": [ "styled" ],
-            "functions": ["div"] 
-        } ],
-        "unicorn/explicit-length-check": 0,
-        "unicorn/no-array-for-each": 0,
-        "unicorn/no-array-callback-reference": 0,
-        "unicorn/no-process-exit": 0,
-        "unicorn/filename-case": 0,
-        "unicorn/no-null": 0,
-        "unicorn/prefer-spread": 0,
-        "unicorn/no-array-reduce": 0,
-        "unicorn/consistent-function-scoping": 0,
-        "unicorn/prefer-module": 0,
-        "align-assignments/align-assignments": [2, { 
-            "requiresOnly": false 
-        } ],
-		"no-tabs": [2, { 
-				"allowIndentationTabs": true 
-        } ],
-        "array-callback-return": 0,
-        "no-restricted-imports": [2, {
-                "paths": [{
-                    "name": "styled-components",
-                    "message": "Please import from styled-components/macro."
-                }],
-                "patterns": [
-                    "!styled-components/macro"
-                ]
-        } ],
-        "no-console": [2, { 
-                "allow": ["warn", "error", "info"] 
-        } ],
-        "import/order": [2, {
-            "groups": [["builtin", "external"], "internal", ["parent", "sibling"], "index", "type", "object"],
-            "newlines-between": "always"
-        } ],
-        "import/group-exports": 2,
-        "default-param-last": 0,
-        "no-sequences": 0,
-        "no-bitwise": 0,
-        "arrow-parens": 0,
-        "no-restricted-syntax": 0,
-        "lines-between-class-members": 0,
-        "max-len": 0,
-        "no-unused-vars": 0,
-        "no-redeclare": 0,
-        "no-return-await": 0,
-        "no-new": 0,
-        "no-plusplus": 0,
-        "no-shadow": 0,
-        "no-undef": 0,
-        "operator-linebreak": 0,
-        "linebreak-style": 0,
-        "import/no-dynamic-require": 0,
-        "global-require": 0,
-        "no-useless-escape": 0,
-        "no-useless-constructor": 0,
-        "no-unneeded-ternary": 0,
-        "no-unused-expressions": 0,
-        "no-useless-return": 0,
-        "computed-property-spacing": 0,
-        "class-methods-use-this": 0,
-        "react/destructuring-assignment": [2, "always"],
-        "react/react-in-jsx-scope": 0,
-        "react/jsx-indent": [2, 4],
-        "react/jsx-curly-newline": [2, { 
-            "multiline": "consistent", 
-            "singleline": "consistent" 
-        } ],
-        "react/jsx-indent-props": [2, 4],
-        "react/jsx-tag-spacing": 2,
-        "react/display-name": 0,
-        "react/jsx-closing-bracket-location": [2],
-        "react/jsx-curly-spacing": [2, {
-            "when": "always", 
-            "children": true
-        } ],
-        "react/jsx-handler-names": 2,
-        "react/jsx-max-props-per-line": [2, { "when": "multiline" }],
-        "react/jsx-newline": [2, { "prevent": false }],
-        "react/jsx-sort-default-props": 2,
-        "react/jsx-sort-props": [2, {
-            "callbacksLast": true,
-            "shorthandFirst": true
-        } ],
-        "react/jsx-pascal-case": [2, {
-            "allowNamespace": true
-        } ],
-        "react/no-danger": 2,
-        "react/no-multi-comp": 2,
-        "react/prefer-stateless-function": 2,
-        "react/self-closing-comp": 2,
-        "import/prefer-default-export": 0,
-        "import/no-extraneous-dependencies": 0,
-        "import/no-unresolved": 0,
-        "import/extensions": 0,
-        "indent": [2, 4, {
-            "VariableDeclarator": 1,
-            "SwitchCase": 1, 
-            "ignoredNodes": ["TemplateLiteral > *"]
-        } ],
-        "consistent-return": 0,
-        "comma-dangle": [2, "only-multiline"],
-        "template-curly-spacing": [2, "always"],
-        "object-curly-spacing": [2, "always"],
-        "array-bracket-spacing": [2, "always"],
-        "no-multi-spaces": 0,
-        "one-var": 0,
-        "func-names": 0,
-        "function-paren-newline": 0,
-        "lines-around-comment": [2, {
-            "beforeBlockComment": true,
-            "afterBlockComment": false,
-            "beforeLineComment": true,
-            "afterLineComment": false,
-            "allowBlockStart": true,
-            "allowBlockEnd": true,
-            "allowObjectStart": true,
-            "allowObjectEnd": true,
-            "allowArrayStart": true,
-            "allowArrayEnd": true
-        } ],
-        "key-spacing": [2, {
-            "align": "colon"
-        } ],
-        "arca/import-align": [2, {
-            "collapseExtraSpaces": true
-        } ],
-        "arca/melted-constructs": 2,
-        "no-underscore-dangle": 0,
-        "react-hooks/rules-of-hooks": 2,
-        "react-hooks/exhaustive-deps": 2,
-        "no-useless-computed-key": 0
-    },
-    "overrides": [ {
-        "files": ["*.d.ts"],
-        "rules": {
-            "import/group-exports": 0
-        }
-    }, {
-        // enable the rule specifically for TypeScript files
-        "files": ["*.ts", "*.tsx"],
-        "parser": "@typescript-eslint/parser",
-        "extends": "plugin:@typescript-eslint/recommended",
-        "parserOptions": {
-            "project": "./tsconfig.json",
-            "ecmaVersion": 11, 
-            "sourceType": "module",
-            "ecmaFeatures": {
-                "jsx": true
-            }
-        },
-        "rules": {
-            "@typescript-eslint/no-non-null-assertion": 0,
-            "@typescript-eslint/method-signature-style": [2, "method"],
-            "@typescript-eslint/consistent-type-assertions": 0,
-            "@typescript-eslint/prefer-includes": 2,
-            "@typescript-eslint/prefer-optional-chain": 2,
-            "@typescript-eslint/prefer-string-starts-ends-with": 2,
-            "@typescript-eslint/prefer-ts-expect-error": 2,
-            "@typescript-eslint/require-array-sort-compare": 2,
-            "@typescript-eslint/sort-type-union-intersection-members": 2,
-            "@typescript-eslint/type-annotation-spacing": 2,
-            "@typescript-eslint/no-explicit-any": 0,
-            "@typescript-eslint/no-var-requires": 0,
-            "@typescript-eslint/ban-ts-comment": 0,
-            "@typescript-eslint/ban-types":  [2, {
-                "types": {
-                    "String": {
-                        "message": "Use string instead",
-                        "fixWith": "string"
-                    }
-                    // add other bans
-                }
-            } ],
-            "@typescript-eslint/member-delimiter-style": [2, {
-                "multiline": {
-                    "delimiter": "comma",
-                    "requireLast": false
-                },
-                "singleline": {
-                    "delimiter": "comma",        
-                    "requireLast": false
-                },
-                "overrides": {
-                    "interface": {
-                        "multiline": {
-                            "delimiter": "semi",
-                            "requireLast": true
-                        }
-                    }
-                }
-            }]
-        }
-    }, {
-        "files": ["**/reducer.ts"],
-        "rules": {
-            "no-param-reassign": 0
-        }
-    }, {
-        "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
-        "plugins": [
-            "jest",
-            "testing-library"
-        ],
-        "extends": [
-            "plugin:jest/recommended",
-            "plugin:testing-library/react"
-        ],
-        "env": {
-            "jest/globals": true
-        },
-        "settings": {
-            "jest": {
-                "version": 27
-            }
-        },
-        "rules": {
-            "testing-library/await-async-query": 2,
-            "testing-library/no-await-sync-query": 2,
-            "testing-library/no-debugging-utils": 1,
-            "testing-library/no-dom-import": 0,
-            "@typescript-eslint/unbound-method": 0,
-            "jest/no-alias-methods": 2,
-            "jest/consistent-test-it": ["error", {"fn": "it"}],
-            "jest/no-deprecated-functions": 2,
-            "jest/prefer-comparison-matcher": 2,
-            "jest/prefer-called-with": 2,
-            "jest/prefer-equality-matcher": 2,
-            "jest/prefer-expect-assertions": [2, { "onlyFunctionsWithAsyncKeyword": true }],
-            "jest/prefer-expect-resolves": 2,
-            "jest/prefer-spy-on": 2,
-            "jest/prefer-strict-equal": 2,
-            "jest/prefer-to-be": 2,
-            "jest/prefer-to-contain": 2,
-            "jest/prefer-to-have-length": 2,
-            "jest/no-disabled-tests": 1,
-            "jest/no-focused-tests": 2,
-            "jest/no-identical-title": 2,
-            "jest/require-top-level-describe": 2,
-            "jest/valid-expect": 2
-        }
-    } ]
+	"root": true,
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		},
+		"import/external-module-folders": [".yarn"],
+		"import/resolver": {
+			"typescript": {
+				"alwaysTryTypes": true
+			}
+		},
+		"boundaries/include": ["src/**/*.ts", "src/**/*.tsx"],
+		"boundaries/ignore": ["src/**/*.d.ts", "**/__mocks__/**/*", "**/test/**/*"],
+		"boundaries/elements": [
+			{
+				"type": "env",
+				"pattern": "env/*"
+			},
+			{
+				"type": "shared",
+				"pattern": "shared/*"
+			},
+			{
+				"type": "entities",
+				"pattern": "entities/*"
+			},
+			{
+				"type": "features",
+				"pattern": "features/*"
+			},
+			{
+				"type": "widgets",
+				"pattern": "widgets/*"
+			},
+			{
+				"type": "pages",
+				"pattern": "pages/*"
+			},
+			{
+				"type": "processes",
+				"pattern": "processes/*"
+			},
+			{
+				"type": "app",
+				"pattern": "app/*"
+			}
+		]
+	},
+	"extends": [
+		"airbnb-base",
+		"plugin:react/recommended",
+		"plugin:jsx-a11y/recommended",
+		"plugin:ramda/recommended",
+		"plugin:sonarjs/recommended",
+		"plugin:boundaries/recommended",
+		"plugin:unicorn/recommended"
+		// "prettier"
+	],
+	"plugins": [
+		"arca",
+		"align-assignments",
+		"react",
+		"react-hooks",
+		"jsx-a11y",
+		"unicorn",
+		"ramda",
+		"sonarjs",
+		"boundaries",
+		"prettier",
+		"import-newlines"
+	],
+	"rules": {
+		"import-newlines/enforce": [
+			2,
+			{
+				"items": 3,
+				"max-len": 100,
+				"semi": false
+			}
+		],
+		"boundaries/element-types": [
+			2,
+			{
+				"default": "allow",
+				"rules": [
+					{
+						"from": "shared",
+						"disallow": ["entities", "features", "widgets", "pages", "processes", "app"],
+						"message": "Shared cannot use imports like: entities,features,widgets,pages,processes,app"
+					},
+					{
+						"from": "entities",
+						"disallow": ["entities", "features", "widgets", "pages", "processes", "app"],
+						"message": "Entities cannot use imports like: entities,features,widgets,pages,processes,app"
+					},
+					{
+						"from": "features",
+						"disallow": ["features", "widgets", "pages", "processes", "app"],
+						"message": "Features cannot use imports like: features,widgets,pages,processes,app"
+					},
+					{
+						"from": "widgets",
+						"disallow": ["widgets", "pages", "processes", "app"],
+						"message": "Widgets cannot use imports like: widgets,pages,processes,app"
+					},
+					{
+						"from": "pages",
+						"disallow": ["pages", "processes", "app"],
+						"message": "Pages cannot use imports like: pages,processes,app"
+					},
+					{
+						"from": "processes",
+						"disallow": ["processes", "app"],
+						"message": "Processes cannot use imports like: processes,app"
+					}
+				]
+			}
+		],
+		"unicorn/prevent-abbreviations": [
+			2,
+			{
+				"replacements": {
+					"prop": false,
+					"props": false,
+					"lib": false,
+					"env": false,
+					"ref": false,
+					"acc": false,
+					"curr": false,
+					"args": false,
+					"str": false,
+					"num": false,
+					"fn": false,
+					"NumLock": false,
+					"Dev": false,
+					"dev": false,
+					"Prod": false,
+					"prod": false,
+					"req": false,
+					"res": false
+				}
+			}
+		],
+		"unicorn/prefer-at": 2,
+		"unicorn/prefer-string-replace-all": 2,
+		"unicorn/template-indent": [
+			2,
+			{
+				"indent": 4,
+				"tags": ["styled"],
+				"functions": ["div"]
+			}
+		],
+		"unicorn/explicit-length-check": 0,
+		"unicorn/no-array-for-each": 0,
+		"unicorn/no-array-callback-reference": 0,
+		"unicorn/no-process-exit": 0,
+		"unicorn/filename-case": 0,
+		"unicorn/no-null": 0,
+		"unicorn/prefer-spread": 0,
+		"unicorn/no-array-reduce": 0,
+		"unicorn/consistent-function-scoping": 0,
+		"unicorn/prefer-module": 0,
+		"align-assignments/align-assignments": [
+			2,
+			{
+				"requiresOnly": false
+			}
+		],
+		"no-tabs": [
+			2,
+			{
+				"allowIndentationTabs": true
+			}
+		],
+		"array-callback-return": 0,
+		"no-restricted-imports": [
+			2,
+			{
+				"paths": [
+					{
+						"name": "styled-components",
+						"message": "Please import from styled-components/macro."
+					}
+				],
+				"patterns": ["!styled-components/macro"]
+			}
+		],
+		"no-console": [
+			2,
+			{
+				"allow": ["warn", "error", "info"]
+			}
+		],
+		"import/order": [
+			2,
+			{
+				"groups": [
+					["builtin", "external"],
+					"internal",
+					["parent", "sibling"],
+					"index",
+					"type",
+					"object"
+				],
+				"newlines-between": "always"
+			}
+		],
+		"import/group-exports": 2,
+		"default-param-last": 0,
+		"no-sequences": 0,
+		"no-bitwise": 0,
+		"arrow-parens": 0,
+		"no-restricted-syntax": 0,
+		"lines-between-class-members": 0,
+		"max-len": 0,
+		"no-unused-vars": 0,
+		"no-redeclare": 0,
+		"no-return-await": 0,
+		"no-new": 0,
+		"no-plusplus": 0,
+		"no-shadow": 0,
+		"no-undef": 0,
+		"operator-linebreak": 0,
+		"linebreak-style": 0,
+		"import/no-dynamic-require": 0,
+		"global-require": 0,
+		"no-useless-escape": 0,
+		"no-useless-constructor": 0,
+		"no-unneeded-ternary": 0,
+		"no-unused-expressions": 0,
+		"no-useless-return": 0,
+		"computed-property-spacing": 0,
+		"class-methods-use-this": 0,
+		"react/destructuring-assignment": [2, "always"],
+		"react/react-in-jsx-scope": 0,
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-curly-newline": [
+			2,
+			{
+				"multiline": "consistent",
+				"singleline": "consistent"
+			}
+		],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/jsx-tag-spacing": 2,
+		"react/display-name": 0,
+		"react/jsx-closing-bracket-location": [2],
+		"react/jsx-curly-spacing": [
+			2,
+			{
+				"when": "always",
+				"children": true
+			}
+		],
+		"react/jsx-handler-names": 2,
+		"react/jsx-max-props-per-line": [2, { "when": "multiline" }],
+		"react/jsx-newline": [2, { "prevent": false }],
+		"react/jsx-sort-default-props": 2,
+		"react/jsx-sort-props": [
+			2,
+			{
+				"callbacksLast": true,
+				"shorthandFirst": true
+			}
+		],
+		"react/jsx-pascal-case": [
+			2,
+			{
+				"allowNamespace": true
+			}
+		],
+		"react/no-danger": 2,
+		"react/no-multi-comp": 2,
+		"react/prefer-stateless-function": 2,
+		"react/self-closing-comp": 2,
+		"import/prefer-default-export": 0,
+		"import/no-extraneous-dependencies": 0,
+		"import/no-unresolved": 0,
+		"import/extensions": 0,
+		"indent": [
+			2,
+			"tab",
+			{
+				"VariableDeclarator": 1,
+				"SwitchCase": 1,
+				"ignoredNodes": ["TemplateLiteral > *"]
+			}
+		],
+		"consistent-return": 0,
+		"comma-dangle": [2, "only-multiline"],
+		"template-curly-spacing": [2, "always"],
+		"object-curly-spacing": [2, "always"],
+		"array-bracket-spacing": [2, "always"],
+		"object-property-newline": [
+			2,
+			{
+				"allowAllPropertiesOnSameLine": false
+			}
+		],
+		"no-multi-spaces": 0,
+		"one-var": 0,
+		"func-names": 0,
+		"function-paren-newline": 0,
+		"lines-around-comment": [
+			2,
+			{
+				"beforeBlockComment": true,
+				"afterBlockComment": false,
+				"beforeLineComment": true,
+				"afterLineComment": false,
+				"allowBlockStart": true,
+				"allowBlockEnd": true,
+				"allowObjectStart": true,
+				"allowObjectEnd": true,
+				"allowArrayStart": true,
+				"allowArrayEnd": true
+			}
+		],
+		"key-spacing": [
+			2,
+			{
+				"align": "colon"
+			}
+		],
+		"arca/import-align": [
+			2,
+			{
+				"collapseExtraSpaces": true
+			}
+		],
+		"arca/melted-constructs": 2,
+		"no-underscore-dangle": 0,
+		"react-hooks/rules-of-hooks": 2,
+		"react-hooks/exhaustive-deps": 2,
+		"no-useless-computed-key": 0
+	},
+	"overrides": [
+		{
+			"files": ["*.d.ts"],
+			"rules": {
+				"import/group-exports": 0
+			}
+		},
+		{
+			// enable the rule specifically for TypeScript files
+			"files": ["*.ts", "*.tsx"],
+			"parser": "@typescript-eslint/parser",
+			"extends": "plugin:@typescript-eslint/recommended",
+			"parserOptions": {
+				"project": "./tsconfig.json",
+				"ecmaVersion": 11,
+				"sourceType": "module",
+				"ecmaFeatures": {
+					"jsx": true
+				}
+			},
+			"rules": {
+				"@typescript-eslint/no-non-null-assertion": 0,
+				"@typescript-eslint/method-signature-style": [2, "method"],
+				"@typescript-eslint/consistent-type-assertions": 0,
+				"@typescript-eslint/prefer-includes": 2,
+				"@typescript-eslint/prefer-optional-chain": 2,
+				"@typescript-eslint/prefer-string-starts-ends-with": 2,
+				"@typescript-eslint/prefer-ts-expect-error": 2,
+				"@typescript-eslint/require-array-sort-compare": 2,
+				"@typescript-eslint/sort-type-union-intersection-members": 2,
+				"@typescript-eslint/type-annotation-spacing": 2,
+				"@typescript-eslint/no-explicit-any": 0,
+				"@typescript-eslint/no-var-requires": 0,
+				"@typescript-eslint/ban-ts-comment": 0,
+				"@typescript-eslint/ban-types": [
+					2,
+					{
+						"types": {
+							"String": {
+								"message": "Use string instead",
+								"fixWith": "string"
+							}
+							// add other bans
+						}
+					}
+				],
+				"@typescript-eslint/member-delimiter-style": [
+					2,
+					{
+						"multiline": {
+							"delimiter": "comma",
+							"requireLast": false
+						},
+						"singleline": {
+							"delimiter": "comma",
+							"requireLast": false
+						},
+						"overrides": {
+							"interface": {
+								"multiline": {
+									"delimiter": "semi",
+									"requireLast": true
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"files": ["**/reducer.ts"],
+			"rules": {
+				"no-param-reassign": 0
+			}
+		},
+		{
+			"files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+			"plugins": ["jest", "testing-library"],
+			"extends": ["plugin:jest/recommended", "plugin:testing-library/react"],
+			"env": {
+				"jest/globals": true
+			},
+			"settings": {
+				"jest": {
+					"version": 27
+				}
+			},
+			"rules": {
+				"testing-library/await-async-query": 2,
+				"testing-library/no-await-sync-query": 2,
+				"testing-library/no-debugging-utils": 1,
+				"testing-library/no-dom-import": 0,
+				"@typescript-eslint/unbound-method": 0,
+				"jest/no-alias-methods": 2,
+				"jest/consistent-test-it": ["error", { "fn": "it" }],
+				"jest/no-deprecated-functions": 2,
+				"jest/prefer-comparison-matcher": 2,
+				"jest/prefer-called-with": 2,
+				"jest/prefer-equality-matcher": 2,
+				"jest/prefer-expect-assertions": [2, { "onlyFunctionsWithAsyncKeyword": true }],
+				"jest/prefer-expect-resolves": 2,
+				"jest/prefer-spy-on": 2,
+				"jest/prefer-strict-equal": 2,
+				"jest/prefer-to-be": 2,
+				"jest/prefer-to-contain": 2,
+				"jest/prefer-to-have-length": 2,
+				"jest/no-disabled-tests": 1,
+				"jest/no-focused-tests": 2,
+				"jest/no-identical-title": 2,
+				"jest/require-top-level-describe": 2,
+				"jest/valid-expect": 2
+			}
+		}
+	]
 }

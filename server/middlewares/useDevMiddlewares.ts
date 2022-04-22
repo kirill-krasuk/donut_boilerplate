@@ -18,30 +18,33 @@ const writeToDisk = true;
 const fileExtensionsToWrite = /\.(jpe?g|webp|png|svg|gif|ttf|otf|woff|woff2)$/;
 const filesToWrite          = [ 'sw.js', 'index.pug' ];
 
-export function useDevMiddlewares(app: Application) {
-    const { sw, isCacheable } = headers;
+function useDevMiddlewares(app: Application) {
+	const { sw, isCacheable } = headers;
 
-    const [ swKey, swValue ]                   = sw;
-    const [ isCacheableKey, isCacheableValue ] = isCacheable;
+	const [ swKey, swValue ]                   = sw;
+	const [ isCacheableKey, isCacheableValue ] = isCacheable;
 
-    const compiler = webpack(webpackConfig, () => {});
+	const compiler = webpack(webpackConfig, () => {});
 
-    app.use(DevMiddleware(compiler, {
-        publicPath      : webpackConfig.output?.publicPath,
-        stats           : webpackConfig.stats,
-        serverSideRender: true,
-        headers         : {
-            [swKey]         : [ swValue ],
-            [isCacheableKey]: [ isCacheableValue ]
-        },
-        writeToDisk: writeToDisk ||
-        ((filePath: string) => fileExtensionsToWrite.test(filePath) ||
-            filesToWrite.some((file) => filePath.endsWith(file))
-        )
+	app.use(
+		DevMiddleware(compiler, {
+			publicPath      : webpackConfig.output?.publicPath,
+			stats           : webpackConfig.stats,
+			serverSideRender: true,
+			headers         : {
+				[swKey]         : [ swValue ],
+				[isCacheableKey]: [ isCacheableValue ],
+			},
+			writeToDisk:
+				writeToDisk ||
+				((filePath: string) => fileExtensionsToWrite.test(filePath) ||
+					filesToWrite.some(file => filePath.endsWith(file))),
+		})
+	);
 
-    }));
+	app.use(HotMiddleware(compiler));
 
-    app.use(HotMiddleware(compiler));
-
-    return createCompilationPromise(compiler);
+	return createCompilationPromise(compiler);
 }
+
+export { useDevMiddlewares };

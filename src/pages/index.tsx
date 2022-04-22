@@ -6,10 +6,4 @@ import Posts                from './posts-example';
 
 import type { RouteObject } from 'react-router';
 
-export const AppRoutes = [
-    Home,
-    Posts,
-    Second,
-    ProtectedPage,
-    Page404
-] as RouteObject[];
+export const AppRoutes = [ Home, Posts, Second, ProtectedPage, Page404 ] as RouteObject[];

@@ -8,26 +8,30 @@ import * as S                     from './styles';
 import type { Props }             from './types';
 
 const { useIntersection } = createIntersectionHook({
-    rootMargin: '40px',
-    threshold : 0
+	rootMargin: '40px',
+	threshold : 0,
 });
 
-export const LazyImage: FC<Props> = (props) => {
-    const { width } = props;
+export const LazyImage: FC<Props> = props => {
+	const { width } = props;
 
-    const [ isVisible, setIsVisible ] = useState(false);
+	const [ isVisible, setIsVisible ] = useState(false);
 
-    const containerRef = useRef<HTMLImageElement>(null);
+	const containerRef = useRef<HTMLImageElement>(null);
 
-    useIntersection(containerRef, () => {
-        setIsVisible(true);
-    }, { once: true });
+	useIntersection(
+		containerRef,
+		() => {
+			setIsVisible(true);
+		},
+		{ once: true }
+	);
 
-    return (
-        <S.Container ref={ containerRef } width={ width }>
-            { isVisible && <Image { ...props } /> }
-        </S.Container>
-    );
+	return (
+		<S.Container ref={ containerRef } width={ width }>
+			{ isVisible && <Image { ...props } /> }
+		</S.Container>
+	);
 };
 
 export default LazyImage;

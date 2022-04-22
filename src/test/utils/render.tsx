@@ -12,19 +12,24 @@ import { store }                 from '../__mocks__/store';
 import type { FC, ReactElement } from 'react';
 
 const AllTheProviders: FC = ({ children }) => (
-    <BrowserRouter>
-        <Provider store={ store }>
-            <LocalesProvider>
-                <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
-                    { children }
-                </ThemeProvider>
-            </LocalesProvider>
-        </Provider>
-    </BrowserRouter>
+	<BrowserRouter>
+		<Provider store={ store }>
+			<LocalesProvider>
+				<ThemeProvider theme={ {
+					...theme,
+					mode: 'dark'
+				} }
+				>{ children }</ThemeProvider>
+			</LocalesProvider>
+		</Provider>
+	</BrowserRouter>
 );
 
 function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'queries'>) {
-    return render(ui, { wrapper: AllTheProviders, ...options });
+	return render(ui, {
+		wrapper: AllTheProviders,
+		...options
+	});
 }
 
 // re-export everything

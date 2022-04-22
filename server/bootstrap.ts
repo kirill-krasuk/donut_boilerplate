@@ -5,11 +5,11 @@ import { ServerAdapterFactory } from '@server/adapters/server';
 import { Application }          from './app';
 
 export async function bootstrap() {
-    const adapter        = await new ServerAdapterFactory().init('fastify');
-    const app            = new Application(adapter);
-    const { host, port } = env.server;
+	const adapter        = await new ServerAdapterFactory().init('fastify');
+	const app            = new Application(adapter);
+	const { host, port } = env.server;
 
-    await app.build();
+	await app.build();
 
-    app.start(port, host);
+	app.start(port, host);
 }

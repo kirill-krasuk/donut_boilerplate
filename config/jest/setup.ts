@@ -5,12 +5,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const { JSDOM }    = jsdom;
-const { document } = (new JSDOM('<!doctype html><html><body></body></html>')).window;
+const { document } = new JSDOM('<!doctype html><html><body></body></html>').window;
 global.document    = document;
 
 // @ts-expect-error
 global.window = document.defaultView;
 
 console.error = (message: any) => {
-    throw new Error(message);
+	throw new Error(message);
 };

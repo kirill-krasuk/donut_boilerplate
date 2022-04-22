@@ -4,18 +4,20 @@ import { Routes }           from '@app/routes';
 
 import { RedirectProvider } from './RedirectProvider';
 
-export function withRouter() {
-    function RouterProvider() {
-        return (
-            <BrowserRouter>
-                <RedirectProvider>
-                    <Routes />
-                </RedirectProvider>
-            </BrowserRouter>
-        );
-    }
+function withRouter() {
+	function RouterProvider() {
+		return (
+			<BrowserRouter>
+				<RedirectProvider>
+					<Routes />
+				</RedirectProvider>
+			</BrowserRouter>
+		);
+	}
 
-    RouterProvider.displayName = 'withRouterProvider';
+	RouterProvider.displayName = 'withRouterProvider';
 
-    return RouterProvider;
+	return RouterProvider;
 }
+
+export { withRouter };

@@ -5,24 +5,34 @@ import * as log4js                from 'log4js';
 import type { Request, Response } from 'express';
 
 export function handleClientError(req: Request, res: Response): void {
-    const logDirectory = path.resolve('../../logs');
+	const logDirectory = path.resolve('../../logs');
 
-    if (!fs.existsSync(logDirectory)) {
-        fs.mkdirSync(logDirectory);
-    }
+	if (!fs.existsSync(logDirectory)) {
+		fs.mkdirSync(logDirectory);
+	}
 
-    const logger = log4js.getLogger();
+	const logger = log4js.getLogger();
 
-    log4js.configure({
-        appenders : { cheese: { type: 'file', filename: path.resolve(logDirectory, 'app_errors.log') } },
-        categories: { default: { appenders: [ 'cheese' ], level: 'error' } }
-    });
+	log4js.configure({
+		appenders: {
+			cheese: {
+				type    : 'file',
+				filename: path.resolve(logDirectory, 'app_errors.log'),
+			},
+		},
+		categories: {
+			default: {
+				appenders: [ 'cheese' ],
+				level    : 'error'
+			}
+		},
+	});
 
-    const { stack } = req.body;
+	const { stack } = req.body;
 
-    const error = stack.join('\n');
+	const error = stack.join('\n');
 
-    logger.error(error);
+	logger.error(error);
 
-    res.sendStatus(200);
+	res.sendStatus(200);
 }

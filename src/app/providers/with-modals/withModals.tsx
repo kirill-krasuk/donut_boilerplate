@@ -2,18 +2,20 @@ import { ModalManager }                          from './ModalManager';
 
 import type { ComponentType, PropsWithChildren } from 'react';
 
-export function withModals(Component: ComponentType<PropsWithChildren<unknown>>) {
-    function ModalProvider() {
-        return (
-            <>
-                <ModalManager />
+function withModals(Component: ComponentType<PropsWithChildren<unknown>>) {
+	function ModalProvider() {
+		return (
+			<>
+				<ModalManager />
 
-                <Component />
-            </>
-        );
-    }
+				<Component />
+			</>
+		);
+	}
 
-    ModalProvider.displayName = 'withModalProvider';
+	ModalProvider.displayName = 'withModalProvider';
 
-    return ModalProvider;
+	return ModalProvider;
 }
+
+export { withModals };

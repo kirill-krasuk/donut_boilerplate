@@ -1,37 +1,41 @@
 {
-    "presets": [
-        ["@babel/preset-env", {
-            "corejs": 3,
-            "useBuiltIns": "usage"
-        }],
-        "@babel/preset-typescript",
-        ["@babel/preset-react", { "runtime": "automatic" }]
-    ],
-    "env": {
-        "development": {
-            "plugins": [
-                "react-refresh/babel"
-            ]
-        },
-        "production": {
-            "plugins": [
-                [ "transform-remove-console", {
-                    "exclude": [ "error", "warn", "info" ]
-                } ],
-                "transform-remove-debugger",
-                "@babel/plugin-transform-react-inline-elements",
-                "@babel/plugin-transform-react-constant-elements",
-                "transform-react-remove-prop-types"
-            ]
-        }
-    },
-    "plugins": [
-        "macros", // babel-plugin-macros for libraries, who's use runtime
-        "ramda",
-        "@loadable/babel-plugin", // for loadable chunks
-        "babel-plugin-named-exports-order", // for storybook
-        ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
-        "@babel/plugin-transform-runtime"
-    ],
-    "ignore": ["**/*.d.ts"]
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"corejs": 3,
+				"useBuiltIns": "usage"
+			}
+		],
+		"@babel/preset-typescript",
+		["@babel/preset-react", { "runtime": "automatic" }]
+	],
+	"env": {
+		"development": {
+			"plugins": ["react-refresh/babel"]
+		},
+		"production": {
+			"plugins": [
+				[
+					"transform-remove-console",
+					{
+						"exclude": ["error", "warn", "info"]
+					}
+				],
+				"transform-remove-debugger",
+				"@babel/plugin-transform-react-inline-elements",
+				"@babel/plugin-transform-react-constant-elements",
+				"transform-react-remove-prop-types"
+			]
+		}
+	},
+	"plugins": [
+		"macros", // babel-plugin-macros for libraries, who's use runtime
+		"ramda",
+		"@loadable/babel-plugin", // for loadable chunks
+		"babel-plugin-named-exports-order", // for storybook
+		["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
+		"@babel/plugin-transform-runtime"
+	],
+	"ignore": ["**/*.d.ts"]
 }

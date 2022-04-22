@@ -11,23 +11,33 @@ import { store }                      from '../__mocks__/store';
 
 import type { FC, PropsWithChildren } from 'react';
 
-async function setupRenderWrapper<T extends Record<string, any>>(Component: FC<PropsWithChildren<any>>, props: T = {} as T) {
-    const wrapper = render(
-        <BrowserRouter>
-            <Provider store={ store }>
-                <LocalesProvider>
-                    <ThemeProvider theme={ { ...theme, mode: 'dark' } }>
-                        <Component { ...props } />
-                    </ThemeProvider>
-                </LocalesProvider>
-            </Provider>
-        </BrowserRouter>
-    );
+async function setupRenderWrapper<T extends Record<string, any>>(
+	Component: FC<PropsWithChildren<any>>,
+	props: T = {} as T
+) {
+	const wrapper = render(
+		<BrowserRouter>
+			<Provider store={ store }>
+				<LocalesProvider>
+					<ThemeProvider theme={ {
+						...theme,
+						mode: 'dark'
+					} }
+					>
+						<Component { ...props } />
+					</ThemeProvider>
+				</LocalesProvider>
+			</Provider>
+		</BrowserRouter>
+	);
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    await waitFor(() => {});
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	await waitFor(() => {});
 
-    return { wrapper, props };
+	return {
+		wrapper,
+		props
+	};
 }
 
 export { setupRenderWrapper };

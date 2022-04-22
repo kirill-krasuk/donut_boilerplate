@@ -8,16 +8,16 @@ import { getMode }     from '../store/selectors';
 import { toggleTheme } from '../../lib/toggleTheme';
 
 export function useThemeMode() {
-    const { changeTheme } = useActions(actions);
+	const { changeTheme } = useActions(actions);
 
-    const mode = useSelector(getMode);
+	const mode = useSelector(getMode);
 
-    const handleChangeTheme = useCallback(() => {
-        changeTheme(toggleTheme(mode));
-    }, [ changeTheme, mode ]);
+	const handleChangeTheme = useCallback(() => {
+		changeTheme(toggleTheme(mode));
+	}, [ changeTheme, mode ]);
 
-    return {
-        mode,
-        handleChangeTheme,
-    };
+	return {
+		mode,
+		handleChangeTheme,
+	};
 }

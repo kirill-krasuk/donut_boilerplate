@@ -1,6 +1,6 @@
 {
-  "styledComponents": {
-    "pure": true,
-    "ssr": true
-  }
+	"styledComponents": {
+		"pure": true,
+		"ssr": true
+	}
 }

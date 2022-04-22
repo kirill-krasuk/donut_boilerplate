@@ -5,9 +5,9 @@ import { getSpacing }  from '@lib/styles';
 import type { Props }  from './types';
 
 export const Row = styled.div<Props>`
-    ${ ({ padding, margin }) => css`
-        display: flex;
-        padding: ${ getSpacing(padding) };
-        margin: ${ getSpacing(margin) };
-    ` }
+	${ ({ padding, margin }) => css`
+		display: flex;
+		padding: ${ getSpacing(padding) };
+		margin: ${ getSpacing(margin) };
+	` }
 `;

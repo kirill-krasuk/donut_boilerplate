@@ -3,21 +3,21 @@ import type { Context }        from '@shared/types/client-server';
 import type { StaticTemplate } from '@server/lib/react';
 
 const redirectIFStatusExist = (res: Response, context: Context, template: StaticTemplate): void => {
-    if (context.status === 404) {
-        res.status(404).render('index.pug', template);
+	if (context.status === 404) {
+		res.status(404).render('index.pug', template);
 
-        return;
-    }
+		return;
+	}
 
-    return res.redirect(context.status as number, context.to!);
+	return res.redirect(context.status as number, context.to!);
 };
 
 export function renderTemplate(res: Response, context: Context, template: StaticTemplate): void {
-    if (context.to) {
-        redirectIFStatusExist(res, context, template);
+	if (context.to) {
+		redirectIFStatusExist(res, context, template);
 
-        return;
-    }
+		return;
+	}
 
-    return res.render('index.pug', template);
+	return res.render('index.pug', template);
 }

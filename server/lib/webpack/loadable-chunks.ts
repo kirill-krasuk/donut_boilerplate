@@ -2,30 +2,32 @@ import fs   from 'node:fs';
 import path from 'node:path';
 
 function JSONStats(rawData: any) {
-    return JSON.parse(rawData.toString());
+	return JSON.parse(rawData.toString());
 }
 
-export function getLoadableChunksOptions(locals: any) {
-    const loadableStatsFileName = 'loadable-stats.json';
+function getLoadableChunksOptions(locals: any) {
+	const loadableStatsFileName = 'loadable-stats.json';
 
-    if (locals.webpack) {
-        const { devMiddleware }           = locals.webpack;
-        const { outputFileSystem, stats } = devMiddleware;
-        const jsonWebpackStats            = stats.toJson();
-        const { outputPath }              = jsonWebpackStats;
+	if (locals.webpack) {
+		const { devMiddleware }           = locals.webpack;
+		const { outputFileSystem, stats } = devMiddleware;
+		const jsonWebpackStats            = stats.toJson();
+		const { outputPath }              = jsonWebpackStats;
 
-        const rawData = outputFileSystem.readFileSync(path.join(outputPath, loadableStatsFileName));
+		const rawData = outputFileSystem.readFileSync(path.join(outputPath, loadableStatsFileName));
 
-        return {
-            useFileSystem: outputFileSystem,
-            loadableStats: JSONStats(rawData)
-        };
-    }
+		return {
+			useFileSystem: outputFileSystem,
+			loadableStats: JSONStats(rawData),
+		};
+	}
 
-    const rawData = fs.readFileSync(path.resolve('dist', loadableStatsFileName));
+	const rawData = fs.readFileSync(path.resolve('dist', loadableStatsFileName));
 
-    return {
-        useFileSystem: fs,
-        loadableStats: JSONStats(rawData)
-    };
+	return {
+		useFileSystem: fs,
+		loadableStats: JSONStats(rawData),
+	};
 }
+
+export { getLoadableChunksOptions };

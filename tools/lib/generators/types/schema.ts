@@ -4,39 +4,37 @@ type CreateSource = string;
 type CreateTemplate = string;
 
 enum UpdateFileType {
-    JSON = 'json',
-    Routes = 'routes'
+	JSON = 'json',
+	Routes = 'routes',
 }
 
 type UpdateSource = string;
 
-type CreateTuple = [CreateSource, CreateTemplate]
-type UpdateTuple = [UpdateSource, UpdateFileType]
+type CreateTuple = [CreateSource, CreateTemplate];
+type UpdateTuple = [UpdateSource, UpdateFileType];
 
 type SchemaMethods = {
-    create?: CreateTuple | CreateTuple[],
-    update?: UpdateTuple | UpdateTuple[]
-}
+	create?: CreateTuple | CreateTuple[],
+	update?: UpdateTuple | UpdateTuple[]
+};
 
 type Schema = {
-    [key: string]: SchemaMethods
-}
+	[key: string]: SchemaMethods
+};
 
 type SchemaConfig = {
-    [key in Layer]: Schema
-}
+	[key in Layer]: Schema;
+};
 
 export type {
-    UpdateSource,
-    CreateSource,
-    CreateTemplate,
-    CreateTuple,
-    UpdateTuple,
-    Schema,
-    SchemaConfig,
-    SchemaMethods
+	UpdateSource,
+	CreateSource,
+	CreateTemplate,
+	CreateTuple,
+	UpdateTuple,
+	Schema,
+	SchemaConfig,
+	SchemaMethods,
 };
 
-export {
-    UpdateFileType
-};
+export { UpdateFileType };

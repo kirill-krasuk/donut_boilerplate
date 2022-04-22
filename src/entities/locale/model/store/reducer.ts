@@ -5,12 +5,8 @@ import { changeLocale }  from './actions';
 
 const initialState = Locale.En;
 
-const reducer = createReducer(initialState, (builder) => {
-    builder
-        .addCase(changeLocale, (_state, action) => action.payload);
+const reducer = createReducer(initialState, builder => {
+	builder.addCase(changeLocale, (_state, action) => action.payload);
 });
 
-export {
-    initialState,
-    reducer
-};
+export { initialState, reducer };

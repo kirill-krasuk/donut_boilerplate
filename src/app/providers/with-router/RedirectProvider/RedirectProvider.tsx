@@ -11,12 +11,14 @@ import type { Props }              from './types';
  *
  * Use for extend with auth redirect logic
  */
-export const RedirectProvider: FC<Props> = ({ context: serverContext, children }) => {
-    useRedirect(serverContext);
+const RedirectProvider: FC<Props> = ({ context: serverContext, children }) => {
+	useRedirect(serverContext);
 
-    return (
-        <RedirectContextProvider value={ { ...getInitialProps(serverContext) } }>
-            { children }
-        </RedirectContextProvider>
-    );
+	return (
+		<RedirectContextProvider value={ { ...getInitialProps(serverContext) } }>
+			{ children }
+		</RedirectContextProvider>
+	);
 };
+
+export { RedirectProvider };

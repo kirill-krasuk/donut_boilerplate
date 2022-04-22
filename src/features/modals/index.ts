@@ -7,6 +7,6 @@ export type { ModalHasHistory, CallModalObjectPayload } from './types';
 export { Modals } from './types/enums';
 
 export const modalsMap = {
-    Greeting,
-    ModalTest
+	Greeting,
+	ModalTest,
 };

@@ -1,4 +1,4 @@
 export enum StringFormatter {
-    Upper = 'upper',
-    Lower = 'lower'
+	Upper = 'upper',
+	Lower = 'lower',
 }

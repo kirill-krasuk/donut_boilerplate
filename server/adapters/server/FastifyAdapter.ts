@@ -9,37 +9,37 @@ import type { ViewTemplateOptions }              from './types';
 
 // TODO: refactoring and support more templates
 const templateEngines: Record<string, unknown> = {
-    pug
+	pug,
 };
 
 const fastifyInstance = fastify();
 
-export class FastifyAdapter<
-    R = FastifyRequest,
-    RS = FastifyReply
-> extends HTTPServerAdapter<R, RS> {
-    public type = 'fastify';
+export class FastifyAdapter<R = FastifyRequest, RS = FastifyReply> extends HTTPServerAdapter<
+	R,
+	RS
+> {
+	public type = 'fastify';
 
-    constructor() {
-        super(fastifyInstance);
-    }
+	constructor() {
+		super(fastifyInstance);
+	}
 
-    static async init() {
-        await fastifyInstance.register(fastifyExpress);
+	static async init() {
+		await fastifyInstance.register(fastifyExpress);
 
-        return new FastifyAdapter();
-    }
+		return new FastifyAdapter();
+	}
 
-    render(response: any, view: string, options: any) {
-        return response?.view(view, options);
-    }
+	render(response: any, view: string, options: any) {
+		return response?.view(view, options);
+	}
 
-    registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
-        this.instance.register(pointOfView, {
-            engine: {
-                [engine]: templateEngines[engine]
-            },
-            root: viewsPath
-        });
-    }
+	registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
+		this.instance.register(pointOfView, {
+			engine: {
+				[engine]: templateEngines[engine],
+			},
+			root: viewsPath,
+		});
+	}
 }

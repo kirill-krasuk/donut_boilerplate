@@ -1,0 +1,11 @@
+.eslintignore
+.npmrc
+.pnp.cjs
+.pnp.loader.mjs
+.yarnrc.yml
+views/**
+.env.example
+.env
+**/*.yml
+.yarn/*
+config/docker/*

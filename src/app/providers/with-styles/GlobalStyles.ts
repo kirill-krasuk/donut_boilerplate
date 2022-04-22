@@ -2,7 +2,7 @@ import { createGlobalStyle }                     from 'styled-components/macro';
 
 import { darkValues, lightValues, commonValues } from '@config/theme';
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     .light {
         ${ lightValues }
     }
@@ -51,3 +51,5 @@ export const GlobalStyles = createGlobalStyle`
         box-decoration-break: clone;
     }
 `;
+
+export { GlobalStyles };

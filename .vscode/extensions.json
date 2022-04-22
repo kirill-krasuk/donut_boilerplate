@@ -1,7 +1,9 @@
 {
   "recommendations": [
     "arcanis.vscode-zipfs",
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint"
+    "rohit-gohri.format-code-action"
   ]
 }
