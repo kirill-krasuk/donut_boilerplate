@@ -1,7 +1,7 @@
 {
 	"processors": ["stylelint-processor-styled-components"],
 	"extends": [
-		"stylelint-config-recommended",
+		"stylelint-config-standard-scss",
 		"stylelint-config-styled-components",
 		"stylelint-config-rational-order",
 		"stylelint-declaration-block-no-ignored-properties"
@@ -9,12 +9,11 @@
 	"plugins": ["stylelint-a11y", "stylelint-order"],
 	"rules": {
 		"font-family-no-missing-generic-family-keyword": null,
-		"no-descending-specificity": null
+		"no-descending-specificity": null,
+		"indentation": "tab",
+		"string-quotes": "single",
+		"declaration-colon-newline-after": null,
+		"value-keyword-case": null
 	},
-	"overrides": [
-		{
-			"files": ["**/styles/*.{ts,js,jsx,tsx}"],
-			"customSyntax": "@stylelint/postcss-css-in-js"
-		}
-	]
+	"files": ["**/styles/*.{ts,js,jsx,tsx}"]
 }

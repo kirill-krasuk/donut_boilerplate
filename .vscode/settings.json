@@ -1,70 +1,80 @@
 {
-  "javascript.validate.enable": false,
-  "git.enableSmartCommit": true,
-  "git.autofetch": true,
-  "explorer.confirmDelete": false,
-  "typescript.validate.enable": true,
-  "git.confirmSync": false,
-  "prettier.configPath": ".prettierrc",
-  "editor.formatOnSave": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": [
-    "source.formatDocument",
-    "source.fixAll.eslint"
-  ],
-  "stylelint.enable": true,
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "stylelint.configFile": "config/css/styled.stylelint.json",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "search.exclude": {
-    "**/.yarn": true,
-    "**/.pnp.*": true
-  },
-  "eslint.nodePath": ".yarn/sdks",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "files.associations": {
-    ".postcssrc": "jsonc",
-    ".czrc": "jsonc",
-    ".commitlintrc": "jsonc"
-  },
-  "material-icon-theme.files.associations": {
-    ".czrc": "commitlint",
-    ".pnp.cjs": "yarn",
-    "*.tsbuildinfo": "tsconfig",
-    "commit-msg": "console",
-    "*.epic.ts": "ngrx-state",
-    ".cz-config.js": "git",
-    "*.jest.config.js": "jest",
-    "*.stylelint.json": "stylelint"
-  },
-  "material-icon-theme.folders.associations": {
-    "enums": "typescript",
-    "epics": "ngrx-state",
-    "epic": "ngrx-state",
-    "ui-kit": "theme",
-    "jest": "test",
-    "git": "git"
-  },
-  "cSpell.language": "en,ru",
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "material-icon-theme.folders.color": "#90a4ae",
-  "material-icon-theme.opacity": 1,
-  "material-icon-theme.saturation": 1,
-  "material-icon-theme.folders.theme": "specific",
-  "material-icon-theme.activeIconPack": "react_redux",
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+	"javascript.validate.enable": false,
+	"git.enableSmartCommit": true,
+	"git.autofetch": true,
+	"explorer.confirmDelete": false,
+	"typescript.validate.enable": true,
+	"git.confirmSync": false,
+	"prettier.configPath": ".prettierrc",
+	"editor.formatOnSave": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": [
+		"source.organizeImports",
+		"source.formatDocument",
+		"source.fixAll.eslint"
+	],
+	"[css]": {
+		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
+	},
+	"[postcss]": {
+		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
+	},
+	"[scss]": {
+		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
+	},
+	"stylelint.enable": true,
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"stylelint.configFile": "config/css/styled.stylelint.json",
+	"typescript.tsdk": ".yarn/sdks/typescript/lib",
+	"search.exclude": {
+		"**/.yarn": true,
+		"**/.pnp.*": true
+	},
+	"eslint.nodePath": ".yarn/sdks",
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"files.associations": {
+		".postcssrc": "jsonc",
+		".czrc": "jsonc",
+		".commitlintrc": "jsonc"
+	},
+	"material-icon-theme.files.associations": {
+		".czrc": "commitlint",
+		".pnp.cjs": "yarn",
+		"*.tsbuildinfo": "tsconfig",
+		"commit-msg": "console",
+		"*.epic.ts": "ngrx-state",
+		".cz-config.js": "git",
+		"*.jest.config.js": "jest",
+		"*.stylelint.json": "stylelint"
+	},
+	"material-icon-theme.folders.associations": {
+		"enums": "typescript",
+		"epics": "ngrx-state",
+		"epic": "ngrx-state",
+		"ui-kit": "theme",
+		"jest": "test",
+		"git": "git"
+	},
+	"cSpell.language": "en,ru",
+	"javascript.inlayHints.parameterNames.enabled": "all",
+	"material-icon-theme.folders.color": "#90a4ae",
+	"material-icon-theme.opacity": 1,
+	"material-icon-theme.saturation": 1,
+	"material-icon-theme.folders.theme": "specific",
+	"material-icon-theme.activeIconPack": "react_redux",
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false,
+	"[ignore]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"[dotenv]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }

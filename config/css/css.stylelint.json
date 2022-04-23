@@ -1,19 +1,19 @@
 {
-	"plugins": ["stylelint-order", "stylelint-a11y"],
+	"plugins": ["stylelint-order", "stylelint-a11y", "stylelint-scss"],
 	"extends": [
-		"stylelint-config-airbnb",
-		"stylelint-config-recommended",
+		"stylelint-config-standard-scss",
+		"stylelint-config-rational-order",
 		"stylelint-declaration-block-no-ignored-properties"
 	],
 	"rules": {
-		"indentation": 4,
-		"block-opening-brace-space-before": "always"
+		"indentation": "tab",
+		"block-opening-brace-space-before": "always",
+		"declaration-colon-newline-after": "always-multi-line",
+		"selector-max-id": 1,
+		"declaration-property-value-disallowed-list": null,
+		"string-quotes": "single"
 	},
-	"overrides": [
-		{
-			"files": ["**/*.{sass,scss}"],
-			"plugin": ["stylelint-scss"],
-			"customSyntax": "postcss-scss"
-		}
-	]
+	"files": ["**/*.{sass,scss,css}"],
+	"ignoreFiles": ["**/styles/*.{ts,js,jsx,tsx}"],
+	"customSyntax": "postcss-scss"
 }
