@@ -3,7 +3,9 @@
 		"prettier --write"
 	],
 	"**/*.{js,jsx,ts,tsx}": [
+		"yarn types",
+		"yarn lint:styled",
 		"prettier --write",
-		"eslint --fix ."
+		"yarn lint-fix"
 	]
 }
