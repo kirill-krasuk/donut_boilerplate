@@ -35,6 +35,7 @@
 		"lint-fix": "eslint --fix .",
 		"lint:styled": "stylelint --config ./config/css/styled.stylelint.json './src/**/styles/*.{ts,js,jsx,tsx}'",
 		"lint:css": "stylelint --config ./config/css/css.stylelint.json './src/**/*.{css,sass,scss}'",
+		"lint:css-fix": "stylelint --config ./config/css/css.stylelint.json './src/**/*.{css,sass,scss}' --fix",
 		"format:code": "prettier --config ./.prettierrc --write '**/*.{js,jsx,ts,tsx}' && eslint --fix .",
 		"prunecaches": "bash ./tools/common/prune_caches.sh",
 		"run:server": "bash ./tools/run_server.sh",
@@ -49,6 +50,7 @@
 		"test:update": "bash ./tools/ci/test.sh u",
 		"test:watch": "bash ./tools/ci/test.sh w",
 		"types": "tsc --noEmit -p .",
+		"pre-commit": "echo \"commit)))0\"",
 		"commit": "cz",
 		"release": "standard-version"
 	},
