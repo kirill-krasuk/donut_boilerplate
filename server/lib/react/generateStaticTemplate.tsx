@@ -25,10 +25,9 @@ export async function generateStaticTemplate({
 		scriptTags         : extractor.getScriptTags(),
 		styleChunksTags    : cssChunks, // loadable components extract styles in chunk files
 		styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
-		storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replaceAll(
-			'<',
-			'\\u003c'
-		) }`,
+		storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(
+			store.getState()
+		).replaceAll('<', '\\u003c') }`,
 		initialProps: `window.__INITIAL_PROPS__ = ${ JSON.stringify(props) }`,
 		criticalCss,
 		mode,

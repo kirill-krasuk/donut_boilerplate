@@ -26,7 +26,9 @@ loadableReady(() => {
 		if ('serviceWorker' in navigator) {
 			window.addEventListener('load', async () => {
 				try {
-					await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+					await navigator.serviceWorker.register('/sw.js', {
+						scope: '/'
+					});
 
 					console.info('SW registered');
 				} catch (error) {

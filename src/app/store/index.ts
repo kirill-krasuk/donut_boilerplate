@@ -15,8 +15,10 @@ const store = createStore(
 	preloadedState,
 	appMiddlewares
 )(store => {
-	if (__IS_CLIENT__ && appEnv === Environment.Dev && (module as any).hot) {
-		(module as any).hot.accept('./reducers', () => store.replaceReducer(rootReducer as any));
+	const _module = module as any;
+
+	if (__IS_CLIENT__ && appEnv === Environment.Dev && _module.hot) {
+		_module.hot.accept('./reducers', () => store.replaceReducer(rootReducer as any));
 	}
 });
 

@@ -1,18 +1,25 @@
-import { create }      from './create';
-import { update }      from './update';
+import { create }                                from './create';
+import { update }                                from './update';
 
-import type { Schema } from '../types/schema';
+import type { CreateTuple, Schema, UpdateTuple } from '../types/schema';
+
+type Data = Record<string, any>;
 
 function isArrayOfTuples(value: any): value is [string, string][] {
 	return Array.isArray(value[0]);
 }
 
-export function generate(schema: Schema, data: Record<string, any>) {
+const createCallback =
+	(data: Data) => ([ destination, template ]: CreateTuple) => create(template, destination, data);
+
+const updateCallback =
+	(data: Data) => ([ source, fileType ]: UpdateTuple) => update(source, fileType, data);
+
+export function generate(schema: Schema, data: Data) {
 	Object.values(schema).forEach(type => {
 		if (type.create) {
 			if (isArrayOfTuples(type.create)) {
-				type.create.forEach(([ destination, template ]) => create(template, destination, data)
-				);
+				type.create.forEach(createCallback);
 			} else {
 				const [ destination, template ] = type.create;
 
@@ -22,7 +29,7 @@ export function generate(schema: Schema, data: Record<string, any>) {
 
 		if (type.update) {
 			if (isArrayOfTuples(type.update)) {
-				type.update.forEach(([ source, fileType ]) => update(source, fileType, data));
+				type.update.forEach(updateCallback);
 			} else {
 				const [ source, fileType ] = type.update;
 

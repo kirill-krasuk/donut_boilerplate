@@ -7,7 +7,10 @@ import { PatternsKey, patterns }                   from '../constants/patterns';
 import type { PatternsObject, PatternsWithArrays } from '../types/patterns';
 
 // TODO: refactoring to regexp logic
-function replacePatternByInterpolateData(data: Record<string, any>, initialValue: string) {
+function replacePatternByInterpolateData(
+	data: Record<string, any>,
+	initialValue: string
+) {
 	return Object.entries(data).reduce(
 		(acc, [ key, value ]) => acc.replaceAll(`{$${ key }}`, value),
 		initialValue
@@ -20,7 +23,8 @@ function patternIsArray(patternsByType: any): patternsByType is PatternsWithArra
 
 function detectPattern(patternsByType: PatternsObject, file: string) {
 	if (patternIsArray(patternsByType)) {
-		const patternIndex = patternsByType.pattern.findIndex(pattern => file.includes(pattern));
+		const patternIndex = patternsByType.pattern.findIndex(pattern => file.includes(pattern)
+		);
 
 		return {
 			pattern: patternsByType.pattern[patternIndex],
@@ -39,7 +43,9 @@ export function update(source: string, type: PatternsKey, data: Record<string, a
 	const replaceValue   = replacePatternByInterpolateData(data, replacePattern.replace);
 
 	if (file.includes(replaceValue)) {
-		return console.info(chalk`[{blue.bold EXISTS}] changes already exists in ${ source }`);
+		return console.info(
+			chalk`[{blue.bold EXISTS}] changes already exists in ${ source }`
+		);
 	}
 
 	if (!file.includes(replacePattern.pattern)) {

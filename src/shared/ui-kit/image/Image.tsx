@@ -33,7 +33,12 @@ export const Image: FC<React.PropsWithChildren<Props>> = props => {
 
 		return (
 			<Picture src={ src } webp={ webp }>
-				<S.ImgContainer alt={ alt } height={ height } width={ width } onLoad={ handleLoad } />
+				<S.ImgContainer
+					alt={ alt }
+					height={ height }
+					width={ width }
+					onLoad={ handleLoad }
+				/>
 			</Picture>
 		);
 	};

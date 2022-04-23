@@ -8,7 +8,9 @@ export function useSynchronizedAnimations(animationName: string) {
 	useLayoutEffect(() => {
 		const animations = document
 			.getAnimations()
-			.filter((animation: Record<string, any>) => animation.animationName === animationName);
+			.filter(
+				(animation: Record<string, any>) => animation.animationName === animationName
+			);
 
 		const firstOfTypeAnimation = animations.find(
 			(animation: Record<string, any>) => animation?.effect?.target === ref.current

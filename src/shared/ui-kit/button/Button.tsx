@@ -9,7 +9,10 @@ import type { Props }                from './types';
  */
 export const Button: FC<Props> = props => {
 	const {
-		onClick, children, size = ButtonSizes.Medium, style = ButtonStyles.Primary
+		onClick,
+		children,
+		size = ButtonSizes.Medium,
+		style = ButtonStyles.Primary
 	} = props;
 
 	return (

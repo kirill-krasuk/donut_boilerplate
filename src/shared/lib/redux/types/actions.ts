@@ -5,7 +5,11 @@ type Action = {
 	payload: any
 };
 
-type ActionType<T> = T extends { type: infer Type, payload: infer Payload, meta?: infer Meta }
+type ActionType<T> = T extends {
+	type: infer Type,
+	payload: infer Payload,
+	meta?: infer Meta
+}
 	? { type: Type, payload: Payload, meta?: Meta }
 	: { type: string, payload: undefined, meta?: undefined };
 
@@ -24,7 +28,11 @@ type ActionToString<Type> = () => Type;
 
 type ActionCreator<Type, Payload, Meta> = {
 	(payload: Payload): ActionCreatorType<Type, Payload>,
-	(payload: Payload, meta?: Meta | undefined): ActionCreatorWithMetaType<Type, Payload, Meta>,
+	(payload: Payload, meta?: Meta | undefined): ActionCreatorWithMetaType<
+		Type,
+		Payload,
+		Meta
+	>,
 	type: Type,
 	toString: ActionToString<Type>
 };

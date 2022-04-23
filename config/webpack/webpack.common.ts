@@ -32,7 +32,9 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 
 	const addHash = createHashHelper(isProd);
 
-	const serviceWorkerEnabled = JSON.parse(process.env.SERVICE_WORKER_ENABLE as unknown as string);
+	const serviceWorkerEnabled = JSON.parse(
+		process.env.SERVICE_WORKER_ENABLE as unknown as string
+	);
 
 	const config: webpack.Configuration = {
 		context: paths.context,

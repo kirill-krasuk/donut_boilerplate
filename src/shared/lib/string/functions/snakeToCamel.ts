@@ -9,7 +9,9 @@ const _snakeToCamel = (str: string, formatter: StringFormatter) => str
 function snakeToCamel(formatter: StringFormatter, str: string): string;
 function snakeToCamel(formatter: StringFormatter): (str: string) => string;
 function snakeToCamel(formatter: StringFormatter = StringFormatter.Lower, str?: string) {
-	return !str ? (str: string) => _snakeToCamel(str, formatter) : _snakeToCamel(str, formatter);
+	return !str
+		? (str: string) => _snakeToCamel(str, formatter)
+		: _snakeToCamel(str, formatter);
 }
 
 export { snakeToCamel };
