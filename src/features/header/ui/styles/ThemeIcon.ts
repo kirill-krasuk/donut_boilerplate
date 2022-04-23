@@ -4,7 +4,7 @@ import { THEME_ICON_SIZE } from '../../config/constants';
 
 import type { AppTheme }   from '@entities/theme';
 
-export const ThemeIcon = styled.div`
+const ThemeIcon = styled.div`
 	& svg {
 		width: ${ THEME_ICON_SIZE };
 		height: ${ THEME_ICON_SIZE };
@@ -14,7 +14,12 @@ export const ThemeIcon = styled.div`
 
 		&:hover {
 			cursor: pointer;
-			filter: ${ ({ theme }: AppTheme) => (!theme.isDark ? 'brightness(0.85)' : 'brightness(1.14)') };
+			filter: ${ ({ theme }: AppTheme) =>
+				(!theme.isDark
+					? 'brightness(0.85)'
+					: 'brightness(1.14)') };
 		}
 	}
 `;
+
+export { ThemeIcon };

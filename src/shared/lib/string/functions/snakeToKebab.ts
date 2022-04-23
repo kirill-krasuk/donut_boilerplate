@@ -1,1 +1,3 @@
-export const snakeToKebab = (str: string) => str.replaceAll('_', '-');
+const snakeToKebab = (str: string) => str.replaceAll('_', '-');
+
+export { snakeToKebab };

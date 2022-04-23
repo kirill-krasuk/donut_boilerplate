@@ -4,7 +4,7 @@ import { routes }                from '@app/routes';
 
 import type { RouteForPrefetch } from '@lib/react';
 
-export async function prefetch(url: string, auth: any = null) {
+async function prefetch(url: string, auth: any = null) {
 	const [ pathname, query ] = url.split('?');
 
 	/**
@@ -24,3 +24,5 @@ export async function prefetch(url: string, auth: any = null) {
 
 	return {};
 }
+
+export { prefetch };

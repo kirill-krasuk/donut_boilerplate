@@ -1,8 +1,12 @@
-import { CreateTuple, UpdateFileType, UpdateTuple } from '../../types/schema';
-import { getLocalesConfigFiles }                    from '../getLocalesConfigFiles';
+import {
+	CreateTuple,
+	UpdateFileType,
+	UpdateTuple
+} from '../../types/schema';
+import { getLocalesConfigFiles } from '../getLocalesConfigFiles';
 
 // TODO: complete path logic with new schema
-export function getLocalesSchema(directoryName: string) {
+function getLocalesSchema(directoryName: string) {
 	const pathsToLocales = getLocalesConfigFiles();
 
 	const create: CreateTuple = [
@@ -20,3 +24,5 @@ export function getLocalesSchema(directoryName: string) {
 		update
 	};
 }
+
+export { getLocalesSchema };

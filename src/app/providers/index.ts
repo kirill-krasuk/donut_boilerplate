@@ -7,7 +7,7 @@ import { withTheme }        from './with-theme';
 import { withRouter }       from './with-router';
 import { withModals }       from './with-modals';
 
-export const withAppProviders = compose(
+const withAppProviders = compose(
 	withStore,
 	withLocales,
 	withTheme,
@@ -15,3 +15,5 @@ export const withAppProviders = compose(
 	withRouter,
 	withModals
 );
+
+export { withAppProviders };

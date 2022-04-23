@@ -1,5 +1,7 @@
 import type { Theme } from '@config/theme';
 
-export type ThemeState = {
+type ThemeState = {
 	mode: Theme
 };
+
+export type { ThemeState };

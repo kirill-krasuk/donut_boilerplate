@@ -6,13 +6,15 @@ import { Theme, themeModel }                       from '@entities/theme';
 import { setDataThemeAttribute, getDarkModeQuery } from '@lib/dom';
 import { useActions }                              from '@hooks/index';
 
-export function useTheme() {
+function useTheme() {
 	const { changePreferColorScheme } = useActions(themeModel.actions);
 	const mode                        = useSelector(themeModel.selectors.getMode);
 	const [ theme, setTheme ]         = useState(mode);
 
 	const handleChangeTheme = (event: MediaQueryListEvent) => {
-		setTheme(event.matches ? Theme.Dark : Theme.Light);
+		setTheme(event.matches
+			? Theme.Dark
+			: Theme.Light);
 	};
 
 	useEffect(() => {
@@ -25,7 +27,9 @@ export function useTheme() {
 	 */
 	useEffect(() => {
 		if (!Cookie.get('theme')) {
-			const currentTheme = getDarkModeQuery()?.matches ? Theme.Dark : Theme.Light;
+			const currentTheme = getDarkModeQuery()?.matches
+				? Theme.Dark
+				: Theme.Light;
 
 			changePreferColorScheme(currentTheme);
 			setTheme(currentTheme);
@@ -47,3 +51,5 @@ export function useTheme() {
 
 	return theme;
 }
+
+export { useTheme };

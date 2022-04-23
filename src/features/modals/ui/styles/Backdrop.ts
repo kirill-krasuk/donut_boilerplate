@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Backdrop = styled.div`
+const Backdrop = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -14,7 +14,7 @@ export const Backdrop = styled.div`
 	color: white;
 	backdrop-filter: blur(5px);
 
-	&:before {
+	&::before {
 		position: absolute;
 		top: 0;
 		z-index: 1000;
@@ -29,3 +29,5 @@ export const Backdrop = styled.div`
 		z-index: 1001;
 	}
 `;
+
+export { Backdrop };

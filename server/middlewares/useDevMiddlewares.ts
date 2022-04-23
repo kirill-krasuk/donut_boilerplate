@@ -26,22 +26,22 @@ function useDevMiddlewares(app: Application) {
 
 	const compiler = webpack(webpackConfig, () => {});
 
-	app.use(
-		DevMiddleware(compiler, {
-			publicPath      : webpackConfig.output?.publicPath,
-			stats           : webpackConfig.stats,
-			serverSideRender: true,
-			headers         : {
-				[swKey]         : [ swValue ],
-				[isCacheableKey]: [ isCacheableValue ]
-			},
-			writeToDisk:
-				writeToDisk ||
-				((filePath: string) => fileExtensionsToWrite.test(filePath) ||
-					filesToWrite.some(file => filePath.endsWith(file)))
-		})
-	);
+	const devMiddleware = DevMiddleware(compiler, {
+		publicPath      : webpackConfig.output?.publicPath,
+		stats           : webpackConfig.stats,
+		serverSideRender: true,
+		headers         : {
+			[swKey]         : [ swValue ],
+			[isCacheableKey]: [ isCacheableValue ]
+		},
+		writeToDisk:
+			writeToDisk ||
+			((filePath: string) =>
+				fileExtensionsToWrite.test(filePath) ||
+				filesToWrite.some(file => filePath.endsWith(file)))
+	});
 
+	app.use(devMiddleware);
 	app.use(HotMiddleware(compiler));
 
 	return createCompilationPromise(compiler);

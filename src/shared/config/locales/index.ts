@@ -14,6 +14,7 @@ const locales: Locale[] = [
 	}
 ];
 
-export type AppLocales = typeof enMessages;
+type AppLocales = typeof enMessages;
 
+export type { AppLocales };
 export default locales;

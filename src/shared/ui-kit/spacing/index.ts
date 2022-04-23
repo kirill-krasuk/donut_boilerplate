@@ -1,12 +1,14 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css }       from 'styled-components/macro';
 
-import { getSpacing }  from '@lib/styles';
+import { getSpacing }        from '@lib/styles';
 
-import type { Props }  from './types';
+import type { SpacingProps } from './types';
 
-export const Spacing = styled.div<Props>`
+const Spacing = styled.div<SpacingProps>`
 	${ ({ padding, margin }) => css`
 		padding: ${ getSpacing(padding) };
 		margin: ${ getSpacing(margin) };
 	` }
 `;
+
+export { Spacing };

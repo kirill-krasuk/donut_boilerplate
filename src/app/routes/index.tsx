@@ -4,13 +4,13 @@ import { AppRoutes }              from '@pages/index';
 
 import { RootView }               from './root-view';
 
-const routes: RouteObject[] = [
-	{
-		path    : '/',
-		element : <RootView />,
-		children: AppRoutes
-	}
-];
+const root = {
+	path    : '/',
+	element : <RootView />,
+	children: AppRoutes
+};
+
+const routes: RouteObject[] = [ root ];
 
 const Routes = () => useRoutes(routes);
 

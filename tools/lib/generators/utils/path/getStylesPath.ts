@@ -2,7 +2,7 @@ import { cssExtensionsMap }           from '../../constants/extensions';
 import { StylePathProps, StylesType } from '../../types/common';
 
 // FIXME refactoring styleType
-export function getStylesPath({ styleType, directoryName, layer }: StylePathProps) {
+function getStylesPath({ styleType, directoryName, layer }: StylePathProps) {
 	if (!styleType) {
 		throw new Error('Style type is not defined');
 	}
@@ -16,3 +16,5 @@ export function getStylesPath({ styleType, directoryName, layer }: StylePathProp
 		? styledComponentsPath
 		: `src/${ layer }/${ directoryName }/ui/style${ cssExtensionsMap[styleType] }`;
 }
+
+export { getStylesPath };

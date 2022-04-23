@@ -6,5 +6,9 @@ type Locales<T extends Record<string, any>, L extends keyof AppLocales> = Record
 	PropertyStringPath<Pick<AppLocales, L>>
 >;
 
-export const createLocales =
-	<L extends keyof AppLocales>() => <T extends Locales<T, L>>(schema: T): Locales<T, L> => schema;
+const createLocales =
+	<L extends keyof AppLocales>() =>
+	<T extends Locales<T, L>>(schema: T): Locales<T, L> =>
+			schema;
+
+export { createLocales };

@@ -7,23 +7,22 @@ import { PatternsKey, patterns }                   from '../constants/patterns';
 import type { PatternsObject, PatternsWithArrays } from '../types/patterns';
 
 // TODO: refactoring to regexp logic
-function replacePatternByInterpolateData(
+const replacePatternByInterpolateData = (
 	data: Record<string, any>,
 	initialValue: string
-) {
-	return Object.entries(data).reduce(
+) =>
+	Object.entries(data).reduce(
 		(acc, [ key, value ]) => acc.replaceAll(`{$${ key }}`, value),
 		initialValue
 	);
-}
 
-function patternIsArray(patternsByType: any): patternsByType is PatternsWithArrays {
-	return Array.isArray(patternsByType.pattern);
-}
+const patternIsArray = (patternsByType: any): patternsByType is PatternsWithArrays =>
+	Array.isArray(patternsByType.pattern);
 
 function detectPattern(patternsByType: PatternsObject, file: string) {
 	if (patternIsArray(patternsByType)) {
-		const patternIndex = patternsByType.pattern.findIndex(pattern => file.includes(pattern)
+		const patternIndex = patternsByType.pattern.findIndex(pattern =>
+			file.includes(pattern)
 		);
 
 		return {
@@ -35,7 +34,7 @@ function detectPattern(patternsByType: PatternsObject, file: string) {
 	return patternsByType;
 }
 
-export function update(source: string, type: PatternsKey, data: Record<string, any>) {
+function update(source: string, type: PatternsKey, data: Record<string, any>) {
 	const sourcePath = ROOT_PATH + source;
 	const file       = fs.readFileSync(sourcePath, 'utf8');
 
@@ -61,3 +60,5 @@ export function update(source: string, type: PatternsKey, data: Record<string, a
 		throw new Error(`File update error ${ source }`);
 	}
 }
+
+export { update };

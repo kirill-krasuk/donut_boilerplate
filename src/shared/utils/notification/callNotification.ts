@@ -4,7 +4,7 @@ const options = {
 	icon: '/public/images/logo512x512.png'
 };
 
-export function callNotification(overrideOptions?: Record<string, any>) {
+function callNotification(overrideOptions?: Record<string, any>) {
 	const notifyTitle   = overrideOptions?.title || 'Donut notify';
 	const notifyOptions = {
 		...options,
@@ -37,3 +37,5 @@ export function callNotification(overrideOptions?: Record<string, any>) {
 		});
 	}
 }
+
+export { callNotification };

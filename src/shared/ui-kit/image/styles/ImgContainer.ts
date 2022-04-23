@@ -2,14 +2,27 @@ import styled, { css }      from 'styled-components/macro';
 
 import type { StyledProps } from '../types';
 
-export const ImgContainer = styled.img<StyledProps>`
+const getWidth = (width: StyledProps['width']) => (width
+	? `${ width }px`
+	: 'auto');
+
+const getHeight = (height: StyledProps['height']) => (height
+	? `${ height }px`
+	: 'auto');
+
+const getPosition = (isLoaded: StyledProps['isLoaded']) =>
+	(isLoaded
+		? 'static'
+		: 'absolute');
+
+const ImgContainer = styled.img<StyledProps>`
 	${ ({ width, height, isLoaded }) => css`
-		width: ${ width ? `${ width }px` : 'auto' };
-		height: ${ height ? `${ height }px` : 'auto' };
-		position: ${ isLoaded ? 'static' : 'absolute' };
+		width: ${ getWidth(width) };
+		height: ${ getHeight(height) };
+		position: ${ getPosition(isLoaded) };
 		${ !isLoaded &&
 		css`
-			zidex: -1;
+			z-idex: -1;
 			top: 0;
 			left: 0;
 		` };
@@ -19,3 +32,5 @@ export const ImgContainer = styled.img<StyledProps>`
 ImgContainer.defaultProps = {
 	isLoaded: true
 };
+
+export { ImgContainer };

@@ -1,8 +1,12 @@
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { BADGE }                    from '@geometricpanda/storybook-addon-badges';
+import {
+	withKnobs,
+	text,
+	boolean
+} from '@storybook/addon-knobs';
+import { BADGE }        from '@geometricpanda/storybook-addon-badges';
 
-import { ButtonStyles }             from './enums';
-import { Button }                   from './Button';
+import { ButtonStyles } from './enums';
+import { Button }       from './Button';
 
 export default {
 	title     : 'Design System/Atoms/Button',
@@ -33,7 +37,9 @@ const withText = (args: any) => {
 
 	return (
 		<Button { ...args } style={ ButtonStyles.Primary }>
-			{ isLoading ? 'loading...' : text('content', 'Hello') }
+			{ isLoading
+				? 'loading...'
+				: text('content', 'Hello') }
 		</Button>
 	);
 };

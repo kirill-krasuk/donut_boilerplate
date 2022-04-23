@@ -32,7 +32,9 @@ const Header: FC = () => {
 					{ themeIconFactory(mode, { onClick: handleChangeTheme }) }
 				</S.ThemeIcon>
 
-				<S.LocaleToggler onClick={ handleChangeLocale }>{ locale }</S.LocaleToggler>
+				<S.LocaleToggler onClick={ handleChangeLocale }>
+					{ locale }
+				</S.LocaleToggler>
 			</S.Nav>
 
 			<S.Content>

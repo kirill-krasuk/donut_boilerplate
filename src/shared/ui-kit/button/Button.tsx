@@ -2,17 +2,17 @@ import { ButtonSizes, ButtonStyles } from './enums';
 import * as S                        from './styles';
 
 import type { FC }                   from 'react';
-import type { Props }                from './types';
+import type { ButtonProps }          from './types';
 
 /**
  * This is Button component for donut boilerplate
  */
-export const Button: FC<Props> = props => {
+const Button: FC<ButtonProps> = props => {
 	const {
 		onClick,
 		children,
-		size = ButtonSizes.Medium,
-		style = ButtonStyles.Primary
+		size,
+		style
 	} = props;
 
 	return (
@@ -27,4 +27,5 @@ Button.defaultProps = {
 	style: ButtonStyles.Primary
 };
 
+export { Button };
 export default Button;

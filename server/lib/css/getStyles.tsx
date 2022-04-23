@@ -11,11 +11,12 @@ import { delay }              from '@server/lib/async';
 
 import type { ComponentType } from 'react';
 
-const toTags = (files: string[]) => files
-	.map(chunk => `<link href="${ paths.staticDist }${ chunk }" rel="stylesheet" />`)
-	.join('');
+const toTags = (files: string[]) =>
+	files
+		.map(chunk => `<link href="${ paths.staticDist }${ chunk }" rel="stylesheet" />`)
+		.join('');
 
-export async function getStyles(html: ComponentType | string) {
+async function getStyles(html: ComponentType | string) {
 	enableReactOptimization();
 
 	const lookup = discoverProjectStyles(paths.dist);
@@ -39,3 +40,5 @@ export async function getStyles(html: ComponentType | string) {
 		cssChunks  : toTags(getUsedStyles(markup, lookup))
 	};
 }
+
+export { getStyles };

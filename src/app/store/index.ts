@@ -8,7 +8,9 @@ import appMiddlewares  from './middlewares';
 
 const { appEnv } = env.client;
 
-const preloadedState = __IS_CLIENT__ ? (window as any).__PRELOADED_STATE__ : {};
+const preloadedState = __IS_CLIENT__
+	? (window as any).__PRELOADED_STATE__
+	: {};
 
 const store = createStore(
 	rootReducer,

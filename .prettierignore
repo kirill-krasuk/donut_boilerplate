@@ -9,3 +9,4 @@ views/**
 **/*.yml
 .yarn/*
 config/docker/*
+**/*.ejs

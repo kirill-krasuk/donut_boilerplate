@@ -4,7 +4,7 @@ import type { ServerStartOptions } from '@server/types/server';
 
 type RunServerCallback = (serverOptions: ServerStartOptions) => void;
 
-export function createUsePortHandler(
+function createUsePortHandler(
 	serverOptions: ServerStartOptions,
 	runServerCB: RunServerCallback
 ) {
@@ -20,10 +20,12 @@ export function createUsePortHandler(
 			}
 
 			runServerCB({
-				port        : p,
 				host,
+				port        : p,
 				standardPort: port
 			});
 		}
 	};
 }
+
+export { createUsePortHandler };

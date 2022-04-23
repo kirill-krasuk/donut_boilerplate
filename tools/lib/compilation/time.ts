@@ -3,7 +3,7 @@ import chalk            from 'chalk';
 
 import { MEDIUM, FAST } from '../../constants/times';
 
-export function compilationTime(time: number) {
+function compilationTime(time: number) {
 	if (time < FAST) {
 		return chalk.green(time);
 	}
@@ -19,3 +19,5 @@ export function compilationTime(time: number) {
 		return chalk.red(time);
 	}
 }
+
+export { compilationTime };

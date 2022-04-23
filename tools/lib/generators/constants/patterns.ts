@@ -52,7 +52,7 @@ const routesReplacePattern2 = `
 } as const;
 `;
 
-export const patterns = {
+const patterns = {
 	json: {
 		pattern: jsonPattern,
 		replace: replaceJSONPattern
@@ -63,4 +63,7 @@ export const patterns = {
 	}
 };
 
-export type PatternsKey = keyof typeof patterns;
+type PatternsKey = keyof typeof patterns;
+
+export type { PatternsKey };
+export { patterns };

@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { useEffect, useState, useCallback } from 'react';
+import {
+	useEffect,
+	useState,
+	useCallback
+} from 'react';
 
 const mediaSSRMock = {
 	matches       : false,
@@ -7,7 +11,10 @@ const mediaSSRMock = {
 	removeListener: () => {}
 };
 
-const getMatchedQuery = (q: string) => (__IS_CLIENT__ ? window.matchMedia(q) : mediaSSRMock);
+const getMatchedQuery = (q: string) =>
+	(__IS_CLIENT__
+		? window.matchMedia(q)
+		: mediaSSRMock);
 
 function useMedia(queries: string[], values: number[], defaultValue: number) {
 	const mediaQueryLists = queries.map(getMatchedQuery);
@@ -15,7 +22,9 @@ function useMedia(queries: string[], values: number[], defaultValue: number) {
 	const getValue = useCallback(() => {
 		const index = mediaQueryLists.findIndex(mql => mql.matches);
 
-		return typeof values[index] !== 'undefined' ? values[index] : defaultValue;
+		return typeof values[index] !== 'undefined'
+			? values[index]
+			: defaultValue;
 	}, [ defaultValue, mediaQueryLists, values ]);
 
 	const [ value, setValue ] = useState(getValue);

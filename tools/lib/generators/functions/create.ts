@@ -6,7 +6,7 @@ import chalk         from 'chalk';
 
 import { ROOT_PATH } from '../constants/rootPath';
 
-export function create(source: string, destination: string, data: Record<string, any>) {
+function create(source: string, destination: string, data: Record<string, any>) {
 	ejs.renderFile(path.resolve(__dirname, '..', source), data, (error, result) => {
 		if (error) {
 			return console.error(`Generate file error in ${ destination }:`, error);
@@ -30,3 +30,5 @@ export function create(source: string, destination: string, data: Record<string,
 		}
 	});
 }
+
+export { create };

@@ -1,6 +1,8 @@
-export const cssExtensionsMap = {
+const cssExtensionsMap = {
 	css       : '.css',
 	sass      : '.scss',
 	moduleSass: '.module.scss',
 	moduleCss : '.module.css'
 };
+
+export { cssExtensionsMap };

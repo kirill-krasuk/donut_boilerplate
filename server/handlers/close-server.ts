@@ -1,5 +1,7 @@
 import chalk from 'chalk';
 
-export const handleClose = () => {
+const handleClose = () => {
 	console.info(chalk`{black.bgBlue.bold  INFO } 🍩 Closing app 🍩`);
 };
+
+export { handleClose };

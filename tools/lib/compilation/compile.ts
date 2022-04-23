@@ -75,7 +75,9 @@ export async function compileApp(pathToConfig: string) {
 	const { default: webpackConfig, __IS_SERVER__ } = await import(pathToConfig);
 	const start                                     = Date.now();
 
-	const env = __IS_SERVER__ ? 'SERVER' : 'CLIENT';
+	const env = __IS_SERVER__
+		? 'SERVER'
+		: 'CLIENT';
 
 	const callback = createCallback(env, start);
 

@@ -1,7 +1,6 @@
-export const joinURLPath = (publicPath: string, filename: string) => {
-	if (publicPath.endsWith('/')) {
-		return `${ publicPath }${ filename }`;
-	}
+const joinURLPath = (publicPath: string, filename: string) =>
+	(publicPath.endsWith('/')
+		? `${ publicPath }${ filename }`
+		: `${ publicPath }/${ filename }`);
 
-	return `${ publicPath }/${ filename }`;
-};
+export { joinURLPath };

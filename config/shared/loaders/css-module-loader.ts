@@ -26,7 +26,7 @@ const cacheLoader = {
 
 type Props = Partial<typeof defaultProps>;
 
-export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader => {
+function cssModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 	const { enablePerf, forceStyleLoader, extraOptions } = {
 		...defaultProps,
 		...props
@@ -35,7 +35,9 @@ export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader =
 	const client = {
 		...options,
 		use: [
-			...(!isProd() && enablePerf ? [ cacheLoader ] : []),
+			...(!isProd() && enablePerf
+				? [ cacheLoader ]
+				: []),
 
 			!forceStyleLoader && {
 				loader: ExtractCssChunks.loader
@@ -79,4 +81,6 @@ export const cssModuleLoader = (props: Props = defaultProps): IsomorphicLoader =
 		client,
 		server
 	};
-};
+}
+
+export { cssModuleLoader };

@@ -7,7 +7,9 @@ import type { PropsWithChildren } from 'react';
 const Page404 = loadable<PropsWithChildren<unknown>>(
 	() => import(/* webpackChunkName: "Home" */ './ui/Page404'),
 	{
-		fallback: <div>Loading...</div>
+		fallback: <div>
+			Loading...
+		</div>
 	}
 );
 

@@ -9,7 +9,9 @@ import type { PropsWithChildren } from 'react';
 const PostsPage = loadable<PropsWithChildren<unknown>>(
 	() => import(/* webpackChunkName: "Posts" */ './ui/Posts'),
 	{
-		fallback: <div>Loading...</div>
+		fallback: <div>
+			Loading...
+		</div>
 	}
 );
 

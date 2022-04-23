@@ -6,7 +6,7 @@ import { changeTheme }           from './actions';
 
 import type { Middleware }       from '@reduxjs/toolkit';
 
-export const middleware: Middleware = () => next => action => {
+const middleware: Middleware = () => next => action => {
 	if (action.type === changeTheme.type) {
 		Cookie.set('theme', action.payload);
 
@@ -17,3 +17,5 @@ export const middleware: Middleware = () => next => action => {
 
 	return next(action);
 };
+
+export { middleware };

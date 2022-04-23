@@ -11,7 +11,7 @@ const options = {
 	test: fileExtensions.images
 };
 
-export function imageLoader(): IsomorphicLoader {
+function imageLoader(): IsomorphicLoader {
 	const baseLoader = [
 		{
 			loader : 'file-loader',
@@ -66,3 +66,5 @@ export function imageLoader(): IsomorphicLoader {
 		server
 	};
 }
+
+export { imageLoader };

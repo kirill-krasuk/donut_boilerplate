@@ -14,6 +14,4 @@ type Patterns = {
 	[key: string]: PatternsObject
 };
 
-export type {
-	Patterns, PatternsObject, PatternsWithArrays, PatternsWithStrings
-};
+export type { Patterns, PatternsObject, PatternsWithArrays, PatternsWithStrings };

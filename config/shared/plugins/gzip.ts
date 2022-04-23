@@ -5,7 +5,7 @@ import { fileExtensions } from '../constants/files';
 
 import type webpack       from 'webpack';
 
-export function gzipPlugins() {
+function gzipPlugins() {
 	return [
 		new CompressionPlugin({
 			filename: '[file].gz[query]',
@@ -19,3 +19,5 @@ export function gzipPlugins() {
 		})
 	] as webpack.WebpackPluginInstance[];
 }
+
+export { gzipPlugins };

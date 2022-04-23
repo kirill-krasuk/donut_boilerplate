@@ -31,7 +31,9 @@ export class ErrorBoundary extends Component<Props, State> {
 		const { children } = this.props;
 
 		if (hasError) {
-			return <div>Oops, something goes wrong</div>;
+			return <div>
+				Oops, something goes wrong
+			</div>;
 		}
 
 		return children;

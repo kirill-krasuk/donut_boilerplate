@@ -1,9 +1,13 @@
-import { Schema, SchemaConfig, UpdateFileType } from '../types/schema';
-import { camelToKebab }                         from '../../../../src/shared/lib/string';
-import { getLocalesSchema, getStyleSchema }     from '../utils/schemas';
-import { getSchemaFragment }                    from '../utils/schemas/getSchemaFragment';
+import { camelToKebab } from '../../../../src/shared/lib/string';
+import {
+	Schema,
+	SchemaConfig,
+	UpdateFileType
+} from '../types/schema';
+import { getLocalesSchema, getStyleSchema } from '../utils/schemas';
+import { getSchemaFragment }                from '../utils/schemas/getSchemaFragment';
 
-import type { Layer, StylesType }               from '../types/common';
+import type { Layer, StylesType }           from '../types/common';
 
 type SchemaProps = {
 	name: string,
@@ -13,9 +17,13 @@ type SchemaProps = {
 	isNeedLazy: boolean
 };
 
-export const generateSchema = (props: SchemaProps): Schema => {
+const generateSchema = (props: SchemaProps): Schema => {
 	const {
-		name, styleType, layer, isNeedLocales, isNeedLazy
+		name,
+		styleType,
+		layer,
+		isNeedLocales,
+		isNeedLazy
 	} = props;
 
 	const directoryName = camelToKebab(name);
@@ -57,3 +65,5 @@ export const generateSchema = (props: SchemaProps): Schema => {
 
 	return schema[layer];
 };
+
+export { generateSchema };

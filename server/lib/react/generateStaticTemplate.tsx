@@ -1,18 +1,20 @@
-import { ServerStyleSheet }                        from 'styled-components/macro';
-import { Helmet }                                  from 'react-helmet';
-import { renderToString }                          from 'react-dom/server';
+import { ServerStyleSheet }                                   from 'styled-components/macro';
+import { Helmet }                                             from 'react-helmet';
+import { renderToString }                                     from 'react-dom/server';
 
-import { getStyles }                               from '@server/lib/css';
+import { getStyles }                                          from '@server/lib/css';
 
-import type { StaticTemplate, OptionsForGenerate } from './types';
+import type { StaticTemplate, OptionsForGenerate as Options } from './types';
 
-export async function generateStaticTemplate({
-	Component,
-	store,
-	extractor,
-	props,
-	mode
-}: OptionsForGenerate): Promise<StaticTemplate> {
+async function generateStaticTemplate(options: Options): Promise<StaticTemplate> {
+	const {
+		Component,
+		store,
+		extractor,
+		props,
+		mode
+	} = options;
+
 	const sheet = new ServerStyleSheet();
 
 	const { title, meta } = Helmet.renderStatic();
@@ -35,3 +37,5 @@ export async function generateStaticTemplate({
 		meta
 	};
 }
+
+export { generateStaticTemplate };

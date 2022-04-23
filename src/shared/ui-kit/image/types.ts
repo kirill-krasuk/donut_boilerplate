@@ -39,6 +39,4 @@ type ProgressiveImageProps = PropsWithChildren<
 
 type PictureProps = PropsWithChildren<Pick<Props, 'src' | 'webp'>>;
 
-export type {
-	StyledProps, Props, ProgressiveImageProps, PictureProps
-};
+export type { StyledProps, Props, ProgressiveImageProps, PictureProps };

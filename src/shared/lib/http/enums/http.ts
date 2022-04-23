@@ -12,14 +12,14 @@ enum StatusCode {
 	S501 = 'Not Implemented',
 	S502 = 'Bad Gateway',
 	S503 = 'Service Unavailable',
-	S504 = 'Gateway Timeout',
+	S504 = 'Gateway Timeout'
 }
 
 enum HTTPMethod {
 	Get = 'GET',
 	Post = 'POST',
 	Put = 'PUT',
-	Delete = 'DELETE',
+	Delete = 'DELETE'
 }
 
 export { StatusCode, HTTPMethod };

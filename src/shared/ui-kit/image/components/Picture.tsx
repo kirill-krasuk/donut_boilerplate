@@ -1,7 +1,7 @@
 import {
-	FC,
 	Children,
 	cloneElement,
+	FC,
 	isValidElement
 } from 'react';
 
@@ -9,7 +9,7 @@ import { replaceExtension }  from '@utils/file';
 
 import type { PictureProps } from '../types';
 
-export const Picture: FC<PictureProps> = props => {
+const Picture: FC<PictureProps> = props => {
 	const { webp, src, children } = props;
 
 	return (
@@ -27,3 +27,5 @@ export const Picture: FC<PictureProps> = props => {
 		</picture>
 	);
 };
+
+export { Picture };

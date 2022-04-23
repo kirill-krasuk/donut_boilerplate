@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 
-export type Props = {
+type ModalProps = {
 	children: ReactNode,
 	onClose?(): void,
 	title?: string
 };
+
+export type { ModalProps };

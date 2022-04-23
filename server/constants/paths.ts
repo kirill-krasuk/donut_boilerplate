@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-export const paths = {
+const paths = {
 	root         : path.resolve('public/root'),
 	dist         : path.resolve('dist'),
 	public       : path.resolve('public'),
@@ -13,3 +13,5 @@ export const paths = {
 	favicon   : path.resolve('public/images/favicon.ico'),
 	staticDist: '/dist/'
 } as const;
+
+export { paths };

@@ -1,21 +1,28 @@
-import { create }                                from './create';
-import { update }                                from './update';
+import { create } from './create';
+import { update } from './update';
 
-import type { CreateTuple, Schema, UpdateTuple } from '../types/schema';
+import type {
+	CreateTuple,
+	Schema,
+	UpdateTuple
+} from '../types/schema';
 
 type Data = Record<string, any>;
 
-function isArrayOfTuples(value: any): value is [string, string][] {
-	return Array.isArray(value[0]);
-}
+const isArrayOfTuples = (value: any): value is [string, string][] =>
+	Array.isArray(value[0]);
 
 const createCallback =
-	(data: Data) => ([ destination, template ]: CreateTuple) => create(template, destination, data);
+	(data: Data) =>
+		([ destination, template ]: CreateTuple) =>
+			create(template, destination, data);
 
 const updateCallback =
-	(data: Data) => ([ source, fileType ]: UpdateTuple) => update(source, fileType, data);
+	(data: Data) =>
+		([ source, fileType ]: UpdateTuple) =>
+			update(source, fileType, data);
 
-export function generate(schema: Schema, data: Data) {
+function generate(schema: Schema, data: Data) {
 	Object.values(schema).forEach(type => {
 		if (type.create) {
 			if (isArrayOfTuples(type.create)) {
@@ -38,3 +45,5 @@ export function generate(schema: Schema, data: Data) {
 		}
 	});
 }
+
+export { generate };

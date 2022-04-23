@@ -4,14 +4,13 @@ import * as log4js                from 'log4js';
 
 import type { Request, Response } from 'express';
 
-export function handleClientError(req: Request, res: Response): void {
+function handleClientError(req: Request, res: Response): void {
+	const logger       = log4js.getLogger();
 	const logDirectory = path.resolve('../../logs');
 
 	if (!fs.existsSync(logDirectory)) {
 		fs.mkdirSync(logDirectory);
 	}
-
-	const logger = log4js.getLogger();
 
 	log4js.configure({
 		appenders: {
@@ -29,10 +28,11 @@ export function handleClientError(req: Request, res: Response): void {
 	});
 
 	const { stack } = req.body;
-
-	const error = stack.join('\n');
+	const error     = stack.join('\n');
 
 	logger.error(error);
 
 	res.sendStatus(200);
 }
+
+export { handleClientError };

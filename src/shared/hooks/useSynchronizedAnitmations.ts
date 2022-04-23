@@ -2,14 +2,15 @@ import { useRef, useLayoutEffect } from 'react';
 
 let cachedTime: number | null;
 
-export function useSynchronizedAnimations(animationName: string) {
+function useSynchronizedAnimations(animationName: string) {
 	const ref = useRef();
 
 	useLayoutEffect(() => {
 		const animations = document
 			.getAnimations()
 			.filter(
-				(animation: Record<string, any>) => animation.animationName === animationName
+				(animation: Record<string, any>) =>
+					animation.animationName === animationName
 			);
 
 		const firstOfTypeAnimation = animations.find(
@@ -35,3 +36,5 @@ export function useSynchronizedAnimations(animationName: string) {
 
 	return ref;
 }
+
+export { useSynchronizedAnimations };

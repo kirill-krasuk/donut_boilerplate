@@ -1,14 +1,20 @@
 import { FC, useState }              from 'react';
 
-import { imageConfig }               from './config';
 import { Picture, ProgressiveImage } from './components';
+import { imageConfig }               from './config';
 import * as S                        from './styles';
 
 import type { Props }                from './types';
 
-export const Image: FC<React.PropsWithChildren<Props>> = props => {
+const Image: FC<React.PropsWithChildren<Props>> = props => {
 	const {
-		src, webp, alt, width, height, loadingWidth, progressive
+		src,
+		webp,
+		alt,
+		width,
+		height,
+		loadingWidth,
+		progressive
 	} = props;
 
 	const [ isLoaded, setIsLoaded ] = useState(false);
@@ -54,4 +60,5 @@ Image.defaultProps = {
 	loadingWidth: imageConfig.loadingWidth
 };
 
+export { Image };
 export default Image;

@@ -6,4 +6,6 @@ import type { Selector }   from '@lib/redux';
 
 const selectTheme: Selector<ThemeState> = R.prop('theme');
 
-export const getMode = createSelector([ selectTheme ], R.prop('mode'));
+const getMode = createSelector([ selectTheme ], R.prop('mode'));
+
+export { getMode };

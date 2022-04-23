@@ -4,12 +4,12 @@ import type { MouseEventHandler }         from 'react';
 import type { ButtonSizes, ButtonStyles } from '../enums';
 
 type Props = {
-	size: ButtonSizes,
-	cStyle: ButtonStyles,
+	size?: ButtonSizes,
+	cStyle?: ButtonStyles,
 	onClick?: MouseEventHandler<HTMLButtonElement>
 };
 
-export const Wrapper = styled.button<Props>`
+const Wrapper = styled.button<Props>`
 	${ ({ size, cStyle }) => css`
 		height: ${ size };
 		color: var(--${ cStyle });
@@ -24,3 +24,5 @@ export const Wrapper = styled.button<Props>`
 		}
 	` }
 `;
+
+export { Wrapper };

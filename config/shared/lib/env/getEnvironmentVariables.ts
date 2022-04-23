@@ -16,7 +16,9 @@ function getEnvironmentVariables() {
 
 		return {
 			...acc,
-			[curr]: envVariable ? `"${ envVariable }"` : null
+			[curr]: envVariable
+				? `"${ envVariable }"`
+				: null
 		};
 	}, {});
 }

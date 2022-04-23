@@ -72,20 +72,21 @@ export class AssetsManifestPlugin {
 	apply(compiler: webpack.Compiler) {
 		this.compiler = compiler;
 
-		compiler.hooks.make.tap(AssetsManifestPlugin.name, compilation => compilation.hooks.processAssets.tap(
-			{
-				name : AssetsManifestPlugin.name,
-				stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS
-			},
-			() => {
-				const asset = this.emitAsset(compilation);
+		compiler.hooks.make.tap(AssetsManifestPlugin.name, compilation =>
+			compilation.hooks.processAssets.tap(
+				{
+					name : AssetsManifestPlugin.name,
+					stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS
+				},
+				() => {
+					const asset = this.emitAsset(compilation);
 
-				if (asset) {
-					// @ts-expect-error
-					compilation.emitAsset(this.options.filename, asset);
+					if (asset) {
+						// @ts-expect-error
+						compilation.emitAsset(this.options.filename, asset);
+					}
 				}
-			}
-		)
+			)
 		);
 	}
 }

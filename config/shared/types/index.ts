@@ -1,6 +1,8 @@
 import type webpack from 'webpack';
 
-export type IsomorphicLoader = {
+type IsomorphicLoader = {
 	client: webpack.RuleSetRule,
 	server: webpack.RuleSetRule
 };
+
+export type { IsomorphicLoader };

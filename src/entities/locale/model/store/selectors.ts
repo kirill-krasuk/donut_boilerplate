@@ -6,4 +6,6 @@ import type { Locale }    from '../../types/enums';
 
 const selectProp: Selector<Locale> = R.prop('locale');
 
-export const getLocale = createSelector(selectProp, state => state);
+const getLocale = createSelector(selectProp, state => state);
+
+export { getLocale };

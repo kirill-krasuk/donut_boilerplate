@@ -3,7 +3,7 @@ import TerserPlugin            from 'terser-webpack-plugin';
 
 import type webpack            from 'webpack';
 
-export function minimizerPlugins(): webpack.WebpackPluginInstance[] {
+function minimizerPlugins(): webpack.WebpackPluginInstance[] {
 	return [
 		new TerserPlugin({
 			parallel     : true,
@@ -20,3 +20,5 @@ export function minimizerPlugins(): webpack.WebpackPluginInstance[] {
 		new OptimizeCssAssetsPlugin()
 	];
 }
+
+export { minimizerPlugins };

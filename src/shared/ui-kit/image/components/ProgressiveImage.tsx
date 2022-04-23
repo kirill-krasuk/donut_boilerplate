@@ -4,12 +4,21 @@ import { Picture }                    from './Picture';
 import type { FC }                    from 'react';
 import type { ProgressiveImageProps } from '../types';
 
-export const ProgressiveImage: FC<ProgressiveImageProps> = props => {
+const ProgressiveImage: FC<ProgressiveImageProps> = props => {
 	const {
-		width, height, src, loadingWidth, isLoaded, webp, alt, handleLoad
+		width,
+		height,
+		src,
+		loadingWidth,
+		isLoaded,
+		webp,
+		alt,
+		handleLoad
 	} = props;
 
-	const source = width ? `${ src }?resize=${ width }` : src;
+	const source = width
+		? `${ src }?resize=${ width }`
+		: src;
 
 	const thumbSource = `${ src }?resize=${ loadingWidth }`;
 
@@ -33,3 +42,5 @@ export const ProgressiveImage: FC<ProgressiveImageProps> = props => {
 		</>
 	);
 };
+
+export { ProgressiveImage };

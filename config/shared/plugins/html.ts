@@ -8,7 +8,7 @@ import { paths }                       from '../constants/paths';
 
 import type webpack                    from 'webpack';
 
-export function htmlPlugins(): webpack.WebpackPluginInstance[] {
+function htmlPlugins(): webpack.WebpackPluginInstance[] {
 	return [
 		new HtmlWebpackSkipAssetsPlugin(), // for excludeAssets
 		new HtmlWebpackPlugin({
@@ -30,3 +30,5 @@ export function htmlPlugins(): webpack.WebpackPluginInstance[] {
 		})
 	];
 }
+
+export { htmlPlugins };

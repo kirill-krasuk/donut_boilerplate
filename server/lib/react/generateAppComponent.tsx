@@ -10,12 +10,14 @@ import { LocalesProvider }         from '@app/providers/with-locales';
 
 import type { GenerateAppOptions } from './types';
 
-export function generateAppComponent({
-	store,
-	context,
-	location,
-	extractor
-}: GenerateAppOptions) {
+function generateAppComponent(options: GenerateAppOptions) {
+	const {
+		store,
+		context,
+		location,
+		extractor
+	} = options;
+
 	return (): JSX.Element => (
 		<Provider store={ store }>
 			<StaticRouter location={ location }>
@@ -36,3 +38,5 @@ export function generateAppComponent({
 		</Provider>
 	);
 }
+
+export { generateAppComponent };

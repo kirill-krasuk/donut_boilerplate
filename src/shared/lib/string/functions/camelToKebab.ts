@@ -1,9 +1,8 @@
 import R                from 'ramda';
 
-import { snakeToKebab } from './snakeToKebab';
 import { camelToSnake } from './camelToSnake';
+import { snakeToKebab } from './snakeToKebab';
 
-export const camelToKebab: (str: string) => string = R.compose(
-	snakeToKebab,
-	camelToSnake
-);
+const camelToKebab: (str: string) => string = R.compose(snakeToKebab, camelToSnake);
+
+export { camelToKebab };

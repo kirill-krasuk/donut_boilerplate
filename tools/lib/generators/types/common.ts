@@ -1,5 +1,5 @@
 enum Layer {
-	Pages = 'pages',
+	Pages = 'pages'
 }
 
 enum StylesType {
@@ -7,13 +7,14 @@ enum StylesType {
 	SASS = 'sass',
 	Styled = 'styled',
 	ModuleCSS = 'moduleCss',
-	ModuleSASS = 'moduleSass',
+	ModuleSASS = 'moduleSass'
 }
 
-export type StylePathProps = {
+type StylePathProps = {
 	styleType?: StylesType,
 	directoryName: string,
 	layer: Layer
 };
 
+export type { StylePathProps };
 export { Layer, StylesType };

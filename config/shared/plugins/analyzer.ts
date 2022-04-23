@@ -2,8 +2,10 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const isBuildAnalyzer = JSON.parse(process.env.BUILD_ANALYZE as any);
 
-export function analyzerPlugin(mode: 'development' | 'none' | 'production') {
-	const _mode = mode === 'none' ? 'development' : mode;
+function analyzerPlugin(mode: 'development' | 'none' | 'production') {
+	const _mode = mode === 'none'
+		? 'development'
+		: mode;
 
 	const options: any = {
 		development: {
@@ -25,3 +27,5 @@ export function analyzerPlugin(mode: 'development' | 'none' | 'production') {
 
 	return null;
 }
+
+export { analyzerPlugin };

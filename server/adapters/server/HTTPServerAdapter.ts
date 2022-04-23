@@ -6,9 +6,9 @@ import type { Server }                       from 'node:http';
 import type {
 	ErrorHandler,
 	RequestHandler,
+	ServerAdapter,
 	StaticFilesOptions,
-	ViewTemplateOptions,
-	ServerAdapter
+	ViewTemplateOptions
 } from './types';
 
 export abstract class HTTPServerAdapter<Request = any, Response = any>
@@ -69,7 +69,9 @@ implements ServerAdapter<Request, Response> {
 			return;
 		}
 
-		options.compression ? this.staticCompression(options) : this.static(options);
+		options.compression
+			? this.staticCompression(options)
+			: this.static(options);
 	}
 
 	public registerMiddlewares(middleware: Function): void;

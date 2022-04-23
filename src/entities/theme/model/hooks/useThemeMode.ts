@@ -7,7 +7,7 @@ import * as actions    from '../store/actions';
 import { getMode }     from '../store/selectors';
 import { toggleTheme } from '../../lib/toggleTheme';
 
-export function useThemeMode() {
+function useThemeMode() {
 	const { changeTheme } = useActions(actions);
 
 	const mode = useSelector(getMode);
@@ -21,3 +21,5 @@ export function useThemeMode() {
 		handleChangeTheme
 	};
 }
+
+export { useThemeMode };

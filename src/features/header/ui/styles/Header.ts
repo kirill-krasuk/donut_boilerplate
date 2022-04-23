@@ -1,13 +1,13 @@
 import styled from 'styled-components/macro';
 
-export const Header = styled.header`
+const Header = styled.header`
 	position: relative;
 	display: flex;
 	justify-content: center;
 	width: 100%;
 	background: var(--header-background);
 
-	&:before {
+	&::before {
 		position: absolute;
 		bottom: 0;
 		z-index: 10;
@@ -17,3 +17,5 @@ export const Header = styled.header`
 		content: '';
 	}
 `;
+
+export { Header };

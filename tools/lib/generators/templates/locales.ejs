@@ -1,8 +1,10 @@
 import { createLocales } from '@lib/locales';
 
-export const locales = createLocales<'<%= name %>'>()({
+const locales = createLocales<'<%= name %>'>()({
     /**
      * write a map of translations here.
      * locales see in "src/shared/config/[lang].json"
      */
 });
+
+export { locales };

@@ -9,7 +9,9 @@ const getInitialPropsFromDOM = () => {
 };
 
 function getInitialProps(serverContext?: Context) {
-	return __IS_CLIENT__ ? getInitialPropsFromDOM() : serverContext?.initialProps;
+	return __IS_CLIENT__
+		? getInitialPropsFromDOM()
+		: serverContext?.initialProps;
 }
 
 export { getInitialProps };

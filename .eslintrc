@@ -60,7 +60,6 @@
 		"plugin:sonarjs/recommended",
 		"plugin:boundaries/recommended",
 		"plugin:unicorn/recommended"
-		// "prettier"
 	],
 	"plugins": [
 		"arca",
@@ -72,14 +71,15 @@
 		"ramda",
 		"sonarjs",
 		"boundaries",
-		"prettier",
-		"import-newlines"
+		"import-newlines",
+		"newline-destructuring"
 	],
 	"rules": {
+		"newline-destructuring/newline": [2, { "items": 3, "maxLength": 80 }],
 		"import-newlines/enforce": [
 			2,
 			{
-				"items": 3,
+				"items": 2,
 				"max-len": 100,
 				"semi": false
 			}
@@ -226,6 +226,8 @@
 				"newlines-between": "always"
 			}
 		],
+		"multiline-ternary": [2, "always"],
+		"prefer-arrow-callback": 2,
 		"import/group-exports": 2,
 		"default-param-last": 0,
 		"no-sequences": 0,
@@ -254,6 +256,7 @@
 		"class-methods-use-this": 0,
 		"react/destructuring-assignment": [2, "always"],
 		"react/react-in-jsx-scope": 0,
+		"react/jsx-one-expression-per-line": 2,
 		"react/jsx-indent": [2, "tab"],
 		"react/jsx-curly-newline": [
 			2,
@@ -307,17 +310,18 @@
 				"ignoredNodes": ["TemplateLiteral > *"]
 			}
 		],
+		"implicit-arrow-linebreak": 0,
 		"consistent-return": 0,
 		"comma-dangle": [2, "never"],
 		"template-curly-spacing": [2, "always"],
 		"object-curly-spacing": [2, "always"],
-		"array-bracket-spacing": [2, "always"],
-		"object-property-newline": [
+		"object-curly-newline": [
 			2,
 			{
-				"allowAllPropertiesOnSameLine": false
+				"ObjectExpression": { "consistent": true }
 			}
 		],
+		"array-bracket-spacing": [2, "always"],
 		"no-multi-spaces": 0,
 		"one-var": 0,
 		"func-names": 0,
@@ -454,7 +458,10 @@
 				"jest/prefer-comparison-matcher": 2,
 				"jest/prefer-called-with": 2,
 				"jest/prefer-equality-matcher": 2,
-				"jest/prefer-expect-assertions": [2, { "onlyFunctionsWithAsyncKeyword": true }],
+				"jest/prefer-expect-assertions": [
+					2,
+					{ "onlyFunctionsWithAsyncKeyword": true }
+				],
 				"jest/prefer-expect-resolves": 2,
 				"jest/prefer-spy-on": 2,
 				"jest/prefer-strict-equal": 2,

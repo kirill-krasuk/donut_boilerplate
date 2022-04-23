@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Content = styled.div`
+const Content = styled.div`
 	position: relative;
 	z-index: 2;
 	display: flex;
@@ -9,3 +9,5 @@ export const Content = styled.div`
 	justify-content: center;
 	height: inherit;
 `;
+
+export { Content };

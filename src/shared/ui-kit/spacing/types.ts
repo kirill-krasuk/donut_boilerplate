@@ -1,6 +1,8 @@
 import type { Space } from '@lib/styles';
 
-export type Props = {
+type SpacingProps = {
 	padding?: Space,
 	margin?: Space
 };
+
+export type { SpacingProps };

@@ -16,11 +16,7 @@ const redirectIFStatusExist = (
 	return res.redirect(context.status as number, context.to!);
 };
 
-export function renderTemplate(
-	res: Response,
-	context: Context,
-	template: StaticTemplate
-): void {
+function renderTemplate(res: Response, context: Context, template: StaticTemplate): void {
 	if (context.to) {
 		redirectIFStatusExist(res, context, template);
 
@@ -29,3 +25,5 @@ export function renderTemplate(
 
 	return res.render('index.pug', template);
 }
+
+export { renderTemplate };

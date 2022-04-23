@@ -4,8 +4,10 @@ import { locales }       from '../config/locales';
 
 import type { FC }       from 'react';
 
-export const CodePath: FC = () => (
+const CodePath: FC = () => (
 	<code>
 		<T.Text id={ locales.path } />
 	</code>
 );
+
+export { CodePath };

@@ -21,21 +21,21 @@ function generateEndOfObjectPattern() {
  * _________
  *
  *
- *  },
- *  key: {
- *     subKey: value(,)?
- *  }(,)?
- *}( as const)?(;)?
+ * 1.  },
+ * 2.  key: {
+ * 3.     subKey: value(,)?
+ * 4.  }(,)?
+ * 5.}( as const)?(;)?
  *
  */
 function generateObjectReplacePattern(key: string, subKey: string, value: string) {
 	return new RegExp(
 		[
-			String.raw`^\n\s{2,4}},\n`, // },
-			String.raw`\s{2,4}(?:"{\$${ key }}"|{\$${ key }}):\s{\n`, //    key: {
-			String.raw`\s{4,8}${ subKey }:\s(?:${ value }|(["'])\/{\$${ value }}\1),?\n`, //        subKey: value(,)?
-			String.raw`\s{2,4}},?\n`, //    }(,)?
-			String.raw`};?(\sas\sconst;)?\n$` // }( as const)(;)?
+			String.raw`^\n\s{2,4}},\n`, // (1),
+			String.raw`\s{2,4}(?:"{\$${ key }}"|{\$${ key }}):\s{\n`, // (2)
+			String.raw`\s{4,8}${ subKey }:\s(?:${ value }|(["'])\/{\$${ value }}\1),?\n`, // (3)
+			String.raw`\s{2,4}},?\n`, // (4)
+			String.raw`};?(\sas\sconst;)?\n$` // (5)
 		].join('')
 	);
 }

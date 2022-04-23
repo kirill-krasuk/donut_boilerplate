@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Nav = styled.div`
+const Nav = styled.div`
 	position: absolute;
 	top: left;
 	z-index: 20;
@@ -9,3 +9,5 @@ export const Nav = styled.div`
 	width: 100%;
 	padding: 20px;
 `;
+
+export { Nav };

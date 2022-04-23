@@ -32,13 +32,14 @@ function animationState({ state }: AnimationProps) {
 	}
 }
 
-export const AnimationContainer = styled.section<AnimationProps>`
+const AnimationContainer = styled.section<AnimationProps>`
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	min-height: 100vh;
 	background-color: var(--background);
-
 	${ animationState }
 `;
+
+export { AnimationContainer };

@@ -5,7 +5,7 @@ type CreateTemplate = string;
 
 enum UpdateFileType {
 	JSON = 'json',
-	Routes = 'routes',
+	Routes = 'routes'
 }
 
 type UpdateSource = string;

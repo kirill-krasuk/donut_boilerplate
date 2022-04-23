@@ -1,1 +1,3 @@
-export const ROOT_PATH = `${ process.cwd() }/`;
+const ROOT_PATH = `${ process.cwd() }/`;
+
+export { ROOT_PATH };

@@ -1,3 +1,5 @@
-export const imageConfig = {
+const imageConfig = {
 	loadingWidth: 100
 };
+
+export { imageConfig };

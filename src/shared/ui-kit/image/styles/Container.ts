@@ -2,10 +2,20 @@ import styled, { css }      from 'styled-components/macro';
 
 import type { StyledProps } from '../types';
 
-export const Container = styled.div<StyledProps>`
+const getWidth = (width: StyledProps['width']) => (width
+	? `${ width }px`
+	: 'auto');
+
+const getHeight = (height: StyledProps['height']) => (height
+	? `${ height }px`
+	: 'auto');
+
+const Container = styled.div<StyledProps>`
 	${ ({ width, height }) => css`
-		width: ${ width ? `${ width }px` : 'auto' };
-		height: ${ height ? `${ height }px` : 'auto' };
+		width: ${ getWidth(width) };
+		height: ${ getHeight(height) };
 		position: relative;
 	` }
 `;
+
+export { Container };

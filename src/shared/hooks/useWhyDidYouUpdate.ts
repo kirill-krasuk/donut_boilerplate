@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prefer-object-from-entries */
 import { useEffect, useRef } from 'react';
 
-export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
+function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
 	const previousProps = useRef<Record<string, any>>();
 
 	useEffect(() => {
@@ -38,3 +38,5 @@ export function useWhyDidYouUpdate(name: string, props: Record<string, any>) {
 		previousProps.current = props;
 	});
 }
+
+export { useWhyDidYouUpdate };

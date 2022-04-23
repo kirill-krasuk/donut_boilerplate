@@ -1,13 +1,15 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css }   from 'styled-components/macro';
 
-import { getSpacing }  from '@lib/styles';
+import { getSpacing }    from '@lib/styles';
 
-import type { Props }  from './types';
+import type { RowProps } from './types';
 
-export const Row = styled.div<Props>`
+const Row = styled.div<RowProps>`
 	${ ({ padding, margin }) => css`
 		display: flex;
 		padding: ${ getSpacing(padding) };
 		margin: ${ getSpacing(margin) };
 	` }
 `;
+
+export { Row };

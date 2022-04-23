@@ -5,7 +5,9 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, <V>(value: V) => 
 		try {
 			const item = window.localStorage.getItem(key);
 
-			return item ? JSON.parse(item) : initialValue;
+			return item
+				? JSON.parse(item)
+				: initialValue;
 		} catch {
 			return initialValue;
 		}
@@ -13,7 +15,9 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, <V>(value: V) => 
 
 	const setValue = <T>(value: T) => {
 		try {
-			const valueToStore = value instanceof Function ? value(storedValue) : value;
+			const valueToStore = value instanceof Function
+				? value(storedValue)
+				: value;
 
 			setStoredValue(valueToStore);
 

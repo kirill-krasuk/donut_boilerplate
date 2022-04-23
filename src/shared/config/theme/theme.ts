@@ -38,6 +38,4 @@ const lightValues = ({ theme }: AppTheme) => css`
 	--icon: ${ theme.colors.white[0] };
 `;
 
-export {
-	theme, commonValues, darkValues, lightValues
-};
+export { theme, commonValues, darkValues, lightValues };

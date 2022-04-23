@@ -1,4 +1,4 @@
-/** 
+/**
     this is example styles, by default
     this styles uses in GlobalStyles components
     cause app styled-components oriented.
@@ -8,22 +8,18 @@
 .light {
 	--primary: #e84393;
 	--secondary: #191d3a;
-
-	--background: #ffffff;
+	--background: #fff;
 	--header-background: #ff3f84;
-
 	--text: #191d3a;
-	--icon: #ffffff;
+	--icon: #fff;
 }
 
 .dark {
 	--primary: #191d3a;
 	--secondary: #e84393;
-
 	--background: #191d3a;
 	--header-background: #191d3a;
-
-	--text: #ffffff;
+	--text: #fff;
 	--icon: #e84393;
 }
 
@@ -32,13 +28,13 @@
 	--gray-0: #e5e5e5;
 	--pink-0: #e84393;
 	--pink-1: #ff3f84;
-	--white-0: #ffffff;
+	--white-0: #fff;
 }
 
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: Montserrat, sans-serif;
 	transition: background-color 0.5s, color 0.5s ease;
 }
 

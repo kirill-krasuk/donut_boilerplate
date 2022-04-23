@@ -1,7 +1,7 @@
 import { paths }           from '@server/constants/paths';
 import { ONE_MONTH_CACHE } from '@server/constants/cache';
 
-export const staticFiles = [
+const staticFiles = [
 	{
 		publicPath : '/dist',
 		source     : paths.dist,
@@ -42,3 +42,5 @@ export const staticFiles = [
 		source    : paths.root
 	}
 ];
+
+export { staticFiles };

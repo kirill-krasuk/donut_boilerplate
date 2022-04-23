@@ -17,11 +17,12 @@ async function createServerRunnerPromise(
 		port++;
 	}
 
-	appInstance.listen(port, host, () => appOutput({
-		host,
-		standardPort: standardPort.toString(),
-		port        : port.toString()
-	})
+	appInstance.listen(port, host, () =>
+		appOutput({
+			host,
+			standardPort: standardPort.toString(),
+			port        : port.toString()
+		})
 	);
 }
 
@@ -30,11 +31,12 @@ function createServerRunner(appInstance: Express) {
 		const { host, port, standardPort } = serverParameters;
 
 		// eslint-disable-next-line sonarjs/no-identical-functions
-		return appInstance.listen(+port, host, () => appOutput({
-			host,
-			standardPort: standardPort?.toString(),
-			port        : port.toString()
-		})
+		return appInstance.listen(+port, host, () =>
+			appOutput({
+				host,
+				standardPort: standardPort?.toString(),
+				port        : port.toString()
+			})
 		);
 	};
 }

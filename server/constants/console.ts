@@ -1,4 +1,4 @@
-export const consoleAttributes = {
+const consoleAttributes = {
 	Reset     : '\u001B[0m',
 	Bright    : '\u001B[1m',
 	Dim       : '\u001B[2m',
@@ -25,3 +25,5 @@ export const consoleAttributes = {
 	BgCyan   : '\u001B[46m',
 	BgWhite  : '\u001B[47m'
 } as const;
+
+export { consoleAttributes };

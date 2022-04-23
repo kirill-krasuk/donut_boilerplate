@@ -23,6 +23,4 @@ type RequestBody =
 
 type UrlORRequest = RequestExtended | string;
 
-export type {
-	RequestExtended, DefaultHeaders, RequestBody, UrlORRequest
-};
+export type { RequestExtended, DefaultHeaders, RequestBody, UrlORRequest };

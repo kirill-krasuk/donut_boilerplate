@@ -7,7 +7,7 @@ import * as actions     from '../store/actions';
 import { getLocale }    from '../store/selectors';
 import { toggleLocale } from '../../lib/toggleLocale';
 
-export function useLocale() {
+function useLocale() {
 	const { changeLocale } = useActions(actions);
 
 	const locale = useSelector(getLocale);
@@ -21,3 +21,5 @@ export function useLocale() {
 		handleChangeLocale
 	};
 }
+
+export { useLocale };

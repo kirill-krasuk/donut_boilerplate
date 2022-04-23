@@ -1,8 +1,10 @@
 import loadable from '@loadable/component';
 
-export const <%= name %> = loadable(
+const <%= name %> = loadable(
     () => import(/* webpackChunkName: <%= name %> */'./<%= name %>),
     {
         fallback: <div>Loading...</div>
     }
 );
+
+export { <%= name %> }

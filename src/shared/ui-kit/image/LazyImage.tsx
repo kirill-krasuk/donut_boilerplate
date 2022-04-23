@@ -1,4 +1,8 @@
-import { FC, useRef, useState }   from 'react';
+import {
+	FC,
+	useRef,
+	useState
+} from 'react';
 
 import { createIntersectionHook } from '@shared/hooks';
 
@@ -12,7 +16,7 @@ const { useIntersection } = createIntersectionHook({
 	threshold : 0
 });
 
-export const LazyImage: FC<Props> = props => {
+const LazyImage: FC<Props> = props => {
 	const { width } = props;
 
 	const [ isVisible, setIsVisible ] = useState(false);
@@ -34,4 +38,5 @@ export const LazyImage: FC<Props> = props => {
 	);
 };
 
+export { LazyImage };
 export default LazyImage;

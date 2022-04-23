@@ -11,19 +11,27 @@ const PostsPage: FC = () => {
 
 	return (
 		<div>
-			{ posts ? (
-				<div style={ { color: 'white' } }>
-					{ posts.map(post => (
-						<div key={ post.id }>
-							<span>{ `${ post.id })` } </span>
+			{ posts
+				? (
+					<div style={ { color: 'white' } }>
+						{ posts.map(post => (
+							<div key={ post.id }>
+								<span>
+									{ `${ post.id })` }
 
-							<span>{ post.title }</span>
-						</div>
-					)) }
-				</div>
-			) : (
-				'loading'
-			) }
+									{ ' ' }
+								</span>
+
+								<span>
+									{ post.title }
+								</span>
+							</div>
+						)) }
+					</div>
+				)
+				: (
+					'loading'
+				) }
 		</div>
 	);
 };

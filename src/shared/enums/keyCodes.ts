@@ -110,5 +110,5 @@ export enum KeyCodes {
 	Digit7 = 'Digit7',
 	Digit8 = 'Digit8',
 	Digit9 = 'Digit9',
-	Digit0 = 'Digit0',
+	Digit0 = 'Digit0'
 }

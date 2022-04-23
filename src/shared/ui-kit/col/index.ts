@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css }   from 'styled-components/macro';
 
-import { getSpacing }  from '@lib/styles';
+import { getSpacing }    from '@lib/styles';
 
-import type { Props }  from './type';
+import type { ColProps } from './type';
 
-export const Col = styled.div<Props>`
+const Col = styled.div<ColProps>`
 	${ ({ padding, margin }) => css`
 		display: flex;
 		flex-direction: column;
@@ -12,3 +12,5 @@ export const Col = styled.div<Props>`
 		margin: ${ getSpacing(margin) };
 	` }
 `;
+
+export { Col };

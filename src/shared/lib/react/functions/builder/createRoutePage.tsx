@@ -38,7 +38,10 @@ function createRoutePage(options: any): any {
 		}
 	} else {
 		const {
-			component: Component, prefetch, path, protect = false
+			component: Component,
+			prefetch,
+			path,
+			protect = false
 		} = options;
 
 		if (prefetch) {
