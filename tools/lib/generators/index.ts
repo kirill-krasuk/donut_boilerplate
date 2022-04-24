@@ -2,14 +2,14 @@ import prompts            from 'prompts';
 import yargs              from 'yargs';
 
 import { camelToKebab }   from '../../../src/shared/lib/string';
-import { generate }       from './functions/generate';
 import { generateSchema } from './config/schema';
 import {
-	layerQuestion,
 	componentQuestion,
 	generateOptionsQuestion,
+	layerQuestion,
 	stylesQuestion
 } from './constants/questions';
+import { generate }               from './functions/generate';
 
 import type { Layer, StylesType } from './types/common';
 

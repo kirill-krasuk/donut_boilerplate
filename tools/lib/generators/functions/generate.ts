@@ -26,7 +26,7 @@ function generate(schema: Schema, data: Data) {
 	Object.values(schema).forEach(type => {
 		if (type.create) {
 			if (isArrayOfTuples(type.create)) {
-				type.create.forEach(createCallback);
+				type.create.forEach(createCallback(data));
 			} else {
 				const [ destination, template ] = type.create;
 
@@ -36,7 +36,7 @@ function generate(schema: Schema, data: Data) {
 
 		if (type.update) {
 			if (isArrayOfTuples(type.update)) {
-				type.update.forEach(updateCallback);
+				type.update.forEach(updateCallback(data));
 			} else {
 				const [ source, fileType ] = type.update;
 

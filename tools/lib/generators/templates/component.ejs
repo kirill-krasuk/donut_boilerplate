@@ -14,21 +14,21 @@ import './styles.scss';<% } %>
 console.info(locales);
 <% } %>
 <% if (!isPage) 'export ' %>const <%= name %>: FC = () => (<% if (styles === 'css' || styles === 'sass') { %>
-    <div className="test">
-        <%= name %>
-    </div>
+	<div className="test">
+		<%= name %>
+	</div>
 <% } else if (styles === 'moduleCss' || styles === 'moduleSass') { %>
-    <div className={ styles.test }>
-        <%= name %>
-    </div>
+	<div className={ styles.test }>
+		<%= name %>
+	</div>
 <% } else if (styles === 'styled') { %>
-    <S.Example>
-        <%= name %>
-    </S.Example>
+	<S.Example>
+		<%= name %>
+	</S.Example>
 <% } else { %>
-    <>
-        <%= name %>
-    </>
+	<>
+		<%= name %>
+	</>
 <% } %>);
 <% if (isPage) { %>
 export default <%= name %>;<% } %>

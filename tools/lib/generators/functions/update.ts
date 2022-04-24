@@ -1,8 +1,8 @@
-import fs                                          from 'node:fs';
 import chalk                                       from 'chalk';
+import fs                                          from 'node:fs';
 
+import { patterns, PatternsKey }                   from '../constants/patterns';
 import { ROOT_PATH }                               from '../constants/rootPath';
-import { PatternsKey, patterns }                   from '../constants/patterns';
 
 import type { PatternsObject, PatternsWithArrays } from '../types/patterns';
 
