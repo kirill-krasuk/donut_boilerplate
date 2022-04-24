@@ -1,4 +1,4 @@
-import { createToggleHelper } from '@utils/toggler';
+import { createToggleHelper } from '@lib/toggler';
 
 import { Locale }             from '../types/enums';
 
