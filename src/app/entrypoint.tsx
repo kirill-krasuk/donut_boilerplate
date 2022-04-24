@@ -1,5 +1,5 @@
-import { createRoot, hydrateRoot } from 'react-dom/client';
 import { loadableReady }           from '@loadable/component';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 
 import { env }                     from '@env/index';
 
@@ -7,15 +7,10 @@ import { Application }             from './application/Application';
 
 const rootNode = document.querySelector('#root')!;
 
-function renderRoot() {
-	if (env.client.needHydrate) {
-		return hydrateRoot(rootNode, <Application />);
-	}
-
-	const root = createRoot(rootNode);
-
-	return root.render(<Application />);
-}
+const renderRoot = () =>
+	(env.client.needHydrate
+		? hydrateRoot(rootNode, <Application />)
+		: createRoot(rootNode).render(<Application />));
 
 loadableReady(() => {
 	if (env.client.swEnable) {

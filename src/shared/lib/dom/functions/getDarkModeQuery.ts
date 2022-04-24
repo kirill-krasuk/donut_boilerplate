@@ -1,9 +1,6 @@
-function getDarkModeQuery() {
-	if (__IS_CLIENT__) {
-		return window.matchMedia('(prefers-color-scheme: dark)');
-	}
-
-	return null;
-}
+const getDarkModeQuery = () =>
+	(__IS_CLIENT__
+		? window.matchMedia('(prefers-color-scheme: dark)')
+		: null);
 
 export { getDarkModeQuery };

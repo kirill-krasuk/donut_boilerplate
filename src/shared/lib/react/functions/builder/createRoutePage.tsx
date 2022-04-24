@@ -1,15 +1,14 @@
-import { routes }  from '@config/routes';
+import { routes } from '@config/routes';
 
-import type { PC } from '../../types/components';
 import type {
 	RouteByNamePageOptions,
-	RouteExtendedObject,
-	RouteByPropsPageOptions
+	RouteByPropsPageOptions,
+	RouteExtendedObject
 } from '../../types/builder';
+import type { PC } from '../../types/components';
 
-function isRouteFactory(options: any): options is RouteByNamePageOptions {
-	return Reflect.has(options, 'routeName');
-}
+const isRouteFactory = (options: any): options is RouteByNamePageOptions =>
+	Reflect.has(options, 'routeName');
 
 const defaultRouteProps = {
 	protect: false

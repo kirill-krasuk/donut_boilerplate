@@ -13,7 +13,8 @@
 		"indentation": "tab",
 		"string-quotes": "single",
 		"declaration-colon-newline-after": null,
-		"value-keyword-case": null
+		"value-keyword-case": null,
+		"custom-property-empty-line-before": null
 	},
 	"files": ["**/styles/*.{ts,js,jsx,tsx}"]
 }

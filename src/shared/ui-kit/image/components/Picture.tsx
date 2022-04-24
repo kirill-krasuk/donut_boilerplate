@@ -5,7 +5,7 @@ import {
 	isValidElement
 } from 'react';
 
-import { replaceExtension }  from '@utils/file';
+import { replaceExtension }  from '@shared/lib/file';
 
 import type { PictureProps } from '../types';
 

@@ -1,23 +1,23 @@
 import {
-	configureStore,
-	Reducer,
-	ReducersMapObject,
 	Action,
 	AnyAction,
+	CombinedState,
+	configureStore,
 	PreloadedState,
-	CombinedState
+	Reducer,
+	ReducersMapObject
 } from '@reduxjs/toolkit';
 
-import type { Middleware } from 'redux';
 import type { NoInfer }    from '@shared/types/utility';
+import type { Middleware } from 'redux';
 
-const createStore = <S = any, A extends Action = AnyAction>(
+function createStore<S = any, A extends Action = AnyAction>(
 	reducer: Reducer<S, A> | ReducersMapObject<S, A>,
 
 	// TODO: fix type
 	preloadedState: PreloadedState<CombinedState<NoInfer<S>>> = {} as any,
 	middlewares: Middleware[] = []
-) => {
+) {
 	const store = configureStore({
 		preloadedState,
 		reducer,
@@ -29,6 +29,6 @@ const createStore = <S = any, A extends Action = AnyAction>(
 
 		return store;
 	};
-};
+}
 
 export { createStore };
