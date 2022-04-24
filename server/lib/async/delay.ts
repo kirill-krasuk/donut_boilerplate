@@ -1,7 +1,6 @@
-function delay(ms: number) {
-	return new Promise<void>(resolve => {
+const delay = (ms: number) =>
+	new Promise<void>(resolve => {
 		setTimeout(() => resolve(), ms);
 	});
-}
 
 export { delay };

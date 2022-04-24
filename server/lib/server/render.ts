@@ -1,12 +1,12 @@
-import type { Response }       from 'express';
-import type { Context }        from '@shared/types/client-server';
 import type { StaticTemplate } from '@server/lib/react';
+import type { Context }        from '@shared/types/client-server';
+import type { Response }       from 'express';
 
-const redirectIFStatusExist = (
+function redirectIFStatusExist(
 	res: Response,
 	context: Context,
 	template: StaticTemplate
-): void => {
+): void {
 	if (context.status === 404) {
 		res.status(404).render('index.pug', template);
 
@@ -14,7 +14,7 @@ const redirectIFStatusExist = (
 	}
 
 	return res.redirect(context.status as number, context.to!);
-};
+}
 
 function renderTemplate(res: Response, context: Context, template: StaticTemplate): void {
 	if (context.to) {

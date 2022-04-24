@@ -1,9 +1,7 @@
 import fs   from 'node:fs';
 import path from 'node:path';
 
-function JSONStats(rawData: any) {
-	return JSON.parse(rawData.toString());
-}
+const JSONStats = (rawData: any) => JSON.parse(rawData.toString());
 
 function getLoadableChunksOptions(locals: any) {
 	const loadableStatsFileName = 'loadable-stats.json';

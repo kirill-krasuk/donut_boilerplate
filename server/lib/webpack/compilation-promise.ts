@@ -1,8 +1,8 @@
 import type webpack from 'webpack';
 
-function createCompilationPromise(compiler: webpack.Compiler): Promise<void> {
-	return new Promise((resolve, reject) => {
-		compiler.hooks.done.tap('dev', stats => {
+const createCompilationPromise = (compiler: webpack.Compiler): Promise<void> =>
+	new Promise((resolve, reject) => {
+		compiler.hooks.done.tap('Compilation_Promise', stats => {
 			if (!stats.hasErrors()) {
 				resolve();
 
@@ -12,6 +12,5 @@ function createCompilationPromise(compiler: webpack.Compiler): Promise<void> {
 			reject(new Error('Compilation error'));
 		});
 	});
-}
 
 export { createCompilationPromise };
