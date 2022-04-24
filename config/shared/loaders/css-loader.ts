@@ -1,6 +1,6 @@
 import ExtractCssChunks          from 'mini-css-extract-plugin';
 
-import { paths }                 from '../constants/paths';
+import { paths }                 from '../config/paths';
 import { fileExtensions }        from '../constants/files';
 import { isProd }                from '../lib/env';
 

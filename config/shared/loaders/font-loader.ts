@@ -1,6 +1,7 @@
+import { paths }            from '../config/paths';
+import { fileExtensions }   from '../constants/files';
 import { isProd }           from '../lib/env';
 import { createHashHelper } from '../lib/webpack';
-import { fileExtensions }   from '../constants/files';
 
 import type webpack         from 'webpack';
 
@@ -11,10 +12,7 @@ function fontsLoader(): webpack.RuleSetRule {
 		test     : fileExtensions.fonts,
 		type     : 'asset/resource',
 		generator: {
-			filename: addHash(
-				'../public/fonts/build/[name].[ext][query]',
-				'contenthash:8'
-			)
+			filename: addHash(`${ paths.fontsBuild }/[name].[ext][query]`, 'contenthash:8')
 		},
 		use: [
 			!isProd() && {

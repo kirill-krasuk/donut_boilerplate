@@ -4,7 +4,13 @@ import { createHashHelper } from '../lib/webpack';
 
 import type webpack         from 'webpack';
 
-function extractCssPlugin({ isProd }: { isProd: boolean }) {
+type Options = {
+	isProd: boolean
+};
+
+function extractCssPlugin(options: Options) {
+	const { isProd } = options;
+
 	const addHash = createHashHelper(isProd);
 
 	return new ExtractCssChunks({

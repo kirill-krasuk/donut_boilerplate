@@ -3,23 +3,32 @@ import dotenv from 'dotenv';
 
 const { parsed } = dotenv.config();
 
+type EnvMap = Record<string, any>;
+
+const createNormalizer = (acc: EnvMap, curr: string) => ({
+	toBool: (value: string) => ({
+		...acc,
+		[curr]: JSON.parse(value)
+	}),
+	toString: (value?: string) => ({
+		...acc,
+		[curr]: value
+			? `"${ value }"`
+			: null
+	})
+});
+
 function getEnvironmentVariables() {
-	return Object.keys(parsed || {}).reduce((acc: Record<string, any>, curr) => {
+	return Object.keys(parsed || {}).reduce((acc: EnvMap, curr) => {
 		const envVariable = process.env[curr]!;
 
+		const normalizer = createNormalizer(acc, curr);
+
 		if (/^(\d+|false|true)$/.test(envVariable)) {
-			return {
-				...acc,
-				[curr]: JSON.parse(envVariable)
-			};
+			return normalizer.toBool(envVariable);
 		}
 
-		return {
-			...acc,
-			[curr]: envVariable
-				? `"${ envVariable }"`
-				: null
-		};
+		return normalizer.toString(envVariable);
 	}, {});
 }
 

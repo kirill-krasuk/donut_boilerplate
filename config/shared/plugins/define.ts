@@ -1,16 +1,15 @@
 import webpack                     from 'webpack';
 
+import { Mode }                    from '../enums/mode';
 import { getEnvironmentVariables } from '../lib/env';
 
 type Options = {
-	mode: 'development' | 'none' | 'production',
+	mode: Mode,
 	isClient: boolean
 };
 
-function definePlugin({ mode, isClient }: Options) {
-	const _mode = mode === 'none'
-		? 'development'
-		: mode;
+function definePlugin(options: Options) {
+	const { mode, isClient } = options;
 
 	const environmentVariables = {
 		NODE_ENV: JSON.stringify(mode),
@@ -19,8 +18,8 @@ function definePlugin({ mode, isClient }: Options) {
 
 	return new webpack.DefinePlugin({
 		'process.env': environmentVariables,
-		__IS_DEV__   : _mode === 'development',
-		__IS_PROD__  : _mode === 'production',
+		__IS_DEV__   : mode === Mode.Development,
+		__IS_PROD__  : mode === Mode.Production,
 		__IS_SERVER__: !isClient,
 		__IS_CLIENT__: isClient
 	});

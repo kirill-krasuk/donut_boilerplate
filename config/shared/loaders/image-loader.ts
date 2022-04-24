@@ -1,6 +1,7 @@
-import { createHashHelper }      from '../lib/webpack';
-import { isProd }                from '../lib/env';
+import { paths }                 from '../config/paths';
 import { fileExtensions }        from '../constants/files';
+import { isProd }                from '../lib/env';
+import { createHashHelper }      from '../lib/webpack';
 
 import type webpack              from 'webpack';
 import type { IsomorphicLoader } from '../types';
@@ -17,8 +18,8 @@ function imageLoader(): IsomorphicLoader {
 			loader : 'file-loader',
 			options: {
 				name      : addHash('[name].[ext]', 'contenthash:8'),
-				outputPath: '../public/images/build',
-				publicPath: '/public/images/build'
+				outputPath: paths.imagesBuild,
+				publicPath: paths.imagesPublic
 			}
 		},
 		{

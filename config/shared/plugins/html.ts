@@ -1,10 +1,10 @@
-import HtmlWebpackPlugin               from 'html-webpack-plugin';
 import HtmlHardDiskPlugin              from 'html-webpack-harddisk-plugin';
+import HtmlWebpackPlugin               from 'html-webpack-plugin';
 import HtmlPugPlugin                   from 'html-webpack-pug-plugin';
 import { HtmlWebpackSkipAssetsPlugin } from 'html-webpack-skip-assets-plugin';
 
+import { paths }                       from '../config/paths';
 import { fileExtensions }              from '../constants/files';
-import { paths }                       from '../constants/paths';
 
 import type webpack                    from 'webpack';
 

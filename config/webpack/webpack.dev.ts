@@ -1,14 +1,15 @@
-import webpack                       from 'webpack';
 import ReactRefreshWebpackPlugin     from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin      from 'circular-dependency-plugin';
-import WebpackNotifierPlugin         from 'webpack-notifier';
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
+import webpack                       from 'webpack';
+import WebpackNotifierPlugin         from 'webpack-notifier';
 
-import { paths }                     from '../shared/constants/paths';
+import { paths }                     from '../shared/config/paths';
+import { Mode }                      from '../shared/enums/mode';
 import { configureBundler }          from './webpack.common';
 
 export default configureBundler({
-	mode : 'development',
+	mode : Mode.Development,
 	entry: {
 		bundle: [ paths.client.entry, 'webpack-hot-middleware/client' ]
 	},

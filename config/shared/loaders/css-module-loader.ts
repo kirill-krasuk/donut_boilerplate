@@ -1,11 +1,11 @@
 import ExtractCssChunks          from 'mini-css-extract-plugin';
 
+import { paths }                 from '../config/paths';
 import { fileExtensions }        from '../constants/files';
-import { paths }                 from '../constants/paths';
 import { isProd }                from '../lib/env';
 
-import type { IsomorphicLoader } from '../types';
 import type webpack              from 'webpack';
+import type { IsomorphicLoader } from '../types';
 
 const options = {
 	test: fileExtensions.css

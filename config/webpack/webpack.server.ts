@@ -1,36 +1,33 @@
 import webpack, { Configuration } from 'webpack';
 import { WebpackPnpExternals }    from 'webpack-pnp-externals';
 
-import { jsLoader }               from '../shared/loaders/js-loader';
-import { imageLoader }            from '../shared/loaders/image-loader';
-import { fontsLoader }            from '../shared/loaders/font-loader';
+import { paths }                  from '../shared/config/paths';
+import { isProd }                 from '../shared/lib/env';
 import { cssLoader }              from '../shared/loaders/css-loader';
 import { cssModuleLoader }        from '../shared/loaders/css-module-loader';
+import { fontsLoader }            from '../shared/loaders/font-loader';
+import { imageLoader }            from '../shared/loaders/image-loader';
+import { jsLoader }               from '../shared/loaders/js-loader';
 import { sassLoader }             from '../shared/loaders/sass-loader';
-import { svgLoader }              from '../shared/loaders/svg-loader';
 import { sassModuleLoader }       from '../shared/loaders/sass-module-loader';
-import { paths }                  from '../shared/constants/paths';
-import { tsconfigPathsPlugin }    from '../shared/plugins/tsconfig-paths';
-import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
+import { svgLoader }              from '../shared/loaders/svg-loader';
 import { definePlugin }           from '../shared/plugins/define';
-import { isProd }                 from '../shared/lib/env';
+import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
+import { tsconfigPathsPlugin }    from '../shared/plugins/tsconfig-paths';
+
+import type { Mode }              from '../shared/enums/mode';
 
 const __IS_CLIENT__ = false;
 const __IS_SERVER__ = true;
 
-const mode = (process.env.NODE_ENV as 'development' | 'production') || 'development';
+const mode = (process.env.NODE_ENV || 'development') as Mode;
 
-function getCacheOptions(): webpack.FileCacheOptions | boolean {
-	if (!isProd()) {
-		return {
-			type          : 'filesystem',
-			name          : 'server-cache',
-			cacheDirectory: paths.cacheDir
-		};
-	}
-
-	return false;
-}
+const getCacheOptions = (): webpack.FileCacheOptions | boolean =>
+	!isProd() && {
+		type          : 'filesystem',
+		name          : 'server-cache',
+		cacheDirectory: paths.cacheDir
+	};
 
 const config: Configuration = {
 	mode,

@@ -1,26 +1,27 @@
+import LoadablePlugin             from '@loadable/webpack-plugin';
+import { CleanWebpackPlugin }     from 'clean-webpack-plugin';
+import ImageminWebpWebpackPlugin  from 'imagemin-webp-webpack-plugin';
 import webpack                    from 'webpack';
 import { InjectManifest }         from 'workbox-webpack-plugin';
-import { CleanWebpackPlugin }     from 'clean-webpack-plugin';
-import LoadablePlugin             from '@loadable/webpack-plugin';
-import ImageminWebpWebpackPlugin  from 'imagemin-webp-webpack-plugin';
 
+import { paths }                  from '../shared/config/paths';
 import { fileExtensions }         from '../shared/constants/files';
-import { paths }                  from '../shared/constants/paths';
-import { jsLoader }               from '../shared/loaders/js-loader';
-import { imageLoader }            from '../shared/loaders/image-loader';
-import { fontsLoader }            from '../shared/loaders/font-loader';
+import { Mode }                   from '../shared/enums/mode';
+import { createHashHelper }       from '../shared/lib/webpack';
 import { cssLoader }              from '../shared/loaders/css-loader';
 import { cssModuleLoader }        from '../shared/loaders/css-module-loader';
+import { fontsLoader }            from '../shared/loaders/font-loader';
+import { imageLoader }            from '../shared/loaders/image-loader';
+import { jsLoader }               from '../shared/loaders/js-loader';
 import { sassLoader }             from '../shared/loaders/sass-loader';
 import { sassModuleLoader }       from '../shared/loaders/sass-module-loader';
 import { svgLoader }              from '../shared/loaders/svg-loader';
-import { createHashHelper }       from '../shared/lib/webpack';
-import { tsconfigPathsPlugin }    from '../shared/plugins/tsconfig-paths';
-import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
-import { definePlugin }           from '../shared/plugins/define';
-import { htmlPlugins }            from '../shared/plugins/html';
 import { analyzerPlugin }         from '../shared/plugins/analyzer';
+import { definePlugin }           from '../shared/plugins/define';
 import { extractCssPlugin }       from '../shared/plugins/extract-css';
+import { htmlPlugins }            from '../shared/plugins/html';
+import { withSpeedMeasurePlugin } from '../shared/plugins/speed-measure';
+import { tsconfigPathsPlugin }    from '../shared/plugins/tsconfig-paths';
 
 const __IS_CLIENT__ = true;
 const __IS_SERVER__ = false;
@@ -28,7 +29,9 @@ const __IS_SERVER__ = false;
 const contentHash = 'contenthash:8';
 
 function configureBundler(options: webpack.Configuration): webpack.Configuration {
-	const isProd = options.mode === 'production';
+	const isProd = options.mode === Mode.Production;
+
+	const _mode = options.mode as Mode;
 
 	const addHash = createHashHelper(isProd);
 
@@ -94,11 +97,11 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 			[
 				...htmlPlugins(),
 				definePlugin({
-					mode    : options.mode!,
+					mode    : _mode,
 					isClient: true
 				}),
 				extractCssPlugin({ isProd }),
-				analyzerPlugin(options.mode!),
+				analyzerPlugin(_mode),
 				serviceWorkerEnabled &&
 					new InjectManifest({
 						swDest : paths.swDest,

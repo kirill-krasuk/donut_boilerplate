@@ -1,11 +1,10 @@
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
-import { paths }               from '../constants/paths';
+import { paths }               from '../config/paths';
 
-function tsconfigPathsPlugin() {
-	return new TsconfigPathsPlugin({
+const tsconfigPathsPlugin = () =>
+	new TsconfigPathsPlugin({
 		configFile: paths.tsconfig
 	});
-}
 
 export { tsconfigPathsPlugin };

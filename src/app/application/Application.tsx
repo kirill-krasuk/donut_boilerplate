@@ -1,14 +1,14 @@
 import {
-	useEffect,
 	FC,
-	PropsWithChildren
+	PropsWithChildren,
+	useEffect
 } from 'react';
 
 import { withAppProviders }         from '../providers';
 import { clearServerDataContainer } from './lib';
 
 // manual connection of fonts
-// import './styles/fonts.css';
+import './styles/fonts.css';
 
 /**
  * base styles that are used in GlobalStyles,

@@ -1,10 +1,13 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
+import { paths }                from '../config/paths';
+import { Mode }                 from '../enums/mode';
+
 const isBuildAnalyzer = JSON.parse(process.env.BUILD_ANALYZE as any);
 
-function analyzerPlugin(mode: 'development' | 'none' | 'production') {
-	const _mode = mode === 'none'
-		? 'development'
+function analyzerPlugin(mode: Mode) {
+	const _mode = mode === Mode.None
+		? Mode.Development
 		: mode;
 
 	const options: any = {
@@ -17,7 +20,7 @@ function analyzerPlugin(mode: 'development' | 'none' | 'production') {
 		production: {
 			analyzerMode  : 'static',
 			openAnalyzer  : false,
-			reportFilename: '../stats/prod-report.html'
+			reportFilename: paths.prodBundleStats
 		}
 	};
 

@@ -1,8 +1,9 @@
 import svgToMiniDataURI     from 'mini-svg-data-uri';
 
+import { paths }            from '../config/paths';
 import { fileExtensions }   from '../constants/files';
-import { createHashHelper } from '../lib/webpack';
 import { isProd }           from '../lib/env';
+import { createHashHelper } from '../lib/webpack';
 
 import type webpack         from 'webpack';
 
@@ -29,8 +30,8 @@ function svgLoader(): webpack.RuleSetRule {
 					generator : (content: any) => svgToMiniDataURI(content.toString()),
 					limit     : 4096,
 					name      : addHash('[name].[ext]', 'contenthash:8'),
-					outputPath: '../public/svgs/build',
-					publicPath: '/public/svgs/build'
+					outputPath: paths.svgBuild,
+					publicPath: paths.svgPublic
 				}
 			}
 		].filter(Boolean) as webpack.RuleSetUseItem

@@ -1,10 +1,11 @@
-import { paths }            from '../shared/constants/paths';
+import { paths }            from '../shared/config/paths';
+import { Mode }             from '../shared/enums/mode';
 import { gzipPlugins }      from '../shared/plugins/gzip';
 import { minimizerPlugins } from '../shared/plugins/minimizer';
 import { configureBundler } from './webpack.common';
 
 export default configureBundler({
-	mode : 'production',
+	mode : Mode.Production,
 	entry: {
 		bundle: [ `${ paths.client.entry }` ]
 	},
