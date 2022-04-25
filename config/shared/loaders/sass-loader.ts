@@ -1,5 +1,6 @@
 import ExtractCssChunks          from 'mini-css-extract-plugin';
 
+import { paths }                 from '../config/paths';
 import { fileExtensions }        from '../constants/files';
 import { isProd }                from '../lib/env';
 
@@ -38,6 +39,14 @@ function sassLoader(props: Props = defaultProps): IsomorphicLoader {
 		},
 		{
 			loader: 'resolve-url-loader'
+		},
+		{
+			loader : 'postcss-loader',
+			options: {
+				postcssOptions: {
+					config: paths.client.postCssConfig
+				}
+			}
 		},
 		{
 			loader : 'sass-loader',
