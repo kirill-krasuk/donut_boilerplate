@@ -17,6 +17,18 @@
 			"name": "Launch Chrome against localhost",
 			"url": "http://localhost:8080",
 			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Run Tests",
+			"skipFiles": ["<node_internals>/**"],
+			"cwd": "${workspaceFolder}",
+			"runtimeExecutable": "yarn",
+			"runtimeArgs": ["run", "--inspect-brk", "test"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229
 		}
 	]
 }
