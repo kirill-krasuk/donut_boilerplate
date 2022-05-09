@@ -16,7 +16,8 @@ const serverScheme = {
 	isBuildAnalyzer       : getters.getBuildAnalyze,
 	analyzerPort          : getters.getBundleAnalyzerPort,
 	writeToDisk           : getters.getWriteToDisk,
-	useCriticalCSSOptimize: getters.getUseCriticalCSSOptimize
+	useCriticalCSSOptimize: getters.getUseCriticalCSSOptimize,
+	serverSideEngine      : getters.getServerSideEngine
 };
 
 export { clientScheme, serverScheme };

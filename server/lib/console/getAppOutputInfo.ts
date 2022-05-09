@@ -1,10 +1,10 @@
-import dayjs           from 'dayjs';
 import chalk           from 'chalk';
-import openBrowser     from 'react-dev-utils/openBrowser';
+import dayjs           from 'dayjs';
 import ip              from 'ip';
+import openBrowser     from 'react-dev-utils/openBrowser';
 
-import { env }         from '@env/index';
 import { getHostname } from '@server/lib/server';
+import { env }         from '@env/index';
 
 type OutputInfo = {
 	host: string,
@@ -12,7 +12,12 @@ type OutputInfo = {
 	standardPort?: string
 };
 
-const { isBuildAnalyzer, analyzerPort, isOpenInBrowser } = env.server;
+const {
+	isBuildAnalyzer,
+	analyzerPort,
+	isOpenInBrowser,
+	serverSideEngine
+} = env.server;
 
 const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
 	const isPortBusy = standardPort && port !== standardPort;
@@ -35,6 +40,9 @@ const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
 		chalk`{green.bold Server time:}${ ' '.repeat(5) }${ dayjs(Date.now()).format(
 			'HH:mm:ss DD:MM:YYYY'
 		) }`,
+		chalk`{green.bold Started by:}${ ' '.repeat(6) }${ serverSideEngine
+			.charAt(0)
+			.toUpperCase() }${ serverSideEngine.slice(1) }`,
 		'',
 		!!isPortBusy && chalk`${ ' '.repeat(13) }{yellow.bold !!!Attention!!!}`,
 		!!isPortBusy &&

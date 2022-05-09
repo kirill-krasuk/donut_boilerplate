@@ -1,10 +1,4 @@
 {
-	"**/*.{json,css,scss,sass,md}": [
-		"prettier --write"
-	],
-	"**/*.{js,jsx,ts,tsx}": [
-		"yarn lint:styled",
-		"prettier --write",
-		"yarn lint-fix"
-	]
+	"**/*.{json,css,scss,sass,md}": ["prettier --write"],
+	"**/*.{js,jsx,ts,tsx}": ["yarn lint:styled", "prettier --write", "yarn lint-fix"]
 }

@@ -2,6 +2,8 @@ const getNodeEnv = ({ NODE_ENV }: NodeJS.ProcessEnv) => NODE_ENV ?? 'production'
 const getHost    = ({ HOST }: NodeJS.ProcessEnv) => HOST ?? '127.0.0.1';
 const getPort    = ({ PORT }: NodeJS.ProcessEnv) => PORT ?? '3000';
 
+const getServerSideEngine       = ({ SERVER_SIDE_ENGINE }: NodeJS.ProcessEnv) =>
+	SERVER_SIDE_ENGINE ?? 'express';
 const getApiHost                = ({ API_HOST }: NodeJS.ProcessEnv) =>
 	API_HOST ?? 'https://jsonplaceholder.typicode.com';
 const getOpeInBrowser           = ({ OPEN_IN_BROWSER }: NodeJS.ProcessEnv) =>
@@ -24,6 +26,7 @@ export {
 	getApiHost,
 	getOpeInBrowser,
 	getBuildAnalyze,
+	getServerSideEngine,
 	getBundleAnalyzerPort,
 	getWriteToDisk,
 	getServiceWorkerEnable,

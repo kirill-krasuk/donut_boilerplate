@@ -2,12 +2,13 @@
 import { env }                  from '@env/index';
 import { ServerAdapterFactory } from '@server/adapters/server';
 
-import { Application }          from './app';
+import { ApplicationBuilder }   from './app';
 
 export async function bootstrap() {
-	const adapter        = await new ServerAdapterFactory().init('fastify');
-	const app            = new Application(adapter);
-	const { host, port } = env.server;
+	const { serverSideEngine, host, port } = env.server;
+
+	const adapter = await new ServerAdapterFactory().init(serverSideEngine);
+	const app     = new ApplicationBuilder(adapter);
 
 	await app.build();
 

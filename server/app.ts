@@ -1,24 +1,24 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import path                          from 'node:path';
-import { json, urlencoded }          from 'express';
-import processImage                  from 'express-processimage';
-import shrinkRay                     from 'shrink-ray-current';
-import favicon                       from 'serve-favicon';
-import cookieParser                  from 'cookie-parser';
+import cookieParser         from 'cookie-parser';
+import { json, urlencoded } from 'express';
+import processImage         from 'express-processimage';
+import path                 from 'node:path';
+import favicon              from 'serve-favicon';
+import shrinkRay            from 'shrink-ray-current';
 
+import { staticFiles }      from './config/static';
+import { paths }            from './constants/paths';
+import {
+	createExitHandler,
+	handleClientError,
+	handleClose
+} from './handlers';
 import { createServerRunnerPromise } from './lib/server';
 import { serverSideRendering }       from './middlewares';
-import { staticFiles }               from './config/static';
-import { paths }                     from './constants/paths';
-import {
-	handleClose,
-	createExitHandler,
-	handleClientError
-} from './handlers';
 
-import type { HTTPServerAdapter } from './adapters/server';
+import type { HTTPServerAdapter }    from './adapters/server';
 
-export class Application<T extends HTTPServerAdapter> {
+export class ApplicationBuilder<T extends HTTPServerAdapter> {
 	constructor(private adapter: T) {}
 
 	async build() {

@@ -11,6 +11,7 @@ declare global {
 				| 'normal'
 				| 'summary'
 				| 'verbose';
+			SERVER_SIDE_ENGINE?: 'express' | 'fastify';
 			USE_CRITICAL_CSS_OPTIMIZE?: boolean;
 			HOST?: string;
 			PORT?: number;
