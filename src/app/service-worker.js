@@ -1,18 +1,18 @@
 /* eslint-disable no-restricted-globals */
-import { precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
-import { CacheableResponsePlugin }                 from 'workbox-cacheable-response';
-import { registerRoute, setCatchHandler }          from 'workbox-routing';
-import { ExpirationPlugin }                        from 'workbox-expiration';
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import {
+	clientsClaim,
 	setCacheNameDetails,
-	skipWaiting,
-	clientsClaim
+	skipWaiting
 } from 'workbox-core';
+import { ExpirationPlugin }                        from 'workbox-expiration';
+import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
+import { registerRoute, setCatchHandler }          from 'workbox-routing';
 import {
 	CacheFirst,
-	StaleWhileRevalidate,
 	NetworkFirst,
-	NetworkOnly
+	NetworkOnly,
+	StaleWhileRevalidate
 } from 'workbox-strategies';
 
 setCacheNameDetails({
