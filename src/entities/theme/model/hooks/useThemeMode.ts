@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { useActions }  from '@hooks/index';
 
+import { toggleTheme } from '../../lib/toggleTheme';
 import * as actions    from '../store/actions';
 import { getMode }     from '../store/selectors';
-import { toggleTheme } from '../../lib/toggleTheme';
 
 function useThemeMode() {
 	const { changeTheme } = useActions(actions);
@@ -16,10 +16,7 @@ function useThemeMode() {
 		changeTheme(toggleTheme(mode));
 	}, [ changeTheme, mode ]);
 
-	return {
-		mode,
-		handleChangeTheme
-	};
+	return { mode, handleChangeTheme };
 }
 
 export { useThemeMode };

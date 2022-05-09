@@ -1,11 +1,11 @@
 import { compose }          from 'ramda';
 
-import { withGlobalStyles } from './with-styles';
-import { withStore }        from './with-store';
 import { withLocales }      from './with-locales';
-import { withTheme }        from './with-theme';
-import { withRouter }       from './with-router';
 import { withModals }       from './with-modals';
+import { withRouter }       from './with-router';
+import { withStore }        from './with-store';
+import { withGlobalStyles } from './with-styles';
+import { withTheme }        from './with-theme';
 
 const withAppProviders = compose(
 	withStore,
