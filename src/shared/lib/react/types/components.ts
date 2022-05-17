@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import type { RouteObject }           from 'react-router';
+import type { RouteObject }           from 'react-router-dom';
 
 type RouteProps = {
 	params?: Record<string, any>,

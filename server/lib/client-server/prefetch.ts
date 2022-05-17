@@ -1,4 +1,4 @@
-import { matchRoutes }           from 'react-router';
+import { matchRoutes }           from 'react-router-dom';
 
 import { routes }                from '@app/routes';
 
