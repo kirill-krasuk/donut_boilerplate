@@ -67,6 +67,7 @@ declare module '*.json' {
 }
 
 declare module 'express-processimage';
+declare module 'fastify-express';
 
 declare module 'dotenv' {
 	const content: any;
