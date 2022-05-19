@@ -66,7 +66,7 @@ export default {
 			sassModuleLoader({
 				...styleProps,
 				extraOptions: {
-					include: path.resolve(__dirname, '../../')
+					include: process.cwd()
 				}
 			}).client
 		);

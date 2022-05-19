@@ -2,7 +2,6 @@
 import cookieParser         from 'cookie-parser';
 import { json, urlencoded } from 'express';
 import processImage         from 'express-processimage';
-import path                 from 'node:path';
 import favicon              from 'serve-favicon';
 import shrinkRay            from 'shrink-ray-current';
 
@@ -24,7 +23,7 @@ export class ApplicationBuilder<T extends HTTPServerAdapter> {
 	async build() {
 		this.adapter.registerViewTemplate({
 			engine   : 'pug',
-			viewsPath: path.resolve(__dirname, '../views/')
+			viewsPath: `${ process.cwd() }/views`
 		});
 
 		this.adapter.registerMiddlewares([

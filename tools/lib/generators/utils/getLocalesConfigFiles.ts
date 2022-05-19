@@ -1,12 +1,11 @@
-import fs   from 'node:fs';
-import path from 'node:path';
+import fs from 'node:fs';
 
 function getLocalesConfigFiles() {
 	// TODO: move to constant
 	const pathToLocales = 'src/shared/config/locales/';
 
 	return fs
-		.readdirSync(path.resolve(__dirname, '../../../..', pathToLocales))
+		.readdirSync(`${ process.cwd() }/${ pathToLocales }`)
 		.filter(file => file.endsWith('json'))
 		.map(file => pathToLocales + file);
 }
