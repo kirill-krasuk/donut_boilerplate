@@ -1,12 +1,12 @@
-import { Helmet }  from 'react-helmet';
+import { Helmet }   from 'react-helmet';
 
-import { Header }  from '@features/header';
+import { Header }   from '@features/header';
 
-import { Body }    from './Body';
+import { Body }     from './Body';
 
-import type { FC } from 'react';
+import type { VFC } from 'react';
 
-const Home: FC = () => (
+const Home: VFC = () => (
 	<>
 		<Helmet title='Home page' />
 

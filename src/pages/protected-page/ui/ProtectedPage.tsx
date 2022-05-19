@@ -1,6 +1,6 @@
-import type { FC } from 'react';
+import type { VFC } from 'react';
 
-const ProtectPage: FC = () => <span>
+const ProtectPage: VFC = () => <span>
 	Protected Route
 </span>;
 

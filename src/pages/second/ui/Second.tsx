@@ -6,7 +6,7 @@ import { Header }        from '@features/header';
 import { locales }       from '../config/locales';
 import * as S            from './styles';
 
-import type { FC }       from 'react';
+import type { VFC }      from 'react';
 
 const CodePath = (
 	<code>
@@ -14,7 +14,7 @@ const CodePath = (
 	</code>
 );
 
-const Second: FC = () => (
+const Second: VFC = () => (
 	<>
 		<Header />
 

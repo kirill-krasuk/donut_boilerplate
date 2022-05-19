@@ -1,12 +1,12 @@
 import { useInitialProps } from '@hooks/index';
 
-import type { FC }         from 'react';
+import type { VFC }        from 'react';
 
 type InitialProps = {
 	posts: any[]
 };
 
-const PostsPage: FC = () => {
+const PostsPage: VFC = () => {
 	const { posts } = useInitialProps<InitialProps>();
 
 	return (

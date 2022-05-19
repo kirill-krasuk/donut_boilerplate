@@ -1,8 +1,8 @@
-import { Modal }   from '../ui/Modal';
+import { Modal }    from '../ui/Modal';
 
-import type { FC } from 'react';
+import type { VFC } from 'react';
 
-const ModalTest: FC = () => <Modal title='Test'>
+const ModalTest: VFC = () => <Modal title='Test'>
 	It is a test modal
 </Modal>;
 

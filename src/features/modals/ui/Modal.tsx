@@ -1,6 +1,5 @@
 import {
 	FC,
-	PropsWithChildren,
 	useCallback,
 	useEffect,
 	useRef
@@ -19,8 +18,8 @@ import * as S              from './styles';
 import type { ModalProps } from './types';
 
 // TODO: complete modal functional
-const Modal: FC<PropsWithChildren<ModalProps>> = props => {
-	const { children, onClose, title } = props;
+const Modal: FC<ModalProps> = props => {
+	const { children, title, onClose } = props;
 
 	const { closeModal } = useActions(actions);
 

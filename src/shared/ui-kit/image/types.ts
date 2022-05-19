@@ -1,5 +1,3 @@
-import type { PropsWithChildren } from 'react';
-
 type ImageSize = {
 	width?: number,
 	height?: number
@@ -19,24 +17,20 @@ type StyledProps = {
 	height?: ImageSize['height']
 };
 
-type Props = PropsWithChildren<
-	ImageSize & {
-		src: string,
-		webp?: boolean,
-		alt: string,
-		progressive?: boolean,
-		loadingWidth?: number,
-		set?: ImageSet[]
-	}
->;
+type Props = ImageSize & {
+	src: string,
+	webp?: boolean,
+	alt: string,
+	progressive?: boolean,
+	loadingWidth?: number,
+	set?: ImageSet[]
+};
 
-type ProgressiveImageProps = PropsWithChildren<
-	Omit<Props, 'progressive'> & {
-		isLoaded: boolean,
-		handleLoad(): void
-	}
->;
+type ProgressiveImageProps = Omit<Props, 'progressive'> & {
+	isLoaded: boolean,
+	handleLoad(): void
+};
 
-type PictureProps = PropsWithChildren<Pick<Props, 'src' | 'webp'>>;
+type PictureProps = Pick<Props, 'src' | 'webp'>;
 
 export type { StyledProps, Props, ProgressiveImageProps, PictureProps };

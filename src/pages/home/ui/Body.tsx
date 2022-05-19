@@ -6,9 +6,9 @@ import { locales }       from '../config/locales';
 import * as S            from './styles';
 import { CodePath }      from './CodePath';
 
-import type { FC }       from 'react';
+import type { VFC }      from 'react';
 
-const Body: FC = () => (
+const Body: VFC = () => (
 	<S.Container>
 		<S.Text>
 			<T.Text html id={ locales.title } path={ <CodePath /> } />

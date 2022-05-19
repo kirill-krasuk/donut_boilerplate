@@ -1,8 +1,8 @@
-import { Modal }                      from '../ui/Modal';
+import { Modal }    from '../ui/Modal';
 
-import type { FC, PropsWithChildren } from 'react';
+import type { VFC } from 'react';
 
-const Greeting: FC<PropsWithChildren<unknown>> = () => (
+const Greeting: VFC = () => (
 	<Modal title='Welcome'>
 		Welcome to New Donut Boilerplate!
 	</Modal>

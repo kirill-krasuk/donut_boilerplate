@@ -6,7 +6,7 @@ import * as S                        from './styles';
 
 import type { Props }                from './types';
 
-const Image: FC<React.PropsWithChildren<Props>> = props => {
+const Image: FC<Props> = props => {
 	const {
 		src,
 		webp,

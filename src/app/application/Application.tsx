@@ -1,8 +1,4 @@
-import {
-	FC,
-	PropsWithChildren,
-	useEffect
-} from 'react';
+import { VFC, useEffect }           from 'react';
 
 import { withAppProviders }         from '../providers';
 import { clearServerDataContainer } from './lib';
@@ -16,7 +12,7 @@ import './styles/fonts.css';
  */
 // import './styles/base-styles.css';
 
-const Application: FC<PropsWithChildren<unknown>> = withAppProviders(() => {
+const Application: VFC = withAppProviders(() => {
 	useEffect(() => {
 		clearServerDataContainer();
 	}, []);

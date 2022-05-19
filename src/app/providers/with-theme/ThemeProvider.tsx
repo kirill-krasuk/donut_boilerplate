@@ -3,9 +3,9 @@ import { ThemeProvider as StyledComponentsTheme } from 'styled-components/macro'
 import { theme as themes, Theme }                 from '@config/theme';
 import { themeModel }                             from '@features/theme';
 
-import type { FC, PropsWithChildren }             from 'react';
+import type { FC }                                from 'react';
 
-const ThemeProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const ThemeProvider: FC = ({ children }) => {
 	const theme = themeModel.hooks.useTheme();
 
 	return (

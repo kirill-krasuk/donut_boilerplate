@@ -1,10 +1,10 @@
-import DonutZero   from '@images/donut-zero.png';
+import DonutZero    from '@images/donut-zero.png';
 
-import * as S      from './styles';
+import * as S       from './styles';
 
-import type { FC } from 'react';
+import type { VFC } from 'react';
 
-const Page404: FC = () => (
+const Page404: VFC = () => (
 	<S.Container>
 		<S.Title>
 			4

@@ -9,7 +9,7 @@ import { localeModel }       from '@entities/locale';
 import { locales }           from '../config/locales';
 import * as S                from './styles';
 
-import type { FC }           from 'react';
+import type { VFC }          from 'react';
 
 const themeIconFactory = createFactory({
 	[Theme.Light]: Sun,
@@ -21,7 +21,7 @@ const themeLogoFactory = createFactory({
 	[Theme.Light]: S.DarkLogo
 });
 
-const Header: FC = () => {
+const Header: VFC = () => {
 	const { locale, handleChangeLocale } = localeModel.hooks.useLocale();
 	const { mode, handleChangeTheme }    = themeModel.hooks.useThemeMode();
 
