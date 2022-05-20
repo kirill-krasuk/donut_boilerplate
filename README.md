@@ -44,6 +44,7 @@ You can also start production via docker.
 
 ## Helpful information
 
+1. see into the dotenv file for custom configuration application
 1. for correct and scalable application look at the [structure doc](/docs/structure/)
 1. By default, the application opens in the browser, this can be inconvenient and this setting can be disabled in the _`.env`_ file by setting **`OPEN_IN_BROWSER`**`=false`
 1. In development mode, all builded assets are written to memory, if you need to look at the source or if you prefer to have it all in the visible area, you can set **`WRITE_ASSETS_TO_DISK`**`=true`
@@ -59,35 +60,40 @@ You can also start production via docker.
 All these scripts are described in package.json and called through the `yarn <command>` command.
 
 -   `bundle` - build production version
--   `ci` - run all commands to test the application
+-   `ci` - run all commands to test the application(using in ci/cd workflow)
+    -   `:test` - run ci test
+    -   `:lint` - run ci lint
 -   `lint` - code style checking
-    -   `lint-fix` - fix js syntax
-    -   `lint:styled` - styled-components style checking
-    -   `lint:css` - css style checking
+    -   `-fix` - fix js syntax
+    -   `:styled` - styled-components style checking
+    -   `:css` - css style checking
+    -   `:css-fix` - css lint and fix
+-   `format:code` - run prettier and eslint-fix on project
 -   `prunecaches` - delete app caches
 -   `run:server` - start builded app
 -   `start` - build and run development app
--   `start:prod` - build and run production app
+    -   `:prod` - build and run production app
 -   `storybook` - run storybook
+    -   `:build` - build storybook static files
 -   `test` - run jest for testing
-    -   `test:coverage`
-    -   `test:update`
-    -   `test:watch`
+    -   `:coverage`
+    -   `:update`
+    -   `:watch`
 -   `types` - run typescript checking
 -   `commit` - run for use commitizen better commit
 -   `release` - generate CHANGELOG based your commits
+-   `generate(gen)` - app entities generator
 
 ## Stack used
 
 -   App developing 🧑‍💻
-    -   React ecosystem ⚛ (redux, react-redux, reselect ...)
+    -   React ecosystem ⚛ (redux, redux-toolkit)
     -   [loadable component](https://loadable-components.com/)✂️✨ for split coding
     -   [Styled-components](https://styled-components.com/) 💅🏾
     -   [Styled-icons](https://styled-icons.js.org/) 💅
     -   [Typescript](https://www.typescriptlang.org/)
     -   [Ramda](https://ramdajs.com/docs/#)🐏
     -   SSR
-    -   [Storybook](https://storybook.js.org/) 📗
     -   [Feature-Sliced Design](https://feature-sliced.design/) 🍰
 -   Bundling 📦
     -   [webpack](https://webpack.js.org/) v5
@@ -98,13 +104,17 @@ All these scripts are described in package.json and called through the `yarn <co
 -   Tooling 🛠
     -   [eslint](https://eslint.org/)
     -   [stylelint](https://stylelint.io/)
+    -   [prettier](https://prettier.io/)
     -   [typescript](https://www.typescriptlang.org/)
     -   [commitlint](https://commitlint.js.org/#/) 🚥
+    -   [lint-staged](https://github.com/okonet/lint-staged)
     -   [husky](https://typicode.github.io/husky/#/) 🐶
     -   [commitizen](http://commitizen.github.io/cz-cli/)
 -   Testing 🧪
     -   [Jest](https://jestjs.io/en/) 🃏
     -   [@testing-library/react](https://testing-library.com/) 🦑
+    -   [Storybook](https://storybook.js.org/) 📗
 -   CI/CD 🤖
     -   [CircleCI](https://circleci.com/enterprise-trial-install/?utm_source=gb&utm_medium=SEM&utm_campaign=SEM-gb-Ld-ni&utm_content=SEM-gb-Ld-ni-CircleCILocal_impDBA&gclid=Cj0KCQiApsiBBhCKARIsAN8o_4hQShx9SiAsDCMTGa5p_8abvIQrm9VAvBGYZ-2VTqB1Ir_xVzXcfNMaAvhkEALw_wcB) ♻️
+    -   [Codecov](https://about.codecov.io/) ⛱
     -   [Docker](https://www.docker.com/) 🐳
