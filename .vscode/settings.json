@@ -31,5 +31,9 @@
 	},
 	"eslint.nodePath": ".yarn/sdks",
 	"cSpell.language": "en,ru",
-	"prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+	"prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+	"[yaml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml",
+		"editor.codeActionsOnSave": ["source.formatDocument"]
+	}
 }

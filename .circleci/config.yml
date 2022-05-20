@@ -2,116 +2,114 @@ version: 2.1
 
 aliases:
     - &restore_yarn_cache
-        restore_cache:
-            name: Restore yarn cache
-            key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
+      restore_cache:
+          name: Restore yarn cache
+          key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
 
     - &node_image
-        - image: node:16.13.0
-        
+      - image: node:16.13.0
 
 commands:
     initial:
         steps:
-        - checkout
-        - restore_cache:
-            name: Restore Yarn Package Cache
-            keys:
-                - yarn-packages-{{ checksum "yarn.lock" }}
-        - run:
-            name: Install Dependencies
-            command: yarn install
-        - save_cache:
-            name: Save Yarn Package Cache
-            key: yarn-packages-{{ checksum "yarn.lock" }}
-            paths:
-                - .yarn/cache
-                - .yarn/unplugged
-                - .yarn/build-state.yml
-                - .yarn/install-state.gz
-                - .pnp.cjs
-                - .pnp.loader.mjs
-        - persist_to_workspace:
-            root: ./
-            paths:
-                - ./
+            - checkout
+            - restore_cache:
+                  name: Restore Yarn Package Cache
+                  keys:
+                      - yarn-packages-{{ checksum "yarn.lock" }}
+            - run:
+                  name: Install Dependencies
+                  command: yarn install
+            - save_cache:
+                  name: Save Yarn Package Cache
+                  key: yarn-packages-{{ checksum "yarn.lock" }}
+                  paths:
+                      - .yarn/cache
+                      - .yarn/unplugged
+                      - .yarn/build-state.yml
+                      - .yarn/install-state.gz
+                      - .pnp.cjs
+                      - .pnp.loader.mjs
+            - persist_to_workspace:
+                  root: ./
+                  paths:
+                      - ./
     build:
         steps:
-        - attach_workspace:
-            at: ./
-        - run: 
-            name: Setting Environment
-            command: cp .env.example .env
-        - run: 
-            name: Building production version
-            command: yarn bundle
+            - attach_workspace:
+                  at: ./
+            - run:
+                  name: Setting Environment
+                  command: cp .env.example .env
+            - run:
+                  name: Building production version
+                  command: yarn bundle
 
 jobs:
     setup:
         docker: *node_image
         parallelism: 4
         steps:
-        - initial
-    build: 
+            - initial
+    build:
         docker: *node_image
         steps:
-        - checkout
-        - build
-        
+            - checkout
+            - build
+
     test:
         docker: *node_image
         parallelism: 2
         steps:
-        - checkout
-        - attach_workspace:
-            at: ./
-        - run: mkdir ~/junit
-        - run: 
-            name: Run Test
-            command: yarn ci:test
-        - run:
-            command: cp junit.xml ~/junit/
-            when: always
-        - store_test_results:
-            path: ~/junit
-        - store_artifacts:
-            path: ~/junit
+            - checkout
+            - attach_workspace:
+                  at: ./
+            - run: mkdir ~/junit
+            - run:
+                  name: Run Test
+                  command: yarn ci:test
+            - run:
+                  command: cp junit.xml ~/junit/
+                  when: always
+            - store_test_results:
+                  path: ~/junit
+            - store_artifacts:
+                  path: ~/junit
 
     lint:
         docker: *node_image
         steps:
-        - checkout
-        - attach_workspace:
-            at: ./
-        - run:
-            name: Run Linting
-            command: yarn ci:lint
-        
+            - checkout
+            - attach_workspace:
+                  at: ./
+            - run:
+                  name: Run Linting
+                  command: yarn ci:lint
+
     "build storybook":
         docker: *node_image
         steps:
-        - checkout
-        - attach_workspace:
-            at: ./
-        - run:
-            name: Build storybook
-            command: yarn storybook:build
-        
+            - checkout
+            - attach_workspace:
+                  at: ./
+            - run:
+                  name: Build storybook
+                  command: yarn storybook:build
 
 workflows:
     version: 2
     build-and-test:
         jobs:
-        - setup
-        - build:
-            requires:
             - setup
-        - lint:
-            requires:
-            - setup
-        - test:
-            requires:
-             - setup
-        - "build storybook":
-            requires:
-             - setup
+            - build:
+                  requires:
+                      - setup
+            - lint:
+                  requires:
+                      - setup
+            - test:
+                  requires:
+                      - setup
+            - "build storybook":
+                  requires:
+                      - setup
