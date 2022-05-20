@@ -9,6 +9,15 @@ describe('kebabToCamel util function', () => {
 		expect(kebabToCamel(StringFormatter.Lower, received)).toBe(expected);
 	});
 
+	it('curried function must transform kebab to camel with lower case', () => {
+		const received = 'hello-world-2';
+		const expected = 'helloWorld2';
+
+		const formatter = kebabToCamel(StringFormatter.Lower);
+
+		expect(formatter(received)).toBe(expected);
+	});
+
 	it('function must transform kebab to camel with upper case', () => {
 		const received = 'hello-world';
 		const expected = 'HelloWorld';
