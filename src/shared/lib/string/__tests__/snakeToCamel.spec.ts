@@ -10,7 +10,7 @@ describe('snakeToCamel util function', () => {
 	});
 
 	it('curried function must transform snake to camel with lower case', () => {
-		const received = 'hello_world-2';
+		const received = 'hello_world2';
 		const expected = 'helloWorld2';
 
 		const formatter = snakeToCamel(StringFormatter.Lower);
