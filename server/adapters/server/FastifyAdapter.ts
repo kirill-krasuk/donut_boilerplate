@@ -1,6 +1,6 @@
 import fastify, { FastifyRequest, FastifyReply } from 'fastify';
 import pug                                       from 'pug';
-import fastifyExpress                            from 'fastify-express';
+import fastifyExpress                            from '@fastify/express';
 import pointOfView                               from 'point-of-view';
 
 import { HTTPServerAdapter }                     from './HTTPServerAdapter';

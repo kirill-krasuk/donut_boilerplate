@@ -1,3 +1,3 @@
-const ONE_MONTH_CACHE = 30 * 60 * 1000 * 60 * 24;
+const ONE_YEAR_CACHE = 30 * 60 * 1000 * 60 * 24 * 365;
 
-export { ONE_MONTH_CACHE };
+export { ONE_YEAR_CACHE };
