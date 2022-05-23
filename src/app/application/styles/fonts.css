@@ -1,12 +1,25 @@
+/*
+	Example for support all fonts
+	
+	@font-face {
+		font-weight: 900;
+		font-family: Montserrat;
+		font-style: normal;
+		src:
+			url('~fonts/Montserrat-Black.eot'),
+			url('~fonts/Montserrat-Black.eot?#iefix') format('embedded-opentype'),
+			url('~fonts/Montserrat-Black.woff2') format('woff2'),
+			url('~fonts/Montserrat-Black.woff') format('woff'),
+			url('~fonts/Montserrat-Black.ttf') format('truetype');
+		font-display: swap;
+	}
+*/
+
 @font-face {
 	font-weight: 900;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-Black.eot'),
-		url('~fonts/Montserrat-Black.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Black.woff') format('woff'),
-		url('~fonts/Montserrat-Black.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Black.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -14,11 +27,7 @@
 	font-weight: 900;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-BlackItalic.eot'),
-		url('~fonts/Montserrat-BlackItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-BlackItalic.woff') format('woff'),
-		url('~fonts/Montserrat-BlackItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-BlackItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -26,11 +35,7 @@
 	font-weight: 800;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-ExtraBold.eot'),
-		url('~fonts/Montserrat-ExtraBold.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-ExtraBold.woff') format('woff'),
-		url('~fonts/Montserrat-ExtraBold.ttf') format('truetype');
+	src: url('~fonts/Montserrat-ExtraBold.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -38,11 +43,7 @@
 	font-weight: 800;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-ExtraBoldItalic.eot'),
-		url('~fonts/Montserrat-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-ExtraBoldItalic.woff') format('woff'),
-		url('~fonts/Montserrat-ExtraBoldItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-ExtraBoldItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -50,11 +51,7 @@
 	font-weight: 700;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-Bold.eot'),
-		url('~fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Bold.woff') format('woff'),
-		url('~fonts/Montserrat-Bold.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Bold.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -62,11 +59,7 @@
 	font-weight: 700;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-BoldItalic.eot'),
-		url('~fonts/Montserrat-BoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-BoldItalic.woff') format('woff'),
-		url('~fonts/Montserrat-BoldItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-BoldItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -74,11 +67,7 @@
 	font-weight: 600;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-SemiBold.eot'),
-		url('~fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-SemiBold.woff') format('woff'),
-		url('~fonts/Montserrat-SemiBold.ttf') format('truetype');
+	src: url('~fonts/Montserrat-SemiBold.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -86,11 +75,7 @@
 	font-weight: 600;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-SemiBoldItalic.eot'),
-		url('~fonts/Montserrat-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-SemiBoldItalic.woff') format('woff'),
-		url('~fonts/Montserrat-SemiBoldItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-SemiBoldItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -98,11 +83,7 @@
 	font-weight: 500;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-Medium.eot'),
-		url('~fonts/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Medium.woff') format('woff'),
-		url('~fonts/Montserrat-Medium.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Medium.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -110,11 +91,7 @@
 	font-weight: 500;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-MediumItalic.eot'),
-		url('~fonts/Montserrat-MediumItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-MediumItalic.woff') format('woff'),
-		url('~fonts/Montserrat-MediumItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-MediumItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -122,11 +99,7 @@
 	font-weight: 400;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-Regular.eot'),
-		url('~fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Regular.woff') format('woff'),
-		url('~fonts/Montserrat-Regular.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Regular.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -134,11 +107,7 @@
 	font-weight: 400;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-Italic.eot'),
-		url('~fonts/Montserrat-Italic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Italic.woff') format('woff'),
-		url('~fonts/Montserrat-Italic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Italic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -146,11 +115,7 @@
 	font-weight: 300;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-Light.eot'),
-		url('~fonts/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Light.woff') format('woff'),
-		url('~fonts/Montserrat-Light.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Light.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -158,11 +123,7 @@
 	font-weight: 300;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-LightItalic.eot'),
-		url('~fonts/Montserrat-LightItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-LightItalic.woff') format('woff'),
-		url('~fonts/Montserrat-LightItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-LightItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -170,11 +131,7 @@
 	font-weight: 200;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-ExtraLight.eot'),
-		url('~fonts/Montserrat-ExtraLight.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-ExtraLight.woff') format('woff'),
-		url('~fonts/Montserrat-ExtraLight.ttf') format('truetype');
+	src: url('~fonts/Montserrat-ExtraLight.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -182,11 +139,7 @@
 	font-weight: 200;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-ExtraLightItalic.eot'),
-		url('~fonts/Montserrat-ExtraLightItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-ExtraLightItalic.woff') format('woff'),
-		url('~fonts/Montserrat-ExtraLightItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-ExtraLightItalic.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -194,11 +147,7 @@
 	font-weight: 100;
 	font-family: Montserrat;
 	font-style: normal;
-	src:
-		url('~fonts/Montserrat-Thin.eot'),
-		url('~fonts/Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-Thin.woff') format('woff'),
-		url('~fonts/Montserrat-Thin.ttf') format('truetype');
+	src: url('~fonts/Montserrat-Thin.woff2') format('woff2');
 	font-display: swap;
 }
 
@@ -206,10 +155,6 @@
 	font-weight: 100;
 	font-family: Montserrat;
 	font-style: italic;
-	src:
-		url('~fonts/Montserrat-ThinItalic.eot'),
-		url('~fonts/Montserrat-ThinItalic.eot?#iefix') format('embedded-opentype'),
-		url('~fonts/Montserrat-ThinItalic.woff') format('woff'),
-		url('~fonts/Montserrat-ThinItalic.ttf') format('truetype');
+	src: url('~fonts/Montserrat-ThinItalic.woff2') format('woff2');
 	font-display: swap;
 }

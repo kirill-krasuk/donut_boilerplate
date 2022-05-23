@@ -9,6 +9,9 @@ html(lang="ru" class=`${mode}`)
         | !{meta}
         link(rel="manifest" href="/manifest.json")
         link(rel="apple-touch-icon" sizes="128x128" href="public/images/logo128x128.png")
+		link(rel="preconnect" href="https://fonts.googleapis.com")
+		link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+		link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Viga&display=swap" rel="stylesheet")
         script#prefers-scheme(type="text/javascript").
             (function () {
                 const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -27,20 +30,6 @@ html(lang="ru" class=`${mode}`)
         #root
             | !{html}
         #modal
-        script(type="text/javascript").
-            WebFontConfig = {
-                google: { families: [ 'Viga|Montserrat:400,500,600&display=swap' ] }
-            };
-
-            (function() {
-                var wf = document.createElement('script');
-                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-                wf.type = 'text/javascript';
-                wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
         script#ssr-store
             | !{storage}
         script#initial-props
