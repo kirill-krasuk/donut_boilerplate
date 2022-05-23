@@ -14,7 +14,9 @@
 		"string-quotes": "single",
 		"declaration-colon-newline-after": null,
 		"value-keyword-case": null,
-		"custom-property-empty-line-before": null
+		"custom-property-empty-line-before": null,
+		"number-leading-zero": null,
+		"font-family-name-quotes": null
 	},
 	"files": ["**/styles/*.{ts,js,jsx,tsx}"]
 }
