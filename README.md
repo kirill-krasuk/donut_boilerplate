@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/images/logo256x256.png" alt="Donut Logo"/>
+  <img width="256" src="./src/assets/svgs/new_logo.svg" alt="Donut Logo"/>
 </p>
 
 <p align="center">
