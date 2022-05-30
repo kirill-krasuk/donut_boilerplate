@@ -25,7 +25,7 @@ jobs:
                   ls -la
 
             - name: Generate public html
-              run: sh app_version.sh .env
+              run: sh app_version.sh .env index.tmpl.html > index.html
 
             - name: Debug
               run: cat index.html

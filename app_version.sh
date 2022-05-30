@@ -1,8 +1,13 @@
-#! /bin/bash
+#!/bin/sh
+
+# envsub - subsitute environment variables
 
 env=$1
+template=$2
 
 sh -c "
 . \"$env\"
 
-envsubst <index.tmpl.html >index.html
+cat <<EOF
+$(cat "$template")
+EOF"
