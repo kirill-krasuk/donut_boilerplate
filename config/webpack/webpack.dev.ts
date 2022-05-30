@@ -53,5 +53,5 @@ export default configureBundler({
 				return instance.name === 'react-is';
 			}
 		})
-	].filter(Boolean)
+	]
 });

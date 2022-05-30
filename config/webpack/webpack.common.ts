@@ -93,7 +93,7 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 			]
 		},
 		watch  : options.watch || false,
-		plugins: options!.plugins!.concat(
+		plugins: options.plugins!.concat(
 			[
 				...htmlPlugins(),
 				definePlugin({
