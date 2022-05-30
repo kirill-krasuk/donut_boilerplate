@@ -22,6 +22,7 @@ jobs:
                   newenv=${dotenv/APP_VERSION=/APP_VERSION="$test"}
                   echo $APP_VERSION_SECRET
                   echo $newenv >> .env
+                  ls -la
 
             - name: Generate public html
               run: sh app_version.sh
