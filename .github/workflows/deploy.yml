@@ -18,6 +18,8 @@ jobs:
                   dotenv=$(cat .env)
                   newenv=${dotenv/APP_VERSION=/APP_VERSION="$secrets.APP_VERSION"}
                   echo $newenv >> .env
+                  cat .env
+                  ls -la
 
             - name: Generate public html
               run: sh app_vesrsion.sh
