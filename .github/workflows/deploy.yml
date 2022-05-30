@@ -5,6 +5,8 @@ on: [push]
 jobs:
     build:
         runs-on: ubuntu-latest
+        env:
+            APP_VERSION_SECRET: ${{secrets.APP_VERSION}}
 
         steps:
             - name: Checkout
@@ -16,13 +18,11 @@ jobs:
             - name: Paste secrets value to .env
               run: |
                   dotenv=$(cat .env)
-                  newenv=${dotenv/APP_VERSION=/APP_VERSION="$secrets.APP_VERSION"}
+                  newenv=${dotenv/APP_VERSION=/APP_VERSION="$APP_VERSION_SECRET"}
                   echo $newenv >> .env
-                  cat .env
-                  ls -la
 
             - name: Generate public html
-              run: sh app_vesrsion.sh
+              run: sh app_version.sh
 
             - name: Debug
               run: cat index.html
