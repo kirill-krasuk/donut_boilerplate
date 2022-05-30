@@ -18,7 +18,9 @@ jobs:
             - name: Paste secrets value to .env
               run: |
                   dotenv=$(cat .env)
-                  newenv=${dotenv/APP_VERSION=/APP_VERSION="$APP_VERSION_SECRET"}
+                  test=400
+                  newenv=${dotenv/APP_VERSION=/APP_VERSION="$test"}
+                  echo $APP_VERSION_SECRET
                   echo $newenv >> .env
 
             - name: Generate public html
