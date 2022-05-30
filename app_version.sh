@@ -1,7 +1,8 @@
 #! /bin/bash
 
-source .env
+env=$1
 
-export APP_VERSION=$APP_VERSION
+sh -c "
+. \"$env\"
 
 envsubst <index.tmpl.html >index.html
