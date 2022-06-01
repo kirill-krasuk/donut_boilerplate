@@ -1,5 +1,5 @@
 #!/bin/bash
 
 if [[ -d "./dist" ]]; then
-    rm -rf ./dist
+	rm -rf ./dist
 fi

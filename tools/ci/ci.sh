@@ -16,9 +16,9 @@ TEST=$(circleci tests glob **/__tests__/*.{ts,tsx,js,jsx} | circleci tests split
 yarn jest --runInBand --env=jsdom -c="$CI_JEST_CONFIG_PATH" $TEST
 
 if [ $? -eq 1 ]; then
-    echo -e "🚨🚨🚨 Tests ${COLOR_BOLD_RED}failed${COLOR_OFF} 🚨🚨🚨"
-    exit 1
+	echo -e "🚨🚨🚨 Tests ${COLOR_BOLD_RED}failed${COLOR_OFF} 🚨🚨🚨"
+	exit 1
 else
-    echo -e "✨✨✨ Tests ${COLOR_BOLD_GREEN}passed${COLOR_OFF} in ${SECONDS} seconds ✨✨✨"
-    exit 0
+	echo -e "✨✨✨ Tests ${COLOR_BOLD_GREEN}passed${COLOR_OFF} in ${SECONDS} seconds ✨✨✨"
+	exit 0
 fi
