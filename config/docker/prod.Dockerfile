@@ -31,7 +31,10 @@ RUN apk add --no-cache --virtual .gyp \
 COPY .yarn .yarn
 COPY yarn.lock package.json .yarnrc.yml ./
 
+# remove
+
 RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn
+COPY . .
 RUN yarn bundle
 
 
