@@ -1,0 +1,51 @@
+name: Prod Docker
+
+on: [push, pull_request]
+
+jobs:
+    build_images:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Generate .env
+              run: |
+                  cat <<- EOF > .env
+                    # server config
+                    HOST=0.0.0.0
+                    PORT=3000
+                    API_HOST=
+
+                    # app config
+                    APP_NAME="donut_boilerpate"
+                    SERVICE_WORKER_ENABLE=false
+                    HYDRATE=false
+                    # express, fastify
+                    SERVER_SIDE_ENGINE="fastify"
+
+                    # bundle benchmark
+                    USE_SPEED_MEASURE_CLIENT=false
+                    USE_SPEED_MEASURE_SERVER=false
+
+                    # dev app
+                    OPEN_IN_BROWSER=false
+                    WRITE_ASSETS_TO_DISK=false
+
+                    # verbose, summary, errors-only, errors-warnings
+                    # minimal, normal, detailed
+                    WEBPACK_DEV_STATS='errors-warnings'
+
+                    # docker config
+                    DOCKER_TAG="donut-app"
+                    DOCKER_CONFIG_PATH="./config/docker/prod.Dockerfile"
+                    DOCKER_CONTAINER_NAME="donut-app-container"
+
+                    # webpack config
+                    BUILD_ANALYZE=true
+                    BUNDLE_ANALYZER_PORT=8181
+
+                  EOF
+
+            - name: Debug .env
+              run: cat .env
