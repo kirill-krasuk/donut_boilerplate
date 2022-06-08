@@ -17,13 +17,19 @@ async function createServerRunnerPromise(
 		port++;
 	}
 
-	appInstance.listen(port, host, () =>
+	appInstance.listen(port, host, () => {
+		if (process.env.KILL_ON_READY) {
+			setTimeout(() => {
+				process.exit(0);
+			}, 2000);
+		}
+
 		appOutput({
 			host,
 			standardPort: standardPort.toString(),
 			port        : port.toString()
-		})
-	);
+		});
+	});
 }
 
 function createServerRunner(appInstance: Express) {
