@@ -36,7 +36,12 @@ jobs:
                     # webpack config
                     BUILD_ANALYZE=true
 
+                    KILL_ON_READY=true
+
                   EOF
 
             - name: Build prod.Dockerfile
               run: make build-image
+
+            - name: Check server running
+              run: yarn run:server
