@@ -44,4 +44,4 @@ jobs:
               run: make build-image
 
             - name: Check server running
-              run: yarn run:server
+              run: make run-container
