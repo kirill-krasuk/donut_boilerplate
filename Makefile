@@ -9,16 +9,19 @@ endif
 
 # DOCKER COMMANDS
 build-image:
-	@docker build --platform linux/amd64 --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
+	@DOCKER_BUILDKIT=1 docker build --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
 
 build-no-cache:
-	@docker build --platform linux/amd64 --no-cache --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
+	@DOCKER_BUILDKIT=1 docker build --no-cache --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
 
 delete-image:
 	@docker rmi $(DOCKER_TAG)
 
 run-container:
 	@docker run --rm -p $(PORT):$(PORT) $(ENV_FILE_PARAM) --name $(DOCKER_CONTAINER_NAME) $(DOCKER_TAG)
+
+run-it-container:
+	@docker run --rm -it -p $(PORT):$(PORT) $(ENV_FILE_PARAM) --name $(DOCKER_CONTAINER_NAME) $(DOCKER_TAG) bash
 
 stop-container:
 	@docker stop $(DOCKER_CONTAINER_NAME)

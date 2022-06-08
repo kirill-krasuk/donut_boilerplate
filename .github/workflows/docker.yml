@@ -19,22 +19,14 @@ jobs:
 
                     # app config
                     APP_NAME="donut_boilerplate"
-                    SERVICE_WORKER_ENABLE=false
-                    HYDRATE=false
+                    SERVICE_WORKER_ENABLE=true
+                    HYDRATE=true
                     # express, fastify
                     SERVER_SIDE_ENGINE="fastify"
 
-                    # bundle benchmark
-                    USE_SPEED_MEASURE_CLIENT=false
-                    USE_SPEED_MEASURE_SERVER=false
-
-                    # dev app
-                    OPEN_IN_BROWSER=false
-                    WRITE_ASSETS_TO_DISK=false
-
                     # verbose, summary, errors-only, errors-warnings
                     # minimal, normal, detailed
-                    WEBPACK_DEV_STATS='errors-warnings'
+                    WEBPACK_DEV_STATS='verbose'
 
                     # docker config
                     DOCKER_TAG="donut-app"
@@ -43,60 +35,8 @@ jobs:
 
                     # webpack config
                     BUILD_ANALYZE=true
-                    BUNDLE_ANALYZER_PORT=8181
 
                   EOF
 
-            # uncomment for push
-            # - name: Prepare
-            #   id: prep
-            #   run: |
-            #       DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/${GITHUB_REPOSITORY#*/}
-            #       VERSION=latest
-            #       SHORTREF=${GITHUB_SHA::8}
-
-            #       # If this is git tag, use the tag name as a docker tag
-            #       if [[ $GITHUB_REF == refs/tags/* ]]; then
-            #           VERSION=${GITHUB_REF#refs/tags/v}
-            #       fi
-            #       TAGS="${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${SHORTREF}"
-
-            #       # If the VERSION looks like a version number, assume that
-            #       # this is the most recent version of the image and also
-            #       # tag it 'latest'.
-            #       if [[ $VERSION =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-            #           TAGS="$TAGS,${DOCKER_IMAGE}:latest"
-            #       fi
-
-            #       # Set output parameters.
-            #       echo ::set-output name=tags::${TAGS}
-            #       echo ::set-output name=docker_image::${DOCKER_IMAGE}
-
-            - name: Set up QEMU
-              uses: docker/setup-qemu-action@master
-              with:
-                  platforms: all
-
-            - name: Set up Docker Buildx
-              id: buildx
-              uses: docker/setup-buildx-action@master
-
-            # uncomment for push docker image to registry
-            # - name: Login to DockerHub
-            #   if: github.event_name != 'pull_request'
-            #   uses: docker/login-action@v1
-            #   with:
-            #       username: ${{ secrets.DOCKER_USERNAME }}
-            #       password: ${{ secrets.DOCKER_PASSWORD }}
-
-            - name: Build
-              uses: docker/build-push-action@v2
-              with:
-                  builder: ${{ steps.buildx.outputs.name }}
-                  context: .
-                  file: ./config/docker/prod.Dockerfile
-                  platforms: linux/amd64,linux/arm64
-                  build-args: PORT_TO_EXPOSE=3000
-                  # uncomment for push docker image to registry
-                  # push: true
-                  # tags: ${{ steps.prep.outputs.tags }}
+            - name: Build prod.Dockerfile
+              run: make build-image

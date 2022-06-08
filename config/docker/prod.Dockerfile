@@ -31,72 +31,66 @@ RUN apk add --no-cache --virtual .gyp \
 COPY .yarn .yarn
 COPY yarn.lock package.json .yarnrc.yml ./
 
-# remove
+#---------> image for installing production dependencies <---------
+
+FROM prepared_node_env AS installer
+
+# installing production dependencies.
+# this helps to reduce the final image size by almost half
+RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn workspaces focus --production
+
+
+#----------------> image for bundling application <----------------
+
+FROM prepared_node_env AS bundler
 
 RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn
+
 COPY . .
+
 RUN yarn bundle
 
 
-# #---------> image for installing production dependencies <---------
+#--------------------> prod lightweight image <--------------------
 
-# FROM prepared_node_env AS installer
+# we use an empty alpina image, 
+# since we no longer need tools to build modules, 
+# we only need a bash to run the application
+FROM node:16.13.0-alpine
 
-# # installing production dependencies.
-# # this helps to reduce the final image size by almost half
-# RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn workspaces focus --production
+# default port
+# overriding in docker build command
+ARG PORT_TO_EXPOSE=80
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+RUN chown node:node .
 
-# #----------------> image for bundling application <----------------
+# install the bash,
+# since alpina goes without it by default
+RUN apk add --no-cache bash \
+	dumb-init \
+	&& rm -rf /var/cache/apk/*
 
-# FROM prepared_node_env AS bundler
+USER node
 
-# RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn
+# copy bundle results
+COPY --chown=node:node --from=bundler /usr/src/app/dist dist
+COPY --chown=node:node --from=bundler /usr/src/app/public public
+COPY --chown=node:node --from=bundler /usr/src/app/views views
 
-# COPY . .
+# copy prod dependencies
+COPY --chown=node:node --from=installer /usr/src/app/.yarn .yarn
+COPY --chown=node:node --from=installer /usr/src/app/.pnp.cjs .
 
-# RUN yarn bundle
+# copy other
+COPY --chown=node:node tools tools
+COPY --chown=node:node package.json yarn.lock .yarnrc.yml ./
 
+EXPOSE ${PORT_TO_EXPOSE}
 
-# #--------------------> prod lightweight image <--------------------
-
-# # we use an empty alpina image, 
-# # since we no longer need tools to build modules, 
-# # we only need a bash to run the application
-# FROM node:16.13.0-alpine
-
-# # default port
-# # overriding in docker build command
-# ARG PORT_TO_EXPOSE=80
-
-# RUN mkdir -p /usr/src/app
-# WORKDIR /usr/src/app
-# RUN chown node:node .
-
-# # install the bash,
-# # since alpina goes without it by default
-# RUN apk add --no-cache bash \
-# 	dumb-init \
-# 	&& rm -rf /var/cache/apk/*
-
-# USER node
-
-# # copy bundle results
-# COPY --chown=node:node --from=bundler /usr/src/app/dist dist
-# COPY --chown=node:node --from=bundler /usr/src/app/public public
-
-# # copy prod dependencies
-# COPY --chown=node:node --from=installer /usr/src/app/.yarn .yarn
-# COPY --chown=node:node --from=installer /usr/src/app/.pnp.cjs .
-
-# # copy other
-# COPY --chown=node:node tools tools
-# COPY --chown=node:node package.json yarn.lock .yarnrc.yml ./
-
-# EXPOSE ${PORT_TO_EXPOSE}
-
-# # dumb-init is a simple process supervisor and 
-# # init system designed to run as PID 1 
-# # inside minimal container environments
-# ENTRYPOINT [ "dumb-init", "--"]
-# CMD ["yarn", "run:server"]
+# dumb-init is a simple process supervisor and 
+# init system designed to run as PID 1 
+# inside minimal container environments
+ENTRYPOINT [ "dumb-init", "--"]
+CMD ["yarn", "run:server"]
