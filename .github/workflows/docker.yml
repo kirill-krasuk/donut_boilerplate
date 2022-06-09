@@ -40,7 +40,8 @@ jobs:
 
                   EOF
 
-            - uses: satackey/action-docker-layer-caching@v0.0.11
+            - name: Caching docker layer
+              uses: satackey/action-docker-layer-caching@v0.0.11
               continue-on-error: true
 
             - name: Build prod.Dockerfile
