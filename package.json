@@ -308,5 +308,5 @@
 		"workbox-strategies": "^5.1.4",
 		"workbox-webpack-plugin": "^6.0.2"
 	},
-	"packageManager": "yarn@4.0.0-rc.9"
+	"packageManager": "yarn@3.2.1"
 }
