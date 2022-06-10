@@ -8,11 +8,14 @@ ifneq (,$(wildcard ./.env))
 endif
 
 # DOCKER COMMANDS
+dev:
+	@docker compose --file $(DOCKER_DEV_CONFIG_PATH) up
+
 build-image:
-	@DOCKER_BUILDKIT=1 docker build --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
+	@DOCKER_BUILDKIT=1 docker build --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_PROD_CONFIG_PATH) .
 
 build-no-cache:
-	@DOCKER_BUILDKIT=1 docker build --no-cache --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_CONFIG_PATH) .
+	@DOCKER_BUILDKIT=1 docker build --no-cache --build-arg PORT_TO_EXPOSE=$(PORT) -t $(DOCKER_TAG) -f $(DOCKER_PROD_CONFIG_PATH) .
 
 delete-image:
 	@docker rmi $(DOCKER_TAG)

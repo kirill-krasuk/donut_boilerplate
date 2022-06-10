@@ -15,26 +15,11 @@ jobs:
                     # server config
                     HOST=0.0.0.0
                     PORT=3000
-                    API_HOST=
-
-                    # app config
-                    APP_NAME="donut_boilerplate"
-                    SERVICE_WORKER_ENABLE=true
-                    HYDRATE=true
-                    # express, fastify
-                    SERVER_SIDE_ENGINE="fastify"
-
-                    # verbose, summary, errors-only, errors-warnings
-                    # minimal, normal, detailed
-                    WEBPACK_DEV_STATS='verbose'
 
                     # docker config
                     DOCKER_TAG="donut-app"
-                    DOCKER_CONFIG_PATH="./config/docker/prod.Dockerfile"
+                    DOCKER_PROD_CONFIG_PATH="./config/docker/prod.Dockerfile"
                     DOCKER_CONTAINER_NAME="donut-app-container"
-
-                    # webpack config
-                    BUILD_ANALYZE=true
 
                     KILL_ON_READY=true
 

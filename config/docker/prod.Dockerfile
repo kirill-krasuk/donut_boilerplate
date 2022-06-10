@@ -44,6 +44,8 @@ RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn workspaces focus --production
 
 FROM prepared_node_env AS bundler
 
+# disable cpp errors on arm arch
+# in image lib
 RUN CPPFLAGS=-DPNG_ARM_NEON_OPT=0 yarn
 
 COPY . .

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+    donut_app:
+        build:
+            context: ../../
+            dockerfile: ./config/docker/dev.Dockerfile
+        volumes:
+            - ../../src:/code/src
+            # need provide .env file to container
+            # with actual used port
+            - ../../.env:/code/.env
+        ports:
+            # get variable from .env file automatically
+            - ${PORT}:${PORT}

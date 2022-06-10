@@ -39,5 +39,8 @@
 	"[dockerfile]": {
 		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
 	},
-	"typescript.enablePromptUseWorkspaceTsdk": true
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"[dockercompose]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
+	}
 }
