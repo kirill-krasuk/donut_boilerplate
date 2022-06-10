@@ -2,9 +2,11 @@ version: "3.9"
 
 services:
     donut_app:
+        container_name: ${DOCKER_CONTAINER_NAME}
         build:
             context: ../../
             dockerfile: ./config/docker/dev.Dockerfile
+        image: ${DOCKER_TAG}-dev
         volumes:
             - ../../src:/code/src
             # need provide .env file to container
