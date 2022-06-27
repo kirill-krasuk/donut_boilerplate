@@ -1,13 +1,15 @@
 import { ExpressAdapter } from '../../adapters/server/ExpressAdapter';
 import { FastifyAdapter } from '../../adapters/server/FastifyAdapter';
 
-export class ServerEngineFactory {
-	private static adapters = {
-		express: ExpressAdapter,
-		fastify: FastifyAdapter
-	};
+const adapters = {
+	express: new ExpressAdapter(),
+	fastify: new FastifyAdapter()
+};
 
-	async init(type: keyof typeof ServerEngineFactory.adapters) {
-		return await ServerEngineFactory.adapters[type].init();
+type ServerAdaptersMap = keyof typeof adapters;
+
+export class ServerEngineFactory {
+	async init(type: ServerAdaptersMap) {
+		return await adapters[type].init();
 	}
 }

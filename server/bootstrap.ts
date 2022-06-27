@@ -2,15 +2,14 @@
 import { env }                 from '@env/index';
 import { ServerEngineFactory } from '@server/factories/server';
 
-import { ApplicationBuilder }  from './app';
+import { ApplicationFacade }   from './app';
 
 export async function bootstrap() {
 	const { serverSideEngine, host, port } = env.server;
 
-	const adapter = await new ServerEngineFactory().init(serverSideEngine);
-	const app     = new ApplicationBuilder(adapter);
-
-	await app.build();
+	const serverEngineFactory = new ServerEngineFactory();
+	const adapter             = await serverEngineFactory.init(serverSideEngine);
+	const app                 = new ApplicationFacade(adapter);
 
 	app.start(port, host);
 }

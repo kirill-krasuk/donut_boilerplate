@@ -93,4 +93,5 @@ implements ServerAdapter<Request, Response> {
 	}
 
 	abstract registerViewTemplate(options: ViewTemplateOptions): void;
+	abstract init(): Promise<this>;
 }

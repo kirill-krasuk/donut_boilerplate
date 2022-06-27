@@ -24,10 +24,10 @@ export class FastifyAdapter<
 		super(fastifyInstance);
 	}
 
-	static async init() {
+	async init() {
 		await fastifyInstance.register(fastifyExpress);
 
-		return new FastifyAdapter();
+		return this;
 	}
 
 	render(response: any, view: string, options: any) {

@@ -17,10 +17,10 @@ import { serverSideRendering }       from './middlewares';
 
 import type { HTTPServerAdapter }    from './adapters/server';
 
-export class ApplicationBuilder<T extends HTTPServerAdapter> {
+export class ApplicationFacade<T extends HTTPServerAdapter> {
 	constructor(private adapter: T) {}
 
-	async build() {
+	private async build() {
 		this.adapter.registerViewTemplate({
 			engine   : 'pug',
 			viewsPath: `${ process.cwd() }/views`
@@ -49,15 +49,16 @@ export class ApplicationBuilder<T extends HTTPServerAdapter> {
 	}
 
 	async start(port: number | string, host: string) {
+		await this.build();
+
 		await createServerRunnerPromise(this.adapter as any, +port, host);
 
 		const server = this.adapter.getServer();
 
 		if (server) {
-			server.on('close', handleClose);
-
 			const handleExit = createExitHandler(server);
 
+			server.on('close', handleClose);
 			process.once('SIGTERM', handleExit);
 			process.once('SIGINT', handleExit);
 		}

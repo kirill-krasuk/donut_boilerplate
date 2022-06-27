@@ -16,10 +16,8 @@ export class ExpressAdapter<
 		super(expressInstance);
 	}
 
-	static async init() {
-		await Promise.resolve();
-
-		return new ExpressAdapter();
+	async init() {
+		return this;
 	}
 
 	registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
