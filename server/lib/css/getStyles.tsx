@@ -1,5 +1,4 @@
 import { renderToString } from 'react-dom/server';
-import util               from 'node:util';
 import {
 	discoverProjectStyles,
 	getUsedStyles,
