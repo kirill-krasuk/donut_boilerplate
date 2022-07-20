@@ -32,6 +32,8 @@ function cssModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 		...props
 	};
 
+	const sourceMap = !isProd();
+
 	const client = {
 		...options,
 		use: [
@@ -54,7 +56,7 @@ function cssModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 					modules      : {
 						localIdentName: '[local]--[hash:base64:5]'
 					},
-					sourceMap: !isProd()
+					sourceMap
 				}
 			},
 
@@ -63,7 +65,8 @@ function cssModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 				options: {
 					postcssOptions: {
 						config: paths.client.postCssConfig
-					}
+					},
+					sourceMap
 				}
 			}
 		].filter(Boolean) as webpack.RuleSetUseItem,
@@ -74,6 +77,12 @@ function cssModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 	const server = {
 		...options,
 		loader : 'css-loader',
+		options: {
+			modules: {
+				localIdentName  : '[local]--[hash:base64:5]',
+				exportOnlyLocals: true
+			}
+		},
 		include: fileExtensions.cssModule
 	};
 

@@ -32,30 +32,32 @@ function sassModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 		...props
 	};
 
-	const baseLoader = [
+	const sourceMap = !isProd();
+
+	const baseLoader = (isServer = false) => [
 		{
 			loader : 'css-loader',
 			options: {
 				modules: {
-					localIdentName: '[local]--[hash:base64:5]'
-				}
+					localIdentName  : '[local]--[hash:base64:5]',
+					exportOnlyLocals: isServer
+				},
+				sourceMap
 			}
-		},
-		{
-			loader: 'resolve-url-loader'
 		},
 		{
 			loader : 'postcss-loader',
 			options: {
 				postcssOptions: {
 					config: paths.client.postCssConfig
-				}
+				},
+				sourceMap
 			}
 		},
 		{
 			loader : 'sass-loader',
 			options: {
-				sourceMap: true
+				sourceMap
 			}
 		}
 	];
@@ -75,14 +77,14 @@ function sassModuleLoader(props: Props = defaultProps): IsomorphicLoader {
 				loader: 'style-loader'
 			},
 
-			...baseLoader
+			...baseLoader()
 		].filter(Boolean) as webpack.RuleSetUseItem,
 		...extraOptions
 	};
 
 	const server = {
 		...options,
-		use: baseLoader
+		use: baseLoader(true)
 	};
 
 	return {

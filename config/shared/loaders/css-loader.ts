@@ -32,6 +32,8 @@ function cssLoader(props: Props = defaultProps): IsomorphicLoader {
 		...props
 	};
 
+	const sourceMap = !isProd();
+
 	const client = {
 		...options,
 		use: [
@@ -51,7 +53,7 @@ function cssLoader(props: Props = defaultProps): IsomorphicLoader {
 				loader : 'css-loader',
 				options: {
 					importLoaders: 1,
-					sourceMap    : !isProd()
+					sourceMap
 				}
 			},
 
@@ -60,7 +62,8 @@ function cssLoader(props: Props = defaultProps): IsomorphicLoader {
 				options: {
 					postcssOptions: {
 						config: paths.client.postCssConfig
-					}
+					},
+					sourceMap
 				}
 			}
 		].filter(Boolean) as webpack.RuleSetUseItem,

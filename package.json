@@ -271,7 +271,6 @@
 		"prettier": "^2.6.2",
 		"prompts": "^2.4.2",
 		"redux-mock-store": "^1.5.4",
-		"resolve-url-loader": "^5.0.0",
 		"sass-loader": "^12.6.0",
 		"speed-measure-webpack-plugin": "^1.5.0",
 		"standard-version": "^9.3.1",

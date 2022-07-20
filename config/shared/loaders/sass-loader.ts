@@ -33,25 +33,28 @@ function sassLoader(props: Props = defaultProps): IsomorphicLoader {
 		...props
 	};
 
+	const sourceMap = !isProd();
+
 	const baseLoader = [
 		{
-			loader: 'css-loader'
-		},
-		{
-			loader: 'resolve-url-loader'
+			loader : 'css-loader',
+			options: {
+				sourceMap
+			}
 		},
 		{
 			loader : 'postcss-loader',
 			options: {
 				postcssOptions: {
 					config: paths.client.postCssConfig
-				}
+				},
+				sourceMap
 			}
 		},
 		{
 			loader : 'sass-loader',
 			options: {
-				sourceMap: true
+				sourceMap
 			}
 		}
 	];
