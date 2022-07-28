@@ -1,11 +1,10 @@
-import { createSelector }  from '@reduxjs/toolkit';
 import R                   from 'ramda';
+
+import { Theme }           from '@shared/config/theme';
 
 import type { ThemeState } from '../../types';
 import type { Selector }   from '@lib/redux';
 
-const selectTheme: Selector<ThemeState> = R.prop('theme');
-
-const getMode = createSelector([ selectTheme ], R.prop('mode'));
+const getMode: Selector<ThemeState['mode']> = R.pathOr(Theme.Light, [ 'theme', 'mode' ]);
 
 export { getMode };

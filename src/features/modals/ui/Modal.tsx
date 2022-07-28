@@ -5,7 +5,7 @@ import {
 	useRef
 } from 'react';
 
-import { KeyCodes } from '@enums/keyCodes';
+import { KeyCodes } from '@shared/enums/key-codes';
 import {
 	useActions,
 	useClickOutside,
