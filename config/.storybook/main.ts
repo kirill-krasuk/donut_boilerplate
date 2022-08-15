@@ -18,7 +18,11 @@ const styleProps = {
 
 export default {
 	core: {
-		builder: 'webpack5'
+		builder: 'webpack5',
+		options: {
+			lazyCompilation: true,
+			fsCache        : true
+		}
 	},
 	stories: [ paths.stories ],
 	addons : [

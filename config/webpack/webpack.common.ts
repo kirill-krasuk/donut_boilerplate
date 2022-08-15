@@ -71,6 +71,9 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 		...(options.cache && {
 			cache: options.cache
 		}),
+		...(options.experiments && {
+			experiments: options.experiments
+		}),
 		optimization: {
 			runtimeChunk: 'single',
 			...options.optimization
