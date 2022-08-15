@@ -1,7 +1,6 @@
 import { Helmet }   from 'react-helmet';
 
 import { Header }   from '@widgets/header';
-import { history }  from '@shared/lib/history';
 
 import { Body }     from './Body';
 
