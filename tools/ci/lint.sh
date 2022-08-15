@@ -13,6 +13,7 @@ TSC_ERRORS=$(yarn types)
 
 if [ -n "$TSC_ERRORS" ]; then
 	echo -e "🚨🚨🚨 Linting ${COLOR_BOLD_RED}failed${COLOR_OFF} 🚨🚨🚨"
+	echo "$TSC_ERRORS"
 	exit 1
 fi
 
