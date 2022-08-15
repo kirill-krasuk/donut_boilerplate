@@ -12,10 +12,10 @@ import {
 	useLockBodyScroll
 } from '@hooks/index';
 
-import * as actions        from '../model/store/actions';
+import * as actions        from '../../model/store/actions';
 import * as S              from './styles';
 
-import type { ModalProps } from './types';
+import type { ModalProps } from '../types';
 
 // TODO: complete modal functional
 const Modal: FC<ModalProps> = props => {

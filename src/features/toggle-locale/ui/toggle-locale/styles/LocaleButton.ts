@@ -2,11 +2,14 @@ import styled            from 'styled-components/macro';
 
 import type { AppTheme } from '@entities/theme';
 
-const LocaleToggler = styled.div`
+const LocaleButton = styled.button`
 	margin-right: 20px;
 	color: var(--icon);
 	font-size: 2rem;
 	text-transform: uppercase;
+	background: transparent;
+	border: none;
+	outline: none;
 	filter: brightness(1);
 
 	&:hover {
@@ -18,4 +21,4 @@ const LocaleToggler = styled.div`
 	}
 `;
 
-export { LocaleToggler };
+export { LocaleButton };

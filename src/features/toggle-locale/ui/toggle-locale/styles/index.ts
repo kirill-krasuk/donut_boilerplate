@@ -1,0 +1,1 @@
+export { LocaleButton } from './LocaleButton';

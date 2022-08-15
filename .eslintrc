@@ -255,6 +255,7 @@
 		"computed-property-spacing": 0,
 		"class-methods-use-this": 0,
 		"react/destructuring-assignment": [2, "always"],
+		"react/prop-types": 0,
 		"react/react-in-jsx-scope": 0,
 		"react/jsx-one-expression-per-line": 2,
 		"react/jsx-indent": [2, "tab"],

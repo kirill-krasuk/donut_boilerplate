@@ -2,13 +2,16 @@ import { useState, useEffect }                     from 'react';
 import { useSelector }                             from 'react-redux';
 import Cookie                                      from 'js-cookie';
 
-import { Theme, themeModel }                       from '@entities/theme';
 import { setDataThemeAttribute, getDarkModeQuery } from '@lib/dom';
 import { useActions }                              from '@hooks/index';
+import { Theme }                                   from '@shared/config/theme/types/enums';
+
+import * as actions                                from '../store/actions';
+import { getMode }                                 from '../store/selectors';
 
 function useTheme() {
-	const { changePreferColorScheme } = useActions(themeModel.actions);
-	const mode                        = useSelector(themeModel.selectors.getMode);
+	const { changePreferColorScheme } = useActions(actions);
+	const mode                        = useSelector(getMode);
 	const [ theme, setTheme ]         = useState(mode);
 
 	const handleChangeTheme = (event: MediaQueryListEvent) => {

@@ -1,5 +1,5 @@
-import { Greeting }  from './greeting/Greeting';
-import { ModalTest } from './modal-test/ModalTest';
+import { Greeting }  from './ui/greeting';
+import { ModalTest } from './ui/modal-test';
 
 export * as modalsModel from './model';
 

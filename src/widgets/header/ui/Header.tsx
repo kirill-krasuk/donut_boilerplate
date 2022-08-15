@@ -1,20 +1,14 @@
 import { EOLocale as T }     from 'eo-locale';
-import { Sun }               from '@styled-icons/fa-solid/Sun';
-import { Moon }              from '@styled-icons/fa-solid/Moon';
 
 import { createFactory }     from '@lib/react';
 import { Theme, themeModel } from '@entities/theme';
-import { localeModel }       from '@entities/locale';
+import { ToggleTheme }       from '@features/toggle-theme';
+import { ToggleLocale }      from '@features/toggle-locale';
 
 import { locales }           from '../config/locales';
 import * as S                from './styles';
 
 import type { VFC }          from 'react';
-
-const themeIconFactory = createFactory({
-	[Theme.Light]: Sun,
-	[Theme.Dark] : Moon
-});
 
 const themeLogoFactory = createFactory({
 	[Theme.Dark] : S.Logo,
@@ -22,19 +16,14 @@ const themeLogoFactory = createFactory({
 });
 
 const Header: VFC = () => {
-	const { locale, handleChangeLocale } = localeModel.hooks.useLocale();
-	const { mode, handleChangeTheme }    = themeModel.hooks.useThemeMode();
+	const { mode } = themeModel.hooks.useThemeMode();
 
 	return (
 		<S.Header>
 			<S.Nav>
-				<S.ThemeIcon>
-					{ themeIconFactory(mode, { onClick: handleChangeTheme }) }
-				</S.ThemeIcon>
+				<ToggleTheme />
 
-				<S.LocaleToggler onClick={ handleChangeLocale }>
-					{ locale }
-				</S.LocaleToggler>
+				<ToggleLocale />
 			</S.Nav>
 
 			<S.Content>
