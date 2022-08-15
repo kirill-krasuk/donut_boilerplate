@@ -1,16 +1,17 @@
-import { ChunkExtractor }                               from '@loadable/server';
+import { ChunkExtractor }            from '@loadable/server';
 
-import { localeModel }                                  from '@entities/locale';
-import { themeModel }                                   from '@entities/theme';
-import { store }                                        from '@app/store';
-import { prefetch, initializeState }                    from '@server/lib/client-server';
-import { generateAppComponent, generateStaticTemplate } from '@server/lib/react';
-import { renderTemplate }                               from '@server/lib/server/render';
-import { getLoadableChunksOptions }                     from '@server/lib/webpack';
-import { headers }                                      from '@server/constants/headers';
+import { localeModel }               from '@entities/locale';
+import { themeModel }                from '@entities/theme';
+import { store }                     from '@app/store';
+import { prefetch, initializeState } from '@server/lib/client-server';
+import { generateStaticTemplate }    from '@server/lib/react';
+import { renderTemplate }            from '@server/lib/server/render';
+import { getLoadableChunksOptions }  from '@server/lib/webpack';
+import { headers }                   from '@server/constants/headers';
+import { Application }               from '@app/application/Application.server';
 
-import type { Context }                                 from '@shared/types/client-server';
-import type { Request, Response }                       from 'express';
+import type { Context }              from '@shared/types/client-server';
+import type { Request, Response }    from 'express';
 
 async function serverSideRendering(req: Request, res: Response): Promise<void> {
 	res.set(...headers.sw);
@@ -44,12 +45,14 @@ async function serverSideRendering(req: Request, res: Response): Promise<void> {
 		locale
 	});
 
-	const Component = generateAppComponent({
-		store,
-		context,
-		location,
-		extractor
-	});
+	const Component = () => (
+		<Application
+			context={ context }
+			extractor={ extractor }
+			location={ location }
+			store={ store }
+		/>
+	);
 
 	const template = await generateStaticTemplate({
 		Component,

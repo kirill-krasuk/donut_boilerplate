@@ -1,17 +1,9 @@
-import type { Theme }          from '@entities/theme';
 import type { HelmetDatum }    from 'react-helmet';
+import type { Theme }          from '@entities/theme';
 import type { Store }          from '@reduxjs/toolkit';
 import type { ChunkExtractor } from '@loadable/server';
-import type { Context }        from '@shared/types/client-server';
 
 type StaticTemplate = Record<string, HelmetDatum | string>;
-
-type GenerateAppOptions = {
-	store: Store,
-	context: Context,
-	location: string,
-	extractor: ChunkExtractor
-};
 
 type OptionsForGenerate = {
 	Component(): JSX.Element,
@@ -21,4 +13,4 @@ type OptionsForGenerate = {
 	mode: Theme
 };
 
-export type { StaticTemplate, GenerateAppOptions, OptionsForGenerate };
+export type { StaticTemplate, OptionsForGenerate };

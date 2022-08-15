@@ -1,6 +1,6 @@
 import { VFC, useEffect }           from 'react';
 
-import { withAppProviders }         from '../providers';
+import { withAppProviders }         from '../providers/client';
 import { clearServerDataContainer } from './lib';
 
 // manual connection of fonts

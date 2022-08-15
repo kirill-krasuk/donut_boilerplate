@@ -2,7 +2,7 @@ import { ThemeProvider }                         from './ThemeProvider';
 
 import type { ComponentType, PropsWithChildren } from 'react';
 
-function withTheme(Component: ComponentType<PropsWithChildren<unknown>>) {
+function withClientTheme(Component: ComponentType<PropsWithChildren<unknown>>) {
 	function ThemeProviderWrapper() {
 		return (
 			<ThemeProvider>
@@ -16,4 +16,4 @@ function withTheme(Component: ComponentType<PropsWithChildren<unknown>>) {
 	return ThemeProviderWrapper;
 }
 
-export { withTheme };
+export { withClientTheme };

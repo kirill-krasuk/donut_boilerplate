@@ -2,7 +2,7 @@ import { LocalesProvider }                       from './LocalesProvider';
 
 import type { ComponentType, PropsWithChildren } from 'react';
 
-function withLocales(Component: ComponentType<PropsWithChildren<unknown>>) {
+function withClientLocales(Component: ComponentType<PropsWithChildren<unknown>>) {
 	function LocalesWrapper() {
 		return (
 			<LocalesProvider>
@@ -16,4 +16,4 @@ function withLocales(Component: ComponentType<PropsWithChildren<unknown>>) {
 	return LocalesWrapper;
 }
 
-export { withLocales };
+export { withClientLocales };

@@ -1,2 +1,3 @@
 export { LocalesProvider } from './LocalesProvider';
-export { withLocales } from './withLocales';
+export { withClientLocales } from './withLocales.client';
+export { withServerSideLocales } from './withLocales.server';

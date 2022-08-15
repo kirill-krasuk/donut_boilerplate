@@ -4,7 +4,7 @@ import { Routes }           from '@app/routes';
 
 import { RedirectProvider } from './RedirectProvider';
 
-function withRouter() {
+function withClientRouter() {
 	function RouterProvider() {
 		return (
 			<BrowserRouter>
@@ -20,4 +20,4 @@ function withRouter() {
 	return RouterProvider;
 }
 
-export { withRouter };
+export { withClientRouter };

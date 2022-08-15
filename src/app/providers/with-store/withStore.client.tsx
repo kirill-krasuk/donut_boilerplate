@@ -4,7 +4,7 @@ import { store }                                 from '../../store';
 
 import type { ComponentType, PropsWithChildren } from 'react';
 
-function withStore(Component: ComponentType<PropsWithChildren<unknown>>) {
+function withClientSideStore(Component: ComponentType<PropsWithChildren<unknown>>) {
 	function StoreProvider() {
 		return (
 			<Provider store={ store }>
@@ -18,4 +18,4 @@ function withStore(Component: ComponentType<PropsWithChildren<unknown>>) {
 	return StoreProvider;
 }
 
-export { withStore };
+export { withClientSideStore };

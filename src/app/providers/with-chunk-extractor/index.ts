@@ -1,0 +1,1 @@
+export { withChunkExtractor } from './withChunkExtractor';

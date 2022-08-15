@@ -1,2 +1,2 @@
-export { withTheme } from './withTheme';
-export { ThemeProvider } from './ThemeProvider';
+export { withClientTheme } from './withTheme.client';
+export { withServerSideTheme } from './withTheme.server';

@@ -3,7 +3,7 @@ import { loadableReady }           from '@loadable/component';
 
 import { env }                     from '@env/index';
 
-import { Application }             from './application/Application';
+import { Application }             from './application/Application.client';
 
 const rootNode = document.querySelector('#root')!;
 
