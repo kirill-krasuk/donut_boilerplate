@@ -38,7 +38,7 @@ export class ApplicationFacade<T extends HTTPServerAdapter> {
 		this.adapter.registerStaticFiles(staticFiles);
 
 		if (__IS_DEV__) {
-			const { useDevMiddlewares } = await import('./middlewares/useDevMiddlewares');
+			const { useDevMiddlewares } = await import('./middlewares/dev');
 			const compilationPromise    = useDevMiddlewares(this.adapter as any);
 
 			await compilationPromise;

@@ -1,5 +1,5 @@
-import { appBorder }        from './appBorder';
-import { getAppOutputInfo } from './getAppOutputInfo';
+import { appBorder }        from './app-border';
+import { getAppOutputInfo } from './app-output-info';
 
 type OutputInfo = {
 	host: string,

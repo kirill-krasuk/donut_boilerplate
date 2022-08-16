@@ -1,1 +1,1 @@
-export { serverSideRendering } from './serverSideRendering';
+export { serverSideRendering } from './ssr';

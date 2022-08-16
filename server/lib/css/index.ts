@@ -1,1 +1,1 @@
-export { getStyles } from './getStyles';
+export { getStyles } from './get-styles';
