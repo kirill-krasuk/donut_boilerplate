@@ -1,4 +1,4 @@
-export { HTTPError } from './services/HTTPError';
+export { HTTPError } from './HTTPError';
 
 export type { UrlORRequest, DefaultHeaders, RequestExtended, RequestBody } from './types';
 
