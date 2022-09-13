@@ -1,7 +1,9 @@
-import { VFC, useEffect }           from 'react';
+import { useEffect }                from 'react';
 
 import { withAppProviders }         from '../providers/client';
 import { clearServerDataContainer } from './lib';
+
+import type { VFC }                 from 'react';
 
 // manual connection of fonts
 // import './styles/fonts.css';

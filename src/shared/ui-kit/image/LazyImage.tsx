@@ -1,14 +1,11 @@
-import {
-	FC,
-	useRef,
-	useState
-} from 'react';
+import { useRef, useState }       from 'react';
 
 import { createIntersectionHook } from '@shared/hooks';
 
 import { Image }                  from './Image';
 import * as S                     from './styles';
 
+import type { FC }                from 'react';
 import type { Props }             from './types';
 
 const { useIntersection } = createIntersectionHook({

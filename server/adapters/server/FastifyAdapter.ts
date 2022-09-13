@@ -1,11 +1,12 @@
-import fastify, { FastifyRequest, FastifyReply } from 'fastify';
-import pug                                       from 'pug';
-import fastifyExpress                            from '@fastify/express';
-import pointOfView                               from 'point-of-view';
+import fastify                               from 'fastify';
+import pug                                   from 'pug';
+import fastifyExpress                        from '@fastify/express';
+import pointOfView                           from 'point-of-view';
 
-import { HTTPServerAdapter }                     from './HTTPServerAdapter';
+import { HTTPServerAdapter }                 from './HTTPServerAdapter';
 
-import type { ViewTemplateOptions }              from './types';
+import type { FastifyRequest, FastifyReply } from 'fastify';
+import type { ViewTemplateOptions }          from './types';
 
 // TODO: refactoring and support more templates
 const templateEngines: Record<string, unknown> = {
@@ -18,7 +19,7 @@ export class FastifyAdapter<
 	R = FastifyRequest,
 	RS = FastifyReply
 > extends HTTPServerAdapter<R, RS> {
-	public type = 'fastify';
+	type = 'fastify';
 
 	constructor() {
 		super(fastifyInstance);

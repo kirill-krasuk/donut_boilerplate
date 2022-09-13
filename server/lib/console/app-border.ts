@@ -1,6 +1,6 @@
 import box from 'boxen';
 
-const appBorder = (content: string) =>
+const appBorder = (content: string) => {
 	console.info(
 		box(content, {
 			padding: {
@@ -14,5 +14,6 @@ const appBorder = (content: string) =>
 			borderStyle: 'double'
 		})
 	);
+};
 
 export { appBorder };

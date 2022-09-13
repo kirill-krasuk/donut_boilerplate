@@ -24,7 +24,7 @@ function createRoutePage(options: any): any {
 			(Component as PC).prefetch = prefetch;
 		}
 
-		if (routeName && routes[routeName]) {
+		if (routeName) {
 			const routeProps = {
 				...defaultRouteProps,
 				...routes[routeName]

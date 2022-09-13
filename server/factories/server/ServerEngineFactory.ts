@@ -10,6 +10,6 @@ type ServerAdaptersMap = keyof typeof adapters;
 
 export class ServerEngineFactory {
 	async init(type: ServerAdaptersMap) {
-		return await adapters[type].init();
+		return adapters[type].init();
 	}
 }

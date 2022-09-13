@@ -12,4 +12,4 @@ const config = argv.config as string;
 
 const pathToConfig = path.resolve(process.cwd(), config);
 
-compileApp(pathToConfig);
+compileApp(pathToConfig).catch(console.error);

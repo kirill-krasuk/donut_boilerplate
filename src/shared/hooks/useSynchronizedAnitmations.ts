@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
 
-let cachedTime: number | null;
+let cachedTime: number | null = null;
 
 function useSynchronizedAnimations(animationName: string) {
 	const ref = useRef();
@@ -14,7 +14,7 @@ function useSynchronizedAnimations(animationName: string) {
 			);
 
 		const firstOfTypeAnimation = animations.find(
-			(animation: Record<string, any>) => animation?.effect?.target === ref.current
+			(animation: Record<string, any>) => animation.effect?.target === ref.current
 		);
 
 		if (firstOfTypeAnimation) {

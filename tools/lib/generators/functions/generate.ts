@@ -14,13 +14,15 @@ const isArrayOfTuples = (value: any): value is [string, string][] =>
 
 const createCallback =
 	(data: Data) =>
-		([ destination, template ]: CreateTuple) =>
+		([ destination, template ]: CreateTuple) => {
 			create(template, destination, data);
+		};
 
 const updateCallback =
 	(data: Data) =>
-		([ source, fileType ]: UpdateTuple) =>
+		([ source, fileType ]: UpdateTuple) => {
 			update(source, fileType, data);
+		};
 
 function generate(schema: Schema, data: Data) {
 	Object.values(schema).forEach(type => {

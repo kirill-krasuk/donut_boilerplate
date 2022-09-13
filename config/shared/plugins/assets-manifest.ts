@@ -1,8 +1,8 @@
-import fs           from 'node:fs';
-import path         from 'node:path';
-import mkdir        from 'make-dir';
+import fs                             from 'node:fs';
+import path                           from 'node:path';
+import mkdir                          from 'make-dir';
 
-import type webpack from 'webpack';
+import type { Compiler, Compilation } from 'webpack';
 
 type AssetsManifestPluginOptions = {
 	filename: string
@@ -14,7 +14,7 @@ const defaultOptions = {
 
 export class AssetsManifestPlugin {
 	private options: AssetsManifestPluginOptions;
-	private compiler: webpack.Compiler | null = null;
+	private compiler: Compiler | null = null;
 
 	constructor(options?: AssetsManifestPluginOptions) {
 		this.options = {
@@ -23,7 +23,26 @@ export class AssetsManifestPlugin {
 		};
 	}
 
-	private emitAsset(compilation: webpack.Compilation) {
+	apply(compiler: Compiler) {
+		this.compiler = compiler;
+
+		compiler.hooks.make.tap(AssetsManifestPlugin.name, compilation => {
+			compilation.hooks.processAssets.tap(
+				{
+					name : AssetsManifestPlugin.name,
+					stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS
+				},
+				() => {
+					const asset = this.emitAsset(compilation);
+
+					// @ts-expect-error
+					compilation.emitAsset(this.options.filename, asset);
+				}
+			);
+		});
+	}
+
+	private emitAsset(compilation: Compilation) {
 		const stats = compilation.getStats().toJson({
 			all               : false,
 			assets            : true,
@@ -67,26 +86,5 @@ export class AssetsManifestPlugin {
 		}
 
 		fs.writeFileSync(outputFile, manifest);
-	}
-
-	apply(compiler: webpack.Compiler) {
-		this.compiler = compiler;
-
-		compiler.hooks.make.tap(AssetsManifestPlugin.name, compilation =>
-			compilation.hooks.processAssets.tap(
-				{
-					name : AssetsManifestPlugin.name,
-					stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS
-				},
-				() => {
-					const asset = this.emitAsset(compilation);
-
-					if (asset) {
-						// @ts-expect-error
-						compilation.emitAsset(this.options.filename, asset);
-					}
-				}
-			)
-		);
 	}
 }

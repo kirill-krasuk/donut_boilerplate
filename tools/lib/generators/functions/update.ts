@@ -1,14 +1,15 @@
 import chalk                                       from 'chalk';
 import fs                                          from 'node:fs';
 
-import { patterns, PatternsKey }                   from '../constants/patterns';
+import { patterns }                                from '../constants/patterns';
 import { ROOT_PATH }                               from '../constants/rootPath';
 
+import type { PatternsKey }                        from '../constants/patterns';
 import type { PatternsObject, PatternsWithArrays } from '../types/patterns';
 
 // TODO: refactoring to regexp logic
 const replacePatternByInterpolateData = (
-	data: Record<string, any>,
+	data: Readonly<Record<string, any>>,
 	initialValue: string
 ) =>
 	Object.entries(data).reduce(
@@ -34,7 +35,7 @@ function detectPattern(patternsByType: PatternsObject, file: string) {
 	return patternsByType;
 }
 
-function update(source: string, type: PatternsKey, data: Record<string, any>) {
+function update(source: string, type: PatternsKey, data: Readonly<Record<string, any>>) {
 	const sourcePath = ROOT_PATH + source;
 	const file       = fs.readFileSync(sourcePath, 'utf8');
 
@@ -42,13 +43,13 @@ function update(source: string, type: PatternsKey, data: Record<string, any>) {
 	const replaceValue   = replacePatternByInterpolateData(data, replacePattern.replace);
 
 	if (file.includes(replaceValue)) {
-		return console.info(
-			chalk`[{blue.bold EXISTS}] changes already exists in ${ source }`
-		);
+		console.info(chalk`[{blue.bold EXISTS}] changes already exists in ${ source }`);
+		return;
 	}
 
 	if (!file.includes(replacePattern.pattern)) {
-		return console.error(chalk`[{red.bold ERROR}] Something wrong with ${ source }`);
+		console.error(chalk`[{red.bold ERROR}] Something wrong with ${ source }`);
+		return;
 	}
 
 	const res = file.replace(replacePattern.pattern, replaceValue);

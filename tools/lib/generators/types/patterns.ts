@@ -1,17 +1,15 @@
 type PatternsWithArrays = {
-	pattern: string[],
-	replace: string[]
+	readonly pattern: string[],
+	readonly replace: string[]
 };
 
 type PatternsWithStrings = {
-	pattern: string,
-	replace: string
+	readonly pattern: string,
+	readonly replace: string
 };
 
-type PatternsObject = PatternsWithArrays | PatternsWithStrings;
+type PatternsObject = Readonly<PatternsWithArrays | PatternsWithStrings>;
 
-type Patterns = {
-	[key: string]: PatternsObject
-};
+type Patterns = Record<string, PatternsObject>;
 
 export type { Patterns, PatternsObject, PatternsWithArrays, PatternsWithStrings };

@@ -12,9 +12,6 @@ import type { Application }         from 'express';
 
 // const { writeToDisk } = env.server;
 
-// used-styles scan phys dir
-const writeToDisk = true;
-
 const fileExtensionsToWrite = /\.(jpe?g|webp|png|svg|gif|ttf|otf|woff|woff2)$/;
 const filesToWrite          = [ 'sw.js', 'index.pug' ];
 
@@ -34,11 +31,9 @@ function useDevMiddlewares(app: Application) {
 			[swKey]         : [ swValue ],
 			[isCacheableKey]: [ isCacheableValue ]
 		},
-		writeToDisk:
-			writeToDisk ||
-			((filePath: string) =>
-				fileExtensionsToWrite.test(filePath) ||
-				filesToWrite.some(file => filePath.endsWith(file)))
+		writeToDisk: (filePath: string) =>
+			fileExtensionsToWrite.test(filePath) ||
+			filesToWrite.some(file => filePath.endsWith(file))
 	});
 
 	app.use(devMiddleware);

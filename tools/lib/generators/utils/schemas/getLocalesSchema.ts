@@ -1,9 +1,7 @@
-import {
-	CreateTuple,
-	UpdateFileType,
-	UpdateTuple
-} from '../../types/schema';
-import { getLocalesConfigFiles } from '../getLocalesConfigFiles';
+import { UpdateFileType }                from '../../types/schema';
+import { getLocalesConfigFiles }         from '../getLocalesConfigFiles';
+
+import type { CreateTuple, UpdateTuple } from '../../types/schema';
 
 // TODO: complete path logic with new schema
 function getLocalesSchema(directoryName: string) {

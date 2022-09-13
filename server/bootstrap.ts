@@ -7,9 +7,13 @@ import { ApplicationFacade }   from './app';
 export async function bootstrap() {
 	const { serverSideEngine, host, port } = env.server;
 
-	const serverEngineFactory = new ServerEngineFactory();
-	const adapter             = await serverEngineFactory.init(serverSideEngine);
-	const app                 = new ApplicationFacade(adapter);
+	try {
+		const serverEngineFactory = new ServerEngineFactory();
+		const adapter             = await serverEngineFactory.init(serverSideEngine);
+		const app                 = new ApplicationFacade(adapter);
 
-	app.start(port, host);
+		await app.start(port, host);
+	} catch (error) {
+		console.error(error);
+	}
 }

@@ -20,6 +20,22 @@ import type { HTTPServerAdapter }    from './adapters/server';
 export class ApplicationFacade<T extends HTTPServerAdapter> {
 	constructor(private adapter: T) {}
 
+	async start(port: number | string, host: string) {
+		await this.build();
+
+		await createServerRunnerPromise(this.adapter as any, +port, host);
+
+		const server = this.adapter.getServer();
+
+		if (server) {
+			const handleExit = createExitHandler(server);
+
+			server.on('close', handleClose);
+			process.once('SIGTERM', handleExit);
+			process.once('SIGINT', handleExit);
+		}
+	}
+
 	private async build() {
 		this.adapter.registerViewTemplate({
 			engine   : 'pug',
@@ -46,21 +62,5 @@ export class ApplicationFacade<T extends HTTPServerAdapter> {
 
 		this.adapter.use('/handle_error', handleClientError);
 		this.adapter.use('/', serverSideRendering);
-	}
-
-	async start(port: number | string, host: string) {
-		await this.build();
-
-		await createServerRunnerPromise(this.adapter as any, +port, host);
-
-		const server = this.adapter.getServer();
-
-		if (server) {
-			const handleExit = createExitHandler(server);
-
-			server.on('close', handleClose);
-			process.once('SIGTERM', handleExit);
-			process.once('SIGINT', handleExit);
-		}
 	}
 }

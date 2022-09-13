@@ -10,7 +10,7 @@ export class ExpressAdapter<
 	R = express.Request,
 	RS = express.Response
 > extends HTTPServerAdapter<R, RS> {
-	public type = 'express';
+	type = 'express';
 
 	constructor() {
 		super(expressInstance);

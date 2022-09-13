@@ -1,6 +1,8 @@
-import { Component, ReactNode } from 'react';
+import { Component }      from 'react';
 
-import { HTTPMethod }           from '@lib/http';
+import { HTTPMethod }     from '@lib/http';
+
+import type { ReactNode } from 'react';
 
 type State = {
 	hasError: boolean
@@ -23,7 +25,7 @@ export class ErrorBoundary extends Component<Props, State> {
 		fetch('/handle_error', {
 			method: HTTPMethod.Post,
 			body  : JSON.stringify(stack)
-		});
+		}).catch(console.error);
 	}
 
 	render() {

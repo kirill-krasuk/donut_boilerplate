@@ -28,7 +28,7 @@ async function main() {
 		generateOptionsQuestion
 	]);
 
-	let styles: StylesType | undefined;
+	let styles: StylesType | null = null;
 
 	if (generateOptions.includes('styles')) {
 		({ styles } = await prompts(stylesQuestion));
@@ -36,7 +36,8 @@ async function main() {
 
 	const isNeedLocales = generateOptions.includes('locales');
 	const isNeedLazy    = generateOptions.includes('lazy');
-	const isPage        = layer === 'pages';
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	const isPage = layer === 'pages';
 
 	const schema = generateSchema({
 		layer,
@@ -56,4 +57,4 @@ async function main() {
 	});
 }
 
-main();
+main().catch(console.error);

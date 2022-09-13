@@ -9,7 +9,8 @@ import { ROOT_PATH } from '../constants/rootPath';
 function create(source: string, destination: string, data: Record<string, any>) {
 	ejs.renderFile(path.resolve(__dirname, '..', source), data, (error, result) => {
 		if (error) {
-			return console.error(`Generate file error in ${ destination }:`, error);
+			console.error(`Generate file error in ${ destination }:`, error);
+			return;
 		}
 
 		const filePath = ROOT_PATH + destination;
@@ -18,7 +19,8 @@ function create(source: string, destination: string, data: Record<string, any>) 
 		if (!fs.existsSync(dirname)) {
 			fs.mkdirSync(dirname, { recursive: true });
 		} else if (fs.existsSync(filePath)) {
-			return console.info(chalk`[{blue.bold EXISTS}] ${ destination }`);
+			console.info(chalk`[{blue.bold EXISTS}] ${ destination }`);
+			return;
 		}
 
 		try {

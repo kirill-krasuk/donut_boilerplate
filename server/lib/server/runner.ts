@@ -37,13 +37,13 @@ function createServerRunner(appInstance: Express) {
 		const { host, port, standardPort } = serverParameters;
 
 		// eslint-disable-next-line sonarjs/no-identical-functions
-		return appInstance.listen(+port, host, () =>
+		return appInstance.listen(+port, host, () => {
 			appOutput({
 				host,
 				standardPort: standardPort?.toString(),
 				port        : port.toString()
-			})
-		);
+			});
+		});
 	};
 }
 

@@ -30,11 +30,13 @@ function callNotification(overrideOptions?: Record<string, any>) {
 	}
 
 	if (Notification.permission !== 'denied') {
-		Notification.requestPermission().then(permission => {
-			if (permission === 'granted') {
-				new Notification(notifyTitle, notifyOptions);
-			}
-		});
+		Notification.requestPermission()
+			.then(permission => {
+				if (permission === 'granted') {
+					new Notification(notifyTitle, notifyOptions);
+				}
+			})
+			.catch(console.error);
 	}
 }
 

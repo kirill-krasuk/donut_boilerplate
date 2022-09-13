@@ -7,7 +7,9 @@ type OutputInfo = {
 	standardPort?: string
 };
 
-const appOutput = (options: OutputInfo) => appBorder(getAppOutputInfo(options));
+const appOutput = (options: OutputInfo) => {
+	appBorder(getAppOutputInfo(options));
+};
 
 export { appOutput };
 export type { OutputInfo };

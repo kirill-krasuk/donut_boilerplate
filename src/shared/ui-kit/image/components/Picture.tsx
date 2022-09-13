@@ -1,12 +1,12 @@
 import {
 	Children,
 	cloneElement,
-	FC,
 	isValidElement
 } from 'react';
 
 import { replaceExtension }  from '@shared/lib/file';
 
+import type { FC }           from 'react';
 import type { PictureProps } from '../types';
 
 const Picture: FC<PictureProps> = props => {

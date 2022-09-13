@@ -18,9 +18,7 @@ type SchemaMethods = {
 	update?: UpdateTuple | UpdateTuple[]
 };
 
-type Schema = {
-	[key: string]: SchemaMethods
-};
+type Schema = Record<string, SchemaMethods>;
 
 type SchemaConfig = {
 	[key in Layer]: Schema;

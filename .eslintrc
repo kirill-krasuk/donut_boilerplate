@@ -243,6 +243,7 @@
 		"no-plusplus": 0,
 		"no-shadow": 0,
 		"no-undef": 0,
+		"no-magic-numbers": 0,
 		"operator-linebreak": 0,
 		"linebreak-style": 0,
 		"import/no-dynamic-require": 0,
@@ -364,7 +365,11 @@
 		{
 			"files": ["*.d.ts"],
 			"rules": {
-				"import/group-exports": 0
+				"import/group-exports": 0,
+				"@typescript-eslint/consistent-type-imports": [
+					2,
+					{ "prefer": "type-imports", "disallowTypeAnnotations": false }
+				]
 			}
 		},
 		{
@@ -381,6 +386,8 @@
 				}
 			},
 			"rules": {
+				"no-return-await": 0,
+				"@typescript-eslint/return-await": 2,
 				"@typescript-eslint/no-non-null-assertion": 0,
 				"@typescript-eslint/method-signature-style": [2, "method"],
 				"@typescript-eslint/consistent-type-assertions": 0,
@@ -394,6 +401,25 @@
 				"@typescript-eslint/no-explicit-any": 0,
 				"@typescript-eslint/no-var-requires": 0,
 				"@typescript-eslint/ban-ts-comment": 0,
+				"@typescript-eslint/consistent-indexed-object-style": 2,
+				"@typescript-eslint/consistent-generic-constructors": [2, "constructor"],
+				"@typescript-eslint/consistent-type-exports": 2,
+				"@typescript-eslint/consistent-type-imports": 2,
+				"@typescript-eslint/init-declarations": 2,
+				"@typescript-eslint/member-ordering": 2,
+				"@typescript-eslint/no-confusing-void-expression": 2,
+				"@typescript-eslint/no-extraneous-class": 2,
+				"@typescript-eslint/no-floating-promises": 2,
+				"@typescript-eslint/no-unnecessary-type-arguments": 2,
+				"@typescript-eslint/prefer-return-this-type": 2,
+				"@typescript-eslint/no-unnecessary-boolean-literal-compare": [
+					2,
+					{ "allowComparingNullableBooleansToFalse": true }
+				],
+				"@typescript-eslint/explicit-member-accessibility": [
+					2,
+					{ "accessibility": "no-public" }
+				],
 				"@typescript-eslint/ban-types": [
 					2,
 					{

@@ -1,17 +1,14 @@
-import { camelToKebab } from '../../../../src/shared/lib/string';
-import {
-	Schema,
-	SchemaConfig,
-	UpdateFileType
-} from '../types/schema';
+import { camelToKebab }                     from '../../../../src/shared/lib/string';
+import { UpdateFileType }                   from '../types/schema';
 import { getLocalesSchema, getStyleSchema } from '../utils/schemas';
 import { getSchemaFragment }                from '../utils/schemas/getSchemaFragment';
 
+import type { Schema, SchemaConfig }        from '../types/schema';
 import type { Layer, StylesType }           from '../types/common';
 
 type SchemaProps = {
 	name: string,
-	styleType?: StylesType,
+	styleType: StylesType | null,
 	layer: Layer,
 	isNeedLocales: boolean,
 	isNeedLazy: boolean

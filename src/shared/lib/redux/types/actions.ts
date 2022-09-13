@@ -37,7 +37,7 @@ type ActionCreator<Type, Payload, Meta> = {
 	toString: ActionToString<Type>
 };
 
-type ActionTypeOF<T extends { [key: string]: ActionCreator<any, any, any> }> = ReturnType<
+type ActionTypeOF<T extends Record<string, ActionCreator<any, any, any>>> = ReturnType<
 	InferValueTypes<T>
 >;
 

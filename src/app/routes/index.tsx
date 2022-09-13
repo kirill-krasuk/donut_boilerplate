@@ -1,8 +1,10 @@
-import { RouteObject, useRoutes } from 'react-router-dom';
+import { useRoutes }        from 'react-router-dom';
 
-import { AppRoutes }              from '@pages/index';
+import { AppRoutes }        from '@pages/index';
 
-import { RootView }               from './root-view';
+import { RootView }         from './root-view';
+
+import type { RouteObject } from 'react-router-dom';
 
 const root = {
 	path    : '/',

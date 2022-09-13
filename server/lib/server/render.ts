@@ -13,7 +13,7 @@ function redirectIFStatusExist(
 		return;
 	}
 
-	return res.redirect(context.status as number, context.to!);
+	res.redirect(context.status as number, context.to!);
 }
 
 function renderTemplate(res: Response, context: Context, template: StaticTemplate): void {
@@ -23,7 +23,7 @@ function renderTemplate(res: Response, context: Context, template: StaticTemplat
 		return;
 	}
 
-	return res.render('index.pug', template);
+	res.render('index.pug', template);
 }
 
 export { renderTemplate };

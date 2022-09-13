@@ -1,13 +1,13 @@
-import {
+import { configureStore } from '@reduxjs/toolkit';
+
+import type {
 	Action,
 	AnyAction,
 	CombinedState,
-	configureStore,
 	PreloadedState,
 	Reducer,
 	ReducersMapObject
 } from '@reduxjs/toolkit';
-
 import type { NoInfer }    from '@shared/types/utility';
 import type { Middleware } from 'redux';
 

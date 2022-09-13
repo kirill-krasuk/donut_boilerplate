@@ -14,9 +14,7 @@ function useActions<T>(actions: T, deps: any[] = []): T {
 			return bindActionCreators(actions as any, dispatch);
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		deps
-			? [ dispatch, ...deps ]
-			: [ dispatch ]
+		[ dispatch, ...deps ]
 	) as T;
 }
 

@@ -30,11 +30,19 @@ function useMedia(queries: string[], values: number[], defaultValue: number) {
 	const [ value, setValue ] = useState(getValue);
 
 	useEffect(() => {
-		const handler = () => setValue(getValue);
+		const handler = () => {
+			setValue(getValue);
+		};
 
-		mediaQueryLists.forEach(mql => mql.addListener(handler));
+		mediaQueryLists.forEach(mql => {
+			mql.addListener(handler);
+		});
 
-		return () => mediaQueryLists.forEach(mql => mql.removeListener(handler));
+		return () => {
+			mediaQueryLists.forEach(mql => {
+				mql.removeListener(handler);
+			});
+		};
 	}, [ getValue, mediaQueryLists ]);
 
 	return value;

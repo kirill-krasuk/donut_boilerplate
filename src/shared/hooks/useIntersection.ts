@@ -1,4 +1,6 @@
-import { useEffect, RefObject } from 'react';
+import { useEffect }      from 'react';
+
+import type { RefObject } from 'react';
 
 type UseIntersectionOptions = {
 	once: boolean
@@ -29,6 +31,7 @@ function createIntersectionHook(
 		entries.forEach(entry => {
 			let alreadyIntersect = false;
 
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 			if (entry.isIntersecting && !alreadyIntersect) {
 				const hookOptions = listeners.get(entry.target as HTMLElement);
 

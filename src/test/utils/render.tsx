@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-imports */
 import { BrowserRouter }         from 'react-router-dom';
-import { render, RenderOptions } from '@testing-library/react';
+import { render }                from '@testing-library/react';
 import { Provider }              from 'react-redux';
 import { ThemeProvider }         from 'styled-components';
 
@@ -9,6 +9,7 @@ import { LocalesProvider }       from '@app/providers/with-locales';
 
 import { store }                 from '../__mocks__/store';
 
+import type { RenderOptions }    from '@testing-library/react';
 import type { FC, ReactElement } from 'react';
 
 const AllTheProviders: FC = ({ children }) => (

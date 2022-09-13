@@ -1,5 +1,4 @@
 import {
-	FC,
 	useCallback,
 	useEffect,
 	useRef
@@ -15,6 +14,7 @@ import {
 import * as actions        from '../../model/store/actions';
 import * as S              from './styles';
 
+import type { FC }         from 'react';
 import type { ModalProps } from '../types';
 
 // TODO: complete modal functional

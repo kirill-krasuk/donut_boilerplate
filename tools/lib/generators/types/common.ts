@@ -11,7 +11,7 @@ enum StylesType {
 }
 
 type StylePathProps = {
-	styleType?: StylesType,
+	styleType: StylesType | null,
 	directoryName: string,
 	layer: Layer
 };

@@ -18,7 +18,7 @@ async function prefetch(url: string, auth: any = null) {
 		const { element } = route as RouteForPrefetch;
 
 		if (element.type.prefetch) {
-			return await element.type.prefetch({ query }, auth);
+			return element.type.prefetch({ query }, auth);
 		}
 	}
 

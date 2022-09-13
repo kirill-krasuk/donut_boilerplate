@@ -1,9 +1,10 @@
-import { FC, useState }              from 'react';
+import { useState }                  from 'react';
 
 import { Picture, ProgressiveImage } from './components';
 import { imageConfig }               from './config';
 import * as S                        from './styles';
 
+import type { FC }                   from 'react';
 import type { Props }                from './types';
 
 const Image: FC<Props> = props => {
@@ -19,7 +20,9 @@ const Image: FC<Props> = props => {
 
 	const [ isLoaded, setIsLoaded ] = useState(false);
 
-	const handleLoad = () => setIsLoaded(true);
+	const handleLoad = () => {
+		setIsLoaded(true);
+	};
 
 	const renderProgressiveImage = () => {
 		if (progressive) {

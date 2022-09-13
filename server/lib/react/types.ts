@@ -6,11 +6,11 @@ import type { ChunkExtractor } from '@loadable/server';
 type StaticTemplate = Record<string, HelmetDatum | string>;
 
 type OptionsForGenerate = {
-	Component(): JSX.Element,
 	store: Store,
 	extractor: ChunkExtractor,
 	props: Record<string, any>,
-	mode: Theme
+	mode: Theme,
+	Component(): JSX.Element
 };
 
 export type { StaticTemplate, OptionsForGenerate };

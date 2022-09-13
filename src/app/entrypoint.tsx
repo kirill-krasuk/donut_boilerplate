@@ -7,10 +7,11 @@ import { Application }             from './application/Application.client';
 
 const rootNode = document.querySelector('#root')!;
 
-const renderRoot = () =>
-	(env.client.needHydrate
+const renderRoot = () => {
+	env.client.needHydrate
 		? hydrateRoot(rootNode, <Application />)
-		: createRoot(rootNode).render(<Application />));
+		: createRoot(rootNode).render(<Application />);
+};
 
 loadableReady(() => {
 	if (env.client.swEnable) {
@@ -34,4 +35,4 @@ loadableReady(() => {
 	}
 
 	renderRoot();
-});
+}).catch(console.error);

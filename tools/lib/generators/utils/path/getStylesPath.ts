@@ -1,5 +1,7 @@
-import { cssExtensionsMap }           from '../../constants/extensions';
-import { StylePathProps, StylesType } from '../../types/common';
+import { cssExtensionsMap }    from '../../constants/extensions';
+import { StylesType }          from '../../types/common';
+
+import type { StylePathProps } from '../../types/common';
 
 // FIXME refactoring styleType
 function getStylesPath({ styleType, directoryName, layer }: StylePathProps) {

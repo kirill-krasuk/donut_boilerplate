@@ -32,7 +32,7 @@ type Extends<A, B, Then = true, Else = false> = A extends B ? Then : Else;
 
 type If<Condition, Then, Else> = Extends<Condition, true, Then, Else>;
 
-type And<A extends boolean, B extends boolean> = Extends<A, true, B, false>;
+type And<A extends boolean, B extends boolean> = Extends<A, true, B>;
 
 type Or<A extends boolean, B extends boolean> = Extends<A, true, true, B>;
 

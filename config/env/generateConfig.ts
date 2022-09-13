@@ -1,6 +1,6 @@
 import type { Config, ConfigSchema } from './types';
 
-function generateConfig(env: NodeJS.ProcessEnv) {
+function generateConfig(env: Readonly<NodeJS.ProcessEnv>) {
 	return function <T extends ConfigSchema> (configSchema: T): Config<T> {
 		return Object.keys(configSchema).reduce(
 			(config, currentItem) => ({
