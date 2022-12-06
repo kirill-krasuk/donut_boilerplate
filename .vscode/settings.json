@@ -5,6 +5,8 @@
 	"prettier.configPath": ".prettierrc",
 	"editor.formatOnSave": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// TODO: временный фикс дергания при сохранении vscode после обновление версии до 1.73
+	"files.refactoring.autoSave": false,
 	"editor.codeActionsOnSave": [
 		// "source.sortImports",
 		"source.formatDocument",

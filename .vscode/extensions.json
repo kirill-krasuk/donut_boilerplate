@@ -1,9 +1,12 @@
 {
-  "recommendations": [
-    "arcanis.vscode-zipfs",
-    "stylelint.vscode-stylelint",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "rohit-gohri.format-code-action"
-  ]
+	"recommendations": [
+		"arcanis.vscode-zipfs",
+		"stylelint.vscode-stylelint",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"rohit-gohri.format-code-action",
+		"streetsidesoftware.code-spell-checker",
+		"clinyong.vscode-css-modules",
+		"EditorConfig.EditorConfig"
+	]
 }
