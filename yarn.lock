@@ -5684,7 +5684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-viewport@npm:6.5.14":
+"@storybook/addon-viewport@npm:6.5.14, @storybook/addon-viewport@npm:^6.5.14":
   version: 6.5.14
   resolution: "@storybook/addon-viewport@npm:6.5.14"
   dependencies:
@@ -23835,6 +23835,7 @@ __metadata:
     "@storybook/addon-info": ^5.3.21
     "@storybook/addon-knobs": ^6.4.0
     "@storybook/addon-storysource": ^6.5.14
+    "@storybook/addon-viewport": ^6.5.14
     "@storybook/addons": ^6.5.14
     "@storybook/builder-webpack5": 6.5.14
     "@storybook/core-common": ^6.5.14
