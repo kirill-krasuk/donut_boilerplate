@@ -2,6 +2,7 @@
 import path                     from 'node:path';
 
 import { paths }                from '../shared/config/paths';
+import { storySourceLoader }    from '../shared/loaders/story-source-loader';
 import { cssLoader }            from '../shared/loaders/css-loader';
 import { cssModuleLoader }      from '../shared/loaders/css-module-loader';
 import { jsLoader }             from '../shared/loaders/js-loader';
@@ -98,12 +99,7 @@ export default {
 			 * Run `source-loader` on story files to show their source code
 			 * automatically in `DocsPage` or the `Source` doc block.
 			 */
-			{
-				test   : /\.(stories|story)\.[jt]sx?$/,
-				loader : require.resolve('@storybook/source-loader'),
-				exclude: [ /node_modules/ ],
-				enforce: 'pre'
-			}
+			storySourceLoader()
 		);
 
 		// TODO: remove in SB7
