@@ -2,7 +2,7 @@ import type { Context } from '@shared/types/client-server';
 
 const getInitialPropsFromDOM = () =>
 	(Reflect.has(window, '__INITIAL_PROPS__')
-		? (window as any).__INITIAL_PROPS__
+		? window.__INITIAL_PROPS__
 		: {});
 
 const getInitialProps = (serverContext?: Context) =>
