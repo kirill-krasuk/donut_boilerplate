@@ -16,7 +16,7 @@ const getPosition = (isLoaded: StyledProps['isLoaded']) =>
 		: 'absolute');
 
 const ImgContainer = styled.img<StyledProps>`
-	${ ({ width, height, isLoaded }) => css`
+	${ ({ width, height, isLoaded = true }) => css`
 		width: ${ getWidth(width) };
 		height: ${ getHeight(height) };
 		position: ${ getPosition(isLoaded) };
@@ -28,9 +28,5 @@ const ImgContainer = styled.img<StyledProps>`
 		` };
 	` }
 `;
-
-ImgContainer.defaultProps = {
-	isLoaded: true
-};
 
 export { ImgContainer };

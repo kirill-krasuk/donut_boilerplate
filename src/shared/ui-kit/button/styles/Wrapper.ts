@@ -1,21 +1,21 @@
-import styled, { css }                    from 'styled-components/macro';
+import styled, { css }                            from 'styled-components/macro';
 
-import type { MouseEventHandler }         from 'react';
-import type { ButtonSizes, ButtonStyles } from '../enums';
+import type { HTMLAttributes, MouseEventHandler } from 'react';
+import type { ButtonSizes, ButtonThemes }         from '../enums';
 
-type Props = {
+type Props = HTMLAttributes<HTMLButtonElement> & {
 	size?: ButtonSizes,
-	cStyle?: ButtonStyles,
-	onClick?: MouseEventHandler<HTMLButtonElement>
+	theme?: ButtonThemes,
+	onClick: MouseEventHandler<HTMLButtonElement> | null
 };
 
 const Wrapper = styled.button<Props>`
-	${ ({ size, cStyle }) => css`
+	${ ({ size, theme }) => css`
 		height: ${ size };
-		color: var(--${ cStyle });
+		color: var(--${ theme });
 		background-color: white;
 		border-radius: 10px;
-		border: 1px solid var(--${ cStyle });
+		border: 1px solid var(--${ theme });
 		outline: none;
 		cursor: pointer;
 

@@ -7,6 +7,10 @@ import * as S                        from './styles';
 import type { FC }                   from 'react';
 import type { Props }                from './types';
 
+const defaultProps = {
+	loadingWidth: imageConfig.loadingWidth
+};
+
 const Image: FC<Props> = props => {
 	const {
 		src,
@@ -16,7 +20,10 @@ const Image: FC<Props> = props => {
 		height,
 		loadingWidth,
 		progressive
-	} = props;
+	} = {
+		...defaultProps,
+		...props
+	};
 
 	const [ isLoaded, setIsLoaded ] = useState(false);
 
@@ -57,10 +64,6 @@ const Image: FC<Props> = props => {
 			{ renderProgressiveImage() }
 		</S.Container>
 	);
-};
-
-Image.defaultProps = {
-	loadingWidth: imageConfig.loadingWidth
 };
 
 export { Image };

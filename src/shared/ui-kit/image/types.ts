@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react';
+
 type ImageSize = {
 	width?: number,
 	height?: number
@@ -31,6 +33,8 @@ type ProgressiveImageProps = Omit<Props, 'progressive'> & {
 	handleLoad(): void
 };
 
-type PictureProps = Pick<Props, 'src' | 'webp'>;
+type PictureProps = Pick<Props, 'src' | 'webp'> & {
+	children: ReactElement<{ src: string }>
+};
 
 export type { StyledProps, Props, ProgressiveImageProps, PictureProps };

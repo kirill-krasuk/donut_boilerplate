@@ -5,8 +5,10 @@ import {
 } from '@storybook/addon-knobs';
 import { BADGE }        from '@geometricpanda/storybook-addon-badges';
 
-import { ButtonStyles } from './enums';
+import { ButtonThemes } from './enums';
 import { Button }       from './Button';
+
+import type { Story }   from '@storybook/react';
 
 export default {
 	title     : 'Design System/Atoms/Button',
@@ -32,11 +34,11 @@ export default {
 	}
 };
 
-const withText = (args: any) => {
+const withText: Story = args => {
 	const isLoading = boolean('isLoading', false);
 
 	return (
-		<Button { ...args } style={ ButtonStyles.Primary }>
+		<Button { ...args } theme={ ButtonThemes.Primary }>
 			{ isLoading
 				? 'loading...'
 				: text('content', 'Hello') }
@@ -44,7 +46,7 @@ const withText = (args: any) => {
 	);
 };
 
-const withEmoji = (args: any) => (
+const withEmoji: Story = args => (
 	<Button { ...args }>
 		<span aria-label='so cool' role='img'>
 			😀 😎 👍 💯

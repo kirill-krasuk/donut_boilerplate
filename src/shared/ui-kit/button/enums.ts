@@ -4,9 +4,9 @@ enum ButtonSizes {
 	Large = '48px'
 }
 
-enum ButtonStyles {
+enum ButtonThemes {
 	Primary = 'primary',
 	Secondary = 'secondary'
 }
 
-export { ButtonSizes, ButtonStyles };
+export { ButtonSizes, ButtonThemes };

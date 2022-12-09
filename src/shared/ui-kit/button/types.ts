@@ -1,27 +1,10 @@
-import type {
-	MouseEventHandler,
-	PropsWithChildren,
-	ReactNode
-} from 'react';
-import type { ButtonSizes, ButtonStyles } from './enums';
+import type { MouseEventHandler, HTMLAttributes } from 'react';
+import type { ButtonSizes, ButtonThemes }         from './enums';
 
-type ButtonProps = PropsWithChildren<{
+type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
 	onClick?: MouseEventHandler<HTMLButtonElement>,
-
-	/**
-	 * Small 24px
-	 * Medium 32px
-	 * Large 48px
-	 */
 	size?: ButtonSizes,
-
-	/**
-	 * "primary"
-	 * "secondary"
-	 */
-	style?: ButtonStyles,
-
-	children: ReactNode
-}>;
+	theme?: ButtonThemes
+};
 
 export type { ButtonProps };

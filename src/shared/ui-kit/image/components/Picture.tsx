@@ -6,10 +6,9 @@ import {
 
 import { replaceExtension }  from '@shared/lib/file';
 
-import type { FC }           from 'react';
 import type { PictureProps } from '../types';
 
-const Picture: FC<PictureProps> = props => {
+const Picture = (props: PictureProps) => {
 	const { webp, src, children } = props;
 
 	return (
@@ -22,6 +21,7 @@ const Picture: FC<PictureProps> = props => {
 						src
 					});
 				}
+
 				return child;
 			}) }
 		</picture>

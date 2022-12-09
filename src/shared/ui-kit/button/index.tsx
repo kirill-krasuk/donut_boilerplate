@@ -6,5 +6,5 @@ const Button = loadable(() => import(/* webpackChunkName: "Button" */ './Button'
 	</div>
 });
 
-export { ButtonSizes, ButtonStyles } from './enums';
+export { ButtonSizes, ButtonThemes } from './enums';
 export { Button };
