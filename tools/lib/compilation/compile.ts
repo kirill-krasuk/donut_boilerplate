@@ -59,7 +59,6 @@ const createCallback =
 				);
 
 				process.exit(1);
-				return;
 			}
 		} catch {
 			console.error(

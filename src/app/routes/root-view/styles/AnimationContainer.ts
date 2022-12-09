@@ -28,7 +28,7 @@ function animationState({ state }: AnimationProps) {
 			`;
 
 		default:
-			break;
+			return;
 	}
 }
 
