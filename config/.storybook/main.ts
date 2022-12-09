@@ -1,15 +1,16 @@
 /* eslint-disable import/no-import-module-exports */
-import path                    from 'node:path';
+import path                     from 'node:path';
 
-import { paths }               from '../shared/config/paths';
-import { cssLoader }           from '../shared/loaders/css-loader';
-import { cssModuleLoader }     from '../shared/loaders/css-module-loader';
-import { jsLoader }            from '../shared/loaders/js-loader';
-import { sassLoader }          from '../shared/loaders/sass-loader';
-import { sassModuleLoader }    from '../shared/loaders/sass-module-loader';
-import { tsconfigPathsPlugin } from '../shared/plugins/tsconfig-paths';
+import { paths }                from '../shared/config/paths';
+import { cssLoader }            from '../shared/loaders/css-loader';
+import { cssModuleLoader }      from '../shared/loaders/css-module-loader';
+import { jsLoader }             from '../shared/loaders/js-loader';
+import { sassLoader }           from '../shared/loaders/sass-loader';
+import { sassModuleLoader }     from '../shared/loaders/sass-module-loader';
+import { tsconfigPathsPlugin }  from '../shared/plugins/tsconfig-paths';
 
-import type webpack            from 'webpack';
+import type { StorybookConfig } from '@storybook/core-common';
+import type webpack             from 'webpack';
 
 const styleProps = {
 	enablePerf      : false,
@@ -28,17 +29,36 @@ export default {
 	addons : [
 		'@storybook/addon-knobs',
 		'@storybook/addon-storysource',
-		'@storybook/addon-actions',
 		'@storybook/addon-a11y',
-		'@storybook/addon-viewport',
 		'@geometricpanda/storybook-addon-badges',
-		{
-			name   : '@storybook/addon-docs',
-			options: {
-				configureJSX: true
-			}
-		}
+
+		/**
+		 * provides addons:
+		 *
+		 * Docs
+		 * Controls
+		 * Actions
+		 * Viewport
+		 * Backgrounds
+		 * Toolbars & globals
+		 * Measure & outline
+		 *
+		 */
+		'@storybook/addon-essentials'
 	],
+	framework : '@storybook/react',
+	typescript: {
+		check                       : false,
+		checkOptions                : {},
+		reactDocgen                 : 'react-docgen-typescript',
+		reactDocgenTypescriptOptions: {
+			shouldExtractLiteralValuesFromEnum: true,
+			propFilter                        : (prop: any) =>
+				(prop.parent
+					? !/node_modules/.test(prop.parent.fileName)
+					: true)
+		}
+	},
 	staticDirs  : [ path.resolve('public') ],
 	webpackFinal: async (config: webpack.Configuration) => {
 		/**
@@ -72,8 +92,26 @@ export default {
 				extraOptions: {
 					include: process.cwd()
 				}
-			}).client
+			}).client,
+
+			/**
+			 * Run `source-loader` on story files to show their source code
+			 * automatically in `DocsPage` or the `Source` doc block.
+			 */
+			{
+				test   : /\.(stories|story)\.[jt]sx?$/,
+				loader : require.resolve('@storybook/source-loader'),
+				exclude: [ /node_modules/ ],
+				enforce: 'pre'
+			}
 		);
+
+		// TODO: remove in SB7
+		// eslint-disable-next-line no-param-reassign
+		config!.resolve!.fallback! = {
+			...config!.resolve!.fallback!,
+			assert: require.resolve('assert')
+		};
 
 		config!.resolve!.extensions!.push('.ts', '.tsx');
 		// eslint-disable-next-line no-param-reassign
@@ -81,4 +119,4 @@ export default {
 
 		return config;
 	}
-};
+} as StorybookConfig;

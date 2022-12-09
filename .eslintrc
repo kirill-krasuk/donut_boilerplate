@@ -411,6 +411,7 @@
 				"@typescript-eslint/no-extraneous-class": 2,
 				"@typescript-eslint/no-floating-promises": 2,
 				"@typescript-eslint/no-unnecessary-type-arguments": 2,
+				"@typescript-eslint/no-empty-function": 0,
 				"@typescript-eslint/prefer-return-this-type": 2,
 				"@typescript-eslint/no-unnecessary-boolean-literal-compare": [
 					2,
