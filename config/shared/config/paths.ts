@@ -30,6 +30,7 @@ const paths = {
 	context        : path.resolve(''),
 	cacheDir       : path.resolve('.cache'),
 	tsconfig       : path.resolve('tsconfig.json'),
+	browserslist   : path.resolve('.browserslistrc'),
 	prodBundleStats: path.resolve('stats/prod-report.html'),
 	fontsBuild     : '../public/fonts/build',
 	imagesBuild    : '../public/images/build',

@@ -41,7 +41,7 @@ function configureBundler(options: webpack.Configuration): webpack.Configuration
 
 	const config: webpack.Configuration = {
 		context: paths.context,
-		target : 'browserslist',
+		target : options.target || `browserslist:${ paths.browserslist }`,
 		mode   : options.mode,
 		entry  : options.entry,
 		output : {
