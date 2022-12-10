@@ -16,11 +16,11 @@ export class ExpressAdapter<
 		super(expressInstance);
 	}
 
-	async init() {
+	override async init() {
 		return this;
 	}
 
-	registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
+	override registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
 		this.instance.set('view engine', engine);
 		this.instance.set('views', viewsPath);
 	}

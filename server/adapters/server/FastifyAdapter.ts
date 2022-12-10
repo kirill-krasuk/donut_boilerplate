@@ -25,7 +25,7 @@ export class FastifyAdapter<
 		super(fastifyInstance);
 	}
 
-	async init() {
+	override async init() {
 		await fastifyInstance.register(fastifyExpress);
 
 		return this;
@@ -35,7 +35,7 @@ export class FastifyAdapter<
 		return response?.view(view, options);
 	}
 
-	registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
+	override registerViewTemplate({ engine, viewsPath }: ViewTemplateOptions) {
 		this.instance.register(pointOfView, {
 			engine: {
 				[engine]: templateEngines[engine]
