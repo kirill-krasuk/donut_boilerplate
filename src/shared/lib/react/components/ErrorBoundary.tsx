@@ -13,11 +13,11 @@ type Props = {
 };
 
 export class ErrorBoundary extends Component<Props, State> {
-	state = {
+	override state = {
 		hasError: false
 	};
 
-	componentDidCatch(error: Error) {
+	override componentDidCatch(error: Error) {
 		this.setState({ hasError: true });
 
 		const stack = error.stack!.split(/\n/);
@@ -28,7 +28,7 @@ export class ErrorBoundary extends Component<Props, State> {
 		}).catch(console.error);
 	}
 
-	render() {
+	override render() {
 		const { hasError } = this.state;
 		const { children } = this.props;
 
