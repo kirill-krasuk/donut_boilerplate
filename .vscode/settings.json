@@ -47,5 +47,7 @@
 	},
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-	}
+	},
+	"jest.jestCommandLine": "yarn test",
+	"jest.rootPath": "."
 }
