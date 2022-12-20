@@ -5,9 +5,9 @@ For a better formatting experience, use Prettier in conjunction with eslint. For
 plugins:
 
 ```json
-	"esbenp.prettier-vscode"
-    "dbaeumer.vscode-eslint",
-    "rohit-gohri.format-code-action"
+"esbenp.prettier-vscode"
+"dbaeumer.vscode-eslint",
+"rohit-gohri.format-code-action"
 ```
 
 settings:

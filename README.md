@@ -6,7 +6,7 @@
   <img src="https://circleci.com/gh/kirill-krasuk/donut_boilerplate.svg?style=svg" alt="circle ci result"/>
   <img src="https://img.shields.io/circleci/build/github/kirill-krasuk/donut_boilerplate" alt="build result">
   <a href="https://codecov.io/gh/kirill-krasuk/donut_boilerplate">
-	<img src="https://codecov.io/gh/kirill-krasuk/donut_boilerplate/branch/develop/graph/badge.svg?token=SPFQJZ6O73"/>
+  <img src="https://codecov.io/gh/kirill-krasuk/donut_boilerplate/branch/develop/graph/badge.svg?token=SPFQJZ6O73"/>
   </a>
 </p>
 

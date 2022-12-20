@@ -2,7 +2,7 @@
 
 based on [Feature-Sliced Design](https://feature-sliced.design/)
 
-## /src folders struct:
+## /src folders struct
 
 -   [App](https://feature-sliced.design/docs/reference/layers/app)
 -   [Processes](https://feature-sliced.design/docs/reference/layers/processes)
@@ -12,7 +12,7 @@ based on [Feature-Sliced Design](https://feature-sliced.design/)
 -   [Entities](https://feature-sliced.design/docs/reference/layers/entities)
 -   [Shared](https://feature-sliced.design/docs/reference/layers/shared)
 
-## other dirs:
+## other dirs
 
 -   assets - for static files(images, fonts). all files imported from this directory are optimized through webpack and placed in the public dir.
 -   test - mocks and utils

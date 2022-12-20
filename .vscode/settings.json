@@ -44,5 +44,8 @@
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"[dockercompose]": {
 		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	}
 }
