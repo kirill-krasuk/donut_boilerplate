@@ -4,7 +4,6 @@
 source ./tools/constants/variables.sh
 
 bash ./tools/lib/console/banner.sh
-bash "$COMMON"/node_version.sh
 bash "$COMMON"/mklogs.sh
 
 source ./tools/constants/colors.sh
