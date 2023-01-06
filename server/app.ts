@@ -23,7 +23,7 @@ export class ApplicationFacade<T extends HTTPServerAdapter> {
 	async start(port: number | string, host: string) {
 		await this.build();
 
-		await createServerRunnerPromise(this.adapter as any, +port, host);
+		await createServerRunnerPromise(this.adapter, +port, host);
 
 		const server = this.adapter.getServer();
 

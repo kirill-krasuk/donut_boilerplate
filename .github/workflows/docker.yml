@@ -3,54 +3,54 @@ name: Prod Docker
 on: [push, pull_request]
 
 concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-    build_images:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
+  build_images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-            - name: Generate .env
-              run: |
-                  cat <<- EOF > .env
-                    # server config
-                    HOST=0.0.0.0
-                    PORT=3000
-                    API_HOST=
+      - name: Generate .env
+        run: |
+          cat <<- EOF > .env
+            # server config
+            HOST=0.0.0.0
+            PORT=3000
+            API_HOST=
 
-                    # app config
-                    APP_NAME="donut_boilerplate"
-                    SERVICE_WORKER_ENABLE=true
-                    HYDRATE=true
-                    # express, fastify
-                    SERVER_SIDE_ENGINE="fastify"
+            # app config
+            APP_NAME="donut_boilerplate"
+            SERVICE_WORKER_ENABLE=true
+            HYDRATE=true
+            # express, fastify
+            SERVER_SIDE_ENGINE="fastify"
 
-                    # verbose, summary, errors-only, errors-warnings
-                    # minimal, normal, detailed
-                    WEBPACK_DEV_STATS='verbose'
+            # verbose, summary, errors-only, errors-warnings
+            # minimal, normal, detailed
+            WEBPACK_DEV_STATS='verbose'
 
-                    # docker config
-                    DOCKER_TAG="donut-app"
-                    DOCKER_PROD_CONFIG_PATH="./config/docker/prod.Dockerfile"
-                    DOCKER_DEV_CONFIG_PATH="./config/docker/docker-compose.dev.yml"
-                    DOCKER_CONTAINER_NAME="donut-app-container"
+            # docker config
+            DOCKER_TAG="donut-app"
+            DOCKER_PROD_CONFIG_PATH="./config/docker/prod.Dockerfile"
+            DOCKER_DEV_CONFIG_PATH="./config/docker/docker-compose.dev.yml"
+            DOCKER_CONTAINER_NAME="donut-app-container"
 
-                    # webpack config
-                    BUILD_ANALYZE=true
+            # webpack config
+            BUILD_ANALYZE=true
 
-                    KILL_ON_READY=true
+            KILL_ON_READY=true
 
-                  EOF
+          EOF
 
-            - name: Caching docker layer
-              uses: satackey/action-docker-layer-caching@v0.0.11
-              continue-on-error: true
+      - name: Caching docker layer
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
 
-            - name: Build prod.Dockerfile
-              run: make build-image
+      - name: Build prod.Dockerfile
+        run: make build-image
 
-            - name: Check server running
-              run: make run-container
+      - name: Check server running
+        run: make run-container

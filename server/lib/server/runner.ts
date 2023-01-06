@@ -4,9 +4,10 @@ import { appOutput }               from '@server/lib/console';
 
 import type { Express }            from 'express';
 import type { ServerStartOptions } from '@server/types/server';
+import type { HTTPServerAdapter }  from '@server/adapters/server';
 
-async function createServerRunnerPromise(
-	appInstance: Express,
+async function createServerRunnerPromise<T extends HTTPServerAdapter>(
+	appInstance: T,
 	standardPort: number | string,
 	host: string
 ) {

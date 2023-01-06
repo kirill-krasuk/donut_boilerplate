@@ -1,16 +1,12 @@
-import chalk           from 'chalk';
-import dayjs           from 'dayjs';
-import ip              from 'ip';
-import openBrowser     from 'react-dev-utils/openBrowser';
+import chalk               from 'chalk';
+import dayjs               from 'dayjs';
+import ip                  from 'ip';
+import openBrowser         from 'react-dev-utils/openBrowser';
 
-import { getHostname } from '@server/lib/server';
-import { env }         from '@env/index';
+import { getHostname }     from '@server/lib/server';
+import { env }             from '@env/index';
 
-type OutputInfo = {
-	host: string,
-	port: string,
-	standardPort?: string
-};
+import type { OutputInfo } from './types';
 
 const {
 	isBuildAnalyzer,
@@ -70,4 +66,5 @@ const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
 };
 
 export { getAppOutputInfo };
-export type { OutputInfo };
+
+export { type OutputInfo } from './types';

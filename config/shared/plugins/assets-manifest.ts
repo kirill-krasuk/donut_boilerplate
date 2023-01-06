@@ -2,6 +2,7 @@ import fs                             from 'node:fs';
 import path                           from 'node:path';
 import mkdir                          from 'make-dir';
 
+import type webpack                   from 'webpack';
 import type { Compiler, Compilation } from 'webpack';
 
 type AssetsManifestPluginOptions = {
@@ -33,9 +34,8 @@ export class AssetsManifestPlugin {
 					stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS
 				},
 				() => {
-					const asset = this.emitAsset(compilation);
+					const asset = this.emitAsset(compilation) as webpack.sources.Source;
 
-					// @ts-expect-error
 					compilation.emitAsset(this.options.filename, asset);
 				}
 			);
