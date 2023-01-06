@@ -1,3 +1,5 @@
+type AnyFunction = (...args: any[]) => any;
+
 type InferValueTypes<T> = T extends Record<string, infer U> ? U : never;
 
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
@@ -53,6 +55,7 @@ type PropertyStringPath<T, Prefix = ''> = {
 }[keyof T];
 
 export type {
+	AnyFunction,
 	InferValueTypes,
 	UnionToIntersection,
 	LastOf,
