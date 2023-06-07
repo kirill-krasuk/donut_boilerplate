@@ -20,7 +20,11 @@ const Second: VFC = () => (
 
 		<S.Container>
 			<S.Text>
-				<T.Text html id={ locales.title } path={ CodePath } />
+				<T.Text
+					html
+					id={ locales.title }
+					path={ CodePath }
+				/>
 			</S.Text>
 
 			<S.Link to={ routes.home.path }>

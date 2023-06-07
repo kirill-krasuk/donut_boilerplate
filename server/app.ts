@@ -5,8 +5,8 @@ import processImage         from 'express-processimage';
 import favicon              from 'serve-favicon';
 import shrinkRay            from 'shrink-ray-current';
 
-import { staticFiles }      from './config/static';
 import { paths }            from './constants/paths';
+import { staticFiles }      from './config/static';
 import {
 	createExitHandler,
 	handleClientError,

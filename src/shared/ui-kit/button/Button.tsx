@@ -22,7 +22,11 @@ const Button: FC<ButtonProps> = props => {
 	} = { ...defaultProps, ...props };
 
 	return (
-		<S.Wrapper size={ size } theme={ theme } onClick={ onClick }>
+		<S.Wrapper
+			size={ size }
+			theme={ theme }
+			onClick={ onClick }
+		>
 			{ children }
 		</S.Wrapper>
 	);

@@ -6,7 +6,7 @@
 	"editor.formatOnSave": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	// TODO: временный фикс дергания при сохранении vscode после обновление версии до 1.73
-	"files.refactoring.autoSave": false,
+	// "files.refactoring.autoSave": false,
 	"editor.codeActionsOnSave": [
 		// "source.sortImports",
 		"source.formatDocument",
@@ -49,5 +49,6 @@
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
 	"jest.jestCommandLine": "yarn test",
-	"jest.rootPath": "."
+	"jest.rootPath": ".",
+	"ansible.python.interpreterPath": "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python"
 }

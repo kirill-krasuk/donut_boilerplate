@@ -26,7 +26,11 @@ const ProgressiveImage: FC<ProgressiveImageProps> = props => {
 		<>
 			{ !isLoaded && (
 				<Picture src={ thumbSource } webp={ webp }>
-					<S.ThumbImage alt={ alt } height={ height } width={ width } />
+					<S.ThumbImage
+						alt={ alt }
+						height={ height }
+						width={ width }
+					/>
 				</Picture>
 			) }
 

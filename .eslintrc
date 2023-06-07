@@ -279,7 +279,8 @@
 			}
 		],
 		"react/jsx-handler-names": 2,
-		"react/jsx-max-props-per-line": [2, { "when": "multiline" }],
+		"react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
+		"react/jsx-max-props-per-line": [2, { "maximum": { "single": 2, "multi": 1 } }],
 		"react/jsx-newline": [2, { "prevent": false }],
 		"react/jsx-sort-default-props": 2,
 		"react/jsx-sort-props": [
@@ -379,7 +380,7 @@
 			"extends": "plugin:@typescript-eslint/recommended",
 			"parserOptions": {
 				"project": "./tsconfig.json",
-				"ecmaVersion": 11,
+				"ecmaVersion": "latest",
 				"sourceType": "module",
 				"ecmaFeatures": {
 					"jsx": true
