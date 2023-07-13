@@ -7,18 +7,36 @@ function debounce<T extends AnyFunction>(
 	function_: T,
 	wait: number
 ): DebouncedFunction<T> {
-	let timerID: Timer | null = null;
+	let timerID: Timer | null            = null;
+	let queuedArgs: Parameters<T> | null = null;
 
-	return function (...args: any[]): void {
+	const debounced = (...args: Parameters<T>): void => {
+		queuedArgs = args;
+
 		const later = () => {
 			clearTimeout(timerID!);
 			function_(...args);
+			queuedArgs = null;
 		};
 
 		clearTimeout(timerID!);
 
 		timerID = setTimeout(later, wait);
 	};
+
+	debounced.flush = () => {
+		clearTimeout(timerID!);
+		timerID = null;
+
+		function_(...queuedArgs!);
+	};
+
+	debounced.cancel = () => {
+		clearTimeout(timerID!);
+		timerID = null;
+	};
+
+	return debounced as DebouncedFunction<T>;
 }
 
 export { debounce };
