@@ -1,6 +1,6 @@
 import { throttle }            from '@shared/lib/functions';
 
-import { createDebouncedHook } from './createDebouncedHook';
+import { createDebouncedHook } from './create-debounced-ook';
 
 const useThrottle = createDebouncedHook(throttle);
 

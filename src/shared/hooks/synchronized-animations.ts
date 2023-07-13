@@ -2,19 +2,23 @@ import { useRef, useLayoutEffect } from 'react';
 
 let cachedTime: number | null = null;
 
-function useSynchronizedAnimations(animationName: string) {
-	const ref = useRef();
+function useSynchronizedAnimations<T extends HTMLElement = HTMLElement>(
+	animationName: string
+) {
+	const ref = useRef<T>(null);
 
 	useLayoutEffect(() => {
-		const animations = document
-			.getAnimations()
-			.filter(
-				(animation: Record<string, any>) =>
-					animation.animationName === animationName
-			);
+		const animations = document.getAnimations().filter((animation: Animation) => {
+			if (animation instanceof CSSAnimation) {
+				return animation.animationName === animationName;
+			}
+
+			return false;
+		}) as CSSAnimation[];
 
 		const firstOfTypeAnimation = animations.find(
-			(animation: Record<string, any>) => animation.effect?.target === ref.current
+			(animation: CSSAnimation) =>
+				(animation.effect as KeyframeEffect)?.target === ref.current
 		);
 
 		if (firstOfTypeAnimation) {
