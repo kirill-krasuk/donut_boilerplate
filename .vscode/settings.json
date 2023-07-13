@@ -48,7 +48,7 @@
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
 	},
-	"jest.jestCommandLine": "yarn test",
+	"jest.jestCommandLine": "yarn test:inline",
 	"jest.rootPath": ".",
 	"ansible.python.interpreterPath": "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python"
 }

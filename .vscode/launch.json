@@ -8,7 +8,7 @@
 			"name": "Attach to Chrome",
 			"port": 9222,
 			"request": "attach",
-			"type": "pwa-chrome",
+			"type": "chrome",
 			"webRoot": "${workspaceFolder}"
 		},
 		{
@@ -27,8 +27,25 @@
 			"runtimeExecutable": "yarn",
 			"runtimeArgs": ["run", "--inspect-brk", "test"],
 			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen"
+		},
+		{
+			"type": "node",
+			"name": "vscode-jest-tests.v2",
+			"request": "launch",
+			"args": [
+				"test",
+				"--runInBand",
+				"--watchAll=false",
+				"--testNamePattern",
+				"${jest.testNamePattern}",
+				"--runTestsByPath",
+				"${jest.testFile}"
+			],
+			"cwd": "/Users/Kikiron/Projects/donut",
+			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
-			"port": 9229
+			"runtimeExecutable": "yarn"
 		}
 	]
 }
