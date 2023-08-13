@@ -7,7 +7,7 @@ type UseIntersectionOptions = {
 };
 
 type ListenersValue = UseIntersectionOptions & {
-	callback(): void
+	callback(entry: IntersectionObserverEntry): void
 };
 
 const defaultIntersectionOptions: IntersectionObserverInit = {
@@ -30,15 +30,13 @@ function createIntersectionHook(
 	const handleIntersections: IntersectionObserverCallback = entries => {
 		entries.forEach(entry => {
 			let alreadyIntersect = false;
+			const hookOptions    = listeners.get(entry.target as HTMLElement);
 
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-			if (entry.isIntersecting && !alreadyIntersect) {
-				const hookOptions = listeners.get(entry.target as HTMLElement);
+			if (!alreadyIntersect) {
+				hookOptions?.callback(entry);
 
-				if (hookOptions) {
-					hookOptions.callback();
-
-					alreadyIntersect = hookOptions.once;
+				if (hookOptions?.once) {
+					alreadyIntersect = true;
 				}
 			}
 		});
