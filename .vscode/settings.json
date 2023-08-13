@@ -50,5 +50,8 @@
 	},
 	"jest.jestCommandLine": "yarn test:inline",
 	"jest.rootPath": ".",
-	"ansible.python.interpreterPath": "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python"
+	"ansible.python.interpreterPath": "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python",
+	"[jade]": {
+		"editor.defaultFormatter": "ducfilan.pug-formatter"
+	}
 }
