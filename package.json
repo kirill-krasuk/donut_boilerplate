@@ -50,6 +50,7 @@
 		"test:coverage": "bash ./tools/ci/test.sh c",
 		"test:update": "bash ./tools/ci/test.sh u",
 		"test:watch": "bash ./tools/ci/test.sh w",
+		"test:inline": "yarn jest --runInBand --env=jsdom -c='./config/jest/jest.config.js'",
 		"types": "tsc --noEmit -p .",
 		"prepare": "husky install",
 		"pre-commit": "yarn lint-staged",
