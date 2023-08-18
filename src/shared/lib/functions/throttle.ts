@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/init-declarations */
-import { clearTimeout, setTimeout } from 'node:timers';
-
-import type { ThrottledFunction }   from '@shared/lib/functions/types';
-import type { AnyFunction }         from '@shared/types/utility';
+import type { ThrottledFunction } from '@shared/lib/functions/types';
+import type { AnyFunction }       from '@shared/types/utility';
 
 function throttle<T extends AnyFunction>(
 	function_: T,

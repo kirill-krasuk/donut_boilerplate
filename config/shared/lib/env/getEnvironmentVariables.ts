@@ -1,6 +1,3 @@
-/* eslint-disable unicorn/prefer-object-from-entries */
-import dotenv from 'dotenv';
-
 type EnvMap = Record<string, any>;
 
 const createNormalizer = (acc: EnvMap, curr: string) => ({
@@ -11,20 +8,18 @@ const createNormalizer = (acc: EnvMap, curr: string) => ({
 	toString: (value?: string) => ({
 		...acc,
 		[curr]: value
-			? `${ value }`
+			? `"${ value }"`
 			: null
 	})
 });
 
-function getEnvironmentVariables() {
-	const { parsed } = dotenv.config();
-
-	if (!parsed || !Object.keys(parsed).length) {
+function getEnvironmentVariables(env: EnvMap) {
+	if (!env || !Object.keys(env).length) {
 		throw new Error('Environment variables are not defined');
 	}
 
-	return Object.keys(parsed).reduce((acc: EnvMap, curr) => {
-		const envVariable = parsed[curr]!;
+	return Object.keys(env).reduce((acc: EnvMap, curr) => {
+		const envVariable = env[curr]!;
 
 		const normalizer = createNormalizer(acc, curr);
 

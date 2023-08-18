@@ -1,7 +1,10 @@
 import webpack                     from 'webpack';
+import dotenv                      from 'dotenv';
 
 import { Mode }                    from '../enums/mode';
 import { getEnvironmentVariables } from '../lib/env';
+
+const { parsed } = dotenv.config();
 
 type Options = {
 	mode: Mode,
@@ -13,7 +16,7 @@ function definePlugin(options: Options) {
 
 	const environmentVariables = {
 		NODE_ENV: JSON.stringify(mode),
-		...getEnvironmentVariables()
+		...getEnvironmentVariables(parsed)
 	};
 
 	return new webpack.DefinePlugin({
