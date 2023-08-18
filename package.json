@@ -33,6 +33,7 @@
 		"ci:lint": "bash ./tools/ci/lint.sh",
 		"lint": "eslint .",
 		"lint-fix": "eslint --fix .",
+		"lint-fix:commit": "eslint --fix",
 		"lint:styled": "stylelint --config ./config/css/styled.stylelint.json './src/**/*.{ts,js,jsx,tsx}'",
 		"lint:css": "stylelint --config ./config/css/css.stylelint.json './src/**/*.{css,sass,scss}'",
 		"lint:css-fix": "stylelint --config ./config/css/css.stylelint.json './src/**/*.{css,sass,scss}' --fix",

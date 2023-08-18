@@ -1,6 +1,6 @@
 import { useMemo }          from 'react';
 
-import { useLatest }        from '../useLatest';
+import { useLatest }        from '../latest';
 
 import type { AnyFunction } from '@shared/types/utility';
 

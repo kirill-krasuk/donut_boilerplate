@@ -2,8 +2,13 @@ import type { AnyFunction } from '@shared/types/utility';
 
 type Timer = ReturnType<typeof setTimeout>;
 
-type ThrottledFunction<T extends AnyFunction> = (...args: Parameters<T>) => void;
-type DebouncedFunction<T extends AnyFunction> = (...args: Parameters<T>) => void;
+type ThrottledFunction<T extends AnyFunction> = T & {
+	clear(): void
+};
+type DebouncedFunction<T extends AnyFunction> = T & {
+	flush(): void,
+	cancel(): void
+};
 
 type DebounceFunction<T extends AnyFunction> = (
 	function_: T,
