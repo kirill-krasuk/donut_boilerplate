@@ -3,7 +3,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { paths }                from '../config/paths';
 import { Mode }                 from '../enums/mode';
 
-const isBuildAnalyzer = JSON.parse(process.env.BUILD_ANALYZE as any);
+const isBuildAnalyzer = process.env.BUILD_ANALYZE ?? false;
 
 function analyzerPlugin(mode: Mode) {
 	const _mode = mode === Mode.None

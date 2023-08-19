@@ -16,7 +16,9 @@ function definePlugin(options: Options) {
 
 	const environmentVariables = {
 		NODE_ENV: JSON.stringify(mode),
-		...getEnvironmentVariables(parsed)
+
+		// без any падает билд
+		...getEnvironmentVariables(parsed as any)
 	};
 
 	return new webpack.DefinePlugin({
