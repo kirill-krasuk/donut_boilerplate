@@ -6,7 +6,7 @@
 # use alpine image with installed
 # nodejs tools for reusable
 #
-FROM node:16.13.0-alpine AS prepared_node_env
+FROM node:20.5.1-alpine AS prepared_node_env
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -58,7 +58,7 @@ RUN yarn bundle
 # we use an empty alpina image, 
 # since we no longer need tools to build modules, 
 # we only need a bash to run the application
-FROM node:16.13.0-alpine
+FROM node:20.5.1-alpine
 
 # default port
 # overriding in docker build command

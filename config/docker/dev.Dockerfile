@@ -1,6 +1,6 @@
 # Run `make build:dev` to build dev image
 
-FROM node:16.13.0-alpine AS prepared_node_env
+FROM node:20.5.1-alpine AS prepared_node_env
 
 WORKDIR /code
 

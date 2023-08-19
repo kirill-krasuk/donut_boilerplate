@@ -3,7 +3,9 @@ import cookieParser         from 'cookie-parser';
 import { json, urlencoded } from 'express';
 import processImage         from 'express-processimage';
 import favicon              from 'serve-favicon';
-import shrinkRay            from 'shrink-ray-current';
+import compression          from 'compression';
+
+import { shouldCompress }   from '@server/lib/compression/filter';
 
 import { paths }            from './constants/paths';
 import { staticFiles }      from './config/static';
@@ -43,7 +45,7 @@ export class ApplicationFacade<T extends HTTPServerAdapter> {
 		});
 
 		this.adapter.registerMiddlewares([
-			shrinkRay(),
+			compression({ filter: shouldCompress }),
 			processImage(),
 			json(),
 			urlencoded({ extended: false }),

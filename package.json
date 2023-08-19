@@ -71,6 +71,8 @@
 		"babel-plugin-macros": "^3.1.0",
 		"boxen": "^5.1.2",
 		"chalk": "^4.1.2",
+		"compressible": "^2.0.18",
+		"compression": "^1.7.4",
 		"cookie-parser": "^1.4.6",
 		"core-js": "^3.30.2",
 		"cross-env": "^7.0.3",
@@ -87,8 +89,7 @@
 		"log4js": "^6.4.1",
 		"node-fetch": "^2.6.7",
 		"node-notifier": "^10.0.1",
-		"node-sass": "^7.0.1",
-		"node-zopfli-es": "^1.0.7",
+		"node-sass": "^9.0.0",
 		"optipng": "^3.0.0",
 		"pngquant": "^4.0.0",
 		"point-of-view": "^5.1.0",
@@ -161,6 +162,8 @@
 		"@types/brotli-webpack-plugin": "^1.1.2",
 		"@types/chalk": "^2.2.0",
 		"@types/circular-dependency-plugin": "^5",
+		"@types/compressible": "^2",
+		"@types/compression": "^1",
 		"@types/cookie-parser": "^1.4.2",
 		"@types/dotenv": "^8.2.0",
 		"@types/duplicate-package-checker-webpack-plugin": "^2.1.2",
@@ -313,7 +316,7 @@
 	},
 	"packageManager": "yarn@3.6.0",
 	"volta": {
-		"node": "16.13.0",
+		"node": "20.5.1",
 		"yarn": "3.3.0"
 	}
 }
