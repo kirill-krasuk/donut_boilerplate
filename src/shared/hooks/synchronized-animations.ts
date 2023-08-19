@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
 
-let cachedTime: number | null = null;
+let cachedTime: CSSNumberish | null = null;
 
 function useSynchronizedAnimations<T extends HTMLElement = HTMLElement>(
 	animationName: string
