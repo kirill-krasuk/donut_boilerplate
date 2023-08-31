@@ -54,6 +54,7 @@
 		"test:watch": "bash ./tools/ci/test.sh w",
 		"test:inline": "yarn jest --runInBand --env=jsdom -c='./config/jest/jest.config.js'",
 		"types": "tsc --noEmit -p .",
+		"types:commit": "bash -c 'yarn types'",
 		"prepare": "husky install",
 		"pre-commit": "yarn lint-staged",
 		"commit": "cz",

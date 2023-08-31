@@ -3,6 +3,7 @@
 	"**/*.{js,jsx,ts,tsx}": [
 		"yarn lint:styled-commit",
 		"prettier --write",
-		"yarn lint-fix:commit"
+		"yarn lint-fix:commit",
+		"yarn types:commit"
 	]
 }

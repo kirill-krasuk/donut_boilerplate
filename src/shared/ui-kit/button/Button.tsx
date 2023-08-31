@@ -23,4 +23,6 @@ const Button: FC<ButtonProps> = ({
 	</S.Wrapper>
 );
 
+// for async loading
+export default Button;
 export { Button };
