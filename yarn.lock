@@ -113,29 +113,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:>=7.9.0":
-  version: 7.17.3
-  resolution: "@babel/core@npm:7.17.3"
-  dependencies:
-    "@ampproject/remapping": "npm:^2.1.0"
-    "@babel/code-frame": "npm:^7.16.7"
-    "@babel/generator": "npm:^7.17.3"
-    "@babel/helper-compilation-targets": "npm:^7.16.7"
-    "@babel/helper-module-transforms": "npm:^7.16.7"
-    "@babel/helpers": "npm:^7.17.2"
-    "@babel/parser": "npm:^7.17.3"
-    "@babel/template": "npm:^7.16.7"
-    "@babel/traverse": "npm:^7.17.3"
-    "@babel/types": "npm:^7.17.0"
-    convert-source-map: "npm:^1.7.0"
-    debug: "npm:^4.1.0"
-    gensync: "npm:^1.0.0-beta.2"
-    json5: "npm:^2.1.2"
-    semver: "npm:^6.3.0"
-  checksum: 5a5680888a30db2d5075eb376e25facdd3c2357fe882e6e8b2098a0bf09550bdd1895fa29064af1d4bdd8b6d0964c3bdc08f28c4e1429a5b3597e010a234d15e
-  languageName: node
-  linkType: hard
-
 "@babel/core@npm:^7.11.1, @babel/core@npm:^7.12.3, @babel/core@npm:^7.7.5":
   version: 7.16.0
   resolution: "@babel/core@npm:7.16.0"
@@ -8598,18 +8575,6 @@ __metadata:
     vscode-languageserver-textdocument: ^1.0.8
     vscode-languageserver-types: ^3.17.3
   checksum: 3e436e7172b93e89411f642b88ae707a55d5493c4375e8d8b25a2592b3ece7bd65a59b6a26744ad92f568c81b187fb8c9f8f8a13fac282b3459be2295e4612b8
-  languageName: node
-  linkType: hard
-
-"@stylelint/postcss-css-in-js@npm:^0.37.2":
-  version: 0.37.2
-  resolution: "@stylelint/postcss-css-in-js@npm:0.37.2"
-  dependencies:
-    "@babel/core": "npm:>=7.9.0"
-  peerDependencies:
-    postcss: ">=7.0.0"
-    postcss-syntax: ">=0.36.2"
-  checksum: cc9b5d1bd93b85c5e32754bf28b99031c783bd87a178542e42f84e627f00907c556d3c7839766fe47bb5a8eaa87eae89287e6cc939b9b91e1ab3e7c44acc3014
   languageName: node
   linkType: hard
 
@@ -22560,7 +22525,6 @@ __metadata:
     "@storybook/theming": ^7.4.0
     "@styled-icons/fa-solid": ^10.34.0
     "@styled/typescript-styled-plugin": ^1.0.0
-    "@stylelint/postcss-css-in-js": ^0.37.2
     "@svgr/webpack": ^6.2.1
     "@swc/core": 1.2.112
     "@swc/jest": ^0.2.20
@@ -22746,7 +22710,6 @@ __metadata:
     stylelint-config-clean-order: ^5.2.0
     stylelint-config-standard: ^34.0.0
     stylelint-config-standard-scss: ^3.0.0
-    stylelint-declaration-block-no-ignored-properties: ^2.5.0
     stylelint-order: ^5.0.0
     stylelint-scss: ^4.1.0
     svg-jest: ^1.0.1
@@ -28906,15 +28869,6 @@ __metadata:
   peerDependencies:
     stylelint: ^15.10.0
   checksum: 536249800c04b48a9c354067765f042713982e8222be17bb897a27d26546e50adfb87e6f1e4541807d720de3554345da99ab470e13e8d7ab0ab326c73ae3df61
-  languageName: node
-  linkType: hard
-
-"stylelint-declaration-block-no-ignored-properties@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "stylelint-declaration-block-no-ignored-properties@npm:2.5.0"
-  peerDependencies:
-    stylelint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
-  checksum: a197891569d3a98f183aa41ecb0aacc36e65c5dc6e9b605947e3849c73c246c6aa877bd12c4accc51dc9052aaef9776e2252599d759f4015ecf4bbfe00028e0c
   languageName: node
   linkType: hard
 
