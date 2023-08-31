@@ -34,10 +34,12 @@ function animationState({ state }: AnimationProps) {
 
 const AnimationContainer = styled.section<AnimationProps>`
 	position: absolute;
+
+	width: 100%;
+
 	top: 0;
 	left: 0;
 
-	width: 100%;
 	min-height: 100vh;
 
 	background-color: var(--background);

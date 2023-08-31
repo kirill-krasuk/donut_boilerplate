@@ -1,7 +1,7 @@
 {
 	"**/*.{json,css,scss,sass,md}": ["prettier --write"],
 	"**/*.{js,jsx,ts,tsx}": [
-		"yarn lint:styled-fix",
+		"yarn lint:styled-commit",
 		"prettier --write",
 		"yarn lint-fix:commit"
 	]
