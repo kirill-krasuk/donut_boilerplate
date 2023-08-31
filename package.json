@@ -160,7 +160,6 @@
 		"@storybook/testing-library": "^0.2.0",
 		"@storybook/theming": "^7.4.0",
 		"@styled/typescript-styled-plugin": "^1.0.0",
-		"@stylelint/postcss-css-in-js": "^0.37.2",
 		"@svgr/webpack": "^6.2.1",
 		"@swc/core": "1.2.112",
 		"@swc/jest": "^0.2.20",

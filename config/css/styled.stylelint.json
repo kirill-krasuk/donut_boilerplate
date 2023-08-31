@@ -1,4 +1,5 @@
 {
+	"files": ["**/styles/*.{ts,js,jsx,tsx}"],
 	"extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
 	"plugins": ["stylelint-a11y", "stylelint-order"],
 	"rules": {
@@ -12,6 +13,5 @@
 		"selector-max-id": 1
 	},
 	"customSyntax": "postcss-styled-syntax",
-	"files": ["**/styles/*.{ts,js,jsx,tsx}"],
-	"ignoreFiles": ["**/*.stories.*"]
+	"ignoreFiles": ["**/*.stories.*", "**/*.{sass,scss,css}"]
 }

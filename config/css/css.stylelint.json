@@ -1,7 +1,6 @@
 {
-	"plugins": ["stylelint-order", "stylelint-a11y", "stylelint-scss"],
+	"plugins": ["stylelint-order", "stylelint-a11y"],
 	"extends": [
-		"stylelint-config-standard-scss",
 		"stylelint-config-clean-order",
 		"stylelint-declaration-block-no-ignored-properties"
 	],
@@ -9,11 +8,8 @@
 		"indentation": "tab",
 		"block-opening-brace-space-before": "always",
 		"declaration-colon-newline-after": "always-multi-line",
-		"selector-max-id": 1,
-		"declaration-property-value-disallowed-list": null,
-		"string-quotes": "single"
+		"selector-max-id": 1
 	},
 	"files": ["**/*.{sass,scss,css}"],
-	"ignoreFiles": ["**/styles/*.{ts,js,jsx,tsx}"],
-	"customSyntax": "postcss-scss"
+	"ignoreFiles": ["**/styles/*.{ts,js,jsx,tsx}"]
 }
