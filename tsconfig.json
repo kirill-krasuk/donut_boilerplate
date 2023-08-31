@@ -3,6 +3,10 @@
 		"plugins": [
 			{
 				"name": "typescript-plugin-css-modules"
+			},
+			{
+				"name": "@styled/typescript-styled-plugin",
+				"tags": ["styled", "css", "sty"]
 			}
 		],
 		/* Visit https://aka.ms/tsconfig to read more about this file */

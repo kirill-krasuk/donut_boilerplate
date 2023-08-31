@@ -30,7 +30,6 @@
 		}
 	},
 	"plugins": [
-		"macros", // babel-plugin-macros for libraries, who's use runtime
 		"ramda",
 		"@loadable/babel-plugin", // for loadable chunks
 		"babel-plugin-named-exports-order", // for storybook

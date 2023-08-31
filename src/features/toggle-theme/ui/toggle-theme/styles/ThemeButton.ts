@@ -1,4 +1,4 @@
-import styled              from 'styled-components/macro';
+import styled              from 'styled-components';
 
 import { THEME_ICON_SIZE } from '../../../config/constants';
 

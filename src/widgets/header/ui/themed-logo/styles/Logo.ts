@@ -1,4 +1,4 @@
-import styled                        from 'styled-components/macro';
+import styled                        from 'styled-components';
 
 import { ReactComponent as LogoSVG } from '@svgs/new_logo.svg';
 

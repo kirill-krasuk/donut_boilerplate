@@ -10,6 +10,7 @@
 	"editor.codeActionsOnSave": [
 		// "source.sortImports",
 		"source.formatDocument",
+		"source.fixAll.stylelint",
 		"source.fixAll.eslint"
 	],
 	"[css]": {
@@ -22,6 +23,7 @@
 		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
 	},
 	"stylelint.enable": true,
+	"stylelint.validate": ["css", "scss", "typescript", "typescriptreact"],
 	"css.validate": false,
 	"less.validate": false,
 	"scss.validate": false,

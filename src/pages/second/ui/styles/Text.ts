@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 const Text = styled.span`
 	margin-bottom: 10px;

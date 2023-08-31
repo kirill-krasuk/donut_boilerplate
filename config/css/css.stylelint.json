@@ -2,7 +2,7 @@
 	"plugins": ["stylelint-order", "stylelint-a11y", "stylelint-scss"],
 	"extends": [
 		"stylelint-config-standard-scss",
-		"stylelint-config-rational-order",
+		"stylelint-config-clean-order",
 		"stylelint-declaration-block-no-ignored-properties"
 	],
 	"rules": {

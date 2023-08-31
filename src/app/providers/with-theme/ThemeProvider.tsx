@@ -1,4 +1,4 @@
-import { ThemeProvider as StyledComponentsTheme } from 'styled-components/macro';
+import { ThemeProvider as StyledComponentsTheme } from 'styled-components';
 import { useMemo }                                from 'react';
 
 import { theme as themes, Theme }                 from '@config/theme';

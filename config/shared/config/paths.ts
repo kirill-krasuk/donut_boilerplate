@@ -40,7 +40,7 @@ const paths = {
 	public         : '/dist/',
 	swSrc          : './src/app/service-worker.js',
 	swDest         : './sw.js',
-	stories        : '../../src/**/*.stories.tsx'
+	stories        : [ '../../src/**/*.mdx', '../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)' ]
 };
 
 export { paths };

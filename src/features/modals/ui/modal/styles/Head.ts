@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 const Head = styled.div`
 	width: calc(100% - 5px * 2);

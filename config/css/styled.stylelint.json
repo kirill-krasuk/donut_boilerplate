@@ -1,22 +1,17 @@
 {
-	"processors": ["stylelint-processor-styled-components"],
-	"extends": [
-		"stylelint-config-standard-scss",
-		"stylelint-config-styled-components",
-		"stylelint-config-rational-order",
-		"stylelint-declaration-block-no-ignored-properties"
-	],
+	"extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
 	"plugins": ["stylelint-a11y", "stylelint-order"],
 	"rules": {
+		"custom-property-pattern": null,
 		"font-family-no-missing-generic-family-keyword": null,
 		"no-descending-specificity": null,
-		"indentation": "tab",
-		"string-quotes": "single",
-		"declaration-colon-newline-after": null,
 		"value-keyword-case": null,
 		"custom-property-empty-line-before": null,
 		"number-leading-zero": null,
-		"font-family-name-quotes": null
+		"font-family-name-quotes": null,
+		"selector-max-id": 1
 	},
-	"files": ["**/styles/*.{ts,js,jsx,tsx}"]
+	"customSyntax": "postcss-styled-syntax",
+	"files": ["**/styles/*.{ts,js,jsx,tsx}"],
+	"ignoreFiles": ["**/*.stories.*"]
 }

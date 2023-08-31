@@ -59,7 +59,8 @@
 		"plugin:ramda/recommended",
 		"plugin:sonarjs/recommended",
 		"plugin:boundaries/recommended",
-		"plugin:unicorn/recommended"
+		"plugin:unicorn/recommended",
+		"plugin:storybook/recommended"
 	],
 	"plugins": [
 		"arca",
@@ -199,11 +200,11 @@
 			{
 				"paths": [
 					{
-						"name": "styled-components",
-						"message": "Please import from styled-components/macro."
+						"name": "styled-components/macro",
+						"message": "Please import from styled-components."
 					}
 				],
-				"patterns": ["!styled-components/macro"]
+				"patterns": ["!styled-components"]
 			}
 		],
 		"no-console": [
@@ -363,6 +364,13 @@
 		"no-useless-computed-key": 0
 	},
 	"overrides": [
+		{
+			"files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+			"rules": {
+				"storybook/hierarchy-separator": 2,
+				"storybook/default-exports": 0
+			}
+		},
 		{
 			"files": ["*.d.ts"],
 			"rules": {

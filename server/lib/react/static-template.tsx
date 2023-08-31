@@ -1,4 +1,4 @@
-import { ServerStyleSheet }                                   from 'styled-components/macro';
+import { ServerStyleSheet }                                   from 'styled-components';
 import { Helmet }                                             from 'react-helmet';
 import { renderToString }                                     from 'react-dom/server';
 
