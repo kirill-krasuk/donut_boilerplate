@@ -54,6 +54,8 @@ type PropertyStringPath<T, Prefix = ''> = {
 				| `${ Prefix & string }${ K & string }`;
 }[keyof T];
 
+type Opaque<Type, Token extends symbol> = Type & { readonly __opaque__: Token };
+
 export type {
 	AnyFunction,
 	InferValueTypes,
@@ -70,5 +72,6 @@ export type {
 	Tuple,
 	NoInfer,
 	Primitive,
-	PropertyStringPath
+	PropertyStringPath,
+	Opaque
 };

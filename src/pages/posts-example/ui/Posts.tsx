@@ -1,38 +1,41 @@
 import { useInitialProps } from '@hooks/index';
 
+import * as S              from './styles';
+
 import type { VFC }        from 'react';
 
+type Post = {
+	id: string | number,
+	title: string
+};
+
 type InitialProps = {
-	posts: any[]
+	posts: Post[]
 };
 
 const PostsPage: VFC = () => {
 	const { posts } = useInitialProps<InitialProps>();
 
+	if (!posts) {
+		return <div>
+			Loading
+		</div>;
+	}
+
 	return (
-		<div>
-			{ posts
-				? (
-					<div style={ { color: 'white' } }>
-						{ posts.map(post => (
-							<div key={ post.id }>
-								<span>
-									{ `${ post.id })` }
+		<S.PostsContainer>
+			{ posts.map(post => (
+				<S.PostItem key={ post.id }>
+					<span>
+						{ `${ post.id }) ` }
+					</span>
 
-									{ ' ' }
-								</span>
-
-								<span>
-									{ post.title }
-								</span>
-							</div>
-						)) }
-					</div>
-				)
-				: (
-					'loading'
-				) }
-		</div>
+					<span>
+						{ post.title }
+					</span>
+				</S.PostItem>
+			)) }
+		</S.PostsContainer>
 	);
 };
 
