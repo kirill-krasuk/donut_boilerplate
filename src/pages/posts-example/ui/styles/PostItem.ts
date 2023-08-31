@@ -1,3 +1,5 @@
 import styled from 'styled-components';
 
-export const PostItem = styled.div``;
+export const PostItem = styled.div`
+	color: white;
+`;

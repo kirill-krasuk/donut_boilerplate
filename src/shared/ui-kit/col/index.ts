@@ -8,8 +8,8 @@ const Col = styled.div<ColProps>`
 	${ ({ padding, margin }) => css`
 		display: flex;
 		flex-direction: column;
-		padding: ${ getSpacing(padding) };
 		margin: ${ getSpacing(margin) };
+		padding: ${ getSpacing(padding) };
 	` }
 `;
 

@@ -35,6 +35,7 @@
 		"lint-fix": "eslint --fix .",
 		"lint-fix:commit": "eslint --fix",
 		"lint:styled": "stylelint --config ./config/css/styled.stylelint.json './src/**/*.{ts,js,jsx,tsx}'",
+		"lint:styled-fix": "stylelint --config ./config/css/styled.stylelint.json './src/**/*.{ts,js,jsx,tsx}' --fix",
 		"lint:css": "stylelint --config ./config/css/css.stylelint.json './src/**/*.{css,sass,scss}'",
 		"lint:css-fix": "stylelint --config ./config/css/css.stylelint.json './src/**/*.{css,sass,scss}' --fix",
 		"format:code": "prettier --config ./.prettierrc --write '**/*.{js,jsx,ts,tsx}' && eslint --fix .",

@@ -17,12 +17,13 @@ const getPosition = (isLoaded: StyledProps['isLoaded']) =>
 
 const ImgContainer = styled.img<StyledProps>`
 	${ ({ width, height, isLoaded = true }) => css`
+		position: ${ getPosition(isLoaded) };
 		width: ${ getWidth(width) };
 		height: ${ getHeight(height) };
-		position: ${ getPosition(isLoaded) };
+
 		${ !isLoaded &&
 		css`
-			z-idex: -1;
+			z-index: -1;
 			top: 0;
 			left: 0;
 		` };

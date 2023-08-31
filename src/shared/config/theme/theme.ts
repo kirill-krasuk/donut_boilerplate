@@ -13,6 +13,7 @@ const commonValues = ({ theme }: AppTheme) => css`
 	--gray-0: ${ theme.colors.gray[0] };
 	--pink-0: ${ theme.colors.pink[0] };
 	--pink-1: ${ theme.colors.pink[1] };
+	--pink-test: ${ theme.colors.pink[1] };
 	--white-0: ${ theme.colors.white[0] };
 `;
 

@@ -4,13 +4,15 @@ import type { AppTheme } from '@entities/theme';
 
 const LocaleButton = styled.button`
 	margin-right: 20px;
-	color: var(--icon);
+
 	font-size: 2rem;
+	color: var(--icon);
 	text-transform: uppercase;
+
 	background: transparent;
+	filter: brightness(1);
 	border: none;
 	outline: none;
-	filter: brightness(1);
 
 	&:hover {
 		cursor: pointer;

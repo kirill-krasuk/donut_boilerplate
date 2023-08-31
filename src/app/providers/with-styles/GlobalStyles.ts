@@ -28,8 +28,8 @@ const GlobalStyles = createGlobalStyle`
 
 	html,
 	body {
-		min-height: 100vh;
 		overflow-x: hidden;
+		min-height: 100vh;
 		font-size: 14px;
 		background-color: var(--background);
 	}
@@ -39,9 +39,9 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	code {
-		color: var(--primary);
-		font-size: inherit;
 		font-family: monospace;
+		font-size: inherit;
+		color: var(--primary);
 	}
 
 	p > code,
@@ -50,7 +50,9 @@ const GlobalStyles = createGlobalStyle`
 	td > code,
 	span > code {
 		padding: .1rem .3rem .2rem;
+
 		word-wrap: break-word;
+
 		background: #ffeff0;
 		border-radius: .2rem;
 		box-decoration-break: clone;

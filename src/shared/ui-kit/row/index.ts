@@ -7,8 +7,8 @@ import type { RowProps } from './types';
 const Row = styled.div<RowProps>`
 	${ ({ padding, margin }) => css`
 		display: flex;
-		padding: ${ getSpacing(padding) };
 		margin: ${ getSpacing(margin) };
+		padding: ${ getSpacing(padding) };
 	` }
 `;
 

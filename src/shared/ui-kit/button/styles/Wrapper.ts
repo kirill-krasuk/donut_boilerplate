@@ -11,13 +11,16 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
 
 const Wrapper = styled.button<Props>`
 	${ ({ size, theme }) => css`
-		height: ${ size };
-		color: var(--${ theme });
-		background-color: white;
-		border-radius: 10px;
-		border: 1px solid var(--${ theme });
-		outline: none;
 		cursor: pointer;
+
+		height: ${ size };
+
+		color: var(--${ theme });
+
+		background-color: white;
+		border: 1px solid var(--${ theme });
+		border-radius: 10px;
+		outline: none;
 
 		&:hover {
 			background-color: #efefef;

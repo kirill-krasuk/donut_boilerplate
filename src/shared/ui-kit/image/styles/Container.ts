@@ -12,9 +12,9 @@ const getHeight = (height: StyledProps['height']) => (height
 
 const Container = styled.div<StyledProps>`
 	${ ({ width, height }) => css`
+		position: relative;
 		width: ${ getWidth(width) };
 		height: ${ getHeight(height) };
-		position: relative;
 	` }
 `;
 
