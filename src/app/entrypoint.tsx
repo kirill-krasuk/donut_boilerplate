@@ -13,6 +13,26 @@ const renderRoot = () => {
 		: createRoot(rootNode).render(<Application />);
 };
 
+async function registerSW() {
+	try {
+		await navigator.serviceWorker.register('/sw.js', {
+			scope: '/'
+		});
+
+		console.info('SW registered');
+	} catch (error) {
+		console.error(`SW registration failed: ${ error }`);
+	}
+}
+
+async function locatorJS() {
+	if (__IS_DEV__) {
+		const { default: setup } = await import('@locator/runtime');
+
+		setup();
+	}
+}
+
 loadableReady(() => {
 	if (env.client.swEnable) {
 		if (!window.isSecureContext) {
@@ -20,19 +40,12 @@ loadableReady(() => {
 		}
 
 		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', async () => {
-				try {
-					await navigator.serviceWorker.register('/sw.js', {
-						scope: '/'
-					});
-
-					console.info('SW registered');
-				} catch (error) {
-					console.error(`SW registration failed: ${ error }`);
-				}
+			window.addEventListener('load', () => {
+				registerSW().catch(console.error);
 			});
 		}
 	}
 
+	locatorJS().catch(console.error);
 	renderRoot();
 }).catch(console.error);

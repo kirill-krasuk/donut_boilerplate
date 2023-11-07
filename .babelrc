@@ -34,7 +34,13 @@
 		"@loadable/babel-plugin", // for loadable chunks
 		"babel-plugin-named-exports-order", // for storybook
 		["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
-		"@babel/plugin-transform-runtime"
+		"@babel/plugin-transform-runtime",
+		[
+			"@locator/babel-jsx/dist",
+			{
+				"env": "development"
+			}
+		]
 	],
 	"ignore": ["**/*.d.ts"]
 }

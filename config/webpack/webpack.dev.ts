@@ -45,6 +45,7 @@ export default configureBundler({
 			onDetected({ paths, compilation }) {
 				compilation.errors.push(new Error(paths.join(' -> ')) as any);
 			},
+			exclude    : /node_modules/,
 			failOnError: true
 		}),
 		new DuplicatePackageCheckerPlugin({
