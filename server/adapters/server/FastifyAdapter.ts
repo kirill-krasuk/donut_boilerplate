@@ -15,10 +15,10 @@ const templateEngines: Record<string, unknown> = {
 
 const fastifyInstance = fastify();
 
-export class FastifyAdapter<
-	R = FastifyRequest,
-	RS = FastifyReply
-> extends HTTPServerAdapter<R, RS> {
+export class FastifyAdapter<R = FastifyRequest, RS = FastifyReply> extends HTTPServerAdapter<
+	R,
+	RS
+> {
 	type = 'fastify';
 
 	constructor() {

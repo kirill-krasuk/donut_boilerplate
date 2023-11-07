@@ -37,8 +37,7 @@ const componentQuestion: prompts.PromptObject<'name'> = {
 	type    : 'text',
 	name    : 'name',
 	message : 'Write name of component',
-	validate: value =>
-		value[0].toUpperCase() === value[0] || 'name must be a camelCase format'
+	validate: value => value[0].toUpperCase() === value[0] || 'name must be a camelCase format'
 };
 
 const generateOptionsQuestion: prompts.PromptObject<'generateOptions'> = {

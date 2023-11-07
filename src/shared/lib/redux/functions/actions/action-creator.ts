@@ -9,9 +9,7 @@ function createActionCreator<T>() {
 	return function <K extends ActionType<T>> (
 		type: K['type']
 	): ActionCreator<K['type'], K['payload'], K['meta']> {
-		function actionCreator(
-			payload: K['payload']
-		): ActionCreatorType<K['type'], K['payload']>;
+		function actionCreator(payload: K['payload']): ActionCreatorType<K['type'], K['payload']>;
 		function actionCreator(
 			payload: K['payload'],
 			meta: K['meta']

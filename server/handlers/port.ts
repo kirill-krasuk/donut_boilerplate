@@ -4,10 +4,7 @@ import type { ServerStartOptions } from '@server/types/server';
 
 type RunServerCallback = (serverOptions: ServerStartOptions) => void;
 
-function createUsePortHandler(
-	serverOptions: ServerStartOptions,
-	runServerCB: RunServerCallback
-) {
+function createUsePortHandler(serverOptions: ServerStartOptions, runServerCB: RunServerCallback) {
 	const { port, host } = serverOptions;
 
 	return async (error: any) => {

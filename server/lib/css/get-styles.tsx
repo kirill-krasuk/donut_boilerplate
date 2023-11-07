@@ -11,9 +11,7 @@ import { paths }              from '@server/constants/paths';
 import type { ComponentType } from 'react';
 
 const toTags = (files: string[]) =>
-	files
-		.map(chunk => `<link href="${ paths.staticDist }${ chunk }" rel="stylesheet" />`)
-		.join('');
+	files.map(chunk => `<link href="${ paths.staticDist }${ chunk }" rel="stylesheet" />`).join('');
 
 async function getStyles(html: ComponentType | string) {
 	enableReactOptimization();

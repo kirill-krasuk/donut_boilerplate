@@ -10,11 +10,7 @@ import { protectRedirect, routes as appRoutes } from '@config/routes';
 import type { Context }                         from '@shared/types/client-server';
 import type { AppRouteObject }                  from '../types';
 
-const redirect = (
-	serverContext: Context | undefined,
-	status: number,
-	to: string
-): void => {
+const redirect = (serverContext: Context | undefined, status: number, to: string): void => {
 	/* eslint-disable no-param-reassign */
 	if (serverContext) {
 		serverContext.status = status;

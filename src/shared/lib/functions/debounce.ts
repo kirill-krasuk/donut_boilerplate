@@ -3,10 +3,7 @@ import type { AnyFunction }       from '@shared/types/utility';
 
 type Timer = ReturnType<typeof setTimeout>;
 
-function debounce<T extends AnyFunction>(
-	function_: T,
-	wait: number
-): DebouncedFunction<T> {
+function debounce<T extends AnyFunction>(function_: T, wait: number): DebouncedFunction<T> {
 	let timerID: Timer | null            = null;
 	let queuedArgs: Parameters<T> | null = null;
 

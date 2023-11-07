@@ -28,11 +28,7 @@ type ActionToString<Type> = () => Type;
 
 type ActionCreator<Type, Payload, Meta> = {
 	(payload: Payload): ActionCreatorType<Type, Payload>,
-	(payload: Payload, meta?: Meta | undefined): ActionCreatorWithMetaType<
-		Type,
-		Payload,
-		Meta
-	>,
+	(payload: Payload, meta?: Meta | undefined): ActionCreatorWithMetaType<Type, Payload, Meta>,
 	type: Type,
 	toString: ActionToString<Type>
 };

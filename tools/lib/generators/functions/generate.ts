@@ -9,8 +9,7 @@ import type {
 
 type Data = Record<string, any>;
 
-const isArrayOfTuples = (value: any): value is [string, string][] =>
-	Array.isArray(value[0]);
+const isArrayOfTuples = (value: any): value is [string, string][] => Array.isArray(value[0]);
 
 const createCallback =
 	(data: Data) =>

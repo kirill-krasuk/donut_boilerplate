@@ -12,9 +12,7 @@ function getLoadableChunksOptions(locals: any) {
 		const jsonWebpackStats            = stats.toJson();
 		const { outputPath }              = jsonWebpackStats;
 
-		const rawData = outputFileSystem.readFileSync(
-			path.join(outputPath, loadableStatsFileName)
-		);
+		const rawData = outputFileSystem.readFileSync(path.join(outputPath, loadableStatsFileName));
 
 		return {
 			useFileSystem: outputFileSystem,

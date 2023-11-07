@@ -10,57 +10,47 @@ function toSeconds(time: number) {
 	return (time / 1000).toFixed(2);
 }
 
-const createCallback =
-	(env: string, start: number) => (_error: Error, stats: webpack.Stats) => {
-		const compilationTime                        = Date.now() - start;
-		let messages: { errors: any, warnings: any } = {
-			errors  : undefined,
-			warnings: undefined
-		};
+const createCallback = (env: string, start: number) => (_error: Error, stats: webpack.Stats) => {
+	const compilationTime                        = Date.now() - start;
+	let messages: { errors: any, warnings: any } = {
+		errors  : undefined,
+		warnings: undefined
+	};
 
-		try {
-			const rawMessages = stats.toJson({
-				all     : false,
-				warnings: true,
-				errors  : true
-			});
-			messages          = formatWebpackMessages({
-				errors  : rawMessages!.errors!.map(error => error.message),
-				warnings: rawMessages!.warnings!.map(warning => warning.message)
-			});
+	try {
+		const rawMessages = stats.toJson({
+			all     : false,
+			warnings: true,
+			errors  : true
+		});
+		messages          = formatWebpackMessages({
+			errors  : rawMessages!.errors!.map(error => error.message),
+			warnings: rawMessages!.warnings!.map(warning => warning.message)
+		});
 
-			if (!messages.errors.length && !messages.warnings.length) {
-				console.log(
-					chalk`{black.bgGreen.bold  PASS } Webpack compiled {blue.bold ${ env }} successfully in ${ getCompilationTime(
-						+toSeconds(compilationTime)
-					) }s.`
-				);
+		if (!messages.errors.length && !messages.warnings.length) {
+			console.log(
+				chalk`{black.bgGreen.bold  PASS } Webpack compiled {blue.bold ${ env }} successfully in ${ getCompilationTime(
+					+toSeconds(compilationTime)
+				) }s.`
+			);
 
-				return;
-			}
+			return;
+		}
 
-			if (messages.warnings.length) {
-				messages.warnings.forEach(console.warn);
-				console.log(
-					chalk`{black.bgYellow.bold  WARN } Webpack compiled {blue.bold ${ env }} with warnings in ${ toSeconds(
-						compilationTime
-					) }s.`
-				);
+		if (messages.warnings.length) {
+			messages.warnings.forEach(console.warn);
+			console.log(
+				chalk`{black.bgYellow.bold  WARN } Webpack compiled {blue.bold ${ env }} with warnings in ${ toSeconds(
+					compilationTime
+				) }s.`
+			);
 
-				return;
-			}
+			return;
+		}
 
-			if (messages.errors.length) {
-				messages.errors.forEach(console.error);
-				console.error(
-					chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(
-						compilationTime
-					) }s.`
-				);
-
-				process.exit(1);
-			}
-		} catch {
+		if (messages.errors.length) {
+			messages.errors.forEach(console.error);
 			console.error(
 				chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(
 					compilationTime
@@ -69,7 +59,16 @@ const createCallback =
 
 			process.exit(1);
 		}
-	};
+	} catch {
+		console.error(
+			chalk`{black.bgRed.bold  FAIL } Webpack compiled {blue.bold ${ env }} with errors in ${ toSeconds(
+				compilationTime
+			) }s.`
+		);
+
+		process.exit(1);
+	}
+};
 
 export async function compileApp(pathToConfig: string) {
 	const { default: webpackConfig, __IS_SERVER__ } = await import(pathToConfig);

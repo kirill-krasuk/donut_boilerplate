@@ -13,7 +13,8 @@
 		"import/resolver": {
 			"typescript": {
 				"alwaysTryTypes": true
-			}
+			},
+			"project": ["./tsconfig.json"]
 		},
 		"boundaries/include": ["src/**/*.ts", "src/**/*.tsx"],
 		"boundaries/ignore": ["src/**/*.d.ts", "**/__mocks__/**/*", "**/test/**/*"],

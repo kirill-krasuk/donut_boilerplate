@@ -22,9 +22,7 @@ const patternIsArray = (patternsByType: any): patternsByType is PatternsWithArra
 
 function detectPattern(patternsByType: PatternsObject, file: string) {
 	if (patternIsArray(patternsByType)) {
-		const patternIndex = patternsByType.pattern.findIndex(pattern =>
-			file.includes(pattern)
-		);
+		const patternIndex = patternsByType.pattern.findIndex(pattern => file.includes(pattern));
 
 		return {
 			pattern: patternsByType.pattern[patternIndex],

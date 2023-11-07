@@ -11,10 +11,9 @@ const mediaSSRMock = {
 	removeListener: () => {}
 };
 
-const getMatchedQuery = (q: string) =>
-	(__IS_CLIENT__
-		? window.matchMedia(q)
-		: mediaSSRMock);
+const getMatchedQuery = (q: string) => (__IS_CLIENT__
+	? window.matchMedia(q)
+	: mediaSSRMock);
 
 function useMedia(queries: string[], values: number[], defaultValue: number) {
 	const mediaQueryLists = queries.map(getMatchedQuery);

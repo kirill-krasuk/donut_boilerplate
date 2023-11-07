@@ -22,9 +22,7 @@ implements ServerAdapter<Request, Response> {
 		path: string,
 		handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>
 	): any;
-	use(
-		handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>
-	): any;
+	use(handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>): any;
 	use(...args: any[]): this {
 		this.instance.use(...args);
 

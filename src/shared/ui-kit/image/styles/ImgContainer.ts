@@ -10,10 +10,9 @@ const getHeight = (height: StyledProps['height']) => (height
 	? `${ height }px`
 	: 'auto');
 
-const getPosition = (isLoaded: StyledProps['isLoaded']) =>
-	(isLoaded
-		? 'static'
-		: 'absolute');
+const getPosition = (isLoaded: StyledProps['isLoaded']) => (isLoaded
+	? 'static'
+	: 'absolute');
 
 const ImgContainer = styled.img<StyledProps>`
 	${ ({ width, height, isLoaded = true }) => css`

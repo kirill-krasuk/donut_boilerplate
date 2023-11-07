@@ -6,19 +6,27 @@
 	"editor.formatOnSave": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.codeActionsOnSave": [
-		// "source.sortImports",
-		"source.formatDocument",
-		"source.fixAll.stylelint",
-		"source.fixAll.eslint"
+		"source.fixAll.format",
+		"source.fixAll.eslint",
+		"source.fixAll.stylelint"
 	],
 	"[css]": {
-		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
+		"editor.codeActionsOnSave": {
+			"source.formatDocument": "always",
+			"source.fixAll.stylelint": "always"
+		}
 	},
 	"[postcss]": {
-		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
+		"editor.codeActionsOnSave": {
+			"source.formatDocument": "always",
+			"source.fixAll.stylelint": "always"
+		}
 	},
 	"[scss]": {
-		"editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.stylelint"]
+		"editor.codeActionsOnSave": {
+			"source.formatDocument": "always",
+			"source.fixAll.stylelint": "always"
+		}
 	},
 	"stylelint.enable": true,
 	"css.validate": false,
@@ -35,7 +43,9 @@
 	"prettier.prettierPath": ".yarn/sdks/prettier/index.js",
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml",
-		"editor.codeActionsOnSave": ["source.formatDocument"]
+		"editor.codeActionsOnSave": {
+			"source.formatDocument": "always"
+		}
 	},
 	"[dockerfile]": {
 		"editor.defaultFormatter": "ms-azuretools.vscode-docker"

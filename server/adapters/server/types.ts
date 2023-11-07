@@ -31,9 +31,7 @@ interface ServerAdapter<Request = any, Response = any> {
 		path: string,
 		handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>
 	): any;
-	use(
-		handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>
-	): any;
+	use(handler: ErrorHandler<Request, Response> | RequestHandler<Request, Response>): any;
 
 	listen(port: number | string, callback?: () => void): any;
 	listen(port: number | string, host: string, callback?: () => void): any;

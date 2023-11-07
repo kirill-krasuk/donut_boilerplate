@@ -4,10 +4,7 @@ import type { RefObject }    from 'react';
 
 type Handler = (event: Event) => void;
 
-function useClickOutside<T extends HTMLElement>(
-	elementRef: RefObject<T>,
-	handler: Handler
-) {
+function useClickOutside<T extends HTMLElement>(elementRef: RefObject<T>, handler: Handler) {
 	const handlerRef = useRef<Handler>(handler);
 
 	useEffect(() => {
@@ -16,10 +13,7 @@ function useClickOutside<T extends HTMLElement>(
 
 	useEffect(() => {
 		const listener = (event: Event) => {
-			if (
-				!elementRef.current ||
-				elementRef.current.contains(event.target as Node)
-			) {
+			if (!elementRef.current || elementRef.current.contains(event.target as Node)) {
 				return;
 			}
 			handlerRef.current(event);

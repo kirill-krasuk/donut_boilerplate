@@ -32,11 +32,9 @@ const withText: Story = {
 		title  : 'Button',
 		onClick: action('click test')
 	},
-	render: args => (
-		<Button { ...args }>
-			{ args.title }
-		</Button>
-	)
+	render: args => <Button { ...args }>
+		{ args.title }
+	</Button>
 };
 
 const withEmoji: Story = {

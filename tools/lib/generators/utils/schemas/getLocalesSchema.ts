@@ -12,10 +12,7 @@ function getLocalesSchema(directoryName: string) {
 		'./templates/locales.ejs'
 	];
 
-	const update = pathsToLocales.map<UpdateTuple>(localePath => [
-		localePath,
-		UpdateFileType.JSON
-	]);
+	const update = pathsToLocales.map<UpdateTuple>(localePath => [ localePath, UpdateFileType.JSON ]);
 
 	return {
 		create,

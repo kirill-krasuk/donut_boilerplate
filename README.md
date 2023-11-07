@@ -26,21 +26,21 @@ In the browser, the service worker connects to the _**/sw.js**_ path
 
 ## How to start
 
--   Copy and edit environment variables `cp .env.example .env`
--   Install all dependencies `yarn`
--   Finally start developing `yarn start`
+- Copy and edit environment variables `cp .env.example .env`
+- Install all dependencies `yarn`
+- Finally start developing `yarn start`
 
 ## Hot to run in production mode
 
--   Copy and edit environment variables `cp .env.example .env`
--   Install all dependencies `yarn`
--   Finally start developing `yarn start:prod`
+- Copy and edit environment variables `cp .env.example .env`
+- Install all dependencies `yarn`
+- Finally start developing `yarn start:prod`
 
 You can also start production via docker.
 
--   `make build-image` for building docker image. Set environment variables in _`.env`_ which contain **DOCKER\***
--   `make run-container` for run docker container.
--   the rest of the commands and what they do you can see in the Makefile
+- `make build-image` for building docker image. Set environment variables in _`.env`_ which contain **DOCKER\***
+- `make run-container` for run docker container.
+- the rest of the commands and what they do you can see in the Makefile
 
 ## Helpful information
 
@@ -59,62 +59,62 @@ You can also start production via docker.
 
 All these scripts are described in package.json and called through the `yarn <command>` command.
 
--   `bundle` - build production version
--   `ci` - run all commands to test the application(using in ci/cd workflow)
-    -   `:test` - run ci test
-    -   `:lint` - run ci lint
--   `lint` - code style checking
-    -   `-fix` - fix js syntax
-    -   `:styled` - styled-components style checking
-    -   `:css` - css style checking
-    -   `:css-fix` - css lint and fix
--   `format:code` - run prettier and eslint-fix on project
--   `prunecaches` - delete app caches
--   `run:server` - start builded app
--   `start` - build and run development app
-    -   `:prod` - build and run production app
--   `storybook` - run storybook
-    -   `:build` - build storybook static files
--   `test` - run jest for testing
-    -   `:coverage`
-    -   `:update`
-    -   `:watch`
--   `types` - run typescript checking
--   `commit` - run for use commitizen better commit
--   `release` - generate CHANGELOG based your commits
--   `generate(gen)` - app entities generator
+- `bundle` - build production version
+- `ci` - run all commands to test the application(using in ci/cd workflow)
+  - `:test` - run ci test
+  - `:lint` - run ci lint
+- `lint` - code style checking
+  - `-fix` - fix js syntax
+  - `:styled` - styled-components style checking
+  - `:css` - css style checking
+  - `:css-fix` - css lint and fix
+- `format:code` - run prettier and eslint-fix on project
+- `prunecaches` - delete app caches
+- `run:server` - start builded app
+- `start` - build and run development app
+  - `:prod` - build and run production app
+- `storybook` - run storybook
+  - `:build` - build storybook static files
+- `test` - run jest for testing
+  - `:coverage`
+  - `:update`
+  - `:watch`
+- `types` - run typescript checking
+- `commit` - run for use commitizen better commit
+- `release` - generate CHANGELOG based your commits
+- `generate(gen)` - app entities generator
 
 ## Stack used
 
--   App developing 🧑‍💻
-    -   React ecosystem ⚛ (redux, redux-toolkit)
-    -   [loadable component](https://loadable-components.com/)✂️✨ for split coding
-    -   [Styled-components](https://styled-components.com/) 💅🏾
-    -   [Styled-icons](https://styled-icons.js.org/) 💅
-    -   [Typescript](https://www.typescriptlang.org/)
-    -   [Ramda](https://ramdajs.com/docs/#)🐏
-    -   SSR
-    -   [Feature-Sliced Design](https://feature-sliced.design/) 🍰
--   Bundling 📦
-    -   [webpack](https://webpack.js.org/) v5
-    -   [babel](https://babeljs.io/) v7
-    -   [typescript](https://www.typescriptlang.org/) v4
-    -   [PostCSS](https://postcss.org/)🔮
-    -   [Yarn v2 (Berry)](https://yarnpkg.com/getting-started/migration) 🧶
--   Tooling 🛠
-    -   [eslint](https://eslint.org/)
-    -   [stylelint](https://stylelint.io/)
-    -   [prettier](https://prettier.io/)
-    -   [typescript](https://www.typescriptlang.org/)
-    -   [commitlint](https://commitlint.js.org/#/) 🚥
-    -   [lint-staged](https://github.com/okonet/lint-staged)
-    -   [husky](https://typicode.github.io/husky/#/) 🐶
-    -   [commitizen](http://commitizen.github.io/cz-cli/)
--   Testing 🧪
-    -   [Jest](https://jestjs.io/en/) 🃏
-    -   [@testing-library/react](https://testing-library.com/) 🦑
-    -   [Storybook](https://storybook.js.org/) 📗
--   CI/CD 🤖
-    -   [CircleCI](https://circleci.com/enterprise-trial-install/?utm_source=gb&utm_medium=SEM&utm_campaign=SEM-gb-Ld-ni&utm_content=SEM-gb-Ld-ni-CircleCILocal_impDBA&gclid=Cj0KCQiApsiBBhCKARIsAN8o_4hQShx9SiAsDCMTGa5p_8abvIQrm9VAvBGYZ-2VTqB1Ir_xVzXcfNMaAvhkEALw_wcB) ♻️
-    -   [Codecov](https://about.codecov.io/) ⛱
-    -   [Docker](https://www.docker.com/) 🐳
+- App developing 🧑‍💻
+  - React ecosystem ⚛ (redux, redux-toolkit)
+  - [loadable component](https://loadable-components.com/)✂️✨ for split coding
+  - [Styled-components](https://styled-components.com/) 💅🏾
+  - [Styled-icons](https://styled-icons.js.org/) 💅
+  - [Typescript](https://www.typescriptlang.org/)
+  - [Ramda](https://ramdajs.com/docs/#)🐏
+  - SSR
+  - [Feature-Sliced Design](https://feature-sliced.design/) 🍰
+- Bundling 📦
+  - [webpack](https://webpack.js.org/) v5
+  - [babel](https://babeljs.io/) v7
+  - [typescript](https://www.typescriptlang.org/) v4
+  - [PostCSS](https://postcss.org/)🔮
+  - [Yarn v2 (Berry)](https://yarnpkg.com/getting-started/migration) 🧶
+- Tooling 🛠
+  - [eslint](https://eslint.org/)
+  - [stylelint](https://stylelint.io/)
+  - [prettier](https://prettier.io/)
+  - [typescript](https://www.typescriptlang.org/)
+  - [commitlint](https://commitlint.js.org/#/) 🚥
+  - [lint-staged](https://github.com/okonet/lint-staged)
+  - [husky](https://typicode.github.io/husky/#/) 🐶
+  - [commitizen](http://commitizen.github.io/cz-cli/)
+- Testing 🧪
+  - [Jest](https://jestjs.io/en/) 🃏
+  - [@testing-library/react](https://testing-library.com/) 🦑
+  - [Storybook](https://storybook.js.org/) 📗
+- CI/CD 🤖
+  - [CircleCI](https://circleci.com/enterprise-trial-install/?utm_source=gb&utm_medium=SEM&utm_campaign=SEM-gb-Ld-ni&utm_content=SEM-gb-Ld-ni-CircleCILocal_impDBA&gclid=Cj0KCQiApsiBBhCKARIsAN8o_4hQShx9SiAsDCMTGa5p_8abvIQrm9VAvBGYZ-2VTqB1Ir_xVzXcfNMaAvhkEALw_wcB) ♻️
+  - [Codecov](https://about.codecov.io/) ⛱
+  - [Docker](https://www.docker.com/) 🐳

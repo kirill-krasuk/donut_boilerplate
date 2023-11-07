@@ -20,9 +20,7 @@ const defaultHookOptions = {
 	once: false
 };
 
-function createIntersectionHook(
-	options: IntersectionObserverInit = defaultIntersectionOptions
-) {
+function createIntersectionHook(options: IntersectionObserverInit = defaultIntersectionOptions) {
 	let observer: IntersectionObserver | null = null;
 
 	const listeners = new WeakMap<HTMLElement, ListenersValue>();

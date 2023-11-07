@@ -10,19 +10,7 @@ type DebouncedFunction<T extends AnyFunction> = T & {
 	cancel(): void
 };
 
-type DebounceFunction<T extends AnyFunction> = (
-	function_: T,
-	wait: number
-) => DebouncedFunction<T>;
-type ThrottleFunction<T extends AnyFunction> = (
-	function_: T,
-	wait: number
-) => ThrottledFunction<T>;
+type DebounceFunction<T extends AnyFunction> = (function_: T, wait: number) => DebouncedFunction<T>;
+type ThrottleFunction<T extends AnyFunction> = (function_: T, wait: number) => ThrottledFunction<T>;
 
-export type {
-	Timer,
-	ThrottledFunction,
-	DebouncedFunction,
-	DebounceFunction,
-	ThrottleFunction
-};
+export type { Timer, ThrottledFunction, DebouncedFunction, DebounceFunction, ThrottleFunction };

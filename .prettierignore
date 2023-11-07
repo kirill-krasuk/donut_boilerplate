@@ -10,3 +10,4 @@ views/**
 .yarn/*
 config/docker/*
 **/*.ejs
+./storybook-static

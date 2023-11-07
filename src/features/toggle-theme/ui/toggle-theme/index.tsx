@@ -16,11 +16,9 @@ const themeIconFactory = createFactory({
 const ToggleTheme: VFC = () => {
 	const { mode, handleChangeTheme } = themeModel.hooks.useThemeMode();
 
-	return (
-		<S.ThemeButton>
-			{ themeIconFactory(mode, { onClick: handleChangeTheme }) }
-		</S.ThemeButton>
-	);
+	return <S.ThemeButton>
+		{ themeIconFactory(mode, { onClick: handleChangeTheme }) }
+	</S.ThemeButton>;
 };
 
 export { ToggleTheme };

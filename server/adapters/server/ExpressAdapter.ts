@@ -6,10 +6,10 @@ import type { ViewTemplateOptions } from './types';
 
 const expressInstance = express();
 
-export class ExpressAdapter<
-	R = express.Request,
-	RS = express.Response
-> extends HTTPServerAdapter<R, RS> {
+export class ExpressAdapter<R = express.Request, RS = express.Response> extends HTTPServerAdapter<
+	R,
+	RS
+> {
 	type = 'express';
 
 	constructor() {

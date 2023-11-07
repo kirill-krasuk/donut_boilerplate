@@ -1,10 +1,7 @@
 import type { ThrottledFunction } from '@shared/lib/functions/types';
 import type { AnyFunction }       from '@shared/types/utility';
 
-function throttle<T extends AnyFunction>(
-	function_: T,
-	wait: number
-): ThrottledFunction<T> {
+function throttle<T extends AnyFunction>(function_: T, wait: number): ThrottledFunction<T> {
 	let timerID: NodeJS.Timeout | null                         = null;
 	let queuedArgs: Parameters<T> | null                       = null;
 	let queuedResolve: ((value: ReturnType<T>) => void) | null = null;

@@ -9,6 +9,7 @@ import type { FC }     from 'react';
 const LocalesProvider: FC = ({ children }) => {
 	const lang = useSelector(localeModel.selectors.getLocale);
 
+	// TODO: https://dev.to/deeppatel234/debug-reactjs-context-api-with-react-context-devtool-3plb
 	return (
 		<EOLocale.Provider language={ lang } locales={ locales }>
 			{ children }

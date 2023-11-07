@@ -26,12 +26,7 @@ function replace(
 
 		const replaceValue = valuesToReplace[interpolateKey].toString();
 
-		return replace(
-			str.replace(args![index], replaceValue),
-			args,
-			valuesToReplace,
-			index + 1
-		);
+		return replace(str.replace(args![index], replaceValue), args, valuesToReplace, index + 1);
 	}
 
 	return str;

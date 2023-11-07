@@ -45,13 +45,9 @@ const getAppOutputInfo = ({ host, port, standardPort }: OutputInfo) => {
 			chalk`Port from {bold ENV} {cyan.bold ${ standardPort }} is busy. Use {cyan.bold ${ port }} instead`,
 		!!isPortBusy && '',
 		chalk`${ ' '.repeat(12) }{gray.bold Server started at}`,
-		chalk`{green.bold Local:}${ ' '.repeat(
-			11
-		) }{underline.cyan http://${ hostname }:${ port }}`,
+		chalk`{green.bold Local:}${ ' '.repeat(11) }{underline.cyan http://${ hostname }:${ port }}`,
 		network &&
-			chalk`{green.bold Network:}${ ' '.repeat(
-				9
-			) }{underline.cyan http://${ network }:${ port }}`,
+			chalk`{green.bold Network:}${ ' '.repeat(9) }{underline.cyan http://${ network }:${ port }}`,
 		__IS_DEV__ &&
 			isBuildAnalyzer &&
 			chalk`{green.bold Bundle analyzer:} {underline.cyan http://${ getHostname(
