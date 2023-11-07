@@ -117,7 +117,7 @@
 		"tcp-port-used": "^1.0.2",
 		"ts-node": "^10.9.1",
 		"tslib": "^2.3.1",
-		"typescript": "5.1.6",
+		"typescript": "5.2.2",
 		"url": "^0.11.0",
 		"used-styles": "^2.3.3",
 		"util": "^0.12.4",
@@ -139,6 +139,8 @@
 		"@geometricpanda/storybook-addon-badges": "^2.0.0",
 		"@loadable/babel-plugin": "^5.13.2",
 		"@loadable/webpack-plugin": "^5.15.2",
+		"@locator/babel-jsx": "^0.4.2",
+		"@locator/runtime": "^0.4.2",
 		"@pmmmwh/react-refresh-webpack-plugin": "0.5.4",
 		"@storybook/addon-a11y": "^7.4.0",
 		"@storybook/addon-actions": "^7.4.0",
@@ -286,8 +288,9 @@
 		"postcss-scss": "^4.0.3",
 		"postcss-styled-syntax": "^0.4.0",
 		"postcss-syntax": "^0.36.2",
-		"prettier": "^2.6.2",
+		"prettier": "^2.8.8",
 		"prompts": "^2.4.2",
+		"react-perf-devtool": "^3.1.8",
 		"redux-mock-store": "^1.5.4",
 		"sass": "^1.66.1",
 		"sass-loader": "^12.6.0",
@@ -326,7 +329,7 @@
 		"workbox-strategies": "^5.1.4",
 		"workbox-webpack-plugin": "^6.0.2"
 	},
-	"packageManager": "yarn@3.6.0",
+	"packageManager": "yarn@3.6.3",
 	"volta": {
 		"node": "20.5.1",
 		"yarn": "3.3.0"
