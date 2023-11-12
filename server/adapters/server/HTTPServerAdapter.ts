@@ -54,10 +54,6 @@ implements ServerAdapter<Request, Response> {
 	registerStaticFiles(options: StaticFilesOptions): void;
 	registerStaticFiles(options: StaticFilesOptions[]): void;
 	registerStaticFiles(options: any) {
-		if (!isStaticFilesOptions(options)) {
-			throw new Error('Options must be an object');
-		}
-
 		if (isStaticFilesOptionsArray(options)) {
 			options.forEach(option => {
 				if (option.compression) {

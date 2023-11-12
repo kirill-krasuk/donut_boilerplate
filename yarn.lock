@@ -23321,7 +23321,7 @@ __metadata:
     stylelint-config-standard-scss: ^3.0.0
     stylelint-order: ^5.0.0
     stylelint-scss: ^4.1.0
-    superjson: ^2.2.1
+    superjson: ^1.13.3
     svg-jest: ^1.0.1
     tcp-port-used: ^1.0.2
     terser-webpack-plugin: ^5.3.1
@@ -29746,12 +29746,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superjson@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "superjson@npm:2.2.1"
+"superjson@npm:^1.13.3":
+  version: 1.13.3
+  resolution: "superjson@npm:1.13.3"
   dependencies:
     copy-anything: ^3.0.2
-  checksum: 42f327474a9de80165a70641d66c2afd9ce7f0eb241c32af7e2d5777f893aac6defa6c1584bd35f022658dbdfd2b7bcf0d170acfe62a07e7d1d01238cf5b4a57
+  checksum: f5aeb010f24163cb871a4bc402d9164112201c059afc247a75b03131c274aea6eec9cf08be9e4a9465fe4961689009a011584528531d52f7cc91c077e07e5c75
   languageName: node
   linkType: hard
 
