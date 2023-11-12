@@ -11,6 +11,14 @@ import type {
 	ViewTemplateOptions
 } from './types';
 
+function isStaticFilesOptions(options: any): options is StaticFilesOptions {
+	return options.publicPath && options.source;
+}
+
+function isStaticFilesOptionsArray(options: any): options is StaticFilesOptions[] {
+	return Array.isArray(options) && options.every(isStaticFilesOptions);
+}
+
 export abstract class HTTPServerAdapter<Request = any, Response = any>
 implements ServerAdapter<Request, Response> {
 	protected server?: Server;
@@ -46,7 +54,11 @@ implements ServerAdapter<Request, Response> {
 	registerStaticFiles(options: StaticFilesOptions): void;
 	registerStaticFiles(options: StaticFilesOptions[]): void;
 	registerStaticFiles(options: any) {
-		if (Array.isArray(options)) {
+		if (!isStaticFilesOptions(options)) {
+			throw new Error('Options must be an object');
+		}
+
+		if (isStaticFilesOptionsArray(options)) {
 			options.forEach(option => {
 				if (option.compression) {
 					this.staticCompression(option);

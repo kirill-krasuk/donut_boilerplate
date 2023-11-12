@@ -1,3 +1,4 @@
+import '@total-typescript/ts-reset';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { loadableReady }           from '@loadable/component';
 

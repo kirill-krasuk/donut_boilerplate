@@ -1,7 +1,7 @@
 import type { Config, ConfigSchema } from './types';
 
 const JSONValueNormalizer = {
-	parseBoolOrInt: (value: string) => JSON.parse(value),
+	parseBoolOrInt: (value: string) => JSON.parse(value) as boolean | number,
 	parseString   : (value?: string) => (value
 		? `${ value }`
 		: null)

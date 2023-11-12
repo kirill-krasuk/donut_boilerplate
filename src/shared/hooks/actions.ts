@@ -8,7 +8,7 @@ function useActions<T>(actions: T, deps: any[] = []): T {
 	return useMemo(
 		() => {
 			if (Array.isArray(actions)) {
-				return actions.map(a => bindActionCreators(a, dispatch));
+				return actions.map((a: any) => bindActionCreators(a, dispatch));
 			}
 
 			return bindActionCreators(actions as any, dispatch);
