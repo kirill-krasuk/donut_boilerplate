@@ -1,6 +1,7 @@
 import { ServerStyleSheet }                                   from 'styled-components';
 import { Helmet }                                             from 'react-helmet';
 import { renderToString }                                     from 'react-dom/server';
+import SuperJSON                                              from 'superjson';
 
 import { getStyles }                                          from '@server/lib/css';
 
@@ -27,11 +28,11 @@ async function generateStaticTemplate(options: Options): Promise<StaticTemplate>
 		scriptTags         : extractor.getScriptTags(),
 		styleChunksTags    : cssChunks, // loadable components extract styles in chunk files
 		styleComponentsTags: sheet.getStyleTags(), // styled components generate style tag
-		storage            : `window.__PRELOADED_STATE__ = ${ JSON.stringify(store.getState()).replaceAll(
+		storage            : `window.__PRELOADED_STATE__ = ${ SuperJSON.stringify(store.getState()).replaceAll(
 			'<',
 			'\\u003c'
 		) }`,
-		initialProps: `window.__INITIAL_PROPS__ = ${ JSON.stringify(props) }`,
+		initialProps: `window.__INITIAL_PROPS__ = ${ SuperJSON.stringify(props) }`,
 		criticalCss,
 		mode,
 		title,
